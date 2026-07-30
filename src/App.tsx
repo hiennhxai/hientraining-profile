@@ -20,7 +20,6 @@ import { AdminLoginModal } from './components/AdminLoginModal';
 import { AdminPortalModal } from './components/AdminPortalModal';
 import { applyTypography } from './utils/typographyEngine';
 import { getAdminData, loadAdminDataAsync } from './data/adminStore';
-import { Loader } from 'lucide-react';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('vi');
@@ -162,15 +161,6 @@ export default function App() {
       observer.disconnect();
     };
   }, [activePage]);
-
-  if (!isDataLoaded) {
-    return (
-      <div className="flex h-screen w-full items-center justify-center bg-slate-950 text-white flex-col gap-4">
-        <Loader className="w-10 h-10 animate-spin text-orange-500" />
-        <p className="text-sm font-mono tracking-widest uppercase text-slate-400">Loading Supabase Data...</p>
-      </div>
-    );
-  }
 
   return (
     <>
