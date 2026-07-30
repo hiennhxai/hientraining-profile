@@ -183,7 +183,7 @@ export default function App() {
         {/* HOMEPAGE VIEW: Streamlined hero header and contact section */}
         {activePage === 'home' && (
           <>
-            <HeroSection lang={lang} onNavigatePage={handleSelectPage} />
+            <HeroSection lang={lang} onNavigatePage={handleSelectPage} onSelectCourse={(c) => setActiveCourse(c)} />
             <ContactSection lang={lang} />
           </>
         )}

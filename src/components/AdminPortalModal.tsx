@@ -449,6 +449,87 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                 </div>
               </div>
 
+              {/* ═══ FONT & TYPOGRAPHY SETTINGS ═══ */}
+              <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-2 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-orange-600" />
+                  <span>Font & Kiểu Chữ (Typography)</span>
+                  <span className="text-[10px] font-mono text-orange-600 bg-orange-50 px-2 py-0.5 rounded border border-orange-200 font-bold">
+                    LIVE PREVIEW
+                  </span>
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                  {/* Font Heading */}
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Font Tiêu Đề (Heading)</label>
+                    <select
+                      value={data.general.fontHeading || 'Space Grotesk'}
+                      onChange={(e) => setData({ ...data, general: { ...data.general, fontHeading: e.target.value } })}
+                      className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold bg-white"
+                    >
+                      {AVAILABLE_FONTS.filter(f => f.category !== 'mono').map(f => (
+                        <option key={f.id} value={f.name}>{f.name} ({f.category})</option>
+                      ))}
+                    </select>
+                    <p className="text-[10px] text-slate-400 mt-1" style={{ fontFamily: `'${data.general.fontHeading || 'Space Grotesk'}', sans-serif` }}>
+                      Xem trước: <strong>ABCĐ abcđ 0123 — Xuân Hiến Media</strong>
+                    </p>
+                  </div>
+
+                  {/* Font Body */}
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Font Nội Dung (Body Text)</label>
+                    <select
+                      value={data.general.fontBody || 'Be Vietnam Pro'}
+                      onChange={(e) => setData({ ...data, general: { ...data.general, fontBody: e.target.value } })}
+                      className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold bg-white"
+                    >
+                      {AVAILABLE_FONTS.filter(f => f.category !== 'mono').map(f => (
+                        <option key={f.id} value={f.name}>{f.name} ({f.category})</option>
+                      ))}
+                    </select>
+                    <p className="text-[10px] text-slate-400 mt-1" style={{ fontFamily: `'${data.general.fontBody || 'Be Vietnam Pro'}', sans-serif` }}>
+                      Xem trước: <span>Đào tạo kỹ năng MC, Livestream chuyên nghiệp 1 kèm 1</span>
+                    </p>
+                  </div>
+
+                  {/* Font Mono */}
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Font Code / Nhãn (Mono)</label>
+                    <select
+                      value={data.general.fontMono || 'IBM Plex Mono'}
+                      onChange={(e) => setData({ ...data, general: { ...data.general, fontMono: e.target.value } })}
+                      className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold bg-white"
+                    >
+                      {AVAILABLE_FONTS.filter(f => f.category === 'mono').map(f => (
+                        <option key={f.id} value={f.name}>{f.name}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Font Size Scale */}
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">
+                      Cỡ Chữ Toàn Trang: <span className="text-orange-600">{data.general.fontSizeScale || 100}%</span>
+                    </label>
+                    <input
+                      type="range"
+                      min={80}
+                      max={130}
+                      step={5}
+                      value={data.general.fontSizeScale || 100}
+                      onChange={(e) => setData({ ...data, general: { ...data.general, fontSizeScale: parseInt(e.target.value) } })}
+                      className="w-full accent-orange-600"
+                    />
+                    <div className="flex justify-between text-[10px] text-slate-400 font-mono mt-0.5">
+                      <span>80% (Nhỏ)</span>
+                      <span>100% (Mặc định)</span>
+                      <span>130% (To)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* Editable Section Titles & Call-to-Action Text */}
               <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
                 <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-2 flex items-center gap-2">

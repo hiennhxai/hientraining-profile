@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Language, CourseItem } from '../types';
 import { getAdminData } from '../data/adminStore';
-import { CourseModal } from './CourseModal';
 import { ChevronLeft, ChevronRight, Mic, Clock, ArrowRight, Radio, Image as ImageIcon } from 'lucide-react';
 
 interface CourseBannerCarouselProps {
@@ -13,7 +12,6 @@ export function CourseBannerCarousel({ lang, onSelectCourse }: CourseBannerCarou
   const [courses, setCourses] = useState<CourseItem[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isPaused, setIsPaused] = useState<boolean>(false);
-  const [selectedCourse, setSelectedCourse] = useState<CourseItem | null>(null);
 
   const isVi = lang === 'vi';
 
@@ -57,8 +55,6 @@ export function CourseBannerCarousel({ lang, onSelectCourse }: CourseBannerCarou
   const handleBannerClick = () => {
     if (onSelectCourse) {
       onSelectCourse(currentCourse);
-    } else {
-      setSelectedCourse(currentCourse);
     }
   };
 
@@ -168,12 +164,6 @@ export function CourseBannerCarousel({ lang, onSelectCourse }: CourseBannerCarou
         </div>
       </div>
 
-      {/* Modal View for Course Details */}
-      <CourseModal 
-        course={selectedCourse} 
-        onClose={() => setSelectedCourse(null)} 
-        lang={lang}
-      />
     </div>
   );
 }

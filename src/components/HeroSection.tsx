@@ -10,9 +10,10 @@ import { Phone, Mail, Award, CheckCircle2, ChevronRight, Mic, Video, Sparkles, H
 interface HeroSectionProps {
   lang: Language;
   onNavigatePage?: (page: string) => void;
+  onSelectCourse?: (course: any) => void;
 }
 
-export function HeroSection({ lang, onNavigatePage }: HeroSectionProps) {
+export function HeroSection({ lang, onNavigatePage, onSelectCourse }: HeroSectionProps) {
   const t = translations[lang];
   const isVi = lang === 'vi';
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -102,7 +103,14 @@ export function HeroSection({ lang, onNavigatePage }: HeroSectionProps) {
       <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent z-1 pointer-events-none" />
 
       <div className="hero-in relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-left">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
+
+          {/* Mobile-only Portrait (shown above text on small screens) */}
+          <div className="lg:hidden flex justify-center -mb-2">
+            <div className="w-56 sm:w-64">
+              <HeroPortraitShowcase lang={lang} />
+            </div>
+          </div>
           
           <div className="lg:col-span-8">
             {/* Section Tag Badge */}
@@ -190,7 +198,7 @@ export function HeroSection({ lang, onNavigatePage }: HeroSectionProps) {
         <BrandMarquee lang={lang} />
 
         {/* Auto-sliding Course Banner Carousel (4s) */}
-        <CourseBannerCarousel lang={lang} />
+        <CourseBannerCarousel lang={lang} onSelectCourse={onSelectCourse} />
       </div>
     </section>
   );
