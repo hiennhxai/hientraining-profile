@@ -23,9 +23,8 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
   const [activeTab, setActiveTab] = useState<'general' | 'story' | 'courses' | 'services' | 'projects' | 'articles' | 'album' | 'brands'>('general');
   const [toastMsg, setToastMsg] = useState<string | null>(null);
 
-  // Live View Split Preview State
-  const [showLivePreview, setShowLivePreview] = useState(true);
-  const [previewDevice, setPreviewDevice] = useState<'desktop' | 'mobile'>('desktop');
+  // Article Pop-up Preview State
+  const [previewArticle, setPreviewArticle] = useState<Article | null>(null);
 
   // Article selection for Rich Editing
   const [editingArticleSlug, setEditingArticleSlug] = useState<string | null>(null);
@@ -262,24 +261,11 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
           {/* Header Action Buttons */}
           <div className="flex items-center gap-2">
             <button
-              type="button"
-              onClick={() => setShowLivePreview(!showLivePreview)}
-              className={`px-3.5 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition-all cursor-pointer shadow-sm ${
-                showLivePreview 
-                  ? 'bg-slate-900 text-amber-400 border border-slate-700 shadow-md ring-2 ring-amber-400/30' 
-                  : 'bg-slate-200 text-slate-700 hover:bg-slate-300 border border-slate-300'
-              }`}
-            >
-              {showLivePreview ? <Eye className="w-4 h-4 text-amber-400" /> : <EyeOff className="w-4 h-4 text-slate-500" />}
-              <span>{showLivePreview ? '👁️ Live View: BẬT' : '👁️ Live View: TẮT'}</span>
-            </button>
-
-            <button
               onClick={() => handleSave(false)}
               className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md transition-all cursor-pointer"
             >
               <Save className="w-4 h-4" />
-              <span>Lưu Thay Đổi</span>
+              <span>Lưu Tất Cả Thay Đổi</span>
             </button>
             <button
               onClick={onClose}
@@ -383,7 +369,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
         </div>
 
         {/* Scrollable Main Workspace */}
-        <div className="flex-1 overflow-y-auto p-6 bg-slate-100">
+        <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-slate-50">
 
           {/* Toast Alert */}
           {toastMsg && (
@@ -392,10 +378,6 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
               <span>{toastMsg}</span>
             </div>
           )}
-
-          <div className={showLivePreview ? "grid grid-cols-1 lg:grid-cols-12 gap-6 items-start" : "space-y-6"}>
-            {/* EDIT FORM COLUMN */}
-            <div className={showLivePreview ? "lg:col-span-7 xl:col-span-7 space-y-6" : "space-y-6"}>
 
           {/* TAB 1: GENERAL CONFIG */}
           {activeTab === 'general' && (
@@ -2021,14 +2003,25 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                         </div>
 
                         <div className="flex items-center justify-between pt-2 border-t border-slate-100">
-                          <button
-                            type="button"
-                            onClick={() => setEditingArticleSlug(slug)}
-                            className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-orange-600 text-white text-xs font-bold transition-all cursor-pointer flex items-center gap-1"
-                          >
-                            <FileText className="w-3.5 h-3.5" />
-                            <span>Soạn Thảo Block</span>
-                          </button>
+                          <div className="flex items-center gap-1.5">
+                            <button
+                              type="button"
+                              onClick={() => setEditingArticleSlug(slug)}
+                              className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-orange-600 text-white text-xs font-bold transition-all cursor-pointer flex items-center gap-1"
+                            >
+                              <FileText className="w-3.5 h-3.5" />
+                              <span>Soạn Thảo Block</span>
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setPreviewArticle(art)}
+                              className="px-2.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 text-xs font-bold transition-all cursor-pointer flex items-center gap-1"
+                              title="Xem kết quả hiển thị thực tế"
+                            >
+                              <Eye className="w-3.5 h-3.5 text-amber-600" />
+                              <span>Live Pop-up</span>
+                            </button>
+                          </div>
                           <button
                             type="button"
                             onClick={() => handleDeleteArticle(slug)}
@@ -2044,7 +2037,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                 </>
               ) : (
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between bg-slate-900 p-4 rounded-2xl text-white">
+                  <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-900 p-4 rounded-2xl text-white">
                     <div className="flex items-center gap-2">
                       <button
                         type="button"
@@ -2058,14 +2051,24 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                       </span>
                     </div>
 
-                    <button
-                      type="button"
-                      onClick={handleSave}
-                      className="px-4 py-1.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md"
-                    >
-                      <Save className="w-4 h-4" />
-                      <span>Lưu Thay Đổi Bài Viết</span>
-                    </button>
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setPreviewArticle(data.articles[editingArticleSlug])}
+                        className="px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white text-xs font-extrabold flex items-center gap-1.5 shadow-md cursor-pointer transition-all"
+                      >
+                        <Eye className="w-4 h-4" />
+                        <span>👁️ Xem Pop-up Preview Bài Viết</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleSave(false)}
+                        className="px-4 py-1.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md cursor-pointer"
+                      >
+                        <Save className="w-4 h-4" />
+                        <span>Lưu Bài Viết</span>
+                      </button>
+                    </div>
                   </div>
 
                   {data.articles[editingArticleSlug] && (
@@ -2251,21 +2254,6 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
             </div>
           )}
 
-            </div>
-
-            {/* REAL-TIME LIVE PREVIEW SIDE PANEL COLUMN */}
-            {showLivePreview && (
-              <div className="lg:col-span-5 xl:col-span-5 sticky top-0">
-                <AdminLivePreviewPanel 
-                  activeTab={activeTab} 
-                  data={data} 
-                  editingArticleSlug={editingArticleSlug}
-                  previewDevice={previewDevice}
-                  setPreviewDevice={setPreviewDevice}
-                />
-              </div>
-            )}
-          </div>
         </div>
 
         {/* Footer Super Admin Bar */}
@@ -2339,294 +2327,120 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
           }}
         />
 
-      </div>
-    </div>
-  );
-};
-
-/* REAL-TIME LIVE PREVIEW SIDE PANEL COMPONENT */
-const AdminLivePreviewPanel: React.FC<{
-  activeTab: string;
-  data: FullAdminData;
-  editingArticleSlug: string | null;
-  previewDevice: 'desktop' | 'mobile';
-  setPreviewDevice: (dev: 'desktop' | 'mobile') => void;
-}> = ({ activeTab, data, editingArticleSlug, previewDevice, setPreviewDevice }) => {
-  return (
-    <div className="bg-slate-950 border border-slate-800 rounded-3xl p-4 sm:p-5 text-white shadow-2xl space-y-4 max-h-[80vh] overflow-y-auto sticky top-2 font-sans">
-      {/* Live Preview Header Bar */}
-      <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-        <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-[11px] font-mono font-extrabold text-emerald-400 uppercase tracking-wider">REAL-TIME LIVE PREVIEW</span>
-        </div>
-
-        <div className="flex items-center gap-1 bg-slate-900 p-1 rounded-xl border border-slate-800 text-xs">
-          <button
-            type="button"
-            onClick={() => setPreviewDevice('desktop')}
-            className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${previewDevice === 'desktop' ? 'bg-orange-600 text-white' : 'text-slate-400 hover:text-white'}`}
-          >
-            <Monitor className="w-3.5 h-3.5 inline mr-1" />
-            Desktop
-          </button>
-          <button
-            type="button"
-            onClick={() => setPreviewDevice('mobile')}
-            className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${previewDevice === 'mobile' ? 'bg-orange-600 text-white' : 'text-slate-400 hover:text-white'}`}
-          >
-            <Smartphone className="w-3.5 h-3.5 inline mr-1" />
-            Mobile
-          </button>
-        </div>
-      </div>
-
-      {/* Preview Stage Container */}
-      <div className={`transition-all duration-300 mx-auto ${previewDevice === 'mobile' ? 'max-w-[340px] border-4 border-slate-800 rounded-3xl p-3 bg-slate-900/90 shadow-inner' : 'w-full'}`}>
-        
-        {/* TAB 1: GENERAL BRANDING LIVE PREVIEW */}
-        {activeTab === 'general' && (
-          <div className="space-y-4 text-xs">
-            <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800 text-center space-y-2">
-              {data.general.logoImageUrl ? (
-                <img src={data.general.logoImageUrl} alt="Logo" className="h-10 mx-auto object-contain" />
-              ) : (
-                <div className="w-12 h-12 rounded-xl bg-orange-600 text-white font-extrabold flex items-center justify-center mx-auto text-lg shadow-md">
-                  XH
+        {/* ARTICLE LIVE PREVIEW POP-UP MODAL */}
+        {previewArticle && (
+          <div className="fixed inset-0 z-[100] bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 animate-fadeIn">
+            <div className="relative w-full max-w-3xl bg-white rounded-3xl border border-slate-200 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+              
+              {/* Modal Header */}
+              <div className="p-4 sm:p-5 bg-slate-900 text-white flex items-center justify-between gap-4 border-b border-slate-800">
+                <div className="flex items-center gap-2">
+                  <Eye className="w-5 h-5 text-amber-400" />
+                  <div>
+                    <h3 className="text-sm sm:text-base font-extrabold text-white">LIVE PREVIEW POP-UP: KẾT QUẢ HIỂN THỊ BÀI VIẾT</h3>
+                    <p className="text-[10px] text-slate-400 font-mono">Mô phỏng 100% giao diện thực tế khi phát hành lên website</p>
+                  </div>
                 </div>
-              )}
-              <h4 className="text-base font-extrabold text-white tracking-wider">{data.general.brandName || 'XUÂN HIẾN'}</h4>
-              <p className="text-[11px] font-mono text-orange-400 font-bold">{data.general.subBrandName || 'MEDIA & TRAINING'}</p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-2">
-              <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
-                <span className="block text-[10px] text-slate-400 font-bold">Hotline / Zalo</span>
-                <span className="font-mono font-bold text-orange-400 text-xs">{data.general.phoneHotline}</span>
+                <button
+                  type="button"
+                  onClick={() => setPreviewArticle(null)}
+                  className="p-2 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
+                >
+                  <X className="w-5 h-5" />
+                </button>
               </div>
-              <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
-                <span className="block text-[10px] text-slate-400 font-bold">Email Booking</span>
-                <span className="font-mono font-bold text-slate-200 text-[11px] truncate block">{data.general.emailContact}</span>
-              </div>
-            </div>
 
-            {/* Stat Counters Live Preview */}
-            <div className="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-2">
-              <span className="block text-[10px] font-mono text-amber-400 font-extrabold uppercase">THỐNG KÊ NỔI BẬT</span>
-              <div className="grid grid-cols-3 gap-2 text-center">
-                <div className="p-2 bg-slate-800/80 rounded-lg border border-slate-700">
-                  <span className="block text-sm font-extrabold text-orange-400">{data.general.stat1Value}</span>
-                  <span className="block text-[9px] text-slate-400">{data.general.stat1Label}</span>
-                </div>
-                <div className="p-2 bg-slate-800/80 rounded-lg border border-slate-700">
-                  <span className="block text-sm font-extrabold text-orange-400">{data.general.stat2Value}</span>
-                  <span className="block text-[9px] text-slate-400">{data.general.stat2Label}</span>
-                </div>
-                <div className="p-2 bg-slate-800/80 rounded-lg border border-slate-700">
-                  <span className="block text-sm font-extrabold text-orange-400">{data.general.stat3Value}</span>
-                  <span className="block text-[9px] text-slate-400">{data.general.stat3Label}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Footer Social Links Live Preview */}
-            <div className="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-2">
-              <span className="block text-[10px] font-mono text-orange-400 font-extrabold uppercase">KÊNH TRUYỀN THÔNG FOOTER ({data.socialLinks?.length || 0})</span>
-              <div className="flex flex-wrap gap-1.5">
-                {(data.socialLinks || []).map((s, idx) => (
-                  <span key={idx} className="text-[10px] font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded border border-slate-700">
-                    {s.label}
+              {/* Modal Render Stage */}
+              <div className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-6 bg-white text-slate-900 font-sans">
+                
+                {/* Meta Badges */}
+                <div className="flex items-center justify-between border-b border-slate-100 pb-3 text-xs">
+                  <span className="px-3 py-1 rounded-lg bg-orange-50 text-orange-600 font-mono font-extrabold uppercase border border-orange-200">
+                    {previewArticle.cat || 'Kinh nghiệm'}
                   </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* TAB 2: BRAND LOGOS LIVE PREVIEW */}
-        {activeTab === 'brands' && (
-          <div className="space-y-4 text-xs">
-            <div className="p-3 bg-slate-900 rounded-xl border border-slate-800 flex items-center justify-between">
-              <span className="text-[11px] font-bold text-slate-300">Tốc độ chạy Marquee</span>
-              <span className="font-mono text-xs font-bold text-orange-400">{data.general.marqueeSpeed || 25} giây / vòng</span>
-            </div>
-
-            <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800 space-y-3">
-              <span className="text-[10px] font-mono text-orange-400 font-extrabold uppercase block">MARQUEE RUNNING PREVIEW ({(data.brandLogos || []).length} LOGO)</span>
-              <div className="flex flex-wrap gap-2 max-h-48 overflow-y-auto p-2 bg-slate-950 rounded-xl border border-slate-800">
-                {(data.brandLogos || []).map((b, idx) => (
-                  <div key={idx} className="p-2 bg-slate-900 rounded-lg border border-slate-800 flex items-center gap-2">
-                    {b.logoUrl ? (
-                      <img src={b.logoUrl} alt={b.name} className="h-5 max-w-[60px] object-contain" />
-                    ) : (
-                      <span className="text-[10px] font-bold text-orange-400">{b.name}</span>
-                    )}
+                  <div className="flex items-center gap-3 text-slate-500 font-mono">
+                    <span>{previewArticle.date}</span>
+                    <span>•</span>
+                    <span>{previewArticle.readTime}</span>
                   </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* TAB 3: STORY & NARRATIVE LIVE PREVIEW */}
-        {activeTab === 'story' && (
-          <div className="space-y-4 text-xs">
-            <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800 space-y-2">
-              <span className="text-[10px] font-mono text-orange-400 font-extrabold uppercase">CÂU CHUYỆN THƯƠNG HIỆU</span>
-              <p className="text-sm font-extrabold text-white leading-snug">{data.general.mentorQuote || 'Xuân Hiển — Người Đồng Hành Cùng Thành Công Của Bạn'}</p>
-              <p className="text-xs text-slate-300 italic font-serif leading-relaxed">"{data.general.p1p || 'Hành trình 10+ năm dẫn dắt các chương trình truyền hình và đào tạo kỹ năng livestream chuyên nghiệp.'}"</p>
-            </div>
-
-            <div className="space-y-2">
-              <span className="text-[10px] font-mono text-amber-400 font-extrabold uppercase block">3 TRIẾT LÝ CỐT LÕI</span>
-              <div className="grid grid-cols-1 gap-2">
-                <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
-                  <span className="font-extrabold text-orange-400 block">{data.general.p1h || 'Thấu Hiểu Khách Hàng'}</span>
-                  <span className="text-[11px] text-slate-300 leading-relaxed block mt-0.5">{data.general.p1p}</span>
                 </div>
-                <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
-                  <span className="font-extrabold text-orange-400 block">{data.general.p2h || 'Thực Chiến Kỹ Năng'}</span>
-                  <span className="text-[11px] text-slate-300 leading-relaxed block mt-0.5">{data.general.p2p}</span>
-                </div>
-                <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
-                  <span className="font-extrabold text-orange-400 block">{data.general.p3h || 'Truyền Cảm Hứng'}</span>
-                  <span className="text-[11px] text-slate-300 leading-relaxed block mt-0.5">{data.general.p3p}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
 
-        {/* TAB 4: COURSES LIVE PREVIEW */}
-        {activeTab === 'courses' && (
-          <div className="space-y-3 text-xs">
-            <span className="text-[10px] font-mono text-orange-400 font-extrabold uppercase block">PREVIEW KHÓA HỌC 1-1 ({data.courses.length} KHÓA)</span>
-            <div className="space-y-3 max-h-[60vh] overflow-y-auto pr-1">
-              {data.courses.map((c, idx) => (
-                <div key={idx} className="p-4 bg-slate-900 rounded-2xl border border-slate-800 space-y-2">
-                  {c.imageUrl && (
-                    <img src={c.imageUrl} alt={c.title} className="w-full aspect-video object-cover rounded-xl border border-slate-800" />
-                  )}
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-mono text-orange-400 font-bold bg-orange-950 px-2 py-0.5 rounded border border-orange-800">{c.level || 'CHUYÊN SÂU'}</span>
-                    <span className="text-[10px] font-mono text-emerald-400 font-bold">{c.duration}</span>
+                {/* Title & Dek */}
+                <div className="space-y-3">
+                  <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
+                    {previewArticle.vi?.title || previewArticle.title}
+                  </h1>
+                  <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed italic border-l-4 border-orange-500 pl-4 py-1 bg-orange-50/50 rounded-r-xl">
+                    {previewArticle.vi?.dek || previewArticle.excerpt}
+                  </p>
+                </div>
+
+                {/* Hero Cover Image */}
+                {(previewArticle.vi?.coverImage || previewArticle.coverImage) && (
+                  <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-md">
+                    <img 
+                      src={previewArticle.vi?.coverImage || previewArticle.coverImage} 
+                      alt="Cover" 
+                      className="w-full aspect-video object-cover"
+                    />
                   </div>
-                  <h5 className="font-extrabold text-white text-sm leading-snug">{c.title}</h5>
-                  <p className="text-[11px] text-slate-400 leading-relaxed">{c.subtitle || c.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+                )}
 
-        {/* TAB 5: SERVICES LIVE PREVIEW */}
-        {activeTab === 'services' && (
-          <div className="space-y-3 text-xs">
-            <span className="text-[10px] font-mono text-orange-400 font-extrabold uppercase block">PREVIEW DỊCH VỤ SOLUTIONS ({data.services.length} DỊCH VỤ)</span>
-            <div className="space-y-3 max-h-[60vh] overflow-y-auto pr-1">
-              {data.services.map((s, idx) => (
-                <div key={idx} className="p-4 bg-slate-900 rounded-2xl border border-slate-800 space-y-2">
-                  <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-lg bg-orange-600 text-white font-bold flex items-center justify-center text-xs">
-                      ✦
-                    </div>
-                    <div>
-                      <h5 className="font-extrabold text-white text-xs">{s.title}</h5>
-                      <span className="text-[10px] font-mono text-orange-400">{s.subtitle}</span>
-                    </div>
-                  </div>
-                  <p className="text-[11px] text-slate-400 leading-relaxed">{s.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* TAB 6: PROJECTS & TIKTOK LIVE PREVIEW */}
-        {activeTab === 'projects' && (
-          <div className="space-y-3 text-xs">
-            <span className="text-[10px] font-mono text-orange-400 font-extrabold uppercase block">PREVIEW LƯỚI DỰ ÁN ({data.projects?.reduce((acc, cat) => acc + cat.items.length, 0) || 0} DỰ ÁN)</span>
-            <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-1">
-              {(data.projects || []).map((cat, catIdx) => (
-                <div key={catIdx} className="space-y-2">
-                  <span className="text-[11px] font-extrabold text-amber-400 block border-b border-slate-800 pb-1">{cat.title}</span>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {cat.items.map((item, itemIdx) => (
-                      <div key={itemIdx} className="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-2">
-                        {item.thumbnailUrl && (
-                          <img src={item.thumbnailUrl} alt={item.title} className="w-full aspect-video object-cover rounded-lg border border-slate-800" />
+                {/* Formatted Article Blocks */}
+                {previewArticle.vi?.blocks && previewArticle.vi.blocks.length > 0 ? (
+                  <div className="space-y-5 pt-4 border-t border-slate-100 text-sm sm:text-base leading-relaxed text-slate-800">
+                    {previewArticle.vi.blocks.map((block: any, bIdx: number) => (
+                      <div key={bIdx} className="space-y-2">
+                        {block.type === 'heading' && (
+                          <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 pt-3 border-b border-slate-100 pb-2">
+                            {block.content}
+                          </h2>
                         )}
-                        <h6 className="font-bold text-white text-[11px] leading-snug line-clamp-1">{item.title}</h6>
-                        <span className="text-[9px] font-mono text-orange-400 bg-orange-950 px-1.5 py-0.5 rounded block w-fit">{item.role}</span>
-                        {item.galleryPhotos && item.galleryPhotos.length > 0 && (
-                          <span className="text-[9px] font-mono text-emerald-400 block">📸 {item.galleryPhotos.length} ảnh album</span>
+                        {block.type === 'text' && (
+                          <p className="text-slate-700 leading-relaxed font-normal whitespace-pre-line">
+                            {block.content}
+                          </p>
+                        )}
+                        {block.type === 'quote' && (
+                          <blockquote className="p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl italic font-serif text-slate-800 text-base">
+                            "{block.content}"
+                          </blockquote>
+                        )}
+                        {block.type === 'image' && (
+                          <div className="space-y-1.5 py-2">
+                            <img src={block.content} alt={block.caption || 'Article photo'} className="w-full rounded-2xl border border-slate-200 shadow-sm object-cover" />
+                            {block.caption && (
+                              <p className="text-center text-xs font-mono text-slate-500 italic">{block.caption}</p>
+                            )}
+                          </div>
+                        )}
+                        {block.type === 'list' && Array.isArray(block.items) && (
+                          <ul className="list-disc pl-5 space-y-1 text-slate-700 font-medium">
+                            {block.items.map((item: string, iIdx: number) => (
+                              <li key={iIdx}>{item}</li>
+                            ))}
+                          </ul>
                         )}
                       </div>
                     ))}
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+                ) : (
+                  <p className="text-xs text-slate-400 font-mono italic text-center py-4">Chưa có các khối nội dung chi tiết</p>
+                )}
 
-        {/* TAB 7: BLOG ARTICLES LIVE PREVIEW */}
-        {activeTab === 'articles' && (
-          <div className="space-y-3 text-xs">
-            <span className="text-[10px] font-mono text-orange-400 font-extrabold uppercase block">PREVIEW BÀI VIẾT BLOG</span>
-            {(() => {
-              const artKeys = Object.keys(data.articles);
-              const targetSlug = editingArticleSlug || artKeys[0];
-              const art = targetSlug ? data.articles[targetSlug] : null;
+              </div>
 
-              if (!art) {
-                return <p className="text-slate-400 italic text-[11px]">Chưa chọn bài viết để xem preview</p>;
-              }
+              {/* Modal Footer */}
+              <div className="p-4 bg-slate-100 border-t border-slate-200 flex items-center justify-end">
+                <button
+                  type="button"
+                  onClick={() => setPreviewArticle(null)}
+                  className="px-5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs cursor-pointer shadow-md"
+                >
+                  Đóng Pop-up Preview
+                </button>
+              </div>
 
-              return (
-                <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800 space-y-3">
-                  {art.coverImage && (
-                    <img src={art.coverImage} alt={art.title} className="w-full aspect-video object-cover rounded-xl border border-slate-800" />
-                  )}
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-mono text-orange-400 font-bold bg-orange-950 px-2 py-0.5 rounded border border-orange-800">{art.category}</span>
-                    <span className="text-[10px] font-mono text-slate-400">{art.readTime}</span>
-                  </div>
-                  <h4 className="text-base font-extrabold text-white leading-snug">{art.title}</h4>
-                  <p className="text-xs text-slate-300 leading-relaxed font-medium">{art.excerpt}</p>
-                  
-                  {/* Article Blocks Preview */}
-                  {art.blocks && art.blocks.length > 0 && (
-                    <div className="pt-3 border-t border-slate-800 space-y-2">
-                      <span className="text-[10px] font-mono text-amber-400 font-extrabold uppercase block">NỘI DUNG BLOG ({art.blocks.length} KHỐI)</span>
-                      <div className="space-y-2 max-h-40 overflow-y-auto p-2 bg-slate-950 rounded-xl">
-                        {art.blocks.map((b, bIdx) => (
-                          <div key={bIdx} className="p-2 bg-slate-900 rounded-lg text-[11px]">
-                            {b.type === 'heading' && <strong className="text-orange-400 block">{b.content}</strong>}
-                            {b.type === 'text' && <p className="text-slate-300 line-clamp-2">{b.content}</p>}
-                            {b.type === 'quote' && <blockquote className="italic text-amber-300 border-l-2 border-amber-500 pl-2">"{b.content}"</blockquote>}
-                            {b.type === 'image' && <img src={b.content} alt="Block img" className="h-16 rounded object-cover" />}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })()}
-          </div>
-        )}
-
-        {/* TAB 8: PHOTO ALBUM LIVE PREVIEW */}
-        {activeTab === 'album' && (
-          <div className="space-y-3 text-xs">
-            <span className="text-[10px] font-mono text-orange-400 font-extrabold uppercase block">PREVIEW KHO HÌNH ÁNH ({(data.photoAlbum || []).length} ẢNH)</span>
-            <div className="grid grid-cols-3 gap-2 max-h-[60vh] overflow-y-auto pr-1">
-              {(data.photoAlbum || []).map((img, idx) => (
-                <div key={idx} className="aspect-square rounded-lg overflow-hidden bg-slate-900 border border-slate-800">
-                  <img src={typeof img === 'string' ? img : img.url} alt={`Photo ${idx}`} className="w-full h-full object-cover" />
-                </div>
-              ))}
             </div>
           </div>
         )}
@@ -2635,3 +2449,5 @@ const AdminLivePreviewPanel: React.FC<{
     </div>
   );
 };
+
+
