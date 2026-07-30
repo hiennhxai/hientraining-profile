@@ -2307,7 +2307,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
               {/* Resources List */}
               <div className="space-y-4">
                 {(data.resources || []).map((res, idx) => (
-                  <div key={res.id} className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+                  <div key={res.id} className="p-5 rounded-2xl bg-white border-2 border-slate-900 space-y-4 shadow-xs">
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-mono font-extrabold text-orange-600 bg-orange-50 px-2.5 py-1 rounded-lg border border-orange-200">
                         MỤC THỨ #{idx + 1} · ID: {res.id}
@@ -2315,7 +2315,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                       <button
                         type="button"
                         onClick={() => handleDeleteResource(res.id)}
-                        className="text-xs font-bold text-red-600 hover:text-red-700 flex items-center gap-1 cursor-pointer bg-white px-3 py-1 rounded-lg border border-red-200 shadow-2xs"
+                        className="text-xs font-bold text-red-600 hover:text-red-700 flex items-center gap-1 cursor-pointer bg-red-50 px-3 py-1 rounded-lg border border-red-200 shadow-2xs"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                         <span>Xóa Tài Liệu</span>
@@ -2325,7 +2325,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {/* Title */}
                       <div className="space-y-1 md:col-span-2">
-                        <label className="text-[11px] font-mono font-bold text-slate-600">TÊN TÀI LIỆU / MẪU KỊCH BẢN:</label>
+                        <label className="text-[11px] font-mono font-bold text-slate-700">TÊN TÀI LIỆU / MẪU KỊCH BẢN:</label>
                         <input
                           type="text"
                           value={res.title}
@@ -2334,101 +2334,140 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                             list[idx] = { ...list[idx], title: e.target.value };
                             setData({ ...data, resources: list });
                           }}
-                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 font-extrabold text-slate-900 text-xs focus:ring-2 focus:ring-orange-500"
+                          className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 font-extrabold text-slate-900 text-xs focus:bg-white focus:ring-2 focus:ring-orange-500"
                         />
                       </div>
 
-                      {/* Category */}
+                      {/* Flexible Category Input / Select Combo */}
                       <div className="space-y-1">
-                        <label className="text-[11px] font-mono font-bold text-slate-600">DANH MỤC TÀI LIỆU:</label>
-                        <select
-                          value={res.cat}
-                          onChange={(e) => {
-                            const list = [...(data.resources || [])];
-                            list[idx] = { ...list[idx], cat: e.target.value as ResourceCategory };
-                            setData({ ...data, resources: list });
-                          }}
-                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 font-bold text-slate-800 text-xs"
-                        >
-                          <option value="script">Kịch Bản Livestream (script)</option>
-                          <option value="template">Bảng Tính & Template (template)</option>
-                          <option value="ebook">Ebook & Giáo Trình (ebook)</option>
-                          <option value="software">Phần Mềm & Preset (software)</option>
-                          <option value="setup_guide">Checklist & Studio Setup (setup_guide)</option>
-                        </select>
+                        <label className="text-[11px] font-mono font-bold text-slate-700">DANH MỤC TÀI LIỆU (NHẬP HOẶC CHỌN):</label>
+                        <div className="flex gap-2">
+                          <input
+                            type="text"
+                            value={res.cat}
+                            placeholder="Nhập tên danh mục (VD: script, ebook, Kịch bản)..."
+                            onChange={(e) => {
+                              const list = [...(data.resources || [])];
+                              list[idx] = { ...list[idx], cat: e.target.value as any };
+                              setData({ ...data, resources: list });
+                            }}
+                            className="flex-1 px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 font-bold text-slate-800 text-xs"
+                          />
+                          <select
+                            value={['script', 'template', 'ebook', 'software', 'setup_guide'].includes(res.cat) ? res.cat : ''}
+                            onChange={(e) => {
+                              if (e.target.value) {
+                                const list = [...(data.resources || [])];
+                                list[idx] = { ...list[idx], cat: e.target.value as any };
+                                setData({ ...data, resources: list });
+                              }
+                            }}
+                            className="px-2 py-2 rounded-xl bg-white border border-slate-300 font-bold text-slate-700 text-xs w-28 shrink-0"
+                          >
+                            <option value="">Gợi Ý...</option>
+                            <option value="script">Kịch Bản</option>
+                            <option value="template">Template</option>
+                            <option value="ebook">Ebook</option>
+                            <option value="software">Phần Mềm</option>
+                            <option value="setup_guide">Setup Guide</option>
+                          </select>
+                        </div>
                       </div>
 
-                      {/* File Type */}
+                      {/* Flexible File Type Input / Select Combo */}
                       <div className="space-y-1">
-                        <label className="text-[11px] font-mono font-bold text-slate-600">LOẠI FILE / ĐỊNH DẠNG:</label>
-                        <select
-                          value={res.fileType}
-                          onChange={(e) => {
-                            const list = [...(data.resources || [])];
-                            list[idx] = { ...list[idx], fileType: e.target.value as ResourceFileType };
-                            setData({ ...data, resources: list });
-                          }}
-                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 font-bold text-slate-800 text-xs"
-                        >
-                          <option value="PDF">PDF Document (.pdf)</option>
-                          <option value="DOCX">Word Document (.docx)</option>
-                          <option value="XLSX">Excel Spreadsheet (.xlsx)</option>
-                          <option value="DRIVE">Google Drive Link</option>
-                          <option value="ZIP">Zip Compressed (.zip)</option>
-                          <option value="LINK">External Link</option>
-                        </select>
+                        <label className="text-[11px] font-mono font-bold text-slate-700">LOẠI FILE / ĐỊNH DẠNG (NHẬP HOẶC CHỌN):</label>
+                        <div className="flex gap-2">
+                          <input
+                            type="text"
+                            value={res.fileType}
+                            placeholder="VD: PDF, DOCX, XLSX, DRIVE, ZIP..."
+                            onChange={(e) => {
+                              const list = [...(data.resources || [])];
+                              list[idx] = { ...list[idx], fileType: e.target.value as any };
+                              setData({ ...data, resources: list });
+                            }}
+                            className="flex-1 px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 font-bold text-slate-800 text-xs uppercase"
+                          />
+                          <select
+                            value={['PDF', 'DOCX', 'XLSX', 'DRIVE', 'ZIP', 'LINK'].includes(res.fileType) ? res.fileType : ''}
+                            onChange={(e) => {
+                              if (e.target.value) {
+                                const list = [...(data.resources || [])];
+                                list[idx] = { ...list[idx], fileType: e.target.value as any };
+                                setData({ ...data, resources: list });
+                              }
+                            }}
+                            className="px-2 py-2 rounded-xl bg-white border border-slate-300 font-bold text-slate-700 text-xs w-24 shrink-0"
+                          >
+                            <option value="">Gợi Ý...</option>
+                            <option value="PDF">PDF</option>
+                            <option value="DOCX">Word</option>
+                            <option value="XLSX">Excel</option>
+                            <option value="DRIVE">Drive</option>
+                            <option value="ZIP">Zip</option>
+                            <option value="LINK">Link</option>
+                          </select>
+                        </div>
                       </div>
 
                       {/* File URL / Download Link */}
                       <div className="space-y-1 md:col-span-2">
-                        <label className="text-[11px] font-mono font-bold text-slate-600">ĐƯỜNG DẪN LINK TẢI / DRIVE URL:</label>
+                        <label className="text-[11px] font-mono font-bold text-slate-700">ĐƯỜNG DẪN LINK TẢI / DRIVE URL:</label>
                         <input
                           type="text"
                           value={res.fileUrl}
-                          placeholder="https://drive.google.com/... hoặc link file"
+                          placeholder="https://drive.google.com/... hoặc link nén file"
                           onChange={(e) => {
                             const list = [...(data.resources || [])];
                             list[idx] = { ...list[idx], fileUrl: e.target.value };
                             setData({ ...data, resources: list });
                           }}
-                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 font-mono text-xs text-blue-600 font-bold"
+                          className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 font-mono text-xs text-blue-600 font-bold focus:bg-white"
                         />
                       </div>
 
-                      {/* Description */}
+                      {/* Optional Description */}
                       <div className="space-y-1 md:col-span-2">
-                        <label className="text-[11px] font-mono font-bold text-slate-600">MÔ TẢ CHI TIẾT NỘI DUNG TÀI LIỆU:</label>
+                        <label className="text-[11px] font-mono font-bold text-slate-700 flex items-center justify-between">
+                          <span>MÔ TẢ CHI TIẾT NỘI DUNG:</span>
+                          <span className="text-slate-400 font-normal text-[10px]">(Không bắt buộc - Có thể bỏ trống nếu không muốn hiện)</span>
+                        </label>
                         <textarea
-                          rows={3}
-                          value={res.description}
+                          rows={2}
+                          value={res.description || ''}
+                          placeholder="Bỏ trống nếu không muốn hiển thị dòng mô tả dài..."
                           onChange={(e) => {
                             const list = [...(data.resources || [])];
                             list[idx] = { ...list[idx], description: e.target.value };
                             setData({ ...data, resources: list });
                           }}
-                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 text-slate-800 text-xs font-medium"
+                          className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 text-slate-800 text-xs font-medium focus:bg-white"
                         />
                       </div>
 
-                      {/* Access Note */}
+                      {/* Optional Access Note */}
                       <div className="space-y-1 md:col-span-2">
-                        <label className="text-[11px] font-mono font-bold text-slate-600">GHI CHÚ QUYỀN TRUY CẬP / TÀI KHOẢN MẬT KHẨU (NẾU CÓ):</label>
+                        <label className="text-[11px] font-mono font-bold text-slate-700 flex items-center justify-between">
+                          <span>GHI CHÚ QUYỀN TRUY CẬP / MẬT KHẨU FILE:</span>
+                          <span className="text-slate-400 font-normal text-[10px]">(Không bắt buộc)</span>
+                        </label>
                         <input
                           type="text"
                           value={res.accessNote || ''}
-                          placeholder="VD: Mật khẩu mở file: 123456 hoặc Dành cho học viên 1-1"
+                          placeholder="VD: Mật khẩu mở file: 123456 hoặc Dành riêng học viên 1-1"
                           onChange={(e) => {
                             const list = [...(data.resources || [])];
                             list[idx] = { ...list[idx], accessNote: e.target.value };
                             setData({ ...data, resources: list });
                           }}
-                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 font-medium text-slate-800 text-xs"
+                          className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 font-medium text-slate-800 text-xs focus:bg-white"
                         />
                       </div>
 
                       {/* Date & File Size */}
                       <div className="space-y-1">
-                        <label className="text-[11px] font-mono font-bold text-slate-600">NGÀY PHÁT HÀNH:</label>
+                        <label className="text-[11px] font-mono font-bold text-slate-700">NGÀY PHÁT HÀNH:</label>
                         <input
                           type="text"
                           value={res.date}
@@ -2437,12 +2476,12 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                             list[idx] = { ...list[idx], date: e.target.value };
                             setData({ ...data, resources: list });
                           }}
-                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 font-mono text-xs text-slate-800"
+                          className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 font-mono text-xs text-slate-800"
                         />
                       </div>
 
                       <div className="space-y-1">
-                        <label className="text-[11px] font-mono font-bold text-slate-600">DUNG LƯỢNG FILE:</label>
+                        <label className="text-[11px] font-mono font-bold text-slate-700">DUNG LƯỢNG FILE:</label>
                         <input
                           type="text"
                           value={res.fileSize || ''}
@@ -2452,7 +2491,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                             list[idx] = { ...list[idx], fileSize: e.target.value };
                             setData({ ...data, resources: list });
                           }}
-                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 font-mono text-xs text-slate-800"
+                          className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 font-mono text-xs text-slate-800"
                         />
                       </div>
                     </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Language, ResourceItem, ResourceCategory, ResourceFileType } from '../types';
+import { Language, ResourceItem } from '../types';
 import { getAdminData } from '../data/adminStore';
 import { translations } from '../data/translations';
 import { EditableWrapper } from './EditableWrapper';
@@ -14,35 +14,25 @@ interface ResourceLibrarySectionProps {
   onEditField?: (fieldKey: string, fieldLabel: string, currentValue: string) => void;
 }
 
-const RESOURCE_CATEGORY_LIST: { id: 'all' | ResourceCategory; labelVi: string; labelEn: string }[] = [
-  { id: 'all', labelVi: 'Tất Cả Tài Liệu', labelEn: 'All Resources' },
-  { id: 'script', labelVi: 'Kịch Bản Livestream', labelEn: 'Scripts & Speech' },
-  { id: 'template', labelVi: 'Bảng Tính & Template', labelEn: 'Templates & Sheets' },
-  { id: 'ebook', labelVi: 'Ebook & Giáo Trình', labelEn: 'Ebooks & Guides' },
-  { id: 'software', labelVi: 'Phần Mềm & Preset', labelEn: 'Software & Presets' },
-  { id: 'setup_guide', labelVi: 'Checklist & Studio Setup', labelEn: 'Checklist & Setup' },
-];
-
-const getFileTypeBadge = (fileType: ResourceFileType) => {
-  switch (fileType) {
-    case 'PDF':
-      return { label: 'PDF DOCUMENT', bg: 'bg-red-50 text-red-600 border-red-200', icon: FileText };
-    case 'DOCX':
-      return { label: 'WORD DOCX', bg: 'bg-blue-50 text-blue-600 border-blue-200', icon: FileCode };
-    case 'XLSX':
-      return { label: 'EXCEL SHEET', bg: 'bg-emerald-50 text-emerald-600 border-emerald-200', icon: Table };
-    case 'DRIVE':
-      return { label: 'GOOGLE DRIVE', bg: 'bg-amber-50 text-amber-700 border-amber-200', icon: HardDrive };
-    case 'ZIP':
-      return { label: 'ZIP ARCHIVE', bg: 'bg-purple-50 text-purple-600 border-purple-200', icon: FileArchive };
-    default:
-      return { label: 'LINK DOWNLOAD', bg: 'bg-slate-100 text-slate-700 border-slate-200', icon: ExternalLink };
+const getFileTypeBadge = (fileTypeStr: string) => {
+  const ft = (fileTypeStr || '').toUpperCase();
+  if (ft.includes('PDF')) {
+    return { label: 'PDF DOCUMENT', bg: 'bg-red-50 text-red-600 border-red-200', icon: FileText };
+  } else if (ft.includes('DOC') || ft.includes('WORD')) {
+    return { label: 'WORD DOCX', bg: 'bg-blue-50 text-blue-600 border-blue-200', icon: FileCode };
+  } else if (ft.includes('XLS') || ft.includes('EXCEL') || ft.includes('SHEET')) {
+    return { label: 'EXCEL SHEET', bg: 'bg-emerald-50 text-emerald-600 border-emerald-200', icon: Table };
+  } else if (ft.includes('DRIVE') || ft.includes('CLOUD')) {
+    return { label: 'GOOGLE DRIVE', bg: 'bg-amber-50 text-amber-700 border-amber-200', icon: HardDrive };
+  } else if (ft.includes('ZIP') || ft.includes('RAR') || ft.includes('PRESET')) {
+    return { label: 'ZIP ARCHIVE', bg: 'bg-purple-50 text-purple-600 border-purple-200', icon: FileArchive };
   }
+  return { label: fileTypeStr || 'FILE DOWNLOAD', bg: 'bg-slate-100 text-slate-800 border-slate-300', icon: ExternalLink };
 };
 
 export function ResourceLibrarySection({ lang, isEditActive = false, onEditField }: ResourceLibrarySectionProps) {
   const [resources, setResources] = useState<ResourceItem[]>(getAdminData().resources || []);
-  const [selectedCategory, setSelectedCategory] = useState<'all' | ResourceCategory>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -65,11 +55,11 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
     if (onEditField) onEditField(key, label, currentVal);
   };
 
-  // Calculate Category Counts
+  // Calculate Category Counts (Dynamically supports custom string categories)
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = { all: resources.length };
     resources.forEach((res) => {
-      const cat = res.cat || 'template';
+      const cat = res.cat || 'Khác';
       counts[cat] = (counts[cat] || 0) + 1;
     });
     return counts;
@@ -77,12 +67,20 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
 
   // Only categories with count > 0
   const activeCategories = useMemo(() => {
-    return RESOURCE_CATEGORY_LIST.filter((cat) => {
-      if (cat.id === 'all') return true;
-      const count = categoryCounts[cat.id] || 0;
-      return count > 0;
-    });
+    const categories = Object.keys(categoryCounts).filter((cat) => cat !== 'all' && categoryCounts[cat] > 0);
+    return ['all', ...categories];
   }, [categoryCounts]);
+
+  // Category Pretty Label Mapper
+  const getCategoryLabel = (cat: string) => {
+    if (cat === 'all') return isVi ? 'Tất Cả Tài Liệu' : 'All Resources';
+    if (cat === 'script') return 'Kịch Bản Livestream';
+    if (cat === 'template') return 'Bảng Tính & Template';
+    if (cat === 'ebook') return 'Ebook Giáo Trình';
+    if (cat === 'software') return 'Phần Mềm & Preset';
+    if (cat === 'setup_guide') return 'Checklist & Studio Setup';
+    return cat;
+  };
 
   // Filter & Sort Resources
   const filteredResources = useMemo(() => {
@@ -99,7 +97,7 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
       result = result.filter(
         (r) =>
           r.title.toLowerCase().includes(q) ||
-          r.description.toLowerCase().includes(q) ||
+          (r.description && r.description.toLowerCase().includes(q)) ||
           (r.tags && r.tags.some((t) => t.toLowerCase().includes(q)))
       );
     }
@@ -119,7 +117,7 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
   }, [resources, selectedCategory, searchQuery, sortOrder]);
 
   return (
-    <section id="resources" className="py-12 sm:py-16 bg-white relative border-b border-slate-200 font-sans">
+    <section id="resources" className="py-12 sm:py-16 bg-slate-50 relative border-b border-slate-200 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         
         {/* Section Header */}
@@ -159,12 +157,12 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
                 placeholder={isVi ? "Tìm tài liệu..." : "Search resources..."}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-8 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:border-orange-500 w-36 sm:w-44 transition-all"
+                className="pl-8 pr-3 py-1.5 bg-white border border-slate-300 rounded-xl text-xs font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:border-orange-500 w-36 sm:w-44 transition-all shadow-2xs"
               />
             </div>
 
             {/* Sort Toggle */}
-            <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200">
+            <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-slate-300 shadow-2xs">
               <span className="text-[11px] font-mono font-bold text-slate-500 pl-2 flex items-center gap-1">
                 <ArrowUpDown className="w-3 h-3 text-slate-400" />
               </span>
@@ -203,7 +201,7 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
           <div className="flex items-center justify-between">
             <span className="text-[11px] font-mono font-extrabold text-slate-500 uppercase tracking-wider flex items-center gap-1">
               <Filter className="w-3 h-3 text-orange-600" />
-              <span>DANH MỤC TÀI LIỆU</span>
+              <span>DANH MỤC TÀI LIỆU (CHỦ ĐỀ)</span>
             </span>
 
             {selectedCategory !== 'all' && (
@@ -218,22 +216,23 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
           </div>
 
           <div className="flex flex-wrap gap-1.5 overflow-x-auto pb-1">
-            {activeCategories.map((cat) => {
-              const count = categoryCounts[cat.id] || 0;
-              const isActive = selectedCategory === cat.id;
+            {activeCategories.map((catId) => {
+              const count = categoryCounts[catId] || 0;
+              const isActive = selectedCategory === catId;
+              const label = getCategoryLabel(catId);
 
               return (
                 <button
-                  key={cat.id}
+                  key={catId}
                   type="button"
-                  onClick={() => setSelectedCategory(cat.id)}
+                  onClick={() => setSelectedCategory(catId)}
                   className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer flex items-center gap-0.5 border ${
                     isActive
                       ? 'bg-orange-600 text-white border-orange-600 shadow-xs'
-                      : 'bg-white text-slate-700 border-slate-200 hover:border-orange-400 hover:bg-orange-50/40'
+                      : 'bg-white text-slate-700 border-slate-300 hover:border-orange-400 hover:bg-orange-50/40'
                   }`}
                 >
-                  <span>{isVi ? cat.labelVi : cat.labelEn}</span>
+                  <span>{label}</span>
                   {/* Superscript Count */}
                   <sup className={`font-mono text-[9px] font-black leading-none ml-0.5 ${
                     isActive ? 'text-amber-300' : 'text-orange-600'
@@ -246,19 +245,21 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
           </div>
         </div>
 
-        {/* Resource Items Grid */}
+        {/* 2-Column Balanced Black-Bordered Resource Grid */}
         {filteredResources.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 pt-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
             {filteredResources.map((res) => {
               const badge = getFileTypeBadge(res.fileType);
               const BadgeIcon = badge.icon;
+              const hasDescription = Boolean(res.description && res.description.trim());
+              const hasAccessNote = Boolean(res.accessNote && res.accessNote.trim());
 
               return (
                 <div
                   key={res.id}
-                  className="rounded-2xl bg-slate-50/80 border border-slate-200/90 hover:border-orange-400 transition-all p-5 flex flex-col justify-between space-y-4 group hover:bg-white hover:shadow-lg"
+                  className="rounded-2xl bg-white border-2 border-slate-900 hover:border-orange-600 transition-all p-5 flex flex-col justify-between space-y-4 shadow-sm hover:shadow-xl group"
                 >
-                  <div className="space-y-2.5">
+                  <div className="space-y-3">
                     {/* Header Row: File Badge & Date */}
                     <div className="flex items-center justify-between flex-wrap gap-2">
                       <div className="flex items-center gap-2">
@@ -268,7 +269,7 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
                         </span>
 
                         {res.fileSize && (
-                          <span className="text-[10px] font-mono font-semibold text-slate-400 bg-white px-2 py-0.5 rounded border border-slate-200">
+                          <span className="text-[10px] font-mono font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
                             {res.fileSize}
                           </span>
                         )}
@@ -284,14 +285,16 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
                       {res.title}
                     </h3>
 
-                    {/* Description */}
-                    <p className="text-xs text-slate-600 leading-relaxed font-medium">
-                      {res.description}
-                    </p>
+                    {/* Optional Description (Only rendered if present) */}
+                    {hasDescription && (
+                      <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                        {res.description}
+                      </p>
+                    )}
 
-                    {/* Access Note / Password Note */}
-                    {res.accessNote && (
-                      <div className="p-2.5 rounded-xl bg-orange-50/70 border border-orange-100 text-[11px] text-orange-950 font-medium flex items-start gap-1.5">
+                    {/* Optional Access Note / Password Note (Only rendered if present) */}
+                    {hasAccessNote && (
+                      <div className="p-2.5 rounded-xl bg-orange-50 border border-orange-200 text-[11px] text-orange-950 font-medium flex items-start gap-1.5">
                         <Lock className="w-3.5 h-3.5 text-orange-600 shrink-0 mt-0.5" />
                         <span><strong>Ghi chú:</strong> {res.accessNote}</span>
                       </div>
@@ -299,11 +302,11 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
 
                     {/* Tags */}
                     {res.tags && res.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-1 pt-1">
+                      <div className="flex flex-wrap gap-1 pt-0.5">
                         {res.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="text-[9px] font-mono font-semibold text-slate-500 bg-white border border-slate-200 px-1.5 py-0.5 rounded"
+                            className="text-[9px] font-mono font-semibold text-slate-600 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded"
                           >
                             {tag}
                           </span>
@@ -313,20 +316,20 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
                   </div>
 
                   {/* Download / Action Button */}
-                  <div className="pt-3 border-t border-slate-200/70 flex items-center justify-between">
+                  <div className="pt-3 border-t border-slate-200 flex items-center justify-between">
                     <span className="text-[11px] font-mono text-slate-500 font-semibold flex items-center gap-1">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                      <span>{isVi ? 'File Đã Kiểm Duyệt An Toàn' : 'Verified Safe Download'}</span>
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>{isVi ? 'File An Toàn' : 'Safe Download'}</span>
                     </span>
 
                     <a
                       href={res.fileUrl || '#'}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold text-white bg-slate-900 hover:bg-orange-600 transition-all shadow-xs cursor-pointer group-hover:scale-[1.02]"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-mono font-bold text-white bg-slate-900 hover:bg-orange-600 transition-all shadow-md cursor-pointer group-hover:scale-[1.02]"
                     >
                       <Download className="w-3.5 h-3.5 text-amber-400 group-hover:text-white" />
-                      <span>{res.fileType === 'DRIVE' ? (isVi ? 'Truy Cập Drive' : 'Open Drive') : (isVi ? 'Tải Về File' : 'Download File')}</span>
+                      <span>{res.fileType && res.fileType.toUpperCase().includes('DRIVE') ? (isVi ? 'Truy Cập Link Drive' : 'Open Drive Link') : (isVi ? 'Tải Về Ngay' : 'Download File')}</span>
                     </a>
                   </div>
                 </div>
@@ -335,8 +338,8 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
           </div>
         ) : (
           /* Empty State */
-          <div className="p-8 bg-slate-50 rounded-2xl border border-slate-200 text-center space-y-2">
-            <FolderDown className="w-8 h-8 text-slate-300 mx-auto animate-bounce" />
+          <div className="p-8 bg-white rounded-2xl border-2 border-slate-900 text-center space-y-2">
+            <FolderDown className="w-8 h-8 text-slate-400 mx-auto animate-bounce" />
             <h4 className="text-sm font-extrabold text-slate-800">Chưa tìm thấy tài liệu phù hợp!</h4>
             <button
               type="button"
@@ -344,7 +347,7 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
                 setSelectedCategory('all');
                 setSearchQuery('');
               }}
-              className="px-3.5 py-1.5 rounded-xl bg-orange-600 text-white font-bold text-xs shadow-xs cursor-pointer hover:bg-orange-500 transition-all inline-block"
+              className="px-4 py-2 rounded-xl bg-orange-600 text-white font-bold text-xs shadow-md cursor-pointer hover:bg-orange-500 transition-all inline-block"
             >
               Xem Tất Cả Tài Liệu
             </button>

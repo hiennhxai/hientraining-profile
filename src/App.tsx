@@ -278,6 +278,11 @@ export default function App() {
               isEditActive={isAdminMode && isEditActive}
               onEditField={handleOpenEditField}
             />
+            <ResourceLibrarySection 
+              lang={lang} 
+              isEditActive={isAdminMode && isEditActive}
+              onEditField={handleOpenEditField}
+            />
             <ContactSection 
               lang={lang}
               isEditActive={isAdminMode && isEditActive}
