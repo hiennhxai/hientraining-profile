@@ -59,10 +59,10 @@ export function ContactSection({ lang }: ContactSectionProps) {
                   <Phone className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-xs font-mono text-slate-500 font-semibold block uppercase">
+                  <span className="text-xs font-bold text-slate-500 block uppercase tracking-wider">
                     {isVi ? 'Hotline Trực Tiếp / Zalo' : 'Direct Hotline / Zalo'}
                   </span>
-                  <strong className="text-xl font-mono text-slate-900 group-hover:text-orange-600 transition-colors">0813 13 13 85</strong>
+                  <strong className="text-xl font-bold text-slate-900 group-hover:text-orange-600 transition-colors">0813 13 13 85</strong>
                 </div>
               </a>
 
@@ -74,10 +74,10 @@ export function ContactSection({ lang }: ContactSectionProps) {
                   <Mail className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-xs font-mono text-slate-500 font-semibold block uppercase">
+                  <span className="text-xs font-bold text-slate-500 block uppercase tracking-wider">
                     {isVi ? 'Email trao đổi dự án' : 'Project Email Inquiries'}
                   </span>
-                  <strong className="text-base font-mono text-slate-900 group-hover:text-orange-600 transition-colors">admin@xuanhien.info</strong>
+                  <strong className="text-base font-bold text-slate-900 group-hover:text-orange-600 transition-colors">admin@xuanhien.info</strong>
                 </div>
               </a>
 
@@ -86,7 +86,7 @@ export function ContactSection({ lang }: ContactSectionProps) {
                   <MapPin className="w-6 h-6 text-red-600" />
                 </div>
                 <div>
-                  <span className="text-xs font-mono text-slate-500 font-semibold block uppercase">
+                  <span className="text-xs font-bold text-slate-500 block uppercase tracking-wider">
                     {isVi ? 'Địa điểm Đào tạo & Studio' : 'Training Location & Studio'}
                   </span>
                   <strong className="text-sm font-sans text-slate-900 font-bold">
@@ -124,7 +124,7 @@ export function ContactSection({ lang }: ContactSectionProps) {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-mono font-bold text-slate-700 mb-1">
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
                     {isVi ? 'Họ và tên của bạn' : 'Your Full Name'}
                   </label>
                   <input
@@ -138,7 +138,7 @@ export function ContactSection({ lang }: ContactSectionProps) {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono font-bold text-slate-700 mb-1">
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
                     {isVi ? 'Số điện thoại / Zalo' : 'Phone / Zalo Number'}
                   </label>
                   <input
@@ -152,7 +152,7 @@ export function ContactSection({ lang }: ContactSectionProps) {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono font-bold text-slate-700 mb-1">
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
                     {isVi ? 'Dịch vụ hoặc Khóa học quan tâm' : 'Interested Course or Service'}
                   </label>
                   <select
@@ -179,7 +179,7 @@ export function ContactSection({ lang }: ContactSectionProps) {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono font-bold text-slate-700 mb-1">
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
                     {isVi ? 'Ghi chú hoặc câu hỏi thêm (không bắt buộc)' : 'Additional Notes / Questions (Optional)'}
                   </label>
                   <textarea

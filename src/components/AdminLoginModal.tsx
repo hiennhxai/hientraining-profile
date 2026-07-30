@@ -102,7 +102,7 @@ export function AdminLoginModal({ isOpen, lang, onClose, onSuccess }: AdminLogin
         {/* Login Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-mono font-bold text-slate-700 mb-1 flex items-center gap-1.5">
+            <label className="block text-xs font-bold text-slate-700 mb-1 flex items-center gap-1.5">
               <UserCheck className="w-3.5 h-3.5 text-orange-600" />
               <span>{isVi ? 'Tên đăng nhập (ID):' : 'Admin ID:'}</span>
             </label>
@@ -113,12 +113,12 @@ export function AdminLoginModal({ isOpen, lang, onClose, onSuccess }: AdminLogin
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               disabled={isLoading}
-              className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-mono text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white transition-all"
+              className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-medium text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white transition-all"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-mono font-bold text-slate-700 mb-1 flex items-center gap-1.5">
+            <label className="block text-xs font-bold text-slate-700 mb-1 flex items-center gap-1.5">
               <KeyRound className="w-3.5 h-3.5 text-orange-600" />
               <span>{isVi ? 'Mật khẩu:' : 'Password:'}</span>
             </label>
@@ -129,7 +129,7 @@ export function AdminLoginModal({ isOpen, lang, onClose, onSuccess }: AdminLogin
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               disabled={isLoading}
-              className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-mono text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white transition-all"
+              className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-medium text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white transition-all"
             />
           </div>
 
