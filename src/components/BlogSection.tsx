@@ -3,7 +3,7 @@ import { Language, ArticleCategory, Article } from '../types';
 import { getAdminData } from '../data/adminStore';
 import { translations } from '../data/translations';
 import { EditableWrapper } from './EditableWrapper';
-import { ArrowUpRight, Filter, Tag, ArrowUpDown, Clock, Sparkles, X, Check } from 'lucide-react';
+import { ArrowUpRight, Filter, Tag, ArrowUpDown, Clock, Sparkles, X } from 'lucide-react';
 
 interface BlogSectionProps {
   lang: Language;
@@ -69,16 +69,25 @@ export function BlogSection({ lang, onOpenArticle, isEditActive = false, onEditF
     return counts;
   }, [rawArticles]);
 
-  // Extract all unique keyword tags
-  const allTags = useMemo(() => {
-    const tagSet = new Set<string>();
+  // Calculate Tag Counts (Only tags with count > 0)
+  const tagCountsMap = useMemo(() => {
+    const counts: Record<string, number> = {};
     rawArticles.forEach((art) => {
       if (art.tags && Array.isArray(art.tags)) {
-        art.tags.forEach((tag) => tagSet.add(tag));
+        art.tags.forEach((tag) => {
+          counts[tag] = (counts[tag] || 0) + 1;
+        });
       }
     });
-    return Array.from(tagSet);
+    return counts;
   }, [rawArticles]);
+
+  // Tags list sorted by popularity (only tags with count > 0)
+  const activeTagsWithCount = useMemo(() => {
+    return (Object.entries(tagCountsMap) as [string, number][])
+      .filter(([_, count]) => count > 0)
+      .sort((a, b) => b[1] - a[1]);
+  }, [tagCountsMap]);
 
   // Filter & Sort Articles
   const filteredArticles = useMemo(() => {
@@ -123,7 +132,7 @@ export function BlogSection({ lang, onOpenArticle, isEditActive = false, onEditF
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight flex items-center gap-3">
                 <span>{t.bl_title}</span>
                 <span className="text-xs font-mono font-bold text-orange-600 bg-orange-50 px-2.5 py-1 rounded-full border border-orange-200">
-                  {rawArticles.length} Bài Viết Thực Chiến
+                  {rawArticles.length} Bài Viết
                 </span>
               </h2>
             </EditableWrapper>
@@ -172,12 +181,12 @@ export function BlogSection({ lang, onOpenArticle, isEditActive = false, onEditF
           </div>
         </div>
 
-        {/* Category Tabs Filter with Numerical Counters */}
+        {/* Category Tabs Filter with Superscript Counters */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-xs font-mono font-extrabold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
               <Filter className="w-3.5 h-3.5 text-orange-600" />
-              <span>LỌC BÀI VIẾT THEO CHỦ ĐỀ ({filteredArticles.length}/{rawArticles.length})</span>
+              <span>CHỦ ĐỀ BÀI VIẾT (HIỂN THỊ {filteredArticles.length}/{rawArticles.length})</span>
             </span>
 
             {(selectedCategory !== 'all' || selectedTag) && (
@@ -205,34 +214,35 @@ export function BlogSection({ lang, onOpenArticle, isEditActive = false, onEditF
                   key={cat.id}
                   type="button"
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-2 border ${
+                  className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1 border ${
                     isActive
-                      ? 'bg-orange-600 text-white border-orange-600 shadow-md shadow-orange-500/20 scale-[1.02]'
+                      ? 'bg-orange-600 text-white border-orange-600 shadow-md shadow-orange-500/20'
                       : 'bg-white text-slate-700 border-slate-200 hover:border-orange-400 hover:bg-orange-50/50'
                   }`}
                 >
                   <span>{isVi ? cat.labelVi : cat.labelEn}</span>
-                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-extrabold ${
-                    isActive ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
+                  {/* Superscript Count Badge */}
+                  <sup className={`font-mono text-[10px] font-black leading-none ml-0.5 ${
+                    isActive ? 'text-amber-300' : 'text-orange-600'
                   }`}>
-                    {count}
-                  </span>
+                    ({count})
+                  </sup>
                 </button>
               );
             })}
           </div>
         </div>
 
-        {/* Keyword Tags Filter Cloud */}
-        {allTags.length > 0 && (
+        {/* Keyword Tags Filter Cloud (ONLY tags with count > 0) */}
+        {activeTagsWithCount.length > 0 && (
           <div className="p-4 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-2">
             <div className="flex items-center gap-2 text-xs font-mono font-extrabold text-slate-500">
               <Tag className="w-3.5 h-3.5 text-amber-500" />
-              <span>TỪ KHÓA TÌM KIẾM NHANH (TAGS):</span>
+              <span>TỪ KHÓA TÌM KIẾM NHANH ({activeTagsWithCount.length} TAGS CÓ BÀI VIẾT):</span>
             </div>
 
             <div className="flex flex-wrap gap-1.5">
-              {allTags.map((tag) => {
+              {activeTagsWithCount.map(([tag, count]) => {
                 const isTagActive = selectedTag === tag;
 
                 return (
@@ -247,6 +257,12 @@ export function BlogSection({ lang, onOpenArticle, isEditActive = false, onEditF
                     }`}
                   >
                     <span>{tag}</span>
+                    {/* Superscript Tag Count */}
+                    <sup className={`font-mono text-[9px] font-extrabold ml-0.5 ${
+                      isTagActive ? 'text-amber-300' : 'text-orange-600'
+                    }`}>
+                      {count}
+                    </sup>
                     {isTagActive && <X className="w-3 h-3 text-amber-400 ml-0.5" />}
                   </button>
                 );
@@ -277,8 +293,8 @@ export function BlogSection({ lang, onOpenArticle, isEditActive = false, onEditF
                     }
                   }}
                 >
-                  {/* Banner / Horizontal 16:9 Thumbnail Image */}
-                  <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-950">
+                  {/* Slim Horizontal Banner Thumbnail Image (1/2 Height of 16:9 = aspect-[32/9]) */}
+                  <div className="relative aspect-[32/9] sm:aspect-[3.2/1] w-full overflow-hidden bg-slate-950">
                     {coverImg ? (
                       <img
                         src={coverImg}
@@ -286,36 +302,36 @@ export function BlogSection({ lang, onOpenArticle, isEditActive = false, onEditF
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
                       />
                     ) : (
-                      <div className="w-full h-full bg-gradient-to-tr from-slate-900 to-slate-800 flex items-center justify-center p-4">
-                        <span className="text-sm font-extrabold text-orange-400 tracking-wider uppercase font-mono">
+                      <div className="w-full h-full bg-gradient-to-tr from-slate-900 to-slate-800 flex items-center justify-center p-3">
+                        <span className="text-xs font-extrabold text-orange-400 tracking-wider uppercase font-mono">
                           XUÂN HIẾN MEDIA
                         </span>
                       </div>
                     )}
 
                     {/* Top Overlay Category Badge */}
-                    <div className="absolute top-3 left-3">
-                      <span className={`px-2.5 py-1 rounded-lg border text-[10px] font-mono font-extrabold uppercase shadow-sm ${catBadgeClass}`}>
+                    <div className="absolute top-2 left-2">
+                      <span className={`px-2 py-0.5 rounded text-[9px] font-mono font-extrabold uppercase shadow-sm ${catBadgeClass}`}>
                         {(a.cat || 'BLOG').toUpperCase()}
                       </span>
                     </div>
 
                     {/* Top Overlay Date */}
-                    <div className="absolute top-3 right-3">
-                      <span className="px-2.5 py-1 rounded-lg bg-slate-950/80 backdrop-blur-md text-white font-mono text-[10px] font-bold border border-white/10">
+                    <div className="absolute top-2 right-2">
+                      <span className="px-2 py-0.5 rounded bg-slate-950/80 backdrop-blur-md text-white font-mono text-[9px] font-bold border border-white/10">
                         {a.date}
                       </span>
                     </div>
                   </div>
 
                   {/* Card Content Body */}
-                  <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                    <div className="space-y-2.5">
-                      <h3 className="text-lg font-extrabold text-slate-900 group-hover:text-orange-600 transition-colors leading-snug line-clamp-2">
+                  <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                    <div className="space-y-2">
+                      <h3 className="text-base font-extrabold text-slate-900 group-hover:text-orange-600 transition-colors leading-snug line-clamp-2">
                         {articleData.title}
                       </h3>
                       
-                      <p className="text-xs text-slate-600 line-clamp-3 font-medium leading-relaxed">
+                      <p className="text-xs text-slate-600 line-clamp-2 font-medium leading-relaxed">
                         {articleData.dek}
                       </p>
                     </div>
@@ -330,7 +346,7 @@ export function BlogSection({ lang, onOpenArticle, isEditActive = false, onEditF
                               e.stopPropagation();
                               setSelectedTag(selectedTag === tag ? null : tag);
                             }}
-                            className={`text-[10px] font-mono font-semibold px-2 py-0.5 rounded ${
+                            className={`text-[9px] font-mono font-semibold px-1.5 py-0.5 rounded ${
                               selectedTag === tag
                                 ? 'bg-amber-400 text-slate-950 font-bold'
                                 : 'bg-slate-100 text-slate-600 hover:bg-orange-50 hover:text-orange-600'
@@ -343,12 +359,12 @@ export function BlogSection({ lang, onOpenArticle, isEditActive = false, onEditF
                     )}
 
                     {/* Card Footer */}
-                    <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono">
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono">
                       <span className="text-slate-500 font-semibold">{a.author || 'Xuân Hiển'} · {articleData.readTime}</span>
                       
                       <span className="text-orange-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform flex items-center gap-1 font-extrabold">
                         <span>{t.bl_read || 'Đọc Bài'}</span>
-                        <ArrowUpRight className="w-4 h-4" />
+                        <ArrowUpRight className="w-3.5 h-3.5" />
                       </span>
                     </div>
                   </div>
