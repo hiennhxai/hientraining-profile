@@ -49,9 +49,9 @@ export default function App() {
     return () => window.removeEventListener('supabase_realtime_update', handleRealtimeUpdate);
   }, []);
 
-  // Apply typography settings dynamically
+  // Apply typography settings & document title dynamically
   useEffect(() => {
-    const updateTypography = () => {
+    const updateSiteMetadata = () => {
       const gen = getAdminData().general;
       applyTypography(
         gen.fontHeading || 'Space Grotesk',
@@ -59,12 +59,17 @@ export default function App() {
         gen.fontMono || 'IBM Plex Mono',
         gen.fontSizeScale || 100
       );
+
+      // Dynamic Browser Tab Title
+      const brand = gen.brandName || 'MC NGUYỄN HỒNG XUÂN HIẾN';
+      const sub = gen.subBrandName || 'MEDIA & TRAINING STUDIO';
+      document.title = `${brand} ${sub} — Đào Tạo Kỹ Năng & Setup Studio Livestream`;
     };
 
-    updateTypography();
-    window.addEventListener('admin_data_updated', updateTypography);
-    return () => window.removeEventListener('admin_data_updated', updateTypography);
-  }, []);
+    updateSiteMetadata();
+    window.addEventListener('admin_data_updated', updateSiteMetadata);
+    return () => window.removeEventListener('admin_data_updated', updateSiteMetadata);
+  }, [lang]);
 
   // Language initialization
   useEffect(() => {
