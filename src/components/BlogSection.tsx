@@ -68,6 +68,15 @@ export function BlogSection({ lang, onOpenArticle, isEditActive = false, onEditF
     return counts;
   }, [rawArticles]);
 
+  // Only categories that actually have at least 1 article (count > 0)
+  const activeCategories = useMemo(() => {
+    return CATEGORY_LIST.filter((cat) => {
+      if (cat.id === 'all') return true;
+      const count = categoryCounts[cat.id] || 0;
+      return count > 0;
+    });
+  }, [categoryCounts]);
+
   // Filter & Sort Articles
   const filteredArticles = useMemo(() => {
     let result = [...rawArticles];
@@ -173,7 +182,7 @@ export function BlogSection({ lang, onOpenArticle, isEditActive = false, onEditF
           </div>
 
           <div className="flex flex-wrap gap-1.5 overflow-x-auto pb-1">
-            {CATEGORY_LIST.map((cat) => {
+            {activeCategories.map((cat) => {
               const count = categoryCounts[cat.id] || 0;
               const isActive = selectedCategory === cat.id;
 
