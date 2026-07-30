@@ -1,6 +1,7 @@
 import React, { useState, FormEvent } from 'react';
 import { Language } from '../types';
-import { Lock, ShieldCheck, X, KeyRound, UserCheck, AlertCircle } from 'lucide-react';
+import { Lock, ShieldCheck, X, KeyRound, UserCheck, AlertCircle, Loader } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 
 interface AdminLoginModalProps {
   isOpen: boolean;
@@ -14,24 +15,53 @@ export function AdminLoginModal({ isOpen, lang, onClose, onSuccess }: AdminLogin
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setErrorMsg(null);
+    setIsLoading(true);
 
-    // Validate credentials: ID = admin, Password = admin123
-    if (username.trim().toLowerCase() === 'admin' && password === 'admin123') {
-      setUsername('');
-      setPassword('');
-      onSuccess();
-    } else {
-      setErrorMsg(
-        isVi 
-          ? 'Mật khẩu hoặc Tên đăng nhập không đúng! Vui lòng thử lại.' 
-          : 'Invalid Admin Credentials! Please try again.'
-      );
+    const inputUser = username.trim();
+
+    try {
+      // 1. Emergency Fallback: Allow hardcoded admin/admin123
+      if ((inputUser === 'admin' || inputUser === 'admin@hientraining.com') && password === 'admin123') {
+        setUsername('');
+        setPassword('');
+        onSuccess();
+        setIsLoading(false);
+        return;
+      }
+
+      // 2. Supabase Auth Login
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: inputUser,
+        password: password,
+      });
+
+      if (error) throw error;
+      
+      if (data.session || data.user) {
+        setUsername('');
+        setPassword('');
+        onSuccess();
+      }
+    } catch (err: any) {
+      console.error("Supabase Login Error:", err);
+      const rawError = err?.message || '';
+
+      if (rawError.includes('Email not confirmed')) {
+        setErrorMsg(isVi ? 'Tài khoản chưa xác nhận Email trên Supabase! (Vào Supabase > Auth > Users để Confirm).' : 'Email not confirmed!');
+      } else if (rawError.includes('Invalid login credentials')) {
+        setErrorMsg(isVi ? 'Mật khẩu hoặc Email không chính xác trên Supabase!' : 'Invalid credentials!');
+      } else {
+        setErrorMsg(rawError || (isVi ? 'Đăng nhập thất bại. Vui lòng kiểm tra lại!' : 'Login failed!'));
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -57,7 +87,7 @@ export function AdminLoginModal({ isOpen, lang, onClose, onSuccess }: AdminLogin
             {isVi ? 'ĐĂNG NHẬP QUẢN TRỊ VIÊN' : 'ADMIN PORTAL LOGIN'}
           </h3>
           <p className="text-xs text-slate-500 font-medium mt-1">
-            {isVi ? 'Nhập ID & Mật khẩu để truy cập hệ thống cấu hình Super Admin' : 'Enter Admin ID & Password to access control portal'}
+            {isVi ? 'Nhập Email & Mật khẩu để truy cập hệ thống cấu hình' : 'Enter Email & Password to access control portal'}
           </p>
         </div>
 
@@ -79,10 +109,10 @@ export function AdminLoginModal({ isOpen, lang, onClose, onSuccess }: AdminLogin
             <input
               type="text"
               required
-              autoFocus
-              placeholder="admin"
+              placeholder={isVi ? "Email Supabase hoặc admin" : "Supabase Email or admin"}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              disabled={isLoading}
               className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-mono text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white transition-all"
             />
           </div>
@@ -98,6 +128,7 @@ export function AdminLoginModal({ isOpen, lang, onClose, onSuccess }: AdminLogin
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              disabled={isLoading}
               className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-mono text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white transition-all"
             />
           </div>
@@ -113,10 +144,17 @@ export function AdminLoginModal({ isOpen, lang, onClose, onSuccess }: AdminLogin
 
             <button
               type="submit"
-              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white text-xs font-extrabold shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer"
+              disabled={isLoading}
+              className={`w-full py-3.5 px-6 rounded-xl font-bold text-sm tracking-wide uppercase transition-all flex items-center justify-center gap-2 shadow-sm ${
+                isLoading ? 'bg-slate-300 text-slate-500 cursor-not-allowed' : 'bg-slate-900 text-white hover:bg-orange-600'
+              }`}
             >
-              <ShieldCheck className="w-4 h-4" />
-              <span>{isVi ? 'Đăng Nhập Admin' : 'Login'}</span>
+              {isLoading ? (
+                <Loader className="w-5 h-5 animate-spin" />
+              ) : (
+                <ShieldCheck className="w-5 h-5" />
+              )}
+              <span>{isVi ? (isLoading ? 'Đang xác thực...' : 'Đăng Nhập Quản Trị') : (isLoading ? 'Authenticating...' : 'Login to Dashboard')}</span>
             </button>
           </div>
         </form>

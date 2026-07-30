@@ -30,6 +30,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
   const [pickerCallback, setPickerCallback] = useState<((url: string) => void) | null>(null);
   const [pickerTitle, setPickerTitle] = useState('CHỌN HOẶC TẢI HÌNH ẢNH MỚI');
   const [pickerCurrentUrl, setPickerCurrentUrl] = useState('');
+  const [isSaving, setIsSaving] = useState(false);
 
   const openPicker = (callback: (url: string) => void, title: string, currentUrl: string = '') => {
     setPickerCallback(() => callback);
@@ -45,8 +46,11 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
     setTimeout(() => setToastMsg(null), 3000);
   };
 
-  const handleSave = (shouldReload: boolean = false) => {
-    const success = saveAdminData(data);
+  const handleSave = async (shouldReload: boolean = false) => {
+    setIsSaving(true);
+    const success = await saveAdminData(data);
+    setIsSaving(false);
+    
     if (success) {
       showNotification(shouldReload ? "Đã lưu thành công! Đang tải lại trang chủ..." : "Đã lưu toàn bộ cấu hình Super Admin thành công!");
       if (onSaved) onSaved();
@@ -56,14 +60,16 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
         }, 400);
       }
     } else {
-      showNotification("Lỗi khi lưu dữ liệu. Vui lòng kiểm tra lại!");
+      showNotification("Lỗi khi lưu dữ liệu. Vui lòng kiểm tra quyền truy cập Supabase!");
     }
   };
 
-  const handleReset = () => {
+  const handleReset = async () => {
     if (window.confirm("Bạn có chắc chắn muốn khôi phục toàn bộ nội dung về mặc định ban đầu? Tất cả dữ liệu chỉnh sửa sẽ được đặt lại.")) {
-      const reset = resetAdminData();
+      setIsSaving(true);
+      const reset = await resetAdminData();
       setData(reset);
+      setIsSaving(false);
       showNotification("Đã khôi phục cài đặt mặc định!");
       if (onSaved) onSaved();
     }
@@ -83,12 +89,14 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
     const fileReader = new FileReader();
     if (e.target.files && e.target.files[0]) {
       fileReader.readAsText(e.target.files[0], "UTF-8");
-      fileReader.onload = (event) => {
+      fileReader.onload = async (event) => {
         try {
           const parsed = JSON.parse(event.target?.result as string);
           if (parsed && parsed.general) {
             setData(parsed);
-            saveAdminData(parsed);
+            setIsSaving(true);
+            await saveAdminData(parsed);
+            setIsSaving(false);
             showNotification("Nhập file cấu hình JSON thành công!");
             if (onSaved) onSaved();
           } else {
@@ -1680,20 +1688,26 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
             <button
               type="button"
               onClick={() => handleSave(false)}
-              className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold flex items-center gap-1.5 shadow-md transition-all cursor-pointer"
+              disabled={isSaving}
+              className={`px-4 py-2 rounded-xl text-white text-xs font-bold flex items-center gap-1.5 shadow-md transition-all ${
+                isSaving ? 'bg-slate-400 cursor-not-allowed' : 'bg-slate-900 hover:bg-slate-800 cursor-pointer'
+              }`}
               title="Lưu tất cả dữ liệu và tiếp tục ở lại giao diện Admin để chỉnh sửa"
             >
               <Save className="w-4 h-4" />
-              <span>Lưu & Chỉnh Tiếp</span>
+              <span>{isSaving ? 'Đang Lưu...' : 'Lưu & Chỉnh Tiếp'}</span>
             </button>
             <button
               type="button"
               onClick={() => handleSave(true)}
-              className="px-5 py-2 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white text-xs font-extrabold flex items-center gap-2 shadow-lg shadow-orange-500/30 transition-all cursor-pointer"
+              disabled={isSaving}
+              className={`px-5 py-2 rounded-xl text-white text-xs font-extrabold flex items-center gap-2 shadow-lg transition-all ${
+                isSaving ? 'bg-orange-400 cursor-not-allowed shadow-none' : 'bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 shadow-orange-500/30 cursor-pointer'
+              }`}
               title="Lưu tất cả dữ liệu và tự động làm mới lại trang chủ"
             >
-              <RotateCw className="w-4 h-4" />
-              <span>LƯU & TẢI LẠI TRANG</span>
+              <RotateCw className={`w-4 h-4 ${isSaving ? 'animate-spin' : ''}`} />
+              <span>{isSaving ? 'ĐANG LƯU LÊN MÁY CHỦ...' : 'LƯU LÊN SUPABASE & TẢI LẠI TRANG'}</span>
             </button>
           </div>
         </div>

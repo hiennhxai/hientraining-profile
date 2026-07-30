@@ -697,47 +697,109 @@ export const defaultAdminData: FullAdminData = {
 
 const STORAGE_KEY = 'xuanhien_super_admin_v4';
 
+import { supabase } from '../lib/supabase';
+
+let currentAdminData: FullAdminData = defaultAdminData;
+
 export function getAdminData(): FullAdminData {
+  return currentAdminData;
+}
+
+let isSubscribed = false;
+
+export async function loadAdminDataAsync(): Promise<FullAdminData> {
   try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      return {
-        general: { ...defaultAdminData.general, ...parsed.general },
+    const { data, error } = await supabase
+      .from('site_config')
+      .select('data')
+      .eq('id', 1)
+      .single();
+      
+    if (error) {
+      console.warn("Supabase fetch error, fallback to local:", error);
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        currentAdminData = { ...defaultAdminData, ...JSON.parse(saved) };
+      }
+    } else if (data && data.data) {
+      const parsed = data.data as Partial<FullAdminData>;
+      currentAdminData = {
+        general: { ...defaultAdminData.general, ...(parsed.general || {}) },
         courses: Array.isArray(parsed.courses) ? parsed.courses : defaultAdminData.courses,
         services: Array.isArray(parsed.services) ? parsed.services : defaultAdminData.services,
         projects: Array.isArray(parsed.projects) ? parsed.projects : defaultAdminData.projects,
         tiktokChannels: Array.isArray(parsed.tiktokChannels) ? parsed.tiktokChannels : defaultAdminData.tiktokChannels,
         brandVideos: Array.isArray(parsed.brandVideos) ? parsed.brandVideos : defaultAdminData.brandVideos,
-        articles: parsed.articles && Object.keys(parsed.articles).length ? parsed.articles : defaultAdminData.articles,
+        articles: parsed.articles ? parsed.articles : defaultAdminData.articles,
         photoAlbum: Array.isArray(parsed.photoAlbum) ? parsed.photoAlbum : defaultAdminData.photoAlbum,
         brandLogos: Array.isArray(parsed.brandLogos) ? parsed.brandLogos : defaultAdminData.brandLogos,
-        socialLinks: Array.isArray(parsed.socialLinks) && parsed.socialLinks.length ? parsed.socialLinks : defaultAdminData.socialLinks,
+        socialLinks: Array.isArray(parsed.socialLinks) ? parsed.socialLinks : defaultAdminData.socialLinks,
       };
     }
+
+    // Lắng nghe thay đổi Realtime từ Supabase
+    if (!isSubscribed) {
+      supabase
+        .channel('public:site_config')
+        .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'site_config' }, (payload) => {
+          console.log("🔄 Realtime update received!", payload);
+          const parsed = payload.new.data as Partial<FullAdminData>;
+          if (parsed) {
+            currentAdminData = {
+              general: { ...defaultAdminData.general, ...(parsed.general || {}) },
+              courses: Array.isArray(parsed.courses) ? parsed.courses : defaultAdminData.courses,
+              services: Array.isArray(parsed.services) ? parsed.services : defaultAdminData.services,
+              projects: Array.isArray(parsed.projects) ? parsed.projects : defaultAdminData.projects,
+              tiktokChannels: Array.isArray(parsed.tiktokChannels) ? parsed.tiktokChannels : defaultAdminData.tiktokChannels,
+              brandVideos: Array.isArray(parsed.brandVideos) ? parsed.brandVideos : defaultAdminData.brandVideos,
+              articles: parsed.articles ? parsed.articles : defaultAdminData.articles,
+              photoAlbum: Array.isArray(parsed.photoAlbum) ? parsed.photoAlbum : defaultAdminData.photoAlbum,
+              brandLogos: Array.isArray(parsed.brandLogos) ? parsed.brandLogos : defaultAdminData.brandLogos,
+              socialLinks: Array.isArray(parsed.socialLinks) ? parsed.socialLinks : defaultAdminData.socialLinks,
+            };
+            window.dispatchEvent(new Event('admin_data_updated'));
+            window.dispatchEvent(new Event('supabase_realtime_update')); // Dùng để App.tsx re-render
+          }
+        })
+        .subscribe();
+      isSubscribed = true;
+    }
   } catch (e) {
-    console.error("Failed to load admin data from localStorage", e);
+    console.error("Failed to load admin data from Supabase", e);
   }
-  return defaultAdminData;
+  return currentAdminData;
 }
 
-export function saveAdminData(data: FullAdminData): boolean {
+export async function saveAdminData(data: FullAdminData): Promise<boolean> {
   try {
+    const { error } = await supabase
+      .from('site_config')
+      .upsert({ id: 1, data: data });
+      
+    if (error) throw error;
+    
+    currentAdminData = data;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     window.dispatchEvent(new Event('admin_data_updated'));
     return true;
   } catch (e) {
-    console.error("Failed to save admin data", e);
+    console.error("Failed to save admin data to Supabase", e);
     return false;
   }
 }
 
-export function resetAdminData(): FullAdminData {
+export async function resetAdminData(): Promise<FullAdminData> {
   try {
+    const { error } = await supabase
+      .from('site_config')
+      .upsert({ id: 1, data: defaultAdminData });
+      
+    if (error) throw error;
+    currentAdminData = defaultAdminData;
     localStorage.removeItem(STORAGE_KEY);
     window.dispatchEvent(new Event('admin_data_updated'));
   } catch (e) {
-    console.error("Failed to reset admin data", e);
+    console.error("Failed to reset admin data on Supabase", e);
   }
-  return defaultAdminData;
+  return currentAdminData;
 }

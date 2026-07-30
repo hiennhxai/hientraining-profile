@@ -2,6 +2,7 @@ import React, { useState, useRef, useCallback } from 'react';
 import { PhotoAlbumItem } from '../types';
 import { compressAndOptimizeImage, transformAndCropImage, ImageCropParams } from '../utils/imageOptimizer';
 import { Upload, Image as ImageIcon, Sparkles, Trash2, Check, Copy, ZoomIn, ZoomOut, RotateCw, Scissors, X, CheckCircle, AlertCircle, Loader } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 
 interface PhotoAlbumManagerProps {
   photos: PhotoAlbumItem[];
@@ -81,10 +82,28 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
           const result = await compressAndOptimizeImage(file, 1920, 1080, 0.82);
           const savings = Math.round(((file.size - result.compressedSize) / (file.size || 1)) * 100);
 
+          // Convert dataUrl (Base64) to Blob
+          const base64Response = await fetch(result.dataUrl);
+          const blob = await base64Response.blob();
+
+          // Upload to Supabase
+          const fileName = `${Date.now()}-${Math.random().toString(36).slice(2, 7)}.webp`;
+          const { error: uploadError } = await supabase.storage
+            .from('photos')
+            .upload(fileName, blob, { contentType: 'image/webp' });
+
+          if (uploadError) throw new Error("Lỗi upload: " + uploadError.message);
+
+          const { data: publicUrlData } = supabase.storage
+            .from('photos')
+            .getPublicUrl(fileName);
+
+          const publicUrl = publicUrlData.publicUrl;
+
           const photoItem: PhotoAlbumItem = {
             id: `img-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
             name: file.name,
-            url: result.dataUrl,
+            url: publicUrl,
             originalSize: result.originalSize,
             compressedSize: result.compressedSize,
             width: result.width,
@@ -131,9 +150,21 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
 
   const handleDragLeave = () => setIsDragOver(false);
 
-  const handleDeletePhoto = (id: string) => {
+  const handleDeletePhoto = async (photo: PhotoAlbumItem) => {
     if (window.confirm('Bạn có chắc muốn xóa hình ảnh này khỏi Album?')) {
-      onUpdatePhotos(photos.filter(p => p.id !== id));
+      try {
+        const urlObj = new URL(photo.url);
+        if (urlObj.hostname.includes('supabase.co')) {
+          const parts = urlObj.pathname.split('/');
+          const fileName = parts[parts.length - 1];
+          if (fileName) {
+            await supabase.storage.from('photos').remove([fileName]);
+          }
+        }
+      } catch (e) {
+        // Ignore parsing errors for non-supabase URLs
+      }
+      onUpdatePhotos(photos.filter(p => p.id !== photo.id));
     }
   };
 
@@ -146,8 +177,25 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
   const handleApplyCrop = async () => {
     if (!editingPhoto) return;
     try {
-      const transformedUrl = await transformAndCropImage(editingPhoto.url, cropParams);
-      onUpdatePhotos(photos.map(p => p.id === editingPhoto.id ? { ...p, url: transformedUrl } : p));
+      const transformedBase64 = await transformAndCropImage(editingPhoto.url, cropParams);
+      
+      const base64Response = await fetch(transformedBase64);
+      const blob = await base64Response.blob();
+
+      const fileName = `crop-${Date.now()}-${Math.random().toString(36).slice(2, 7)}.webp`;
+      const { error: uploadError } = await supabase.storage
+        .from('photos')
+        .upload(fileName, blob, { contentType: 'image/webp' });
+
+      if (uploadError) throw new Error("Lỗi upload: " + uploadError.message);
+
+      const { data: publicUrlData } = supabase.storage
+        .from('photos')
+        .getPublicUrl(fileName);
+
+      const publicUrl = publicUrlData.publicUrl;
+
+      onUpdatePhotos(photos.map(p => p.id === editingPhoto.id ? { ...p, url: publicUrl } : p));
       setEditingPhoto(null);
     } catch (err) {
       alert('Lỗi khi lưu ảnh đã chỉnh sửa: ' + (err as Error).message);
@@ -402,7 +450,7 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
                       </button>
                       <button
                         type="button"
-                        onClick={() => handleDeletePhoto(photo.id)}
+                        onClick={() => handleDeletePhoto(photo)}
                         className="text-slate-400 hover:text-red-600 p-1 cursor-pointer"
                         title="Xóa"
                       >
