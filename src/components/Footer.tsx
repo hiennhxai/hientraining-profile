@@ -132,26 +132,12 @@ export function Footer({ lang, onNavigatePage, onOpenAdminLogin, isEditActive = 
         {/* Main 3 Equal Balanced Columns Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10 items-start">
           
-          {/* COLUMN 1: Brand & Owner Info (Left Column) */}
-          <div className="space-y-2.5">
+          {/* COLUMN 1: Brand Logo & Tagline (Left Column) */}
+          <div className="space-y-2">
             <Logo className="h-8" showText={true} textColor="text-slate-900" />
-            <EditableWrapper 
-              isEditActive={isEditActive} 
-              onEdit={() => triggerEdit('footerDesc', 'Footer Description', gen.footerDesc || '')}
-            >
-              <p className="text-slate-600 text-xs leading-relaxed font-medium">
-                {gen.footerDesc || (isVi 
-                  ? 'Đào tạo kỹ năng cá nhân 1 kèm 1 thực chiến, kỹ thuật ánh sáng, âm thanh & sản xuất Livestream Studio chuyên nghiệp.'
-                  : '1-on-1 practical skill coaching, studio lighting, sound setup & professional Livestream production.')}
-              </p>
-            </EditableWrapper>
-            <div className="pt-1 text-slate-700 text-xs font-mono space-y-1">
-              <div><strong className="text-slate-900">{isVi ? 'Chủ sở hữu:' : 'Owner:'}</strong> NGUYỄN HỒNG XUÂN HIẾN</div>
-              <div className="flex items-center gap-1.5 text-slate-500">
-                <MapPin className="w-3.5 h-3.5 text-red-500 shrink-0" />
-                <span>TP. Hồ Chí Minh (Offline 1-1 & Online Live)</span>
-              </div>
-            </div>
+            <p className="text-slate-500 font-mono text-[11px]">
+              {isVi ? 'Hệ thống Đào tạo & Sản xuất Livestream Studio Chuyên nghiệp' : 'Professional Livestream Studio Training & Production'}
+            </p>
           </div>
 
           {/* COLUMN 2: Colorful 3-Column Social Media Grid (Center Column) */}
