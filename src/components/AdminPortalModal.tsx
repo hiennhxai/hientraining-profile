@@ -363,35 +363,67 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
           {/* TAB 1: GENERAL CONFIG */}
           {activeTab === 'general' && (
             <div className="space-y-6">
+              {/* Brand, Logo & General Information */}
               <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
-                <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-2 flex items-center gap-2">
-                  <Settings className="w-4 h-4 text-orange-600" />
-                  <span>Cấu Hình Thương Hiệu & Thông Tin Liên Hệ</span>
+                <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-2 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Settings className="w-4 h-4 text-orange-600" />
+                    <span>1. Cấu Hình Logo, Thương Hiệu & Thông Tin Liên Hệ</span>
+                  </div>
+                  <span className="text-[10px] font-mono text-orange-600 bg-orange-50 px-2 py-0.5 rounded border border-orange-200 font-bold">
+                    TOÀN QUYỀN THAY ĐỔI A-Z
+                  </span>
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Tên Thương Hiệu Chính</label>
+                    <label className="block font-bold text-slate-700 mb-1">Tên Thương Hiệu Chính (VD: XUÂN HIẾN)</label>
                     <input 
                       type="text" 
-                      value={data.general.brandName} 
+                      value={data.general.brandName || ''} 
                       onChange={(e) => setData({ ...data, general: { ...data.general, brandName: e.target.value } })}
                       className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold"
                     />
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Thương Hiệu Phụ / Định Dạng Studio</label>
+                    <label className="block font-bold text-slate-700 mb-1">Thương Hiệu Phụ / Định Dạng (VD: MEDIA & TRAINING)</label>
                     <input 
                       type="text" 
-                      value={data.general.subBrandName} 
+                      value={data.general.subBrandName || ''} 
                       onChange={(e) => setData({ ...data, general: { ...data.general, subBrandName: e.target.value } })}
                       className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold"
                     />
                   </div>
+
+                  <div className="sm:col-span-2">
+                    <label className="block font-bold text-slate-700 mb-1">URL Logo Hình Ảnh Custom (Tùy chọn upload ảnh Logo riêng thay cho Vector mặc định)</label>
+                    <div className="flex flex-col sm:flex-row gap-2">
+                      <input 
+                        type="text" 
+                        placeholder="Để trống nếu muốn dùng Logo Vector mặc định hoặc dán URL ảnh Logo vào đây"
+                        value={data.general.logoImageUrl || ''} 
+                        onChange={(e) => setData({ ...data, general: { ...data.general, logoImageUrl: e.target.value } })}
+                        className="flex-1 px-3 py-2 text-xs rounded-xl border border-slate-300 font-mono"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => openPicker(
+                          (selectedUrl) => setData({ ...data, general: { ...data.general, logoImageUrl: selectedUrl } }),
+                          'CHỌN / TẢI LOGO HÌNH ẢNH MỚI',
+                          data.general.logoImageUrl || ''
+                        )}
+                        className="px-3.5 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs shadow-md transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+                      >
+                        <ImageIcon className="w-4 h-4" />
+                        <span>Chọn / Tải Ảnh Logo</span>
+                      </button>
+                    </div>
+                  </div>
+
                   <div>
                     <label className="block font-bold text-slate-700 mb-1">Hotline / Zalo Liên Hệ Báo Phí</label>
                     <input 
                       type="text" 
-                      value={data.general.phoneHotline} 
+                      value={data.general.phoneHotline || ''} 
                       onChange={(e) => setData({ ...data, general: { ...data.general, phoneHotline: e.target.value } })}
                       className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-mono font-bold"
                     />
@@ -400,7 +432,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                     <label className="block font-bold text-slate-700 mb-1">Email Tiếp Nhận Hồ Sơ & Booking</label>
                     <input 
                       type="text" 
-                      value={data.general.emailContact} 
+                      value={data.general.emailContact || ''} 
                       onChange={(e) => setData({ ...data, general: { ...data.general, emailContact: e.target.value } })}
                       className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-mono font-bold"
                     />
@@ -409,9 +441,162 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                     <label className="block font-bold text-slate-700 mb-1">URL Video Background Hero (MP4/Cloudfront/CDN)</label>
                     <input 
                       type="text" 
-                      value={data.general.videoBgUrl} 
+                      value={data.general.videoBgUrl || ''} 
                       onChange={(e) => setData({ ...data, general: { ...data.general, videoBgUrl: e.target.value } })}
                       className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-mono"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Editable Section Titles & Call-to-Action Text */}
+              <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-2 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-orange-600" />
+                  <span>2. Tiêu Đề Các Khối & Thông Điệp Đồng Hành</span>
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Tiêu Đề Khối Đồng Hành (Default: "Hãy để tôi đồng hành...")</label>
+                    <input 
+                      type="text" 
+                      value={data.general.heroCtaText || ''} 
+                      placeholder="Hãy để tôi đồng hành trên hành trình này"
+                      onChange={(e) => setData({ ...data, general: { ...data.general, heroCtaText: e.target.value } })}
+                      className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Mô Tả Phụ Khối Đồng Hành</label>
+                    <input 
+                      type="text" 
+                      value={data.general.heroCtaSub || ''} 
+                      placeholder="TƯ VẤN & XÂY DỰNG HỆ THỐNG CHUYÊN NGHIỆP"
+                      onChange={(e) => setData({ ...data, general: { ...data.general, heroCtaSub: e.target.value } })}
+                      className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Tiêu Đề Đăng Ký Tư Vấn Khóa Học & Dự Án</label>
+                    <input 
+                      type="text" 
+                      value={data.general.contactTitle || ''} 
+                      placeholder="Đăng ký tư vấn khóa học và dự án"
+                      onChange={(e) => setData({ ...data, general: { ...data.general, contactTitle: e.target.value } })}
+                      className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Mô Tả Khối Đăng Ký Tư Vấn</label>
+                    <input 
+                      type="text" 
+                      value={data.general.contactSubtitle || ''} 
+                      placeholder="Xuân Hiến sẽ gọi lại trực tiếp cho bạn..."
+                      onChange={(e) => setData({ ...data, general: { ...data.general, contactSubtitle: e.target.value } })}
+                      className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Editable Navigation Menu Items & Footer */}
+              <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-2 flex items-center gap-2">
+                  <BookOpen className="w-4 h-4 text-orange-600" />
+                  <span>3. Tên Các Mục Menu Điều Hướng (Navigation Bar) & Chân Trang (Footer)</span>
+                </h3>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Menu 1 (Trang chủ)</label>
+                    <input 
+                      type="text" 
+                      value={data.general.navHome || ''} 
+                      placeholder="Trang chủ"
+                      onChange={(e) => setData({ ...data, general: { ...data.general, navHome: e.target.value } })}
+                      className="w-full px-3 py-1.5 text-xs rounded-lg border border-slate-300 font-semibold"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Menu 2 (Về tôi)</label>
+                    <input 
+                      type="text" 
+                      value={data.general.navAbout || ''} 
+                      placeholder="Về tôi"
+                      onChange={(e) => setData({ ...data, general: { ...data.general, navAbout: e.target.value } })}
+                      className="w-full px-3 py-1.5 text-xs rounded-lg border border-slate-300 font-semibold"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Menu 3 (Khóa học)</label>
+                    <input 
+                      type="text" 
+                      value={data.general.navCourses || ''} 
+                      placeholder="Khóa học"
+                      onChange={(e) => setData({ ...data, general: { ...data.general, navCourses: e.target.value } })}
+                      className="w-full px-3 py-1.5 text-xs rounded-lg border border-slate-300 font-semibold"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Menu 4 (Dịch vụ)</label>
+                    <input 
+                      type="text" 
+                      value={data.general.navServices || ''} 
+                      placeholder="Dịch vụ"
+                      onChange={(e) => setData({ ...data, general: { ...data.general, navServices: e.target.value } })}
+                      className="w-full px-3 py-1.5 text-xs rounded-lg border border-slate-300 font-semibold"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Menu 5 (Dự án)</label>
+                    <input 
+                      type="text" 
+                      value={data.general.navProjects || ''} 
+                      placeholder="Dự án"
+                      onChange={(e) => setData({ ...data, general: { ...data.general, navProjects: e.target.value } })}
+                      className="w-full px-3 py-1.5 text-xs rounded-lg border border-slate-300 font-semibold"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Menu 6 (Kiến thức)</label>
+                    <input 
+                      type="text" 
+                      value={data.general.navBlog || ''} 
+                      placeholder="Kiến thức"
+                      onChange={(e) => setData({ ...data, general: { ...data.general, navBlog: e.target.value } })}
+                      className="w-full px-3 py-1.5 text-xs rounded-lg border border-slate-300 font-semibold"
+                    />
+                  </div>
+                  <div className="col-span-2">
+                    <label className="block font-bold text-slate-700 mb-1">Menu 7 (Đăng ký tư vấn)</label>
+                    <input 
+                      type="text" 
+                      value={data.general.navContact || ''} 
+                      placeholder="Đăng ký tư vấn"
+                      onChange={(e) => setData({ ...data, general: { ...data.general, navContact: e.target.value } })}
+                      className="w-full px-3 py-1.5 text-xs rounded-lg border border-slate-300 font-semibold"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs pt-3 border-t border-slate-100">
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Mô Tả Chân Trang (Footer Description)</label>
+                    <textarea 
+                      rows={2}
+                      value={data.general.footerDesc || ''} 
+                      placeholder="Đào tạo kỹ năng cá nhân 1 kèm 1 thực chiến..."
+                      onChange={(e) => setData({ ...data, general: { ...data.general, footerDesc: e.target.value } })}
+                      className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-medium"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Dòng Bản Quyền Chân Trang (Copyright Text)</label>
+                    <textarea 
+                      rows={2}
+                      value={data.general.footerCopyright || ''} 
+                      placeholder="© 2026 XUÂN HIẾN MEDIA & TRAINING. All rights reserved."
+                      onChange={(e) => setData({ ...data, general: { ...data.general, footerCopyright: e.target.value } })}
+                      className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-medium font-mono"
                     />
                   </div>
                 </div>

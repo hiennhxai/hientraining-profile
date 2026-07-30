@@ -1,8 +1,9 @@
-import { useState, FormEvent } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import { Language } from '../types';
 import { translations } from '../data/translations';
 import { Logo } from './Logo';
 import { Phone, Mail, MapPin, Send, CheckCircle2, MessageSquare } from 'lucide-react';
+import { getAdminData } from '../data/adminStore';
 
 interface ContactSectionProps {
   lang: Language;
@@ -13,6 +14,17 @@ export function ContactSection({ lang }: ContactSectionProps) {
   const isVi = lang === 'vi';
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '', service: 'Khóa học Setup Livestream', note: '' });
+  const [gen, setGen] = useState(getAdminData().general);
+
+  useEffect(() => {
+    const handleUpdate = () => setGen(getAdminData().general);
+    window.addEventListener('admin_data_updated', handleUpdate);
+    window.addEventListener('supabase_realtime_update', handleUpdate);
+    return () => {
+      window.removeEventListener('admin_data_updated', handleUpdate);
+      window.removeEventListener('supabase_realtime_update', handleUpdate);
+    };
+  }, []);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -30,8 +42,12 @@ export function ContactSection({ lang }: ContactSectionProps) {
           {/* Left Column Contact Details */}
           <div className="lg:col-span-6 space-y-6">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t.ct_title}</h2>
-              <p className="text-slate-600 text-sm sm:text-base mt-2 font-medium">{t.ct_sub}</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                {gen.heroCtaText || t.ct_title}
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base mt-2 font-medium">
+                {gen.heroCtaSub || t.ct_sub}
+              </p>
             </div>
 
             <div className="space-y-4 pt-2">
@@ -85,12 +101,12 @@ export function ContactSection({ lang }: ContactSectionProps) {
           <div className="lg:col-span-6 p-7 sm:p-9 rounded-3xl bg-white border border-slate-200 shadow-xl relative">
             <h3 className="text-xl font-extrabold text-slate-900 mb-2 flex items-center gap-2">
               <MessageSquare className="w-5 h-5 text-orange-600" />
-              <span>{isVi ? 'ĐĂNG KÝ TƯ VẤN KHÓA HỌC / DỰ ÁN' : 'ENROLL / CONSULTATION INQUIRY'}</span>
+              <span>{gen.contactTitle || (isVi ? 'ĐĂNG KÝ TƯ VẤN KHÓA HỌC / DỰ ÁN' : 'ENROLL / CONSULTATION INQUIRY')}</span>
             </h3>
             <p className="text-xs text-slate-600 mb-6 font-medium">
-              {isVi 
+              {gen.contactSubtitle || (isVi 
                 ? 'Xuân Hiến sẽ gọi lại trực tiếp cho bạn trong vòng 24h để trao đổi lộ trình cá nhân hóa.'
-                : 'Xuan Hien will contact you within 24h for a personalized roadmap.'}
+                : 'Xuan Hien will contact you within 24h for a personalized roadmap.')}
             </p>
 
             {submitted ? (

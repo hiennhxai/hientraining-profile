@@ -96,13 +96,19 @@ export function Footer({ lang, onNavigatePage, onOpenAdminLogin }: FooterProps) 
   const isVi = lang === 'vi';
 
   const [socialLinks, setSocialLinks] = useState<SocialLinkItem[]>(getAdminData().socialLinks || []);
+  const [gen, setGen] = useState(getAdminData().general);
 
   useEffect(() => {
     const handleUpdate = () => {
       setSocialLinks(getAdminData().socialLinks || []);
+      setGen(getAdminData().general);
     };
     window.addEventListener('admin_data_updated', handleUpdate);
-    return () => window.removeEventListener('admin_data_updated', handleUpdate);
+    window.addEventListener('supabase_realtime_update', handleUpdate);
+    return () => {
+      window.removeEventListener('admin_data_updated', handleUpdate);
+      window.removeEventListener('supabase_realtime_update', handleUpdate);
+    };
   }, []);
 
   const handleNav = (page: string) => {
@@ -123,9 +129,9 @@ export function Footer({ lang, onNavigatePage, onOpenAdminLogin }: FooterProps) 
           <div className="space-y-2.5">
             <Logo className="h-8" showText={true} textColor="text-slate-900" />
             <p className="text-slate-600 text-xs leading-relaxed font-medium">
-              {isVi 
+              {gen.footerDesc || (isVi 
                 ? 'Đào tạo kỹ năng cá nhân 1 kèm 1 thực chiến, kỹ thuật ánh sáng, âm thanh & sản xuất Livestream Studio chuyên nghiệp.'
-                : '1-on-1 practical skill coaching, studio lighting, sound setup & professional Livestream production.'}
+                : '1-on-1 practical skill coaching, studio lighting, sound setup & professional Livestream production.')}
             </p>
             <div className="pt-1 text-slate-700 text-xs font-mono space-y-1">
               <div><strong className="text-slate-900">{isVi ? 'Chủ sở hữu:' : 'Owner:'}</strong> NGUYỄN HỒNG XUÂN HIẾN</div>
@@ -211,7 +217,7 @@ export function Footer({ lang, onNavigatePage, onOpenAdminLogin }: FooterProps) 
         {/* Bottom Rights & Dimmed Subtle Admin Entry */}
         <div className="pt-3.5 border-t border-slate-200/80 text-[11px] font-mono text-slate-500 flex items-center justify-between gap-3 flex-wrap">
           <div>
-            © 2026 <strong>Xuân Hiến Media & Training</strong>. All rights reserved.
+            {gen.footerCopyright || `© 2026 ${gen.brandName || 'Xuân Hiến'} ${gen.subBrandName || 'Media & Training'}. All rights reserved.`}
           </div>
           {onOpenAdminLogin && (
             <button

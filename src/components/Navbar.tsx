@@ -13,9 +13,22 @@ interface NavbarProps {
   onOpenAdmin?: () => void;
 }
 
+import { getAdminData } from '../data/adminStore';
+
 export function Navbar({ lang, onToggleLang, isDetecting, activePage, onSelectPage, onOpenAdmin }: NavbarProps) {
   const t = translations[lang];
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [gen, setGen] = useState(getAdminData().general);
+
+  useEffect(() => {
+    const handleUpdate = () => setGen(getAdminData().general);
+    window.addEventListener('admin_data_updated', handleUpdate);
+    window.addEventListener('supabase_realtime_update', handleUpdate);
+    return () => {
+      window.removeEventListener('admin_data_updated', handleUpdate);
+      window.removeEventListener('supabase_realtime_update', handleUpdate);
+    };
+  }, []);
 
   // Prevent scroll when mobile menu is open
   useEffect(() => {
@@ -30,13 +43,13 @@ export function Navbar({ lang, onToggleLang, isDetecting, activePage, onSelectPa
   }, [mobileMenuOpen]);
 
   const navItems = [
-    { id: 'home', label: t.nav_home || (lang === 'vi' ? 'Trang chủ' : 'Home'), icon: Home },
-    { id: 'about', label: t.nav_about || (lang === 'vi' ? 'Câu chuyện của tôi' : 'My Story'), icon: User },
-    { id: 'courses', label: t.nav_courses || (lang === 'vi' ? 'Khóa học' : 'Courses'), icon: GraduationCap },
-    { id: 'services', label: t.nav_services || (lang === 'vi' ? 'Dịch vụ' : 'Services'), icon: Wrench },
-    { id: 'projects', label: t.nav_projects || (lang === 'vi' ? 'Dự án & Showcase' : 'Projects'), icon: Video },
-    { id: 'blog', label: t.nav_blog || (lang === 'vi' ? 'Kiến thức' : 'Knowledge'), icon: BookOpen },
-    { id: 'contact', label: t.nav_contact || (lang === 'vi' ? 'Đăng ký tư vấn' : 'Contact'), icon: MessageSquare },
+    { id: 'home', label: gen.navHome || t.nav_home || (lang === 'vi' ? 'Trang chủ' : 'Home'), icon: Home },
+    { id: 'about', label: gen.navAbout || t.nav_about || (lang === 'vi' ? 'Về tôi' : 'My Story'), icon: User },
+    { id: 'courses', label: gen.navCourses || t.nav_courses || (lang === 'vi' ? 'Khóa học' : 'Courses'), icon: GraduationCap },
+    { id: 'services', label: gen.navServices || t.nav_services || (lang === 'vi' ? 'Dịch vụ' : 'Services'), icon: Wrench },
+    { id: 'projects', label: gen.navProjects || t.nav_projects || (lang === 'vi' ? 'Dự án & Showcase' : 'Projects'), icon: Video },
+    { id: 'blog', label: gen.navBlog || t.nav_blog || (lang === 'vi' ? 'Kiến thức' : 'Knowledge'), icon: BookOpen },
+    { id: 'contact', label: gen.navContact || t.nav_contact || (lang === 'vi' ? 'Đăng ký tư vấn' : 'Contact'), icon: MessageSquare },
   ];
 
   const handleNavClick = (id: string) => {
