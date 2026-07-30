@@ -846,6 +846,9 @@ let currentAdminData: FullAdminData = (() => {
 })();
 
 export function getAdminData(): FullAdminData {
+  if (!currentAdminData.resources || currentAdminData.resources.length === 0) {
+    currentAdminData.resources = defaultResources;
+  }
   return currentAdminData;
 }
 
@@ -878,6 +881,7 @@ export async function loadAdminDataAsync(): Promise<FullAdminData> {
         photoAlbum: Array.isArray(parsed.photoAlbum) ? parsed.photoAlbum : defaultAdminData.photoAlbum,
         brandLogos: Array.isArray(parsed.brandLogos) ? parsed.brandLogos : defaultAdminData.brandLogos,
         socialLinks: Array.isArray(parsed.socialLinks) ? parsed.socialLinks : defaultAdminData.socialLinks,
+        resources: (Array.isArray(parsed.resources) && parsed.resources.length > 0) ? parsed.resources : defaultAdminData.resources,
       };
       // Lưu lại vào localStorage để F5 sau này nạp tức thì
       try {
