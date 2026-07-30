@@ -956,26 +956,6 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                       className="w-full accent-orange-600 cursor-pointer mt-2"
                     />
                   </div>
-
-                  <div>
-                    <div className="flex justify-between font-bold text-slate-700 mb-1">
-                      <span>⚡ Tốc Độ Chạy Logo (Marquee Speed)</span>
-                      <span className="font-mono text-orange-600">{data.general.marqueeDuration || 55}s / vòng</span>
-                    </div>
-                    <input 
-                      type="range"
-                      min={20}
-                      max={120}
-                      step={5}
-                      value={data.general.marqueeDuration || 55}
-                      onChange={(e) => setData({ ...data, general: { ...data.general, marqueeDuration: Number(e.target.value) } })}
-                      className="w-full accent-orange-600 cursor-pointer mt-2"
-                    />
-                    <div className="flex justify-between text-[10px] text-slate-400 font-mono mt-1">
-                      <span>⚡ 20s (Nhanh)</span>
-                      <span>🐢 120s (Chậm)</span>
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -1872,36 +1852,51 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                   </button>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3">
                   {(data.brandLogos || []).map((brand, bIdx) => (
                     <div
                       key={brand.id || bIdx}
-                      className="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-orange-300 transition-all space-y-3 relative group"
+                      className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-orange-400 transition-all space-y-2 relative group flex flex-col justify-between"
                     >
-                      {/* Logo Preview & Change Image */}
-                      <div className="flex items-center justify-between gap-3">
-                        <div className="w-16 h-12 rounded-lg bg-white border border-slate-200 flex items-center justify-center p-1 overflow-hidden shrink-0">
-                          {brand.logoUrl ? (
-                            <img src={brand.logoUrl} alt={brand.name} className="max-h-full max-w-full object-contain" />
-                          ) : (
-                            <span className="text-xs font-mono font-bold text-slate-400">Không có ảnh</span>
-                          )}
-                        </div>
+                      {/* Compact Logo Image Box */}
+                      <div className="relative aspect-video w-full rounded-lg bg-slate-900 border border-slate-200 flex items-center justify-center p-1.5 overflow-hidden group/img">
+                        {brand.logoUrl ? (
+                          <img src={brand.logoUrl} alt={brand.name} className="max-h-full max-w-full object-contain mx-auto my-auto" />
+                        ) : (
+                          <span className="text-[10px] font-mono font-bold text-slate-400">Không có ảnh</span>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => {
+                            openPicker((selectedUrl) => {
+                              const list = [...(data.brandLogos || [])];
+                              list[bIdx] = { ...list[bIdx], logoUrl: selectedUrl };
+                              setData({ ...data, brandLogos: list });
+                            }, `Chọn Logo Cho ${brand.name}`, brand.logoUrl || '');
+                          }}
+                          className="absolute inset-0 bg-slate-900/80 backdrop-blur-xs text-white opacity-0 group-hover/img:opacity-100 flex items-center justify-center text-[10px] font-extrabold transition-opacity cursor-pointer"
+                        >
+                          Đổi Ảnh Logo
+                        </button>
+                      </div>
 
-                        <div className="flex items-center gap-1">
-                          <button
-                            type="button"
-                            onClick={() => {
-                              openPicker((selectedUrl) => {
-                                const list = [...(data.brandLogos || [])];
-                                list[bIdx] = { ...list[bIdx], logoUrl: selectedUrl };
-                                setData({ ...data, brandLogos: list });
-                              }, `Chọn Logo Cho ${brand.name}`, brand.logoUrl || '');
-                            }}
-                            className="px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-orange-400 text-[11px] font-bold text-slate-700 hover:text-orange-600 transition-colors cursor-pointer"
-                          >
-                            Đổi Ảnh Logo
-                          </button>
+                      {/* Brand Name & Delete */}
+                      <div className="space-y-1">
+                        <input
+                          type="text"
+                          value={brand.name}
+                          placeholder="Tên thương hiệu..."
+                          onChange={(e) => {
+                            const list = [...(data.brandLogos || [])];
+                            list[bIdx] = { ...list[bIdx], name: e.target.value };
+                            setData({ ...data, brandLogos: list });
+                          }}
+                          className="w-full px-2 py-1 rounded-lg bg-white border border-slate-300 font-bold text-slate-900 text-[11px] focus:bg-white truncate"
+                          title={brand.name}
+                        />
+
+                        <div className="flex items-center justify-between text-[10px]">
+                          <span className="text-slate-400 font-mono">#{bIdx + 1}</span>
                           <button
                             type="button"
                             onClick={() => {
@@ -1910,43 +1905,11 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                                 setData({ ...data, brandLogos: list });
                               }
                             }}
-                            className="p-1.5 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-colors cursor-pointer"
+                            className="text-slate-400 hover:text-red-600 p-0.5 cursor-pointer"
                             title="Xóa thương hiệu này"
                           >
-                            <Trash2 className="w-4 h-4" />
+                            <Trash2 className="w-3.5 h-3.5" />
                           </button>
-                        </div>
-                      </div>
-
-                      {/* Name & Category Inputs */}
-                      <div className="space-y-2 text-xs">
-                        <div>
-                          <label className="block font-bold text-slate-700 mb-1">Tên Thương Hiệu / Đơn Vị</label>
-                          <input
-                            type="text"
-                            value={brand.name}
-                            onChange={(e) => {
-                              const list = [...(data.brandLogos || [])];
-                              list[bIdx] = { ...list[bIdx], name: e.target.value };
-                              setData({ ...data, brandLogos: list });
-                            }}
-                            className="w-full px-3 py-1.5 rounded-lg bg-white border border-slate-300 font-bold text-slate-900 text-xs"
-                          />
-                        </div>
-
-                        <div>
-                          <label className="block font-bold text-slate-700 mb-1">Phân Loại / Danh Mục</label>
-                          <input
-                            type="text"
-                            value={brand.category}
-                            onChange={(e) => {
-                              const list = [...(data.brandLogos || [])];
-                              list[bIdx] = { ...list[bIdx], category: e.target.value };
-                              setData({ ...data, brandLogos: list });
-                            }}
-                            className="w-full px-3 py-1.5 rounded-lg bg-white border border-slate-300 font-medium text-slate-700 text-xs"
-                            placeholder="Ví dụ: Đài Truyền Hình, Thương Hiệu F&B..."
-                          />
                         </div>
                       </div>
                     </div>
