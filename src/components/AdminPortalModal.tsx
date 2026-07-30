@@ -345,7 +345,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
             }`}
           >
             <ImageIcon className="w-4 h-4" />
-            <span>Album Ảnh & Nén 4K ({data.photoAlbum.length})</span>
+            <span>📸 KHO HÌNH ẢNH & MEDIA ({data.photoAlbum.length})</span>
           </button>
         </div>
 
