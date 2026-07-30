@@ -273,80 +273,95 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
           </div>
         </div>
 
-        {/* Tab Navigation Menu */}
-        <div className="bg-slate-100 px-4 py-2.5 border-b border-slate-200 flex items-center gap-1.5 overflow-x-auto shrink-0 scrollbar-none">
-          <button
-            onClick={() => { setActiveTab('general'); setEditingArticleSlug(null); }}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap ${
-              activeTab === 'general' ? 'bg-white text-orange-600 shadow-xs border border-slate-200' : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            <Settings className="w-4 h-4" />
-            <span>Chung & Branding</span>
-          </button>
-          <button
-            onClick={() => { setActiveTab('brands'); setEditingArticleSlug(null); }}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap ${
-              activeTab === 'brands' ? 'bg-orange-600 text-white shadow-md' : 'text-orange-700 bg-orange-50 hover:bg-orange-100 border border-orange-200'
-            }`}
-          >
-            <Sparkles className="w-4 h-4" />
-            <span>⚡ Logo & Tốc Độ Marquee ({(data.brandLogos || []).length})</span>
-          </button>
-          <button
-            onClick={() => { setActiveTab('story'); setEditingArticleSlug(null); }}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap ${
-              activeTab === 'story' ? 'bg-white text-orange-600 shadow-xs border border-slate-200' : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            <User className="w-4 h-4" />
-            <span>Câu Chuyện & Story</span>
-          </button>
-          <button
-            onClick={() => { setActiveTab('courses'); setEditingArticleSlug(null); }}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap ${
-              activeTab === 'courses' ? 'bg-white text-orange-600 shadow-xs border border-slate-200' : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            <BookOpen className="w-4 h-4" />
-            <span>Khóa Học 1-1 ({data.courses.length})</span>
-          </button>
-          <button
-            onClick={() => { setActiveTab('services'); setEditingArticleSlug(null); }}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap ${
-              activeTab === 'services' ? 'bg-white text-orange-600 shadow-xs border border-slate-200' : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            <Layers className="w-4 h-4" />
-            <span>Dịch Vụ & Solutions ({data.services.length})</span>
-          </button>
-          <button
-            onClick={() => { setActiveTab('projects'); setEditingArticleSlug(null); }}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap ${
-              activeTab === 'projects' ? 'bg-white text-orange-600 shadow-xs border border-slate-200' : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            <Video className="w-4 h-4" />
-            <span>Dự Án & TikTok ({data.tiktokChannels.length})</span>
-          </button>
-          <button
-            onClick={() => setActiveTab('articles')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap ${
-              activeTab === 'articles' ? 'bg-white text-orange-600 shadow-xs border border-slate-200' : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            <FileText className="w-4 h-4" />
-            <span>Bài Viết Blog ({Object.keys(data.articles).length})</span>
-          </button>
-          <button
-            onClick={() => { setActiveTab('album'); setEditingArticleSlug(null); }}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap ${
-              activeTab === 'album' ? 'bg-orange-600 text-white shadow-md' : 'text-orange-700 bg-orange-50 hover:bg-orange-100'
-            }`}
-          >
-            <ImageIcon className="w-4 h-4" />
-            <span>📸 KHO HÌNH ẢNH & MEDIA ({data.photoAlbum.length})</span>
-          </button>
+        {/* Tab Navigation Menu — Organized into 2 Clean Rows */}
+        <div className="bg-slate-100 p-2.5 border-b border-slate-200 space-y-2 shrink-0">
+          {/* Row 1: General, Logos, Story, Courses */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <button
+              onClick={() => { setActiveTab('general'); setEditingArticleSlug(null); }}
+              className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                activeTab === 'general' ? 'bg-white text-orange-600 shadow-sm border border-slate-200 ring-1 ring-orange-500/20' : 'bg-white/60 text-slate-700 hover:bg-white hover:text-slate-900 border border-slate-200/80'
+              }`}
+            >
+              <Settings className="w-4 h-4 text-orange-500 shrink-0" />
+              <span className="truncate">Chung & Branding</span>
+            </button>
+
+            <button
+              onClick={() => { setActiveTab('brands'); setEditingArticleSlug(null); }}
+              className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                activeTab === 'brands' ? 'bg-orange-600 text-white shadow-md' : 'bg-orange-50 text-orange-800 hover:bg-orange-100 border border-orange-200'
+              }`}
+            >
+              <Sparkles className="w-4 h-4 shrink-0" />
+              <span className="truncate">⚡ Logo & Marquee ({(data.brandLogos || []).length})</span>
+            </button>
+
+            <button
+              onClick={() => { setActiveTab('story'); setEditingArticleSlug(null); }}
+              className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                activeTab === 'story' ? 'bg-white text-orange-600 shadow-sm border border-slate-200 ring-1 ring-orange-500/20' : 'bg-white/60 text-slate-700 hover:bg-white hover:text-slate-900 border border-slate-200/80'
+              }`}
+            >
+              <User className="w-4 h-4 text-orange-500 shrink-0" />
+              <span className="truncate">Câu Chuyện & Story</span>
+            </button>
+
+            <button
+              onClick={() => { setActiveTab('courses'); setEditingArticleSlug(null); }}
+              className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                activeTab === 'courses' ? 'bg-white text-orange-600 shadow-sm border border-slate-200 ring-1 ring-orange-500/20' : 'bg-white/60 text-slate-700 hover:bg-white hover:text-slate-900 border border-slate-200/80'
+              }`}
+            >
+              <BookOpen className="w-4 h-4 text-orange-500 shrink-0" />
+              <span className="truncate">Khóa Học 1-1 ({data.courses.length})</span>
+            </button>
+          </div>
+
+          {/* Row 2: Services, Projects & TikTok, Blog Articles, Photo Album */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <button
+              onClick={() => { setActiveTab('services'); setEditingArticleSlug(null); }}
+              className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                activeTab === 'services' ? 'bg-white text-orange-600 shadow-sm border border-slate-200 ring-1 ring-orange-500/20' : 'bg-white/60 text-slate-700 hover:bg-white hover:text-slate-900 border border-slate-200/80'
+              }`}
+            >
+              <Layers className="w-4 h-4 text-orange-500 shrink-0" />
+              <span className="truncate">Dịch Vụ & Solutions ({data.services.length})</span>
+            </button>
+
+            <button
+              onClick={() => { setActiveTab('projects'); setEditingArticleSlug(null); }}
+              className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                activeTab === 'projects' ? 'bg-white text-orange-600 shadow-sm border border-slate-200 ring-1 ring-orange-500/20' : 'bg-white/60 text-slate-700 hover:bg-white hover:text-slate-900 border border-slate-200/80'
+              }`}
+            >
+              <Video className="w-4 h-4 text-orange-500 shrink-0" />
+              <span className="truncate">Dự Án & TikTok ({data.tiktokChannels.length})</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('articles')}
+              className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                activeTab === 'articles' ? 'bg-white text-orange-600 shadow-sm border border-slate-200 ring-1 ring-orange-500/20' : 'bg-white/60 text-slate-700 hover:bg-white hover:text-slate-900 border border-slate-200/80'
+              }`}
+            >
+              <FileText className="w-4 h-4 text-orange-500 shrink-0" />
+              <span className="truncate">Bài Viết Blog ({Object.keys(data.articles).length})</span>
+            </button>
+
+            <button
+              onClick={() => { setActiveTab('album'); setEditingArticleSlug(null); }}
+              className={`px-3 py-2 rounded-xl text-xs font-extrabold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                activeTab === 'album' 
+                  ? 'bg-gradient-to-r from-orange-600 to-amber-600 text-white shadow-md ring-2 ring-orange-500/30' 
+                  : 'bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border border-emerald-300'
+              }`}
+            >
+              <ImageIcon className="w-4 h-4 shrink-0" />
+              <span className="truncate">📸 KHO HÌNH ÁNH ({(data.photoAlbum || []).length})</span>
+            </button>
+          </div>
         </div>
 
         {/* Scrollable Main Workspace */}
