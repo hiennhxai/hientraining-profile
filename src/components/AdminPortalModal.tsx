@@ -4,7 +4,7 @@ import { getAdminData, saveAdminData, resetAdminData, FullAdminData } from '../d
 import { PhotoAlbumManager } from './PhotoAlbumManager';
 import { RichArticleBlockEditor } from './RichArticleBlockEditor';
 import { UniversalImagePickerModal } from './UniversalImagePickerModal';
-import { AVAILABLE_FONTS } from '../utils/typographyEngine';
+import { AVAILABLE_FONTS, applyTypography } from '../utils/typographyEngine';
 import { 
   X, Save, RotateCcw, RotateCw, Download, Upload, Plus, Trash2, Check, Settings, 
   BookOpen, Layers, Video, FileText, User, Image as ImageIcon, Sparkles, 
@@ -464,8 +464,13 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                     <label className="block font-bold text-slate-700 mb-1">Font Tiêu Đề (Heading)</label>
                     <select
                       value={data.general.fontHeading || 'Space Grotesk'}
-                      onChange={(e) => setData({ ...data, general: { ...data.general, fontHeading: e.target.value } })}
-                      className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold bg-white"
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const nextGen = { ...data.general, fontHeading: val };
+                        setData({ ...data, general: nextGen });
+                        applyTypography(val, data.general.fontBody || 'Be Vietnam Pro', data.general.fontMono || 'IBM Plex Mono', data.general.fontSizeScale || 100);
+                      }}
+                      className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold bg-white cursor-pointer"
                     >
                       {AVAILABLE_FONTS.filter(f => f.category !== 'mono').map(f => (
                         <option key={f.id} value={f.name}>{f.name} ({f.category})</option>
@@ -481,8 +486,13 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                     <label className="block font-bold text-slate-700 mb-1">Font Nội Dung (Body Text)</label>
                     <select
                       value={data.general.fontBody || 'Be Vietnam Pro'}
-                      onChange={(e) => setData({ ...data, general: { ...data.general, fontBody: e.target.value } })}
-                      className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold bg-white"
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const nextGen = { ...data.general, fontBody: val };
+                        setData({ ...data, general: nextGen });
+                        applyTypography(data.general.fontHeading || 'Space Grotesk', val, data.general.fontMono || 'IBM Plex Mono', data.general.fontSizeScale || 100);
+                      }}
+                      className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold bg-white cursor-pointer"
                     >
                       {AVAILABLE_FONTS.filter(f => f.category !== 'mono').map(f => (
                         <option key={f.id} value={f.name}>{f.name} ({f.category})</option>
@@ -498,8 +508,13 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                     <label className="block font-bold text-slate-700 mb-1">Font Code / Nhãn (Mono)</label>
                     <select
                       value={data.general.fontMono || 'IBM Plex Mono'}
-                      onChange={(e) => setData({ ...data, general: { ...data.general, fontMono: e.target.value } })}
-                      className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold bg-white"
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const nextGen = { ...data.general, fontMono: val };
+                        setData({ ...data, general: nextGen });
+                        applyTypography(data.general.fontHeading || 'Space Grotesk', data.general.fontBody || 'Be Vietnam Pro', val, data.general.fontSizeScale || 100);
+                      }}
+                      className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold bg-white cursor-pointer"
                     >
                       {AVAILABLE_FONTS.filter(f => f.category === 'mono').map(f => (
                         <option key={f.id} value={f.name}>{f.name}</option>
@@ -518,8 +533,13 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                       max={130}
                       step={5}
                       value={data.general.fontSizeScale || 100}
-                      onChange={(e) => setData({ ...data, general: { ...data.general, fontSizeScale: parseInt(e.target.value) } })}
-                      className="w-full accent-orange-600"
+                      onChange={(e) => {
+                        const val = parseInt(e.target.value);
+                        const nextGen = { ...data.general, fontSizeScale: val };
+                        setData({ ...data, general: nextGen });
+                        applyTypography(data.general.fontHeading || 'Space Grotesk', data.general.fontBody || 'Be Vietnam Pro', data.general.fontMono || 'IBM Plex Mono', val);
+                      }}
+                      className="w-full accent-orange-600 cursor-pointer"
                     />
                     <div className="flex justify-between text-[10px] text-slate-400 font-mono mt-0.5">
                       <span>80% (Nhỏ)</span>

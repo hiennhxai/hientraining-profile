@@ -699,7 +699,23 @@ const STORAGE_KEY = 'xuanhien_super_admin_v4';
 
 import { supabase } from '../lib/supabase';
 
-let currentAdminData: FullAdminData = defaultAdminData;
+// Đồng bộ từ localStorage ngay khi nạp script để tránh F5 bị nạp font mặc định
+let currentAdminData: FullAdminData = (() => {
+  try {
+    const saved = typeof window !== 'undefined' ? localStorage.getItem(STORAGE_KEY) : null;
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      return {
+        ...defaultAdminData,
+        ...parsed,
+        general: { ...defaultAdminData.general, ...(parsed.general || {}) }
+      };
+    }
+  } catch (e) {
+    console.warn("Failed to load initial adminData from localStorage", e);
+  }
+  return defaultAdminData;
+})();
 
 export function getAdminData(): FullAdminData {
   return currentAdminData;
@@ -735,6 +751,17 @@ export async function loadAdminDataAsync(): Promise<FullAdminData> {
         brandLogos: Array.isArray(parsed.brandLogos) ? parsed.brandLogos : defaultAdminData.brandLogos,
         socialLinks: Array.isArray(parsed.socialLinks) ? parsed.socialLinks : defaultAdminData.socialLinks,
       };
+      // Lưu lại vào localStorage để F5 sau này nạp tức thì
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(currentAdminData));
+      } catch (err) {
+        console.warn("Could not write to localStorage", err);
+      }
+    }
+
+    // Bắn sự kiện để tất cả các component (bao gồm typography engine) áp dụng dữ liệu mới nhất từ Supabase
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new Event('admin_data_updated'));
     }
 
     // Lắng nghe thay đổi Realtime từ Supabase
