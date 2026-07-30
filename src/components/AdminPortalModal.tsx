@@ -2464,36 +2464,6 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                           className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 font-medium text-slate-800 text-xs focus:bg-white"
                         />
                       </div>
-
-                      {/* Date & File Size */}
-                      <div className="space-y-1">
-                        <label className="text-[11px] font-mono font-bold text-slate-700">NGÀY PHÁT HÀNH:</label>
-                        <input
-                          type="text"
-                          value={res.date}
-                          onChange={(e) => {
-                            const list = [...(data.resources || [])];
-                            list[idx] = { ...list[idx], date: e.target.value };
-                            setData({ ...data, resources: list });
-                          }}
-                          className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 font-mono text-xs text-slate-800"
-                        />
-                      </div>
-
-                      <div className="space-y-1">
-                        <label className="text-[11px] font-mono font-bold text-slate-700">DUNG LƯỢNG FILE:</label>
-                        <input
-                          type="text"
-                          value={res.fileSize || ''}
-                          placeholder="VD: 4.2 MB hoặc Google Drive"
-                          onChange={(e) => {
-                            const list = [...(data.resources || [])];
-                            list[idx] = { ...list[idx], fileSize: e.target.value };
-                            setData({ ...data, resources: list });
-                          }}
-                          className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 font-mono text-xs text-slate-800"
-                        />
-                      </div>
                     </div>
                   </div>
                 ))}
