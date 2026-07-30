@@ -298,7 +298,12 @@ export default function App() {
               isEditActive={isAdminMode && isEditActive}
               onEditField={handleOpenEditField}
             />
-            <SubPageBottomCta lang={lang} onNavigatePage={handleSelectPage} />
+            <SubPageBottomCta 
+              lang={lang} 
+              onNavigatePage={handleSelectPage} 
+              isEditActive={isAdminMode && isEditActive}
+              onEditField={handleOpenEditField}
+            />
           </>
         )}
 
@@ -316,7 +321,12 @@ export default function App() {
               isEditActive={isAdminMode && isEditActive}
               onEditField={handleOpenEditField}
             />
-            <SubPageBottomCta lang={lang} onNavigatePage={handleSelectPage} />
+            <SubPageBottomCta 
+              lang={lang} 
+              onNavigatePage={handleSelectPage} 
+              isEditActive={isAdminMode && isEditActive}
+              onEditField={handleOpenEditField}
+            />
           </>
         )}
 
@@ -334,7 +344,12 @@ export default function App() {
               isEditActive={isAdminMode && isEditActive}
               onEditField={handleOpenEditField}
             />
-            <SubPageBottomCta lang={lang} onNavigatePage={handleSelectPage} />
+            <SubPageBottomCta 
+              lang={lang} 
+              onNavigatePage={handleSelectPage} 
+              isEditActive={isAdminMode && isEditActive}
+              onEditField={handleOpenEditField}
+            />
           </>
         )}
 
@@ -351,7 +366,12 @@ export default function App() {
               isEditActive={isAdminMode && isEditActive}
               onEditField={handleOpenEditField}
             />
-            <SubPageBottomCta lang={lang} onNavigatePage={handleSelectPage} />
+            <SubPageBottomCta 
+              lang={lang} 
+              onNavigatePage={handleSelectPage} 
+              isEditActive={isAdminMode && isEditActive}
+              onEditField={handleOpenEditField}
+            />
           </>
         )}
 
@@ -369,7 +389,12 @@ export default function App() {
               isEditActive={isAdminMode && isEditActive}
               onEditField={handleOpenEditField}
             />
-            <SubPageBottomCta lang={lang} onNavigatePage={handleSelectPage} />
+            <SubPageBottomCta 
+              lang={lang} 
+              onNavigatePage={handleSelectPage} 
+              isEditActive={isAdminMode && isEditActive}
+              onEditField={handleOpenEditField}
+            />
           </>
         )}
 

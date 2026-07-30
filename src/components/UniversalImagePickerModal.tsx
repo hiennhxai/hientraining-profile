@@ -258,50 +258,50 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
           </button>
         </div>
 
-        {/* Tab Selection */}
-        <div className="bg-slate-100 px-4 py-2 border-b border-slate-200 flex items-center gap-2 overflow-x-auto">
+        {/* Tab Selection — 2x2 Grid on Mobile, Flex Row on Tablet/Desktop so Album Tab is NEVER hidden */}
+        <div className="bg-slate-100 p-2 sm:px-4 sm:py-2 border-b border-slate-200 grid grid-cols-2 sm:flex sm:items-center gap-1.5 sm:gap-2">
           <button
             type="button"
             onClick={() => setActiveTab('album')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer shrink-0 ${
+            className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
               activeTab === 'album' ? 'bg-orange-600 text-white shadow-md' : 'bg-white text-slate-700 hover:bg-slate-200 border border-slate-200'
             }`}
           >
-            <ImageIcon className="w-4 h-4" />
-            <span>1. Album ({photos.length})</span>
+            <ImageIcon className="w-4 h-4 shrink-0" />
+            <span className="truncate">1. Album ({photos.length})</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('upload')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer shrink-0 ${
+            className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
               activeTab === 'upload' ? 'bg-orange-600 text-white shadow-md' : 'bg-white text-slate-700 hover:bg-slate-200 border border-slate-200'
             }`}
           >
-            <Upload className="w-4 h-4" />
-            <span>2. Tải Ảnh Mới</span>
+            <Upload className="w-4 h-4 shrink-0" />
+            <span className="truncate">2. Tải Ảnh Mới</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('url')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer shrink-0 ${
+            className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
               activeTab === 'url' ? 'bg-orange-600 text-white shadow-md' : 'bg-white text-slate-700 hover:bg-slate-200 border border-slate-200'
             }`}
           >
-            <LinkIcon className="w-4 h-4" />
-            <span>3. Link URL</span>
+            <LinkIcon className="w-4 h-4 shrink-0" />
+            <span className="truncate">3. Link URL</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('crop')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer shrink-0 ${
+            className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
               activeTab === 'crop' ? 'bg-orange-600 text-white shadow-md' : 'bg-white text-slate-700 hover:bg-slate-200 border border-slate-200'
             }`}
           >
-            <Crop className="w-4 h-4 text-amber-300" />
-            <span>4. 📐 Tinh Chỉnh Khung & Zoom</span>
+            <Crop className="w-4 h-4 text-amber-300 shrink-0" />
+            <span className="truncate">4. 📐 Căn Khung & Zoom</span>
           </button>
         </div>
 

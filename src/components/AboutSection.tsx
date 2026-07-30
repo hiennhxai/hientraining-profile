@@ -133,14 +133,20 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
           {/* Right Column: TV Host Milestones & Achievements Panel (Right 5 cols) */}
           <div className="lg:col-span-5 rounded-2xl bg-white border border-slate-200 p-6 sm:p-8 space-y-5 shadow-sm flex flex-col justify-between">
             <div>
-              <h3 className="text-lg font-extrabold text-slate-900 flex items-center gap-2.5 border-b border-slate-200 pb-3.5 mb-4">
-                <div className="p-1.5 rounded-lg bg-orange-100 text-orange-600">
-                  <Award className="w-5 h-5" />
-                </div>
-                <span>{t.a_achievements_title}</span>
-              </h3>
+              <EditableWrapper
+                isEditActive={isEditActive}
+                label="Sửa Tiêu Đề Thành Tựu"
+                onEdit={() => triggerEdit('achievementsTitle', 'Tiêu Đề Thành Tựu', t.a_achievements_title)}
+              >
+                <h3 className="text-lg font-extrabold text-slate-900 flex items-center gap-2.5 border-b border-slate-200 pb-3.5 mb-4">
+                  <div className="p-1.5 rounded-lg bg-orange-100 text-orange-600">
+                    <Award className="w-5 h-5" />
+                  </div>
+                  <span>{t.a_achievements_title}</span>
+                </h3>
+              </EditableWrapper>
 
-              <div className="space-y-3.5 text-xs sm:text-sm font-mono text-slate-700">
+              <div className="space-y-3.5 text-xs sm:text-sm font-sans text-slate-700">
                 <div className="flex justify-between items-start border-b border-slate-100 pb-2.5">
                   <span className="text-orange-600 font-bold shrink-0">2012</span>
                   <span className="text-right text-slate-800 font-medium ml-4">{t.a_m1_desc}</span>
@@ -164,64 +170,94 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
               </div>
             </div>
 
-            <div className="pt-3 border-t border-slate-200 bg-orange-50/70 p-4 rounded-xl">
-              <p className="text-xs text-orange-900 font-mono font-medium leading-relaxed">
-                {t.a_mentor_quote}
-              </p>
-            </div>
+            <EditableWrapper
+              isEditActive={isEditActive}
+              label="Sửa Trích Dẫn Đồng Hành"
+              onEdit={() => triggerEdit('mentorQuote', 'Trích Dẫn Mentor Đồng Hành', t.a_mentor_quote)}
+            >
+              <div className="pt-3 border-t border-slate-200 bg-orange-50/70 p-4 rounded-xl">
+                <p className="text-xs text-orange-900 font-medium leading-relaxed">
+                  {t.a_mentor_quote}
+                </p>
+              </div>
+            </EditableWrapper>
           </div>
         </div>
 
         {/* Middle Section: Dàn trải đều 3 giá trị cốt lõi / triết lý (Full Width Grid) */}
         <div className="pt-2">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm interactive-card flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center mb-4">
-                  <Heart className="w-6 h-6 text-red-600" />
+            <EditableWrapper
+              isEditActive={isEditActive}
+              label="Sửa Giá Trị 1"
+              onEdit={() => triggerEdit('p1h', 'Tiêu Đề Thấu Hiểu Cốt Lõi 1', t.p1h)}
+            >
+              <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm interactive-card flex flex-col justify-between h-full">
+                <div>
+                  <div className="w-12 h-12 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center mb-4">
+                    <Heart className="w-6 h-6 text-red-600" />
+                  </div>
+                  <h4 className="text-base font-extrabold text-slate-900 mb-2">{t.p1h}</h4>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{t.p1p}</p>
                 </div>
-                <h4 className="text-base font-extrabold text-slate-900 mb-2">{t.p1h}</h4>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{t.p1p}</p>
               </div>
-            </div>
+            </EditableWrapper>
 
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm interactive-card flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center mb-4">
-                  <Users className="w-6 h-6 text-orange-600" />
+            <EditableWrapper
+              isEditActive={isEditActive}
+              label="Sửa Giá Trị 2"
+              onEdit={() => triggerEdit('p2h', 'Tiêu Đề Thấu Hiểu Cốt Lõi 2', t.p2h)}
+            >
+              <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm interactive-card flex flex-col justify-between h-full">
+                <div>
+                  <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center mb-4">
+                    <Users className="w-6 h-6 text-orange-600" />
+                  </div>
+                  <h4 className="text-base font-extrabold text-slate-900 mb-2">{t.p2h}</h4>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{t.p2p}</p>
                 </div>
-                <h4 className="text-base font-extrabold text-slate-900 mb-2">{t.p2h}</h4>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{t.p2p}</p>
               </div>
-            </div>
+            </EditableWrapper>
 
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm interactive-card flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center mb-4">
-                  <Mic className="w-6 h-6 text-amber-600" />
+            <EditableWrapper
+              isEditActive={isEditActive}
+              label="Sửa Giá Trị 3"
+              onEdit={() => triggerEdit('p3h', 'Tiêu Đề Thấu Hiểu Cốt Lõi 3', t.p3h)}
+            >
+              <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm interactive-card flex flex-col justify-between h-full">
+                <div>
+                  <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center mb-4">
+                    <Mic className="w-6 h-6 text-amber-600" />
+                  </div>
+                  <h4 className="text-base font-extrabold text-slate-900 mb-2">{t.p3h}</h4>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{t.p3p}</p>
                 </div>
-                <h4 className="text-base font-extrabold text-slate-900 mb-2">{t.p3h}</h4>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{t.p3p}</p>
               </div>
-            </div>
+            </EditableWrapper>
           </div>
         </div>
 
         {/* Bottom Section: Hành Trình Kinh Nghiệm & Lịch Sử Hoạt Động (Image Content) */}
         <div className="pt-4 p-6 sm:p-8 bg-white rounded-2xl border border-slate-200 shadow-md">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2.5 rounded-xl bg-orange-100 text-orange-600 font-bold">
-              <History className="w-5 h-5" />
+          <EditableWrapper
+            isEditActive={isEditActive}
+            label="Sửa Tiêu Đề Hành Trình"
+            onEdit={() => triggerEdit('careerTitle', 'Tiêu Đề Hành Trình Kinh Nghiệm', isVi ? 'Hành Trình Kinh Nghiệm & Lịch Sử Hoạt Động' : 'Career Milestones & Proven Experience')}
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2.5 rounded-xl bg-orange-100 text-orange-600 font-bold">
+                <History className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 leading-tight">
+                  {isVi ? 'Hành Trình Kinh Nghiệm & Lịch Sử Hoạt Động' : 'Career Milestones & Proven Experience'}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
+                  {isVi ? 'Hơn 10 năm kinh nghiệm truyền hình, dẫn chương trình & sản xuất Livestream thương hiệu' : '10+ years of television hosting, presenter coaching & brand livestream production'}
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 leading-tight">
-                {isVi ? 'Hành Trình Kinh Nghiệm & Lịch Sử Hoạt Động' : 'Career Milestones & Proven Experience'}
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
-                {isVi ? 'Hơn 10 năm kinh nghiệm truyền hình, dẫn chương trình & sản xuất Livestream thương hiệu' : '10+ years of television hosting, presenter coaching & brand livestream production'}
-              </p>
-            </div>
-          </div>
+          </EditableWrapper>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             <div className="p-5 rounded-2xl bg-orange-50/70 border border-orange-200/80 flex flex-col justify-between interactive-card">

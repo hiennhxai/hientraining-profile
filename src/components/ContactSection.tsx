@@ -117,19 +117,25 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
                 </a>
               </EditableWrapper>
 
-              <div className="flex items-center gap-4 p-4.5 rounded-2xl bg-white border border-slate-200 shadow-2xs">
-                <div className="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700">
-                  <MapPin className="w-6 h-6 text-red-600" />
+              <EditableWrapper
+                isEditActive={isEditActive}
+                label="Sửa Địa Điểm Đào Tạo & Studio"
+                onEdit={() => triggerEdit('studioLocation', 'Địa Điểm Đào Tạo & Studio', gen.studioLocation || 'TP. Hồ Chí Minh (Đào tạo Offline 1-1 & Online)')}
+              >
+                <div className="flex items-center gap-4 p-4.5 rounded-2xl bg-white border border-slate-200 shadow-2xs">
+                  <div className="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700">
+                    <MapPin className="w-6 h-6 text-red-600" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold text-slate-500 block uppercase tracking-wider">
+                      {isVi ? 'Địa điểm Đào tạo & Studio' : 'Training Location & Studio'}
+                    </span>
+                    <strong className="text-sm font-sans text-slate-900 font-bold">
+                      {gen.studioLocation || (isVi ? 'TP. Hồ Chí Minh (Đào tạo Offline 1-1 & Online)' : 'Ho Chi Minh City (1-on-1 Offline & Online Live)')}
+                    </strong>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-xs font-bold text-slate-500 block uppercase tracking-wider">
-                    {isVi ? 'Địa điểm Đào tạo & Studio' : 'Training Location & Studio'}
-                  </span>
-                  <strong className="text-sm font-sans text-slate-900 font-bold">
-                    {isVi ? 'TP. Hồ Chí Minh (Đào tạo Offline 1-1 & Online)' : 'Ho Chi Minh City (1-on-1 Offline & Online Live)'}
-                  </strong>
-                </div>
-              </div>
+              </EditableWrapper>
             </div>
           </div>
 

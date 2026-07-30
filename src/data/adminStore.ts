@@ -9,6 +9,10 @@ export interface SiteGeneralConfig {
   subBrandName: string;
   phoneHotline: string;
   emailContact: string;
+  studioLocation?: string;
+  ctaHeader?: string;
+  ctaSubheader?: string;
+  ctaDescription?: string;
   videoBgUrl: string;
   heroHeadline1: string;
   heroHeadline2: string;
@@ -653,6 +657,10 @@ export const defaultAdminData: FullAdminData = {
     subBrandName: "MEDIA & STUDIO",
     phoneHotline: "0813 13 13 85",
     emailContact: "admin@xuanhien.info",
+    studioLocation: "TP. Hồ Chí Minh (Đào tạo Offline 1-1 & Online)",
+    ctaHeader: "BẮT ĐẦU HÀNH TRÌNH BỨT PHÁ CÙNG XUÂN HIẾN",
+    ctaSubheader: "Bạn cần thiết kế lộ trình đào tạo riêng?",
+    ctaDescription: "Liên hệ trực tiếp với Xuân Hiến qua Zalo/Hotline hoặc gửi thông tin để nhận buổi tư vấn 1-1 định hướng miễn phí.",
     videoBgUrl: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_065045_c44942da-53c6-4804-b734-f9e07fc22e08.mp4",
     heroHeadline1: "ĐÀO TẠO KỸ NĂNG CÁ NHÂN",
     heroHeadline2: "TUYỆT VỜI CHO BẠN",
