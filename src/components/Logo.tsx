@@ -33,11 +33,13 @@ export const Logo: React.FC<LogoProps> = ({
   if (customLogoUrl) {
     return (
       <div className={`inline-flex items-center gap-3 shrink-0 ${className}`}>
-        <img 
-          src={customLogoUrl} 
-          alt={brandName}
-          className="h-full w-auto object-contain shrink-0 max-h-12"
-        />
+        <div className="flex items-center justify-center h-full w-auto max-h-12 overflow-hidden">
+          <img 
+            src={customLogoUrl} 
+            alt={brandName}
+            className="object-contain object-center max-h-12 w-auto mx-auto my-auto block"
+          />
+        </div>
         {showText && (
           <div className="flex flex-col leading-none">
             <span className={`font-black tracking-wider text-base sm:text-lg uppercase ${textColor}`}>

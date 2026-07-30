@@ -66,21 +66,21 @@ export function BrandMarquee({ lang }: BrandMarqueeProps) {
 function BrandCard({ brand }: { brand: BrandLogoItem }) {
   return (
     <div
-      className="inline-flex flex-col items-center justify-between gap-2 px-4 py-2.5 rounded-2xl bg-white border border-slate-200 hover:border-orange-400 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group/card shrink-0 w-[155px]"
+      className="inline-flex flex-col items-center justify-between gap-2 px-3.5 py-2.5 rounded-2xl bg-white border border-slate-200 hover:border-orange-400 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group/card shrink-0 w-[155px]"
       title={`${brand.name} — ${brand.category}`}
     >
       {/* Logo Image Area — fixed height 48px, always centered */}
-      <div className="h-12 w-full flex items-center justify-center overflow-hidden">
+      <div className="h-12 w-full flex items-center justify-center p-1 overflow-hidden shrink-0">
         {brand.logoUrl ? (
           <img
             src={brand.logoUrl}
             alt={brand.name}
-            className="max-h-full max-w-full object-contain group-hover/card:scale-110 transition-transform duration-300"
+            className="max-h-full max-w-full object-contain object-center group-hover/card:scale-105 transition-transform duration-300 mx-auto my-auto block"
             loading="lazy"
           />
         ) : (
           <div
-            className={`w-11 h-11 rounded-xl bg-gradient-to-br ${brand.color || 'from-orange-500 to-amber-600'} flex items-center justify-center text-white text-lg font-bold shadow-sm group-hover/card:scale-110 transition-transform duration-300`}
+            className={`w-10 h-10 rounded-xl bg-gradient-to-br ${brand.color || 'from-orange-500 to-amber-600'} flex items-center justify-center text-white text-base font-bold shadow-sm group-hover/card:scale-105 transition-transform duration-300`}
           >
             {brand.icon || '✦'}
           </div>
