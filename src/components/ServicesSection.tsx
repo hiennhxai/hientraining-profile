@@ -76,7 +76,7 @@ export function ServicesSection({ lang, onOpenService, isEditActive = false, onE
               "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
               "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=800&auto=format&fit=crop",
             ];
-            const thumbUrl = defaultServiceImgs[idx % defaultServiceImgs.length];
+            const thumbUrl = s.thumbnailUrl || defaultServiceImgs[idx % defaultServiceImgs.length];
 
             return (
               <div 
@@ -85,35 +85,36 @@ export function ServicesSection({ lang, onOpenService, isEditActive = false, onE
                 className="group rounded-2xl bg-white border border-slate-200 hover:border-orange-400 overflow-hidden transition-all duration-300 shadow-sm interactive-card flex flex-col justify-between cursor-pointer"
                 role="button"
                 tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    onOpenService?.(s);
-                  }
-                }}
               >
                 {/* 16:9 Landscape Service Thumbnail Banner */}
-                <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-900">
-                  <img 
-                    src={thumbUrl} 
-                    alt={s.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
+                <EditableWrapper
+                  isEditActive={isEditActive}
+                  type="image"
+                  label={`Đổi Ảnh Dịch Vụ ${idx + 1}`}
+                  onEdit={() => triggerEdit(`service_${s.id}_thumbnailUrl`, `URL Ảnh Thumbnail Dịch Vụ ${s.title}`, thumbUrl)}
+                >
+                  <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-900">
+                    <img 
+                      src={thumbUrl} 
+                      alt={s.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
 
-                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
-                    <div className="w-9 h-9 rounded-xl bg-orange-600/90 backdrop-blur-xs border border-white/20 flex items-center justify-center text-white shadow-md">
-                      <Icon className="w-5 h-5" />
+                    <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                      <div className="w-9 h-9 rounded-xl bg-orange-600/90 backdrop-blur-xs border border-white/20 flex items-center justify-center text-white shadow-md">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <span className="font-mono text-xs text-white bg-slate-900/80 backdrop-blur-xs px-2.5 py-1 rounded-md border border-white/20 font-bold">
+                        SVC.0{idx + 1}
+                      </span>
                     </div>
-                    <span className="font-mono text-xs text-white bg-slate-900/80 backdrop-blur-xs px-2.5 py-1 rounded-md border border-white/20 font-bold">
-                      SVC.0{idx + 1}
-                    </span>
                   </div>
-
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center gap-1.5 text-white text-[11px] font-mono font-bold opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ImageIcon className="w-3.5 h-3.5 text-orange-400" />
-                    <span>{isVi ? 'Xem Album Ảnh Thực Tế 📷' : 'View Showcase Gallery 📷'}</span>
-                  </div>
+                </EditableWrapper>
+                
+                <div className="absolute bottom-3 left-3 right-3 flex items-center gap-1.5 text-white text-[11px] font-mono font-bold opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  <ImageIcon className="w-3.5 h-3.5 text-orange-400" />
+                  <span>{isVi ? 'Xem Album Ảnh Thực Tế 📷' : 'View Showcase Gallery 📷'}</span>
                 </div>
 
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">

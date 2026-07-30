@@ -67,7 +67,8 @@ export function ServiceGalleryModal({ service, onClose, lang = 'vi' }: ServiceGa
   const isVi = lang === 'vi';
   
   // Get photos for this specific service ID, fallback to general photos if not found
-  const photos = SERVICE_SHOWCASE_PHOTOS[service.id] || SERVICE_SHOWCASE_PHOTOS['sv-1'];
+  const customPhotos = service.galleryPhotos?.map(url => ({ url, title: service.title, caption: service.description })) || [];
+  const photos = customPhotos.length > 0 ? customPhotos : (SERVICE_SHOWCASE_PHOTOS[service.id] || SERVICE_SHOWCASE_PHOTOS['sv-1']);
 
   return (
     <>

@@ -185,7 +185,30 @@ export default function App() {
   const handleSaveInlineField = (newValue: string) => {
     if (!activeInlineField) return;
     const currentData = getAdminData();
-    (currentData.general as any)[activeInlineField.key] = newValue;
+    const key = activeInlineField.key;
+
+    if (key.startsWith('service_')) {
+      // Format: service_{id}_{field}
+      const parts = key.split('_');
+      const serviceId = parts[1];
+      const field = parts.slice(2).join('_');
+      const targetService = currentData.services.find(s => s.id === serviceId);
+      if (targetService) {
+        (targetService as any)[field] = newValue;
+      }
+    } else if (key.startsWith('course_')) {
+      // Format: course_{id}_{field}
+      const parts = key.split('_');
+      const courseId = parts[1];
+      const field = parts.slice(2).join('_');
+      const targetCourse = currentData.courses.find(c => c.id === courseId);
+      if (targetCourse) {
+        (targetCourse as any)[field] = newValue;
+      }
+    } else {
+      (currentData.general as any)[key] = newValue;
+    }
+
     window.dispatchEvent(new Event('admin_data_updated'));
     setActiveInlineField(null);
   };

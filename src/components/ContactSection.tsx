@@ -71,39 +71,51 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
             </div>
 
             <div className="space-y-4 pt-2">
-              <a 
-                href="tel:0813131385" 
-                className="flex items-center gap-4 p-4.5 rounded-2xl bg-white border border-slate-200 hover:border-orange-400 transition-all duration-200 shadow-2xs hover:shadow-md group"
+              <EditableWrapper
+                isEditActive={isEditActive}
+                label="Sửa Số Hotline / Zalo"
+                onEdit={() => triggerEdit('phoneHotline', 'Số Điện Thoại Hotline / Zalo', gen.phoneHotline || '0813 13 13 85')}
               >
-                <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all">
-                  <Phone className="w-6 h-6" />
-                </div>
-                <div>
-                  <span className="text-xs font-bold text-slate-500 block uppercase tracking-wider">
-                    {isVi ? 'Hotline Trực Tiếp / Zalo' : 'Direct Hotline / Zalo'}
-                  </span>
-                  <strong className="text-xl font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
-                    {gen.phoneHotline || '0813 13 13 85'}
-                  </strong>
-                </div>
-              </a>
+                <a 
+                  href={`tel:${(gen.phoneHotline || '0813131385').replace(/\s+/g, '')}`} 
+                  className="flex items-center gap-4 p-4.5 rounded-2xl bg-white border border-slate-200 hover:border-orange-400 transition-all duration-200 shadow-2xs hover:shadow-md group"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all">
+                    <Phone className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold text-slate-500 block uppercase tracking-wider">
+                      {isVi ? 'Hotline Trực Tiếp / Zalo' : 'Direct Hotline / Zalo'}
+                    </span>
+                    <strong className="text-xl font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
+                      {gen.phoneHotline || '0813 13 13 85'}
+                    </strong>
+                  </div>
+                </a>
+              </EditableWrapper>
 
-              <a 
-                href="mailto:admin@xuanhien.info" 
-                className="flex items-center gap-4 p-4.5 rounded-2xl bg-white border border-slate-200 hover:border-orange-400 transition-all duration-200 shadow-2xs hover:shadow-md group"
+              <EditableWrapper
+                isEditActive={isEditActive}
+                label="Sửa Địa Chỉ Email"
+                onEdit={() => triggerEdit('emailContact', 'Địa Chỉ Email Dịch Vụ', gen.emailContact || 'admin@xuanhien.info')}
               >
-                <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-all">
-                  <Mail className="w-6 h-6" />
-                </div>
-                <div>
-                  <span className="text-xs font-bold text-slate-500 block uppercase tracking-wider">
-                    {isVi ? 'Email trao đổi dự án' : 'Project Email Inquiries'}
-                  </span>
-                  <strong className="text-base font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
-                    {gen.emailContact || 'admin@xuanhien.info'}
-                  </strong>
-                </div>
-              </a>
+                <a 
+                  href={`mailto:${gen.emailContact || 'admin@xuanhien.info'}`} 
+                  className="flex items-center gap-4 p-4.5 rounded-2xl bg-white border border-slate-200 hover:border-orange-400 transition-all duration-200 shadow-2xs hover:shadow-md group"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-all">
+                    <Mail className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold text-slate-500 block uppercase tracking-wider">
+                      {isVi ? 'Email trao đổi dự án' : 'Project Email Inquiries'}
+                    </span>
+                    <strong className="text-base font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
+                      {gen.emailContact || 'admin@xuanhien.info'}
+                    </strong>
+                  </div>
+                </a>
+              </EditableWrapper>
 
               <div className="flex items-center gap-4 p-4.5 rounded-2xl bg-white border border-slate-200 shadow-2xs">
                 <div className="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700">

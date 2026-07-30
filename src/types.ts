@@ -83,6 +83,8 @@ export interface ServiceItem {
   title: string;
   description: string;
   tags: string;
+  thumbnailUrl?: string;
+  galleryPhotos?: string[];
 }
 
 export interface PhotoAlbumItem {

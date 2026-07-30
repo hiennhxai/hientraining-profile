@@ -1230,6 +1230,44 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                         </button>
                       </div>
                     </div>
+
+                    <div className="sm:col-span-2 pt-2">
+                      <div className="flex items-center justify-between mb-1">
+                        <label className="block font-bold text-slate-800 text-xs flex items-center gap-1.5">
+                          <ImageIcon className="w-3.5 h-3.5 text-orange-600" />
+                          <span>Hình Ảnh Thumbnail Khóa Học (Hiển thị ngoài trang danh sách)</span>
+                        </label>
+                      </div>
+                      <div className="flex gap-2">
+                        <input 
+                          type="text" 
+                          placeholder="Dán URL hình ảnh thumbnail (ví dụ: https://.../thumb.jpg)"
+                          value={course.thumbnailUrl || ''} 
+                          onChange={(e) => {
+                            const newCourses = [...data.courses];
+                            newCourses[idx].thumbnailUrl = e.target.value;
+                            setData({ ...data, courses: newCourses });
+                          }}
+                          className="flex-1 px-3 py-1.5 rounded-xl border border-slate-300 font-mono text-xs text-slate-800 bg-orange-50/40" 
+                        />
+                        <button
+                          type="button"
+                          onClick={() => openPicker(
+                            (selectedUrl) => {
+                              const newCourses = [...data.courses];
+                              newCourses[idx].thumbnailUrl = selectedUrl;
+                              setData({ ...data, courses: newCourses });
+                            },
+                            `CHỌN THUMBNAIL KHÓA HỌC: ${course.title}`,
+                            course.thumbnailUrl || ''
+                          )}
+                          className="px-3 py-1.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs shadow-xs transition-all flex items-center gap-1 cursor-pointer whitespace-nowrap"
+                        >
+                          <ImageIcon className="w-3.5 h-3.5" />
+                          <span>Chọn / Tải Ảnh Thumbnail</span>
+                        </button>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Lessons Editor */}
@@ -1373,6 +1411,88 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                         }}
                         className="w-full px-3 py-1.5 rounded-xl border border-slate-300 font-mono text-[11px]"
                       />
+                    </div>
+
+                    {/* Service Thumbnail */}
+                    <div className="pt-2 border-t border-slate-100">
+                      <label className="block text-[10px] font-bold text-slate-500 mb-1">Ảnh Thumbnail Dịch Vụ (Landscape 16:9)</label>
+                      <div className="flex gap-2">
+                        <input
+                          type="text"
+                          placeholder="Dán URL ảnh thumbnail..."
+                          value={sv.thumbnailUrl || ''}
+                          onChange={(e) => {
+                            const newSv = [...data.services];
+                            newSv[sIdx].thumbnailUrl = e.target.value;
+                            setData({ ...data, services: newSv });
+                          }}
+                          className="flex-1 px-3 py-1.5 rounded-xl border border-slate-300 font-mono text-[11px]"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => openPicker(
+                            (selectedUrl) => {
+                              const newSv = [...data.services];
+                              newSv[sIdx].thumbnailUrl = selectedUrl;
+                              setData({ ...data, services: newSv });
+                            },
+                            `CHỌN ẢNH THUMBNAIL: ${sv.title}`,
+                            sv.thumbnailUrl || ''
+                          )}
+                          className="px-2 py-1.5 bg-orange-600 hover:bg-orange-500 text-white rounded-lg text-[10px] font-bold cursor-pointer whitespace-nowrap"
+                        >
+                          Chọn Ảnh
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Service Showcase Photo Album (Add / Delete multiple photos) */}
+                    <div className="pt-2">
+                      <div className="flex items-center justify-between mb-1">
+                        <label className="block text-[10px] font-bold text-slate-500">Album Ảnh Dự Án Thực Tế (Showcase Album)</label>
+                        <button
+                          type="button"
+                          onClick={() => openPicker(
+                            (selectedUrl) => {
+                              const newSv = [...data.services];
+                              const currentPhotos = newSv[sIdx].galleryPhotos || [];
+                              newSv[sIdx].galleryPhotos = [...currentPhotos, selectedUrl];
+                              setData({ ...data, services: newSv });
+                            },
+                            `THÊM ẢNH VÀO ALBUM: ${sv.title}`
+                          )}
+                          className="text-[10px] font-bold text-orange-600 hover:text-orange-700 cursor-pointer"
+                        >
+                          + Thêm Ảnh Mới
+                        </button>
+                      </div>
+                      
+                      {sv.galleryPhotos && sv.galleryPhotos.length > 0 ? (
+                        <div className="grid grid-cols-4 gap-1.5 max-h-24 overflow-y-auto p-1 bg-slate-50 border border-slate-200 rounded-lg">
+                          {sv.galleryPhotos.map((url, pIdx) => (
+                            <div key={pIdx} className="relative aspect-video rounded bg-slate-200 overflow-hidden group">
+                              <img src={url} className="w-full h-full object-cover" alt="" />
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const newSv = [...data.services];
+                                  const currentPhotos = [...(newSv[sIdx].galleryPhotos || [])];
+                                  currentPhotos.splice(pIdx, 1);
+                                  newSv[sIdx].galleryPhotos = currentPhotos;
+                                  setData({ ...data, services: newSv });
+                                }}
+                                className="absolute inset-0 bg-red-600/90 text-white font-bold text-[9px] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                              >
+                                Xóa
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="text-[10px] text-slate-400 italic text-center py-2 bg-slate-50 rounded-lg border border-slate-200">
+                          Chưa có ảnh nào trong album. Bấm "+ Thêm Ảnh Mới" để thêm.
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
