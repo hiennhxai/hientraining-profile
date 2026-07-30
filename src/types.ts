@@ -97,6 +97,7 @@ export interface PhotoAlbumItem {
   height: number;
   createdAt: string;
   caption?: string;
+  folder?: string;
 }
 
 export interface BrandLogoItem {
