@@ -1,22 +1,37 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Language } from '../types';
 import { translations } from '../data/translations';
 import { Logo } from './Logo';
 import { BrandMarquee } from './BrandMarquee';
 import { CourseBannerCarousel } from './CourseBannerCarousel';
 import { HeroPortraitShowcase } from './HeroPortraitShowcase';
+import { EditableWrapper } from './EditableWrapper';
+import { getAdminData } from '../data/adminStore';
 import { Phone, Mail, Award, CheckCircle2, ChevronRight, Mic, Video, Sparkles, History, Users, Tv } from 'lucide-react';
 
 interface HeroSectionProps {
   lang: Language;
   onNavigatePage?: (page: string) => void;
   onSelectCourse?: (course: any) => void;
+  isEditActive?: boolean;
+  onEditField?: (fieldKey: string, fieldLabel: string, currentValue: string) => void;
 }
 
-export function HeroSection({ lang, onNavigatePage, onSelectCourse }: HeroSectionProps) {
+export function HeroSection({ lang, onNavigatePage, onSelectCourse, isEditActive = false, onEditField }: HeroSectionProps) {
   const t = translations[lang];
   const isVi = lang === 'vi';
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [gen, setGen] = useState(getAdminData().general);
+
+  useEffect(() => {
+    const handleUpdate = () => setGen(getAdminData().general);
+    window.addEventListener('admin_data_updated', handleUpdate);
+    window.addEventListener('supabase_realtime_update', handleUpdate);
+    return () => {
+      window.removeEventListener('admin_data_updated', handleUpdate);
+      window.removeEventListener('supabase_realtime_update', handleUpdate);
+    };
+  }, []);
 
   useEffect(() => {
     const vid = videoRef.current;
@@ -87,6 +102,10 @@ export function HeroSection({ lang, onNavigatePage, onSelectCourse }: HeroSectio
     };
   }, []);
 
+  const triggerEdit = (key: string, label: string, currentVal: string) => {
+    if (onEditField) onEditField(key, label, currentVal);
+  };
+
   return (
     <section id="hero" className="relative min-h-[85vh] flex items-center justify-center pt-22 pb-8 sm:pb-10 overflow-hidden bg-gradient-to-b from-orange-50/40 via-amber-50/20 to-white">
       {/* Background Video with Subtle Brightness Control */}
@@ -98,7 +117,7 @@ export function HeroSection({ lang, onNavigatePage, onSelectCourse }: HeroSectio
         playsInline
         preload="auto"
         className="absolute inset-0 w-full h-full object-cover opacity-25 z-0 mix-blend-multiply"
-        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_065045_c44942da-53c6-4804-b734-f9e07fc22e08.mp4"
+        src={gen.videoBgUrl || "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_065045_c44942da-53c6-4804-b734-f9e07fc22e08.mp4"}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent z-1 pointer-events-none" />
 
@@ -121,10 +140,23 @@ export function HeroSection({ lang, onNavigatePage, onSelectCourse }: HeroSectio
 
             {/* Main Headline */}
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
-              <span className="block text-slate-900">{t.hero_h1a}</span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-amber-600 to-red-600 mt-2 font-black">
-                {t.hero_h1b}
-              </span>
+              <EditableWrapper
+                isEditActive={isEditActive}
+                label="Sửa Tiêu Đề 1"
+                onEdit={() => triggerEdit('heroHeadline1', 'Tiêu Đề Dòng 1', gen.heroHeadline1 || t.hero_h1a)}
+              >
+                <span className="block text-slate-900">{gen.heroHeadline1 || t.hero_h1a}</span>
+              </EditableWrapper>
+
+              <EditableWrapper
+                isEditActive={isEditActive}
+                label="Sửa Tiêu Đề 2"
+                onEdit={() => triggerEdit('heroHeadline2', 'Tiêu Đề Dòng 2', gen.heroHeadline2 || t.hero_h1b)}
+              >
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-amber-600 to-red-600 mt-2 font-black">
+                  {gen.heroHeadline2 || t.hero_h1b}
+                </span>
+              </EditableWrapper>
             </h1>
 
             {/* Badges / Key Roles */}
@@ -149,10 +181,16 @@ export function HeroSection({ lang, onNavigatePage, onSelectCourse }: HeroSectio
 
             {/* Subtitle & CTA buttons */}
             <div className="max-w-3xl">
-              <p
-                className="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 font-normal"
-                dangerouslySetInnerHTML={{ __html: t.hero_sub }}
-              />
+              <EditableWrapper
+                isEditActive={isEditActive}
+                label="Sửa Mô Tả Hero"
+                onEdit={() => triggerEdit('heroSub', 'Mô Tả Giới Thiệu Trang Chủ', gen.heroSub || t.hero_sub)}
+              >
+                <p
+                  className="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 font-normal"
+                  dangerouslySetInnerHTML={{ __html: gen.heroSub || t.hero_sub }}
+                />
+              </EditableWrapper>
 
               <div className="flex flex-wrap items-center gap-4 mb-8">
                 <button 
@@ -172,17 +210,35 @@ export function HeroSection({ lang, onNavigatePage, onSelectCourse }: HeroSectio
 
               {/* Direct Contact Info Box */}
               <div className="p-4 rounded-xl bg-white/95 border border-slate-200/90 shadow-sm backdrop-blur-md inline-flex flex-wrap items-center gap-6 text-xs sm:text-sm text-slate-700 mb-2">
-                <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-orange-600" />
-                  <span className="text-slate-500">{isVi ? 'Tư vấn trực tiếp:' : 'Direct Hotline:'}</span>
-                  <a href="tel:0813131385" className="font-mono font-bold text-slate-900 hover:text-orange-600 transition-colors">0813 13 13 85</a>
-                </div>
+                <EditableWrapper
+                  isEditActive={isEditActive}
+                  label="Sửa Hotline"
+                  onEdit={() => triggerEdit('phoneHotline', 'Số Điện Thoại Hotline', gen.phoneHotline || '0813 13 13 85')}
+                >
+                  <div className="flex items-center gap-2">
+                    <Phone className="w-4 h-4 text-orange-600" />
+                    <span className="text-slate-500">{isVi ? 'Tư vấn trực tiếp:' : 'Direct Hotline:'}</span>
+                    <a href={`tel:${(gen.phoneHotline || '0813131385').replace(/\s/g, '')}`} className="font-bold text-slate-900 hover:text-orange-600 transition-colors">
+                      {gen.phoneHotline || '0813 13 13 85'}
+                    </a>
+                  </div>
+                </EditableWrapper>
+
                 <div className="h-4 w-px bg-slate-200 hidden sm:block" />
-                <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-amber-600" />
-                  <span className="text-slate-500">{isVi ? 'Email liên hệ:' : 'Email Inquiry:'}</span>
-                  <a href="mailto:admin@xuanhien.info" className="font-mono font-bold text-slate-900 hover:text-orange-600 transition-colors">admin@xuanhien.info</a>
-                </div>
+
+                <EditableWrapper
+                  isEditActive={isEditActive}
+                  label="Sửa Email"
+                  onEdit={() => triggerEdit('emailContact', 'Email Liên Hệ', gen.emailContact || 'admin@xuanhien.info')}
+                >
+                  <div className="flex items-center gap-2">
+                    <Mail className="w-4 h-4 text-amber-600" />
+                    <span className="text-slate-500">{isVi ? 'Email liên hệ:' : 'Email Inquiry:'}</span>
+                    <a href={`mailto:${gen.emailContact || 'admin@xuanhien.info'}`} className="font-bold text-slate-900 hover:text-orange-600 transition-colors">
+                      {gen.emailContact || 'admin@xuanhien.info'}
+                    </a>
+                  </div>
+                </EditableWrapper>
               </div>
             </div>
           </div>

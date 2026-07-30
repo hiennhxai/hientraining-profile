@@ -18,8 +18,10 @@ import { SubPageHeader } from './components/SubPageHeader';
 import { SubPageBottomCta } from './components/SubPageBottomCta';
 import { AdminLoginModal } from './components/AdminLoginModal';
 import { AdminPortalModal } from './components/AdminPortalModal';
+import { InlineEditToolbar } from './components/InlineEditToolbar';
+import { InlineTextEditorModal } from './components/InlineTextEditorModal';
 import { applyTypography } from './utils/typographyEngine';
-import { getAdminData, loadAdminDataAsync } from './data/adminStore';
+import { getAdminData, loadAdminDataAsync, saveAdminData } from './data/adminStore';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('vi');
@@ -32,6 +34,18 @@ export default function App() {
   const [isAdminOpen, setIsAdminOpen] = useState<boolean>(false);
   const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
   const [updateTrigger, setUpdateTrigger] = useState<number>(0);
+
+  // Live Inline Editing State
+  const [isAdminMode, setIsAdminMode] = useState<boolean>(() => {
+    try {
+      return sessionStorage.getItem('xuanhien_admin_mode') === 'true';
+    } catch {
+      return false;
+    }
+  });
+  const [isEditActive, setIsEditActive] = useState<boolean>(true);
+  const [isSavingInline, setIsSavingInline] = useState<boolean>(false);
+  const [activeInlineField, setActiveInlineField] = useState<{ key: string; label: string; initialValue: string } | null>(null);
 
   // Load data from Supabase
   useEffect(() => {
@@ -162,24 +176,84 @@ export default function App() {
     };
   }, [activePage]);
 
+  // Inline edit field trigger
+  const handleOpenEditField = (key: string, label: string, currentValue: string) => {
+    setActiveInlineField({ key, label, initialValue: currentValue });
+  };
+
+  // Inline edit field save handler
+  const handleSaveInlineField = (newValue: string) => {
+    if (!activeInlineField) return;
+    const currentData = getAdminData();
+    (currentData.general as any)[activeInlineField.key] = newValue;
+    window.dispatchEvent(new Event('admin_data_updated'));
+    setActiveInlineField(null);
+  };
+
+  // Save all inline changes to Supabase
+  const handleSaveAllInline = async () => {
+    setIsSavingInline(true);
+    const success = await saveAdminData(getAdminData());
+    setIsSavingInline(false);
+    if (success) {
+      alert('Đã lưu tất cả thay đổi trực quan lên Supabase thành công!');
+    } else {
+      alert('Có lỗi xảy ra khi lưu dữ liệu lên Supabase.');
+    }
+  };
+
+  // Logout admin mode
+  const handleAdminLogout = () => {
+    sessionStorage.removeItem('xuanhien_admin_mode');
+    setIsAdminMode(false);
+  };
+
   return (
     <>
       <HudFrame />
+      
+      {/* Floating Admin Live Edit Control Toolbar */}
+      <InlineEditToolbar
+        isAdminMode={isAdminMode}
+        isEditActive={isEditActive}
+        onToggleEditActive={() => setIsEditActive(!isEditActive)}
+        onOpenAdminPortal={() => setIsAdminOpen(true)}
+        onSaveAll={handleSaveAllInline}
+        onLogout={handleAdminLogout}
+        isSaving={isSavingInline}
+      />
+
       <Navbar 
         lang={lang} 
         onToggleLang={handleToggleLang} 
         isDetecting={isDetecting}
         activePage={activePage}
         onSelectPage={handleSelectPage}
-        onOpenAdmin={() => setIsAdminOpen(true)}
+        onOpenAdmin={() => {
+          if (isAdminMode) {
+            setIsAdminOpen(true);
+          } else {
+            setIsAdminLoginOpen(true);
+          }
+        }}
       />
 
       <main>
         {/* HOMEPAGE VIEW: Streamlined hero header and contact section */}
         {activePage === 'home' && (
           <>
-            <HeroSection lang={lang} onNavigatePage={handleSelectPage} onSelectCourse={(c) => setActiveCourse(c)} />
-            <ContactSection lang={lang} />
+            <HeroSection 
+              lang={lang} 
+              onNavigatePage={handleSelectPage} 
+              onSelectCourse={(c) => setActiveCourse(c)}
+              isEditActive={isAdminMode && isEditActive}
+              onEditField={handleOpenEditField}
+            />
+            <ContactSection 
+              lang={lang}
+              isEditActive={isAdminMode && isEditActive}
+              onEditField={handleOpenEditField}
+            />
           </>
         )}
 
@@ -256,7 +330,11 @@ export default function App() {
               lang={lang}
               onBackToHome={() => handleSelectPage('home')}
             />
-            <ContactSection lang={lang} />
+            <ContactSection 
+              lang={lang}
+              isEditActive={isAdminMode && isEditActive}
+              onEditField={handleOpenEditField}
+            />
           </>
         )}
       </main>
@@ -264,7 +342,13 @@ export default function App() {
       <Footer 
         lang={lang} 
         onNavigatePage={handleSelectPage} 
-        onOpenAdminLogin={() => setIsAdminLoginOpen(true)}
+        onOpenAdminLogin={() => {
+          if (isAdminMode) {
+            setIsAdminOpen(true);
+          } else {
+            setIsAdminLoginOpen(true);
+          }
+        }}
       />
 
       <ArticleReaderModal
@@ -291,6 +375,9 @@ export default function App() {
         onClose={() => setIsAdminLoginOpen(false)}
         onSuccess={() => {
           setIsAdminLoginOpen(false);
+          sessionStorage.setItem('xuanhien_admin_mode', 'true');
+          setIsAdminMode(true);
+          setIsEditActive(true);
           setIsAdminOpen(true);
         }}
       />
@@ -299,6 +386,17 @@ export default function App() {
         isOpen={isAdminOpen}
         onClose={() => setIsAdminOpen(false)}
       />
+
+      {/* Mini Inline Text Editor Modal */}
+      {activeInlineField && (
+        <InlineTextEditorModal
+          isOpen={!!activeInlineField}
+          title={`SỬA ${activeInlineField.label.toUpperCase()}`}
+          initialValue={activeInlineField.initialValue}
+          onClose={() => setActiveInlineField(null)}
+          onSave={handleSaveInlineField}
+        />
+      )}
     </>
   );
 }

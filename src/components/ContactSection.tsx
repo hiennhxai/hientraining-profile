@@ -2,14 +2,17 @@ import { useState, useEffect, FormEvent } from 'react';
 import { Language } from '../types';
 import { translations } from '../data/translations';
 import { Logo } from './Logo';
+import { EditableWrapper } from './EditableWrapper';
 import { Phone, Mail, MapPin, Send, CheckCircle2, MessageSquare } from 'lucide-react';
 import { getAdminData } from '../data/adminStore';
 
 interface ContactSectionProps {
   lang: Language;
+  isEditActive?: boolean;
+  onEditField?: (fieldKey: string, fieldLabel: string, currentValue: string) => void;
 }
 
-export function ContactSection({ lang }: ContactSectionProps) {
+export function ContactSection({ lang, isEditActive = false, onEditField }: ContactSectionProps) {
   const t = translations[lang];
   const isVi = lang === 'vi';
   const [submitted, setSubmitted] = useState(false);
@@ -25,6 +28,10 @@ export function ContactSection({ lang }: ContactSectionProps) {
       window.removeEventListener('supabase_realtime_update', handleUpdate);
     };
   }, []);
+
+  const triggerEdit = (key: string, label: string, currentVal: string) => {
+    if (onEditField) onEditField(key, label, currentVal);
+  };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -42,12 +49,25 @@ export function ContactSection({ lang }: ContactSectionProps) {
           {/* Left Column Contact Details */}
           <div className="lg:col-span-6 space-y-6">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-                {gen.heroCtaText || t.ct_title}
-              </h2>
-              <p className="text-slate-600 text-sm sm:text-base mt-2 font-medium">
-                {gen.heroCtaSub || t.ct_sub}
-              </p>
+              <EditableWrapper
+                isEditActive={isEditActive}
+                label="Sửa Tiêu Đề Khối Đồng Hành"
+                onEdit={() => triggerEdit('heroCtaText', 'Tiêu Đề Khối Đồng Hành', gen.heroCtaText || t.ct_title)}
+              >
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                  {gen.heroCtaText || t.ct_title}
+                </h2>
+              </EditableWrapper>
+
+              <EditableWrapper
+                isEditActive={isEditActive}
+                label="Sửa Mô Tả Khối Đồng Hành"
+                onEdit={() => triggerEdit('heroCtaSub', 'Mô Tả Khối Đồng Hành', gen.heroCtaSub || t.ct_sub)}
+              >
+                <p className="text-slate-600 text-sm sm:text-base mt-2 font-medium">
+                  {gen.heroCtaSub || t.ct_sub}
+                </p>
+              </EditableWrapper>
             </div>
 
             <div className="space-y-4 pt-2">
@@ -62,7 +82,9 @@ export function ContactSection({ lang }: ContactSectionProps) {
                   <span className="text-xs font-bold text-slate-500 block uppercase tracking-wider">
                     {isVi ? 'Hotline Trực Tiếp / Zalo' : 'Direct Hotline / Zalo'}
                   </span>
-                  <strong className="text-xl font-bold text-slate-900 group-hover:text-orange-600 transition-colors">0813 13 13 85</strong>
+                  <strong className="text-xl font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
+                    {gen.phoneHotline || '0813 13 13 85'}
+                  </strong>
                 </div>
               </a>
 
@@ -77,7 +99,9 @@ export function ContactSection({ lang }: ContactSectionProps) {
                   <span className="text-xs font-bold text-slate-500 block uppercase tracking-wider">
                     {isVi ? 'Email trao đổi dự án' : 'Project Email Inquiries'}
                   </span>
-                  <strong className="text-base font-bold text-slate-900 group-hover:text-orange-600 transition-colors">admin@xuanhien.info</strong>
+                  <strong className="text-base font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
+                    {gen.emailContact || 'admin@xuanhien.info'}
+                  </strong>
                 </div>
               </a>
 
@@ -99,15 +123,28 @@ export function ContactSection({ lang }: ContactSectionProps) {
 
           {/* Right Column Quick Inquiry Form */}
           <div className="lg:col-span-6 p-7 sm:p-9 rounded-3xl bg-white border border-slate-200 shadow-xl relative">
-            <h3 className="text-xl font-extrabold text-slate-900 mb-2 flex items-center gap-2">
-              <MessageSquare className="w-5 h-5 text-orange-600" />
-              <span>{gen.contactTitle || (isVi ? 'ĐĂNG KÝ TƯ VẤN KHÓA HỌC / DỰ ÁN' : 'ENROLL / CONSULTATION INQUIRY')}</span>
-            </h3>
-            <p className="text-xs text-slate-600 mb-6 font-medium">
-              {gen.contactSubtitle || (isVi 
-                ? 'Xuân Hiến sẽ gọi lại trực tiếp cho bạn trong vòng 24h để trao đổi lộ trình cá nhân hóa.'
-                : 'Xuan Hien will contact you within 24h for a personalized roadmap.')}
-            </p>
+            <EditableWrapper
+              isEditActive={isEditActive}
+              label="Sửa Tiêu Đề Form"
+              onEdit={() => triggerEdit('contactTitle', 'Tiêu Đề Khối Đăng Ký', gen.contactTitle || 'ĐĂNG KÝ TƯ VẤN KHÓA HỌC / DỰ ÁN')}
+            >
+              <h3 className="text-xl font-extrabold text-slate-900 mb-2 flex items-center gap-2">
+                <MessageSquare className="w-5 h-5 text-orange-600" />
+                <span>{gen.contactTitle || (isVi ? 'ĐĂNG KÝ TƯ VẤN KHÓA HỌC / DỰ ÁN' : 'ENROLL / CONSULTATION INQUIRY')}</span>
+              </h3>
+            </EditableWrapper>
+
+            <EditableWrapper
+              isEditActive={isEditActive}
+              label="Sửa Mô Tả Form"
+              onEdit={() => triggerEdit('contactSubtitle', 'Mô Tả Phụ Khối Đăng Ký', gen.contactSubtitle || (isVi ? 'Xuân Hiến sẽ gọi lại trực tiếp cho bạn trong vòng 24h...' : 'Xuan Hien will contact you...'))}
+            >
+              <p className="text-xs text-slate-600 mb-6 font-medium">
+                {gen.contactSubtitle || (isVi 
+                  ? 'Xuân Hiến sẽ gọi lại trực tiếp cho bạn trong vòng 24h để trao đổi lộ trình cá nhân hóa.'
+                  : 'Xuan Hien will contact you within 24h for a personalized roadmap.')}
+              </p>
+            </EditableWrapper>
 
             {submitted ? (
               <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-3 animate-fadeIn">
