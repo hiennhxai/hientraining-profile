@@ -4,6 +4,7 @@ import { getAdminData, saveAdminData, resetAdminData, FullAdminData } from '../d
 import { PhotoAlbumManager } from './PhotoAlbumManager';
 import { RichArticleBlockEditor } from './RichArticleBlockEditor';
 import { UniversalImagePickerModal } from './UniversalImagePickerModal';
+import { ArticleReaderModal } from './ArticleReaderModal';
 import { AVAILABLE_FONTS, applyTypography } from '../utils/typographyEngine';
 import { 
   X, Save, RotateCcw, RotateCw, Download, Upload, Plus, Trash2, Check, Settings, 
@@ -2329,120 +2330,12 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
 
         {/* ARTICLE LIVE PREVIEW POP-UP MODAL */}
         {previewArticle && (
-          <div className="fixed inset-0 z-[100] bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 animate-fadeIn">
-            <div className="relative w-full max-w-3xl bg-white rounded-3xl border border-slate-200 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-              
-              {/* Modal Header */}
-              <div className="p-4 sm:p-5 bg-slate-900 text-white flex items-center justify-between gap-4 border-b border-slate-800">
-                <div className="flex items-center gap-2">
-                  <Eye className="w-5 h-5 text-amber-400" />
-                  <div>
-                    <h3 className="text-sm sm:text-base font-extrabold text-white">LIVE PREVIEW POP-UP: KẾT QUẢ HIỂN THỊ BÀI VIẾT</h3>
-                    <p className="text-[10px] text-slate-400 font-mono">Mô phỏng 100% giao diện thực tế khi phát hành lên website</p>
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setPreviewArticle(null)}
-                  className="p-2 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              {/* Modal Render Stage */}
-              <div className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-6 bg-white text-slate-900 font-sans">
-                
-                {/* Meta Badges */}
-                <div className="flex items-center justify-between border-b border-slate-100 pb-3 text-xs">
-                  <span className="px-3 py-1 rounded-lg bg-orange-50 text-orange-600 font-mono font-extrabold uppercase border border-orange-200">
-                    {previewArticle.cat || 'Kinh nghiệm'}
-                  </span>
-                  <div className="flex items-center gap-3 text-slate-500 font-mono">
-                    <span>{previewArticle.date}</span>
-                    <span>•</span>
-                    <span>{previewArticle.readTime}</span>
-                  </div>
-                </div>
-
-                {/* Title & Dek */}
-                <div className="space-y-3">
-                  <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
-                    {previewArticle.vi?.title || previewArticle.title}
-                  </h1>
-                  <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed italic border-l-4 border-orange-500 pl-4 py-1 bg-orange-50/50 rounded-r-xl">
-                    {previewArticle.vi?.dek || previewArticle.excerpt}
-                  </p>
-                </div>
-
-                {/* Hero Cover Image */}
-                {(previewArticle.vi?.coverImage || previewArticle.coverImage) && (
-                  <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-md">
-                    <img 
-                      src={previewArticle.vi?.coverImage || previewArticle.coverImage} 
-                      alt="Cover" 
-                      className="w-full aspect-video object-cover"
-                    />
-                  </div>
-                )}
-
-                {/* Formatted Article Blocks */}
-                {previewArticle.vi?.blocks && previewArticle.vi.blocks.length > 0 ? (
-                  <div className="space-y-5 pt-4 border-t border-slate-100 text-sm sm:text-base leading-relaxed text-slate-800">
-                    {previewArticle.vi.blocks.map((block: any, bIdx: number) => (
-                      <div key={bIdx} className="space-y-2">
-                        {block.type === 'heading' && (
-                          <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 pt-3 border-b border-slate-100 pb-2">
-                            {block.content}
-                          </h2>
-                        )}
-                        {block.type === 'text' && (
-                          <p className="text-slate-700 leading-relaxed font-normal whitespace-pre-line">
-                            {block.content}
-                          </p>
-                        )}
-                        {block.type === 'quote' && (
-                          <blockquote className="p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl italic font-serif text-slate-800 text-base">
-                            "{block.content}"
-                          </blockquote>
-                        )}
-                        {block.type === 'image' && (
-                          <div className="space-y-1.5 py-2">
-                            <img src={block.content} alt={block.caption || 'Article photo'} className="w-full rounded-2xl border border-slate-200 shadow-sm object-cover" />
-                            {block.caption && (
-                              <p className="text-center text-xs font-mono text-slate-500 italic">{block.caption}</p>
-                            )}
-                          </div>
-                        )}
-                        {block.type === 'list' && Array.isArray(block.items) && (
-                          <ul className="list-disc pl-5 space-y-1 text-slate-700 font-medium">
-                            {block.items.map((item: string, iIdx: number) => (
-                              <li key={iIdx}>{item}</li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="text-xs text-slate-400 font-mono italic text-center py-4">Chưa có các khối nội dung chi tiết</p>
-                )}
-
-              </div>
-
-              {/* Modal Footer */}
-              <div className="p-4 bg-slate-100 border-t border-slate-200 flex items-center justify-end">
-                <button
-                  type="button"
-                  onClick={() => setPreviewArticle(null)}
-                  className="px-5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs cursor-pointer shadow-md"
-                >
-                  Đóng Pop-up Preview
-                </button>
-              </div>
-
-            </div>
-          </div>
+          <ArticleReaderModal
+            slug={editingArticleSlug || 'preview'}
+            lang="vi"
+            onClose={() => setPreviewArticle(null)}
+            overrideArticle={previewArticle}
+          />
         )}
 
       </div>

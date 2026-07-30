@@ -19,10 +19,12 @@ export type BodyBlock =
 export interface ArticleTranslation {
   title: string;
   dek: string;
-  role: string;
+  role?: string;
   readTime: string;
   context?: string;
-  body: BodyBlock[];
+  coverImage?: string;
+  blocks?: any[];
+  body?: BodyBlock[];
 }
 
 export interface Article {
@@ -32,6 +34,12 @@ export interface Article {
   author: string;
   initials: string;
   tags: string[];
+  excerpt?: string;
+  title?: string;
+  coverImage?: string;
+  readTime?: string;
+  category?: string;
+  blocks?: any[];
   en: ArticleTranslation;
   vi: ArticleTranslation;
 }

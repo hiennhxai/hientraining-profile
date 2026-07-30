@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Language, ArticleCategory } from '../types';
+import { Language, ArticleCategory, Article } from '../types';
 import { translations } from '../data/translations';
 import { getAdminData } from '../data/adminStore';
 
@@ -7,6 +7,7 @@ interface ArticleReaderModalProps {
   slug: string | null;
   lang: Language;
   onClose: () => void;
+  overrideArticle?: Article | null;
 }
 
 const getCategoryInfo = (cat: ArticleCategory, isVi: boolean) => {
@@ -22,18 +23,18 @@ const getCategoryInfo = (cat: ArticleCategory, isVi: boolean) => {
   return map[cat];
 };
 
-export function ArticleReaderModal({ slug, lang, onClose }: ArticleReaderModalProps) {
+export function ArticleReaderModal({ slug, lang, onClose, overrideArticle }: ArticleReaderModalProps) {
   const t = translations[lang];
 
   useEffect(() => {
-    if (slug) {
+    if (slug || overrideArticle) {
       document.body.classList.add('reader-lock');
     } else {
       document.body.classList.remove('reader-lock');
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && slug) {
+      if (e.key === 'Escape' && (slug || overrideArticle)) {
         onClose();
       }
     };
@@ -43,12 +44,12 @@ export function ArticleReaderModal({ slug, lang, onClose }: ArticleReaderModalPr
       document.body.classList.remove('reader-lock');
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [slug, onClose]);
+  }, [slug, overrideArticle, onClose]);
 
-  if (!slug) return null;
+  if (!slug && !overrideArticle) return null;
 
   const adminData = getAdminData();
-  const article = adminData.articles[slug];
+  const article = overrideArticle || (slug ? adminData.articles[slug] : null);
   if (!article) return null;
 
   const isVi = lang === 'vi';
@@ -99,6 +100,12 @@ export function ArticleReaderModal({ slug, lang, onClose }: ArticleReaderModalPr
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-snug mb-4">{d.title}</h1>
           <p className="text-slate-600 text-base sm:text-lg mb-6 leading-relaxed font-medium">{d.dek}</p>
 
+          {d.coverImage && (
+            <figure className="my-6 rounded-2xl overflow-hidden border border-slate-200 shadow-md">
+              <img src={d.coverImage} alt={d.title} className="w-full h-auto max-h-[520px] object-cover" />
+            </figure>
+          )}
+
           {d.context && (
             <div
               className="reader-context bg-orange-50/70 border border-orange-200 rounded-xl p-4 text-slate-800 font-medium text-sm mb-8"
@@ -108,7 +115,43 @@ export function ArticleReaderModal({ slug, lang, onClose }: ArticleReaderModalPr
           )}
 
           <div className="reader-body space-y-6 text-slate-700 leading-relaxed font-normal text-base">
-            {d.body.map((block, idx) => {
+            {/* Render Rich Block Editor blocks if available */}
+            {d.blocks && d.blocks.length > 0 && d.blocks.map((block: any, bIdx: number) => {
+              if (block.type === 'heading') {
+                return <h3 key={bIdx} className="text-xl font-extrabold text-slate-900 mt-8 mb-3 border-b border-slate-100 pb-2">{block.content}</h3>;
+              }
+              if (block.type === 'text') {
+                return <p key={bIdx} className="text-slate-700 leading-relaxed font-medium whitespace-pre-line">{block.content}</p>;
+              }
+              if (block.type === 'quote') {
+                return <div key={bIdx} className="border-l-4 border-orange-500 pl-4 py-2 my-6 text-slate-900 font-semibold italic bg-orange-50/40 rounded-r-lg">"{block.content}"</div>;
+              }
+              if (block.type === 'image') {
+                return (
+                  <figure key={bIdx} className="my-6 rounded-2xl overflow-hidden border border-slate-200 shadow-md bg-slate-950 text-white">
+                    <img src={block.content} alt={block.caption || 'Ảnh minh họa'} className="w-full h-auto max-h-[520px] object-cover" />
+                    {block.caption && (
+                      <figcaption className="p-3 bg-slate-900/90 text-center font-mono text-xs text-slate-300 border-t border-slate-800">
+                        📷 {block.caption}
+                      </figcaption>
+                    )}
+                  </figure>
+                );
+              }
+              if (block.type === 'list' && Array.isArray(block.items)) {
+                return (
+                  <ul key={bIdx} className="space-y-2 my-4 pl-4 list-disc text-slate-700 font-medium">
+                    {block.items.map((item: string, iIdx: number) => (
+                      <li key={iIdx}>{item}</li>
+                    ))}
+                  </ul>
+                );
+              }
+              return null;
+            })}
+
+            {/* Render Legacy/Standard body blocks if available */}
+            {d.body && d.body.map((block, idx) => {
               if (block.t === 'p') {
                 return <div key={idx} className="text-slate-700 leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: block.c }} />;
               }
