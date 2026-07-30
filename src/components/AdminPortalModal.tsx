@@ -2058,6 +2058,16 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
             </div>
           )}
 
+          {/* TAB 8: KHO HÌNH ẢNH & MEDIA STUDIO (PhotoAlbumManager) */}
+          {activeTab === 'album' && (
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm animate-fadeIn">
+              <PhotoAlbumManager
+                photos={data.photoAlbum}
+                onUpdatePhotos={(updatedPhotos) => setData({ ...data, photoAlbum: updatedPhotos })}
+              />
+            </div>
+          )}
+
         </div>
 
         {/* Footer Super Admin Bar */}
