@@ -106,8 +106,8 @@ export function HeroSection({ lang, onNavigatePage, onSelectCourse }: HeroSectio
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
 
           {/* Mobile-only Portrait (shown above text on small screens) */}
-          <div className="lg:hidden flex justify-center -mb-2">
-            <div className="w-56 sm:w-64">
+          <div className="lg:hidden flex justify-center mb-2">
+            <div className="w-72 max-w-full px-4 sm:w-80">
               <HeroPortraitShowcase lang={lang} />
             </div>
           </div>
