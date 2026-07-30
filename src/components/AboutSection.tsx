@@ -136,13 +136,13 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
               <EditableWrapper
                 isEditActive={isEditActive}
                 label="Sửa Tiêu Đề Thành Tựu"
-                onEdit={() => triggerEdit('achievementsTitle', 'Tiêu Đề Thành Tựu', t.a_achievements_title)}
+                onEdit={() => triggerEdit('achievementsTitle', 'Tiêu Đề Thành Tựu', gen.achievementsTitle || t.a_achievements_title)}
               >
                 <h3 className="text-lg font-extrabold text-slate-900 flex items-center gap-2.5 border-b border-slate-200 pb-3.5 mb-4">
                   <div className="p-1.5 rounded-lg bg-orange-100 text-orange-600">
                     <Award className="w-5 h-5" />
                   </div>
-                  <span>{t.a_achievements_title}</span>
+                  <span>{gen.achievementsTitle || t.a_achievements_title}</span>
                 </h3>
               </EditableWrapper>
 
@@ -173,11 +173,11 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
             <EditableWrapper
               isEditActive={isEditActive}
               label="Sửa Trích Dẫn Đồng Hành"
-              onEdit={() => triggerEdit('mentorQuote', 'Trích Dẫn Mentor Đồng Hành', t.a_mentor_quote)}
+              onEdit={() => triggerEdit('mentorQuote', 'Trích Dẫn Mentor Đồng Hành', gen.mentorQuote || t.a_mentor_quote)}
             >
               <div className="pt-3 border-t border-slate-200 bg-orange-50/70 p-4 rounded-xl">
                 <p className="text-xs text-orange-900 font-medium leading-relaxed">
-                  {t.a_mentor_quote}
+                  {gen.mentorQuote || t.a_mentor_quote}
                 </p>
               </div>
             </EditableWrapper>
@@ -190,15 +190,15 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
             <EditableWrapper
               isEditActive={isEditActive}
               label="Sửa Giá Trị 1"
-              onEdit={() => triggerEdit('p1h', 'Tiêu Đề Thấu Hiểu Cốt Lõi 1', t.p1h)}
+              onEdit={() => triggerEdit('p1h', 'Tiêu Đề Thấu Hiểu Cốt Lõi 1', gen.p1h || t.p1h)}
             >
               <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm interactive-card flex flex-col justify-between h-full">
                 <div>
                   <div className="w-12 h-12 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center mb-4">
                     <Heart className="w-6 h-6 text-red-600" />
                   </div>
-                  <h4 className="text-base font-extrabold text-slate-900 mb-2">{t.p1h}</h4>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{t.p1p}</p>
+                  <h4 className="text-base font-extrabold text-slate-900 mb-2">{gen.p1h || t.p1h}</h4>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{gen.p1p || t.p1p}</p>
                 </div>
               </div>
             </EditableWrapper>
@@ -206,15 +206,15 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
             <EditableWrapper
               isEditActive={isEditActive}
               label="Sửa Giá Trị 2"
-              onEdit={() => triggerEdit('p2h', 'Tiêu Đề Thấu Hiểu Cốt Lõi 2', t.p2h)}
+              onEdit={() => triggerEdit('p2h', 'Tiêu Đề Thấu Hiểu Cốt Lõi 2', gen.p2h || t.p2h)}
             >
               <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm interactive-card flex flex-col justify-between h-full">
                 <div>
                   <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center mb-4">
                     <Users className="w-6 h-6 text-orange-600" />
                   </div>
-                  <h4 className="text-base font-extrabold text-slate-900 mb-2">{t.p2h}</h4>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{t.p2p}</p>
+                  <h4 className="text-base font-extrabold text-slate-900 mb-2">{gen.p2h || t.p2h}</h4>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{gen.p2p || t.p2p}</p>
                 </div>
               </div>
             </EditableWrapper>
@@ -222,15 +222,15 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
             <EditableWrapper
               isEditActive={isEditActive}
               label="Sửa Giá Trị 3"
-              onEdit={() => triggerEdit('p3h', 'Tiêu Đề Thấu Hiểu Cốt Lõi 3', t.p3h)}
+              onEdit={() => triggerEdit('p3h', 'Tiêu Đề Thấu Hiểu Cốt Lõi 3', gen.p3h || t.p3h)}
             >
               <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm interactive-card flex flex-col justify-between h-full">
                 <div>
                   <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center mb-4">
                     <Mic className="w-6 h-6 text-amber-600" />
                   </div>
-                  <h4 className="text-base font-extrabold text-slate-900 mb-2">{t.p3h}</h4>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{t.p3p}</p>
+                  <h4 className="text-base font-extrabold text-slate-900 mb-2">{gen.p3h || t.p3h}</h4>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{gen.p3p || t.p3p}</p>
                 </div>
               </div>
             </EditableWrapper>
@@ -242,7 +242,7 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
           <EditableWrapper
             isEditActive={isEditActive}
             label="Sửa Tiêu Đề Hành Trình"
-            onEdit={() => triggerEdit('careerTitle', 'Tiêu Đề Hành Trình Kinh Nghiệm', isVi ? 'Hành Trình Kinh Nghiệm & Lịch Sử Hoạt Động' : 'Career Milestones & Proven Experience')}
+            onEdit={() => triggerEdit('careerTitle', 'Tiêu Đề Hành Trình Kinh Nghiệm', gen.careerTitle || (isVi ? 'Hành Trình Kinh Nghiệm & Lịch Sử Hoạt Động' : 'Career Milestones & Proven Experience'))}
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="p-2.5 rounded-xl bg-orange-100 text-orange-600 font-bold">
@@ -250,7 +250,7 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
               </div>
               <div>
                 <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 leading-tight">
-                  {isVi ? 'Hành Trình Kinh Nghiệm & Lịch Sử Hoạt Động' : 'Career Milestones & Proven Experience'}
+                  {gen.careerTitle || (isVi ? 'Hành Trình Kinh Nghiệm & Lịch Sử Hoạt Động' : 'Career Milestones & Proven Experience')}
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
                   {isVi ? 'Hơn 10 năm kinh nghiệm truyền hình, dẫn chương trình & sản xuất Livestream thương hiệu' : '10+ years of television hosting, presenter coaching & brand livestream production'}

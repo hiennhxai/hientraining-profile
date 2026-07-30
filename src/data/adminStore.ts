@@ -33,6 +33,15 @@ export interface SiteGeneralConfig {
   storyP1: string;
   storyP2: string;
   storyP3: string;
+  achievementsTitle?: string;
+  mentorQuote?: string;
+  p1h?: string;
+  p1p?: string;
+  p2h?: string;
+  p2p?: string;
+  p3h?: string;
+  p3p?: string;
+  careerTitle?: string;
   heroPortraitUrl?: string;
   heroPortraitZoom?: number;
   heroPortraitOffsetX?: number;
@@ -681,6 +690,15 @@ export const defaultAdminData: FullAdminData = {
     storyP1: translations.vi.a_p1,
     storyP2: translations.vi.a_p2,
     storyP3: translations.vi.a_p3,
+    achievementsTitle: translations.vi.a_achievements_title,
+    mentorQuote: translations.vi.a_mentor_quote,
+    p1h: translations.vi.p1h,
+    p1p: translations.vi.p1p,
+    p2h: translations.vi.p2h,
+    p2p: translations.vi.p2p,
+    p3h: translations.vi.p3h,
+    p3p: translations.vi.p3p,
+    careerTitle: "Hành Trình Kinh Nghiệm & Lịch Sử Hoạt Động",
     heroPortraitUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&auto=format&fit=crop",
     heroPortraitZoom: 100,
     heroPortraitOffsetX: 0,

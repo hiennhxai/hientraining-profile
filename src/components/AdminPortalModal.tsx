@@ -1021,63 +1021,182 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
             </div>
           )}
 
-          {/* TAB 2: STORY */}
+          {/* TAB 2: STORY & ACHIEVEMENTS (FULL CONTENT EDITING A-Z) */}
           {activeTab === 'story' && (
-            <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
-              <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-2">
-                Câu Chuyện & Sứ Mệnh Của Xuân Hiến
-              </h3>
-              <div className="space-y-4 text-xs">
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Tiêu Đề Mục Câu Chuyện</label>
-                  <input 
-                    type="text" 
-                    value={data.general.storyTitle} 
-                    onChange={(e) => setData({ ...data, general: { ...data.general, storyTitle: e.target.value } })}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-300 font-bold"
-                  />
+            <div className="space-y-6">
+              {/* Block 1: Story Narrative & Slogan */}
+              <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-2 flex items-center justify-between">
+                  <span>1. Bài Viết Sứ Mệnh & Câu Chuyện Của Xuân Hiến</span>
+                  <span className="text-[10px] font-mono text-orange-600 bg-orange-50 px-2 py-0.5 rounded border border-orange-200 font-bold">
+                    TOÀN BỘ CÂU CÚ
+                  </span>
+                </h3>
+                <div className="space-y-4 text-xs">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block font-bold text-slate-700 mb-1">Tiêu Đề Mục Câu Chuyện</label>
+                      <input 
+                        type="text" 
+                        value={data.general.storyTitle || 'Hành Trình Của Xuân Hiến'} 
+                        onChange={(e) => setData({ ...data, general: { ...data.general, storyTitle: e.target.value } })}
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-bold text-slate-900 text-xs sm:text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label className="block font-bold text-slate-700 mb-1">Thẻ Tag Nhỏ Phía Trên Tiêu Đề</label>
+                      <input 
+                        type="text" 
+                        value={data.general.storyTag || 'CÂU CHUYỆN CỦA TÔI'} 
+                        onChange={(e) => setData({ ...data, general: { ...data.general, storyTag: e.target.value } })}
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-bold text-orange-600 text-xs sm:text-sm"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Câu Trích Dẫn Mở Đầu (Lead Quote)</label>
+                    <textarea 
+                      rows={2}
+                      value={data.general.storyQuote || ''} 
+                      onChange={(e) => setData({ ...data, general: { ...data.general, storyQuote: e.target.value } })}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-semibold text-orange-700 text-xs sm:text-sm"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Đoạn 1 (Hành Trình U40 & Sứ Mệnh)</label>
+                    <textarea 
+                      rows={4}
+                      value={data.general.storyP1 || ''} 
+                      onChange={(e) => setData({ ...data, general: { ...data.general, storyP1: e.target.value } })}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 leading-relaxed text-xs sm:text-sm font-medium"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Đoạn 2 (Đặc Tính Hướng Nội & Quan Sát Sâu)</label>
+                    <textarea 
+                      rows={4}
+                      value={data.general.storyP2 || ''} 
+                      onChange={(e) => setData({ ...data, general: { ...data.general, storyP2: e.target.value } })}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 leading-relaxed text-xs sm:text-sm font-medium"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Đoạn 3 (Đọc Sách Tâm Lý & Sự Thấu Hiểu)</label>
+                    <textarea 
+                      rows={4}
+                      value={data.general.storyP3 || ''} 
+                      onChange={(e) => setData({ ...data, general: { ...data.general, storyP3: e.target.value } })}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 leading-relaxed text-xs sm:text-sm font-medium"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Câu Trích Dẫn Mở Đầu</label>
-                  <input 
-                    type="text" 
-                    value={data.general.storyQuote} 
-                    onChange={(e) => setData({ ...data, general: { ...data.general, storyQuote: e.target.value } })}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-300 font-semibold text-orange-700"
-                  />
+              </div>
+
+              {/* Block 2: TV Host Achievements & Mentor Quote */}
+              <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-2">
+                  2. Bảng Thành Tựu Truyền Hình & Trích Dẫn Đồng Hành
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Tiêu Đề Bảng Thành Tựu</label>
+                    <input 
+                      type="text" 
+                      value={data.general.achievementsTitle || 'THÀNH TỰU & KINH NGHIỆM THỰC CHIẾN'} 
+                      onChange={(e) => setData({ ...data, general: { ...data.general, achievementsTitle: e.target.value } })}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-extrabold text-slate-900 text-xs sm:text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Tiêu Đề Mục Lịch Sử Hành Trình</label>
+                    <input 
+                      type="text" 
+                      value={data.general.careerTitle || 'Hành Trình Kinh Nghiệm & Lịch Sử Hoạt Động'} 
+                      onChange={(e) => setData({ ...data, general: { ...data.general, careerTitle: e.target.value } })}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-bold text-slate-900 text-xs sm:text-sm"
+                    />
+                  </div>
+                  <div className="sm:col-span-2">
+                    <label className="block font-bold text-slate-700 mb-1">Trích Dẫn Khối Mentor Đồng Hành</label>
+                    <textarea 
+                      rows={3}
+                      value={data.general.mentorQuote || ''} 
+                      onChange={(e) => setData({ ...data, general: { ...data.general, mentorQuote: e.target.value } })}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-medium text-orange-900 bg-orange-50/50 text-xs sm:text-sm"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Đoạn 1 (Hành Trình U40 & Sứ Mệnh)</label>
-                  <textarea 
-                    rows={3}
-                    value={data.general.storyP1} 
-                    onChange={(e) => setData({ ...data, general: { ...data.general, storyP1: e.target.value } })}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-300"
-                  />
-                </div>
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Đoạn 2 (Đặc Tính Hướng Nội & Quan Sát Sâu)</label>
-                  <textarea 
-                    rows={3}
-                    value={data.general.storyP2} 
-                    onChange={(e) => setData({ ...data, general: { ...data.general, storyP2: e.target.value } })}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-300"
-                  />
-                </div>
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Đoạn 3 (Đọc Sách Tâm Lý & Sự Thấu Hiểu)</label>
-                  <textarea 
-                    rows={3}
-                    value={data.general.storyP3} 
-                    onChange={(e) => setData({ ...data, general: { ...data.general, storyP3: e.target.value } })}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-300"
-                  />
+              </div>
+
+              {/* Block 3: Core Philosophy Cards (3 Thẻ Triết Lý) */}
+              <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-2">
+                  3. 3 Giá Trị Cốt Lõi / Triết Lý Đào Tạo
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                  {/* Card 1 */}
+                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                    <label className="block font-bold text-slate-900">Thẻ 1: Tiêu Đề</label>
+                    <input 
+                      type="text" 
+                      value={data.general.p1h || 'Thấu Hiểu Cốt Lõi'} 
+                      onChange={(e) => setData({ ...data, general: { ...data.general, p1h: e.target.value } })}
+                      className="w-full px-3 py-2 rounded-lg border border-slate-300 font-bold text-slate-900"
+                    />
+                    <label className="block font-bold text-slate-700 pt-1">Mô Tả Thẻ 1</label>
+                    <textarea 
+                      rows={4}
+                      value={data.general.p1p || ''} 
+                      onChange={(e) => setData({ ...data, general: { ...data.general, p1p: e.target.value } })}
+                      className="w-full px-3 py-2 rounded-lg border border-slate-300 leading-relaxed font-medium"
+                    />
+                  </div>
+
+                  {/* Card 2 */}
+                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                    <label className="block font-bold text-slate-900">Thẻ 2: Tiêu Đề</label>
+                    <input 
+                      type="text" 
+                      value={data.general.p2h || 'Đồng Hành Thực Chiến'} 
+                      onChange={(e) => setData({ ...data, general: { ...data.general, p2h: e.target.value } })}
+                      className="w-full px-3 py-2 rounded-lg border border-slate-300 font-bold text-slate-900"
+                    />
+                    <label className="block font-bold text-slate-700 pt-1">Mô Tả Thẻ 2</label>
+                    <textarea 
+                      rows={4}
+                      value={data.general.p2p || ''} 
+                      onChange={(e) => setData({ ...data, general: { ...data.general, p2p: e.target.value } })}
+                      className="w-full px-3 py-2 rounded-lg border border-slate-300 leading-relaxed font-medium"
+                    />
+                  </div>
+
+                  {/* Card 3 */}
+                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                    <label className="block font-bold text-slate-900">Thẻ 3: Tiêu Đề</label>
+                    <input 
+                      type="text" 
+                      value={data.general.p3h || 'Truyền Cảm Hứng & Thần Thái'} 
+                      onChange={(e) => setData({ ...data, general: { ...data.general, p3h: e.target.value } })}
+                      className="w-full px-3 py-2 rounded-lg border border-slate-300 font-bold text-slate-900"
+                    />
+                    <label className="block font-bold text-slate-700 pt-1">Mô Tả Thẻ 3</label>
+                    <textarea 
+                      rows={4}
+                      value={data.general.p3p || ''} 
+                      onChange={(e) => setData({ ...data, general: { ...data.general, p3p: e.target.value } })}
+                      className="w-full px-3 py-2 rounded-lg border border-slate-300 leading-relaxed font-medium"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           )}
 
-          {/* TAB 3: COURSES FULL CRUD */}
+          {/* TAB 3: COURSES FULL CRUD — 2 COLUMNS GRID LAYOUT */}
           {activeTab === 'courses' && (
             <div className="space-y-6">
               <div className="flex items-center justify-between">
@@ -1085,7 +1204,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                   <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider">
                     Quản Lý Khóa Học 1-1 ({data.courses.length} Khóa)
                   </h3>
-                  <p className="text-xs text-slate-500 font-medium">Thêm mới, chỉnh sửa chi tiết lộ trình học, thời lượng, học phí & xóa khóa học</p>
+                  <p className="text-xs text-slate-500 font-medium">Bố cục 2 cột song song gọn gàng, ô nhập chữ rộng rãi dễ soạn thảo nội dung</p>
                 </div>
                 <button
                   type="button"
@@ -1097,237 +1216,202 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                 </button>
               </div>
 
-              {data.courses.map((course, idx) => (
-                <div key={course.id || idx} className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
-                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                    <div className="flex items-center gap-2 w-full max-w-xl">
-                      <input
-                        type="text"
-                        value={course.code}
-                        onChange={(e) => {
-                          const newCourses = [...data.courses];
-                          newCourses[idx].code = e.target.value;
-                          setData({ ...data, courses: newCourses });
-                        }}
-                        className="font-mono text-xs font-bold text-orange-600 bg-orange-50 px-2.5 py-1 rounded-lg border border-orange-200 w-24"
-                      />
-                      <input 
-                        type="text" 
-                        value={course.title}
-                        onChange={(e) => {
-                          const newCourses = [...data.courses];
-                          newCourses[idx].title = e.target.value;
-                          setData({ ...data, courses: newCourses });
-                        }}
-                        className="text-base font-extrabold text-slate-900 bg-transparent border-b border-slate-300 px-2 py-0.5 flex-1"
-                      />
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => handleDeleteCourse(course.id)}
-                      className="px-3 py-1.5 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 text-xs font-bold flex items-center gap-1 cursor-pointer transition-colors"
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                      <span>Xóa Khóa Học</span>
-                    </button>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                    <div>
-                      <label className="block font-bold text-slate-700 mb-1">Mô Tả Phụ (Subtitle)</label>
-                      <input 
-                        type="text" 
-                        value={course.subtitle} 
-                        onChange={(e) => {
-                          const newCourses = [...data.courses];
-                          newCourses[idx].subtitle = e.target.value;
-                          setData({ ...data, courses: newCourses });
-                        }}
-                        className="w-full px-3 py-1.5 rounded-xl border border-slate-300" 
-                      />
-                    </div>
-                    <div>
-                      <label className="block font-bold text-slate-700 mb-1">Thời Lượng (Duration)</label>
-                      <input 
-                        type="text" 
-                        value={course.duration} 
-                        onChange={(e) => {
-                          const newCourses = [...data.courses];
-                          newCourses[idx].duration = e.target.value;
-                          setData({ ...data, courses: newCourses });
-                        }}
-                        className="w-full px-3 py-1.5 rounded-xl border border-slate-300 font-bold" 
-                      />
-                    </div>
-                    <div>
-                      <label className="block font-bold text-slate-700 mb-1">Hình Thức Offline</label>
-                      <input 
-                        type="text" 
-                        value={course.formatOffline} 
-                        onChange={(e) => {
-                          const newCourses = [...data.courses];
-                          newCourses[idx].formatOffline = e.target.value;
-                          setData({ ...data, courses: newCourses });
-                        }}
-                        className="w-full px-3 py-1.5 rounded-xl border border-slate-300" 
-                      />
-                    </div>
-                    <div>
-                      <label className="block font-bold text-slate-700 mb-1">Hình Thức Online</label>
-                      <input 
-                        type="text" 
-                        value={course.formatOnline} 
-                        onChange={(e) => {
-                          const newCourses = [...data.courses];
-                          newCourses[idx].formatOnline = e.target.value;
-                          setData({ ...data, courses: newCourses });
-                        }}
-                        className="w-full px-3 py-1.5 rounded-xl border border-slate-300" 
-                      />
-                    </div>
-                    <div className="sm:col-span-2 pt-2 border-t border-slate-100">
-                      <div className="flex items-center justify-between mb-1">
-                        <label className="block font-bold text-slate-800 text-xs flex items-center gap-1.5">
-                          <ImageIcon className="w-3.5 h-3.5 text-orange-600" />
-                          <span>Hình Ảnh Banner Quảng Cáo Khóa Học (Kích thước chuẩn: 1200 x 400 px / Tỷ lệ 3:1)</span>
-                        </label>
-                        <span className="text-[10px] font-mono text-slate-500 font-semibold">Thay thế hình ảnh banner thiết kế riêng</span>
-                      </div>
-                      <div className="flex gap-2">
-                        <input 
-                          type="text" 
-                          placeholder="Dán URL hình ảnh banner (ví dụ: https://.../banner-1200x400.jpg)"
-                          value={course.bannerImage || course.bgImage || ''} 
-                          onChange={(e) => {
-                            const newCourses = [...data.courses];
-                            newCourses[idx].bannerImage = e.target.value;
-                            newCourses[idx].bgImage = e.target.value;
-                            setData({ ...data, courses: newCourses });
-                          }}
-                          className="flex-1 px-3 py-1.5 rounded-xl border border-slate-300 font-mono text-xs text-slate-800 bg-orange-50/40" 
-                        />
+              {/* 2-Column Grid for Course Cards */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                {data.courses.map((course, idx) => (
+                  <div key={course.id || idx} className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4 flex flex-col justify-between">
+                    <div className="space-y-4">
+                      {/* Header Title & Delete */}
+                      <div className="flex items-center justify-between border-b border-slate-100 pb-3 gap-2">
+                        <div className="flex items-center gap-2 flex-1 min-w-0">
+                          <input
+                            type="text"
+                            value={course.code}
+                            onChange={(e) => {
+                              const newCourses = [...data.courses];
+                              newCourses[idx].code = e.target.value;
+                              setData({ ...data, courses: newCourses });
+                            }}
+                            className="font-mono text-xs font-bold text-orange-600 bg-orange-50 px-2.5 py-1 rounded-lg border border-orange-200 w-20 shrink-0 text-center"
+                          />
+                          <input 
+                            type="text" 
+                            value={course.title}
+                            onChange={(e) => {
+                              const newCourses = [...data.courses];
+                              newCourses[idx].title = e.target.value;
+                              setData({ ...data, courses: newCourses });
+                            }}
+                            className="text-sm sm:text-base font-extrabold text-slate-900 bg-transparent border-b border-slate-300 px-2 py-0.5 flex-1 min-w-0"
+                          />
+                        </div>
                         <button
                           type="button"
-                          onClick={() => openPicker(
-                            (selectedUrl) => {
-                              const newCourses = [...data.courses];
-                              newCourses[idx].bannerImage = selectedUrl;
-                              newCourses[idx].bgImage = selectedUrl;
-                              setData({ ...data, courses: newCourses });
-                            },
-                            `CHỌN BANNER KHÓA HỌC: ${course.title}`,
-                            course.bannerImage || course.bgImage || ''
-                          )}
-                          className="px-3 py-1.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs shadow-xs transition-all flex items-center gap-1 cursor-pointer whitespace-nowrap"
+                          onClick={() => handleDeleteCourse(course.id)}
+                          className="p-1.5 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 transition-colors cursor-pointer shrink-0"
+                          title="Xóa khóa học này"
                         >
-                          <ImageIcon className="w-3.5 h-3.5" />
-                          <span>Chọn / Tải Ảnh Banner</span>
+                          <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
-                    </div>
 
-                    <div className="sm:col-span-2 pt-2">
-                      <div className="flex items-center justify-between mb-1">
-                        <label className="block font-bold text-slate-800 text-xs flex items-center gap-1.5">
-                          <ImageIcon className="w-3.5 h-3.5 text-orange-600" />
-                          <span>Hình Ảnh Thumbnail Khóa Học (Hiển thị ngoài trang danh sách)</span>
-                        </label>
-                      </div>
-                      <div className="flex gap-2">
-                        <input 
-                          type="text" 
-                          placeholder="Dán URL hình ảnh thumbnail (ví dụ: https://.../thumb.jpg)"
-                          value={course.thumbnailUrl || ''} 
-                          onChange={(e) => {
-                            const newCourses = [...data.courses];
-                            newCourses[idx].thumbnailUrl = e.target.value;
-                            setData({ ...data, courses: newCourses });
-                          }}
-                          className="flex-1 px-3 py-1.5 rounded-xl border border-slate-300 font-mono text-xs text-slate-800 bg-orange-50/40" 
-                        />
-                        <button
-                          type="button"
-                          onClick={() => openPicker(
-                            (selectedUrl) => {
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div className="sm:col-span-2">
+                          <label className="block font-bold text-slate-700 mb-1">Mô Tả Phụ (Subtitle)</label>
+                          <input 
+                            type="text" 
+                            value={course.subtitle} 
+                            onChange={(e) => {
                               const newCourses = [...data.courses];
-                              newCourses[idx].thumbnailUrl = selectedUrl;
+                              newCourses[idx].subtitle = e.target.value;
                               setData({ ...data, courses: newCourses });
-                            },
-                            `CHỌN THUMBNAIL KHÓA HỌC: ${course.title}`,
-                            course.thumbnailUrl || ''
-                          )}
-                          className="px-3 py-1.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs shadow-xs transition-all flex items-center gap-1 cursor-pointer whitespace-nowrap"
-                        >
-                          <ImageIcon className="w-3.5 h-3.5" />
-                          <span>Chọn / Tải Ảnh Thumbnail</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                            }}
+                            className="w-full px-3 py-2 rounded-xl border border-slate-300 font-medium text-slate-800" 
+                          />
+                        </div>
+                        <div>
+                          <label className="block font-bold text-slate-700 mb-1">Thời Lượng (Duration)</label>
+                          <input 
+                            type="text" 
+                            value={course.duration} 
+                            onChange={(e) => {
+                              const newCourses = [...data.courses];
+                              newCourses[idx].duration = e.target.value;
+                              setData({ ...data, courses: newCourses });
+                            }}
+                            className="w-full px-3 py-2 rounded-xl border border-slate-300 font-bold text-slate-900" 
+                          />
+                        </div>
+                        <div>
+                          <label className="block font-bold text-slate-700 mb-1">Hình Thức Offline</label>
+                          <input 
+                            type="text" 
+                            value={course.formatOffline} 
+                            onChange={(e) => {
+                              const newCourses = [...data.courses];
+                              newCourses[idx].formatOffline = e.target.value;
+                              setData({ ...data, courses: newCourses });
+                            }}
+                            className="w-full px-3 py-2 rounded-xl border border-slate-300 font-medium" 
+                          />
+                        </div>
+                        <div className="sm:col-span-2">
+                          <label className="block font-bold text-slate-700 mb-1">Hình Thức Online</label>
+                          <input 
+                            type="text" 
+                            value={course.formatOnline} 
+                            onChange={(e) => {
+                              const newCourses = [...data.courses];
+                              newCourses[idx].formatOnline = e.target.value;
+                              setData({ ...data, courses: newCourses });
+                            }}
+                            className="w-full px-3 py-2 rounded-xl border border-slate-300 font-medium" 
+                          />
+                        </div>
 
-                  {/* Lessons Editor */}
-                  <div className="pt-2 border-t border-slate-100 space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-extrabold text-slate-800">Các Bài Học Lộ Trình ({course.lessons.length} Bài)</span>
-                      <button 
-                        type="button"
-                        onClick={() => {
-                          const newCourses = [...data.courses];
-                          newCourses[idx].lessons.push({ lessonTitle: `BÀI ${newCourses[idx].lessons.length + 1}: Bài học thực hành mới`, points: ['Chỉ số đạt được...'] });
-                          setData({ ...data, courses: newCourses });
-                        }}
-                        className="text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center gap-1 cursor-pointer"
-                      >
-                        <Plus className="w-3.5 h-3.5" /> Thêm Bài Học Mới
-                      </button>
-                    </div>
-
-                    <div className="space-y-3">
-                      {course.lessons.map((les, lIdx) => (
-                        <div key={lIdx} className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-2">
-                          <div className="flex items-center justify-between gap-2">
-                            <input 
-                              type="text" 
-                              value={les.lessonTitle} 
-                              onChange={(e) => {
-                                const newCourses = [...data.courses];
-                                newCourses[idx].lessons[lIdx].lessonTitle = e.target.value;
-                                setData({ ...data, courses: newCourses });
-                              }}
-                              className="w-full font-bold text-slate-900 bg-white px-2.5 py-1 rounded-lg border border-slate-300"
-                            />
-                            <button
-                              type="button"
-                              onClick={() => {
-                                const newCourses = [...data.courses];
-                                newCourses[idx].lessons.splice(lIdx, 1);
-                                setData({ ...data, courses: newCourses });
-                              }}
-                              className="text-slate-400 hover:text-red-600 p-1 cursor-pointer"
-                              title="Xóa bài học này"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </button>
-                          </div>
+                        {/* Banner & Thumbnail Image Pickers */}
+                        <div className="sm:col-span-2 pt-2 border-t border-slate-100 space-y-2">
                           <div>
-                            <label className="block text-[10px] font-bold text-slate-500 mb-0.5">Nội dung chi tiết (Mỗi dòng 1 ý)</label>
-                            <textarea 
-                              rows={2}
-                              value={les.points.join('\n')}
-                              onChange={(e) => {
-                                const newCourses = [...data.courses];
-                                newCourses[idx].lessons[lIdx].points = e.target.value.split('\n').filter(p => p.trim());
-                                setData({ ...data, courses: newCourses });
-                              }}
-                              className="w-full px-2.5 py-1 bg-white rounded-lg border border-slate-200 text-[11px]"
-                            />
+                            <label className="block font-bold text-slate-800 text-xs mb-1">Ảnh Banner Quảng Cáo Khóa Học</label>
+                            <div className="flex gap-2">
+                              <input 
+                                type="text" 
+                                value={course.bannerImage || course.bgImage || ''} 
+                                onChange={(e) => {
+                                  const newCourses = [...data.courses];
+                                  newCourses[idx].bannerImage = e.target.value;
+                                  newCourses[idx].bgImage = e.target.value;
+                                  setData({ ...data, courses: newCourses });
+                                }}
+                                className="flex-1 px-3 py-1.5 rounded-xl border border-slate-300 font-mono text-xs text-slate-800 bg-orange-50/40" 
+                              />
+                              <button
+                                type="button"
+                                onClick={() => openPicker(
+                                  (selectedUrl) => {
+                                    const newCourses = [...data.courses];
+                                    newCourses[idx].bannerImage = selectedUrl;
+                                    newCourses[idx].bgImage = selectedUrl;
+                                    setData({ ...data, courses: newCourses });
+                                  },
+                                  `CHỌN BANNER KHÓA HỌC: ${course.title}`,
+                                  course.bannerImage || course.bgImage || ''
+                                )}
+                                className="px-3 py-1.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs shadow-xs transition-all flex items-center gap-1 cursor-pointer whitespace-nowrap"
+                              >
+                                <ImageIcon className="w-3.5 h-3.5" />
+                                <span>Đổi Banner</span>
+                              </button>
+                            </div>
                           </div>
                         </div>
-                      ))}
+                      </div>
+
+                      {/* Lessons Editor */}
+                      <div className="pt-2 border-t border-slate-100 space-y-3">
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-extrabold text-slate-800">Các Bài Học Lộ Trình ({course.lessons.length} Bài)</span>
+                          <button 
+                            type="button"
+                            onClick={() => {
+                              const newCourses = [...data.courses];
+                              newCourses[idx].lessons.push({ lessonTitle: `BÀI ${newCourses[idx].lessons.length + 1}: Bài học thực hành mới`, points: ['Chỉ số đạt được...'] });
+                              setData({ ...data, courses: newCourses });
+                            }}
+                            className="text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center gap-1 cursor-pointer"
+                          >
+                            <Plus className="w-3.5 h-3.5" /> Thêm Bài Học
+                          </button>
+                        </div>
+
+                        <div className="space-y-3 max-h-[300px] overflow-y-auto pr-1">
+                          {course.lessons.map((les, lIdx) => (
+                            <div key={lIdx} className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-2">
+                              <div className="flex items-center justify-between gap-2">
+                                <input 
+                                  type="text" 
+                                  value={les.lessonTitle} 
+                                  onChange={(e) => {
+                                    const newCourses = [...data.courses];
+                                    newCourses[idx].lessons[lIdx].lessonTitle = e.target.value;
+                                    setData({ ...data, courses: newCourses });
+                                  }}
+                                  className="w-full font-bold text-slate-900 bg-white px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs"
+                                />
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    const newCourses = [...data.courses];
+                                    newCourses[idx].lessons.splice(lIdx, 1);
+                                    setData({ ...data, courses: newCourses });
+                                  }}
+                                  className="text-slate-400 hover:text-red-600 p-1 cursor-pointer shrink-0"
+                                  title="Xóa bài học này"
+                                >
+                                  <Trash2 className="w-4 h-4" />
+                                </button>
+                              </div>
+                              <div>
+                                <label className="block text-[10px] font-bold text-slate-500 mb-0.5">Chi tiết bài học (Mỗi dòng 1 ý)</label>
+                                <textarea 
+                                  rows={3}
+                                  value={les.points.join('\n')}
+                                  onChange={(e) => {
+                                    const newCourses = [...data.courses];
+                                    newCourses[idx].lessons[lIdx].points = e.target.value.split('\n').filter(p => p.trim());
+                                    setData({ ...data, courses: newCourses });
+                                  }}
+                                  className="w-full px-2.5 py-1.5 bg-white rounded-lg border border-slate-200 text-xs leading-relaxed font-medium"
+                                />
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           )}
 
@@ -1339,7 +1423,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                   <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider">
                     Quản Lý Dịch Vụ & Solutions ({data.services.length} Dịch Vụ)
                   </h3>
-                  <p className="text-xs text-slate-500 font-medium">Tùy biến giải pháp trọn gói, đổi biểu tượng icon, nội dung và thẻ từ khóa</p>
+                  <p className="text-xs text-slate-500 font-medium">Bố cục 2 cột song song gọn gàng, đổi biểu tượng icon, mô tả chi tiết & thẻ từ khóa</p>
                 </div>
                 <button
                   type="button"
@@ -1353,141 +1437,159 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {data.services.map((sv, sIdx) => (
-                  <div key={sv.id || sIdx} className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-3 text-xs">
-                    <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                      <div className="flex items-center gap-2">
-                        <span className="p-2 rounded-xl bg-orange-50 text-orange-600 font-bold">
-                          {sv.iconName}
-                        </span>
-                        <input
-                          type="text"
-                          value={sv.title}
-                          onChange={(e) => {
-                            const newSv = [...data.services];
-                            newSv[sIdx].title = e.target.value;
-                            setData({ ...data, services: newSv });
-                          }}
-                          className="font-extrabold text-slate-900 bg-transparent border-b border-slate-300 px-2 py-0.5"
-                        />
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => handleDeleteService(sv.id)}
-                        className="text-slate-400 hover:text-red-600 p-1 cursor-pointer"
-                        title="Xóa dịch vụ này"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
-                    </div>
+                  <div key={sv.id || sIdx} className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-3.5 text-xs flex flex-col justify-between">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between border-b border-slate-100 pb-3 gap-2">
+                        <div className="flex items-center gap-2 flex-1 min-w-0">
+                          <select
+                            value={sv.iconName || 'Headphones'}
+                            onChange={(e) => {
+                              const newSv = [...data.services];
+                              newSv[sIdx].iconName = e.target.value;
+                              setData({ ...data, services: newSv });
+                            }}
+                            className="p-1.5 rounded-xl bg-orange-50 text-orange-600 font-bold border border-orange-200 text-xs cursor-pointer shrink-0"
+                          >
+                            <option value="Headphones">🎧 Studio Setup</option>
+                            <option value="Tv">📺 Truyền Hình</option>
+                            <option value="Video">🎥 Livestream</option>
+                            <option value="Mic">🎙️ Đào Tạo Voice</option>
+                            <option value="Monitor">💻 Khóa Học Live</option>
+                            <option value="Layers">📚 Giải Pháp</option>
+                            <option value="Sparkles">⚡ Booking KOL</option>
+                          </select>
 
-                    <div>
-                      <label className="block text-[10px] font-bold text-slate-500 mb-1">Mô Tả Dịch Vụ & Giải Pháp</label>
-                      <textarea
-                        rows={3}
-                        value={sv.description}
-                        onChange={(e) => {
-                          const newSv = [...data.services];
-                          newSv[sIdx].description = e.target.value;
-                          setData({ ...data, services: newSv });
-                        }}
-                        className="w-full px-3 py-1.5 rounded-xl border border-slate-300 font-medium"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-[10px] font-bold text-slate-500 mb-1">Thẻ Từ Khóa (Cách nhau bằng dấu ·)</label>
-                      <input
-                        type="text"
-                        value={sv.tags}
-                        onChange={(e) => {
-                          const newSv = [...data.services];
-                          newSv[sIdx].tags = e.target.value;
-                          setData({ ...data, services: newSv });
-                        }}
-                        className="w-full px-3 py-1.5 rounded-xl border border-slate-300 font-mono text-[11px]"
-                      />
-                    </div>
-
-                    {/* Service Thumbnail */}
-                    <div className="pt-2 border-t border-slate-100">
-                      <label className="block text-[10px] font-bold text-slate-500 mb-1">Ảnh Thumbnail Dịch Vụ (Landscape 16:9)</label>
-                      <div className="flex gap-2">
-                        <input
-                          type="text"
-                          placeholder="Dán URL ảnh thumbnail..."
-                          value={sv.thumbnailUrl || ''}
-                          onChange={(e) => {
-                            const newSv = [...data.services];
-                            newSv[sIdx].thumbnailUrl = e.target.value;
-                            setData({ ...data, services: newSv });
-                          }}
-                          className="flex-1 px-3 py-1.5 rounded-xl border border-slate-300 font-mono text-[11px]"
-                        />
+                          <input
+                            type="text"
+                            value={sv.title}
+                            onChange={(e) => {
+                              const newSv = [...data.services];
+                              newSv[sIdx].title = e.target.value;
+                              setData({ ...data, services: newSv });
+                            }}
+                            className="text-sm font-extrabold text-slate-900 bg-transparent border-b border-slate-300 px-2 py-0.5 flex-1 min-w-0"
+                          />
+                        </div>
                         <button
                           type="button"
-                          onClick={() => openPicker(
-                            (selectedUrl) => {
-                              const newSv = [...data.services];
-                              newSv[sIdx].thumbnailUrl = selectedUrl;
-                              setData({ ...data, services: newSv });
-                            },
-                            `CHỌN ẢNH THUMBNAIL: ${sv.title}`,
-                            sv.thumbnailUrl || ''
-                          )}
-                          className="px-2 py-1.5 bg-orange-600 hover:bg-orange-500 text-white rounded-lg text-[10px] font-bold cursor-pointer whitespace-nowrap"
+                          onClick={() => handleDeleteService(sv.id)}
+                          className="p-1.5 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 transition-colors cursor-pointer shrink-0"
+                          title="Xóa dịch vụ này"
                         >
-                          Chọn Ảnh
+                          <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
-                    </div>
 
-                    {/* Service Showcase Photo Album (Add / Delete multiple photos) */}
-                    <div className="pt-2">
-                      <div className="flex items-center justify-between mb-1">
-                        <label className="block text-[10px] font-bold text-slate-500">Album Ảnh Dự Án Thực Tế (Showcase Album)</label>
-                        <button
-                          type="button"
-                          onClick={() => openPicker(
-                            (selectedUrl) => {
-                              const newSv = [...data.services];
-                              const currentPhotos = newSv[sIdx].galleryPhotos || [];
-                              newSv[sIdx].galleryPhotos = [...currentPhotos, selectedUrl];
-                              setData({ ...data, services: newSv });
-                            },
-                            `THÊM ẢNH VÀO ALBUM: ${sv.title}`
-                          )}
-                          className="text-[10px] font-bold text-orange-600 hover:text-orange-700 cursor-pointer"
-                        >
-                          + Thêm Ảnh Mới
-                        </button>
+                      <div>
+                        <label className="block text-xs font-bold text-slate-700 mb-1">Mô Tả Dịch Vụ & Giải Pháp</label>
+                        <textarea
+                          rows={4}
+                          value={sv.description}
+                          onChange={(e) => {
+                            const newSv = [...data.services];
+                            newSv[sIdx].description = e.target.value;
+                            setData({ ...data, services: newSv });
+                          }}
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-medium text-xs sm:text-sm text-slate-800 leading-relaxed"
+                        />
                       </div>
-                      
-                      {sv.galleryPhotos && sv.galleryPhotos.length > 0 ? (
-                        <div className="grid grid-cols-4 gap-1.5 max-h-24 overflow-y-auto p-1 bg-slate-50 border border-slate-200 rounded-lg">
-                          {sv.galleryPhotos.map((url, pIdx) => (
-                            <div key={pIdx} className="relative aspect-video rounded bg-slate-200 overflow-hidden group">
-                              <img src={url} className="w-full h-full object-cover" alt="" />
-                              <button
-                                type="button"
-                                onClick={() => {
-                                  const newSv = [...data.services];
-                                  const currentPhotos = [...(newSv[sIdx].galleryPhotos || [])];
-                                  currentPhotos.splice(pIdx, 1);
-                                  newSv[sIdx].galleryPhotos = currentPhotos;
-                                  setData({ ...data, services: newSv });
-                                }}
-                                className="absolute inset-0 bg-red-600/90 text-white font-bold text-[9px] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
-                              >
-                                Xóa
-                              </button>
-                            </div>
-                          ))}
+
+                      <div>
+                        <label className="block text-xs font-bold text-slate-700 mb-1">Thẻ Từ Khóa (Cách nhau bằng dấu ·)</label>
+                        <input
+                          type="text"
+                          value={sv.tags}
+                          onChange={(e) => {
+                            const newSv = [...data.services];
+                            newSv[sIdx].tags = e.target.value;
+                            setData({ ...data, services: newSv });
+                          }}
+                          className="w-full px-3 py-1.5 rounded-xl border border-slate-300 font-mono text-xs text-orange-700 bg-orange-50/40"
+                        />
+                      </div>
+
+                      {/* Service Thumbnail */}
+                      <div className="pt-2 border-t border-slate-100">
+                        <label className="block text-xs font-bold text-slate-700 mb-1">Ảnh Thumbnail Dịch Vụ (Landscape 16:9)</label>
+                        <div className="flex gap-2">
+                          <input
+                            type="text"
+                            placeholder="Dán URL ảnh thumbnail..."
+                            value={sv.thumbnailUrl || ''}
+                            onChange={(e) => {
+                              const newSv = [...data.services];
+                              newSv[sIdx].thumbnailUrl = e.target.value;
+                              setData({ ...data, services: newSv });
+                            }}
+                            className="flex-1 px-3 py-1.5 rounded-xl border border-slate-300 font-mono text-xs text-slate-800 bg-orange-50/40"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => openPicker(
+                              (selectedUrl) => {
+                                const newSv = [...data.services];
+                                newSv[sIdx].thumbnailUrl = selectedUrl;
+                                setData({ ...data, services: newSv });
+                              },
+                              `CHỌN ẢNH THUMBNAIL: ${sv.title}`,
+                              sv.thumbnailUrl || ''
+                            )}
+                            className="px-3 py-1.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs shadow-xs transition-all flex items-center gap-1 cursor-pointer whitespace-nowrap"
+                          >
+                            <ImageIcon className="w-3.5 h-3.5" />
+                            <span>Đổi Ảnh</span>
+                          </button>
                         </div>
-                      ) : (
-                        <div className="text-[10px] text-slate-400 italic text-center py-2 bg-slate-50 rounded-lg border border-slate-200">
-                          Chưa có ảnh nào trong album. Bấm "+ Thêm Ảnh Mới" để thêm.
+                      </div>
+
+                      {/* Service Showcase Photo Album (Add / Delete multiple photos) */}
+                      <div className="pt-2">
+                        <div className="flex items-center justify-between mb-1">
+                          <label className="block text-xs font-bold text-slate-700">Album Ảnh Dự Án Thực Tế (Showcase Album)</label>
+                          <button
+                            type="button"
+                            onClick={() => openPicker(
+                              (selectedUrl) => {
+                                const newSv = [...data.services];
+                                const currentPhotos = newSv[sIdx].galleryPhotos || [];
+                                newSv[sIdx].galleryPhotos = [...currentPhotos, selectedUrl];
+                                setData({ ...data, services: newSv });
+                              },
+                              `THÊM ẢNH VÀO ALBUM: ${sv.title}`
+                            )}
+                            className="text-xs font-bold text-orange-600 hover:text-orange-700 cursor-pointer flex items-center gap-1"
+                          >
+                            <Plus className="w-3.5 h-3.5" /> Thêm Ảnh
+                          </button>
                         </div>
-                      )}
+                        
+                        {sv.galleryPhotos && sv.galleryPhotos.length > 0 ? (
+                          <div className="grid grid-cols-4 gap-1.5 max-h-24 overflow-y-auto p-1 bg-slate-50 border border-slate-200 rounded-lg">
+                            {sv.galleryPhotos.map((url, pIdx) => (
+                              <div key={pIdx} className="relative aspect-video rounded bg-slate-200 overflow-hidden group">
+                                <img src={url} className="w-full h-full object-cover" alt="" />
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    const newSv = [...data.services];
+                                    const currentPhotos = [...(newSv[sIdx].galleryPhotos || [])];
+                                    currentPhotos.splice(pIdx, 1);
+                                    newSv[sIdx].galleryPhotos = currentPhotos;
+                                    setData({ ...data, services: newSv });
+                                  }}
+                                  className="absolute inset-0 bg-red-600/90 text-white font-bold text-[9px] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                                >
+                                  Xóa
+                                </button>
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="text-[11px] text-slate-400 italic text-center py-2 bg-slate-50 rounded-lg border border-slate-200 font-medium">
+                            Chưa có ảnh nào trong album. Bấm "+ Thêm Ảnh" để tải thêm.
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 ))}
