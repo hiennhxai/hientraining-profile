@@ -2304,8 +2304,8 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                 </button>
               </div>
 
-              {/* Resources List */}
-              <div className="space-y-4">
+              {/* Resources List — 2-Column Balanced Admin Grid */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {(data.resources || []).map((res, idx) => (
                   <div key={res.id} className="p-5 rounded-2xl bg-white border-2 border-slate-900 space-y-4 shadow-xs">
                     <div className="flex items-center justify-between">
