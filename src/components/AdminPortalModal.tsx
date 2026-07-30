@@ -1714,252 +1714,243 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
             </div>
           )}
 
-          {/* TAB 5: PROJECTS & TIKTOK CASE STUDIES — 4 COLUMNS COMPACT GRID */}
+          {/* TAB 6: DỰ ÁN & TIKTOK (QUẢN LÝ ĐẦY ĐỦ 4 HẠNG MỤC THEO LƯỚI 4 CỘT) */}
           {activeTab === 'projects' && (
             <div className="space-y-8">
-              {/* SECTION 1: TIKTOK SHOWCASE CHANNELS */}
-              <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
-                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-3">
-                  <div>
-                    <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-2">
-                      <Video className="w-4 h-4 text-orange-600" />
-                      <span>1. Quản Lý Kênh TikTok & Case Study Đội Ngũ/Học Viên ({data.tiktokChannels.length} Kênh)</span>
-                    </h3>
-                    <p className="text-xs text-slate-500 font-medium">Hiển thị dạng Lưới 4 cột gọn gàng, ảnh thumbnail 16:9, lượt theo dõi & clip nổi bật</p>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const newChan: any = {
-                        id: `tiktok-${Date.now()}`,
-                        title: 'KÊNH TIKTOK MỚI',
-                        handle: '@tiktok.new',
-                        followers: '100K+ Followers',
-                        thumbnailUrl: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800&auto=format&fit=crop',
-                        channelUrl: 'https://www.tiktok.com',
-                        description: 'Tư vấn kịch bản & setup studio livestream.',
-                        links: []
-                      };
-                      setData({ ...data, tiktokChannels: [...data.tiktokChannels, newChan] });
-                    }}
-                    className="px-3.5 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md cursor-pointer transition-all"
-                  >
-                    <Plus className="w-4 h-4" />
-                    <span>+ Thêm Kênh TikTok</span>
-                  </button>
+              <div className="p-4 bg-orange-50 rounded-2xl border border-orange-200 text-xs text-orange-900 font-medium flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="w-5 h-5 text-orange-600 shrink-0" />
+                  <span>
+                    <strong>QUẢN LÝ DỰ ÁN DẠNG LƯỚI 4 CỘT (4 HẠNG MỤC CHÍNH)</strong>: Mỗi dự án có thể dán link video, tùy chỉnh ảnh đại diện 16:9 và đính kèm <strong>Album ảnh thực tế</strong> để khách bấm vào xem Pop-up!
+                  </span>
                 </div>
+              </div>
 
-                {/* 4-Column Grid for TikTok Channels */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {data.tiktokChannels.map((chan, cIdx) => (
-                    <div key={chan.id || cIdx} className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 hover:border-orange-400 transition-all space-y-3 flex flex-col justify-between text-xs">
-                      <div className="space-y-2.5">
-                        {/* 16:9 Thumbnail Photo Box */}
-                        <div className="relative aspect-video w-full rounded-lg bg-slate-900 border border-slate-200 overflow-hidden group/img">
-                          {chan.thumbnailUrl ? (
-                            <img src={chan.thumbnailUrl} alt={chan.title} className="w-full h-full object-cover" />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center text-[10px] font-mono text-slate-400 font-bold">
-                              Chưa có ảnh 16:9
+              {/* ITERATE OVER ALL 4 PROJECT CATEGORIES */}
+              {(data.projects || []).map((cat, catIdx) => (
+                <div key={cat.id || catIdx} className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                  
+                  {/* Category Header */}
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-3">
+                    <div>
+                      <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+                        <FolderGit2 className="w-4 h-4 text-orange-600" />
+                        <span>Hạng Mục #{catIdx + 1}: {cat.title} ({cat.items.length} Dự Án)</span>
+                      </h3>
+                      <p className="text-xs text-slate-500 font-medium mt-0.5">{cat.description}</p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const newItem = {
+                          id: `proj-${Date.now()}`,
+                          title: 'TÊN DỰ ÁN MỚI',
+                          role: 'ĐỐI TÁC / ROLE',
+                          stats: '100K+ Views',
+                          description: 'Mô tả ngắn gọn kết quả & hạng mục triển khai.',
+                          url: 'https://',
+                          thumbnailUrl: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop',
+                          tags: ['Project', 'Live'],
+                          galleryPhotos: []
+                        };
+                        const newProjects = [...(data.projects || [])];
+                        newProjects[catIdx].items.push(newItem);
+                        setData({ ...data, projects: newProjects });
+                      }}
+                      className="px-3.5 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md cursor-pointer transition-all"
+                    >
+                      <Plus className="w-4 h-4" />
+                      <span>+ Thêm Dự Án Vào Hạng Mục Này</span>
+                    </button>
+                  </div>
+
+                  {/* 4-COLUMN COMPACT GRID LAYOUT FOR THIS CATEGORY */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                    {cat.items.map((item, itemIdx) => (
+                      <div
+                        key={item.id || itemIdx}
+                        className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 hover:border-orange-400 transition-all space-y-3 flex flex-col justify-between"
+                      >
+                        <div className="space-y-2.5">
+                          {/* 16:9 Thumbnail Photo Box */}
+                          <div className="relative aspect-video w-full rounded-lg bg-slate-900 border border-slate-200 overflow-hidden group/img">
+                            {item.thumbnailUrl ? (
+                              <img src={item.thumbnailUrl} alt={item.title} className="w-full h-full object-cover" />
+                            ) : (
+                              <div className="w-full h-full flex items-center justify-center text-[10px] font-mono text-slate-400 font-bold">
+                                Chưa có ảnh 16:9
+                              </div>
+                            )}
+                            <button
+                              type="button"
+                              onClick={() => openPicker(
+                                (selectedUrl) => {
+                                  const newProjects = [...(data.projects || [])];
+                                  newProjects[catIdx].items[itemIdx].thumbnailUrl = selectedUrl;
+                                  setData({ ...data, projects: newProjects });
+                                },
+                                `CHỌN ANH THUMBNAIL 16:9: ${item.title}`,
+                                item.thumbnailUrl || ''
+                              )}
+                              className="absolute inset-0 bg-slate-900/80 backdrop-blur-xs text-white opacity-0 group-hover/img:opacity-100 flex items-center justify-center text-[10px] font-extrabold transition-opacity cursor-pointer"
+                            >
+                              📷 Đổi Ảnh Thumbnail 16:9
+                            </button>
+                          </div>
+
+                          {/* Title Input */}
+                          <div>
+                            <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Tên Dự Án / Kênh</label>
+                            <input
+                              type="text"
+                              value={item.title}
+                              onChange={(e) => {
+                                const newProjects = [...(data.projects || [])];
+                                newProjects[catIdx].items[itemIdx].title = e.target.value;
+                                setData({ ...data, projects: newProjects });
+                              }}
+                              className="w-full font-extrabold text-slate-900 bg-white px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs"
+                            />
+                          </div>
+
+                          {/* Role & Stats Inputs */}
+                          <div className="grid grid-cols-2 gap-1.5">
+                            <div>
+                              <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Handle / Khách Hàng</label>
+                              <input
+                                type="text"
+                                value={item.role || ''}
+                                placeholder="@ngoctrinh89"
+                                onChange={(e) => {
+                                  const newProjects = [...(data.projects || [])];
+                                  newProjects[catIdx].items[itemIdx].role = e.target.value;
+                                  setData({ ...data, projects: newProjects });
+                                }}
+                                className="w-full font-mono text-[11px] font-bold text-orange-600 bg-white px-2 py-1 rounded-lg border border-slate-300"
+                              />
                             </div>
-                          )}
+                            <div>
+                              <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Followers / Thống Kê</label>
+                              <input
+                                type="text"
+                                value={item.stats || ''}
+                                placeholder="6.8M Followers"
+                                onChange={(e) => {
+                                  const newProjects = [...(data.projects || [])];
+                                  newProjects[catIdx].items[itemIdx].stats = e.target.value;
+                                  setData({ ...data, projects: newProjects });
+                                }}
+                                className="w-full font-mono text-[11px] font-bold text-slate-800 bg-white px-2 py-1 rounded-lg border border-slate-300"
+                              />
+                            </div>
+                          </div>
+
+                          {/* URL Input */}
+                          <div>
+                            <label className="block text-[10px] font-bold text-slate-600 mb-0.5">URL Video / Trang Kênh</label>
+                            <input
+                              type="text"
+                              value={item.url || ''}
+                              placeholder="https://tiktok.com/@..."
+                              onChange={(e) => {
+                                const newProjects = [...(data.projects || [])];
+                                newProjects[catIdx].items[itemIdx].url = e.target.value;
+                                setData({ ...data, projects: newProjects });
+                              }}
+                              className="w-full px-2 py-1 rounded-lg border border-slate-300 font-mono text-[10px] bg-white text-slate-800"
+                            />
+                          </div>
+
+                          {/* Description Textarea */}
+                          <div>
+                            <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Mô Tả Chi Tiết Hạng Mục</label>
+                            <textarea
+                              rows={2}
+                              value={item.description || ''}
+                              onChange={(e) => {
+                                const newProjects = [...(data.projects || [])];
+                                newProjects[catIdx].items[itemIdx].description = e.target.value;
+                                setData({ ...data, projects: newProjects });
+                              }}
+                              className="w-full px-2.5 py-1 bg-white rounded-lg border border-slate-300 text-[11px] font-medium leading-relaxed"
+                            />
+                          </div>
+
+                          {/* Showcase Photos Gallery Attachments */}
+                          <div className="pt-2 border-t border-slate-200 space-y-1.5">
+                            <div className="flex items-center justify-between">
+                              <label className="block text-[10px] font-extrabold text-slate-700">
+                                📸 Album Ảnh Thực Tế ({item.galleryPhotos?.length || 0} Ảnh)
+                              </label>
+                              <button
+                                type="button"
+                                onClick={() => openPicker(
+                                  (selectedUrl) => {
+                                    const newProjects = [...(data.projects || [])];
+                                    const currentGallery = newProjects[catIdx].items[itemIdx].galleryPhotos || [];
+                                    newProjects[catIdx].items[itemIdx].galleryPhotos = [...currentGallery, selectedUrl];
+                                    setData({ ...data, projects: newProjects });
+                                  },
+                                  `THÊM ẢNH VÀO ALBUM: ${item.title}`,
+                                  ''
+                                )}
+                                className="text-[10px] font-extrabold text-orange-600 hover:text-orange-700 cursor-pointer flex items-center gap-1"
+                              >
+                                <Plus className="w-3 h-3" />
+                                <span>Thêm Ảnh</span>
+                              </button>
+                            </div>
+
+                            {/* Mini Gallery Grid */}
+                            <div className="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto">
+                              {(item.galleryPhotos || []).map((imgUrl, gIdx) => (
+                                <div key={gIdx} className="relative w-10 h-10 rounded-md overflow-hidden bg-slate-800 border border-slate-300 group/gal">
+                                  <img src={imgUrl} alt={`Album ${gIdx}`} className="w-full h-full object-cover" />
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      const newProjects = [...(data.projects || [])];
+                                      const currentGallery = newProjects[catIdx].items[itemIdx].galleryPhotos || [];
+                                      newProjects[catIdx].items[itemIdx].galleryPhotos = currentGallery.filter((_, i) => i !== gIdx);
+                                      setData({ ...data, projects: newProjects });
+                                    }}
+                                    className="absolute inset-0 bg-red-600/80 text-white opacity-0 group-hover/gal:opacity-100 flex items-center justify-center transition-opacity cursor-pointer"
+                                    title="Xóa ảnh này khỏi album"
+                                  >
+                                    <Trash2 className="w-3 h-3" />
+                                  </button>
+                                </div>
+                              ))}
+                              {(!item.galleryPhotos || item.galleryPhotos.length === 0) && (
+                                <span className="text-[9px] text-slate-400 font-mono italic">Chưa đính kèm album ảnh</span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Delete Button */}
+                        <div className="flex items-center justify-between pt-2 border-t border-slate-200">
+                          <span className="text-[10px] font-mono text-slate-400">#{itemIdx + 1}</span>
                           <button
                             type="button"
-                            onClick={() => openPicker(
-                              (selectedUrl) => {
-                                const newCh = [...data.tiktokChannels];
-                                newCh[cIdx].thumbnailUrl = selectedUrl;
-                                setData({ ...data, tiktokChannels: newCh });
-                              },
-                              `CHỌN ANH THUMBNAIL KÊNH: ${chan.title}`,
-                              chan.thumbnailUrl || ''
-                            )}
-                            className="absolute inset-0 bg-slate-900/80 backdrop-blur-xs text-white opacity-0 group-hover/img:opacity-100 flex items-center justify-center text-[10px] font-extrabold transition-opacity cursor-pointer"
+                            onClick={() => {
+                              if (window.confirm(`Xóa dự án "${item.title}"?`)) {
+                                const newProjects = [...(data.projects || [])];
+                                newProjects[catIdx].items = newProjects[catIdx].items.filter((_, i) => i !== itemIdx);
+                                setData({ ...data, projects: newProjects });
+                              }
+                            }}
+                            className="text-slate-400 hover:text-red-600 text-[11px] font-bold flex items-center gap-1 cursor-pointer"
                           >
-                            📷 Đổi Ảnh Thumbnail
+                            <Trash2 className="w-3.5 h-3.5" />
+                            <span>Xóa Dự Án</span>
                           </button>
                         </div>
-
-                        {/* Title & Handle Inputs */}
-                        <div>
-                          <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Tên Kênh TikTok</label>
-                          <input 
-                            type="text"
-                            value={chan.title}
-                            onChange={(e) => {
-                              const newCh = [...data.tiktokChannels];
-                              newCh[cIdx].title = e.target.value;
-                              setData({ ...data, tiktokChannels: newCh });
-                            }}
-                            className="w-full font-extrabold text-slate-900 bg-white px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs"
-                          />
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-1.5">
-                          <div>
-                            <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Handle (@ID)</label>
-                            <input 
-                              type="text"
-                              value={chan.handle || ''}
-                              placeholder="@ngoctrinh89"
-                              onChange={(e) => {
-                                const newCh = [...data.tiktokChannels];
-                                newCh[cIdx].handle = e.target.value;
-                                setData({ ...data, tiktokChannels: newCh });
-                              }}
-                              className="w-full font-mono text-[11px] font-bold text-orange-600 bg-white px-2 py-1 rounded-lg border border-slate-300"
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Followers</label>
-                            <input 
-                              type="text"
-                              value={chan.followers || ''}
-                              placeholder="6.8M Followers"
-                              onChange={(e) => {
-                                const newCh = [...data.tiktokChannels];
-                                newCh[cIdx].followers = e.target.value;
-                                setData({ ...data, tiktokChannels: newCh });
-                              }}
-                              className="w-full font-mono text-[11px] font-bold text-slate-800 bg-white px-2 py-1 rounded-lg border border-slate-300"
-                            />
-                          </div>
-                        </div>
-
-                        <div>
-                          <label className="block text-[10px] font-bold text-slate-600 mb-0.5">URL Kênh Trực Tiếp</label>
-                          <input 
-                            type="text" 
-                            value={chan.channelUrl || ''} 
-                            onChange={(e) => {
-                              const newCh = [...data.tiktokChannels];
-                              newCh[cIdx].channelUrl = e.target.value;
-                              setData({ ...data, tiktokChannels: newCh });
-                            }}
-                            className="w-full px-2 py-1 rounded-lg border border-slate-300 font-mono text-[10px] bg-white text-slate-800"
-                          />
-                        </div>
-
-                        <div>
-                          <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Mô Tả / Thành Tựu</label>
-                          <textarea 
-                            rows={2}
-                            value={chan.description || ''} 
-                            onChange={(e) => {
-                              const newCh = [...data.tiktokChannels];
-                              newCh[cIdx].description = e.target.value;
-                              setData({ ...data, tiktokChannels: newCh });
-                            }}
-                            className="w-full px-2.5 py-1 bg-white rounded-lg border border-slate-300 text-[11px] font-medium leading-relaxed"
-                          />
-                        </div>
                       </div>
-
-                      {/* Delete Channel Button */}
-                      <div className="flex items-center justify-between pt-2 border-t border-slate-200">
-                        <span className="text-[10px] font-mono text-slate-400">#TikTok-{cIdx + 1}</span>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            if (window.confirm(`Xóa kênh TikTok "${chan.title}"?`)) {
-                              const newCh = data.tiktokChannels.filter((_, i) => i !== cIdx);
-                              setData({ ...data, tiktokChannels: newCh });
-                            }
-                          }}
-                          className="text-slate-400 hover:text-red-600 text-[11px] font-bold flex items-center gap-1 cursor-pointer"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                          <span>Xóa Kênh</span>
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* SECTION 2: OPERATING PROJECTS */}
-              <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
-                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-3">
-                  <div>
-                    <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-2">
-                      <FolderGit2 className="w-4 h-4 text-orange-600" />
-                      <span>2. Quản Lý Các Dự Án & Studio Vận Hành ({data.brandVideos?.length || 0} Dự Án)</span>
-                    </h3>
-                    <p className="text-xs text-slate-500 font-medium">Bố cục Lưới 4 cột chuyên nghiệp, upload ảnh dự án & album đính kèm</p>
+                    ))}
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const newProj: any = {
-                        name: 'Dự Án Studio Mới',
-                        desc: 'Tư vấn thiết kế & vận hành phòng máy livestream.'
-                      };
-                      setData({ ...data, brandVideos: [...(data.brandVideos || []), newProj] });
-                    }}
-                    className="px-3.5 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md cursor-pointer transition-all"
-                  >
-                    <Plus className="w-4 h-4" />
-                    <span>+ Thêm Dự Án Mới</span>
-                  </button>
                 </div>
-
-                {/* 4-Column Grid for Operating Projects */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {(data.brandVideos || []).map((proj, pIdx) => (
-                    <div key={pIdx} className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 hover:border-orange-400 transition-all space-y-3 flex flex-col justify-between text-xs">
-                      <div className="space-y-2.5">
-                        {/* Title Input */}
-                        <div>
-                          <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Tên Dự Án / Khách Hàng</label>
-                          <input 
-                            type="text"
-                            value={proj.name}
-                            onChange={(e) => {
-                              const list = [...(data.brandVideos || [])];
-                              list[pIdx].name = e.target.value;
-                              setData({ ...data, brandVideos: list });
-                            }}
-                            className="w-full font-extrabold text-slate-900 bg-white px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs"
-                          />
-                        </div>
-
-                        {/* Description Textarea */}
-                        <div>
-                          <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Mô Tả Hạng Mục Thực Hiện</label>
-                          <textarea 
-                            rows={3}
-                            value={proj.desc}
-                            onChange={(e) => {
-                              const list = [...(data.brandVideos || [])];
-                              list[pIdx].desc = e.target.value;
-                              setData({ ...data, brandVideos: list });
-                            }}
-                            className="w-full px-2.5 py-1.5 bg-white rounded-lg border border-slate-300 text-[11px] font-medium leading-relaxed"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Delete Project Button */}
-                      <div className="flex items-center justify-between pt-2 border-t border-slate-200">
-                        <span className="text-[10px] font-mono text-slate-400">#DựÁn-{pIdx + 1}</span>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            if (window.confirm(`Xóa dự án "${proj.name}"?`)) {
-                              const list = (data.brandVideos || []).filter((_, i) => i !== pIdx);
-                              setData({ ...data, brandVideos: list });
-                            }
-                          }}
-                          className="text-slate-400 hover:text-red-600 text-[11px] font-bold flex items-center gap-1 cursor-pointer"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                          <span>Xóa Dự Án</span>
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
           )}
 
