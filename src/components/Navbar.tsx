@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Language } from '../types';
 import { translations } from '../data/translations';
 import { Logo } from './Logo';
-import { PhoneCall, Menu, X, Home, User, GraduationCap, Wrench, Video, BookOpen, MessageSquare, Settings } from 'lucide-react';
+import { PhoneCall, Menu, X, Home, User, GraduationCap, FolderDown, Wrench, Video, BookOpen, MessageSquare, Settings } from 'lucide-react';
 
 interface NavbarProps {
   lang: Language;
@@ -46,6 +46,7 @@ export function Navbar({ lang, onToggleLang, isDetecting, activePage, onSelectPa
     { id: 'home', label: gen.navHome || t.nav_home || (lang === 'vi' ? 'Trang chủ' : 'Home'), icon: Home },
     { id: 'about', label: gen.navAbout || t.nav_about || (lang === 'vi' ? 'Về tôi' : 'My Story'), icon: User },
     { id: 'courses', label: gen.navCourses || t.nav_courses || (lang === 'vi' ? 'Khóa học' : 'Courses'), icon: GraduationCap },
+    { id: 'resources', label: lang === 'vi' ? 'Kho Tài Liệu' : 'Resources', icon: FolderDown },
     { id: 'services', label: gen.navServices || t.nav_services || (lang === 'vi' ? 'Dịch vụ' : 'Services'), icon: Wrench },
     { id: 'projects', label: gen.navProjects || t.nav_projects || (lang === 'vi' ? 'Dự án & Showcase' : 'Projects'), icon: Video },
     { id: 'blog', label: gen.navBlog || t.nav_blog || (lang === 'vi' ? 'Kiến thức' : 'Knowledge'), icon: BookOpen },

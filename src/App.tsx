@@ -6,6 +6,7 @@ import { HeroSection } from './components/HeroSection';
 import { StatsBar } from './components/StatsBar';
 import { AboutSection } from './components/AboutSection';
 import { CoursesSection } from './components/CoursesSection';
+import { ResourceLibrarySection } from './components/ResourceLibrarySection';
 import { ServicesSection } from './components/ServicesSection';
 import { ProductsSection } from './components/ProductsSection';
 import { BlogSection } from './components/BlogSection';
@@ -318,6 +319,28 @@ export default function App() {
             <CoursesSection 
               lang={lang} 
               onOpenCourse={(c) => setActiveCourse(c)}
+              isEditActive={isAdminMode && isEditActive}
+              onEditField={handleOpenEditField}
+            />
+            <SubPageBottomCta 
+              lang={lang} 
+              onNavigatePage={handleSelectPage} 
+              isEditActive={isAdminMode && isEditActive}
+              onEditField={handleOpenEditField}
+            />
+          </>
+        )}
+
+        {/* SUB-PAGE 2.5: RESOURCES (Kho Tài Liệu & Biểu Mẫu) */}
+        {activePage === 'resources' && (
+          <>
+            <SubPageHeader 
+              title={lang === 'vi' ? 'Kho Tài Liệu & Biểu Mẫu Thực Chiến' : 'Resources & Downloads'}
+              lang={lang}
+              onBackToHome={() => handleSelectPage('home')}
+            />
+            <ResourceLibrarySection 
+              lang={lang} 
               isEditActive={isAdminMode && isEditActive}
               onEditField={handleOpenEditField}
             />

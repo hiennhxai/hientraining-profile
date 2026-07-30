@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Article, CourseItem, ServiceItem, PhotoAlbumItem, BrandLogoItem, ArticleCategory } from '../types';
+import { Article, CourseItem, ServiceItem, PhotoAlbumItem, BrandLogoItem, ArticleCategory, ResourceItem, ResourceCategory, ResourceFileType } from '../types';
 import { getAdminData, saveAdminData, resetAdminData, FullAdminData } from '../data/adminStore';
 import { PhotoAlbumManager } from './PhotoAlbumManager';
 import { RichArticleBlockEditor } from './RichArticleBlockEditor';
@@ -10,7 +10,7 @@ import {
   X, Save, RotateCcw, RotateCw, Download, Upload, Plus, Trash2, Check, Settings, 
   BookOpen, Layers, Video, FileText, User, Image as ImageIcon, Sparkles, 
   ShieldCheck, Headphones, Tv, Mic, Award, Monitor, ExternalLink, ChevronDown, ChevronUp, Share2, FolderGit2,
-  Eye, EyeOff, Smartphone
+  Eye, EyeOff, Smartphone, FolderDown
 } from 'lucide-react';
 
 interface AdminPortalModalProps {
@@ -21,7 +21,7 @@ interface AdminPortalModalProps {
 
 export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onClose, onSaved }) => {
   const [data, setData] = useState<FullAdminData>(getAdminData());
-  const [activeTab, setActiveTab] = useState<'general' | 'story' | 'courses' | 'services' | 'projects' | 'articles' | 'album' | 'brands'>('general');
+  const [activeTab, setActiveTab] = useState<'general' | 'story' | 'courses' | 'resources' | 'services' | 'projects' | 'articles' | 'album' | 'brands'>('general');
   const [toastMsg, setToastMsg] = useState<string | null>(null);
 
   // Article Pop-up Preview State
@@ -185,6 +185,31 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
     }
   };
 
+  // --- RESOURCE / DOWNLOAD CRUD ---
+  const handleAddResource = () => {
+    const newRes: ResourceItem = {
+      id: `res-${Date.now()}`,
+      title: 'TÀI LIỆU / BIỂU MẪU MỚI TẢI VỀ',
+      description: 'Mô tả chi tiết nội dung tài liệu, hướng dẫn sử dụng hoặc mật khẩu truy cập...',
+      cat: 'script',
+      fileType: 'PDF',
+      fileUrl: 'https://drive.google.com',
+      date: new Date().toISOString().slice(0, 10).replace(/-/g, '.'),
+      fileSize: '2.5 MB',
+      tags: ['#New', '#TaiLieu'],
+      accessNote: 'Công khai hoặc dành riêng cho học viên 1-1'
+    };
+    setData({ ...data, resources: [...(data.resources || []), newRes] });
+    showNotification("Đã thêm tài liệu mới vào Kho Tài Liệu!");
+  };
+
+  const handleDeleteResource = (id: string) => {
+    if (window.confirm("Bạn có chắc chắn muốn xóa tài liệu này khỏi kho?")) {
+      setData({ ...data, resources: (data.resources || []).filter(r => r.id !== id) });
+      showNotification("Đã xóa tài liệu khỏi hệ thống!");
+    }
+  };
+
   // --- ARTICLE CRUD ---
   const handleAddArticle = () => {
     const slug = `bai-viet-moi-${Date.now()}`;
@@ -280,8 +305,8 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
 
         {/* Tab Navigation Menu — Organized into 2 Clean Rows */}
         <div className="bg-slate-100 p-2.5 border-b border-slate-200 space-y-2 shrink-0">
-          {/* Row 1: General, Logos, Story, Courses */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          {/* Row 1: General, Logos, Story, Courses, Resources */}
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
             <button
               onClick={() => { setActiveTab('general'); setEditingArticleSlug(null); }}
               className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
@@ -299,7 +324,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
               }`}
             >
               <Sparkles className="w-4 h-4 shrink-0" />
-              <span className="truncate">⚡ Logo & Marquee ({(data.brandLogos || []).length})</span>
+              <span className="truncate">⚡ Logo ({(data.brandLogos || []).length})</span>
             </button>
 
             <button
@@ -309,7 +334,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
               }`}
             >
               <User className="w-4 h-4 text-orange-500 shrink-0" />
-              <span className="truncate">Câu Chuyện & Story</span>
+              <span className="truncate">Story</span>
             </button>
 
             <button
@@ -319,7 +344,17 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
               }`}
             >
               <BookOpen className="w-4 h-4 text-orange-500 shrink-0" />
-              <span className="truncate">Khóa Học 1-1 ({data.courses.length})</span>
+              <span className="truncate">Khóa Học ({data.courses.length})</span>
+            </button>
+
+            <button
+              onClick={() => { setActiveTab('resources'); setEditingArticleSlug(null); }}
+              className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                activeTab === 'resources' ? 'bg-orange-600 text-white shadow-md' : 'bg-amber-50 text-amber-900 hover:bg-amber-100 border border-amber-200'
+              }`}
+            >
+              <FolderDown className="w-4 h-4 shrink-0 text-amber-500" />
+              <span className="truncate">📚 Kho Tài Liệu ({(data.resources || []).length})</span>
             </button>
           </div>
 
@@ -2241,6 +2276,188 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                     </div>
                   ))}
                 </div>
+              </div>
+            </div>
+          )}
+
+          {/* TAB 9: KHO TÀI LIỆU & FILE THỰC CHIẾN (Resources Manager) */}
+          {activeTab === 'resources' && (
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm animate-fadeIn space-y-6">
+              <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+                <div>
+                  <h3 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                    <FolderDown className="w-5 h-5 text-orange-600" />
+                    <span>QUẢN LÝ KHO TÀI LIỆU & FILE THỰC CHIẾN ({(data.resources || []).length})</span>
+                  </h3>
+                  <p className="text-xs text-slate-500 font-medium mt-0.5">
+                    Thêm, sửa, xóa file PDF, Word, Excel, Link Google Drive, Ebook và tài khoản đăng nhập cho học viên.
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={handleAddResource}
+                  className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md cursor-pointer transition-all"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Thêm Tài Liệu Mới</span>
+                </button>
+              </div>
+
+              {/* Resources List */}
+              <div className="space-y-4">
+                {(data.resources || []).map((res, idx) => (
+                  <div key={res.id} className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-mono font-extrabold text-orange-600 bg-orange-50 px-2.5 py-1 rounded-lg border border-orange-200">
+                        MỤC THỨ #{idx + 1} · ID: {res.id}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteResource(res.id)}
+                        className="text-xs font-bold text-red-600 hover:text-red-700 flex items-center gap-1 cursor-pointer bg-white px-3 py-1 rounded-lg border border-red-200 shadow-2xs"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                        <span>Xóa Tài Liệu</span>
+                      </button>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {/* Title */}
+                      <div className="space-y-1 md:col-span-2">
+                        <label className="text-[11px] font-mono font-bold text-slate-600">TÊN TÀI LIỆU / MẪU KỊCH BẢN:</label>
+                        <input
+                          type="text"
+                          value={res.title}
+                          onChange={(e) => {
+                            const list = [...(data.resources || [])];
+                            list[idx] = { ...list[idx], title: e.target.value };
+                            setData({ ...data, resources: list });
+                          }}
+                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 font-extrabold text-slate-900 text-xs focus:ring-2 focus:ring-orange-500"
+                        />
+                      </div>
+
+                      {/* Category */}
+                      <div className="space-y-1">
+                        <label className="text-[11px] font-mono font-bold text-slate-600">DANH MỤC TÀI LIỆU:</label>
+                        <select
+                          value={res.cat}
+                          onChange={(e) => {
+                            const list = [...(data.resources || [])];
+                            list[idx] = { ...list[idx], cat: e.target.value as ResourceCategory };
+                            setData({ ...data, resources: list });
+                          }}
+                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 font-bold text-slate-800 text-xs"
+                        >
+                          <option value="script">Kịch Bản Livestream (script)</option>
+                          <option value="template">Bảng Tính & Template (template)</option>
+                          <option value="ebook">Ebook & Giáo Trình (ebook)</option>
+                          <option value="software">Phần Mềm & Preset (software)</option>
+                          <option value="setup_guide">Checklist & Studio Setup (setup_guide)</option>
+                        </select>
+                      </div>
+
+                      {/* File Type */}
+                      <div className="space-y-1">
+                        <label className="text-[11px] font-mono font-bold text-slate-600">LOẠI FILE / ĐỊNH DẠNG:</label>
+                        <select
+                          value={res.fileType}
+                          onChange={(e) => {
+                            const list = [...(data.resources || [])];
+                            list[idx] = { ...list[idx], fileType: e.target.value as ResourceFileType };
+                            setData({ ...data, resources: list });
+                          }}
+                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 font-bold text-slate-800 text-xs"
+                        >
+                          <option value="PDF">PDF Document (.pdf)</option>
+                          <option value="DOCX">Word Document (.docx)</option>
+                          <option value="XLSX">Excel Spreadsheet (.xlsx)</option>
+                          <option value="DRIVE">Google Drive Link</option>
+                          <option value="ZIP">Zip Compressed (.zip)</option>
+                          <option value="LINK">External Link</option>
+                        </select>
+                      </div>
+
+                      {/* File URL / Download Link */}
+                      <div className="space-y-1 md:col-span-2">
+                        <label className="text-[11px] font-mono font-bold text-slate-600">ĐƯỜNG DẪN LINK TẢI / DRIVE URL:</label>
+                        <input
+                          type="text"
+                          value={res.fileUrl}
+                          placeholder="https://drive.google.com/... hoặc link file"
+                          onChange={(e) => {
+                            const list = [...(data.resources || [])];
+                            list[idx] = { ...list[idx], fileUrl: e.target.value };
+                            setData({ ...data, resources: list });
+                          }}
+                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 font-mono text-xs text-blue-600 font-bold"
+                        />
+                      </div>
+
+                      {/* Description */}
+                      <div className="space-y-1 md:col-span-2">
+                        <label className="text-[11px] font-mono font-bold text-slate-600">MÔ TẢ CHI TIẾT NỘI DUNG TÀI LIỆU:</label>
+                        <textarea
+                          rows={3}
+                          value={res.description}
+                          onChange={(e) => {
+                            const list = [...(data.resources || [])];
+                            list[idx] = { ...list[idx], description: e.target.value };
+                            setData({ ...data, resources: list });
+                          }}
+                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 text-slate-800 text-xs font-medium"
+                        />
+                      </div>
+
+                      {/* Access Note */}
+                      <div className="space-y-1 md:col-span-2">
+                        <label className="text-[11px] font-mono font-bold text-slate-600">GHI CHÚ QUYỀN TRUY CẬP / TÀI KHOẢN MẬT KHẨU (NẾU CÓ):</label>
+                        <input
+                          type="text"
+                          value={res.accessNote || ''}
+                          placeholder="VD: Mật khẩu mở file: 123456 hoặc Dành cho học viên 1-1"
+                          onChange={(e) => {
+                            const list = [...(data.resources || [])];
+                            list[idx] = { ...list[idx], accessNote: e.target.value };
+                            setData({ ...data, resources: list });
+                          }}
+                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 font-medium text-slate-800 text-xs"
+                        />
+                      </div>
+
+                      {/* Date & File Size */}
+                      <div className="space-y-1">
+                        <label className="text-[11px] font-mono font-bold text-slate-600">NGÀY PHÁT HÀNH:</label>
+                        <input
+                          type="text"
+                          value={res.date}
+                          onChange={(e) => {
+                            const list = [...(data.resources || [])];
+                            list[idx] = { ...list[idx], date: e.target.value };
+                            setData({ ...data, resources: list });
+                          }}
+                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 font-mono text-xs text-slate-800"
+                        />
+                      </div>
+
+                      <div className="space-y-1">
+                        <label className="text-[11px] font-mono font-bold text-slate-600">DUNG LƯỢNG FILE:</label>
+                        <input
+                          type="text"
+                          value={res.fileSize || ''}
+                          placeholder="VD: 4.2 MB hoặc Google Drive"
+                          onChange={(e) => {
+                            const list = [...(data.resources || [])];
+                            list[idx] = { ...list[idx], fileSize: e.target.value };
+                            setData({ ...data, resources: list });
+                          }}
+                          className="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 font-mono text-xs text-slate-800"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           )}

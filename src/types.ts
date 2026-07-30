@@ -121,3 +121,19 @@ export interface BrandLogoItem {
   color?: string;
 }
 
+export type ResourceCategory = 'script' | 'template' | 'ebook' | 'software' | 'setup_guide';
+export type ResourceFileType = 'PDF' | 'DOCX' | 'XLSX' | 'DRIVE' | 'ZIP' | 'LINK';
+
+export interface ResourceItem {
+  id: string;
+  title: string;
+  description: string;
+  cat: ResourceCategory;
+  fileType: ResourceFileType;
+  fileUrl: string;
+  logoUrl?: string;
+  date: string;
+  fileSize?: string;
+  tags?: string[];
+  accessNote?: string;
+}
