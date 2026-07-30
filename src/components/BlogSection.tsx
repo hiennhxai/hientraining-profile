@@ -2,11 +2,14 @@ import { useState, useEffect } from 'react';
 import { Language, ArticleCategory, Article } from '../types';
 import { getAdminData } from '../data/adminStore';
 import { translations } from '../data/translations';
+import { EditableWrapper } from './EditableWrapper';
 import { ArrowUpRight } from 'lucide-react';
 
 interface BlogSectionProps {
   lang: Language;
   onOpenArticle: (slug: string) => void;
+  isEditActive?: boolean;
+  onEditField?: (fieldKey: string, fieldLabel: string, currentValue: string) => void;
 }
 
 const getCategoryInfo = (cat: ArticleCategory, isVi: boolean) => {
@@ -22,7 +25,7 @@ const getCategoryInfo = (cat: ArticleCategory, isVi: boolean) => {
   return map[cat] || { cls: 'bg-orange-50 text-orange-600 border-orange-200', label: (cat || 'BLOG').toUpperCase() };
 };
 
-export function BlogSection({ lang, onOpenArticle }: BlogSectionProps) {
+export function BlogSection({ lang, onOpenArticle, isEditActive = false, onEditField }: BlogSectionProps) {
   const [articlesRecord, setArticlesRecord] = useState<Record<string, Article>>(getAdminData().articles);
   const t = translations[lang];
 
@@ -34,14 +37,31 @@ export function BlogSection({ lang, onOpenArticle }: BlogSectionProps) {
     return () => window.removeEventListener('admin_data_updated', handleUpdate);
   }, []);
 
+  const triggerEdit = (key: string, label: string, currentVal: string) => {
+    if (onEditField) onEditField(key, label, currentVal);
+  };
+
   const articleList = Object.values(articlesRecord) as Article[];
 
   return (
     <section id="blog" className="py-6 sm:py-8 bg-slate-50 relative border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t.bl_title}</h2>
-          <p className="text-orange-600 font-semibold text-sm mt-1">{t.bl_sub2}</p>
+          <EditableWrapper
+            isEditActive={isEditActive}
+            label="Sửa Tiêu Đề Bài Viết"
+            onEdit={() => triggerEdit('blogTitle', 'Tiêu Đề Bài Viết Kiến Thức', t.bl_title)}
+          >
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t.bl_title}</h2>
+          </EditableWrapper>
+
+          <EditableWrapper
+            isEditActive={isEditActive}
+            label="Sửa Thẻ Tag Kiến Thức"
+            onEdit={() => triggerEdit('blogSub', 'Mô Tả Khối Bài Viết', t.bl_sub2)}
+          >
+            <p className="text-orange-600 font-semibold text-sm mt-1">{t.bl_sub2}</p>
+          </EditableWrapper>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mb-10">

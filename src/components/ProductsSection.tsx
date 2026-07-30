@@ -1,17 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Language } from '../types';
 import { translations } from '../data/translations';
 import { projectCategoriesData } from '../data/projects';
+import { EditableWrapper } from './EditableWrapper';
 import { ExternalLink, Sparkles, TrendingUp } from 'lucide-react';
 
 interface ProductsSectionProps {
   lang: Language;
+  isEditActive?: boolean;
+  onEditField?: (fieldKey: string, fieldLabel: string, currentValue: string) => void;
 }
 
-export function ProductsSection({ lang }: ProductsSectionProps) {
+export function ProductsSection({ lang, isEditActive = false, onEditField }: ProductsSectionProps) {
   const t = translations[lang];
   const isVi = lang === 'vi';
   const [activeTab, setActiveTab] = useState<string>(projectCategoriesData[0].id);
+
+  const triggerEdit = (key: string, label: string, currentVal: string) => {
+    if (onEditField) onEditField(key, label, currentVal);
+  };
 
   const activeCategory = projectCategoriesData.find(c => c.id === activeTab) || projectCategoriesData[0];
 
@@ -19,8 +26,21 @@ export function ProductsSection({ lang }: ProductsSectionProps) {
     <section id="projects" className="py-6 sm:py-8 bg-slate-50 relative border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t.pd_title}</h2>
-          <p className="text-orange-600 font-semibold text-sm mt-1">{t.pd_sub}</p>
+          <EditableWrapper
+            isEditActive={isEditActive}
+            label="Sửa Tiêu Đề Dự Án"
+            onEdit={() => triggerEdit('projectsTitle', 'Tiêu Đề Các Dự Án', t.pd_title)}
+          >
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t.pd_title}</h2>
+          </EditableWrapper>
+
+          <EditableWrapper
+            isEditActive={isEditActive}
+            label="Sửa Thẻ Tag Dự Án"
+            onEdit={() => triggerEdit('projectsSub', 'Mô Tả Khối Dự Án', t.pd_sub)}
+          >
+            <p className="text-orange-600 font-semibold text-sm mt-1">{t.pd_sub}</p>
+          </EditableWrapper>
         </div>
 
         {/* Category Navigation Tabs */}

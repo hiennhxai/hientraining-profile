@@ -3,6 +3,7 @@ import { Language, SocialLinkItem } from '../types';
 import { getAdminData } from '../data/adminStore';
 import { translations } from '../data/translations';
 import { Logo } from './Logo';
+import { EditableWrapper } from './EditableWrapper';
 import { 
   Settings, MessageCircle, Share2, MapPin, Video, Youtube, 
   AtSign, Send, PhoneCall, Gamepad2, Globe, Plus, Link2, ExternalLink
@@ -12,6 +13,8 @@ interface FooterProps {
   lang: Language;
   onNavigatePage?: (page: string) => void;
   onOpenAdminLogin?: () => void;
+  isEditActive?: boolean;
+  onEditField?: (fieldKey: string, fieldLabel: string, currentValue: string) => void;
 }
 
 const ICON_MAP: Record<string, any> = {
@@ -91,7 +94,7 @@ function getSocialBrandStyles(platform: string, iconName?: string) {
   };
 }
 
-export function Footer({ lang, onNavigatePage, onOpenAdminLogin }: FooterProps) {
+export function Footer({ lang, onNavigatePage, onOpenAdminLogin, isEditActive = false, onEditField }: FooterProps) {
   const t = translations[lang];
   const isVi = lang === 'vi';
 
@@ -111,6 +114,10 @@ export function Footer({ lang, onNavigatePage, onOpenAdminLogin }: FooterProps) 
     };
   }, []);
 
+  const triggerEdit = (key: string, label: string, currentVal: string) => {
+    if (onEditField) onEditField(key, label, currentVal);
+  };
+
   const handleNav = (page: string) => {
     if (onNavigatePage) {
       onNavigatePage(page);
@@ -128,11 +135,16 @@ export function Footer({ lang, onNavigatePage, onOpenAdminLogin }: FooterProps) 
           {/* COLUMN 1: Brand & Owner Info (Left Column) */}
           <div className="space-y-2.5">
             <Logo className="h-8" showText={true} textColor="text-slate-900" />
-            <p className="text-slate-600 text-xs leading-relaxed font-medium">
-              {gen.footerDesc || (isVi 
-                ? 'Đào tạo kỹ năng cá nhân 1 kèm 1 thực chiến, kỹ thuật ánh sáng, âm thanh & sản xuất Livestream Studio chuyên nghiệp.'
-                : '1-on-1 practical skill coaching, studio lighting, sound setup & professional Livestream production.')}
-            </p>
+            <EditableWrapper 
+              isEditActive={isEditActive} 
+              onEdit={() => triggerEdit('footerDesc', 'Footer Description', gen.footerDesc || '')}
+            >
+              <p className="text-slate-600 text-xs leading-relaxed font-medium">
+                {gen.footerDesc || (isVi 
+                  ? 'Đào tạo kỹ năng cá nhân 1 kèm 1 thực chiến, kỹ thuật ánh sáng, âm thanh & sản xuất Livestream Studio chuyên nghiệp.'
+                  : '1-on-1 practical skill coaching, studio lighting, sound setup & professional Livestream production.')}
+              </p>
+            </EditableWrapper>
             <div className="pt-1 text-slate-700 text-xs font-mono space-y-1">
               <div><strong className="text-slate-900">{isVi ? 'Chủ sở hữu:' : 'Owner:'}</strong> NGUYỄN HỒNG XUÂN HIẾN</div>
               <div className="flex items-center gap-1.5 text-slate-500">

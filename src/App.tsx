@@ -239,13 +239,18 @@ export default function App() {
       />
 
       <main>
-        {/* HOMEPAGE VIEW: Streamlined hero header and contact section */}
+        {/* HOMEPAGE VIEW: Streamlined hero header, stats bar, and contact section */}
         {activePage === 'home' && (
           <>
             <HeroSection 
               lang={lang} 
               onNavigatePage={handleSelectPage} 
               onSelectCourse={(c) => setActiveCourse(c)}
+              isEditActive={isAdminMode && isEditActive}
+              onEditField={handleOpenEditField}
+            />
+            <StatsBar 
+              lang={lang}
               isEditActive={isAdminMode && isEditActive}
               onEditField={handleOpenEditField}
             />
@@ -265,7 +270,11 @@ export default function App() {
               lang={lang}
               onBackToHome={() => handleSelectPage('home')}
             />
-            <AboutSection lang={lang} />
+            <AboutSection 
+              lang={lang}
+              isEditActive={isAdminMode && isEditActive}
+              onEditField={handleOpenEditField}
+            />
             <SubPageBottomCta lang={lang} onNavigatePage={handleSelectPage} />
           </>
         )}
@@ -278,7 +287,12 @@ export default function App() {
               lang={lang}
               onBackToHome={() => handleSelectPage('home')}
             />
-            <CoursesSection lang={lang} onOpenCourse={(c) => setActiveCourse(c)} />
+            <CoursesSection 
+              lang={lang} 
+              onOpenCourse={(c) => setActiveCourse(c)}
+              isEditActive={isAdminMode && isEditActive}
+              onEditField={handleOpenEditField}
+            />
             <SubPageBottomCta lang={lang} onNavigatePage={handleSelectPage} />
           </>
         )}
@@ -291,7 +305,12 @@ export default function App() {
               lang={lang}
               onBackToHome={() => handleSelectPage('home')}
             />
-            <ServicesSection lang={lang} onOpenService={(s) => setActiveService(s)} />
+            <ServicesSection 
+              lang={lang} 
+              onOpenService={(s) => setActiveService(s)}
+              isEditActive={isAdminMode && isEditActive}
+              onEditField={handleOpenEditField}
+            />
             <SubPageBottomCta lang={lang} onNavigatePage={handleSelectPage} />
           </>
         )}
@@ -304,7 +323,11 @@ export default function App() {
               lang={lang}
               onBackToHome={() => handleSelectPage('home')}
             />
-            <ProductsSection lang={lang} />
+            <ProductsSection 
+              lang={lang}
+              isEditActive={isAdminMode && isEditActive}
+              onEditField={handleOpenEditField}
+            />
             <SubPageBottomCta lang={lang} onNavigatePage={handleSelectPage} />
           </>
         )}
@@ -317,7 +340,12 @@ export default function App() {
               lang={lang}
               onBackToHome={() => handleSelectPage('home')}
             />
-            <BlogSection lang={lang} onOpenArticle={(slug) => setActiveArticleSlug(slug)} />
+            <BlogSection 
+              lang={lang} 
+              onOpenArticle={(slug) => setActiveArticleSlug(slug)}
+              isEditActive={isAdminMode && isEditActive}
+              onEditField={handleOpenEditField}
+            />
             <SubPageBottomCta lang={lang} onNavigatePage={handleSelectPage} />
           </>
         )}
@@ -342,6 +370,8 @@ export default function App() {
       <Footer 
         lang={lang} 
         onNavigatePage={handleSelectPage} 
+        isEditActive={isAdminMode && isEditActive}
+        onEditField={handleOpenEditField}
         onOpenAdminLogin={() => {
           if (isAdminMode) {
             setIsAdminOpen(true);

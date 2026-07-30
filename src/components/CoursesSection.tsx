@@ -3,14 +3,17 @@ import { CourseItem, Language } from '../types';
 import { getAdminData } from '../data/adminStore';
 import { translations } from '../data/translations';
 import { CourseModal } from './CourseModal';
+import { EditableWrapper } from './EditableWrapper';
 import { BookOpen, CheckCircle, ChevronRight, Phone, Sparkles } from 'lucide-react';
 
 interface CoursesSectionProps {
   lang: Language;
   onOpenCourse?: (course: CourseItem) => void;
+  isEditActive?: boolean;
+  onEditField?: (fieldKey: string, fieldLabel: string, currentValue: string) => void;
 }
 
-export function CoursesSection({ lang, onOpenCourse }: CoursesSectionProps) {
+export function CoursesSection({ lang, onOpenCourse, isEditActive = false, onEditField }: CoursesSectionProps) {
   const [courses, setCourses] = useState<CourseItem[]>(getAdminData().courses);
   const t = translations[lang];
   const isVi = lang === 'vi';
@@ -22,6 +25,10 @@ export function CoursesSection({ lang, onOpenCourse }: CoursesSectionProps) {
     window.addEventListener('admin_data_updated', handleUpdate);
     return () => window.removeEventListener('admin_data_updated', handleUpdate);
   }, []);
+
+  const triggerEdit = (key: string, label: string, currentVal: string) => {
+    if (onEditField) onEditField(key, label, currentVal);
+  };
 
   const defaultThumbnails = [
     "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
@@ -37,8 +44,21 @@ export function CoursesSection({ lang, onOpenCourse }: CoursesSectionProps) {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t.cs_title}</h2>
-            <p className="text-slate-600 text-sm mt-1">{t.cs_sub}</p>
+            <EditableWrapper
+              isEditActive={isEditActive}
+              label="Sửa Tiêu Đề Khóa Học"
+              onEdit={() => triggerEdit('coursesTitle', 'Tiêu Đề Các Khóa Học', t.cs_title)}
+            >
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t.cs_title}</h2>
+            </EditableWrapper>
+
+            <EditableWrapper
+              isEditActive={isEditActive}
+              label="Sửa Mô Tả Phụ Khóa Học"
+              onEdit={() => triggerEdit('coursesSub', 'Mô Tả Khối Khóa Học', t.cs_sub)}
+            >
+              <p className="text-slate-600 text-sm mt-1">{t.cs_sub}</p>
+            </EditableWrapper>
           </div>
           <div className="shrink-0">
             <a 
@@ -51,7 +71,7 @@ export function CoursesSection({ lang, onOpenCourse }: CoursesSectionProps) {
           </div>
         </div>
 
-        {/* Dynamic Centered 3-Column Grid (Gọn gàng như Dịch vụ nổi bật & Căn giữa tuyệt đối) */}
+        {/* Dynamic Centered 3-Column Grid */}
         <div className="flex flex-wrap items-stretch justify-center -mx-3">
           {courses.map((course, idx) => {
             const thumbUrl = course.thumbnailUrl || defaultThumbnails[idx % defaultThumbnails.length];
@@ -66,12 +86,6 @@ export function CoursesSection({ lang, onOpenCourse }: CoursesSectionProps) {
                   className="group w-full rounded-2xl bg-white border border-slate-200 hover:border-orange-400 overflow-hidden transition-all duration-300 shadow-sm interactive-card flex flex-col justify-between cursor-pointer"
                   role="button"
                   tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      onOpenCourse?.(course);
-                    }
-                  }}
                 >
                   
                   {/* 16:9 Aspect Ratio Thumbnail Banner */}
@@ -96,12 +110,25 @@ export function CoursesSection({ lang, onOpenCourse }: CoursesSectionProps) {
                   {/* Card Content Body */}
                   <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
                     <div>
-                      <h3 className="text-lg font-extrabold text-slate-900 group-hover:text-orange-600 transition-colors mb-2 leading-snug">
-                        {course.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-slate-600 mb-4 line-clamp-2 leading-relaxed font-normal">
-                        {course.subtitle}
-                      </p>
+                      <EditableWrapper
+                        isEditActive={isEditActive}
+                        label={`Sửa Tên Khóa ${idx + 1}`}
+                        onEdit={() => triggerEdit(`course_${course.id}_title`, `Tên Khóa Học ${course.code}`, course.title)}
+                      >
+                        <h3 className="text-lg font-extrabold text-slate-900 group-hover:text-orange-600 transition-colors mb-2 leading-snug">
+                          {course.title}
+                        </h3>
+                      </EditableWrapper>
+
+                      <EditableWrapper
+                        isEditActive={isEditActive}
+                        label={`Sửa Mô Tả Khóa ${idx + 1}`}
+                        onEdit={() => triggerEdit(`course_${course.id}_subtitle`, `Mô Tả Khóa Học ${course.code}`, course.subtitle)}
+                      >
+                        <p className="text-xs sm:text-sm text-slate-600 mb-4 line-clamp-2 leading-relaxed font-normal">
+                          {course.subtitle}
+                        </p>
+                      </EditableWrapper>
 
                       <div className="space-y-1.5 mb-4 text-xs text-slate-700 font-medium bg-slate-50 p-3 rounded-xl border border-slate-200/80">
                         <div className="flex items-center gap-2">

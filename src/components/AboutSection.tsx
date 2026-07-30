@@ -1,22 +1,55 @@
+import { useState, useEffect } from 'react';
 import { Language } from '../types';
 import { translations } from '../data/translations';
+import { getAdminData } from '../data/adminStore';
+import { EditableWrapper } from './EditableWrapper';
 import { Heart, Users, Mic, Sparkles, Award, History, Tv, Video } from 'lucide-react';
 
 interface AboutSectionProps {
   lang: Language;
+  isEditActive?: boolean;
+  onEditField?: (fieldKey: string, fieldLabel: string, currentValue: string) => void;
 }
 
-export function AboutSection({ lang }: AboutSectionProps) {
+export function AboutSection({ lang, isEditActive = false, onEditField }: AboutSectionProps) {
   const t = translations[lang];
   const isVi = lang === 'vi';
+  const [gen, setGen] = useState(getAdminData().general);
+
+  useEffect(() => {
+    const handleUpdate = () => setGen(getAdminData().general);
+    window.addEventListener('admin_data_updated', handleUpdate);
+    window.addEventListener('supabase_realtime_update', handleUpdate);
+    return () => {
+      window.removeEventListener('admin_data_updated', handleUpdate);
+      window.removeEventListener('supabase_realtime_update', handleUpdate);
+    };
+  }, []);
+
+  const triggerEdit = (key: string, label: string, currentVal: string) => {
+    if (onEditField) onEditField(key, label, currentVal);
+  };
 
   return (
     <section id="about" className="py-6 sm:py-8 bg-slate-50/50 relative border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Section Header */}
         <div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t.a_title}</h2>
-          <p className="text-orange-600 font-semibold text-sm mt-1">{t.a_tag}</p>
+          <EditableWrapper
+            isEditActive={isEditActive}
+            label="Sửa Tiêu Đề Về Tôi"
+            onEdit={() => triggerEdit('storyTitle', 'Tiêu Đề Về Tôi', gen.storyTitle || t.a_title)}
+          >
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{gen.storyTitle || t.a_title}</h2>
+          </EditableWrapper>
+
+          <EditableWrapper
+            isEditActive={isEditActive}
+            label="Sửa Thẻ Tag"
+            onEdit={() => triggerEdit('storyTag', 'Thẻ Tag Về Tôi', gen.storyTag || t.a_tag)}
+          >
+            <p className="text-orange-600 font-semibold text-sm mt-1">{gen.storyTag || t.a_tag}</p>
+          </EditableWrapper>
         </div>
 
         {/* Top Grid: Self-Narrative with Portrait Photo (Left) & Achievements/Milestones (Right) */}
@@ -25,29 +58,49 @@ export function AboutSection({ lang }: AboutSectionProps) {
           <div className="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col justify-between space-y-5 text-slate-700 text-sm sm:text-base leading-relaxed">
             
             <div className="p-5 rounded-xl bg-orange-50/80 border border-orange-200/80 shadow-2xs">
-              <p className="font-bold text-orange-700 mb-2 flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-amber-500 shrink-0" />
-                <span>{isVi ? '"Mỗi người trong chúng ta đều sở hữu những năng lực tuyệt vời..."' : '"Every person possesses remarkable innate potential waiting to be unlocked..."'}</span>
-              </p>
-              <p className="font-medium text-slate-800" dangerouslySetInnerHTML={{ __html: t.a_p1 }} />
+              <EditableWrapper
+                isEditActive={isEditActive}
+                label="Sửa Trích Dẫn"
+                onEdit={() => triggerEdit('storyQuote', 'Trích Dẫn Nổi Bật', gen.storyQuote || '"Mỗi người trong chúng ta đều sở hữu những năng lực tuyệt vời..."')}
+              >
+                <p className="font-bold text-orange-700 mb-2 flex items-center gap-2">
+                  <Sparkles className="w-5 h-5 text-amber-500 shrink-0" />
+                  <span>{gen.storyQuote || (isVi ? '"Mỗi người trong chúng ta đều sở hữu những năng lực tuyệt vời..."' : '"Every person possesses remarkable innate potential..."')}</span>
+                </p>
+              </EditableWrapper>
+
+              <EditableWrapper
+                isEditActive={isEditActive}
+                label="Sửa Đoạn Văn 1"
+                onEdit={() => triggerEdit('storyP1', 'Đoạn Văn Giới Thiệu 1', gen.storyP1 || t.a_p1)}
+              >
+                <p className="font-medium text-slate-800" dangerouslySetInnerHTML={{ __html: gen.storyP1 || t.a_p1 }} />
+              </EditableWrapper>
             </div>
 
             {/* Profile Image & Content Side-by-Side / Wrap Layout */}
             <div className="flex flex-col sm:flex-row gap-5 items-start">
               {/* Profile Image Frame */}
               <div className="w-full sm:w-48 shrink-0 relative group">
-                <div className="aspect-square rounded-2xl overflow-hidden border-2 border-orange-200 shadow-md bg-slate-100 relative">
-                  <img 
-                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&auto=format&fit=crop" 
-                    alt="MC Nguyễn Hồng Xuân Hiến" 
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2.5">
-                    <span className="text-[11px] font-mono font-bold text-white uppercase tracking-wider">
-                      MC Xuân Hiến
-                    </span>
+                <EditableWrapper
+                  isEditActive={isEditActive}
+                  type="image"
+                  label="Đổi Ảnh Chân Dung"
+                  onEdit={() => triggerEdit('heroPortraitUrl', 'URL Ảnh Chân Dung', gen.heroPortraitUrl || "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&auto=format&fit=crop")}
+                >
+                  <div className="aspect-square rounded-2xl overflow-hidden border-2 border-orange-200 shadow-md bg-slate-100 relative">
+                    <img 
+                      src={gen.heroPortraitUrl || "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&auto=format&fit=crop"} 
+                      alt="MC Nguyễn Hồng Xuân Hiến" 
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2.5">
+                      <span className="text-[11px] font-mono font-bold text-white uppercase tracking-wider">
+                        MC Xuân Hiến
+                      </span>
+                    </div>
                   </div>
-                </div>
+                </EditableWrapper>
                 <div className="mt-1.5 text-center">
                   <span className="text-[11px] font-mono text-slate-500 font-semibold block">
                     {isVi ? 'MC · Specialist Trainer' : 'MC & Senior Trainer'}
@@ -57,8 +110,21 @@ export function AboutSection({ lang }: AboutSectionProps) {
 
               {/* Text Narrative Beside Image */}
               <div className="space-y-4 flex-1">
-                <p className="font-normal text-slate-700" dangerouslySetInnerHTML={{ __html: t.a_p2 }} />
-                <p className="font-normal text-slate-700" dangerouslySetInnerHTML={{ __html: t.a_p3 }} />
+                <EditableWrapper
+                  isEditActive={isEditActive}
+                  label="Sửa Đoạn Văn 2"
+                  onEdit={() => triggerEdit('storyP2', 'Đoạn Văn Giới Thiệu 2', gen.storyP2 || t.a_p2)}
+                >
+                  <p className="font-normal text-slate-700" dangerouslySetInnerHTML={{ __html: gen.storyP2 || t.a_p2 }} />
+                </EditableWrapper>
+
+                <EditableWrapper
+                  isEditActive={isEditActive}
+                  label="Sửa Đoạn Văn 3"
+                  onEdit={() => triggerEdit('storyP3', 'Đoạn Văn Giới Thiệu 3', gen.storyP3 || t.a_p3)}
+                >
+                  <p className="font-normal text-slate-700" dangerouslySetInnerHTML={{ __html: gen.storyP3 || t.a_p3 }} />
+                </EditableWrapper>
               </div>
             </div>
 
