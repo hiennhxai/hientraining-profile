@@ -65,7 +65,11 @@ export interface ProjectCategoryItem {
 export interface SocialMediaChannel {
   id: string;
   title: string;
+  handle?: string;
+  followers?: string;
   channelUrl?: string;
+  thumbnailUrl?: string;
+  description?: string;
   links: { label: string; url: string }[];
 }
 

@@ -3,38 +3,51 @@ import { SocialMediaChannel, ProjectCategoryItem } from '../types';
 export const tiktokChannels: SocialMediaChannel[] = [
   {
     id: 'ngoc-trinh',
-    title: 'TIKTOK - NGỌC TRINH',
+    title: 'KÊNH TIKTOK - NGỌC TRINH',
+    handle: '@ngoctrinh89',
+    followers: '6.8M+ Followers',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop',
     channelUrl: 'https://www.tiktok.com/@ngoctrinh89',
+    description: 'Tư vấn kịch bản livestream, cấu hình góc quay 4K và điều phối kỹ thuật cho các phiên Mega Stream chốt đơn.',
     links: [
       { label: 'Clip Livestream 1 — TikTok @ngoctrinh89', url: 'https://www.tiktok.com/@ngoctrinh89/video/7406598157548784914' },
       { label: 'Clip Livestream 2 — TikTok @ngoctrinh89', url: 'https://www.tiktok.com/@ngoctrinh89/video/7405579598836141319' },
-      { label: 'Clip Livestream 3 — TikTok @ngoctrinh89', url: 'https://www.tiktok.com/@ngoctrinh89/video/7407005020643675399' },
-      { label: 'Clip Livestream 4 — TikTok @ngoctrinh89', url: 'https://www.tiktok.com/@ngoctrinh89/video/7407842127150927122' },
-      { label: 'Clip Livestream 5 — TikTok @ngoctrinh89', url: 'https://www.tiktok.com/@ngoctrinh89/video/7408576236886215943' }
+      { label: 'Clip Livestream 3 — TikTok @ngoctrinh89', url: 'https://www.tiktok.com/@ngoctrinh89/video/7407005020643675399' }
     ]
   },
   {
     id: 'be-duy',
-    title: 'TIKTOK - BÉ DUY',
+    title: 'KÊNH TIKTOK - BÉ DUY',
+    handle: '@beduyzuize',
+    followers: '1.2M+ Followers',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop',
     channelUrl: 'https://www.tiktok.com/@beduyzuize',
+    description: 'Huấn luyện làm chủ camera, giọng nói truyền cảm hứng và kỹ năng giữ chân người xem livestream.',
     links: [
       { label: 'Clip Livestream 1 — TikTok @beduyzuize', url: 'https://www.tiktok.com/@beduyzuize/video/7405837827885305109' },
-      { label: 'Clip Livestream 2 — TikTok @beduyzuize', url: 'https://www.tiktok.com/@beduyzuize/video/7397264972994202897' },
-      { label: 'Clip Livestream 3 — TikTok @beduyzuize', url: 'https://www.tiktok.com/@beduyzuize/video/7406592493577309441' }
+      { label: 'Clip Livestream 2 — TikTok @beduyzuize', url: 'https://www.tiktok.com/@beduyzuize/video/7397264972994202897' }
     ]
   },
   {
     id: 'hiany',
-    title: 'TIKTOK - HIANY',
+    title: 'KÊNH TIKTOK - HIANY',
+    handle: '@hiany.official',
+    followers: '850K+ Followers',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop',
     channelUrl: 'https://www.tiktok.com/@ngoctrinh89',
+    description: 'Setup hệ thống 3 đèn chuẩn studio, soundcard lọc nhiễu âm thanh chuyên nghiệp.',
     links: [
       { label: 'Clip Livestream Hiany 1', url: 'https://www.tiktok.com/@ngoctrinh89/video/7406598157548784914' }
     ]
   },
   {
     id: 'hien-nguyen',
-    title: 'TIKTOK - HIẾN NGUYỄN (MC XUÂN HIỂN)',
+    title: 'KÊNH OFFICIAL - MC XUÂN HIỂN',
+    handle: '@hiennguyen.mc',
+    followers: '500K+ Followers',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop',
     channelUrl: 'https://www.tiktok.com/@hiennguyen.mc',
+    description: 'Kênh chính thức chia sẻ kinh nghiệm MC truyền hình, kỹ năng giao tiếp & tư vấn setup phòng studio.',
     links: [
       { label: 'Channel Official — @hiennguyen.mc', url: 'https://www.tiktok.com/@hiennguyen.mc' }
     ]

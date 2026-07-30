@@ -8,7 +8,7 @@ import { AVAILABLE_FONTS, applyTypography } from '../utils/typographyEngine';
 import { 
   X, Save, RotateCcw, RotateCw, Download, Upload, Plus, Trash2, Check, Settings, 
   BookOpen, Layers, Video, FileText, User, Image as ImageIcon, Sparkles, 
-  ShieldCheck, Headphones, Tv, Mic, Award, Monitor, ExternalLink, ChevronDown, ChevronUp, Share2
+  ShieldCheck, Headphones, Tv, Mic, Award, Monitor, ExternalLink, ChevronDown, ChevronUp, Share2, FolderGit2
 } from 'lucide-react';
 
 interface AdminPortalModalProps {
@@ -1018,6 +1018,123 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                   </div>
                 </div>
               </div>
+
+              {/* SOCIAL MEDIA & MESSAGING CHANNELS MANAGEMENT */}
+              <div className="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-5">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                  <div>
+                    <h3 className="text-base font-extrabold text-slate-900 flex items-center gap-2">
+                      <Share2 className="w-5 h-5 text-orange-600" />
+                      <span>QUẢN LÝ KÊNH MẠNG XÃ HỘI & TRUYỀN THÔNG (FOOTER SOCIAL LINKS)</span>
+                    </h3>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      Chỉnh sửa nhãn hiển thị, đường dẫn URL/ID, chọn biểu tượng đại diện hoặc Thêm/Xóa các kênh hiển thị ở chân trang.
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const newSocial: any = {
+                        id: `social-${Date.now()}`,
+                        platform: 'Mạng Xã Hội',
+                        label: 'Kênh Mới',
+                        url: 'https://',
+                        iconName: 'Globe'
+                      };
+                      setData({ ...data, socialLinks: [...(data.socialLinks || []), newSocial] });
+                    }}
+                    className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-extrabold text-xs flex items-center gap-1.5 shadow-md cursor-pointer transition-all"
+                  >
+                    <Plus className="w-4 h-4" />
+                    <span>Thêm Kênh Mạng Xã Hội Mới</span>
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {(data.socialLinks || []).map((item, sIdx) => (
+                    <div
+                      key={item.id || sIdx}
+                      className="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-orange-300 transition-all space-y-3 relative group"
+                    >
+                      <div className="flex items-center justify-between gap-2 border-b border-slate-200/60 pb-2">
+                        <span className="text-xs font-mono font-extrabold text-orange-600">
+                          #{sIdx + 1} {item.platform || 'Platform'}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (window.confirm(`Xóa kênh "${item.label}" khỏi chân trang?`)) {
+                              const list = (data.socialLinks || []).filter((_, i) => i !== sIdx);
+                              setData({ ...data, socialLinks: list });
+                            }
+                          }}
+                          className="p-1.5 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-colors cursor-pointer"
+                          title="Xóa kênh này"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+
+                      <div className="space-y-2 text-xs">
+                        <div>
+                          <label className="block font-bold text-slate-700 mb-1">Nhãn Hiển Thị (Tên nút)</label>
+                          <input
+                            type="text"
+                            value={item.label}
+                            onChange={(e) => {
+                              const list = [...(data.socialLinks || [])];
+                              list[sIdx] = { ...list[sIdx], label: e.target.value };
+                              setData({ ...data, socialLinks: list });
+                            }}
+                            className="w-full px-3 py-1.5 rounded-lg bg-white border border-slate-300 font-bold text-slate-900 text-xs"
+                            placeholder="Vd: Zalo Official, TikTok Channel..."
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block font-bold text-slate-700 mb-1">Đường Dẫn URL / ID Liên Kết</label>
+                          <input
+                            type="text"
+                            value={item.url}
+                            onChange={(e) => {
+                              const list = [...(data.socialLinks || [])];
+                              list[sIdx] = { ...list[sIdx], url: e.target.value };
+                              setData({ ...data, socialLinks: list });
+                            }}
+                            className="w-full px-3 py-1.5 rounded-lg bg-white border border-slate-300 font-mono text-slate-800 text-[11px]"
+                            placeholder="https://zalo.me/0813131385"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block font-bold text-slate-700 mb-1">Biểu Tượng (Icon)</label>
+                          <select
+                            value={item.iconName || 'Globe'}
+                            onChange={(e) => {
+                              const list = [...(data.socialLinks || [])];
+                              list[sIdx] = { ...list[sIdx], iconName: e.target.value };
+                              setData({ ...data, socialLinks: list });
+                            }}
+                            className="w-full px-3 py-1.5 rounded-lg bg-white border border-slate-300 font-bold text-slate-800 text-xs"
+                          >
+                            <option value="MessageCircle">MessageCircle (Zalo)</option>
+                            <option value="Share2">Share2 (Facebook)</option>
+                            <option value="Video">Video (TikTok)</option>
+                            <option value="Youtube">Youtube</option>
+                            <option value="Send">Send (Telegram)</option>
+                            <option value="PhoneCall">PhoneCall (WhatsApp)</option>
+                            <option value="Gamepad2">Gamepad2 (Discord)</option>
+                            <option value="X">𝕏 (X.com / Twitter)</option>
+                            <option value="AtSign">AtSign (Threads/Insta)</option>
+                            <option value="Globe">Globe (Trang Web / Khác)</option>
+                            <option value="Link2">Link2 (Liên kết)</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           )}
 
@@ -1597,119 +1714,162 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
             </div>
           )}
 
-          {/* TAB 5: PROJECTS & BRAND LOGOS CRUD */}
+          {/* TAB 5: PROJECTS & TIKTOK CASE STUDIES — 4 COLUMNS COMPACT GRID */}
           {activeTab === 'projects' && (
-            <div className="space-y-6">
-              {/* Brand Logo Marquee Manager */}
+            <div className="space-y-8">
+              {/* SECTION 1: TIKTOK SHOWCASE CHANNELS */}
               <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-3">
                   <div>
                     <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-2">
-                      <ImageIcon className="w-4 h-4 text-orange-600" />
-                      <span>Quản Lý Logo Thương Hiệu & Đối Tác Chạy Ngang ({data.brandLogos?.length || 0} Đối Tác)</span>
+                      <Video className="w-4 h-4 text-orange-600" />
+                      <span>1. Quản Lý Kênh TikTok & Case Study Đội Ngũ/Học Viên ({data.tiktokChannels.length} Kênh)</span>
                     </h3>
-                    <p className="text-xs text-slate-500 font-medium">Tự do tải logo mới, thay đổi hình ảnh logo, tên thương hiệu & chú thích</p>
+                    <p className="text-xs text-slate-500 font-medium">Hiển thị dạng Lưới 4 cột gọn gàng, ảnh thumbnail 16:9, lượt theo dõi & clip nổi bật</p>
                   </div>
                   <button
                     type="button"
-                    onClick={handleAddBrandLogo}
+                    onClick={() => {
+                      const newChan: any = {
+                        id: `tiktok-${Date.now()}`,
+                        title: 'KÊNH TIKTOK MỚI',
+                        handle: '@tiktok.new',
+                        followers: '100K+ Followers',
+                        thumbnailUrl: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800&auto=format&fit=crop',
+                        channelUrl: 'https://www.tiktok.com',
+                        description: 'Tư vấn kịch bản & setup studio livestream.',
+                        links: []
+                      };
+                      setData({ ...data, tiktokChannels: [...data.tiktokChannels, newChan] });
+                    }}
                     className="px-3.5 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md cursor-pointer transition-all"
                   >
                     <Plus className="w-4 h-4" />
-                    <span>+ Thêm Logo Đối Tác</span>
+                    <span>+ Thêm Kênh TikTok</span>
                   </button>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
-                  {data.brandLogos?.map((b, bIdx) => (
-                    <div key={b.id || bIdx} className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2.5 flex flex-col justify-between">
-                      
-                      {/* Logo Preview Frame */}
-                      <div className="flex items-center justify-between gap-2 bg-white p-2.5 rounded-lg border border-slate-200">
-                        {b.logoUrl ? (
-                          <img src={b.logoUrl} alt={b.name} className="h-8 max-w-[100px] object-contain" />
-                        ) : (
-                          <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${b.color || 'from-orange-500 to-amber-600 text-white'} flex items-center justify-center text-xs font-bold`}>
-                            {b.icon || '✦'}
-                          </div>
-                        )}
-                        <span className="text-[10px] font-mono text-orange-600 font-bold bg-orange-50 px-2 py-0.5 rounded border border-orange-200">
-                          {b.category || 'Đối tác'}
-                        </span>
-                      </div>
-
-                      {/* Brand Name Input */}
-                      <div>
-                        <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Tên Thương Hiệu</label>
-                        <input
-                          type="text"
-                          value={b.name}
-                          onChange={(e) => {
-                            const newBrands = [...data.brandLogos];
-                            newBrands[bIdx].name = e.target.value;
-                            setData({ ...data, brandLogos: newBrands });
-                          }}
-                          className="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 font-bold text-slate-900 bg-white"
-                        />
-                      </div>
-
-                      {/* Category Input */}
-                      <div>
-                        <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Hạng Mục / Chú Thích</label>
-                        <input
-                          type="text"
-                          value={b.category}
-                          onChange={(e) => {
-                            const newBrands = [...data.brandLogos];
-                            newBrands[bIdx].category = e.target.value;
-                            setData({ ...data, brandLogos: newBrands });
-                          }}
-                          className="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 font-mono text-[11px] bg-white"
-                        />
-                      </div>
-
-                      {/* URL / Pick Image Button */}
-                      <div>
-                        <label className="block text-[10px] font-bold text-slate-600 mb-0.5">URL Logo (Ảnh PNG/SVG/WebP)</label>
-                        <div className="flex gap-1.5">
-                          <input
-                            type="text"
-                            placeholder="Dán URL logo..."
-                            value={b.logoUrl || ''}
-                            onChange={(e) => {
-                              const newBrands = [...data.brandLogos];
-                              newBrands[bIdx].logoUrl = e.target.value;
-                              setData({ ...data, brandLogos: newBrands });
-                            }}
-                            className="flex-1 px-2 py-1 rounded-lg border border-slate-300 font-mono text-[10px] bg-white"
-                          />
+                {/* 4-Column Grid for TikTok Channels */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {data.tiktokChannels.map((chan, cIdx) => (
+                    <div key={chan.id || cIdx} className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 hover:border-orange-400 transition-all space-y-3 flex flex-col justify-between text-xs">
+                      <div className="space-y-2.5">
+                        {/* 16:9 Thumbnail Photo Box */}
+                        <div className="relative aspect-video w-full rounded-lg bg-slate-900 border border-slate-200 overflow-hidden group/img">
+                          {chan.thumbnailUrl ? (
+                            <img src={chan.thumbnailUrl} alt={chan.title} className="w-full h-full object-cover" />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center text-[10px] font-mono text-slate-400 font-bold">
+                              Chưa có ảnh 16:9
+                            </div>
+                          )}
                           <button
                             type="button"
                             onClick={() => openPicker(
                               (selectedUrl) => {
-                                const newBrands = [...data.brandLogos];
-                                newBrands[bIdx].logoUrl = selectedUrl;
-                                setData({ ...data, brandLogos: newBrands });
+                                const newCh = [...data.tiktokChannels];
+                                newCh[cIdx].thumbnailUrl = selectedUrl;
+                                setData({ ...data, tiktokChannels: newCh });
                               },
-                              `CHỌN LOGO ĐỐI TÁC: ${b.name}`,
-                              b.logoUrl || ''
+                              `CHỌN ANH THUMBNAIL KÊNH: ${chan.title}`,
+                              chan.thumbnailUrl || ''
                             )}
-                            className="px-2 py-1 rounded-lg bg-orange-600 text-white font-bold text-[10px] shadow-xs cursor-pointer whitespace-nowrap"
+                            className="absolute inset-0 bg-slate-900/80 backdrop-blur-xs text-white opacity-0 group-hover/img:opacity-100 flex items-center justify-center text-[10px] font-extrabold transition-opacity cursor-pointer"
                           >
-                            📷 Chọn / Tải
+                            📷 Đổi Ảnh Thumbnail
                           </button>
+                        </div>
+
+                        {/* Title & Handle Inputs */}
+                        <div>
+                          <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Tên Kênh TikTok</label>
+                          <input 
+                            type="text"
+                            value={chan.title}
+                            onChange={(e) => {
+                              const newCh = [...data.tiktokChannels];
+                              newCh[cIdx].title = e.target.value;
+                              setData({ ...data, tiktokChannels: newCh });
+                            }}
+                            className="w-full font-extrabold text-slate-900 bg-white px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs"
+                          />
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-1.5">
+                          <div>
+                            <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Handle (@ID)</label>
+                            <input 
+                              type="text"
+                              value={chan.handle || ''}
+                              placeholder="@ngoctrinh89"
+                              onChange={(e) => {
+                                const newCh = [...data.tiktokChannels];
+                                newCh[cIdx].handle = e.target.value;
+                                setData({ ...data, tiktokChannels: newCh });
+                              }}
+                              className="w-full font-mono text-[11px] font-bold text-orange-600 bg-white px-2 py-1 rounded-lg border border-slate-300"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Followers</label>
+                            <input 
+                              type="text"
+                              value={chan.followers || ''}
+                              placeholder="6.8M Followers"
+                              onChange={(e) => {
+                                const newCh = [...data.tiktokChannels];
+                                newCh[cIdx].followers = e.target.value;
+                                setData({ ...data, tiktokChannels: newCh });
+                              }}
+                              className="w-full font-mono text-[11px] font-bold text-slate-800 bg-white px-2 py-1 rounded-lg border border-slate-300"
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label className="block text-[10px] font-bold text-slate-600 mb-0.5">URL Kênh Trực Tiếp</label>
+                          <input 
+                            type="text" 
+                            value={chan.channelUrl || ''} 
+                            onChange={(e) => {
+                              const newCh = [...data.tiktokChannels];
+                              newCh[cIdx].channelUrl = e.target.value;
+                              setData({ ...data, tiktokChannels: newCh });
+                            }}
+                            className="w-full px-2 py-1 rounded-lg border border-slate-300 font-mono text-[10px] bg-white text-slate-800"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Mô Tả / Thành Tựu</label>
+                          <textarea 
+                            rows={2}
+                            value={chan.description || ''} 
+                            onChange={(e) => {
+                              const newCh = [...data.tiktokChannels];
+                              newCh[cIdx].description = e.target.value;
+                              setData({ ...data, tiktokChannels: newCh });
+                            }}
+                            className="w-full px-2.5 py-1 bg-white rounded-lg border border-slate-300 text-[11px] font-medium leading-relaxed"
+                          />
                         </div>
                       </div>
 
-                      {/* Actions */}
-                      <div className="flex items-center justify-end pt-1 border-t border-slate-200">
+                      {/* Delete Channel Button */}
+                      <div className="flex items-center justify-between pt-2 border-t border-slate-200">
+                        <span className="text-[10px] font-mono text-slate-400">#TikTok-{cIdx + 1}</span>
                         <button
                           type="button"
-                          onClick={() => handleDeleteBrandLogo(b.id)}
+                          onClick={() => {
+                            if (window.confirm(`Xóa kênh TikTok "${chan.title}"?`)) {
+                              const newCh = data.tiktokChannels.filter((_, i) => i !== cIdx);
+                              setData({ ...data, tiktokChannels: newCh });
+                            }
+                          }}
                           className="text-slate-400 hover:text-red-600 text-[11px] font-bold flex items-center gap-1 cursor-pointer"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
-                          <span>Xóa Logo</span>
+                          <span>Xóa Kênh</span>
                         </button>
                       </div>
                     </div>
@@ -1717,42 +1877,89 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                 </div>
               </div>
 
-              <div className="flex items-center justify-between pt-4 border-t border-slate-200">
-                <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider">
-                  Quản Lý Kênh TikTok & Dự Án Vận Hành ({data.tiktokChannels.length} Kênh)
-                </h3>
-              </div>
-
-              {data.tiktokChannels.map((chan, cIdx) => (
-                <div key={chan.id || cIdx} className="p-4 bg-white rounded-2xl border border-slate-200 space-y-3 text-xs">
-                  <div className="flex items-center justify-between">
-                    <input 
-                      type="text"
-                      value={chan.title}
-                      onChange={(e) => {
-                        const newCh = [...data.tiktokChannels];
-                        newCh[cIdx].title = e.target.value;
-                        setData({ ...data, tiktokChannels: newCh });
-                      }}
-                      className="font-bold text-slate-900 border-b border-slate-300 px-2 py-1 w-2/3"
-                    />
-                    <span className="font-mono text-[10px] text-orange-600 font-bold">KÊNH TIKTOK</span>
-                  </div>
+              {/* SECTION 2: OPERATING PROJECTS */}
+              <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-3">
                   <div>
-                    <label className="block text-[10px] font-bold text-slate-500 mb-1">URL Trang Kênh Trực Tiếp</label>
-                    <input 
-                      type="text" 
-                      value={chan.channelUrl || ''} 
-                      onChange={(e) => {
-                        const newCh = [...data.tiktokChannels];
-                        newCh[cIdx].channelUrl = e.target.value;
-                        setData({ ...data, tiktokChannels: newCh });
-                      }}
-                      className="w-full px-2.5 py-1 rounded-lg border border-slate-200 font-mono text-[11px]"
-                    />
+                    <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+                      <FolderGit2 className="w-4 h-4 text-orange-600" />
+                      <span>2. Quản Lý Các Dự Án & Studio Vận Hành ({data.brandVideos?.length || 0} Dự Án)</span>
+                    </h3>
+                    <p className="text-xs text-slate-500 font-medium">Bố cục Lưới 4 cột chuyên nghiệp, upload ảnh dự án & album đính kèm</p>
                   </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const newProj: any = {
+                        name: 'Dự Án Studio Mới',
+                        desc: 'Tư vấn thiết kế & vận hành phòng máy livestream.'
+                      };
+                      setData({ ...data, brandVideos: [...(data.brandVideos || []), newProj] });
+                    }}
+                    className="px-3.5 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md cursor-pointer transition-all"
+                  >
+                    <Plus className="w-4 h-4" />
+                    <span>+ Thêm Dự Án Mới</span>
+                  </button>
                 </div>
-              ))}
+
+                {/* 4-Column Grid for Operating Projects */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {(data.brandVideos || []).map((proj, pIdx) => (
+                    <div key={pIdx} className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 hover:border-orange-400 transition-all space-y-3 flex flex-col justify-between text-xs">
+                      <div className="space-y-2.5">
+                        {/* Title Input */}
+                        <div>
+                          <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Tên Dự Án / Khách Hàng</label>
+                          <input 
+                            type="text"
+                            value={proj.name}
+                            onChange={(e) => {
+                              const list = [...(data.brandVideos || [])];
+                              list[pIdx].name = e.target.value;
+                              setData({ ...data, brandVideos: list });
+                            }}
+                            className="w-full font-extrabold text-slate-900 bg-white px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs"
+                          />
+                        </div>
+
+                        {/* Description Textarea */}
+                        <div>
+                          <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Mô Tả Hạng Mục Thực Hiện</label>
+                          <textarea 
+                            rows={3}
+                            value={proj.desc}
+                            onChange={(e) => {
+                              const list = [...(data.brandVideos || [])];
+                              list[pIdx].desc = e.target.value;
+                              setData({ ...data, brandVideos: list });
+                            }}
+                            className="w-full px-2.5 py-1.5 bg-white rounded-lg border border-slate-300 text-[11px] font-medium leading-relaxed"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Delete Project Button */}
+                      <div className="flex items-center justify-between pt-2 border-t border-slate-200">
+                        <span className="text-[10px] font-mono text-slate-400">#DựÁn-{pIdx + 1}</span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (window.confirm(`Xóa dự án "${proj.name}"?`)) {
+                              const list = (data.brandVideos || []).filter((_, i) => i !== pIdx);
+                              setData({ ...data, brandVideos: list });
+                            }
+                          }}
+                          className="text-slate-400 hover:text-red-600 text-[11px] font-bold flex items-center gap-1 cursor-pointer"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                          <span>Xóa Dự Án</span>
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           )}
 
@@ -2012,123 +2219,6 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                           >
                             <Trash2 className="w-3.5 h-3.5" />
                           </button>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* SOCIAL MEDIA & MESSAGING CHANNELS MANAGEMENT */}
-              <div className="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-5">
-                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
-                  <div>
-                    <h3 className="text-base font-extrabold text-slate-900 flex items-center gap-2">
-                      <Share2 className="w-5 h-5 text-orange-600" />
-                      <span>QUẢN LÝ KÊNH MẠNG XÃ HỘI & TRUYỀN THÔNG (FOOTER SOCIAL LINKS)</span>
-                    </h3>
-                    <p className="text-xs text-slate-500 mt-0.5">
-                      Chỉnh sửa nhãn hiển thị, đường dẫn URL/ID, chọn biểu tượng đại diện hoặc Thêm/Xóa các kênh hiển thị ở chân trang.
-                    </p>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const newSocial: any = {
-                        id: `social-${Date.now()}`,
-                        platform: 'Mạng Xã Hội',
-                        label: 'Kênh Mới',
-                        url: 'https://',
-                        iconName: 'Globe'
-                      };
-                      setData({ ...data, socialLinks: [...(data.socialLinks || []), newSocial] });
-                    }}
-                    className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-extrabold text-xs flex items-center gap-1.5 shadow-md cursor-pointer transition-all"
-                  >
-                    <Plus className="w-4 h-4" />
-                    <span>Thêm Kênh Mạng Xã Hội Mới</span>
-                  </button>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {(data.socialLinks || []).map((item, sIdx) => (
-                    <div
-                      key={item.id || sIdx}
-                      className="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-orange-300 transition-all space-y-3 relative group"
-                    >
-                      <div className="flex items-center justify-between gap-2 border-b border-slate-200/60 pb-2">
-                        <span className="text-xs font-mono font-extrabold text-orange-600">
-                          #{sIdx + 1} {item.platform || 'Platform'}
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            if (window.confirm(`Xóa kênh "${item.label}" khỏi chân trang?`)) {
-                              const list = (data.socialLinks || []).filter((_, i) => i !== sIdx);
-                              setData({ ...data, socialLinks: list });
-                            }
-                          }}
-                          className="p-1.5 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-colors cursor-pointer"
-                          title="Xóa kênh này"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-
-                      <div className="space-y-2 text-xs">
-                        <div>
-                          <label className="block font-bold text-slate-700 mb-1">Nhãn Hiển Thị (Tên nút)</label>
-                          <input
-                            type="text"
-                            value={item.label}
-                            onChange={(e) => {
-                              const list = [...(data.socialLinks || [])];
-                              list[sIdx] = { ...list[sIdx], label: e.target.value };
-                              setData({ ...data, socialLinks: list });
-                            }}
-                            className="w-full px-3 py-1.5 rounded-lg bg-white border border-slate-300 font-bold text-slate-900 text-xs"
-                            placeholder="Vd: Zalo Official, TikTok Channel..."
-                          />
-                        </div>
-
-                        <div>
-                          <label className="block font-bold text-slate-700 mb-1">Đường Dẫn URL / ID Liên Kết</label>
-                          <input
-                            type="text"
-                            value={item.url}
-                            onChange={(e) => {
-                              const list = [...(data.socialLinks || [])];
-                              list[sIdx] = { ...list[sIdx], url: e.target.value };
-                              setData({ ...data, socialLinks: list });
-                            }}
-                            className="w-full px-3 py-1.5 rounded-lg bg-white border border-slate-300 font-mono text-slate-800 text-[11px]"
-                            placeholder="https://zalo.me/0813131385"
-                          />
-                        </div>
-
-                        <div>
-                          <label className="block font-bold text-slate-700 mb-1">Biểu Tượng (Icon)</label>
-                          <select
-                            value={item.iconName || 'Globe'}
-                            onChange={(e) => {
-                              const list = [...(data.socialLinks || [])];
-                              list[sIdx] = { ...list[sIdx], iconName: e.target.value };
-                              setData({ ...data, socialLinks: list });
-                            }}
-                            className="w-full px-3 py-1.5 rounded-lg bg-white border border-slate-300 font-bold text-slate-800 text-xs"
-                          >
-                            <option value="MessageCircle">MessageCircle (Zalo)</option>
-                            <option value="Share2">Share2 (Facebook)</option>
-                            <option value="Video">Video (TikTok)</option>
-                            <option value="Youtube">Youtube</option>
-                            <option value="Send">Send (Telegram)</option>
-                            <option value="PhoneCall">PhoneCall (WhatsApp)</option>
-                            <option value="Gamepad2">Gamepad2 (Discord)</option>
-                            <option value="X">𝕏 (X.com / Twitter)</option>
-                            <option value="AtSign">AtSign (Threads/Insta)</option>
-                            <option value="Globe">Globe (Trang Web / Khác)</option>
-                            <option value="Link2">Link2 (Liên kết)</option>
-                          </select>
                         </div>
                       </div>
                     </div>
