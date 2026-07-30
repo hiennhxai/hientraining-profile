@@ -847,142 +847,147 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
 
       {/* ─── MODAL 4: PRO PHOTO EDITOR (XOAY, LẬT, BỘ LỌC & ĐỘ SÁNG) ─── */}
       {editingPhoto && (
-        <div className="fixed inset-0 z-[150] bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-3xl w-full p-6 space-y-5 border border-slate-200 shadow-2xl animate-scaleIn">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div className="fixed inset-0 z-[150] bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-5">
+          <div className="bg-white rounded-3xl max-w-3xl w-full max-h-[92vh] flex flex-col overflow-hidden border border-slate-200 shadow-2xl animate-scaleIn">
+            
+            {/* Sticky Header */}
+            <div className="px-6 py-3.5 bg-slate-950 text-white flex items-center justify-between border-b border-slate-800 shrink-0">
               <div className="flex items-center gap-2">
-                <Scissors className="w-5 h-5 text-orange-600" />
-                <h3 className="text-base font-extrabold text-slate-900">BỘ CÔNG CỤ CHỈNH SỬA & HIỆU ỨNG ÁNH SÁNG PRO</h3>
+                <Scissors className="w-5 h-5 text-orange-500" />
+                <h3 className="text-sm font-extrabold uppercase tracking-wide">BỘ CÔNG CỤ CHỈNH SỬA & HIỆU ỨNG ÁNH SÁNG PRO</h3>
               </div>
-              <button onClick={() => setEditingPhoto(null)} className="p-1.5 rounded-xl hover:bg-slate-100 text-slate-500">
+              <button onClick={() => setEditingPhoto(null)} className="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white cursor-pointer">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Editor Image Live Canvas Preview */}
-            <div className="relative aspect-video bg-slate-950 rounded-2xl overflow-hidden flex items-center justify-center p-3">
-              <img
-                src={editingPhoto.url}
-                alt="preview"
-                style={{
-                  transform: `scale(${editorState.zoom}) rotate(${editorState.rotation}deg) scaleX(${editorState.flipX ? -1 : 1}) scaleY(${editorState.flipY ? -1 : 1})`,
-                  filter: `brightness(${editorState.brightness}%) contrast(${editorState.contrast}%) ${
-                    editorState.filter === 'grayscale' ? 'grayscale(100%)' :
-                    editorState.filter === 'sepia' ? 'sepia(90%)' :
-                    editorState.filter === 'vintage' ? 'sepia(40%) hue-rotate(-20deg)' :
-                    editorState.filter === 'high-contrast' ? 'contrast(150%) saturate(140%)' : ''
-                  }`,
-                  transition: 'transform 0.2s ease, filter 0.2s ease'
-                }}
-                className="max-h-full max-w-full object-contain"
-              />
+            {/* Scrollable Center Body */}
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
+              {/* Editor Image Live Canvas Preview */}
+              <div className="relative aspect-video max-h-[260px] sm:max-h-[300px] bg-slate-950 rounded-2xl overflow-hidden flex items-center justify-center p-2 mx-auto">
+                <img
+                  src={editingPhoto.url}
+                  alt="preview"
+                  style={{
+                    transform: `scale(${editorState.zoom}) rotate(${editorState.rotation}deg) scaleX(${editorState.flipX ? -1 : 1}) scaleY(${editorState.flipY ? -1 : 1})`,
+                    filter: `brightness(${editorState.brightness}%) contrast(${editorState.contrast}%) ${
+                      editorState.filter === 'grayscale' ? 'grayscale(100%)' :
+                      editorState.filter === 'sepia' ? 'sepia(90%)' :
+                      editorState.filter === 'vintage' ? 'sepia(40%) hue-rotate(-20deg)' :
+                      editorState.filter === 'high-contrast' ? 'contrast(150%) saturate(140%)' : ''
+                    }`,
+                    transition: 'transform 0.2s ease, filter 0.2s ease'
+                  }}
+                  className="max-h-full max-w-full object-contain"
+                />
+              </div>
+
+              {/* Editor Controls */}
+              <div className="space-y-4 text-xs font-medium bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                
+                {/* Rotation & Flip Controls */}
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200/80 pb-3">
+                  <span className="font-bold text-slate-800 flex items-center gap-1.5">
+                    <RotateCw className="w-4 h-4 text-orange-600" /> Xoay & Lật Ảnh:
+                  </span>
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setEditorState({ ...editorState, rotation: (editorState.rotation + 90) % 360 })}
+                      className="px-3 py-1.5 rounded-xl bg-white border border-slate-300 font-bold text-slate-800 hover:bg-orange-50 hover:text-orange-600 flex items-center gap-1 cursor-pointer"
+                    >
+                      <RotateCw className="w-3.5 h-3.5" />
+                      <span>Xoay 90°</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setEditorState({ ...editorState, flipX: !editorState.flipX })}
+                      className={`px-3 py-1.5 rounded-xl border font-bold flex items-center gap-1 cursor-pointer ${
+                        editorState.flipX ? 'bg-orange-600 text-white border-orange-600' : 'bg-white border-slate-300 text-slate-800 hover:bg-slate-100'
+                      }`}
+                    >
+                      <span>Lật Ngang ↔</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setEditorState({ ...editorState, flipY: !editorState.flipY })}
+                      className={`px-3 py-1.5 rounded-xl border font-bold flex items-center gap-1 cursor-pointer ${
+                        editorState.flipY ? 'bg-orange-600 text-white border-orange-600' : 'bg-white border-slate-300 text-slate-800 hover:bg-slate-100'
+                      }`}
+                    >
+                      <span>Lật Dọc ↕</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Color Filter Presets */}
+                <div className="flex flex-wrap items-center gap-2 border-b border-slate-200/80 pb-3">
+                  <span className="font-bold text-slate-800 flex items-center gap-1.5 mr-2">
+                    <Sliders className="w-4 h-4 text-orange-600" /> Bộ Lọc Màu:
+                  </span>
+                  {[
+                    { id: 'normal', name: 'Chuẩn Studio' },
+                    { id: 'grayscale', name: 'Trắng Đen' },
+                    { id: 'sepia', name: 'Cổ Điển' },
+                    { id: 'vintage', name: 'Vintage' },
+                    { id: 'high-contrast', name: 'Rực Rỡ' }
+                  ].map(f => (
+                    <button
+                      key={f.id}
+                      type="button"
+                      onClick={() => setEditorState({ ...editorState, filter: f.id as any })}
+                      className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                        editorState.filter === f.id ? 'bg-orange-600 text-white shadow-xs' : 'bg-white text-slate-700 border border-slate-300 hover:bg-slate-100'
+                      }`}
+                    >
+                      {f.name}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Sliders: Brightness & Contrast */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Độ Sáng: {editorState.brightness}%</label>
+                    <input
+                      type="range"
+                      min="50"
+                      max="150"
+                      value={editorState.brightness}
+                      onChange={(e) => setEditorState({ ...editorState, brightness: parseInt(e.target.value) })}
+                      className="w-full accent-orange-600"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Tương Phản: {editorState.contrast}%</label>
+                    <input
+                      type="range"
+                      min="50"
+                      max="150"
+                      value={editorState.contrast}
+                      onChange={(e) => setEditorState({ ...editorState, contrast: parseInt(e.target.value) })}
+                      className="w-full accent-orange-600"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Editor Controls */}
-            <div className="space-y-4 text-xs font-medium bg-slate-50 p-4 rounded-2xl border border-slate-200">
-              
-              {/* Rotation & Flip Controls */}
-              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200/80 pb-3">
-                <span className="font-bold text-slate-800 flex items-center gap-1.5">
-                  <RotateCw className="w-4 h-4 text-orange-600" /> Xoay & Lật Ảnh:
-                </span>
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setEditorState({ ...editorState, rotation: (editorState.rotation + 90) % 360 })}
-                    className="px-3 py-1.5 rounded-xl bg-white border border-slate-300 font-bold text-slate-800 hover:bg-orange-50 hover:text-orange-600 flex items-center gap-1 cursor-pointer"
-                  >
-                    <RotateCw className="w-3.5 h-3.5" />
-                    <span>Xoay 90°</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setEditorState({ ...editorState, flipX: !editorState.flipX })}
-                    className={`px-3 py-1.5 rounded-xl border font-bold flex items-center gap-1 cursor-pointer ${
-                      editorState.flipX ? 'bg-orange-600 text-white border-orange-600' : 'bg-white border-slate-300 text-slate-800 hover:bg-slate-100'
-                    }`}
-                  >
-                    <span>Lật Ngang ↔</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setEditorState({ ...editorState, flipY: !editorState.flipY })}
-                    className={`px-3 py-1.5 rounded-xl border font-bold flex items-center gap-1 cursor-pointer ${
-                      editorState.flipY ? 'bg-orange-600 text-white border-orange-600' : 'bg-white border-slate-300 text-slate-800 hover:bg-slate-100'
-                    }`}
-                  >
-                    <span>Lật Dọc ↕</span>
-                  </button>
-                </div>
-              </div>
-
-              {/* Color Filter Presets */}
-              <div className="flex flex-wrap items-center gap-2 border-b border-slate-200/80 pb-3">
-                <span className="font-bold text-slate-800 flex items-center gap-1.5 mr-2">
-                  <Sliders className="w-4 h-4 text-orange-600" /> Bộ Lọc Màu:
-                </span>
-                {[
-                  { id: 'normal', name: 'Chuẩn Studio' },
-                  { id: 'grayscale', name: 'Trắng Đen' },
-                  { id: 'sepia', name: 'Cổ Điển' },
-                  { id: 'vintage', name: 'Vintage' },
-                  { id: 'high-contrast', name: 'Rực Rỡ' }
-                ].map(f => (
-                  <button
-                    key={f.id}
-                    type="button"
-                    onClick={() => setEditorState({ ...editorState, filter: f.id as any })}
-                    className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                      editorState.filter === f.id ? 'bg-orange-600 text-white shadow-xs' : 'bg-white text-slate-700 border border-slate-300 hover:bg-slate-100'
-                    }`}
-                  >
-                    {f.name}
-                  </button>
-                ))}
-              </div>
-
-              {/* Sliders: Brightness & Contrast */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Độ Sáng: {editorState.brightness}%</label>
-                  <input
-                    type="range"
-                    min="50"
-                    max="150"
-                    value={editorState.brightness}
-                    onChange={(e) => setEditorState({ ...editorState, brightness: parseInt(e.target.value) })}
-                    className="w-full accent-orange-600"
-                  />
-                </div>
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Tương Phản: {editorState.contrast}%</label>
-                  <input
-                    type="range"
-                    min="50"
-                    max="150"
-                    value={editorState.contrast}
-                    onChange={(e) => setEditorState({ ...editorState, contrast: parseInt(e.target.value) })}
-                    className="w-full accent-orange-600"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Modal Actions */}
-            <div className="flex items-center justify-end gap-3 pt-2">
+            {/* Sticky Footer Actions */}
+            <div className="px-6 py-3 bg-slate-100 border-t border-slate-200 shrink-0 flex items-center justify-end gap-3">
               <button
                 type="button"
                 onClick={() => setEditingPhoto(null)}
-                className="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold cursor-pointer"
+                className="px-4 py-2 rounded-xl bg-white border border-slate-300 hover:bg-slate-200 text-slate-800 text-xs font-bold cursor-pointer"
               >
                 Hủy Bỏ
               </button>
               <button
                 type="button"
                 onClick={handleApplyEditorChanges}
-                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white text-xs font-extrabold shadow-md cursor-pointer flex items-center gap-1.5"
+                className="px-6 py-2 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white text-xs font-extrabold shadow-md cursor-pointer flex items-center gap-1.5"
               >
                 <Check className="w-4 h-4" />
                 <span>Xuất & Lưu Ảnh Mới</span>

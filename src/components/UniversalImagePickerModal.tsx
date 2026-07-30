@@ -541,7 +541,7 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
               </div>
 
               {/* Interactive Viewport Box with Overlay Grid */}
-              <div className="w-full flex justify-center bg-slate-950 p-4 rounded-2xl border border-slate-800 overflow-hidden">
+              <div className="w-full max-h-[220px] sm:max-h-[280px] flex items-center justify-center bg-slate-950 p-2 sm:p-4 rounded-2xl border border-slate-800 overflow-hidden">
                 <div
                   ref={previewBoxRef}
                   onPointerDown={handlePointerDown}
@@ -549,7 +549,7 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                   onPointerUp={handlePointerUp}
                   onPointerCancel={handlePointerUp}
                   onWheel={handleWheelZoom}
-                  className={`w-full ${getAspectClass()} relative overflow-hidden bg-slate-900 rounded-xl border-2 border-dashed border-orange-500/70 shadow-2xl select-none transition-shadow ${
+                  className={`w-full max-h-full ${getAspectClass()} relative overflow-hidden bg-slate-900 rounded-xl border-2 border-dashed border-orange-500/70 shadow-2xl select-none transition-shadow ${
                     isDragging ? 'cursor-grabbing border-orange-400 ring-2 ring-orange-500/40' : 'cursor-grab'
                   }`}
                   style={{ touchAction: 'none' }}
