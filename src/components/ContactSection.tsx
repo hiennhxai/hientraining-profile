@@ -1,0 +1,192 @@
+import { useState, FormEvent } from 'react';
+import { Language } from '../types';
+import { translations } from '../data/translations';
+import { Logo } from './Logo';
+import { Phone, Mail, MapPin, Send, CheckCircle2, MessageSquare } from 'lucide-react';
+
+interface ContactSectionProps {
+  lang: Language;
+}
+
+export function ContactSection({ lang }: ContactSectionProps) {
+  const t = translations[lang];
+  const isVi = lang === 'vi';
+  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({ name: '', phone: '', service: 'Khóa học Setup Livestream', note: '' });
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+    setTimeout(() => {
+      setSubmitted(false);
+      setFormData({ name: '', phone: '', service: 'Khóa học Setup Livestream', note: '' });
+    }, 4000);
+  };
+
+  return (
+    <section id="contact" className="py-6 sm:py-8 bg-slate-50 relative border-b border-slate-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          {/* Left Column Contact Details */}
+          <div className="lg:col-span-6 space-y-6">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t.ct_title}</h2>
+              <p className="text-slate-600 text-sm sm:text-base mt-2 font-medium">{t.ct_sub}</p>
+            </div>
+
+            <div className="space-y-4 pt-2">
+              <a 
+                href="tel:0813131385" 
+                className="flex items-center gap-4 p-4.5 rounded-2xl bg-white border border-slate-200 hover:border-orange-400 transition-all duration-200 shadow-2xs hover:shadow-md group"
+              >
+                <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all">
+                  <Phone className="w-6 h-6" />
+                </div>
+                <div>
+                  <span className="text-xs font-mono text-slate-500 font-semibold block uppercase">
+                    {isVi ? 'Hotline Trực Tiếp / Zalo' : 'Direct Hotline / Zalo'}
+                  </span>
+                  <strong className="text-xl font-mono text-slate-900 group-hover:text-orange-600 transition-colors">0813 13 13 85</strong>
+                </div>
+              </a>
+
+              <a 
+                href="mailto:admin@xuanhien.info" 
+                className="flex items-center gap-4 p-4.5 rounded-2xl bg-white border border-slate-200 hover:border-orange-400 transition-all duration-200 shadow-2xs hover:shadow-md group"
+              >
+                <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-all">
+                  <Mail className="w-6 h-6" />
+                </div>
+                <div>
+                  <span className="text-xs font-mono text-slate-500 font-semibold block uppercase">
+                    {isVi ? 'Email trao đổi dự án' : 'Project Email Inquiries'}
+                  </span>
+                  <strong className="text-base font-mono text-slate-900 group-hover:text-orange-600 transition-colors">admin@xuanhien.info</strong>
+                </div>
+              </a>
+
+              <div className="flex items-center gap-4 p-4.5 rounded-2xl bg-white border border-slate-200 shadow-2xs">
+                <div className="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700">
+                  <MapPin className="w-6 h-6 text-red-600" />
+                </div>
+                <div>
+                  <span className="text-xs font-mono text-slate-500 font-semibold block uppercase">
+                    {isVi ? 'Địa điểm Đào tạo & Studio' : 'Training Location & Studio'}
+                  </span>
+                  <strong className="text-sm font-sans text-slate-900 font-bold">
+                    {isVi ? 'TP. Hồ Chí Minh (Đào tạo Offline 1-1 & Online)' : 'Ho Chi Minh City (1-on-1 Offline & Online Live)'}
+                  </strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column Quick Inquiry Form */}
+          <div className="lg:col-span-6 p-7 sm:p-9 rounded-3xl bg-white border border-slate-200 shadow-xl relative">
+            <h3 className="text-xl font-extrabold text-slate-900 mb-2 flex items-center gap-2">
+              <MessageSquare className="w-5 h-5 text-orange-600" />
+              <span>{isVi ? 'ĐĂNG KÝ TƯ VẤN KHÓA HỌC / DỰ ÁN' : 'ENROLL / CONSULTATION INQUIRY'}</span>
+            </h3>
+            <p className="text-xs text-slate-600 mb-6 font-medium">
+              {isVi 
+                ? 'Xuân Hiến sẽ gọi lại trực tiếp cho bạn trong vòng 24h để trao đổi lộ trình cá nhân hóa.'
+                : 'Xuan Hien will contact you within 24h for a personalized roadmap.'}
+            </p>
+
+            {submitted ? (
+              <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-3 animate-fadeIn">
+                <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
+                <h4 className="text-lg font-bold text-slate-900">
+                  {isVi ? 'Gửi Thông Tin Thành Công!' : 'Inquiry Submitted Successfully!'}
+                </h4>
+                <p className="text-xs text-slate-700 font-medium">
+                  {isVi 
+                    ? 'Cảm ơn bạn. Xuân Hiến sẽ liên hệ tư vấn trực tiếp qua số điện thoại của bạn sớm nhất.'
+                    : 'Thank you! Xuan Hien will reach out to you via your phone number shortly.'}
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-xs font-mono font-bold text-slate-700 mb-1">
+                    {isVi ? 'Họ và tên của bạn' : 'Your Full Name'}
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder={isVi ? "Nguyễn Văn A" : "John Doe"}
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white font-medium transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono font-bold text-slate-700 mb-1">
+                    {isVi ? 'Số điện thoại / Zalo' : 'Phone / Zalo Number'}
+                  </label>
+                  <input
+                    type="tel"
+                    required
+                    placeholder="0813131385"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white font-medium transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono font-bold text-slate-700 mb-1">
+                    {isVi ? 'Dịch vụ hoặc Khóa học quan tâm' : 'Interested Course or Service'}
+                  </label>
+                  <select
+                    value={formData.service}
+                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white font-medium transition-all"
+                  >
+                    <option value="Khóa học Setup Livestream">
+                      {isVi ? 'Khóa 1: Setup Livestream 1-1' : 'Course 1: 1-1 Livestream Studio Setup'}
+                    </option>
+                    <option value="Khóa học Bán hàng Livestream">
+                      {isVi ? 'Khóa 2: Kỹ năng Bán hàng Livestream' : 'Course 2: Livestream Sales & Host Coaching'}
+                    </option>
+                    <option value="Khóa học Lồng tiếng Voice talent">
+                      {isVi ? 'Khóa 3: Lồng tiếng Voice Talent' : 'Course 3: Commercial Voice Talent'}
+                    </option>
+                    <option value="Khóa học MC & Quản trị sự tự tin">
+                      {isVi ? 'Khóa 4: MC & Quản trị sự tự tin' : 'Course 4: TV MC & Stage Confidence'}
+                    </option>
+                    <option value="Tư vấn Setup Studio Doanh Nghiệp">
+                      {isVi ? 'Tư vấn Setup Studio Doanh Nghiệp' : 'Enterprise Studio Consulting & Production'}
+                    </option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono font-bold text-slate-700 mb-1">
+                    {isVi ? 'Ghi chú hoặc câu hỏi thêm (không bắt buộc)' : 'Additional Notes / Questions (Optional)'}
+                  </label>
+                  <textarea
+                    rows={2}
+                    placeholder={isVi ? "Ví dụ: Tôi muốn học offline vào buổi tối..." : "e.g., I would like evening offline sessions..."}
+                    value={formData.note}
+                    onChange={(e) => setFormData({ ...formData, note: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white font-medium transition-all"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full py-3.5 px-4 rounded-xl font-bold text-sm uppercase tracking-wider text-white bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <Send className="w-4 h-4" />
+                  <span>{isVi ? 'Gửi Thông Tin Đăng Ký' : 'Submit Registration'}</span>
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
