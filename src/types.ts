@@ -63,6 +63,7 @@ export interface CourseItem {
   lessons: CourseLesson[];
   bgImage?: string;
   bannerImage?: string;
+  thumbnailUrl?: string;
 }
 
 export interface ProjectCategoryItem {

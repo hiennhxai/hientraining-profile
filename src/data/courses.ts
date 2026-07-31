@@ -11,6 +11,9 @@ export const coursesData: CourseItem[] = [
     feeNotice: 'Liên hệ tư vấn & báo phí qua SĐT: 0813.13.13.85',
     duration: '5 đến 6 buổi (Tùy thực lực học viên)',
     badge: 'Kỹ thuật Studio & OBS/Vmix',
+    bgImage: '/images/covers/thumb_course_1.png',
+    bannerImage: '/images/covers/course_banner_1.png',
+    thumbnailUrl: '/images/covers/thumb_course_1.png',
     lessons: [
       {
         lessonTitle: 'BÀI 1: Thiết bị & Kết nối cơ bản',
@@ -67,6 +70,9 @@ export const coursesData: CourseItem[] = [
     feeNotice: 'Liên hệ tư vấn & báo phí qua SĐT: 0813.13.13.85',
     duration: '5 buổi thực chiến',
     badge: 'Kịch bản & Bán hàng',
+    bgImage: '/images/covers/thumb_course_2.png',
+    bannerImage: '/images/covers/course_banner_2.png',
+    thumbnailUrl: '/images/covers/thumb_course_2.png',
     lessons: [
       {
         lessonTitle: 'BÀI 1: Tổng Quan & Tâm Lý Bán Hàng Online',

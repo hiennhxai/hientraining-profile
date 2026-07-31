@@ -60,35 +60,40 @@ export const defaultServices: ServiceItem[] = [
     iconName: 'Headphones',
     title: 'Tư Vấn & Setup Studio Livestream',
     description: 'Tư vấn cấu hình máy tính, góc máy camera 4K, sơ đồ 3 đèn studio và hệ thống âm thanh chống nhiễu.',
-    tags: 'Góc Máy 4K · Setup Ánh Sáng 3 Điểm · Soundcard Soundcraft · Cấu Hình PC'
+    tags: 'Góc Máy 4K · Setup Ánh Sáng 3 Điểm · Soundcard Soundcraft · Cấu Hình PC',
+    thumbnailUrl: '/images/covers/thumb_service_1.png'
   },
   {
     id: 'sv-2',
     iconName: 'Video',
     title: 'Vận Hành & Điều Phối Live Multi-Cam',
     description: 'Chuyển cảnh mượt mà với OBS/VMix, tích hợp khung graphics thương hiệu, overlay sản phẩm và khiển âm thanh.',
-    tags: 'OBS Studio / VMix · Multi-Cam Switcher · Graphics Overlay · Đạo Diễn Kỹ Thuật'
+    tags: 'OBS Studio / VMix · Multi-Cam Switcher · Graphics Overlay · Đạo Diễn Kỹ Thuật',
+    thumbnailUrl: '/images/covers/thumb_service_2.png'
   },
   {
     id: 'sv-3',
     iconName: 'Tv',
     title: 'Sản Xuất Livestream Bán Hàng Brand',
     description: 'Tối ưu phiên live bán hàng TikTok Shop, Shopee Live với kịch bản chốt đơn kỷ lục và điều phối phòng live.',
-    tags: 'TikTok Shop Live · Shopee Live · Kịch Bản Chốt Đơn · Vận Hành Phòng Live'
+    tags: 'TikTok Shop Live · Shopee Live · Kịch Bản Chốt Đơn · Vận Hành Phòng Live',
+    thumbnailUrl: '/images/covers/thumb_service_3.png'
   },
   {
     id: 'sv-4',
     iconName: 'Mic',
     title: 'Đào Tạo Voice Talent & Lồng Tiếng Quảng Cáo',
     description: 'Huấn luyện kỹ thuật đọc TVC, viral video, kiểm soát tốc độ, khẩu hình và làm chủ chất giọng tròn vang.',
-    tags: 'Kỹ Thuật Đọc TVC · Kiểm Soát Tốc Độ · Khẩu Hình Chuẩn · Làm Chủ Chất Giọng'
+    tags: 'Kỹ Thuật Đọc TVC · Kiểm Soát Tốc Độ · Khẩu Hình Chuẩn · Làm Chủ Chất Giọng',
+    thumbnailUrl: '/images/covers/thumb_service_4.png'
   },
   {
     id: 'sv-5',
     iconName: 'Award',
     title: 'Đào Tạo Kỹ Năng MC & Thuyết Trình Sân Khấu',
     description: 'Xây dựng sự tự tin, thần thái trước camera, ngôn ngữ cơ thể và kỹ năng làm chủ mọi sự kiện trực tiếp.',
-    tags: 'Thuyết Trình Sân Khấu · Thần Thái Camera · Thấu Hiểu Tâm Lý · Kịch Bản'
+    tags: 'Thuyết Trình Sân Khấu · Thần Thái Camera · Thấu Hiểu Tâm Lý · Kịch Bản',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1475721025566-992203ed9c61?q=80&w=800&auto=format&fit=crop'
   }
 ];
 

@@ -69,9 +69,9 @@ export function CourseModal({ course, onClose, lang = 'vi' }: CourseModalProps) 
         <div className="overflow-y-auto p-6 sm:p-10 space-y-6">
 
           {/* Optional Wide Banner */}
-          {course.bannerUrl && (
+          {course.bannerImage && (
             <div className="w-full aspect-[21/9] sm:aspect-[3/1] bg-slate-900 rounded-2xl overflow-hidden shadow-lg border border-slate-200 mb-6">
-              <img src={course.bannerUrl} alt={`${course.title} Banner`} className="w-full h-full object-cover" />
+              <img src={course.bannerImage} alt={`${course.title} Banner`} className="w-full h-full object-cover" />
             </div>
           )}
 
