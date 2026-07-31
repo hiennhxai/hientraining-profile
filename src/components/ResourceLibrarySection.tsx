@@ -262,7 +262,7 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
                 >
                   <div className="space-y-3">
                     {/* Top Metadata Row: Badges Cluster on Left, Date on Right */}
-                    <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-2">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-2">
                       <div className="flex items-center gap-2 flex-wrap">
                         {/* Prominent High-Visibility Sequential Index Badge */}
                         <span className="px-2.5 py-0.5 rounded-lg bg-slate-900 text-amber-400 font-mono text-xs sm:text-sm font-black shrink-0 shadow-2xs border border-amber-400/30">
@@ -284,7 +284,7 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
                       </div>
 
                       {/* Date */}
-                      <span className="text-[10px] sm:text-[11px] font-mono text-slate-400 font-semibold shrink-0">
+                      <span className="text-[10px] sm:text-[11px] font-mono text-slate-400 font-semibold">
                         {res.date}
                       </span>
                     </div>
