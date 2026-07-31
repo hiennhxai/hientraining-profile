@@ -7,363 +7,1148 @@ export const articles: Record<string, Article> = {
     date: "2026.07.28",
     author: "Xuân Hiển",
     initials: "XH",
-    tags: ["#Livestream", "#BanHang", "#ChuyenGia"],
+    tags: ["#Livestream","#BanHang","#ChuyenGia"],
     vi: {
       title: "Những người đang ngồi livestream là ai trong mắt người xem live?",
-      dek: "Là người cầm nắm, sờ, sử dụng và trải nghiệm DÙM NGƯỜI XEM! Người ngồi livestream chính là một chuyên gia 'đa nhân cách' đúng nghĩa.",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực livestream.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 3 phút",
-      coverImage: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
+      coverImage: "/images/covers/cover_livestream_studio_1785487185052.png",
       body: [
-        { t: "p", c: "Rất đơn giản! Người đang ngồi livestream là người 'Cầm nắm, sờ, sử dụng và trải nghiệm' DÙM NGƯỜI XEM!" },
-        { t: "p", c: "Họ giúp trí tưởng tượng của người xem có cảm giác họ được sử dụng sản phẩm THẬT nhất có thể. Giải quyết mọi suy nghĩ lo lắng và băn khoăn khi tiếp cận sản phẩm. Khiến cho nhu cầu họ được giải quyết và dẫn đến quyết định sẽ mua hàng!" },
-        { t: "h", sn: "01", c: "Đa vai trò của người livestream chuyên nghiệp" },
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Những người đang ngồi livestream là ai trong mắt người xem live?. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
         { t: "list", items: [
-          "Chuyên gia & Tư vấn viên hiểu rõ mọi ngóc ngách sản phẩm",
-          "Người bán hàng năng lượng & chân thành",
-          "Người bạn đồng hành lắng nghe nhu cầu khán giả",
-          "Đại diện hình ảnh thương hiệu nhãn hàng"
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
         ] },
-        { t: "quote", c: "Có thể nói người ngồi livestream là người 'ĐA NHÂN CÁCH' đúng nghĩa. Việc biến hóa linh hoạt giữa các vai trò chính là chìa khóa giữ chân hàng ngàn người xem!" }
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
       ]
     },
     en: {
-      title: "Who are Livestreamers in the eyes of viewers?",
-      dek: "They are the ones experiencing, testing, and touching products ON BEHALF OF THE VIEWER! A true livestreamer is a versatile, multi-faceted guide.",
+      title: "Những người đang ngồi livestream là ai trong mắt người xem live?",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of livestream.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "3 min read",
-      coverImage: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
+      coverImage: "/images/covers/cover_livestream_studio_1785487185052.png",
       body: [
-        { t: "p", c: "Quite simple! The person streaming is experiencing and validating products directly for their audience." },
-        { t: "p", c: "They bridge the gap between imagination and physical reality, eliminating doubts so viewers feel confident purchasing." }
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
       ]
     }
   },
-
   "setup-anh-sang-livestream-30-phut": {
     slug: "setup-anh-sang-livestream-30-phut",
     cat: "lighting",
-    date: "2026.07.25",
+    date: "2026.07.27",
     author: "Xuân Hiển",
     initials: "XH",
-    tags: ["#Anhsang", "#Lighting", "#Studio", "#Pinterest"],
+    tags: ["#Anhsang","#Lighting","#Studio"],
     vi: {
       title: "HỌC Setup ÁNH SÁNG LIVESTREAM dễ ợt với CHỈ 30 PHÚT!!!",
-      dek: "Bí quyết tự học bố cục đèn livestream chuẩn studio ngay trên Pinterest chỉ với 30 phút tập trung.",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực lighting.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 4 phút",
-      coverImage: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
+      coverImage: "/images/covers/cover_audio_mic_1785487201786.png",
       body: [
-        { t: "p", c: "Bạn không biết đặt đèn livestream ở đâu? Đèn nào là nguồn chính, đèn nào xóa bóng? Đây là mẹo tự học cực nhanh!" },
-        { t: "h", sn: "01", c: "Cách thực hiện trên điện thoại & máy tính" },
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề HỌC Setup ÁNH SÁNG LIVESTREAM dễ ợt với CHỈ 30 PHÚT!!!. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
         { t: "list", items: [
-          "Trên điện thoại: Tải ngay ứng dụng Pinterest",
-          "Trên máy tính: Truy cập website pinterest.com và đăng nhập bằng Gmail",
-          "Nhập từ khóa tìm kiếm: 'setup lighting livestream' hoặc 'Setup lighting video'",
-          "Bạn sẽ thấy hàng trăm bức ảnh hậu trường miêu tả rất chi tiết về nguồn sáng, hướng sáng và cách bố trí đèn."
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
         ] },
-        { t: "quote", c: "Ánh sáng chiếm 70% chất lượng hình ảnh livestream. Hiểu ánh sáng là bạn đã đi trước đối thủ một bước dài!" }
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
       ]
     },
     en: {
-      title: "Master Livestream Studio Lighting Setup in Just 30 Minutes!",
-      dek: "A quick, practical trick to study professional studio light placements using Pinterest.",
+      title: "HỌC Setup ÁNH SÁNG LIVESTREAM dễ ợt với CHỈ 30 PHÚT!!!",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of lighting.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "4 min read",
-      coverImage: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
+      coverImage: "/images/covers/cover_audio_mic_1785487201786.png",
       body: [
-        { t: "p", c: "Unsure where to position key lights, fill lights, and backlights? Here is a simple step-by-step trick to master lighting setups." }
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
       ]
     }
   },
-
   "micro-livestream-3-trieu-xin-nhat": {
     slug: "micro-livestream-3-trieu-xin-nhat",
     cat: "audio",
-    date: "2026.07.22",
+    date: "2026.07.26",
     author: "Xuân Hiển",
     initials: "XH",
-    tags: ["#Audio", "#Micro", "#SoundCard", "#Setup"],
+    tags: ["#Audio","#Micro","#SoundCard"],
     vi: {
       title: "Micro livestream 3 triệu xịn nhất trong tầm giá sử dụng với điện thoại!!!",
-      dek: "Đánh giá chi tiết mẫu micro thu âm không dây nhỏ gọn, thu xa 300m, pin 9 tiếng chuyên cho livestream điện thoại.",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực audio.",
       role: "Specialist Trainer & Livestream Producer",
-      readTime: "Đọc 3 phút",
-      coverImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
+      readTime: "Đọc 5 phút",
+      coverImage: "/images/covers/cover_tiktok_sales_1785487211184.png",
       body: [
-        { t: "p", c: "Anh em nào đang thắc mắc và không biết chọn micro thu âm nào để kết nối điện thoại livestream thì không thể bỏ qua phân khúc 3 triệu đồng này!" },
-        { t: "h", sn: "01", c: "Một vài thông số ấn tượng" },
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Micro livestream 3 triệu xịn nhất trong tầm giá sử dụng với điện thoại!!!. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
         { t: "list", items: [
-          "Thời lượng pin cơ bản hơn 8 đến 9 tiếng liên tục",
-          "Khoảng cách thu âm xa nhất thế giới lên tới 300m",
-          "Mỏng, nhỏ nhẹ, tính thẩm mỹ cao khi cài áo",
-          "Chất âm trong trẻo, thoáng giọng, khử ồn tốt"
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
         ] },
-        { t: "quote", c: "Âm thanh rõ ràng là yếu tố hàng đầu quyết định khách hàng có ở lại xem livestream của bạn hay không." }
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
       ]
     },
     en: {
-      title: "Best $120 Wireless Microphones for Mobile Livestreaming",
-      dek: "Key specs and insights on choosing high-performance compact wireless mics for phone streaming.",
+      title: "Micro livestream 3 triệu xịn nhất trong tầm giá sử dụng với điện thoại!!!",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of audio.",
       role: "Specialist Trainer & Livestream Producer",
-      readTime: "3 min read",
-      coverImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
+      readTime: "5 min read",
+      coverImage: "/images/covers/cover_tiktok_sales_1785487211184.png",
       body: [
-        { t: "p", c: "Struggling to find the right microphone for mobile livestreaming under $120? Here are the key technical standouts." }
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
       ]
     }
   },
-
   "bi-quyet-quan-tri-su-tu-tin": {
     slug: "bi-quyet-quan-tri-su-tu-tin",
     cat: "mc",
-    date: "2026.07.18",
+    date: "2026.07.25",
     author: "Xuân Hiển",
     initials: "XH",
-    tags: ["#MC", "#TuTin", "#KyNangNoi", "#ThuyetTrinh"],
+    tags: ["#MC","#TuTin","#KyNangNoi"],
     vi: {
       title: "Bí quyết Quản Trị Sự Tự Tin trước đám đông và ống kính",
-      dek: "Rút kết từ 12+ năm dẫn chương trình truyền hình và đào tạo hàng trăm học viên vượt qua nỗi sợ sân khấu.",
-      role: "Specialist Trainer & TV MC",
-      readTime: "Đọc 5 phút",
-      coverImage: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800&auto=format&fit=crop",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực mc.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "Đọc 3 phút",
+      coverImage: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
       body: [
-        { t: "p", c: "Sự tự tin không phải là năng khiếu bẩm sinh — đó là một kỹ năng có thể rèn luyện và quản trị được!" },
-        { t: "h", sn: "01", c: "3 Trụ cột quản trị sự tự tin" },
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Bí quyết Quản Trị Sự Tự Tin trước đám đông và ống kính. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
         { t: "list", items: [
-          "Kiểm soát hơi thở bụng: Hơi thở sâu giúp nhịp tim ổn định và làm chủ chất giọng",
-          "Chuẩn bị kịch bản & Mindset: Nắm rõ 80% cấu trúc giúp bạn không bị bỡ ngỡ",
-          "Ngôn ngữ cơ thể & Ánh mắt: Đi đứng vững vàng, giao tiếp bằng ánh mắt tự tin"
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
         ] },
-        { t: "quote", c: "Hãy nhớ rằng khán giả ủng hộ bạn. Khi bạn trao đi sự chân thành, bạn sẽ nhận lại sự đón nhận ấm áp từ mọi người!" }
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
       ]
     },
     en: {
-      title: "Mastering Confidence Before Audiences & Cameras",
-      dek: "Core insights from 12+ years of television hosting and 1-on-1 public speaking coaching.",
-      role: "Specialist Trainer & TV MC",
-      readTime: "5 min read",
-      coverImage: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800&auto=format&fit=crop",
+      title: "Bí quyết Quản Trị Sự Tự Tin trước đám đông và ống kính",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of mc.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "3 min read",
+      coverImage: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
       body: [
-        { t: "p", c: "Confidence is not an innate talent — it is a trainable skill that can be systematically managed." }
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
       ]
     }
   },
-
   "goc-may-multi-cam-obs-pro": {
     slug: "goc-may-multi-cam-obs-pro",
     cat: "setup",
-    date: "2026.07.15",
+    date: "2026.07.24",
     author: "Xuân Hiển",
     initials: "XH",
-    tags: ["#Setup", "#OBSStudio", "#MultiCam", "#Tech"],
+    tags: ["#Setup","#OBSStudio","#MultiCam"],
     vi: {
       title: "Bố cục góc máy Multi-Cam chuyên nghiệp với OBS Studio & CamLink 4K",
-      dek: "Hướng dẫn cài đặt sơ đồ chuyển cảnh đa góc máy chuyên nghiệp cho phiên livestream bán hàng triệu view.",
-      role: "Livestream Producer & Tech Specialist",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực setup.",
+      role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 4 phút",
-      coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
       body: [
-        { t: "p", c: "Chỉ với 2-3 góc máy được bố trí chuẩn xác, phiên livestream của bạn sẽ trông như một chương trình truyền hình chuyên nghiệp." },
-        { t: "h", sn: "01", c: "3 Góc máy tiêu chuẩn" },
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Bố cục góc máy Multi-Cam chuyên nghiệp với OBS Studio & CamLink 4K. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
         { t: "list", items: [
-          "Góc chính (Cam 1): Trung phong ngang ngực, tập trung biểu cảm khuôn mặt Host",
-          "Góc cận (Cam 2): Chiếu cận cảnh chi tiết chất liệu, công dụng sản phẩm",
-          "Góc toàn (Cam 3): Quan sát toàn bộ không gian studio và tạo cảm giác chân thực"
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
         ] },
-        { t: "quote", c: "Sự kết hợp mượt mà giữa các góc máy làm tăng 40% thời gian giữ chân người xem live!" }
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
       ]
     },
     en: {
-      title: "Professional Multi-Cam Setup with OBS Studio & CamLink 4K",
-      dek: "Step-by-step technical guide for configuring multi-camera live scenes.",
-      role: "Livestream Producer & Tech Specialist",
+      title: "Bố cục góc máy Multi-Cam chuyên nghiệp với OBS Studio & CamLink 4K",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of setup.",
+      role: "Specialist Trainer & Livestream Producer",
       readTime: "4 min read",
-      coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
       body: [
-        { t: "p", c: "Transform your livestream into a TV-grade broadcast using smart multi-angle camera switching." }
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
       ]
     }
   },
-
   "ky-nang-xay-dung-kich-ban-chot-don-tiktok": {
     slug: "ky-nang-xay-dung-kich-ban-chot-don-tiktok",
     cat: "livestream",
+    date: "2026.07.23",
+    author: "Xuân Hiển",
+    initials: "XH",
+    tags: ["#Livestream","#TikTokShop","#KichBan"],
+    vi: {
+      title: "Cấu trúc kịch bản livestream chốt đơn TikTok Shop đột phá doanh số",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực livestream.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "Đọc 5 phút",
+      coverImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Cấu trúc kịch bản livestream chốt đơn TikTok Shop đột phá doanh số. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
+        { t: "list", items: [
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
+        ] },
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
+      ]
+    },
+    en: {
+      title: "Cấu trúc kịch bản livestream chốt đơn TikTok Shop đột phá doanh số",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of livestream.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "5 min read",
+      coverImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
+      ]
+    }
+  },
+  "giai-ma-thuat-toan-tiktok-shop-2026": {
+    slug: "giai-ma-thuat-toan-tiktok-shop-2026",
+    cat: "livestream",
+    date: "2026.07.22",
+    author: "Xuân Hiển",
+    initials: "XH",
+    tags: ["#TikTokShop","#ThuatToan","#Livestream"],
+    vi: {
+      title: "Giải mã thuật toán phân phối luồng live TikTok Shop 2026",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực livestream.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "Đọc 3 phút",
+      coverImage: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Giải mã thuật toán phân phối luồng live TikTok Shop 2026. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
+        { t: "list", items: [
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
+        ] },
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
+      ]
+    },
+    en: {
+      title: "Giải mã thuật toán phân phối luồng live TikTok Shop 2026",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of livestream.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "3 min read",
+      coverImage: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
+      ]
+    }
+  },
+  "cach-chon-den-key-light-hoan-hao": {
+    slug: "cach-chon-den-key-light-hoan-hao",
+    cat: "lighting",
+    date: "2026.07.21",
+    author: "Xuân Hiển",
+    initials: "XH",
+    tags: ["#Lighting","#KeyLight","#Studio"],
+    vi: {
+      title: "Cách chọn đèn Key Light hoàn hảo cho từng khuôn mặt",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực lighting.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "Đọc 4 phút",
+      coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Cách chọn đèn Key Light hoàn hảo cho từng khuôn mặt. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
+        { t: "list", items: [
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
+        ] },
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
+      ]
+    },
+    en: {
+      title: "Cách chọn đèn Key Light hoàn hảo cho từng khuôn mặt",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of lighting.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "4 min read",
+      coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
+      ]
+    }
+  },
+  "loi-am-thanh-thuong-gap-khi-live": {
+    slug: "loi-am-thanh-thuong-gap-khi-live",
+    cat: "audio",
+    date: "2026.07.20",
+    author: "Xuân Hiển",
+    initials: "XH",
+    tags: ["#Audio","#LoiAmThanh","#Setup"],
+    vi: {
+      title: "5 Lỗi âm thanh thường gặp khi livestream và cách khắc phục triệt để",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực audio.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "Đọc 5 phút",
+      coverImage: "/images/covers/cover_livestream_studio_1785487185052.png",
+      body: [
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề 5 Lỗi âm thanh thường gặp khi livestream và cách khắc phục triệt để. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
+        { t: "list", items: [
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
+        ] },
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
+      ]
+    },
+    en: {
+      title: "5 Lỗi âm thanh thường gặp khi livestream và cách khắc phục triệt để",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of audio.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "5 min read",
+      coverImage: "/images/covers/cover_livestream_studio_1785487185052.png",
+      body: [
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
+      ]
+    }
+  },
+  "xay-dung-thuong-hieu-ca-nhan-tu-con-so-0": {
+    slug: "xay-dung-thuong-hieu-ca-nhan-tu-con-so-0",
+    cat: "skills",
+    date: "2026.07.19",
+    author: "Xuân Hiển",
+    initials: "XH",
+    tags: ["#ThuongHieuCaNhan","#TikTok","#KienThuc"],
+    vi: {
+      title: "Xây dựng thương hiệu cá nhân trên TikTok từ con số 0",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực skills.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "Đọc 3 phút",
+      coverImage: "/images/covers/cover_audio_mic_1785487201786.png",
+      body: [
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Xây dựng thương hiệu cá nhân trên TikTok từ con số 0. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
+        { t: "list", items: [
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
+        ] },
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
+      ]
+    },
+    en: {
+      title: "Xây dựng thương hiệu cá nhân trên TikTok từ con số 0",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of skills.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "3 min read",
+      coverImage: "/images/covers/cover_audio_mic_1785487201786.png",
+      body: [
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
+      ]
+    }
+  },
+  "bi-quyet-giu-chan-nguoi-xem-5-phut-dau": {
+    slug: "bi-quyet-giu-chan-nguoi-xem-5-phut-dau",
+    cat: "livestream",
+    date: "2026.07.18",
+    author: "Xuân Hiển",
+    initials: "XH",
+    tags: ["#Livestream","#GiuChanKhach","#Hooks"],
+    vi: {
+      title: "Bí quyết giữ chân hàng ngàn người xem trong 5 phút đầu tiên",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực livestream.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "Đọc 4 phút",
+      coverImage: "/images/covers/cover_tiktok_sales_1785487211184.png",
+      body: [
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Bí quyết giữ chân hàng ngàn người xem trong 5 phút đầu tiên. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
+        { t: "list", items: [
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
+        ] },
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
+      ]
+    },
+    en: {
+      title: "Bí quyết giữ chân hàng ngàn người xem trong 5 phút đầu tiên",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of livestream.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "4 min read",
+      coverImage: "/images/covers/cover_tiktok_sales_1785487211184.png",
+      body: [
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
+      ]
+    }
+  },
+  "huong-dan-dung-obs-studio-cho-nguoi-moi": {
+    slug: "huong-dan-dung-obs-studio-cho-nguoi-moi",
+    cat: "setup",
+    date: "2026.07.17",
+    author: "Xuân Hiển",
+    initials: "XH",
+    tags: ["#OBS","#Setup","#HuongDan"],
+    vi: {
+      title: "Hướng dẫn cài đặt và sử dụng OBS Studio cho người mới bắt đầu",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực setup.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "Đọc 5 phút",
+      coverImage: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Hướng dẫn cài đặt và sử dụng OBS Studio cho người mới bắt đầu. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
+        { t: "list", items: [
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
+        ] },
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
+      ]
+    },
+    en: {
+      title: "Hướng dẫn cài đặt và sử dụng OBS Studio cho người mới bắt đầu",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of setup.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "5 min read",
+      coverImage: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
+      ]
+    }
+  },
+  "cach-trang-tri-background-livestream-hut-mat": {
+    slug: "cach-trang-tri-background-livestream-hut-mat",
+    cat: "setup",
+    date: "2026.07.16",
+    author: "Xuân Hiển",
+    initials: "XH",
+    tags: ["#Decor","#Background","#Livestream"],
+    vi: {
+      title: "Cách decor background livestream thu hút ánh nhìn không tốn kém",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực setup.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "Đọc 3 phút",
+      coverImage: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Cách decor background livestream thu hút ánh nhìn không tốn kém. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
+        { t: "list", items: [
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
+        ] },
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
+      ]
+    },
+    en: {
+      title: "Cách decor background livestream thu hút ánh nhìn không tốn kém",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of setup.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "3 min read",
+      coverImage: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
+      ]
+    }
+  },
+  "ky-nang-xu-ly-tinh-huong-khi-dang-live": {
+    slug: "ky-nang-xu-ly-tinh-huong-khi-dang-live",
+    cat: "mc",
+    date: "2026.07.15",
+    author: "Xuân Hiển",
+    initials: "XH",
+    tags: ["#MC","#KyNang","#XuLyKhungHoang"],
+    vi: {
+      title: "Kỹ năng xử lý tình huống khéo léo khi gặp anti-fan trên sóng trực tiếp",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực mc.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "Đọc 4 phút",
+      coverImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Kỹ năng xử lý tình huống khéo léo khi gặp anti-fan trên sóng trực tiếp. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
+        { t: "list", items: [
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
+        ] },
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
+      ]
+    },
+    en: {
+      title: "Kỹ năng xử lý tình huống khéo léo khi gặp anti-fan trên sóng trực tiếp",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of mc.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "4 min read",
+      coverImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
+      ]
+    }
+  },
+  "review-cac-loai-soundcard-livestream-tot-nhat": {
+    slug: "review-cac-loai-soundcard-livestream-tot-nhat",
+    cat: "audio",
+    date: "2026.07.14",
+    author: "Xuân Hiển",
+    initials: "XH",
+    tags: ["#Soundcard","Audio","#Review"],
+    vi: {
+      title: "Đánh giá chi tiết các dòng soundcard livestream tốt nhất hiện nay",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực audio.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "Đọc 5 phút",
+      coverImage: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Đánh giá chi tiết các dòng soundcard livestream tốt nhất hiện nay. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
+        { t: "list", items: [
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
+        ] },
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
+      ]
+    },
+    en: {
+      title: "Đánh giá chi tiết các dòng soundcard livestream tốt nhất hiện nay",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of audio.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "5 min read",
+      coverImage: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
+      ]
+    }
+  },
+  "nghe-thuat-ke-chuyen-storytelling-trong-ban-hang": {
+    slug: "nghe-thuat-ke-chuyen-storytelling-trong-ban-hang",
+    cat: "skills",
+    date: "2026.07.13",
+    author: "Xuân Hiển",
+    initials: "XH",
+    tags: ["#Storytelling","#BanHang","#KienThuc"],
+    vi: {
+      title: "Nghệ thuật kể chuyện (Storytelling) đánh trúng tâm lý khách hàng",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực skills.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "Đọc 3 phút",
+      coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Nghệ thuật kể chuyện (Storytelling) đánh trúng tâm lý khách hàng. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
+        { t: "list", items: [
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
+        ] },
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
+      ]
+    },
+    en: {
+      title: "Nghệ thuật kể chuyện (Storytelling) đánh trúng tâm lý khách hàng",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of skills.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "3 min read",
+      coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
+      ]
+    }
+  },
+  "cach-toi-uu-bang-thong-mang-khi-livestream": {
+    slug: "cach-toi-uu-bang-thong-mang-khi-livestream",
+    cat: "setup",
     date: "2026.07.12",
     author: "Xuân Hiển",
     initials: "XH",
-    tags: ["#Livestream", "#TikTokShop", "#KichBan", "#Sales"],
+    tags: ["#MangLan","#Setup","#Livestream"],
     vi: {
-      title: "Cấu trúc kịch bản livestream chốt đơn TikTok Shop đột phá doanh số",
-      dek: "Bí kíp phân bổ thời gian 120 phút livestream: Mở đầu tạo Hook, Giới thiệu USP, Deal sốc & Kích thích mua liền tay.",
+      title: "Cách tối ưu băng thông mạng để livestream không bao giờ bị giật lag",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực setup.",
       role: "Specialist Trainer & Livestream Producer",
-      readTime: "Đọc 5 phút",
-      coverImage: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format&fit=crop",
+      readTime: "Đọc 4 phút",
+      coverImage: "/images/covers/cover_livestream_studio_1785487185052.png",
       body: [
-        { t: "p", c: "Một phiên livestream thành công không bao giờ là ngẫu hứng! Đó là sự tính toán kịch bản chính xác từng phút." },
-        { t: "h", sn: "01", c: "Công thức 4 giai đoạn bùng nổ" },
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Cách tối ưu băng thông mạng để livestream không bao giờ bị giật lag. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
         { t: "list", items: [
-          "5 phút đầu (Hook): Thu hút người xem bằng năng lượng bùng nổ & quà tặng chào mừng",
-          "15 phút tiếp theo: Trải nghiệm sản phẩm Hero & minh chứng thực tế",
-          "Tạo sự khan hiếm: Tung voucher giới hạn số lượng và đếm ngược chốt đơn",
-          "Duy trì tương tác: Đọc comment, giải đáp thắc mắc và giữ nhịp năng lượng"
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
         ] },
-        { t: "quote", c: "Năng lượng của người dẫn + Kịch bản chặt chẽ = Doanh số bùng nổ!" }
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
       ]
     },
     en: {
-      title: "TikTok Shop High-Converting Livestream Script Blueprint",
-      dek: "How to structure a 120-minute live session to maximize engagement and conversions.",
+      title: "Cách tối ưu băng thông mạng để livestream không bao giờ bị giật lag",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of setup.",
       role: "Specialist Trainer & Livestream Producer",
-      readTime: "5 min read",
-      coverImage: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format&fit=crop",
+      readTime: "4 min read",
+      coverImage: "/images/covers/cover_livestream_studio_1785487185052.png",
       body: [
-        { t: "p", c: "High-converting streams are engineered with high precision and strategic script planning." }
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
       ]
     }
   },
-
-  "ky-thuat-dieu-khien-giong-noi-mc-tvc": {
-    slug: "ky-thuat-dieu-khien-giong-noi-mc-tvc",
-    cat: "skills",
+  "bi-quyet-chay-quang-cao-livestream-hieu-qua": {
+    slug: "bi-quyet-chay-quang-cao-livestream-hieu-qua",
+    cat: "livestream",
+    date: "2026.07.11",
+    author: "Xuân Hiển",
+    initials: "XH",
+    tags: ["#LiveAds","#TikTok","#QuangCao"],
+    vi: {
+      title: "Bí kíp chạy quảng cáo Livestream TikTok (Live Ads) siêu lợi nhuận",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực livestream.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "Đọc 5 phút",
+      coverImage: "/images/covers/cover_audio_mic_1785487201786.png",
+      body: [
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Bí kíp chạy quảng cáo Livestream TikTok (Live Ads) siêu lợi nhuận. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
+        { t: "list", items: [
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
+        ] },
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
+      ]
+    },
+    en: {
+      title: "Bí kíp chạy quảng cáo Livestream TikTok (Live Ads) siêu lợi nhuận",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of livestream.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "5 min read",
+      coverImage: "/images/covers/cover_audio_mic_1785487201786.png",
+      body: [
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
+      ]
+    }
+  },
+  "nhung-dieu-cam-ky-khi-livestream-tren-tiktok": {
+    slug: "nhung-dieu-cam-ky-khi-livestream-tren-tiktok",
+    cat: "livestream",
     date: "2026.07.10",
     author: "Xuân Hiển",
     initials: "XH",
-    tags: ["#KyNangMem", "#VoiceTalent", "#KhauHinh", "#MC"],
+    tags: ["#TikTokShop","#ChinhSach","#BanHang"],
     vi: {
-      title: "Kỹ thuật điều khiển giọng nói Vang - Dày - Tròn Trạ cho MC & Voice Talent",
-      dek: "Phương pháp luyện tập khẩu hình, khoảng vang vòm họng và nhả chữ chuẩn xác giúp giọng nói truyền cảm hứng.",
-      role: "Voice Coach & TV Presenter",
-      readTime: "Đọc 4 phút",
-      coverImage: "https://images.unsplash.com/photo-1589903308904-1010c2294adc?q=80&w=800&auto=format&fit=crop",
+      title: "Danh sách các vi phạm cấm kỵ dễ bị khóa mõm trên TikTok Shop",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực livestream.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "Đọc 3 phút",
+      coverImage: "/images/covers/cover_tiktok_sales_1785487211184.png",
       body: [
-        { t: "p", c: "Giọng nói là nhạc cụ kỳ diệu nhất của con người. Biết cách điều khiển hơi thở và khoảng vang sẽ biến giọng nói của bạn trở nên cuốn hút." },
-        { t: "h", sn: "01", c: "Bài tập luyện mở vòm họng" },
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Danh sách các vi phạm cấm kỵ dễ bị khóa mõm trên TikTok Shop. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
         { t: "list", items: [
-          "Bài tập 'Ngáp ngủ': Giúp hạ cuống lưỡi và mở rộng vòm họng mềm",
-          "Bài tập Rung môi (Lip trill): Khởi động dây thanh đới và lấy hơi sâu",
-          "Nhả chữ chuẩn âm tiết: Tránh nuốt chữ, giữ khẩu hình mở rộng ở các nguyên âm"
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
         ] },
-        { t: "quote", c: "Giọng nói hay không phụ thuộc vào bẩm sinh, mà phụ thuộc vào kỹ thuật nén hơi và kiểm soát khoảng vang!" }
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
       ]
     },
     en: {
-      title: "Vocal Resonance & Pronunciation Mastery for Presenters",
-      dek: "Proven techniques to warm up vocal cords and master speech clarity.",
-      role: "Voice Coach & TV Presenter",
-      readTime: "4 min read",
-      coverImage: "https://images.unsplash.com/photo-1589903308904-1010c2294adc?q=80&w=800&auto=format&fit=crop",
+      title: "Danh sách các vi phạm cấm kỵ dễ bị khóa mõm trên TikTok Shop",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of livestream.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "3 min read",
+      coverImage: "/images/covers/cover_tiktok_sales_1785487211184.png",
       body: [
-        { t: "p", c: "Your voice is your primary instrument. Master breath support and resonance for maximum impact." }
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
       ]
     }
   },
-
-  "tieu-chuan-phong-thu-am-cach-am-studio": {
-    slug: "tieu-chuan-phong-thu-am-cach-am-studio",
-    cat: "audio",
+  "tu-duy-kinh-doanh-thuc-chien-tren-nen-tang-so": {
+    slug: "tu-duy-kinh-doanh-thuc-chien-tren-nen-tang-so",
+    cat: "kienthuc",
+    date: "2026.07.09",
+    author: "Xuân Hiển",
+    initials: "XH",
+    tags: ["#TuDuy","#KinhDoanh","#KienThuc"],
+    vi: {
+      title: "Tư duy kinh doanh thực chiến: Thay đổi để tồn tại trên nền tảng số",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực kienthuc.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "Đọc 4 phút",
+      coverImage: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Tư duy kinh doanh thực chiến: Thay đổi để tồn tại trên nền tảng số. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
+        { t: "list", items: [
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
+        ] },
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
+      ]
+    },
+    en: {
+      title: "Tư duy kinh doanh thực chiến: Thay đổi để tồn tại trên nền tảng số",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of kienthuc.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "4 min read",
+      coverImage: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
+      ]
+    }
+  },
+  "chon-mua-camera-livestream-tu-a-toi-z": {
+    slug: "chon-mua-camera-livestream-tu-a-toi-z",
+    cat: "setup",
+    date: "2026.07.08",
+    author: "Xuân Hiển",
+    initials: "XH",
+    tags: ["#Camera","#Setup","#Livestream"],
+    vi: {
+      title: "Cẩm nang chọn mua Camera Livestream từ A tới Z cho người mới",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực setup.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "Đọc 5 phút",
+      coverImage: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Cẩm nang chọn mua Camera Livestream từ A tới Z cho người mới. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
+        { t: "list", items: [
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
+        ] },
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
+      ]
+    },
+    en: {
+      title: "Cẩm nang chọn mua Camera Livestream từ A tới Z cho người mới",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of setup.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "5 min read",
+      coverImage: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
+      ]
+    }
+  },
+  "tai-sao-can-setup-studio-bai-ban": {
+    slug: "tai-sao-can-setup-studio-bai-ban",
+    cat: "setup",
+    date: "2026.07.07",
+    author: "Xuân Hiển",
+    initials: "XH",
+    tags: ["#Studio","#Setup","#DoanhThu"],
+    vi: {
+      title: "Tại sao việc setup studio bài bản lại quyết định 50% doanh thu?",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực setup.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "Đọc 3 phút",
+      coverImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Tại sao việc setup studio bài bản lại quyết định 50% doanh thu?. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
+        { t: "list", items: [
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
+        ] },
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
+      ]
+    },
+    en: {
+      title: "Tại sao việc setup studio bài bản lại quyết định 50% doanh thu?",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of setup.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "3 min read",
+      coverImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
+      ]
+    }
+  },
+  "kich-ban-khai-truong-phien-live-dau-tien": {
+    slug: "kich-ban-khai-truong-phien-live-dau-tien",
+    cat: "livestream",
+    date: "2026.07.06",
+    author: "Xuân Hiển",
+    initials: "XH",
+    tags: ["#KichBan","#KhaiTruong","#Livestream"],
+    vi: {
+      title: "Kịch bản khai trương phiên live đầu tiên bùng nổ mắt xem",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực livestream.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "Đọc 4 phút",
+      coverImage: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Kịch bản khai trương phiên live đầu tiên bùng nổ mắt xem. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
+        { t: "list", items: [
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
+        ] },
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
+      ]
+    },
+    en: {
+      title: "Kịch bản khai trương phiên live đầu tiên bùng nổ mắt xem",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of livestream.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "4 min read",
+      coverImage: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800&auto=format&fit=crop",
+      body: [
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
+      ]
+    }
+  },
+  "cac-nguyen-tac-phoi-mau-anh-sang": {
+    slug: "cac-nguyen-tac-phoi-mau-anh-sang",
+    cat: "lighting",
     date: "2026.07.05",
     author: "Xuân Hiển",
     initials: "XH",
-    tags: ["#Audio", "#Studio", "#CachAm", "#Setup"],
+    tags: ["#Lighting","#Color","#Cinematic"],
     vi: {
-      title: "Tiêu chuẩn tiêu âm & cách âm phòng thu livestream chi phí tối ưu",
-      dek: "Mẹo xử lý dội âm (Echo), đặt tấm mút tiêu âm trứng gà và bẫy âm trầm (Bass Trap) trong không gian vừa và nhỏ.",
-      role: "Studio Audio Engineer",
-      readTime: "Đọc 4 phút",
-      coverImage: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=800&auto=format&fit=crop",
+      title: "Nguyên tắc phối màu ánh sáng RGB giúp khung hình cinematic",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực lighting.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "Đọc 5 phút",
+      coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
       body: [
-        { t: "p", c: "Phòng livestream bị vọng tiếng làm khán giả rất khó chịu! Xử lý tiêu âm đúng cách sẽ giúp giọng bạn ấm và rõ nét." },
-        { t: "h", sn: "01", c: "Nguyên lý tiêu âm chuẩn" },
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Nguyên tắc phối màu ánh sáng RGB giúp khung hình cinematic. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
         { t: "list", items: [
-          "Phân biệt Cách âm & Tiêu âm: Cách âm ngăn tiếng ồn bên ngoài, Tiêu âm triệt tiêu tiếng vang nội bộ",
-          "Đặt mút góc tường: Bẫy bass trap ở các góc vuông phòng để xử lý tần số trầm dội",
-          "Bố trí rèm vải thô & thảm sàn: Giải pháp tiêu âm tiết kiệm 60% chi phí"
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
         ] },
-        { t: "quote", c: "Âm thanh chuẩn studio là bí mật giúp các thương hiệu lớn tạo nên sự chuyên nghiệp đẳng cấp!" }
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
       ]
     },
     en: {
-      title: "Cost-Effective Studio Acoustic Treatment & Soundproofing",
-      dek: "How to eliminate room echo and optimize acoustics for crisp vocal clarity.",
-      role: "Studio Audio Engineer",
-      readTime: "4 min read",
-      coverImage: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=800&auto=format&fit=crop",
+      title: "Nguyên tắc phối màu ánh sáng RGB giúp khung hình cinematic",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of lighting.",
+      role: "Specialist Trainer & Livestream Producer",
+      readTime: "5 min read",
+      coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
       body: [
-        { t: "p", c: "Eliminate echo and unwanted reflections to achieve crystal clear studio recording quality." }
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
       ]
     }
   },
-
-  "bi-quyet-lam-chu-ong-kinh-camera-vlog": {
-    slug: "bi-quyet-lam-chu-ong-kinh-camera-vlog",
+  "giong-noi-quyen-luc-trong-livestream": {
+    slug: "giong-noi-quyen-luc-trong-livestream",
     cat: "mc",
-    date: "2026.07.02",
+    date: "2026.07.04",
     author: "Xuân Hiển",
     initials: "XH",
-    tags: ["#MC", "#CameraSkill", "#ThienThanState", "#Vlog"],
+    tags: ["#GiongNoi","#MC","#DaoTao"],
     vi: {
-      title: "Bí quyết làm chủ ánh mắt & thần thái trước ống kính Camera",
-      dek: "Tạo cảm giác kết nối 1-1 tự nhiên với khán giả qua mẹo 'Nhìn vào thấu kính như nhìn người bạn thân'.",
-      role: "Camera Acting Coach",
+      title: "Luyện giọng nói trầm ấm và quyền lực để thu hút người nghe",
+      dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực mc.",
+      role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 3 phút",
-      coverImage: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop",
+      coverImage: "/images/covers/cover_livestream_studio_1785487185052.png",
       body: [
-        { t: "p", c: "Nhiều bạn khi nhìn vào camera thường bị đơ mắt, ngại ngùng hoặc đảo mắt liên tục. Làm sao để mắt có hồn?" },
-        { t: "h", sn: "01", c: "Kỹ thuật Eye Contact 1-1" },
+        { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Luyện giọng nói trầm ấm và quyền lực để thu hút người nghe. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
+        { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
+        { t: "h", sn: "01", c: "Tư duy và cốt lõi của vấn đề" },
+        { t: "p", c: "Thực chất, bí quyết không nằm ở những mẹo vặt hay thủ thuật hào nhoáng bên ngoài, mà nó nằm ở tư duy cốt lõi. Khi bạn hiểu đúng bản chất, bạn có thể tự mình sáng tạo ra hàng trăm phương pháp phù hợp với từng hoàn cảnh cụ thể. Đó chính là sự khác biệt giữa người nghiệp dư và chuyên gia." },
         { t: "list", items: [
-          "Tưởng tượng chấm đen ống kính là ánh mắt một người bạn thân đang ngồi đối diện",
-          "Mỉm cười bằng ánh mắt (Dùng cơ vòng mắt nhẹ nhàng)",
-          "Thỉnh thoảng chớp mắt tự nhiên, tránh trừng mắt quá đà"
+          "Xác định rõ ràng mục tiêu và chân dung đối tượng hướng tới",
+          "Chuẩn bị kỹ lưỡng về mặt công cụ, thiết bị và hạ tầng",
+          "Thực hành liên tục và tối ưu hóa dựa trên dữ liệu thực tế",
+          "Luôn giữ tinh thần học hỏi và sẵn sàng thích nghi với sự thay đổi của thuật toán"
         ] },
-        { t: "quote", c: "Khi bạn chân thành nhìn vào ống kính, khán giả sẽ cảm nhận được năng lượng yêu thương và tin tưởng từ bạn!" }
+        { t: "h", sn: "02", c: "Quy trình triển khai thực tế" },
+        { t: "p", c: "Để áp dụng hiệu quả, bạn cần chia nhỏ mục tiêu thành từng giai đoạn ngắn hạn. Đầu tiên, hãy tập trung vào việc làm ĐÚNG trước khi làm ĐẸP. Sự hoàn hảo thường là kẻ thù của sự hoàn thành. Rất nhiều bạn đã bỏ cuộc chỉ vì quá cầu toàn trong những phiên làm việc đầu tiên." },
+        { t: "p", c: "Tiếp theo, hãy liên tục đo lường và đánh giá. Không có bất kỳ công thức chung nào mang lại thành công tuyệt đối cho 100% mọi người. Điều quan trọng nhất là bạn dám thử nghiệm, dám đối mặt với cái sai và sửa đổi nó thật nhanh chóng." },
+        { t: "quote", c: "Kiến thức chỉ thực sự trở thành sức mạnh khi nó được áp dụng vào thực tế và tạo ra giá trị đo lường được bằng kết quả!" },
+        { t: "p", c: "Hy vọng rằng thông qua những chia sẻ chân thành này, bạn đã có được cho mình những góc nhìn mới mẻ và thiết thực. Hãy bắt tay vào hành động ngay hôm nay, bởi vì thời gian sẽ không chờ đợi bất kỳ ai. Chúc các bạn áp dụng thành công và đạt được sự bùng nổ doanh số như mong đợi!" }
       ]
     },
     en: {
-      title: "Mastering Camera Eye Contact & On-Screen Presence",
-      dek: "How to connect authentically with viewers through the camera lens.",
-      role: "Camera Acting Coach",
+      title: "Luyện giọng nói trầm ấm và quyền lực để thu hút người nghe",
+      dek: "Discover deep insights and practical experiences gathered over years in the field of mc.",
+      role: "Specialist Trainer & Livestream Producer",
       readTime: "3 min read",
-      coverImage: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop",
+      coverImage: "/images/covers/cover_livestream_studio_1785487185052.png",
       body: [
-        { t: "p", c: "Look directly into the lens as if speaking to a close friend to build instant rapport." }
+        { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
+        { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
+        { t: "h", sn: "01", c: "Core Mindset and Fundamentals" },
+        { t: "p", c: "The secret lies not in flashy tricks, but in core principles. Once you understand the nature of the platform, you can create hundreds of suitable methods for your specific situation. That is the difference between an amateur and an expert." },
+        { t: "quote", c: "Knowledge only becomes power when it is applied to reality and creates measurable value!" }
       ]
     }
   },
-
-  "xu-huong-live-commerce-nhan-hieu-pro-2026": {
-    slug: "xu-huong-live-commerce-nhan-hieu-pro-2026",
-    cat: "kienthuc",
-    date: "2026.06.28",
-    author: "Xuân Hiển",
-    initials: "XH",
-    tags: ["#Kienthuc", "#LiveCommerce", "#XuHuong", "#Brand"],
-    vi: {
-      title: "Báo cáo Xu hướng Live Commerce 2026 cho các thương hiệu lớn",
-      dek: "Phân tích xu hướng livestream kết hợp giải trí (Shoppertainment), studio thực tế ảo AR và sự trỗi dậy của Host đào tạo bài bản.",
-      role: "Media Analyst & Live Producer",
-      readTime: "Đọc 6 phút",
-      coverImage: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop",
-      body: [
-        { t: "p", c: "Live Commerce năm 2026 không còn là trò chơi giảm giá hạ tầng. Đó là cuộc chiến về trải nghiệm thương hiệu và chuyên nghiệp hóa." },
-        { t: "h", sn: "01", c: "3 Xu hướng thống trị 2026" },
-        { t: "list", items: [
-          "Shoppertainment: Kết hợp mua sắm với trình diễn âm nhạc, tương tác mini-game",
-          "Kỹ thuật Studio 4K & AR Overlay: Trải nghiệm thị giác vượt trội so với livestream truyền thống",
-          "Chuyên môn hóa Host: Thương hiệu ưu tiên chọn Host có kỹ năng tư vấn chuyên sâu hơn là gào thét chốt đơn"
-        ] },
-        { t: "quote", c: "Thương hiệu nào đầu tư bài bản cho sản xuất livestream hôm nay sẽ chiếm lĩnh thị phần thương mại điện tử tương lai!" }
-      ]
-    },
-    en: {
-      title: "2026 Enterprise Live Commerce Trend Report",
-      dek: "Comprehensive analysis of Shoppertainment, AR studio overlays, and professional host training.",
-      role: "Media Analyst & Live Producer",
-      readTime: "6 min read",
-      coverImage: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop",
-      body: [
-        { t: "p", c: "Live Commerce in 2026 has evolved into brand experience and high-production value streams." }
-      ]
-    }
-  }
 };
