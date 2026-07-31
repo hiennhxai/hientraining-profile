@@ -877,7 +877,7 @@ export async function loadAdminDataAsync(): Promise<FullAdminData> {
         projects: Array.isArray(parsed.projects) ? parsed.projects : defaultAdminData.projects,
         tiktokChannels: Array.isArray(parsed.tiktokChannels) ? parsed.tiktokChannels : defaultAdminData.tiktokChannels,
         brandVideos: Array.isArray(parsed.brandVideos) ? parsed.brandVideos : defaultAdminData.brandVideos,
-        articles: parsed.articles ? parsed.articles : defaultAdminData.articles,
+        articles: Object.keys(parsed.articles || {}).length < 20 ? defaultAdminData.articles : parsed.articles,
         photoAlbum: Array.isArray(parsed.photoAlbum) ? parsed.photoAlbum : defaultAdminData.photoAlbum,
         brandLogos: Array.isArray(parsed.brandLogos) ? parsed.brandLogos : defaultAdminData.brandLogos,
         socialLinks: Array.isArray(parsed.socialLinks) ? parsed.socialLinks : defaultAdminData.socialLinks,
