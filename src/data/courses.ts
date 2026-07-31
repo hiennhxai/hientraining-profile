@@ -14,7 +14,7 @@ export const coursesData: CourseItem[] = [
     bgImage: '/images/covers/thumb_course_1.png',
     bannerImage: '/images/covers/course_banner_1.png',
     thumbnailUrl: '/images/covers/thumb_course_1.png',
-    lessons: [
+                lessons: [
       {
         lessonTitle: 'BÀI 1: Thiết bị & Kết nối cơ bản',
         points: [
@@ -73,7 +73,7 @@ export const coursesData: CourseItem[] = [
     bgImage: '/images/covers/thumb_course_2.png',
     bannerImage: '/images/covers/course_banner_2.png',
     thumbnailUrl: '/images/covers/thumb_course_2.png',
-    lessons: [
+                lessons: [
       {
         lessonTitle: 'BÀI 1: Tổng Quan & Tâm Lý Bán Hàng Online',
         points: [
@@ -122,6 +122,9 @@ export const coursesData: CourseItem[] = [
     feeNotice: 'Liên hệ tư vấn & báo phí qua SĐT: 0813.13.13.85',
     duration: '11 - 12 buổi',
     badge: 'Luyện Giọng & Voice Talent',
+    bgImage: '/images/covers/thumb_course_3.png',
+    bannerImage: '/images/covers/course_banner_3.png',
+    thumbnailUrl: '/images/covers/thumb_course_3.png',
     lessons: [
       {
         lessonTitle: 'Bài 1: Khám Giọng & Định Hướng Phát Triển (1 buổi)',
@@ -164,6 +167,9 @@ export const coursesData: CourseItem[] = [
     feeNotice: 'Liên hệ tư vấn & báo phí qua SĐT: 0813.13.13.85',
     duration: '15 - 18 buổi',
     badge: 'Nghề MC & Kỹ Năng Sân Khấu',
+    bgImage: '/images/covers/thumb_course_4.png',
+    bannerImage: '/images/covers/course_banner_4.png',
+    thumbnailUrl: '/images/covers/thumb_course_4.png',
     lessons: [
       {
         lessonTitle: 'Bài 1: Tư Vấn & Định Hướng - Mind Map Cá Nhân (1 buổi)',

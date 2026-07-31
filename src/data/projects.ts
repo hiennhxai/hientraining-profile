@@ -6,8 +6,7 @@ export const tiktokChannels: SocialMediaChannel[] = [
     title: 'KÊNH TIKTOK - NGỌC TRINH',
     handle: '@ngoctrinh89',
     followers: '6.8M+ Followers',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop',
-    channelUrl: 'https://www.tiktok.com/@ngoctrinh89',
+        channelUrl: 'https://www.tiktok.com/@ngoctrinh89',
     description: 'Tư vấn kịch bản livestream, cấu hình góc quay 4K và điều phối kỹ thuật cho các phiên Mega Stream chốt đơn.',
     links: [
       { label: 'Clip Livestream 1 — TikTok @ngoctrinh89', url: 'https://www.tiktok.com/@ngoctrinh89/video/7406598157548784914' },
@@ -20,8 +19,7 @@ export const tiktokChannels: SocialMediaChannel[] = [
     title: 'KÊNH TIKTOK - BÉ DUY',
     handle: '@beduyzuize',
     followers: '1.2M+ Followers',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop',
-    channelUrl: 'https://www.tiktok.com/@beduyzuize',
+        channelUrl: 'https://www.tiktok.com/@beduyzuize',
     description: 'Huấn luyện làm chủ camera, giọng nói truyền cảm hứng và kỹ năng giữ chân người xem livestream.',
     links: [
       { label: 'Clip Livestream 1 — TikTok @beduyzuize', url: 'https://www.tiktok.com/@beduyzuize/video/7405837827885305109' },
@@ -33,8 +31,7 @@ export const tiktokChannels: SocialMediaChannel[] = [
     title: 'KÊNH TIKTOK - HIANY',
     handle: '@hiany.official',
     followers: '850K+ Followers',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop',
-    channelUrl: 'https://www.tiktok.com/@ngoctrinh89',
+        channelUrl: 'https://www.tiktok.com/@ngoctrinh89',
     description: 'Setup hệ thống 3 đèn chuẩn studio, soundcard lọc nhiễu âm thanh chuyên nghiệp.',
     links: [
       { label: 'Clip Livestream Hiany 1', url: 'https://www.tiktok.com/@ngoctrinh89/video/7406598157548784914' }
@@ -45,8 +42,7 @@ export const tiktokChannels: SocialMediaChannel[] = [
     title: 'KÊNH OFFICIAL - MC XUÂN HIỂN',
     handle: '@hiennguyen.mc',
     followers: '500K+ Followers',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop',
-    channelUrl: 'https://www.tiktok.com/@hiennguyen.mc',
+        channelUrl: 'https://www.tiktok.com/@hiennguyen.mc',
     description: 'Kênh chính thức chia sẻ kinh nghiệm MC truyền hình, kỹ năng giao tiếp & tư vấn setup phòng studio.',
     links: [
       { label: 'Channel Official — @hiennguyen.mc', url: 'https://www.tiktok.com/@hiennguyen.mc' }
@@ -93,13 +89,7 @@ export const projectCategoriesData: ProjectCategory[] = [
         url: 'https://www.tiktok.com/@ngoctrinh89',
         stats: '6.8M+ Followers',
         tags: ['TikTok Shop', 'Fashion', 'Mega Stream'],
-        thumbnailUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop',
-        galleryPhotos: [
-          'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1200&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1200&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=1200&auto=format&fit=crop'
-        ]
-      },
+                      },
       {
         id: 'be-duy-tk',
         title: 'TikTok @beduyzuize — Bé Duy Zui Zẻ',
@@ -108,12 +98,7 @@ export const projectCategoriesData: ProjectCategory[] = [
         url: 'https://www.tiktok.com/@beduyzuize',
         stats: '1.2M+ Followers',
         tags: ['Beauty', 'Livestream Sale', 'Host'],
-        thumbnailUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop',
-        galleryPhotos: [
-          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=1200&auto=format&fit=crop'
-        ]
-      },
+                      },
       {
         id: 'hian-ny-tk',
         title: 'TikTok Hiany Official',
@@ -122,12 +107,7 @@ export const projectCategoriesData: ProjectCategory[] = [
         url: 'https://www.tiktok.com/@ngoctrinh89',
         stats: '850K+ Followers',
         tags: ['Audio Setup', 'Lighting', 'Livestream'],
-        thumbnailUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop',
-        galleryPhotos: [
-          'https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1200&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=1200&auto=format&fit=crop'
-        ]
-      },
+                      },
       {
         id: 'mc-xuan-hien-tk',
         title: 'TikTok @hiennguyen.mc — MC Xuân Hiển',
@@ -136,12 +116,7 @@ export const projectCategoriesData: ProjectCategory[] = [
         url: 'https://www.tiktok.com/@hiennguyen.mc',
         stats: '500K+ Followers',
         tags: ['MC Skills', 'Livestream Tips', 'Coaching'],
-        thumbnailUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop',
-        galleryPhotos: [
-          'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1200&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=1200&auto=format&fit=crop'
-        ]
-      }
+                      }
     ]
   },
   {
