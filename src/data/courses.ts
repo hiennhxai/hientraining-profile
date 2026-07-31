@@ -14,7 +14,7 @@ export const coursesData: CourseItem[] = [
     bgImage: '/images/covers/thumb_course_1.png',
     bannerImage: '/images/covers/course_banner_1.png',
     thumbnailUrl: '/images/covers/thumb_course_1.png',
-                lessons: [
+                            lessons: [
       {
         lessonTitle: 'BÀI 1: Thiết bị & Kết nối cơ bản',
         points: [
@@ -73,7 +73,7 @@ export const coursesData: CourseItem[] = [
     bgImage: '/images/covers/thumb_course_2.png',
     bannerImage: '/images/covers/course_banner_2.png',
     thumbnailUrl: '/images/covers/thumb_course_2.png',
-                lessons: [
+                            lessons: [
       {
         lessonTitle: 'BÀI 1: Tổng Quan & Tâm Lý Bán Hàng Online',
         points: [
@@ -125,7 +125,7 @@ export const coursesData: CourseItem[] = [
     bgImage: '/images/covers/thumb_course_3.png',
     bannerImage: '/images/covers/course_banner_3.png',
     thumbnailUrl: '/images/covers/thumb_course_3.png',
-    lessons: [
+                lessons: [
       {
         lessonTitle: 'Bài 1: Khám Giọng & Định Hướng Phát Triển (1 buổi)',
         points: ['Kiểm tra chất giọng hiện tại', 'Nhận diện điểm mạnh, điểm yếu', 'Định hướng phong cách lồng tiếng phù hợp']
@@ -170,7 +170,7 @@ export const coursesData: CourseItem[] = [
     bgImage: '/images/covers/thumb_course_4.png',
     bannerImage: '/images/covers/course_banner_4.png',
     thumbnailUrl: '/images/covers/thumb_course_4.png',
-    lessons: [
+                lessons: [
       {
         lessonTitle: 'Bài 1: Tư Vấn & Định Hướng - Mind Map Cá Nhân (1 buổi)',
         points: ['Xây dựng bản đồ tư duy sự nghiệp MC', 'Phân tích mục tiêu cá nhân']

@@ -93,7 +93,7 @@ export const defaultServices: ServiceItem[] = [
     title: 'Đào Tạo Kỹ Năng MC & Thuyết Trình Sân Khấu',
     description: 'Xây dựng sự tự tin, thần thái trước camera, ngôn ngữ cơ thể và kỹ năng làm chủ mọi sự kiện trực tiếp.',
     tags: 'Thuyết Trình Sân Khấu · Thần Thái Camera · Thấu Hiểu Tâm Lý · Kịch Bản',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1475721025566-992203ed9c61?q=80&w=800&auto=format&fit=crop'
+    thumbnailUrl: '/images/covers/thumb_course_4.png'
   }
 ];
 
