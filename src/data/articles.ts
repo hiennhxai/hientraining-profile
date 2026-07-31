@@ -13,7 +13,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực livestream.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 3 phút",
-      coverImage: "/images/covers/cover_livestream_studio_1785487185052.png",
+      coverImage: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Những người đang ngồi livestream là ai trong mắt người xem live?. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -37,7 +37,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of livestream.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "3 min read",
-      coverImage: "/images/covers/cover_livestream_studio_1785487185052.png",
+      coverImage: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -59,7 +59,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực lighting.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 4 phút",
-      coverImage: "/images/covers/cover_audio_mic_1785487201786.png",
+      coverImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề HỌC Setup ÁNH SÁNG LIVESTREAM dễ ợt với CHỈ 30 PHÚT!!!. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -83,7 +83,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of lighting.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "4 min read",
-      coverImage: "/images/covers/cover_audio_mic_1785487201786.png",
+      coverImage: "https://images.unsplash.com/photo-1516280440502-604778d052a2?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -105,7 +105,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực audio.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 5 phút",
-      coverImage: "/images/covers/cover_tiktok_sales_1785487211184.png",
+      coverImage: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Micro livestream 3 triệu xịn nhất trong tầm giá sử dụng với điện thoại!!!. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -129,7 +129,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of audio.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "5 min read",
-      coverImage: "/images/covers/cover_tiktok_sales_1785487211184.png",
+      coverImage: "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -151,7 +151,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực mc.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 3 phút",
-      coverImage: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Bí quyết Quản Trị Sự Tự Tin trước đám đông và ống kính. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -175,7 +175,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of mc.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "3 min read",
-      coverImage: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1604514330209-661765fb4e2d?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -197,7 +197,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực setup.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 4 phút",
-      coverImage: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1511285560929-80a456fea0bc?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Bố cục góc máy Multi-Cam chuyên nghiệp với OBS Studio & CamLink 4K. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -221,7 +221,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of setup.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "4 min read",
-      coverImage: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1496282218037-1282be3c0dd2?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -243,7 +243,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực livestream.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 5 phút",
-      coverImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1498007255146-24e5488425d7?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Cấu trúc kịch bản livestream chốt đơn TikTok Shop đột phá doanh số. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -267,7 +267,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of livestream.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "5 min read",
-      coverImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1526487192621-e3db98f804cc?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -289,7 +289,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực livestream.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 3 phút",
-      coverImage: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1603190287605-f6aded05a61e?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Giải mã thuật toán phân phối luồng live TikTok Shop 2026. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -313,7 +313,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of livestream.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "3 min read",
-      coverImage: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1585250392348-7fa093951fb8?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -335,7 +335,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực lighting.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 4 phút",
-      coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1565519888-2949755fa61e?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Cách chọn đèn Key Light hoàn hảo cho từng khuôn mặt. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -359,7 +359,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of lighting.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "4 min read",
-      coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -381,7 +381,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực audio.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 5 phút",
-      coverImage: "/images/covers/cover_livestream_studio_1785487185052.png",
+      coverImage: "https://images.unsplash.com/photo-1498805983167-a5aa207865ce?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề 5 Lỗi âm thanh thường gặp khi livestream và cách khắc phục triệt để. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -405,7 +405,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of audio.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "5 min read",
-      coverImage: "/images/covers/cover_livestream_studio_1785487185052.png",
+      coverImage: "https://images.unsplash.com/photo-1594957640474-cda9646b1d4f?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -427,7 +427,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực skills.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 3 phút",
-      coverImage: "/images/covers/cover_audio_mic_1785487201786.png",
+      coverImage: "https://images.unsplash.com/photo-1501625902166-51d8b9d3e5e4?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Xây dựng thương hiệu cá nhân trên TikTok từ con số 0. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -451,7 +451,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of skills.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "3 min read",
-      coverImage: "/images/covers/cover_audio_mic_1785487201786.png",
+      coverImage: "https://images.unsplash.com/photo-1579450371665-276e01a1d1d8?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -473,7 +473,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực livestream.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 4 phút",
-      coverImage: "/images/covers/cover_tiktok_sales_1785487211184.png",
+      coverImage: "https://images.unsplash.com/photo-1564756531320-c26685ff86cc?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Bí quyết giữ chân hàng ngàn người xem trong 5 phút đầu tiên. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -497,7 +497,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of livestream.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "4 min read",
-      coverImage: "/images/covers/cover_tiktok_sales_1785487211184.png",
+      coverImage: "https://images.unsplash.com/photo-1583091983058-2022d25d19fb?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -519,7 +519,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực setup.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 5 phút",
-      coverImage: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1520262453676-4d2d480e6fc8?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Hướng dẫn cài đặt và sử dụng OBS Studio cho người mới bắt đầu. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -543,7 +543,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of setup.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "5 min read",
-      coverImage: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1501862569762-b94f0fa3c155?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -565,7 +565,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực setup.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 3 phút",
-      coverImage: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1617320092305-64906f368f51?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Cách decor background livestream thu hút ánh nhìn không tốn kém. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -589,7 +589,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of setup.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "3 min read",
-      coverImage: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1501625902166-51d8b9d3e5e4?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -611,7 +611,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực mc.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 4 phút",
-      coverImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Kỹ năng xử lý tình huống khéo léo khi gặp anti-fan trên sóng trực tiếp. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -635,7 +635,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of mc.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "4 min read",
-      coverImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -657,7 +657,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực audio.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 5 phút",
-      coverImage: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Đánh giá chi tiết các dòng soundcard livestream tốt nhất hiện nay. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -681,7 +681,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of audio.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "5 min read",
-      coverImage: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1516280440502-604778d052a2?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -703,7 +703,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực skills.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 3 phút",
-      coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Nghệ thuật kể chuyện (Storytelling) đánh trúng tâm lý khách hàng. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -727,7 +727,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of skills.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "3 min read",
-      coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -749,7 +749,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực setup.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 4 phút",
-      coverImage: "/images/covers/cover_livestream_studio_1785487185052.png",
+      coverImage: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Cách tối ưu băng thông mạng để livestream không bao giờ bị giật lag. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -773,7 +773,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of setup.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "4 min read",
-      coverImage: "/images/covers/cover_livestream_studio_1785487185052.png",
+      coverImage: "https://images.unsplash.com/photo-1604514330209-661765fb4e2d?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -795,7 +795,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực livestream.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 5 phút",
-      coverImage: "/images/covers/cover_audio_mic_1785487201786.png",
+      coverImage: "https://images.unsplash.com/photo-1511285560929-80a456fea0bc?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Bí kíp chạy quảng cáo Livestream TikTok (Live Ads) siêu lợi nhuận. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -819,7 +819,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of livestream.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "5 min read",
-      coverImage: "/images/covers/cover_audio_mic_1785487201786.png",
+      coverImage: "https://images.unsplash.com/photo-1496282218037-1282be3c0dd2?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -841,7 +841,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực livestream.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 3 phút",
-      coverImage: "/images/covers/cover_tiktok_sales_1785487211184.png",
+      coverImage: "https://images.unsplash.com/photo-1498007255146-24e5488425d7?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Danh sách các vi phạm cấm kỵ dễ bị khóa mõm trên TikTok Shop. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -865,7 +865,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of livestream.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "3 min read",
-      coverImage: "/images/covers/cover_tiktok_sales_1785487211184.png",
+      coverImage: "https://images.unsplash.com/photo-1526487192621-e3db98f804cc?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -887,7 +887,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực kienthuc.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 4 phút",
-      coverImage: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1603190287605-f6aded05a61e?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Tư duy kinh doanh thực chiến: Thay đổi để tồn tại trên nền tảng số. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -911,7 +911,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of kienthuc.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "4 min read",
-      coverImage: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1585250392348-7fa093951fb8?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -933,7 +933,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực setup.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 5 phút",
-      coverImage: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1565519888-2949755fa61e?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Cẩm nang chọn mua Camera Livestream từ A tới Z cho người mới. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -957,7 +957,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of setup.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "5 min read",
-      coverImage: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -979,7 +979,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực setup.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 3 phút",
-      coverImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1498805983167-a5aa207865ce?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Tại sao việc setup studio bài bản lại quyết định 50% doanh thu?. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -1003,7 +1003,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of setup.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "3 min read",
-      coverImage: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1594957640474-cda9646b1d4f?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -1025,7 +1025,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực livestream.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 4 phút",
-      coverImage: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1501625902166-51d8b9d3e5e4?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Kịch bản khai trương phiên live đầu tiên bùng nổ mắt xem. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -1049,7 +1049,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of livestream.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "4 min read",
-      coverImage: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1579450371665-276e01a1d1d8?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -1071,7 +1071,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực lighting.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 5 phút",
-      coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1564756531320-c26685ff86cc?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Nguyên tắc phối màu ánh sáng RGB giúp khung hình cinematic. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -1095,7 +1095,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of lighting.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "5 min read",
-      coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
+      coverImage: "https://images.unsplash.com/photo-1583091983058-2022d25d19fb?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },
@@ -1117,7 +1117,7 @@ export const articles: Record<string, Article> = {
       dek: "Khám phá những góc nhìn sâu sắc và kinh nghiệm thực chiến đúc kết qua nhiều năm làm nghề trong lĩnh vực mc.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "Đọc 3 phút",
-      coverImage: "/images/covers/cover_livestream_studio_1785487185052.png",
+      coverImage: "https://images.unsplash.com/photo-1520262453676-4d2d480e6fc8?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Chào mừng các bạn đến với bài viết chuyên sâu về chủ đề Luyện giọng nói trầm ấm và quyền lực để thu hút người nghe. Trong thời đại số hiện nay, việc nắm vững các kỹ năng và kiến thức nền tảng là yếu tố sống còn để tồn tại và phát triển." },
         { t: "p", c: "Từ những kinh nghiệm thực chiến đúc kết trong suốt nhiều năm làm nghề, hỗ trợ hàng nghìn cá nhân và thương hiệu, chúng tôi nhận thấy rằng phần lớn mọi người đều vấp ngã ở những bước cơ bản nhất. Việc thiếu một quy trình bài bản sẽ làm tiêu tốn rất nhiều thời gian và tiền bạc." },
@@ -1141,7 +1141,7 @@ export const articles: Record<string, Article> = {
       dek: "Discover deep insights and practical experiences gathered over years in the field of mc.",
       role: "Specialist Trainer & Livestream Producer",
       readTime: "3 min read",
-      coverImage: "/images/covers/cover_livestream_studio_1785487185052.png",
+      coverImage: "https://images.unsplash.com/photo-1501862569762-b94f0fa3c155?q=80&w=800&auto=format&fit=crop",
       body: [
         { t: "p", c: "Welcome to our deep dive into this topic. In today's digital age, mastering foundational skills and knowledge is crucial for survival and growth." },
         { t: "p", c: "Through years of practical experience supporting thousands of individuals and brands, we've found that most people stumble on the basics. Lack of a systematic process costs time and money." },

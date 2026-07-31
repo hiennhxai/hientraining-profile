@@ -39,7 +39,8 @@ watcher.on('all', (event, filePath) => {
     const dateStr = now.toLocaleDateString('vi-VN');
     const commitMsg = `Auto deploy update ${timeStr} ${dateStr}`;
 
-    exec(`git add . && git commit -m "${commitMsg}" && git push`, (err, stdout, stderr) => {
+    console.log("📦 Đang tạo bản sao lưu (backup) trước khi tải lên...");
+    exec(`node scratch/backup.cjs && git add . && git commit -m "${commitMsg}" && git push`, (err, stdout, stderr) => {
       if (err) {
         // If the error is just "nothing to commit", ignore it
         if (stdout.includes('nothing to commit') || stderr.includes('nothing to commit')) {

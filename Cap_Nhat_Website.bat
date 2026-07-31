@@ -3,6 +3,8 @@ chcp 65001 >nul
 echo ====================================================
 echo ĐANG TỰ ĐỘNG ĐƯA CODE MỚI LÊN MÁY CHỦ VERCEL...
 echo ====================================================
+echo DANG TAO BAN SAO LUU (BACKUP) TRUOC KHI DAY CODE...
+node scratch\backup.cjs
 git add .
 git commit -m "Auto deploy update %date% %time%"
 git push
