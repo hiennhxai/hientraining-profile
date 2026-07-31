@@ -5,7 +5,7 @@ import { translations } from '../data/translations';
 import { EditableWrapper } from './EditableWrapper';
 import { 
   FolderDown, FileText, Table, FileArchive, HardDrive, ExternalLink, 
-  Download, ArrowUpDown, Sparkles, Clock, Filter, Lock, CheckCircle2, FileCode, Search
+  Download, ArrowUpDown, Sparkles, Clock, Filter, Lock, FileCode, Search
 } from 'lucide-react';
 
 interface ResourceLibrarySectionProps {
@@ -117,8 +117,8 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
   }, [resources, selectedCategory, searchQuery, sortOrder]);
 
   return (
-    <section id="resources" className="py-6 sm:py-8 bg-slate-50 relative border-b border-slate-200 font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+    <section id="resources" className="py-5 sm:py-8 bg-slate-50 relative border-b border-slate-200 font-sans">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 pb-4">
@@ -135,12 +135,12 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
               label="Sửa Tiêu Đề Kho Tài Liệu"
               onEdit={() => triggerEdit('resourceTitle', 'Tiêu Đề Kho Tài Liệu', 'Tài Liệu & Biểu Mẫu Thực Chiến')}
             >
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+              <h2 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight">
                 {isVi ? 'Tài Liệu & Biểu Mẫu Thực Chiến' : 'Practical Resources & Templates'}
               </h2>
             </EditableWrapper>
 
-            <p className="text-slate-700 text-sm font-medium leading-relaxed">
+            <p className="text-slate-700 text-xs sm:text-sm font-medium leading-relaxed">
               {isVi 
                 ? 'Hệ thống Ebook, Kịch bản Livestream chốt đơn, Bảng tính Ánh sáng Studio & Preset OBS miễn phí dành cho học viên và thương hiệu.'
                 : 'Free Ebooks, Livestream Scripts, Studio Lighting Calculators & OBS Presets for trainees & brands.'}
@@ -148,29 +148,29 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
           </div>
 
           {/* Sort Order Selector & Search Input */}
-          <div className="flex flex-wrap items-center gap-2.5 shrink-0 self-start md:self-auto">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 shrink-0 self-start md:self-auto w-full md:w-auto">
             {/* Search Input */}
-            <div className="relative">
+            <div className="relative flex-1 md:flex-initial">
               <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 placeholder={isVi ? "Tìm tài liệu..." : "Search resources..."}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-9 pr-3.5 py-2 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:border-orange-500 w-40 sm:w-48 transition-all shadow-2xs"
+                className="w-full pl-9 pr-3.5 py-2 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:border-orange-500 md:w-48 transition-all shadow-2xs"
               />
             </div>
 
             {/* Sort Toggle */}
-            <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-slate-300 shadow-2xs">
-              <span className="text-xs font-mono font-bold text-slate-500 pl-2.5 flex items-center gap-1">
+            <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-slate-300 shadow-2xs shrink-0">
+              <span className="text-xs font-mono font-bold text-slate-500 pl-2 flex items-center gap-1">
                 <ArrowUpDown className="w-3.5 h-3.5 text-slate-400" />
               </span>
 
               <button
                 type="button"
                 onClick={() => setSortOrder('newest')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1 ${
+                className={`px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1 ${
                   sortOrder === 'newest'
                     ? 'bg-slate-900 text-amber-400 shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
@@ -183,7 +183,7 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
               <button
                 type="button"
                 onClick={() => setSortOrder('oldest')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1 ${
+                className={`px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1 ${
                   sortOrder === 'oldest'
                     ? 'bg-slate-900 text-amber-400 shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
@@ -196,26 +196,27 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
           </div>
         </div>
 
-        {/* Category Tabs (Count > 0 only) */}
+        {/* Category Tabs — Touch-Scrollable Horizontal Pill Bar on Mobile */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <span className="text-xs font-mono font-extrabold text-slate-600 uppercase tracking-wider flex items-center gap-1.5">
               <Filter className="w-3.5 h-3.5 text-orange-600" />
-              <span>DANH MỤC TÀI LIỆU (CHỦ ĐỀ)</span>
+              <span>DANH MỤC TÀI LIỆU</span>
             </span>
 
             {selectedCategory !== 'all' && (
               <button
                 type="button"
                 onClick={() => setSelectedCategory('all')}
-                className="text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center gap-1 cursor-pointer"
+                className="text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center gap-1 cursor-pointer shrink-0"
               >
                 <span>Xem Tất Cả</span>
               </button>
             )}
           </div>
 
-          <div className="flex flex-wrap gap-2 overflow-x-auto pb-1">
+          {/* Smooth Touch Horizon Scroll Pill Bar */}
+          <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap pb-2 pt-0.5 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none">
             {activeCategories.map((catId) => {
               const count = categoryCounts[catId] || 0;
               const isActive = selectedCategory === catId;
@@ -226,14 +227,13 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
                   key={catId}
                   type="button"
                   onClick={() => setSelectedCategory(catId)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1 border ${
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1 border shrink-0 ${
                     isActive
                       ? 'bg-orange-600 text-white border-orange-600 shadow-xs'
                       : 'bg-white text-slate-800 border-slate-300 hover:border-orange-400 hover:bg-orange-50/40'
                   }`}
                 >
                   <span>{label}</span>
-                  {/* Superscript Count */}
                   <sup className={`font-mono text-[10px] font-black leading-none ml-0.5 ${
                     isActive ? 'text-amber-300' : 'text-orange-600'
                   }`}>
@@ -245,7 +245,7 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
           </div>
         </div>
 
-        {/* 2-Column Balanced Prominent Resource Rows Grid */}
+        {/* 2-Column Responsive Balanced Resource Cards Grid */}
         {filteredResources.length > 0 ? (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-1">
             {filteredResources.map((res, index) => {
@@ -253,70 +253,74 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
               const BadgeIcon = badge.icon;
               const hasDescription = Boolean(res.description && res.description.trim());
               const hasAccessNote = Boolean(res.accessNote && res.accessNote.trim());
-              // Sequential Countdown Index Badge e.g. #8, #7, #6...
               const fileIndexNumber = filteredResources.length - index;
 
               return (
                 <div
                   key={res.id}
-                  className="rounded-2xl bg-white border-2 border-slate-900 hover:border-orange-600 transition-all p-4 sm:p-5 flex flex-col justify-between space-y-3.5 shadow-sm hover:shadow-xl group"
+                  className="rounded-2xl bg-white border-2 border-slate-900 hover:border-orange-600 transition-all p-4 sm:p-5 flex flex-col justify-between space-y-4 shadow-sm hover:shadow-xl group"
                 >
-                  {/* Top Line: Big Bold Index Badge (#8), File Format Badge, Title & Download Button Side-by-Side */}
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="space-y-2 flex-1 min-w-0">
+                  <div className="space-y-3">
+                    {/* Top Metadata Row: Badges Cluster on Left, Date on Right */}
+                    <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-2">
                       <div className="flex items-center gap-2 flex-wrap">
                         {/* Prominent High-Visibility Sequential Index Badge */}
-                        <span className="px-3 py-1 rounded-lg bg-slate-900 text-amber-400 font-mono text-sm sm:text-base font-black shrink-0 shadow-sm border border-amber-400/30">
+                        <span className="px-2.5 py-0.5 rounded-lg bg-slate-900 text-amber-400 font-mono text-xs sm:text-sm font-black shrink-0 shadow-2xs border border-amber-400/30">
                           #{fileIndexNumber}
                         </span>
 
                         {/* File Format Badge */}
-                        <span className={`px-2.5 py-1 rounded-lg font-mono text-[10px] sm:text-[11px] font-black flex items-center gap-1 shrink-0 ${badge.bg}`}>
+                        <span className={`px-2.5 py-0.5 rounded-lg font-mono text-[10px] sm:text-[11px] font-black flex items-center gap-1 shrink-0 ${badge.bg}`}>
                           <BadgeIcon className="w-3.5 h-3.5" />
                           <span>{badge.label}</span>
                         </span>
 
+                        {/* File Size */}
                         {res.fileSize && (
-                          <span className="text-[11px] font-mono font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200 shrink-0">
+                          <span className="text-[10px] sm:text-[11px] font-mono font-bold text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded-md border border-slate-200 shrink-0">
                             {res.fileSize}
                           </span>
                         )}
-
-                        <span className="text-[11px] font-mono text-slate-500 font-semibold ml-auto sm:ml-0">
-                          {res.date}
-                        </span>
                       </div>
 
-                      {/* Prominent Bold Title */}
-                      <h3 className="text-base sm:text-lg font-black text-slate-900 group-hover:text-orange-600 transition-colors leading-snug">
-                        {res.title}
-                      </h3>
+                      {/* Date */}
+                      <span className="text-[10px] sm:text-[11px] font-mono text-slate-400 font-semibold shrink-0">
+                        {res.date}
+                      </span>
                     </div>
 
-                    {/* Prominent Side-by-Side Download Action Button */}
-                    <a
-                      href={res.fileUrl || '#'}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-black text-white bg-slate-900 hover:bg-orange-600 transition-all shadow-md shrink-0 cursor-pointer group-hover:scale-105 self-start"
-                    >
-                      <Download className="w-4 h-4 text-amber-400 group-hover:text-white" />
-                      <span>{res.fileType && res.fileType.toUpperCase().includes('DRIVE') ? (isVi ? 'Xem Drive' : 'Drive') : (isVi ? 'Tải Về Ngay' : 'Download')}</span>
-                    </a>
+                    {/* Title & Download Button Block: Responsive Stack on Mobile, Side-by-Side on Desktop */}
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 pt-0.5">
+                      {/* Title — Full width on mobile so long text doesn't squeeze! */}
+                      <h3 className="text-base sm:text-lg font-black text-slate-900 group-hover:text-orange-600 transition-colors leading-snug flex-1">
+                        {res.title}
+                      </h3>
+
+                      {/* Prominent Action Button — Full width on mobile for easy thumb tap, shrink-0 on desktop */}
+                      <a
+                        href={res.fileUrl || '#'}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-black text-white bg-slate-900 hover:bg-orange-600 transition-all shadow-md cursor-pointer group-hover:scale-[1.02] shrink-0 w-full sm:w-auto"
+                      >
+                        <Download className="w-4 h-4 text-amber-400 group-hover:text-white" />
+                        <span>{res.fileType && res.fileType.toUpperCase().includes('DRIVE') ? (isVi ? 'Xem Link Drive' : 'Open Drive') : (isVi ? 'Tải Về Ngay' : 'Download')}</span>
+                      </a>
+                    </div>
                   </div>
 
-                  {/* Bottom Line: Optional Description & Access Note (Clear & Easy to Read) */}
+                  {/* Bottom Line: Optional Description & Access Note */}
                   {(hasDescription || hasAccessNote || (res.tags && res.tags.length > 0)) && (
                     <div className="pt-2.5 border-t border-slate-100 space-y-2 text-xs sm:text-sm text-slate-700 font-medium">
                       {hasDescription && (
-                        <p className="line-clamp-2 text-xs sm:text-sm leading-relaxed text-slate-700 font-medium">
+                        <p className="line-clamp-2 text-xs sm:text-sm leading-relaxed text-slate-600 font-medium">
                           {res.description}
                         </p>
                       )}
 
                       {hasAccessNote && (
-                        <div className="p-2 rounded-xl bg-orange-50 border border-orange-200 text-xs text-orange-950 font-medium flex items-center gap-1.5">
-                          <Lock className="w-3.5 h-3.5 text-orange-600 shrink-0" />
+                        <div className="p-2 rounded-xl bg-orange-50 border border-orange-200 text-xs text-orange-950 font-medium flex items-start gap-1.5">
+                          <Lock className="w-3.5 h-3.5 text-orange-600 shrink-0 mt-0.5" />
                           <span><strong>Ghi chú:</strong> {res.accessNote}</span>
                         </div>
                       )}
@@ -328,7 +332,7 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
                               key={tag}
                               className="text-[10px] font-mono font-bold text-slate-600 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md"
                             >
-                              {tag}
+                              #{tag}
                             </span>
                           ))}
                         </div>
