@@ -94,17 +94,7 @@ export function Navbar({ lang, onToggleLang, isDetecting, activePage, onSelectPa
 
           {/* Controls: Language Toggle & Hotline & Mobile Menu Button */}
           <div className="flex items-center space-x-2 sm:space-x-3">
-            <button
-              className={`px-2.5 py-1.5 text-xs font-mono rounded-lg border border-slate-200 text-slate-700 bg-slate-50 hover:bg-white hover:border-orange-300 transition-all cursor-pointer shadow-2xs ${
-                isDetecting ? 'animate-pulse' : ''
-              }`}
-              onClick={onToggleLang}
-              aria-label="Toggle language"
-            >
-              <span className={lang === 'vi' ? 'font-bold text-orange-600' : 'text-slate-400'}>VI</span>
-              <span className="mx-1 opacity-40">/</span>
-              <span className={lang === 'en' ? 'font-bold text-orange-600' : 'text-slate-400'}>EN</span>
-            </button>
+            {/* Language toggle removed in favor of Google Translate widget */}
 
             <a
               href="tel:0813131385"
