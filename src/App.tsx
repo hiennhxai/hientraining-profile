@@ -231,7 +231,7 @@ export default function App() {
       clearTimeout(timeoutId);
       observer.disconnect();
     };
-  }, [activePage]);
+  }, [activePage, activeArticleSlug, activeCourse, activeService, updateTrigger, isDataLoaded]);
 
   // Inline edit field trigger
   const handleOpenEditField = (key: string, label: string, currentValue: string) => {
