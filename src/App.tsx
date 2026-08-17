@@ -49,7 +49,50 @@ export default function App() {
   const [isSavingInline, setIsSavingInline] = useState<boolean>(false);
   const [activeInlineField, setActiveInlineField] = useState<{ key: string; label: string; initialValue: string } | null>(null);
 
-  // Load data from Supabase
+  // Hash Routing Logic
+  const handleHashChange = () => {
+    const hash = window.location.hash.replace('#', '');
+    
+    // Clear all modal states first
+    setActiveArticleSlug(null);
+    setActiveCourse(null);
+    setActiveService(null);
+
+    if (!hash || hash === 'home') {
+      setActivePage('home');
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    if (hash.startsWith('article/')) {
+      setActiveArticleSlug(hash.replace('article/', ''));
+    } else if (hash.startsWith('course/')) {
+      const courseId = hash.replace('course/', '');
+      const data = getAdminData();
+      if (data && data.courses) {
+        const found = data.courses.find(c => c.id === courseId);
+        if (found) setActiveCourse(found);
+      }
+    } else if (hash.startsWith('service/')) {
+      const serviceId = hash.replace('service/', '');
+      const data = getAdminData();
+      if (data && data.services) {
+        const found = data.services.find(s => s.id === serviceId);
+        if (found) setActiveService(found);
+      }
+    } else {
+      // Valid pages: home, portfolio, courses, services, projects, blog, contact
+      setActivePage(hash);
+      window.scrollTo(0, 0);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  // Load data from Supabase and parse initial hash
   useEffect(() => {
     loadAdminDataAsync().then(() => {
       setIsDataLoaded(true);
@@ -63,6 +106,9 @@ export default function App() {
           }
         }, 500);
       }
+      
+      // Parse initial hash once data is loaded
+      handleHashChange();
     });
 
     const handleRealtimeUpdate = () => {
@@ -142,8 +188,7 @@ export default function App() {
   };
 
   const handleSelectPage = (page: string) => {
-    setActivePage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.location.hash = page;
   };
 
   // Update HTML lang attribute
@@ -160,11 +205,11 @@ export default function App() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            entry.target.classList.add('reveal-visible');
           }
         });
       },
-      { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+      { threshold: 0.1 }
     );
 
     const observeElements = () => {
@@ -280,7 +325,7 @@ export default function App() {
             <HeroSection 
               lang={lang} 
               onNavigatePage={handleSelectPage} 
-              onSelectCourse={(c) => setActiveCourse(c)}
+              onSelectCourse={(c) => window.location.hash = 'course/' + c.id}
               isEditActive={isAdminMode && isEditActive}
               onEditField={handleOpenEditField}
             />
@@ -374,7 +419,7 @@ export default function App() {
             />
             <ServicesSection 
               lang={lang} 
-              onOpenService={(s) => setActiveService(s)}
+              onOpenService={(s) => window.location.hash = 'service/' + s.id}
               isEditActive={isAdminMode && isEditActive}
               onEditField={handleOpenEditField}
             />
@@ -419,7 +464,7 @@ export default function App() {
             />
             <BlogSection 
               lang={lang} 
-              onOpenArticle={(slug) => setActiveArticleSlug(slug)}
+              onOpenArticle={(slug) => window.location.hash = 'article/' + slug}
               isEditActive={isAdminMode && isEditActive}
               onEditField={handleOpenEditField}
             />
