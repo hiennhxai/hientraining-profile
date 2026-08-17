@@ -90,7 +90,7 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
                 >
                   <div className="aspect-square rounded-2xl overflow-hidden border-2 border-orange-200 shadow-md bg-slate-100 relative">
                     <img 
-                      src={gen.heroPortraitUrl || "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&auto=format&fit=crop"} 
+                      src={gen.heroPortraitUrl || ""} 
                       alt="MC Nguyễn Hồng Xuân Hiến" 
                       className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />

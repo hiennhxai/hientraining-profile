@@ -19,7 +19,7 @@ export function HeroPortraitShowcase({ lang }: HeroPortraitShowcaseProps) {
     return () => window.removeEventListener('admin_data_updated', handleUpdate);
   }, []);
 
-  const portraitUrl = config.heroPortraitUrl || "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&auto=format&fit=crop";
+  const portraitUrl = config.heroPortraitUrl || "";
   const zoom = (config.heroPortraitZoom || 100) / 100;
   const offsetX = config.heroPortraitOffsetX || 0;
   const offsetY = config.heroPortraitOffsetY || 0;

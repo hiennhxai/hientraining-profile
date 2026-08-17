@@ -904,7 +904,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                       {/* Image Preview with maskImage and transform */}
                       <div className="relative w-full h-full overflow-hidden">
                         <img 
-                          src={data.general.heroPortraitUrl || "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&auto=format&fit=crop"} 
+                          src={data.general.heroPortraitUrl || ""} 
                           alt="Live Monitor Portrait"
                           style={{
                             transform: `scaleX(${(data.general.heroPortraitFlipX !== false ? -1 : 1) * ((data.general.heroPortraitZoom || 100) / 100)}) scaleY(${(data.general.heroPortraitZoom || 100) / 100}) translate(${data.general.heroPortraitOffsetX || 0}px, ${data.general.heroPortraitOffsetY || 0}px)`,

@@ -804,7 +804,7 @@ export const defaultAdminData: FullAdminData = {
     p3h: translations.vi.p3h,
     p3p: translations.vi.p3p,
     careerTitle: "Hành Trình Kinh Nghiệm & Lịch Sử Hoạt Động",
-    heroPortraitUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&auto=format&fit=crop",
+    heroPortraitUrl: "",
     heroPortraitZoom: 100,
     heroPortraitOffsetX: 0,
     heroPortraitOffsetY: 0,

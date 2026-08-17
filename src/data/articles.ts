@@ -1593,7 +1593,7 @@ export const articles: Record<string, Article> = {
       "dek": "Các thiết lập mạng LAN khép kín, lựa chọn nhà mạng và thông số Upload Speed để luồng live 4K ổn định.",
       "role": "Specialist Trainer & Livestream Producer",
       "readTime": "Đọc 3 phút",
-      "coverImage": "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop",
+      "coverImage": "",
       "body": [
         {
           "t": "p",
@@ -1636,7 +1636,7 @@ export const articles: Record<string, Article> = {
       "dek": "Configure dedicated LAN lines, upload bandwidth speeds, and fallback routing for 4K streaming.",
       "role": "Specialist Trainer & Livestream Producer",
       "readTime": "3 min read",
-      "coverImage": "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop",
+      "coverImage": "",
       "body": [
         {
           "t": "p",
