@@ -27,7 +27,7 @@ import { FloatingActionButtons } from './components/FloatingActionButtons';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('vi');
-  const [isDetecting, setIsDetecting] = useState<boolean>(true);
+  const [isDetecting, setIsDetecting] = useState<boolean>(false);
   const [activeArticleSlug, setActiveArticleSlug] = useState<string | null>(null);
   const [activeCourse, setActiveCourse] = useState<CourseItem | null>(null);
   const [activeService, setActiveService] = useState<ServiceItem | null>(null);
@@ -96,8 +96,8 @@ export default function App() {
   useEffect(() => {
     loadAdminDataAsync().then(() => {
       setIsDataLoaded(true);
-      // If language is English, auto-trigger Google Translate after data is injected
-      if (lang === 'en') {
+      // If language is English in cookies, auto-trigger Google Translate after data is injected
+      if (document.cookie.includes('googtrans=/vi/en')) {
         setTimeout(() => {
           const selectField = document.querySelector('.goog-te-combo') as HTMLSelectElement;
           if (selectField) {
@@ -142,49 +142,12 @@ export default function App() {
     return () => window.removeEventListener('admin_data_updated', updateSiteMetadata);
   }, [lang]);
 
-  // Language initialization
-  useEffect(() => {
-    let savedLang: string | null = null;
-    try {
-      savedLang = localStorage.getItem('xuanhien_lang');
-    } catch {
-      // ignore
-    }
-
-    if (savedLang === 'vi' || savedLang === 'en') {
-      setLang(savedLang);
-      setIsDetecting(false);
-      return;
-    }
-
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 3500);
-
-    fetch('https://ipapi.co/json/', { signal: controller.signal })
-      .then((res) => res.json())
-      .then((data) => {
-        const country = (data.country_code || '').toUpperCase();
-        if (country === 'VN') {
-          setLang('vi');
-        } else {
-          setLang('vi'); // default to Vietnamese for Xuân Hiến website
-        }
-      })
-      .catch(() => setLang('vi'))
-      .finally(() => {
-        clearTimeout(timeoutId);
-        setIsDetecting(false);
-      });
-  }, []);
-
+  // Lang state is permanently locked to 'vi' for React components.
+  // We use Google Translate to handle 100% of the translations, so React should NOT
+  // manually switch languages, because that triggers a full DOM re-render which destroys
+  // Google Translate's translated nodes.
   const handleToggleLang = () => {
-    const nextLang: Language = lang === 'en' ? 'vi' : 'en';
-    setLang(nextLang);
-    try {
-      localStorage.setItem('xuanhien_lang', nextLang);
-    } catch {
-      // ignore
-    }
+    // No-op: FloatingActionButtons manages the Google Translate API trigger directly.
   };
 
   const handleSelectPage = (page: string) => {

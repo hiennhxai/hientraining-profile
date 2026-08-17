@@ -34,7 +34,15 @@ const UKFlag = () => (
 
 export function FloatingActionButtons({ lang, onToggleLang }: FloatingActionButtonsProps) {
   const [isMessageOpen, setIsMessageOpen] = useState(false);
+  const [currentFlag, setCurrentFlag] = useState<Language>('vi');
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Initialize flag based on Google Translate cookie
+  useEffect(() => {
+    if (document.cookie.includes('googtrans=/vi/en')) {
+      setCurrentFlag('en');
+    }
+  }, []);
 
   // Close when clicking outside
   useEffect(() => {
@@ -48,20 +56,22 @@ export function FloatingActionButtons({ lang, onToggleLang }: FloatingActionButt
   }, []);
 
   const handleLanguageSwitch = () => {
-    const targetLang = lang === 'en' ? 'vi' : 'en';
+    const targetLang = currentFlag === 'en' ? 'vi' : 'en';
     
-    // Toggle internal state (saves to localStorage)
-    onToggleLang();
+    // Toggle internal flag state
+    setCurrentFlag(targetLang);
+    
+    // Do NOT call onToggleLang() anymore! We want React to ALWAYS stay in Vietnamese!
+    // This stops React from destroying the DOM and lets Google Translate handle 100% of the translations.
     
     // Trigger Google Translate dropdown in place without reloading!
-    // This translates the dynamically loaded Supabase data immediately.
     setTimeout(() => {
       const selectField = document.querySelector('.goog-te-combo') as HTMLSelectElement;
       if (selectField) {
         selectField.value = targetLang;
         selectField.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
       }
-    }, 100);
+    }, 50);
   };
 
   return (
@@ -115,14 +125,14 @@ export function FloatingActionButtons({ lang, onToggleLang }: FloatingActionButt
         </button>
       </div>
 
-      {/* Language Toggle Icon */}
+      {/* Language Switch */}
       <button 
         onClick={handleLanguageSwitch}
         className="relative flex items-center justify-center w-12 h-12 bg-white text-xl rounded-full shadow-lg border border-slate-200 hover:scale-110 transition-transform duration-300 animate-float group overflow-hidden"
         style={{ animationDelay: '0.4s' }}
-        title={lang === 'vi' ? 'Chuyển sang Tiếng Anh' : 'Chuyển sang Tiếng Việt'}
+        title={currentFlag === 'vi' ? 'Switch to English' : 'Đổi sang Tiếng Việt'}
       >
-        {lang === 'en' ? <VNFlag /> : <UKFlag />}
+        {currentFlag === 'vi' ? <UKFlag /> : <VNFlag />}
         <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-slate-200/50 to-transparent group-hover:animate-shimmer" />
       </button>
 
