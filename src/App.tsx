@@ -205,7 +205,7 @@ export default function App() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('reveal-visible');
+            entry.target.classList.add('visible');
           }
         });
       },
