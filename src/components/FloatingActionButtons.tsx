@@ -7,6 +7,31 @@ interface FloatingActionButtonsProps {
   onToggleLang: () => void;
 }
 
+const VNFlag = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" className="w-7 h-7 rounded-[4px] shadow-sm object-cover overflow-hidden">
+    <rect width="900" height="600" fill="#da251d"/>
+    <polygon fill="#ffcd00" points="450,114 532,367 317,210 583,210 368,367"/>
+  </svg>
+);
+
+const UKFlag = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" className="w-7 h-7 rounded-[4px] shadow-sm object-cover overflow-hidden">
+    <clipPath id="s">
+      <path d="M0,0 v30 h60 v-30 z"/>
+    </clipPath>
+    <clipPath id="t">
+      <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/>
+    </clipPath>
+    <g clipPath="url(#s)">
+      <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/>
+      <path d="M0,0 L60,30 M60,0 L0,30" clipPath="url(#t)" stroke="#C8102E" strokeWidth="4"/>
+      <path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10"/>
+      <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6"/>
+    </g>
+  </svg>
+);
+
 export function FloatingActionButtons({ lang, onToggleLang }: FloatingActionButtonsProps) {
   const [isMessageOpen, setIsMessageOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -23,15 +48,26 @@ export function FloatingActionButtons({ lang, onToggleLang }: FloatingActionButt
   }, []);
 
   const handleLanguageSwitch = () => {
+    const targetLang = lang === 'en' ? 'vi' : 'en';
+    
+    // Toggle internal state (saves to localStorage)
     onToggleLang();
     
-    // Sync with Google Translate if available
-    const targetLang = lang === 'en' ? 'vi' : 'en';
-    const selectField = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-    if (selectField) {
-      selectField.value = targetLang;
-      selectField.dispatchEvent(new Event('change'));
+    // Force Google Translate via cookie for full page translation
+    const domain = window.location.hostname;
+    if (targetLang === 'en') {
+      document.cookie = `googtrans=/vi/en; path=/; domain=${domain}`;
+      document.cookie = `googtrans=/vi/en; path=/;`;
+    } else {
+      document.cookie = `googtrans=/vi/vi; path=/; domain=${domain}`;
+      document.cookie = `googtrans=/vi/vi; path=/;`;
+      // Clear cookie entirely to revert to original
+      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${domain}`;
+      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
     }
+    
+    // Reload to let Google Translate completely re-translate the page
+    window.location.reload();
   };
 
   return (
@@ -43,18 +79,14 @@ export function FloatingActionButtons({ lang, onToggleLang }: FloatingActionButt
         className="relative flex items-center justify-center w-12 h-12 bg-emerald-500 text-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300 animate-float group overflow-hidden"
       >
         <Phone className="w-5 h-5 animate-wiggle" />
-        {/* Shimmer/Light sweeping effect */}
         <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-shimmer" />
       </a>
 
       {/* Message Options (Messenger / Zalo) */}
       <div className="relative flex items-center justify-end">
-        
-        {/* Expanded Options (Horizontal to the left) */}
         <div 
           className={`absolute right-[56px] flex items-center gap-3 transition-all duration-300 origin-right ${isMessageOpen ? 'opacity-100 scale-100 translate-x-0' : 'opacity-0 scale-50 translate-x-4 pointer-events-none'}`}
         >
-          {/* Zalo */}
           <a
             href="https://zalo.me/0813131385"
             target="_blank"
@@ -65,7 +97,6 @@ export function FloatingActionButtons({ lang, onToggleLang }: FloatingActionButt
             <span className="font-bold text-sm tracking-wide">Zalo</span>
           </a>
 
-          {/* Messenger */}
           <a
             href="https://m.me/"
             target="_blank"
@@ -80,7 +111,6 @@ export function FloatingActionButtons({ lang, onToggleLang }: FloatingActionButt
           </a>
         </div>
 
-        {/* Message Toggle Button */}
         <button 
           onClick={() => setIsMessageOpen(!isMessageOpen)}
           className={`relative flex items-center justify-center w-12 h-12 text-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300 animate-float group overflow-hidden ${isMessageOpen ? 'bg-slate-700' : 'bg-orange-500'}`}
@@ -96,9 +126,9 @@ export function FloatingActionButtons({ lang, onToggleLang }: FloatingActionButt
         onClick={handleLanguageSwitch}
         className="relative flex items-center justify-center w-12 h-12 bg-white text-xl rounded-full shadow-lg border border-slate-200 hover:scale-110 transition-transform duration-300 animate-float group overflow-hidden"
         style={{ animationDelay: '0.4s' }}
-        title={lang === 'vi' ? 'Switch to English' : 'Chuyển sang Tiếng Việt'}
+        title={lang === 'vi' ? 'Chuyển sang Tiếng Anh' : 'Chuyển sang Tiếng Việt'}
       >
-        {lang === 'en' ? '🇻🇳' : '🇬🇧'}
+        {lang === 'en' ? <VNFlag /> : <UKFlag />}
         <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-slate-200/50 to-transparent group-hover:animate-shimmer" />
       </button>
 
