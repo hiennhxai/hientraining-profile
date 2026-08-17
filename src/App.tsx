@@ -53,6 +53,16 @@ export default function App() {
   useEffect(() => {
     loadAdminDataAsync().then(() => {
       setIsDataLoaded(true);
+      // If language is English, auto-trigger Google Translate after data is injected
+      if (lang === 'en') {
+        setTimeout(() => {
+          const selectField = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+          if (selectField) {
+            selectField.value = 'en';
+            selectField.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
+          }
+        }, 500);
+      }
     });
 
     const handleRealtimeUpdate = () => {

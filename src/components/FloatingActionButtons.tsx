@@ -53,21 +53,15 @@ export function FloatingActionButtons({ lang, onToggleLang }: FloatingActionButt
     // Toggle internal state (saves to localStorage)
     onToggleLang();
     
-    // Force Google Translate via cookie for full page translation
-    const domain = window.location.hostname;
-    if (targetLang === 'en') {
-      document.cookie = `googtrans=/vi/en; path=/; domain=${domain}`;
-      document.cookie = `googtrans=/vi/en; path=/;`;
-    } else {
-      document.cookie = `googtrans=/vi/vi; path=/; domain=${domain}`;
-      document.cookie = `googtrans=/vi/vi; path=/;`;
-      // Clear cookie entirely to revert to original
-      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${domain}`;
-      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-    }
-    
-    // Reload to let Google Translate completely re-translate the page
-    window.location.reload();
+    // Trigger Google Translate dropdown in place without reloading!
+    // This translates the dynamically loaded Supabase data immediately.
+    setTimeout(() => {
+      const selectField = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+      if (selectField) {
+        selectField.value = targetLang;
+        selectField.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
+      }
+    }, 100);
   };
 
   return (
