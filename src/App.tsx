@@ -23,6 +23,7 @@ import { InlineEditToolbar } from './components/InlineEditToolbar';
 import { InlineTextEditorModal } from './components/InlineTextEditorModal';
 import { applyTypography } from './utils/typographyEngine';
 import { getAdminData, loadAdminDataAsync, saveAdminData } from './data/adminStore';
+import { FloatingActionButtons } from './components/FloatingActionButtons';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('vi');
@@ -451,6 +452,8 @@ export default function App() {
           }
         }}
       />
+
+      <FloatingActionButtons lang={lang} onToggleLang={handleToggleLang} />
 
       <ArticleReaderModal
         slug={activeArticleSlug}
