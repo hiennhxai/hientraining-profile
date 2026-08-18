@@ -525,17 +525,17 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                 onClick={async () => {
                   setIsGeneratingImage(true);
                   try {
-                    const res = await fetch('https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell', {
+                    const res = await fetch('/api/generate-image', {
                       method: 'POST',
                       headers: {
-                        'Authorization': `Bearer ${import.meta.env.VITE_HF_TOKEN}`,
                         'Content-Type': 'application/json'
                       },
-                      body: JSON.stringify({ inputs: aiPrompt.trim() })
+                      body: JSON.stringify({ prompt: aiPrompt.trim() })
                     });
                     
                     if (!res.ok) {
-                      throw new Error('Hugging Face API returned ' + res.status);
+                      const errorData = await res.json().catch(() => ({}));
+                      throw new Error(errorData.error || 'Server API returned ' + res.status);
                     }
                     
                     const blob = await res.blob();
