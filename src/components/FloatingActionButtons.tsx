@@ -60,49 +60,46 @@ export function FloatingActionButtons({ lang, onToggleLang }: FloatingActionButt
   const handleLanguageSwitch = () => {
     const targetLang = currentFlag === 'en' ? 'vi' : 'en';
     setCurrentFlag(targetLang);
-    
-    // Trigger Google Translate dropdown in place without reloading!
-    const selectField = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-    if (selectField) {
-      let foundExact = false;
-      for (let i = 0; i < selectField.options.length; i++) {
-        if (selectField.options[i].value === targetLang) {
-          selectField.value = targetLang;
-          foundExact = true;
-          break;
-        }
-      }
-      if (!foundExact) {
-        selectField.value = ''; // Fallback to restore original
-      }
-      selectField.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
-    }
 
-    // Force clear cookies if switching back to Vietnamese to ensure it sticks on reload
+    // Force clear cookies if switching back to Vietnamese
     if (targetLang === 'vi') {
       document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=${window.location.hostname}; path=/;`;
+    } else {
+      document.cookie = "googtrans=/vi/en; path=/;";
+      document.cookie = `googtrans=/vi/en; domain=${window.location.hostname}; path=/;`;
     }
+    
+    // Robust trigger mechanism
+    const triggerTranslate = (retries = 3) => {
+      const selectField = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+      if (selectField) {
+        selectField.value = targetLang === 'en' ? 'en' : '';
+        
+        let event;
+        if (typeof Event === 'function') {
+          event = new Event('change', { bubbles: true, cancelable: true });
+        } else {
+          event = document.createEvent('HTMLEvents');
+          event.initEvent('change', true, true);
+        }
+        selectField.dispatchEvent(event);
 
-    // BULLETPROOF FALLBACK: Check if Google Translate actually responded.
-    // If it didn't (e.g., due to widget being hidden or blocked), we set the cookie and reload.
-    setTimeout(() => {
-      const isTranslated = document.documentElement.classList.contains('translated-ltr') || document.documentElement.classList.contains('translated-rtl');
-      
-      let needsFallback = false;
-      if (targetLang === 'en' && !isTranslated) {
-        needsFallback = true;
-        document.cookie = "googtrans=/vi/en; path=/;";
-      } else if (targetLang === 'vi' && isTranslated) {
-        needsFallback = true;
-        document.cookie = "googtrans=/vi/vi; path=/;";
+        // Check if translation applied, if not retry
+        setTimeout(() => {
+          const isTranslated = document.documentElement.classList.contains('translated-ltr') || document.documentElement.classList.contains('translated-rtl');
+          if (targetLang === 'en' && !isTranslated && retries > 0) {
+            triggerTranslate(retries - 1);
+          } else if (targetLang === 'vi' && isTranslated && retries > 0) {
+            triggerTranslate(retries - 1);
+          }
+        }, 500);
+      } else if (retries > 0) {
+        setTimeout(() => triggerTranslate(retries - 1), 500);
       }
+    };
 
-      if (needsFallback || !selectField) {
-        sessionStorage.setItem('xuanhien_keep_lang', 'true');
-        window.location.reload();
-      }
-    }, 600);
+    triggerTranslate();
   };
 
   return (
