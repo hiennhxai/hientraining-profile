@@ -38,8 +38,8 @@ image = (
 
 app = modal.App("flux-schnell-api", image=image)
 
-# Cấu hình Card đồ họa A10G siêu mạnh và bảo mật HuggingFace Token
-@app.cls(gpu="A10G", secrets=[modal.Secret.from_name("huggingface")])
+# Cấu hình Card đồ họa H100 siêu mạnh và bảo mật HuggingFace Token
+@app.cls(gpu="H100", secrets=[modal.Secret.from_name("huggingface")])
 class FluxModel:
     @modal.enter()
     def enter(self):
