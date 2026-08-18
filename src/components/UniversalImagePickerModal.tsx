@@ -9,16 +9,13 @@ import {
 } from 'lucide-react';
 
 // ─── AI MODEL OPTIONS ───
-type AiModelKey = 'flux-dev' | 'pollinations' | 'cloudflare' | 'animagine' | 'realvis' | 'juggernaut' | 'dreamshaper' | 'openjourney' | 'modal-h100';
+type AiModelKey = 'flux-dev' | 'pollinations' | 'cloudflare' | 'realvis' | 'juggernaut' | 'modal-h100';
 
 const AI_MODELS: { key: AiModelKey; name: string; badge: string; desc: string; speed: string; color: string; usageNote: string }[] = [
   { key: 'modal-h100',   name: 'Modal H100 (Cá nhân)', badge: '🚀 Siêu Tốc', desc: 'Máy chủ độc quyền của bạn trên Modal chạy FLUX.1 Dev.', speed: '~20s', color: 'blue', usageNote: 'Tính phí theo Modal. Dành cho nhu cầu sử dụng chuyên sâu.' },
   { key: 'juggernaut',   name: 'Juggernaut XL',   badge: '🔥 Tuyệt Đỉnh', desc: 'Con AI mạnh nhất thế giới về nhiếp ảnh hiện thực.', speed: '~15-20s', color: 'emerald', usageNote: 'Chuyên trị ảnh người thật. Chân thực đến từng sợi tóc, vượt mặt cả Midjourney.' },
-  { key: 'dreamshaper',  name: 'DreamShaper XL',  badge: '🎨 Nghệ Thuật', desc: 'AI vĩ đại nhất về Digital Art và điện ảnh 3D.', speed: '~15-20s', color: 'blue', usageNote: 'Cân mọi thể loại từ đời thực đến 3D, với phong cách nghệ thuật siêu đẹp.' },
-  { key: 'openjourney',  name: 'OpenJourney',     badge: '🚀 Midjourney', desc: 'Được huấn luyện trực tiếp từ kho ảnh của Midjourney v4.', speed: '~10-15s', color: 'purple', usageNote: 'Chất ảnh ra đậm chất Midjourney. Thích hợp cho sáng tạo vô cực.' },
   { key: 'realvis',      name: 'RealVis XL',      badge: '📸 Nhiếp Ảnh', desc: 'Chuyên gia số 1 về ảnh người thật, chân dung nhiếp ảnh.', speed: '~15-20s', color: 'emerald', usageNote: 'Dành riêng tạo người thật. Ảnh nét đến từng lỗ chân lông.' },
   { key: 'flux-dev',     name: 'FLUX.1 Dev',      badge: '💎 Đỉnh Cao', desc: 'Mô hình đa dụng mạnh nhất, cực kỳ thông minh.', speed: '~15-30s', color: 'blue', usageNote: 'Hiểu mọi yêu cầu phức tạp. Đẹp nhất hiện tại.' },
-  { key: 'animagine',    name: 'Animagine XL',    badge: '🌸 Chuyên Anime', desc: 'Chuyên gia số 1 về vẽ Anime, Hoạt Hình 2D.', speed: '~15-20s', color: 'purple', usageNote: 'Dành riêng để vẽ Anime. Nên tả tóc, mắt, trang phục.' },
   { key: 'pollinations', name: 'Pollinations AI', badge: '🎁 Miễn Phí', desc: 'Sử dụng mô hình FLUX siêu đẹp.', speed: '~10s', color: 'emerald', usageNote: 'Hoàn toàn miễn phí 100%. Không giới hạn lượt tạo ảnh / ngày.' },
   { key: 'cloudflare',   name: 'Cloudflare AI', badge: '☁️ Tốc Độ', desc: 'Tạo ảnh bằng SDXL trên mạng lưới Cloudflare Edge.', speed: '~15s', color: 'amber', usageNote: 'Miễn phí siêu khủng (hàng ngàn lượt/ngày). Đã cấu hình Token thành công.' },
 ];

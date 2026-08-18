@@ -3,15 +3,10 @@ import { InferenceClient } from '@huggingface/inference';
 // Tăng thời gian timeout cho Vercel Serverless Function lên 60 giây để chờ Modal Cold Start
 export const maxDuration = 60;
 
-// Supported AI image generation models
 const SUPPORTED_MODELS = {
   'flux-dev': {
     id: 'black-forest-labs/FLUX.1-dev',
     steps: 20,
-  },
-  'animagine': {
-    id: 'cagliostrolab/animagine-xl-3.1',
-    steps: 25,
   },
   'realvis': {
     id: 'SG161222/RealVisXL_V4.0',
@@ -19,14 +14,6 @@ const SUPPORTED_MODELS = {
   },
   'juggernaut': {
     id: 'stablediffusionapi/juggernaut-xl-v9',
-    steps: 30,
-  },
-  'dreamshaper': {
-    id: 'Lykon/dreamshaper-xl-1-0',
-    steps: 30,
-  },
-  'openjourney': {
-    id: 'prompthero/openjourney',
     steps: 30,
   }
 };
