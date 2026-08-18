@@ -91,9 +91,9 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
         </div>
 
         {/* Top Grid: Self-Narrative with Portrait Photo (Left) & Achievements/Milestones (Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* Main Story Paragraphs + Integrated Portrait Image (Left 7 cols) */}
-          <div className="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col justify-between space-y-5 text-slate-700 text-sm sm:text-base leading-relaxed">
+          <div className="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col space-y-5 text-slate-700 text-sm sm:text-base leading-relaxed">
             
             <div className="p-5 rounded-xl bg-orange-50/80 border border-orange-200/80 shadow-2xs">
               <EditableWrapper
@@ -205,14 +205,14 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
             )}
 
             {/* TV Host Milestones & Achievements Panel */}
-            <div className="flex-1 rounded-2xl bg-white border border-slate-200 p-6 sm:p-8 space-y-5 shadow-sm flex flex-col justify-between">
+            <div className="rounded-2xl bg-white border border-slate-200 p-5 sm:p-6 space-y-4 shadow-sm flex flex-col">
             <div>
               <EditableWrapper
                 isEditActive={isEditActive}
                 label="Sửa Tiêu Đề Thành Tựu"
                 onEdit={() => triggerEdit('achievementsTitle', 'Tiêu Đề Thành Tựu', gen.achievementsTitle || t.a_achievements_title)}
               >
-                <h3 className="text-lg font-extrabold text-slate-900 flex items-center gap-2.5 border-b border-slate-200 pb-3.5 mb-4">
+                <h3 className="text-base sm:text-lg font-extrabold text-slate-900 flex items-center gap-2.5 border-b border-slate-200 pb-3 mb-3">
                   <div className="p-1.5 rounded-lg bg-orange-100 text-orange-600">
                     <Award className="w-5 h-5" />
                   </div>
@@ -220,24 +220,24 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
                 </h3>
               </EditableWrapper>
 
-              <div className="space-y-3.5 text-xs sm:text-sm font-sans text-slate-700">
-                <div className="flex justify-between items-start border-b border-slate-100 pb-2.5">
+              <div className="space-y-3 text-xs sm:text-sm font-sans text-slate-700">
+                <div className="flex justify-between items-start border-b border-slate-50 pb-2">
                   <span className="text-orange-600 font-bold shrink-0">2012</span>
                   <span className="text-right text-slate-800 font-medium ml-4">{t.a_m1_desc}</span>
                 </div>
-                <div className="flex justify-between items-start border-b border-slate-100 pb-2.5">
+                <div className="flex justify-between items-start border-b border-slate-50 pb-2">
                   <span className="text-orange-600 font-bold shrink-0">2014</span>
                   <span className="text-right text-slate-800 font-medium ml-4">{t.a_m2_desc}</span>
                 </div>
-                <div className="flex justify-between items-start border-b border-slate-100 pb-2.5">
+                <div className="flex justify-between items-start border-b border-slate-50 pb-2">
                   <span className="text-amber-600 font-extrabold shrink-0">2017</span>
                   <span className="text-right text-orange-700 font-extrabold ml-4">{t.a_m3_desc}</span>
                 </div>
-                <div className="flex justify-between items-start border-b border-slate-100 pb-2.5">
+                <div className="flex justify-between items-start border-b border-slate-50 pb-2">
                   <span className="text-orange-600 font-bold shrink-0">2017</span>
                   <span className="text-right text-slate-800 font-medium ml-4">{t.a_m4_desc}</span>
                 </div>
-                <div className="flex justify-between items-start border-b border-slate-100 pb-2.5">
+                <div className="flex justify-between items-start border-b border-slate-50 pb-2">
                   <span className="text-red-600 font-bold shrink-0">2016 – 2026</span>
                   <span className="text-right text-slate-800 font-medium ml-4">{t.a_m5_desc}</span>
                 </div>
