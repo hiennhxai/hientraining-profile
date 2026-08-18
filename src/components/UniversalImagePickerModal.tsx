@@ -9,13 +9,17 @@ import {
 } from 'lucide-react';
 
 // ─── AI MODEL OPTIONS ───
-type AiModelKey = 'flux-schnell' | 'flux-dev' | 'sdxl' | 'sd-3.5';
+type AiModelKey = 'flux-schnell' | 'flux-dev' | 'sdxl' | 'sd-3.5' | 'pollinations' | 'cloudflare' | 'segmind' | 'modal';
 
-const AI_MODELS: { key: AiModelKey; name: string; badge: string; desc: string; speed: string; color: string }[] = [
-  { key: 'flux-schnell', name: 'FLUX.1 Schnell',  badge: '⚡ Nhanh',    desc: 'Tạo ảnh siêu nhanh, chất lượng tốt',       speed: '~5-10s',  color: 'purple' },
-  { key: 'flux-dev',     name: 'FLUX.1 Dev',      badge: '🎨 Chất lượng', desc: 'Chất lượng cao, chi tiết sắc nét',         speed: '~15-30s', color: 'blue' },
-  { key: 'sdxl',         name: 'Stable Diffusion XL', badge: '🖼️ Đa năng', desc: 'Linh hoạt, hệ sinh thái rộng lớn',     speed: '~15-25s', color: 'emerald' },
-  { key: 'sd-3.5',       name: 'SD 3.5 Large',    badge: '✨ Mới nhất',   desc: 'Thế hệ mới nhất, prompt hiểu tốt hơn',   speed: '~20-35s', color: 'amber' },
+const AI_MODELS: { key: AiModelKey; name: string; badge: string; desc: string; speed: string; color: string; usageNote: string }[] = [
+  { key: 'flux-schnell', name: 'FLUX.1 Schnell',  badge: '⚡ Nhanh',    desc: 'Tạo ảnh siêu nhanh, chất lượng tốt',       speed: '~5-10s',  color: 'purple', usageNote: 'Dùng qua Hugging Face. Có thể bị giới hạn nếu gọi quá nhiều liên tục.' },
+  { key: 'flux-dev',     name: 'FLUX.1 Dev',      badge: '🎨 Chất lượng', desc: 'Chất lượng cao, chi tiết sắc nét',         speed: '~15-30s', color: 'blue', usageNote: 'Dùng qua Hugging Face. Model nặng, dễ dính rate-limit hơn.' },
+  { key: 'sdxl',         name: 'Stable Diffusion XL', badge: '🖼️ Đa năng', desc: 'Linh hoạt, hệ sinh thái rộng lớn',     speed: '~15-25s', color: 'emerald', usageNote: 'Dùng qua Hugging Face. Ổn định cho nhiều phong cách.' },
+  { key: 'sd-3.5',       name: 'SD 3.5 Large',    badge: '✨ Mới nhất',   desc: 'Thế hệ mới nhất, prompt hiểu tốt hơn',   speed: '~20-35s', color: 'amber', usageNote: 'Dùng qua Hugging Face. Model mạnh mẽ nhất của Stability AI.' },
+  { key: 'pollinations', name: 'Pollinations AI', badge: '🎁 Miễn Phí', desc: 'Sử dụng mô hình FLUX siêu đẹp.', speed: '~10s', color: 'emerald', usageNote: 'Hoàn toàn miễn phí 100%. Không giới hạn lượt tạo ảnh / ngày.' },
+  { key: 'cloudflare',   name: 'Cloudflare AI', badge: '☁️ Tốc Độ', desc: 'Tạo ảnh bằng SDXL trên mạng lưới Cloudflare Edge.', speed: '~15s', color: 'amber', usageNote: 'Miễn phí siêu khủng (hàng ngàn lượt/ngày). Đã cấu hình Token thành công.' },
+  { key: 'segmind',      name: 'Segmind AI', badge: '🧠 Chuyên Gia', desc: 'Model Fast FLUX Schnell tốc độ cao.', speed: '~5s', color: 'purple', usageNote: 'Đã cấu hình API Key thành công. Tặng miễn phí 100 lượt tạo ảnh/ngày.' },
+  { key: 'modal',        name: 'Modal Serverless', badge: '🚀 Máy Chủ Riêng', desc: 'Máy chủ FLUX Schnell riêng chạy trên A10G.', speed: '~10s', color: 'blue', usageNote: 'Máy chủ độc quyền của bạn trên Modal. Tự động tắt khi không dùng.' },
 ];
 
 interface UniversalImagePickerModalProps {
@@ -575,6 +579,9 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                           <span className="text-[9px] text-slate-400 font-medium">{m.speed}</span>
                         </div>
                         <p className="text-[9px] text-slate-500 mt-1 leading-tight">{m.desc}</p>
+                        <p className="text-[9px] font-medium text-orange-700 mt-1.5 pt-1.5 border-t border-slate-200/60 leading-tight">
+                          <span className="font-bold">Lưu ý:</span> {m.usageNote}
+                        </p>
                       </button>
                     );
                   })}
@@ -626,20 +633,30 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                 onClick={async () => {
                   setIsGeneratingImage(true);
                   try {
-                    const res = await fetch('/api/generate-image', {
-                      method: 'POST',
-                      headers: {
-                        'Content-Type': 'application/json'
-                      },
-                      body: JSON.stringify({ prompt: aiPrompt.trim(), model: selectedAiModel })
-                    });
+                    let blob: Blob;
                     
-                    if (!res.ok) {
-                      const errorData = await res.json().catch(() => ({}));
-                      throw new Error(errorData.error || 'Server API returned ' + res.status);
+                    if (selectedAiModel === 'pollinations') {
+                      const randomSeed = Math.floor(Math.random() * 100000);
+                      const pollUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(aiPrompt.trim())}?seed=${randomSeed}&width=1024&height=1024&nologo=true`;
+                      const pollRes = await fetch(pollUrl);
+                      if (!pollRes.ok) throw new Error("Lỗi kết nối đến máy chủ Pollinations AI");
+                      blob = await pollRes.blob();
+                    } else {
+                      const res = await fetch('/api/generate-image', {
+                        method: 'POST',
+                        headers: {
+                          'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ prompt: aiPrompt.trim(), model: selectedAiModel })
+                      });
+                      
+                      if (!res.ok) {
+                        const errorData = await res.json().catch(() => ({}));
+                        throw new Error(errorData.error || 'Server API returned ' + res.status);
+                      }
+                      blob = await res.blob();
                     }
                     
-                    const blob = await res.blob();
                     const file = new File([blob], 'ai-generated.png', { type: blob.type });
                     
                     // Compress and convert to base64 Data URL (so it can be safely stored)

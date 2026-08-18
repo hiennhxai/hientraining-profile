@@ -46,6 +46,106 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Prompt is required' });
     }
 
+    // --- CLOUDFLARE WORKERS AI INTEGRATION ---
+    if (modelKey === 'cloudflare') {
+      const cfAccountId = process.env.CF_ACCOUNT_ID;
+      const cfApiToken = process.env.CF_API_TOKEN;
+      
+      if (!cfAccountId || !cfApiToken) {
+        return res.status(500).json({ error: 'Chưa cấu hình API Key cho Cloudflare.' });
+      }
+      
+      console.log(`Generating image with Cloudflare AI for prompt:`, prompt);
+      const url = `https://api.cloudflare.com/client/v4/accounts/${cfAccountId}/ai/run/@cf/stabilityai/stable-diffusion-xl-base-1.0`;
+      
+      const cfRes = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${cfApiToken}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ prompt: prompt })
+      });
+      
+      if (!cfRes.ok) {
+         const errText = await cfRes.text();
+         throw new Error(`Cloudflare API error: ${cfRes.status} ${errText}`);
+      }
+      
+      const arrayBuffer = await cfRes.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+      
+      res.setHeader('Content-Type', 'image/jpeg');
+      res.setHeader('Cache-Control', 'public, max-age=31536000');
+      return res.status(200).send(buffer);
+    }
+    // ----------------------------------------
+
+    // --- SEGMIND AI INTEGRATION ---
+    if (modelKey === 'segmind') {
+      const segmindApiKey = process.env.SEGMIND_API_KEY;
+      if (!segmindApiKey) {
+        return res.status(500).json({ error: 'Chưa cấu hình API Key cho Segmind. Vui lòng thêm SEGMIND_API_KEY vào biến môi trường.' });
+      }
+      
+      console.log(`Generating image with Segmind AI for prompt:`, prompt);
+      const url = `https://api.segmind.com/v1/fast-flux-schnell`;
+      
+      const segRes = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'x-api-key': segmindApiKey,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+          prompt: prompt,
+          steps: 4,
+          seed: Math.floor(Math.random() * 1000000),
+          aspect_ratio: "1:1"
+        })
+      });
+      
+      if (!segRes.ok) {
+         const errText = await segRes.text();
+         throw new Error(`Segmind API error: ${segRes.status} ${errText}`);
+      }
+      
+      const arrayBuffer = await segRes.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+      
+      res.setHeader('Content-Type', 'image/jpeg');
+      res.setHeader('Cache-Control', 'public, max-age=31536000');
+      return res.status(200).send(buffer);
+    }
+    // ----------------------------------------
+
+    // --- MODAL AI INTEGRATION ---
+    if (modelKey === 'modal') {
+      console.log(`Generating image with Modal Serverless GPU for prompt:`, prompt);
+      const url = `https://hiennhxai--flux-schnell-api-fluxmodel-generate.modal.run`;
+      
+      const modalRes = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ prompt: prompt })
+      });
+      
+      if (!modalRes.ok) {
+         const errText = await modalRes.text();
+         throw new Error(`Modal API error: ${modalRes.status} ${errText}`);
+      }
+      
+      const arrayBuffer = await modalRes.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+      
+      res.setHeader('Content-Type', 'image/jpeg');
+      res.setHeader('Cache-Control', 'public, max-age=31536000');
+      return res.status(200).send(buffer);
+    }
+    // ----------------------------------------
+
     const modelConfig = SUPPORTED_MODELS[modelKey];
     if (!modelConfig) {
       return res.status(400).json({ error: 'Unsupported model: ' + modelKey });
