@@ -7,7 +7,7 @@ def download_model():
     import torch
     import os
     FluxPipeline.from_pretrained(
-        "black-forest-labs/FLUX.1-schnell", 
+        "black-forest-labs/FLUX.1-dev", 
         torch_dtype=torch.bfloat16,
         token=os.environ.get("HF_TOKEN")
     )
@@ -31,7 +31,9 @@ image = (
         "diffusers",
         "fastapi",
         "python-multipart",
-        "pillow"
+        "pillow",
+        "sentencepiece",
+        "protobuf"
     )
     .run_function(download_model, secrets=[modal.Secret.from_name("huggingface")])
     .run_function(download_edit_model)
@@ -48,7 +50,7 @@ class FluxModelH100:
         import torch
         import os
         self.pipe = FluxPipeline.from_pretrained(
-            "black-forest-labs/FLUX.1-schnell", 
+            "black-forest-labs/FLUX.1-dev", 
             torch_dtype=torch.bfloat16,
             token=os.environ.get("HF_TOKEN")
         ).to("cuda")
@@ -58,39 +60,14 @@ class FluxModelH100:
         from fastapi import Response
         data = await request.json()
         prompt = data.get("prompt", "A beautiful futuristic city landscape")
-        image = self.pipe(prompt, num_inference_steps=4, guidance_scale=0.0).images[0]
+        image = self.pipe(prompt, num_inference_steps=20, guidance_scale=3.5).images[0]
         
         img_byte_arr = io.BytesIO()
         image.save(img_byte_arr, format='JPEG')
         img_bytes = img_byte_arr.getvalue()
         return Response(content=img_bytes, media_type="image/jpeg")
 
-# Card đồ họa tầm trung (A10G 24GB VRAM - T4 không đủ RAM cho FLUX)
-@app.cls(gpu="A10G", secrets=[modal.Secret.from_name("huggingface")])
-class FluxModelT4:
-    @modal.enter()
-    def enter(self):
-        from diffusers import FluxPipeline
-        import torch
-        import os
-        self.pipe = FluxPipeline.from_pretrained(
-            "black-forest-labs/FLUX.1-schnell", 
-            torch_dtype=torch.bfloat16,
-            token=os.environ.get("HF_TOKEN")
-        )
-        self.pipe.enable_model_cpu_offload()
 
-    @modal.fastapi_endpoint(method="POST")
-    async def generate(self, request: Request):
-        from fastapi import Response
-        data = await request.json()
-        prompt = data.get("prompt", "A beautiful futuristic city landscape")
-        image = self.pipe(prompt, num_inference_steps=4, guidance_scale=0.0).images[0]
-        
-        img_byte_arr = io.BytesIO()
-        image.save(img_byte_arr, format='JPEG')
-        img_bytes = img_byte_arr.getvalue()
-        return Response(content=img_bytes, media_type="image/jpeg")
 
 # Card đồ họa T4 (rẻ hơn, đủ dùng cho việc sửa ảnh)
 @app.cls(gpu="T4")
