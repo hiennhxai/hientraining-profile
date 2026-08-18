@@ -2465,7 +2465,11 @@ export const articles: Record<string, Article> = {
     "date": "2026.08.18",
     "author": "Xuân Hiển",
     "initials": "XH",
-    "tags": ["#Livestream", "#HocLivestream", "#KinhDoanh"],
+    "tags": [
+      "#Livestream",
+      "#HocLivestream",
+      "#KinhDoanh"
+    ],
     "vi": {
       "title": "Đừng Trở Thành \"Cỗ Máy Nói\" - Tầm Quan Trọng Của Việc Học Livestream Bài Bản",
       "dek": "Khám phá lý do vì sao livestream theo cảm tính dễ thất bại. Hướng dẫn cách học livestream bài bản giúp bạn tự tin trước ống kính và chốt đơn hiệu quả.",
@@ -2543,7 +2547,11 @@ export const articles: Record<string, Article> = {
     "date": "2026.08.18",
     "author": "Xuân Hiển",
     "initials": "XH",
-    "tags": ["#GiongNoi", "#KynaNgGiaoTiep", "#MC"],
+    "tags": [
+      "#GiongNoi",
+      "#KynaNgGiaoTiep",
+      "#MC"
+    ],
     "vi": {
       "title": "Quyền Năng Của Giọng Nói - Tại Sao Giọng Thông Thường Lại Kéo Tụt Sự Nghiệp Của Bạn?",
       "dek": "Khám phá lý do tại sao một giọng nói được huấn luyện bài bản lại có sức mạnh chốt sale và tạo thiện cảm gấp nhiều lần so với giọng nói thông thường.",
