@@ -37,10 +37,13 @@ export function FloatingActionButtons({ lang, onToggleLang }: FloatingActionButt
   const [currentFlag, setCurrentFlag] = useState<Language>('vi');
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Initialize flag to default Vietnamese
-  // Since we force clear the cookie in index.html, it will always be 'vi' on F5
+  // Initialize flag based on cookie
+  // On a manual F5, the cookie is cleared in index.html, so it defaults to 'vi'.
+  // But if the fallback triggered a programmatic reload, the cookie is preserved,
+  // so we must read it to show the correct flag.
   useEffect(() => {
-    setCurrentFlag('vi');
+    const isEnglish = document.cookie.includes('googtrans=/vi/en') || document.cookie.includes('googtrans=/auto/en');
+    setCurrentFlag(isEnglish ? 'en' : 'vi');
   }, []);
 
   // Close when clicking outside
@@ -61,8 +64,17 @@ export function FloatingActionButtons({ lang, onToggleLang }: FloatingActionButt
     // Trigger Google Translate dropdown in place without reloading!
     const selectField = document.querySelector('.goog-te-combo') as HTMLSelectElement;
     if (selectField) {
-      // In Google Translate, the original language (Vietnamese) is accessed by setting the value to an empty string
-      selectField.value = targetLang === 'en' ? 'en' : '';
+      let foundExact = false;
+      for (let i = 0; i < selectField.options.length; i++) {
+        if (selectField.options[i].value === targetLang) {
+          selectField.value = targetLang;
+          foundExact = true;
+          break;
+        }
+      }
+      if (!foundExact) {
+        selectField.value = ''; // Fallback to restore original
+      }
       selectField.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
     }
 
@@ -71,6 +83,26 @@ export function FloatingActionButtons({ lang, onToggleLang }: FloatingActionButt
       document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=${window.location.hostname}; path=/;`;
     }
+
+    // BULLETPROOF FALLBACK: Check if Google Translate actually responded.
+    // If it didn't (e.g., due to widget being hidden or blocked), we set the cookie and reload.
+    setTimeout(() => {
+      const isTranslated = document.documentElement.classList.contains('translated-ltr') || document.documentElement.classList.contains('translated-rtl');
+      
+      let needsFallback = false;
+      if (targetLang === 'en' && !isTranslated) {
+        needsFallback = true;
+        document.cookie = "googtrans=/vi/en; path=/;";
+      } else if (targetLang === 'vi' && isTranslated) {
+        needsFallback = true;
+        document.cookie = "googtrans=/vi/vi; path=/;";
+      }
+
+      if (needsFallback || !selectField) {
+        sessionStorage.setItem('xuanhien_keep_lang', 'true');
+        window.location.reload();
+      }
+    }, 600);
   };
 
   return (
