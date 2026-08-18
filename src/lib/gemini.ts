@@ -215,14 +215,17 @@ ${content}
 /**
  * Generate a detailed image prompt based on context
  */
-export async function generateImagePromptWithAI(context: string): Promise<string> {
+export async function generateImagePromptWithAI(context: string, style?: string): Promise<string> {
   const prompt = `
-You are an expert AI image prompt engineer specializing in FLUX models. Based on the following article context, write a highly detailed, descriptive, and visually stunning image generation prompt in ENGLISH.
+You are an expert AI image prompt engineer. Based on the following article context, write a highly detailed, descriptive, and visually stunning image generation prompt in ENGLISH.
+
+${style && style !== 'none' ? `CRITICAL INSTRUCTION: You MUST write the prompt in the exact artistic style of "${style}". Tailor the description, lighting, medium, and atmosphere to perfectly match this specific style.` : ''}
+
 FLUX models prefer literal, physical descriptions over abstract metaphors. Follow these rules:
 1. Start with the camera framing and subject (e.g., "A highly detailed, photorealistic medium shot of...").
 2. Describe physical objects, their exact positions, and lighting explicitly.
 3. Do NOT use abstract business metaphors (like "digital transformation" or "metaphor of the future"). Describe what is physically visible.
-4. CRITICAL INSTRUCTION: You MUST append these exact keywords at the end of your prompt to ensure maximum quality: "shot on 85mm lens, f/1.8, extremely sharp focus, 8k resolution, award-winning studio photography".
+${style === 'photorealistic' || style === 'none' || !style ? '4. CRITICAL INSTRUCTION: You MUST append these exact keywords at the end of your prompt to ensure maximum quality: "shot on 85mm lens, f/1.8, extremely sharp focus, 8k resolution, award-winning studio photography".' : ''}
 Do NOT include any explanations, just the prompt string itself.
 
 Article Context:

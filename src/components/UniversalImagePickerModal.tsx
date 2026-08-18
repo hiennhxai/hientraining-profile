@@ -686,7 +686,7 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                       onClick={async () => {
                         setIsGeneratingPrompt(true);
                         try {
-                          const prompt = await generateImagePromptWithAI(aiContext);
+                          const prompt = await generateImagePromptWithAI(aiContext, selectedStyle);
                           setAiPrompt(prompt);
                         } catch (err: any) {
                           console.error("Gemini Error:", err);
