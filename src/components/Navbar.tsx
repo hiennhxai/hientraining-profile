@@ -61,7 +61,7 @@ export function Navbar({ lang, onToggleLang, isDetecting, activePage, onSelectPa
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/95 border-b border-slate-200/80 px-4 md:px-8 py-2.5 shadow-sm">
+      <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/95 border-b border-slate-200/80 px-4 md:px-8 py-2.5 shadow-sm">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo with clean branding */}
           <button 
