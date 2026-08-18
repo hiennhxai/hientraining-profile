@@ -2549,7 +2549,7 @@ export const articles: Record<string, Article> = {
       "dek": "Khám phá lý do tại sao một giọng nói được huấn luyện bài bản lại có sức mạnh chốt sale và tạo thiện cảm gấp nhiều lần so với giọng nói thông thường.",
       "role": "Specialist Trainer & Livestream Producer",
       "readTime": "Đọc 3 phút",
-      "coverImage": "https://images.unsplash.com/photo-1588680373412-255018683e95?q=80&w=1200&auto=format&fit=crop",
+      "coverImage": "/images/blog/voice_training_cover.jpg",
       "body": [
         {
           "t": "p",
@@ -2584,7 +2584,7 @@ export const articles: Record<string, Article> = {
       "dek": "Discover why a professionally trained voice holds vastly more power in sales and building rapport compared to your everyday speaking voice.",
       "role": "Specialist Trainer & Livestream Producer",
       "readTime": "3 min read",
-      "coverImage": "https://images.unsplash.com/photo-1588680373412-255018683e95?q=80&w=1200&auto=format&fit=crop",
+      "coverImage": "/images/blog/voice_training_cover.jpg",
       "body": [
         {
           "t": "p",
