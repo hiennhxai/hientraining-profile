@@ -4,18 +4,7 @@ import { InferenceClient } from '@huggingface/inference';
 export const maxDuration = 60;
 
 const SUPPORTED_MODELS = {
-  'flux-dev': {
-    id: 'black-forest-labs/FLUX.1-dev',
-    steps: 20,
-  },
-  'realvis': {
-    id: 'SG161222/RealVisXL_V4.0',
-    steps: 25,
-  },
-  'juggernaut': {
-    id: 'stablediffusionapi/juggernaut-xl-v9',
-    steps: 30,
-  }
+  // Models are either handled by free providers or Modal
 };
 
 export default async function handler(req, res) {
@@ -99,53 +88,6 @@ export default async function handler(req, res) {
       }
       
       const arrayBuffer = await modalRes.arrayBuffer();
-      const buffer = Buffer.from(arrayBuffer);
-      
-      res.setHeader('Content-Type', 'image/jpeg');
-      res.setHeader('Cache-Control', 'public, max-age=31536000');
-      return res.status(200).send(buffer);
-    }
-    // ----------------------------------------
-
-    // --- SEGMIND PRO MODELS ROUTING (To avoid HF rate limits) ---
-    // User requested to use robust, non-rate-limited models
-    const segmindModelsMap = {
-      'flux-dev': 'https://api.segmind.com/v1/flux-1-dev',
-      'juggernaut': 'https://api.segmind.com/v1/juggernaut-xl-v9',
-      'realvis': 'https://api.segmind.com/v1/realvisxl-v4',
-      'sdxl': 'https://api.segmind.com/v1/sdxl1.0-txt2img'
-    };
-
-    if (segmindModelsMap[modelKey]) {
-      const segmindApiKey = process.env.SEGMIND_API_KEY;
-      if (!segmindApiKey) {
-        return res.status(500).json({ error: 'Chưa cấu hình API Key cho Segmind (Cần thiết cho model ' + modelKey + ').' });
-      }
-
-      console.log(`Generating image with Segmind for [${modelKey}] prompt:`, prompt);
-      const url = segmindModelsMap[modelKey];
-      const modelSteps = SUPPORTED_MODELS[modelKey]?.steps || 25;
-      
-      const segRes = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'x-api-key': segmindApiKey,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ 
-          prompt: prompt,
-          steps: modelSteps,
-          seed: Math.floor(Math.random() * 1000000),
-          aspect_ratio: "1:1"
-        })
-      });
-      
-      if (!segRes.ok) {
-         const errText = await segRes.text();
-         throw new Error(`Segmind API error: ${segRes.status} ${errText}`);
-      }
-      
-      const arrayBuffer = await segRes.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
       
       res.setHeader('Content-Type', 'image/jpeg');
