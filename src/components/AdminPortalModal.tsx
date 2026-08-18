@@ -2959,6 +2959,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
           onSelectUrl={(selectedUrl) => {
             if (pickerCallback) pickerCallback(selectedUrl);
           }}
+          aiContext={pickerAiContext}
         />
 
         {/* ARTICLE LIVE PREVIEW POP-UP MODAL */}
