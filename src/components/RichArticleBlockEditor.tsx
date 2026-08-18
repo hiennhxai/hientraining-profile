@@ -12,13 +12,15 @@ interface RichArticleBlockEditorProps {
   onChange: (updated: ArticleTranslation) => void;
   albumPhotos: PhotoAlbumItem[];
   onUpdateAlbumPhotos: (photos: PhotoAlbumItem[]) => void;
+  onOpenPicker?: (onSelect: (url: string) => void, title: string, currentUrl: string) => void;
 }
 
 export const RichArticleBlockEditor: React.FC<RichArticleBlockEditorProps> = ({
   translation,
   onChange,
   albumPhotos,
-  onUpdateAlbumPhotos
+  onUpdateAlbumPhotos,
+  onOpenPicker
 }) => {
   const [showLinkModal, setShowLinkModal] = useState<number | null>(null);
   const [linkUrl, setLinkUrl] = useState('https://xuanhien.info');
@@ -136,6 +138,34 @@ export const RichArticleBlockEditor: React.FC<RichArticleBlockEditorProps> = ({
               onChange={(e) => onChange({ ...translation, dek: e.target.value })}
               className="w-full px-3 py-2 rounded-xl border border-slate-300 text-slate-800 font-medium"
             />
+          </div>
+
+          <div className="sm:col-span-2 pt-2 border-t border-slate-100">
+            <label className="block font-bold text-slate-700 mb-1">Ảnh Bìa (Cover Image) (Landscape 32:9)</label>
+            <div className="flex gap-2">
+              <input 
+                type="text"
+                value={translation.coverImage || ''}
+                onChange={(e) => onChange({ ...translation, coverImage: e.target.value })}
+                className="flex-1 px-3 py-1.5 rounded-xl border border-slate-300 font-mono text-xs text-slate-800 bg-orange-50/40"
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  if (onOpenPicker) {
+                    onOpenPicker(
+                      (selectedUrl) => onChange({ ...translation, coverImage: selectedUrl }),
+                      `CHỌN ẢNH BÌA BÀI VIẾT: ${translation.title}`,
+                      translation.coverImage || ''
+                    );
+                  }
+                }}
+                className="px-3 py-1.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs shadow-xs transition-all flex items-center gap-1 cursor-pointer whitespace-nowrap"
+              >
+                <ImageIcon className="w-3.5 h-3.5" />
+                <span>Đổi Ảnh</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

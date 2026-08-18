@@ -1467,7 +1467,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                         </div>
 
                         {/* Banner & Thumbnail Image Pickers */}
-                        <div className="sm:col-span-2 pt-2 border-t border-slate-100 space-y-2">
+                        <div className="sm:col-span-2 pt-2 border-t border-slate-100 space-y-3">
                           <div>
                             <label className="block font-bold text-slate-800 text-xs mb-1">Ảnh Banner Quảng Cáo Khóa Học</label>
                             <div className="flex gap-2">
@@ -1498,6 +1498,38 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                               >
                                 <ImageIcon className="w-3.5 h-3.5" />
                                 <span>Đổi Banner</span>
+                              </button>
+                            </div>
+                          </div>
+
+                          <div>
+                            <label className="block font-bold text-slate-800 text-xs mb-1">Ảnh Thumbnail (Danh Sách Khóa Học)</label>
+                            <div className="flex gap-2">
+                              <input 
+                                type="text" 
+                                value={course.thumbnailUrl || ''} 
+                                onChange={(e) => {
+                                  const newCourses = [...data.courses];
+                                  newCourses[idx].thumbnailUrl = e.target.value;
+                                  setData({ ...data, courses: newCourses });
+                                }}
+                                className="flex-1 px-3 py-1.5 rounded-xl border border-slate-300 font-mono text-xs text-slate-800 bg-orange-50/40" 
+                              />
+                              <button
+                                type="button"
+                                onClick={() => openPicker(
+                                  (selectedUrl) => {
+                                    const newCourses = [...data.courses];
+                                    newCourses[idx].thumbnailUrl = selectedUrl;
+                                    setData({ ...data, courses: newCourses });
+                                  },
+                                  `CHỌN ẢNH THUMBNAIL: ${course.title}`,
+                                  course.thumbnailUrl || ''
+                                )}
+                                className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs shadow-xs transition-all flex items-center gap-1 cursor-pointer whitespace-nowrap"
+                              >
+                                <ImageIcon className="w-3.5 h-3.5" />
+                                <span>Đổi Thumbnail</span>
                               </button>
                             </div>
                           </div>
@@ -2126,6 +2158,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                       onUpdateAlbumPhotos={(updatedPhotos) => {
                         setData({ ...data, photoAlbum: updatedPhotos });
                       }}
+                      onOpenPicker={openPicker}
                     />
                   )}
                 </div>
