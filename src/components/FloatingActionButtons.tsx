@@ -70,36 +70,19 @@ export function FloatingActionButtons({ lang, onToggleLang }: FloatingActionButt
       document.cookie = `googtrans=/vi/en; domain=${window.location.hostname}; path=/;`;
     }
     
-    // Robust trigger mechanism
-    const triggerTranslate = (retries = 3) => {
-      const selectField = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-      if (selectField) {
-        selectField.value = targetLang === 'en' ? 'en' : '';
-        
-        let event;
-        if (typeof Event === 'function') {
-          event = new Event('change', { bubbles: true, cancelable: true });
-        } else {
-          event = document.createEvent('HTMLEvents');
-          event.initEvent('change', true, true);
-        }
-        selectField.dispatchEvent(event);
-
-        // Check if translation applied, if not retry
-        setTimeout(() => {
-          const isTranslated = document.documentElement.classList.contains('translated-ltr') || document.documentElement.classList.contains('translated-rtl');
-          if (targetLang === 'en' && !isTranslated && retries > 0) {
-            triggerTranslate(retries - 1);
-          } else if (targetLang === 'vi' && isTranslated && retries > 0) {
-            triggerTranslate(retries - 1);
-          }
-        }, 500);
-      } else if (retries > 0) {
-        setTimeout(() => triggerTranslate(retries - 1), 500);
+    // Trigger translate instantly
+    const selectField = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+    if (selectField) {
+      selectField.value = targetLang === 'en' ? 'en' : '';
+      let event;
+      if (typeof Event === 'function') {
+        event = new Event('change', { bubbles: true, cancelable: true });
+      } else {
+        event = document.createEvent('HTMLEvents');
+        event.initEvent('change', true, true);
       }
-    };
-
-    triggerTranslate();
+      selectField.dispatchEvent(event);
+    }
   };
 
   return (

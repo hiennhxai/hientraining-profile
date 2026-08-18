@@ -32,15 +32,8 @@
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    top: 0 !important; /* Prevent Google Translate from shifting body down */
   }
 
-  /* Hide Google Translate ugly top banner */
-  .skiptranslate > iframe.skiptranslate {
-    display: none !important;
-    visibility: hidden !important;
-  }
-  
   .goog-te-gadget {
     font-family: var(--body) !important;
     font-size: 0 !important; /* Hide the "Powered by Google" text */
