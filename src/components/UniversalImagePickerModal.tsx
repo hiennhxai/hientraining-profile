@@ -83,7 +83,8 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
   const [isSavingToAlbum, setIsSavingToAlbum] = useState(false);
   const [saveAlbumSuccess, setSaveAlbumSuccess] = useState(false);
   const [generatedAiImageUrl, setGeneratedAiImageUrl] = useState<string | null>(null);
-  const [selectedAiModel, setSelectedAiModel] = useState<AiModelKey>('flux-schnell');
+  const [selectedAiModel, setSelectedAiModel] = useState<AiModelKey>('flux-dev');
+  const [selectedStyle, setSelectedStyle] = useState<string>('none');
   const [editPrompt, setEditPrompt] = useState<string>('');
   const [isEditingImage, setIsEditingImage] = useState<boolean>(false);
 
@@ -209,6 +210,55 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
     e.preventDefault();
     const delta = e.deltaY < 0 ? 0.05 : -0.05;
     setZoom((prev) => Math.min(4.0, Math.max(0.5, prev + delta)));
+  };
+
+  // ─── AI GENERATION HANDLER ───
+  const handleGenerateImage = async () => {
+    if (!aiPrompt.trim()) return;
+
+    let finalPrompt = aiPrompt.trim();
+    if (selectedStyle === 'photorealistic') {
+      finalPrompt += ", ultra-realistic photography, 8k resolution, highly detailed, photorealistic, sharp focus, cinematic lighting";
+    } else if (selectedStyle === 'cartoon') {
+      finalPrompt += ", 3d pixar animation style, disney style, cute, vibrant colors, stylized character design";
+    } else if (selectedStyle === 'simple') {
+      finalPrompt += ", simple minimalist design, clean background, minimal details, flat colors";
+    } else if (selectedStyle === 'vector') {
+      finalPrompt += ", flat vector illustration, adobe illustrator style, clean sharp lines, 2d vector art, scalable graphic";
+    } else if (selectedStyle === 'illustration') {
+      finalPrompt += ", beautiful digital illustration, artstation, digital painting, expressive, detailed illustration";
+    }
+
+    setIsGeneratingImage(true);
+    try {
+      let blob: Blob;
+      if (selectedAiModel === 'pollinations') {
+        const randomSeed = Math.floor(Math.random() * 100000);
+        const pollUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(finalPrompt)}?seed=${randomSeed}&width=1024&height=1024&nologo=true`;
+        const pollRes = await fetch(pollUrl);
+        if (!pollRes.ok) throw new Error("Lỗi kết nối đến máy chủ Pollinations AI");
+        blob = await pollRes.blob();
+      } else {
+        const res = await fetch('/api/generate-image', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: finalPrompt, model: selectedAiModel })
+        });
+        if (!res.ok) {
+          const errorData = await res.json().catch(() => ({}));
+          throw new Error(errorData.error || 'Server API returned ' + res.status);
+        }
+        blob = await res.blob();
+      }
+      const file = new File([blob], 'ai-generated.png', { type: blob.type });
+      const result = await compressAndOptimizeImage(file, 1920, 1080, 0.85);
+      setGeneratedAiImageUrl(result.dataUrl);
+    } catch (err) {
+      console.error("HF Generation error:", err);
+      alert(`Lỗi khi tạo ảnh: ` + (err as Error).message);
+    } finally {
+      setIsGeneratingImage(false);
+    }
   };
 
   // ─── EXPORT CANVAS CROPPED IMAGE ───
@@ -590,8 +640,31 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                 </div>
               </div>
 
+              {/* ─── AI STYLE SELECTOR ─── */}
+              <div className="mt-4">
+                <label className="block text-xs font-extrabold text-purple-900 mb-2 flex items-center gap-1.5">
+                  <Sparkles className="w-4 h-4 text-purple-600" />
+                  Chọn Phong Cách (AI Agent)
+                </label>
+                <select
+                  value={selectedStyle}
+                  onChange={(e) => setSelectedStyle(e.target.value)}
+                  className="w-full p-2.5 rounded-xl border border-purple-200 text-sm font-bold text-slate-800 focus:ring-2 focus:ring-purple-500 bg-white"
+                >
+                  <option value="none">✨ Mặc định (Tự do nhập lệnh)</option>
+                  <option value="photorealistic">📸 Chân thực (Người thật, sắc nét 8k)</option>
+                  <option value="cartoon">🐰 Hoạt hình (3D Pixar, Disney)</option>
+                  <option value="simple">⚪ Đơn giản (Tối giản, ít chi tiết)</option>
+                  <option value="vector">✒️ Vector (Hình vẽ phẳng, thiết kế logo/icon)</option>
+                  <option value="illustration">🎨 Hoạt họa minh họa (Vẽ tranh kỹ thuật số)</option>
+                </select>
+                <p className="text-[10px] text-purple-600 mt-1.5 font-medium">
+                  Mẹo: Chọn phong cách để AI tự động tối ưu câu lệnh, bạn chỉ cần miêu tả chủ thể (VD: "a beautiful girl").
+                </p>
+              </div>
+
               {/* ─── PROMPT INPUT ─── */}
-              <div>
+              <div className="mt-4">
                 <div className="flex items-center justify-between mb-2">
                   <label className="block text-xs font-extrabold text-purple-900 flex items-center gap-1.5">
                     <Sparkles className="w-4 h-4 text-purple-600" />
@@ -632,46 +705,7 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
               <button
                 type="button"
                 disabled={!aiPrompt.trim() || isGeneratingImage}
-                onClick={async () => {
-                  setIsGeneratingImage(true);
-                  try {
-                    let blob: Blob;
-                    
-                    if (selectedAiModel === 'pollinations') {
-                      const randomSeed = Math.floor(Math.random() * 100000);
-                      const pollUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(aiPrompt.trim())}?seed=${randomSeed}&width=1024&height=1024&nologo=true`;
-                      const pollRes = await fetch(pollUrl);
-                      if (!pollRes.ok) throw new Error("Lỗi kết nối đến máy chủ Pollinations AI");
-                      blob = await pollRes.blob();
-                    } else {
-                      const res = await fetch('/api/generate-image', {
-                        method: 'POST',
-                        headers: {
-                          'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ prompt: aiPrompt.trim(), model: selectedAiModel })
-                      });
-                      
-                      if (!res.ok) {
-                        const errorData = await res.json().catch(() => ({}));
-                        throw new Error(errorData.error || 'Server API returned ' + res.status);
-                      }
-                      blob = await res.blob();
-                    }
-                    
-                    const file = new File([blob], 'ai-generated.png', { type: blob.type });
-                    
-                    // Compress and convert to base64 Data URL (so it can be safely stored)
-                    const result = await compressAndOptimizeImage(file, 1920, 1080, 0.85);
-                    setGeneratedAiImageUrl(result.dataUrl);
-                  } catch (err) {
-                    console.error("HF Generation error:", err);
-                    const selectedModelName = AI_MODELS.find(m => m.key === selectedAiModel)?.name || selectedAiModel;
-                    alert(`Lỗi khi tạo ảnh (${selectedModelName}): ` + (err as Error).message);
-                  } finally {
-                    setIsGeneratingImage(false);
-                  }
-                }}
+                onClick={handleGenerateImage}
                 className="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 {isGeneratingImage ? <Sparkles className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
