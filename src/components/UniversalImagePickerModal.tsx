@@ -38,6 +38,7 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
   // ─── AI IMAGE GENERATION STATE ───
   const [aiPrompt, setAiPrompt] = useState<string>('');
   const [isGeneratingPrompt, setIsGeneratingPrompt] = useState(false);
+  const [isGeneratingImage, setIsGeneratingImage] = useState(false);
   const [generatedAiImageUrl, setGeneratedAiImageUrl] = useState<string | null>(null);
 
   // ─── CROPPING & INTERACTIVE PAN/ZOOM STATE ───
@@ -520,17 +521,40 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
 
               <button
                 type="button"
-                disabled={!aiPrompt.trim()}
-                onClick={() => {
-                  const encodedPrompt = encodeURIComponent(aiPrompt.trim());
-                  const seed = Math.floor(Math.random() * 1000000);
-                  const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=1200&height=630&nologo=true&model=flux&seed=${seed}`;
-                  setGeneratedAiImageUrl(imageUrl);
+                disabled={!aiPrompt.trim() || isGeneratingImage}
+                onClick={async () => {
+                  setIsGeneratingImage(true);
+                  try {
+                    const res = await fetch('https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell', {
+                      method: 'POST',
+                      headers: {
+                        'Authorization': `Bearer ${import.meta.env.VITE_HF_TOKEN}`,
+                        'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify({ inputs: aiPrompt.trim() })
+                    });
+                    
+                    if (!res.ok) {
+                      throw new Error('Hugging Face API returned ' + res.status);
+                    }
+                    
+                    const blob = await res.blob();
+                    const file = new File([blob], 'ai-generated.png', { type: blob.type });
+                    
+                    // Compress and convert to base64 Data URL (so it can be safely stored)
+                    const result = await compressAndOptimizeImage(file, 1920, 1080, 0.85);
+                    setGeneratedAiImageUrl(result.dataUrl);
+                  } catch (err) {
+                    console.error("HF Generation error:", err);
+                    alert("Lỗi khi tạo ảnh qua Hugging Face: " + (err as Error).message);
+                  } finally {
+                    setIsGeneratingImage(false);
+                  }
                 }}
                 className="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
-                <Sparkles className="w-4 h-4" />
-                Tạo Ảnh Ngay Lập Tức
+                {isGeneratingImage ? <Sparkles className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
+                {isGeneratingImage ? 'Đang vẽ ảnh (Khoảng 10-15s)...' : 'Tạo Ảnh Ngay Lập Tức'}
               </button>
 
               {generatedAiImageUrl && (
@@ -554,7 +578,23 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                     <button
                       type="button"
                       onClick={() => {
-                        onSelectUrl(generatedAiImageUrl);
+                        if (generatedAiImageUrl && generatedAiImageUrl.startsWith('data:')) {
+                          const newPhotos: PhotoAlbumItem[] = [...photos];
+                          const photoItem: PhotoAlbumItem = {
+                            id: `img-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
+                            name: 'ai-generated.png',
+                            url: generatedAiImageUrl,
+                            originalSize: 0,
+                            compressedSize: Math.round(generatedAiImageUrl.length * 0.75),
+                            width: 1200, 
+                            height: 630,
+                            createdAt: new Date().toISOString().slice(0, 10),
+                            caption: "AI Generated: " + aiPrompt.substring(0, 30) + "..."
+                          };
+                          newPhotos.unshift(photoItem);
+                          onUpdatePhotos(newPhotos);
+                        }
+                        onSelectUrl(generatedAiImageUrl as string);
                         onClose();
                       }}
                       className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md transition-all cursor-pointer flex items-center justify-center gap-1.5"
