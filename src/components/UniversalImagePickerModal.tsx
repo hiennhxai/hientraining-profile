@@ -9,9 +9,10 @@ import {
 } from 'lucide-react';
 
 // ─── AI MODEL OPTIONS ───
-type AiModelKey = 'flux-schnell' | 'flux-dev' | 'sdxl' | 'sd-3.5' | 'pollinations' | 'cloudflare' | 'segmind' | 'modal';
+type AiModelKey = 'flux-schnell' | 'flux-dev' | 'sdxl' | 'sd-3.5' | 'pollinations' | 'cloudflare' | 'segmind' | 'modal-h100' | 'modal-t4' | 'gemini';
 
 const AI_MODELS: { key: AiModelKey; name: string; badge: string; desc: string; speed: string; color: string; usageNote: string }[] = [
+  { key: 'gemini',       name: 'Google Imagen 3', badge: '💎 Cao Cấp', desc: 'Trí tuệ nhân tạo Gemini độc quyền từ Google.', speed: '~10s', color: 'blue', usageNote: 'Chất lượng ảnh siêu thực tuyệt vời. Phù hợp tạo ảnh cực kỳ sắc nét.' },
   { key: 'flux-schnell', name: 'FLUX.1 Schnell',  badge: '⚡ Nhanh',    desc: 'Tạo ảnh siêu nhanh, chất lượng tốt',       speed: '~5-10s',  color: 'purple', usageNote: 'Dùng qua Hugging Face. Có thể bị giới hạn nếu gọi quá nhiều liên tục.' },
   { key: 'flux-dev',     name: 'FLUX.1 Dev',      badge: '🎨 Chất lượng', desc: 'Chất lượng cao, chi tiết sắc nét',         speed: '~15-30s', color: 'blue', usageNote: 'Dùng qua Hugging Face. Model nặng, dễ dính rate-limit hơn.' },
   { key: 'sdxl',         name: 'Stable Diffusion XL', badge: '🖼️ Đa năng', desc: 'Linh hoạt, hệ sinh thái rộng lớn',     speed: '~15-25s', color: 'emerald', usageNote: 'Dùng qua Hugging Face. Ổn định cho nhiều phong cách.' },

@@ -36,9 +36,12 @@ export const AdminAiStudio: React.FC<AdminAiStudioProps> = ({ onSaveToAlbum }) =
       const response = await fetch('/api/generate-image', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt: genPrompt, model: 'modal-h100' })
+        body: JSON.stringify({ prompt: genPrompt, model: 'gemini' })
       });
-      if (!response.ok) throw new Error("Lỗi khi gọi API Modal");
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || "Lỗi khi gọi API Tạo Ảnh");
+      }
       const blob = await response.blob();
       const url = URL.createObjectURL(blob);
       setGeneratedImage(url);
@@ -188,7 +191,7 @@ export const AdminAiStudio: React.FC<AdminAiStudioProps> = ({ onSaveToAlbum }) =
         </div>
         
         <div className="mt-auto pt-4 text-[10px] text-slate-400 font-medium text-center">
-          Powered by Modal H100
+          Powered by Gemini & Modal
         </div>
       </div>
 
@@ -198,7 +201,7 @@ export const AdminAiStudio: React.FC<AdminAiStudioProps> = ({ onSaveToAlbum }) =
         {activeTool === 'generate' && (
           <div className="p-5 border-b border-slate-100 bg-slate-50">
             <h3 className="text-sm font-bold text-slate-800 mb-3 flex items-center gap-2">
-              <Cpu className="w-4 h-4 text-indigo-500" /> Tạo Ảnh bằng AI FLUX.1 (Máy chủ H100)
+              <Cpu className="w-4 h-4 text-indigo-500" /> Tạo Ảnh bằng AI (Google Imagen 3)
             </h3>
             <textarea
               rows={3}

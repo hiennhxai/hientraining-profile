@@ -122,6 +122,45 @@ export default async function handler(req, res) {
     }
     // ----------------------------------------
 
+    // --- GEMINI IMAGEN 3 INTEGRATION ---
+    if (modelKey === 'gemini') {
+      const geminiApiKey = process.env.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
+      if (!geminiApiKey) {
+        return res.status(500).json({ error: 'Chưa cấu hình API Key cho Gemini.' });
+      }
+
+      try {
+        const geminiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${geminiApiKey}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            instances: [{ prompt }],
+            parameters: {
+              sampleCount: 1,
+              aspectRatio: '16:9',
+              outputOptions: { mimeType: 'image/jpeg' }
+            }
+          })
+        });
+
+        if (!geminiRes.ok) {
+          const errText = await geminiRes.text();
+          throw new Error(`Gemini API error: ${geminiRes.status} - ${errText}`);
+        }
+
+        const data = await geminiRes.json();
+        if (data.predictions && data.predictions[0] && data.predictions[0].bytesBase64Encoded) {
+          const base64Data = data.predictions[0].bytesBase64Encoded;
+          return res.status(200).json({ image: `data:image/jpeg;base64,${base64Data}` });
+        } else {
+          throw new Error('Gemini did not return image data');
+        }
+      } catch (err) {
+        console.error('Gemini Generate Error:', err);
+        return res.status(500).json({ error: 'Lỗi Gemini: ' + err.message });
+      }
+    }
+
     // --- MODAL AI INTEGRATION ---
     if (modelKey === 'modal-h100' || modelKey === 'modal-t4') {
       const gpuName = modelKey === 'modal-h100' ? 'H100' : 'T4';
