@@ -397,40 +397,48 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
 
       {/* Fullscreen Lightbox for Training Album */}
       {lightboxIndex !== null && (
-        <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center animate-fadeIn">
+        <div 
+          className="fixed inset-0 z-[9999] bg-slate-950/90 backdrop-blur-md flex items-center justify-center animate-fadeIn p-4 sm:p-8"
+          onClick={() => setLightboxIndex(null)}
+        >
           {/* Header Controls */}
-          <div className="absolute top-0 left-0 right-0 p-4 flex justify-between items-center z-50 bg-gradient-to-b from-black/80 to-transparent">
-            <span className="text-white font-mono text-xs font-bold bg-white/20 px-3 py-1.5 rounded-full">
+          <div className="absolute top-4 sm:top-6 left-4 sm:left-6 right-4 sm:right-6 flex justify-between items-center z-50 pointer-events-none">
+            <span className="text-white font-mono text-xs font-bold bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full shadow-lg pointer-events-auto">
               {lightboxIndex + 1} / {trainingImages.length}
             </span>
             <button
-              onClick={() => setLightboxIndex(null)}
-              className="p-2 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-sm transition-all"
+              onClick={(e) => { e.stopPropagation(); setLightboxIndex(null); }}
+              className="p-2.5 bg-white/10 hover:bg-white/25 text-white rounded-full backdrop-blur-md border border-white/20 transition-all shadow-lg pointer-events-auto hover:scale-105 cursor-pointer"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             </button>
           </div>
 
           {/* Nav Buttons */}
           <button
             onClick={prevSlide}
-            className="absolute left-4 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-sm transition-all z-50 hover:scale-110"
+            className="absolute left-2 sm:left-8 p-2 sm:p-3 bg-white/10 hover:bg-white/25 text-white rounded-full backdrop-blur-md border border-white/20 transition-all z-50 hover:scale-110 shadow-lg cursor-pointer"
           >
-            <ChevronLeft className="w-8 h-8" />
+            <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-4 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-sm transition-all z-50 hover:scale-110"
+            className="absolute right-2 sm:right-8 p-2 sm:p-3 bg-white/10 hover:bg-white/25 text-white rounded-full backdrop-blur-md border border-white/20 transition-all z-50 hover:scale-110 shadow-lg cursor-pointer"
           >
-            <ChevronRight className="w-8 h-8" />
+            <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
           </button>
 
-          {/* Main Image */}
-          <img
-            src={trainingImages[lightboxIndex]}
-            alt="Full screen"
-            className="w-full h-full object-contain"
-          />
+          {/* Main Image Container */}
+          <div 
+            className="relative max-w-5xl w-full flex items-center justify-center" 
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={trainingImages[lightboxIndex]}
+              alt="Training Gallery"
+              className="max-w-full max-h-[75vh] sm:max-h-[85vh] object-contain rounded-2xl shadow-2xl ring-1 ring-white/10 select-none"
+            />
+          </div>
         </div>
       )}
     </section>
