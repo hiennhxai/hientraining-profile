@@ -84,6 +84,8 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
   const [saveAlbumSuccess, setSaveAlbumSuccess] = useState(false);
   const [generatedAiImageUrl, setGeneratedAiImageUrl] = useState<string | null>(null);
   const [selectedAiModel, setSelectedAiModel] = useState<AiModelKey>('flux-schnell');
+  const [editPrompt, setEditPrompt] = useState<string>('');
+  const [isEditingImage, setIsEditingImage] = useState<boolean>(false);
 
   // ─── CROPPING & INTERACTIVE PAN/ZOOM STATE ───
   const [cropImageUrl, setCropImageUrl] = useState<string>(currentUrl);
@@ -696,6 +698,55 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                     />
                   </div>
                   
+                  {/* AI IMAGE EDITING TOOL */}
+                  <div className="mt-3 p-3 bg-indigo-50 border border-indigo-200 rounded-xl text-left">
+                    <label className="block text-[11px] font-extrabold text-indigo-900 mb-1.5 flex items-center gap-1">
+                      <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
+                      🪄 Sửa ảnh này bằng AI (InstructPix2Pix)
+                    </label>
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        placeholder="VD: make it winter, add a red hat, make it watercolor..."
+                        value={editPrompt}
+                        onChange={(e) => setEditPrompt(e.target.value)}
+                        disabled={isEditingImage}
+                        className="flex-1 px-3 py-2 rounded-lg border border-indigo-300 font-mono text-[11px] text-slate-800 bg-white"
+                      />
+                      <button
+                        type="button"
+                        disabled={!editPrompt.trim() || isEditingImage}
+                        onClick={async () => {
+                          setIsEditingImage(true);
+                          try {
+                            const res = await fetch('/api/edit-image', {
+                              method: 'POST',
+                              headers: { 'Content-Type': 'application/json' },
+                              body: JSON.stringify({ prompt: editPrompt.trim(), image: generatedAiImageUrl })
+                            });
+                            if (!res.ok) {
+                              const errorData = await res.json().catch(() => ({}));
+                              throw new Error(errorData.error || 'Lỗi ' + res.status);
+                            }
+                            const blob = await res.blob();
+                            const file = new File([blob], 'ai-edited.png', { type: blob.type });
+                            const result = await compressAndOptimizeImage(file, 1920, 1080, 0.85);
+                            setGeneratedAiImageUrl(result.dataUrl);
+                            setEditPrompt('');
+                          } catch (err) {
+                            alert("Lỗi khi sửa ảnh AI: " + (err as Error).message);
+                          } finally {
+                            setIsEditingImage(false);
+                          }
+                        }}
+                        className="px-3 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-bold text-[11px] shadow-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap"
+                      >
+                        {isEditingImage ? <Sparkles className="w-3 h-3 animate-spin" /> : <Sparkles className="w-3 h-3" />}
+                        {isEditingImage ? 'Đang sửa...' : 'Thực Hiện'}
+                      </button>
+                    </div>
+                  </div>
+
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-2">
                     <button
                       type="button"
