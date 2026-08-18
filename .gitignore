@@ -9,3 +9,6 @@ coverage/
  
 scratch/
 .backups/
+
+.vercel
+.env*

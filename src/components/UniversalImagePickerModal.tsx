@@ -2,10 +2,21 @@ import React, { useState, useRef, useEffect } from 'react';
 import { PhotoAlbumItem } from '../types';
 import { compressAndOptimizeImage } from '../utils/imageOptimizer';
 import { generateImagePromptWithAI } from '../lib/gemini';
+import { supabase } from '../lib/supabase';
 import { 
   X, Upload, Image as ImageIcon, Link as LinkIcon, Check, Sparkles, 
-  Camera, Crop, ZoomIn, ZoomOut, Move, RotateCcw, Sliders, Layers 
+  Camera, Crop, ZoomIn, ZoomOut, Move, RotateCcw, Sliders, Layers, FolderPlus 
 } from 'lucide-react';
+
+// ─── AI MODEL OPTIONS ───
+type AiModelKey = 'flux-schnell' | 'flux-dev' | 'sdxl' | 'sd-3.5';
+
+const AI_MODELS: { key: AiModelKey; name: string; badge: string; desc: string; speed: string; color: string }[] = [
+  { key: 'flux-schnell', name: 'FLUX.1 Schnell',  badge: '⚡ Nhanh',    desc: 'Tạo ảnh siêu nhanh, chất lượng tốt',       speed: '~5-10s',  color: 'purple' },
+  { key: 'flux-dev',     name: 'FLUX.1 Dev',      badge: '🎨 Chất lượng', desc: 'Chất lượng cao, chi tiết sắc nét',         speed: '~15-30s', color: 'blue' },
+  { key: 'sdxl',         name: 'Stable Diffusion XL', badge: '🖼️ Đa năng', desc: 'Linh hoạt, hệ sinh thái rộng lớn',     speed: '~15-25s', color: 'emerald' },
+  { key: 'sd-3.5',       name: 'SD 3.5 Large',    badge: '✨ Mới nhất',   desc: 'Thế hệ mới nhất, prompt hiểu tốt hơn',   speed: '~20-35s', color: 'amber' },
+];
 
 interface UniversalImagePickerModalProps {
   isOpen: boolean;
@@ -16,9 +27,34 @@ interface UniversalImagePickerModalProps {
   onUpdatePhotos: (photos: PhotoAlbumItem[]) => void;
   title?: string;
   aiContext?: string;
+  defaultTab?: 'album' | 'upload' | 'url' | 'crop' | 'ai';
 }
 
 type AspectRatioOption = '16:9' | '4:3' | '1:1' | '3:4' | 'free';
+
+async function uploadToSupabaseStorageIfPossible(dataUrl: string, prefix: string = 'img'): Promise<string> {
+  try {
+    if (!dataUrl || !dataUrl.startsWith('data:')) return dataUrl;
+    const base64Response = await fetch(dataUrl);
+    const blob = await base64Response.blob();
+    const fileName = `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 7)}.webp`;
+    const { error: uploadError } = await supabase.storage
+      .from('photos')
+      .upload(fileName, blob, { contentType: 'image/webp' });
+
+    if (!uploadError) {
+      const { data: publicUrlData } = supabase.storage
+        .from('photos')
+        .getPublicUrl(fileName);
+      if (publicUrlData?.publicUrl) {
+        return publicUrlData.publicUrl;
+      }
+    }
+  } catch (err) {
+    console.warn("Supabase storage upload fallback to dataUrl:", err);
+  }
+  return dataUrl;
+}
 
 export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps> = ({
   isOpen,
@@ -28,9 +64,10 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
   photos,
   onUpdatePhotos,
   title = 'CHỌN HOẶC TẢI HÌNH ẢNH MỚI',
-  aiContext
+  aiContext,
+  defaultTab
 }) => {
-  const [activeTab, setActiveTab] = useState<'album' | 'upload' | 'url' | 'crop' | 'ai'>('album');
+  const [activeTab, setActiveTab] = useState<'album' | 'upload' | 'url' | 'crop' | 'ai'>(defaultTab || 'album');
   const [inputUrl, setInputUrl] = useState<string>(currentUrl);
   const [uploading, setUploading] = useState<boolean>(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -39,7 +76,10 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
   const [aiPrompt, setAiPrompt] = useState<string>('');
   const [isGeneratingPrompt, setIsGeneratingPrompt] = useState(false);
   const [isGeneratingImage, setIsGeneratingImage] = useState(false);
+  const [isSavingToAlbum, setIsSavingToAlbum] = useState(false);
+  const [saveAlbumSuccess, setSaveAlbumSuccess] = useState(false);
   const [generatedAiImageUrl, setGeneratedAiImageUrl] = useState<string | null>(null);
+  const [selectedAiModel, setSelectedAiModel] = useState<AiModelKey>('flux-schnell');
 
   // ─── CROPPING & INTERACTIVE PAN/ZOOM STATE ───
   const [cropImageUrl, setCropImageUrl] = useState<string>(currentUrl);
@@ -53,11 +93,14 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
   const [nativeSize, setNativeSize] = useState<{ w: number; h: number }>({ w: 0, h: 0 });
 
   useEffect(() => {
-    if (currentUrl) {
-      setInputUrl(currentUrl);
-      setCropImageUrl(currentUrl);
+    if (isOpen) {
+      if (defaultTab) setActiveTab(defaultTab);
+      if (currentUrl) {
+        setInputUrl(currentUrl);
+        setCropImageUrl(currentUrl);
+      }
     }
-  }, [currentUrl, isOpen]);
+  }, [currentUrl, isOpen, defaultTab]);
 
   if (!isOpen) return null;
 
@@ -74,22 +117,24 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
         const file = files[i];
         // Automatically compress image down to ~300KB - 500KB WebP
         const result = await compressAndOptimizeImage(file, 1920, 1080, 0.85);
+        const finalUrl = await uploadToSupabaseStorageIfPossible(result.dataUrl, 'upload');
         
         const photoItem: PhotoAlbumItem = {
           id: `img-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
           name: file.name,
-          url: result.dataUrl,
+          url: finalUrl,
           originalSize: result.originalSize,
           compressedSize: result.compressedSize,
           width: result.width,
           height: result.height,
           createdAt: new Date().toISOString().slice(0, 10),
-          caption: file.name.replace(/\.[^/.]+$/, "")
+          caption: file.name.replace(/\.[^/.]+$/, ""),
+          folder: 'Kho Chung'
         };
 
         newPhotos.unshift(photoItem);
         if (i === 0) {
-          setCropImageUrl(result.dataUrl);
+          setCropImageUrl(finalUrl);
         }
       }
 
@@ -215,22 +260,24 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
       ctx.drawImage(img, drawX, drawY, drawW, drawH);
 
       const croppedDataUrl = canvas.toDataURL('image/webp', 0.88);
+      const finalCroppedUrl = await uploadToSupabaseStorageIfPossible(croppedDataUrl, 'crop');
 
       // Save into photo album
       const newPhotoItem: PhotoAlbumItem = {
         id: `img-crop-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
-        name: `Crop_${aspectRatio}_${Date.now()}`,
-        url: croppedDataUrl,
+        name: `Crop_${aspectRatio}_${Date.now()}.webp`,
+        url: finalCroppedUrl,
         originalSize: croppedDataUrl.length,
         compressedSize: croppedDataUrl.length,
         width: targetW,
         height: targetH,
         createdAt: new Date().toISOString().slice(0, 10),
-        caption: `Ảnh căn khung (${aspectRatio}, zoom ${(zoom * 100).toFixed(0)}%)`
+        caption: `Ảnh căn khung (${aspectRatio}, zoom ${(zoom * 100).toFixed(0)}%)`,
+        folder: 'Kho Chung'
       };
 
       onUpdatePhotos([newPhotoItem, ...photos]);
-      onSelectUrl(croppedDataUrl);
+      onSelectUrl(finalCroppedUrl);
       onClose();
     } catch (err) {
       alert("Lỗi khi tạo hình ảnh đã căn chỉnh: " + (err as Error).message);
@@ -481,6 +528,60 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
           {/* TAB 5: AI IMAGE GENERATION */}
           {activeTab === 'ai' && (
             <div className="space-y-4 p-4 bg-purple-50 rounded-2xl border border-purple-200">
+              {/* ─── AI MODEL SELECTOR ─── */}
+              <div>
+                <label className="block text-xs font-extrabold text-purple-900 mb-2 flex items-center gap-1.5">
+                  <Layers className="w-4 h-4 text-purple-600" />
+                  Chọn AI Tạo Ảnh
+                </label>
+                <div className="grid grid-cols-2 gap-2">
+                  {AI_MODELS.map((m) => {
+                    const isSelected = selectedAiModel === m.key;
+                    const borderColor = isSelected
+                      ? m.color === 'purple' ? 'border-purple-500 ring-2 ring-purple-300'
+                      : m.color === 'blue' ? 'border-blue-500 ring-2 ring-blue-300'
+                      : m.color === 'emerald' ? 'border-emerald-500 ring-2 ring-emerald-300'
+                      : 'border-amber-500 ring-2 ring-amber-300'
+                      : 'border-slate-200 hover:border-purple-300';
+                    const bgColor = isSelected
+                      ? m.color === 'purple' ? 'bg-purple-50'
+                      : m.color === 'blue' ? 'bg-blue-50'
+                      : m.color === 'emerald' ? 'bg-emerald-50'
+                      : 'bg-amber-50'
+                      : 'bg-white hover:bg-slate-50';
+                    const badgeColor = m.color === 'purple' ? 'bg-purple-100 text-purple-700'
+                      : m.color === 'blue' ? 'bg-blue-100 text-blue-700'
+                      : m.color === 'emerald' ? 'bg-emerald-100 text-emerald-700'
+                      : 'bg-amber-100 text-amber-700';
+
+                    return (
+                      <button
+                        key={m.key}
+                        type="button"
+                        onClick={() => setSelectedAiModel(m.key)}
+                        disabled={isGeneratingImage}
+                        className={`relative p-2.5 rounded-xl border-2 ${borderColor} ${bgColor} text-left transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed`}
+                      >
+                        {isSelected && (
+                          <div className="absolute top-1.5 right-1.5">
+                            <Check className="w-4 h-4 text-purple-600" />
+                          </div>
+                        )}
+                        <div className="flex items-center gap-1.5 mb-1">
+                          <span className="text-[11px] font-bold text-slate-800">{m.name}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-md ${badgeColor}`}>{m.badge}</span>
+                          <span className="text-[9px] text-slate-400 font-medium">{m.speed}</span>
+                        </div>
+                        <p className="text-[9px] text-slate-500 mt-1 leading-tight">{m.desc}</p>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* ─── PROMPT INPUT ─── */}
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <label className="block text-xs font-extrabold text-purple-900 flex items-center gap-1.5">
@@ -530,7 +631,7 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                       headers: {
                         'Content-Type': 'application/json'
                       },
-                      body: JSON.stringify({ prompt: aiPrompt.trim() })
+                      body: JSON.stringify({ prompt: aiPrompt.trim(), model: selectedAiModel })
                     });
                     
                     if (!res.ok) {
@@ -546,7 +647,8 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                     setGeneratedAiImageUrl(result.dataUrl);
                   } catch (err) {
                     console.error("HF Generation error:", err);
-                    alert("Lỗi khi tạo ảnh qua Hugging Face: " + (err as Error).message);
+                    const selectedModelName = AI_MODELS.find(m => m.key === selectedAiModel)?.name || selectedAiModel;
+                    alert(`Lỗi khi tạo ảnh (${selectedModelName}): ` + (err as Error).message);
                   } finally {
                     setIsGeneratingImage(false);
                   }
@@ -554,7 +656,10 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                 className="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 {isGeneratingImage ? <Sparkles className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
-                {isGeneratingImage ? 'Đang vẽ ảnh (Khoảng 10-15s)...' : 'Tạo Ảnh Ngay Lập Tức'}
+                {isGeneratingImage
+                  ? `Đang vẽ bằng ${AI_MODELS.find(m => m.key === selectedAiModel)?.name} (${AI_MODELS.find(m => m.key === selectedAiModel)?.speed})...`
+                  : `Tạo Ảnh với ${AI_MODELS.find(m => m.key === selectedAiModel)?.name}`
+                }
               </button>
 
               {generatedAiImageUrl && (
@@ -574,41 +679,90 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                     />
                   </div>
                   
-                  <div className="grid grid-cols-2 gap-3 pt-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-2">
                     <button
                       type="button"
-                      onClick={() => {
-                        if (generatedAiImageUrl && generatedAiImageUrl.startsWith('data:')) {
-                          const newPhotos: PhotoAlbumItem[] = [...photos];
+                      disabled={isSavingToAlbum}
+                      onClick={async () => {
+                        if (!generatedAiImageUrl) return;
+                        setIsSavingToAlbum(true);
+                        try {
+                          const finalUrl = await uploadToSupabaseStorageIfPossible(generatedAiImageUrl, 'ai');
                           const photoItem: PhotoAlbumItem = {
-                            id: `img-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
-                            name: 'ai-generated.png',
-                            url: generatedAiImageUrl,
+                            id: `img-ai-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
+                            name: `AI_${selectedAiModel}_${Date.now()}.webp`,
+                            url: finalUrl,
                             originalSize: 0,
                             compressedSize: Math.round(generatedAiImageUrl.length * 0.75),
                             width: 1200, 
                             height: 630,
                             createdAt: new Date().toISOString().slice(0, 10),
-                            caption: "AI Generated: " + aiPrompt.substring(0, 30) + "..."
+                            caption: `AI (${AI_MODELS.find(m => m.key === selectedAiModel)?.name}): ${aiPrompt.substring(0, 35)}...`,
+                            folder: 'Ảnh AI (Tạo Tự Động)'
                           };
-                          newPhotos.unshift(photoItem);
-                          onUpdatePhotos(newPhotos);
+                          onUpdatePhotos([photoItem, ...photos]);
+                          onSelectUrl(finalUrl);
+                          onClose();
+                        } catch (err) {
+                          console.error("Save AI image error:", err);
+                        } finally {
+                          setIsSavingToAlbum(false);
                         }
-                        onSelectUrl(generatedAiImageUrl as string);
-                        onClose();
                       }}
-                      className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                      className="w-full py-2.5 px-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md transition-all cursor-pointer flex items-center justify-center gap-1.5 disabled:opacity-50"
+                      title="Lưu ảnh vào kho và áp dụng cho mục đang chọn"
                     >
                       <Check className="w-4 h-4" />
-                      Dùng Ảnh Này
+                      <span>Dùng Ảnh Này</span>
                     </button>
+
                     <button
                       type="button"
+                      disabled={isSavingToAlbum}
+                      onClick={async () => {
+                        if (!generatedAiImageUrl) return;
+                        setIsSavingToAlbum(true);
+                        try {
+                          const finalUrl = await uploadToSupabaseStorageIfPossible(generatedAiImageUrl, 'ai');
+                          const photoItem: PhotoAlbumItem = {
+                            id: `img-ai-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
+                            name: `AI_${selectedAiModel}_${Date.now()}.webp`,
+                            url: finalUrl,
+                            originalSize: 0,
+                            compressedSize: Math.round(generatedAiImageUrl.length * 0.75),
+                            width: 1200, 
+                            height: 630,
+                            createdAt: new Date().toISOString().slice(0, 10),
+                            caption: `AI (${AI_MODELS.find(m => m.key === selectedAiModel)?.name}): ${aiPrompt.substring(0, 35)}...`,
+                            folder: 'Ảnh AI (Tạo Tự Động)'
+                          };
+                          onUpdatePhotos([photoItem, ...photos]);
+                          setSaveAlbumSuccess(true);
+                          setTimeout(() => setSaveAlbumSuccess(false), 3000);
+                        } catch (err) {
+                          console.error("Save AI image error:", err);
+                        } finally {
+                          setIsSavingToAlbum(false);
+                        }
+                      }}
+                      className={`w-full py-2.5 px-2 rounded-xl font-bold text-xs shadow-md transition-all cursor-pointer flex items-center justify-center gap-1.5 disabled:opacity-50 ${
+                        saveAlbumSuccess ? 'bg-emerald-700 text-white' : 'bg-purple-600 hover:bg-purple-500 text-white'
+                      }`}
+                      title="Lưu vào kho album để tái sử dụng"
+                    >
+                      <Sparkles className="w-4 h-4" />
+                      <span>{saveAlbumSuccess ? '✓ Đã Lưu Kho!' : 'Lưu Vào Album'}</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      disabled={isSavingToAlbum}
                       onClick={() => startCroppingUrl(generatedAiImageUrl)}
-                      className="w-full py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs shadow-md transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                      className="w-full py-2.5 px-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs shadow-md transition-all cursor-pointer flex items-center justify-center gap-1.5 disabled:opacity-50"
+                      title="Căn khung & zoom ảnh theo tỷ lệ chuẩn"
                     >
                       <Crop className="w-4 h-4" />
-                      Căn Khung Lại
+                      <span>Căn Khung Lại</span>
                     </button>
                   </div>
                 </div>

@@ -1,3 +1,25 @@
+import { InferenceClient } from '@huggingface/inference';
+
+// Supported AI image generation models
+const SUPPORTED_MODELS = {
+  'flux-schnell': {
+    id: 'black-forest-labs/FLUX.1-schnell',
+    steps: 4,
+  },
+  'flux-dev': {
+    id: 'black-forest-labs/FLUX.1-dev',
+    steps: 20,
+  },
+  'sdxl': {
+    id: 'stabilityai/stable-diffusion-xl-base-1.0',
+    steps: 30,
+  },
+  'sd-3.5': {
+    id: 'stabilityai/stable-diffusion-3.5-large',
+    steps: 28,
+  },
+};
+
 export default async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -18,9 +40,15 @@ export default async function handler(req, res) {
       try { body = JSON.parse(body); } catch (e) {}
     }
     const prompt = body?.prompt;
+    const modelKey = body?.model || 'flux-schnell';
     
     if (!prompt) {
       return res.status(400).json({ error: 'Prompt is required' });
+    }
+
+    const modelConfig = SUPPORTED_MODELS[modelKey];
+    if (!modelConfig) {
+      return res.status(400).json({ error: 'Unsupported model: ' + modelKey });
     }
 
     const hfToken = process.env.VITE_HF_TOKEN || process.env.HF_TOKEN;
@@ -29,27 +57,23 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'HF token not configured' });
     }
 
-    console.log("Generating image for prompt:", prompt);
+    console.log(`Generating image with model [${modelConfig.id}] for prompt:`, prompt);
 
-    // Use global fetch (available in Vercel Node 18+)
-    const hfResponse = await fetch('https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${hfToken}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ inputs: prompt }),
+    // Use the new Hugging Face Inference Providers SDK
+    // (the old api-inference.huggingface.co endpoint was deprecated in July 2026)
+    const client = new InferenceClient(hfToken);
+
+    const imageBlob = await client.textToImage({
+      model: modelConfig.id,
+      inputs: prompt,
+      parameters: {
+        num_inference_steps: modelConfig.steps,
+      }
     });
 
-    if (!hfResponse.ok) {
-      const errorText = await hfResponse.text();
-      console.error("HF Error:", hfResponse.status, errorText);
-      return res.status(hfResponse.status).json({ error: 'HF API error: ' + hfResponse.status, details: errorText });
-    }
-
-    const arrayBuffer = await hfResponse.arrayBuffer();
+    const arrayBuffer = await imageBlob.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
-    const contentType = hfResponse.headers.get('content-type') || 'image/jpeg';
+    const contentType = imageBlob.type || 'image/jpeg';
 
     res.setHeader('Content-Type', contentType);
     res.setHeader('Cache-Control', 'public, max-age=31536000');
@@ -57,6 +81,16 @@ export default async function handler(req, res) {
     
   } catch (error) {
     console.error("Serverless error:", error);
-    return res.status(500).json({ error: 'Server error: ' + error.message });
+    
+    // Provide more helpful error messages
+    const message = error.message || 'Unknown error';
+    if (message.includes('402') || message.includes('credit')) {
+      return res.status(402).json({ error: 'Hết credit Hugging Face. Vui lòng nạp thêm hoặc nâng cấp tài khoản HF.' });
+    }
+    if (message.includes('401') || message.includes('Unauthorized')) {
+      return res.status(401).json({ error: 'Token HF không hợp lệ hoặc đã hết hạn.' });
+    }
+    
+    return res.status(500).json({ error: 'Server error: ' + message });
   }
 }

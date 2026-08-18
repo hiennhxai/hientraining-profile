@@ -7,6 +7,7 @@ import {
   Grid, LayoutGrid, CheckSquare, Square, Filter, Download, Move, Search, Eye, Sliders, Maximize2
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { UniversalImagePickerModal } from './UniversalImagePickerModal';
 
 interface PhotoAlbumManagerProps {
   photos: PhotoAlbumItem[];
@@ -31,7 +32,8 @@ const DEFAULT_FOLDERS = [
   'Khóa Học 1-1',
   'Studio & Showroom',
   'Chân Dung MC',
-  'Dịch Vụ & Sự Kiện'
+  'Dịch Vụ & Sự Kiện',
+  'Ảnh AI (Tạo Tự Động)'
 ];
 
 export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
@@ -61,6 +63,7 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
   const [selectedPhotoIds, setSelectedPhotoIds] = useState<string[]>([]);
   const [isMoveFolderModalOpen, setIsMoveFolderModalOpen] = useState(false);
   const [targetMoveFolder, setTargetMoveFolder] = useState<string>('Khác');
+  const [isAiModalOpen, setIsAiModalOpen] = useState(false);
 
   // Lightbox Preview Modal
   const [lightboxPhoto, setLightboxPhoto] = useState<PhotoAlbumItem | null>(null);
@@ -350,6 +353,15 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setIsAiModalOpen(true)}
+              className="px-4 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-extrabold flex items-center gap-2 shadow-md shadow-purple-500/20 transition-all cursor-pointer"
+            >
+              <Sparkles className="w-4 h-4" />
+              <span>Tạo Ảnh AI Studio</span>
+            </button>
+
             <button
               type="button"
               onClick={() => setIsNewFolderModalOpen(true)}
@@ -995,6 +1007,21 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
             </div>
           </div>
         </div>
+      )}
+
+      {/* AI Generator Modal directly from PhotoAlbumManager */}
+      {isAiModalOpen && (
+        <UniversalImagePickerModal
+          isOpen={isAiModalOpen}
+          onClose={() => setIsAiModalOpen(false)}
+          title="TẠO ẢNH BẰNG AI & LƯU VÀO KHO ALBUM"
+          photos={photos}
+          onUpdatePhotos={onUpdatePhotos}
+          onSelectUrl={() => {
+            setIsAiModalOpen(false);
+          }}
+          defaultTab="ai"
+        />
       )}
 
     </div>
