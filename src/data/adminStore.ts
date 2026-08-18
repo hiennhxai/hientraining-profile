@@ -52,6 +52,8 @@ export interface SiteGeneralConfig {
   fontMono?: string;
   fontSizeScale?: number;
   marqueeDuration?: number;
+  messengerLink?: string;
+  zaloLink?: string;
 }
 
 export const defaultServices: ServiceItem[] = [
@@ -771,6 +773,8 @@ export const defaultAdminData: FullAdminData = {
     subBrandName: "MEDIA & STUDIO",
     phoneHotline: "0813 13 13 85",
     emailContact: "admin@xuanhien.info",
+    messengerLink: "https://m.me/yourpage",
+    zaloLink: "https://zalo.me/0813131385",
     studioLocation: "TP. Hồ Chí Minh (Đào tạo Offline 1-1 & Online)",
     ctaHeader: "BẮT ĐẦU HÀNH TRÌNH BỨT PHÁ CÙNG XUÂN HIẾN",
     ctaSubheader: "Bạn cần thiết kế lộ trình đào tạo riêng?",

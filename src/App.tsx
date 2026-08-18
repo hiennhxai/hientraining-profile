@@ -471,7 +471,12 @@ export default function App() {
         }}
       />
 
-      <FloatingActionButtons lang={lang} onToggleLang={handleToggleLang} />
+      <FloatingActionButtons 
+        lang={lang} 
+        onToggleLang={handleToggleLang} 
+        isEditActive={isAdminMode && isEditActive}
+        onEditField={handleOpenEditField}
+      />
 
       <ArticleReaderModal
         slug={activeArticleSlug}
