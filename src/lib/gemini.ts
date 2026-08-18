@@ -217,9 +217,12 @@ ${content}
  */
 export async function generateImagePromptWithAI(context: string): Promise<string> {
   const prompt = `
-You are an expert AI image prompt engineer. Based on the following article context, write a highly detailed, descriptive, and visually stunning image generation prompt in ENGLISH.
-The prompt should describe a professional, cinematic, and high-quality image suitable for a blog post thumbnail or hero image.
-CRITICAL INSTRUCTION: You MUST append these exact keywords at the end of your prompt to ensure maximum quality: ", 1080p, high quality, high sharpness, highly detailed, cinematic lighting, professional studio photography".
+You are an expert AI image prompt engineer specializing in FLUX models. Based on the following article context, write a highly detailed, descriptive, and visually stunning image generation prompt in ENGLISH.
+FLUX models prefer literal, physical descriptions over abstract metaphors. Follow these rules:
+1. Start with the camera framing and subject (e.g., "A highly detailed, photorealistic medium shot of...").
+2. Describe physical objects, their exact positions, and lighting explicitly.
+3. Do NOT use abstract business metaphors (like "digital transformation" or "metaphor of the future"). Describe what is physically visible.
+4. CRITICAL INSTRUCTION: You MUST append these exact keywords at the end of your prompt to ensure maximum quality: "shot on 85mm lens, f/1.8, extremely sharp focus, 8k resolution, award-winning studio photography".
 Do NOT include any explanations, just the prompt string itself.
 
 Article Context:

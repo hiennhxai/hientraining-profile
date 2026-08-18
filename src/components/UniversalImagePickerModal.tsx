@@ -19,7 +19,8 @@ const AI_MODELS: { key: AiModelKey; name: string; badge: string; desc: string; s
   { key: 'pollinations', name: 'Pollinations AI', badge: '🎁 Miễn Phí', desc: 'Sử dụng mô hình FLUX siêu đẹp.', speed: '~10s', color: 'emerald', usageNote: 'Hoàn toàn miễn phí 100%. Không giới hạn lượt tạo ảnh / ngày.' },
   { key: 'cloudflare',   name: 'Cloudflare AI', badge: '☁️ Tốc Độ', desc: 'Tạo ảnh bằng SDXL trên mạng lưới Cloudflare Edge.', speed: '~15s', color: 'amber', usageNote: 'Miễn phí siêu khủng (hàng ngàn lượt/ngày). Đã cấu hình Token thành công.' },
   { key: 'segmind',      name: 'Segmind AI', badge: '🧠 Chuyên Gia', desc: 'Model Fast FLUX Schnell tốc độ cao.', speed: '~5s', color: 'purple', usageNote: 'Đã cấu hình API Key thành công. Tặng miễn phí 100 lượt tạo ảnh/ngày.' },
-  { key: 'modal',        name: 'Modal Serverless', badge: '🚀 Máy Chủ Riêng', desc: 'Máy chủ FLUX Schnell riêng chạy trên A10G.', speed: '~10s', color: 'blue', usageNote: 'Máy chủ độc quyền của bạn trên Modal. Tự động tắt khi không dùng.' },
+  { key: 'modal-h100',   name: 'Modal Serverless (H100)', badge: '🚀 Siêu Tốc', desc: 'Máy chủ FLUX Schnell riêng chạy trên H100 (80GB).', speed: '~6s', color: 'blue', usageNote: 'Máy chủ độc quyền của bạn trên Modal. Tốc độ cực nhanh nhưng chi phí cao.' },
+  { key: 'modal-t4',     name: 'Modal Serverless (T4)', badge: '⚙️ Tiêu Chuẩn', desc: 'Máy chủ FLUX Schnell riêng chạy trên T4/A10G.', speed: '~15s', color: 'slate', usageNote: 'Lựa chọn tiết kiệm chi phí hơn nhưng thời gian chờ lâu hơn một chút.' },
 ];
 
 interface UniversalImagePickerModalProps {

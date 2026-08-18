@@ -1,5 +1,6 @@
 import modal
 import io
+from fastapi import Request
 
 def download_model():
     from diffusers import FluxPipeline
@@ -38,36 +39,57 @@ image = (
 
 app = modal.App("flux-schnell-api", image=image)
 
-# Cấu hình Card đồ họa H100 siêu mạnh và bảo mật HuggingFace Token
+# Cấu hình Card đồ họa H100 siêu mạnh (80GB VRAM)
 @app.cls(gpu="H100", secrets=[modal.Secret.from_name("huggingface")])
-class FluxModel:
+class FluxModelH100:
     @modal.enter()
     def enter(self):
         from diffusers import FluxPipeline
         import torch
         import os
-        # Load model vào VRAM của Card Đồ Họa khi khởi động máy chủ
         self.pipe = FluxPipeline.from_pretrained(
             "black-forest-labs/FLUX.1-schnell", 
             torch_dtype=torch.bfloat16,
             token=os.environ.get("HF_TOKEN")
         ).to("cuda")
 
-    # Tạo thành một đường link API POST (giống như Cloudflare/Segmind)
     @modal.fastapi_endpoint(method="POST")
-    async def generate(self, request):
+    async def generate(self, request: Request):
         from fastapi import Response
         data = await request.json()
         prompt = data.get("prompt", "A beautiful futuristic city landscape")
-        
-        # Vẽ ảnh (chỉ mất 4 steps nhờ bản Schnell)
         image = self.pipe(prompt, num_inference_steps=4, guidance_scale=0.0).images[0]
         
-        # Đóng gói ảnh thành định dạng JPEG và trả về cho Website
         img_byte_arr = io.BytesIO()
         image.save(img_byte_arr, format='JPEG')
         img_bytes = img_byte_arr.getvalue()
+        return Response(content=img_bytes, media_type="image/jpeg")
+
+# Card đồ họa tầm trung (A10G 24GB VRAM - T4 không đủ RAM cho FLUX)
+@app.cls(gpu="A10G", secrets=[modal.Secret.from_name("huggingface")])
+class FluxModelT4:
+    @modal.enter()
+    def enter(self):
+        from diffusers import FluxPipeline
+        import torch
+        import os
+        self.pipe = FluxPipeline.from_pretrained(
+            "black-forest-labs/FLUX.1-schnell", 
+            torch_dtype=torch.bfloat16,
+            token=os.environ.get("HF_TOKEN")
+        )
+        self.pipe.enable_model_cpu_offload()
+
+    @modal.fastapi_endpoint(method="POST")
+    async def generate(self, request: Request):
+        from fastapi import Response
+        data = await request.json()
+        prompt = data.get("prompt", "A beautiful futuristic city landscape")
+        image = self.pipe(prompt, num_inference_steps=4, guidance_scale=0.0).images[0]
         
+        img_byte_arr = io.BytesIO()
+        image.save(img_byte_arr, format='JPEG')
+        img_bytes = img_byte_arr.getvalue()
         return Response(content=img_bytes, media_type="image/jpeg")
 
 # Card đồ họa T4 (rẻ hơn, đủ dùng cho việc sửa ảnh)
@@ -85,7 +107,7 @@ class EditModel:
         ).to("cuda")
 
     @modal.fastapi_endpoint(method="POST")
-    async def edit(self, request):
+    async def edit(self, request: Request):
         from fastapi import Response
         import base64
         from PIL import Image

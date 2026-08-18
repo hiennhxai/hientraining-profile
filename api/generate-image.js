@@ -1,5 +1,8 @@
 import { InferenceClient } from '@huggingface/inference';
 
+// Tăng thời gian timeout cho Vercel Serverless Function lên 60 giây để chờ Modal Cold Start
+export const maxDuration = 60;
+
 // Supported AI image generation models
 const SUPPORTED_MODELS = {
   'flux-schnell': {
@@ -120,9 +123,12 @@ export default async function handler(req, res) {
     // ----------------------------------------
 
     // --- MODAL AI INTEGRATION ---
-    if (modelKey === 'modal') {
-      console.log(`Generating image with Modal Serverless GPU for prompt:`, prompt);
-      const url = `https://hiennhxai--flux-schnell-api-fluxmodel-generate.modal.run`;
+    if (modelKey === 'modal-h100' || modelKey === 'modal-t4') {
+      const gpuName = modelKey === 'modal-h100' ? 'H100' : 'T4';
+      console.log(`Generating image with Modal Serverless GPU (${gpuName}) for prompt:`, prompt);
+      const url = modelKey === 'modal-h100' 
+         ? `https://hiennhxai--flux-schnell-api-fluxmodelh100-generate.modal.run`
+         : `https://hiennhxai--flux-schnell-api-fluxmodelt4-generate.modal.run`;
       
       const modalRes = await fetch(url, {
         method: 'POST',
@@ -184,6 +190,23 @@ export default async function handler(req, res) {
     
     // Provide more helpful error messages
     const message = error.message || 'Unknown error';
+    
+    if (message.includes('Segmind')) {
+       if (message.includes('402') || message.includes('credit') || message.includes('400')) {
+         return res.status(402).json({ error: 'Lỗi Segmind AI: Hết credit hoặc tài khoản Segmind bị giới hạn. Vui lòng kiểm tra lại.' });
+       }
+       return res.status(500).json({ error: message });
+    }
+
+    if (message.includes('Cloudflare')) {
+       return res.status(500).json({ error: message });
+    }
+
+    if (message.includes('Modal')) {
+       return res.status(500).json({ error: message });
+    }
+
+    // Default to Hugging Face error handling
     if (message.includes('402') || message.includes('credit')) {
       return res.status(402).json({ error: 'Hết credit Hugging Face. Vui lòng nạp thêm hoặc nâng cấp tài khoản HF.' });
     }

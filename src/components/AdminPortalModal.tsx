@@ -4,6 +4,7 @@ import { getAdminData, saveAdminData, resetAdminData, FullAdminData } from '../d
 import { PhotoAlbumManager } from './PhotoAlbumManager';
 import { RichArticleBlockEditor } from './RichArticleBlockEditor';
 import { UniversalImagePickerModal } from './UniversalImagePickerModal';
+import { AdminAiStudio } from './AdminAiStudio';
 import { ArticleReaderModal } from './ArticleReaderModal';
 import { AVAILABLE_FONTS, applyTypography } from '../utils/typographyEngine';
 import { 
@@ -22,7 +23,7 @@ interface AdminPortalModalProps {
 
 export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onClose, onSaved }) => {
   const [data, setData] = useState<FullAdminData>(getAdminData());
-  const [activeTab, setActiveTab] = useState<'general' | 'story' | 'courses' | 'resources' | 'services' | 'projects' | 'articles' | 'album' | 'brands'>('general');
+  const [activeTab, setActiveTab] = useState<'general' | 'story' | 'courses' | 'resources' | 'services' | 'projects' | 'articles' | 'album' | 'brands' | 'ai_studio'>('general');
   const [toastMsg, setToastMsg] = useState<string | null>(null);
   const [isAiLoading, setIsAiLoading] = useState(false);
 
@@ -448,12 +449,24 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
               onClick={() => { setActiveTab('album'); setEditingArticleSlug(null); }}
               className={`px-3 py-2 rounded-xl text-xs font-extrabold flex items-center justify-center gap-2 transition-all cursor-pointer ${
                 activeTab === 'album' 
-                  ? 'bg-gradient-to-r from-orange-600 to-amber-600 text-white shadow-md ring-2 ring-orange-500/30' 
+                  ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md ring-2 ring-emerald-500/30' 
                   : 'bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border border-emerald-300'
               }`}
             >
               <ImageIcon className="w-4 h-4 shrink-0" />
-              <span className="truncate">📸 KHO HÌNH ÁNH ({(data.photoAlbum || []).length})</span>
+              <span className="truncate">📸 KHO HÌNH ẢNH ({(data.photoAlbum || []).length})</span>
+            </button>
+
+            <button
+              onClick={() => { setActiveTab('ai_studio'); setEditingArticleSlug(null); }}
+              className={`px-3 py-2 rounded-xl text-xs font-extrabold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                activeTab === 'ai_studio' 
+                  ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md ring-2 ring-indigo-500/30' 
+                  : 'bg-indigo-50 text-indigo-800 hover:bg-indigo-100 border border-indigo-300'
+              }`}
+            >
+              <Wand2 className="w-4 h-4 shrink-0 animate-pulse" />
+              <span className="truncate">🪄 AI STUDIO</span>
             </button>
           </div>
         </div>
@@ -467,6 +480,16 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
               <Check className="w-4 h-4" />
               <span>{toastMsg}</span>
             </div>
+          )}
+
+          {/* TAB AI STUDIO */}
+          {activeTab === 'ai_studio' && (
+            <AdminAiStudio 
+              onSaveToAlbum={(photo) => {
+                setData(prev => ({ ...prev, photoAlbum: [photo, ...(prev.photoAlbum || [])] }));
+                showNotification("Đã lưu ảnh AI vào Kho Ảnh thành công!");
+              }} 
+            />
           )}
 
           {/* TAB 1: GENERAL CONFIG */}
@@ -2883,7 +2906,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
             <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm animate-fadeIn">
               <PhotoAlbumManager
                 photos={data.photoAlbum}
-                onUpdatePhotos={(updatedPhotos) => setData({ ...data, photoAlbum: updatedPhotos })}
+                onUpdatePhotos={(updatedPhotos) => setData(prev => ({ ...prev, photoAlbum: updatedPhotos }))}
               />
             </div>
           )}

@@ -188,8 +188,16 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
     setIsDragOver(true);
   };
 
-  const handleDeletePhoto = (photoToDelete: PhotoAlbumItem) => {
-    if (window.confirm(`Xóa vĩnh viễn hình ảnh "${photoToDelete.caption || photoToDelete.name}" khỏi Album?`)) {
+  const handleDeletePhoto = async (photoToDelete: PhotoAlbumItem) => {
+    if (window.confirm(`Xóa vĩnh viễn hình ảnh "${photoToDelete.caption || photoToDelete.name}" khỏi Album và máy chủ?`)) {
+      try {
+        const fileName = photoToDelete.url.split('/').pop();
+        if (fileName) {
+          await supabase.storage.from('photos').remove([fileName]);
+        }
+      } catch (err) {
+        console.error("Lỗi xóa file trên Supabase:", err);
+      }
       onUpdatePhotos(photos.filter(p => p.id !== photoToDelete.id));
       setSelectedPhotoIds(prev => prev.filter(id => id !== photoToDelete.id));
       if (lightboxPhoto?.id === photoToDelete.id) setLightboxPhoto(null);
@@ -229,9 +237,18 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
     }
   };
 
-  const handleBatchDelete = () => {
+  const handleBatchDelete = async () => {
     if (selectedPhotoIds.length === 0) return;
-    if (window.confirm(`Xóa vĩnh viễn ${selectedPhotoIds.length} hình ảnh đã chọn?`)) {
+    if (window.confirm(`Xóa vĩnh viễn ${selectedPhotoIds.length} hình ảnh đã chọn khỏi hệ thống?`)) {
+      try {
+        const photosToDelete = photos.filter(p => selectedPhotoIds.includes(p.id));
+        const fileNames = photosToDelete.map(p => p.url.split('/').pop() || '').filter(Boolean);
+        if (fileNames.length > 0) {
+          await supabase.storage.from('photos').remove(fileNames);
+        }
+      } catch (err) {
+        console.error("Lỗi xóa batch trên Supabase:", err);
+      }
       onUpdatePhotos(photos.filter(p => !selectedPhotoIds.includes(p.id)));
       setSelectedPhotoIds([]);
     }
@@ -684,6 +701,20 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
                   <div className="flex items-center justify-between text-[10px] font-mono text-slate-500 pt-1 border-t border-slate-100">
                     <span className="truncate">{formatBytes(photo.compressedSize)}</span>
                     <div className="flex items-center gap-1.5">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const a = document.createElement('a');
+                          a.href = photo.url;
+                          a.download = photo.name;
+                          a.click();
+                        }}
+                        className="text-slate-600 hover:text-indigo-600 font-bold cursor-pointer"
+                        title="Tải ảnh về máy"
+                      >
+                        <Download className="w-3 h-3" />
+                      </button>
+
                       <button
                         type="button"
                         onClick={() => handleCopyUrl(photo.url, photo.id)}
