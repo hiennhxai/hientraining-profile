@@ -312,6 +312,17 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
             <Crop className="w-4 h-4 text-amber-300 shrink-0" />
             <span className="truncate">4. 📐 Căn Khung & Zoom</span>
           </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab('ai')}
+            className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+              activeTab === 'ai' ? 'bg-purple-600 text-white shadow-md' : 'bg-white text-slate-700 hover:bg-slate-200 border border-purple-200'
+            }`}
+          >
+            <Sparkles className="w-4 h-4 text-purple-500 shrink-0" />
+            <span className="truncate">5. 🪄 Tạo Bằng AI</span>
+          </button>
         </div>
 
         {/* Content Body */}
