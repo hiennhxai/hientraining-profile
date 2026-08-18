@@ -169,7 +169,7 @@ export async function generateArticleWithAI(prompt: string): Promise<Article> {
   return {
     slug: article.slug || `bai-viet-${Date.now()}`,
     cat: article.cat || 'skills' as any,
-    date: new Date().toISOString().slice(0, 10),
+    date: new Date().toISOString().slice(0, 10).replace(/-/g, '.'),
     author: 'Xuân Hiến',
     initials: 'XH',
     tags: article.tags || [],
@@ -210,4 +210,25 @@ ${content}
   });
 
   return response.text || content;
+}
+
+/**
+ * Generate a detailed image prompt based on context
+ */
+export async function generateImagePromptWithAI(context: string): Promise<string> {
+  const prompt = `
+You are an expert AI image prompt engineer. Based on the following article context, write a highly detailed, descriptive, and visually stunning image generation prompt in ENGLISH.
+The prompt should describe a professional, cinematic, and high-quality image suitable for a blog post thumbnail or hero image.
+Do NOT include any explanations, just the prompt string itself.
+
+Article Context:
+${context}
+  `.trim();
+
+  const response = await getAI().models.generateContent({
+    model: DEFAULT_MODEL,
+    contents: prompt
+  });
+
+  return response.text?.trim() || 'A cinematic professional photograph, highly detailed, 8k resolution';
 }

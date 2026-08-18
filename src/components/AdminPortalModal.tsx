@@ -37,12 +37,14 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
   const [pickerCallback, setPickerCallback] = useState<((url: string) => void) | null>(null);
   const [pickerTitle, setPickerTitle] = useState('CHỌN HOẶC TẢI HÌNH ẢNH MỚI');
   const [pickerCurrentUrl, setPickerCurrentUrl] = useState('');
+  const [pickerAiContext, setPickerAiContext] = useState<string | undefined>(undefined);
   const [isSaving, setIsSaving] = useState(false);
 
-  const openPicker = (callback: (url: string) => void, title: string, currentUrl: string = '') => {
+  const openPicker = (callback: (url: string) => void, title: string, currentUrl: string = '', aiContext?: string) => {
     setPickerCallback(() => callback);
     setPickerTitle(title);
     setPickerCurrentUrl(currentUrl);
+    setPickerAiContext(aiContext);
     setPickerOpen(true);
   };
 
@@ -268,7 +270,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
     const newArticle: Article = {
       slug: slug,
       cat: 'livestream',
-      date: new Date().toISOString().slice(0, 10),
+      date: new Date().toISOString().slice(0, 10).replace(/-/g, '.'),
       author: 'Xuân Hiến',
       initials: 'XH',
       tags: ['Livestream', 'Setup', 'Chia Sẻ'],

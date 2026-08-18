@@ -12,7 +12,7 @@ interface RichArticleBlockEditorProps {
   onChange: (updated: ArticleTranslation) => void;
   albumPhotos: PhotoAlbumItem[];
   onUpdateAlbumPhotos: (photos: PhotoAlbumItem[]) => void;
-  onOpenPicker?: (onSelect: (url: string) => void, title: string, currentUrl: string) => void;
+  onOpenPicker?: (onSelect: (url: string) => void, title: string, currentUrl: string, aiContext?: string) => void;
 }
 
 export const RichArticleBlockEditor: React.FC<RichArticleBlockEditorProps> = ({
@@ -100,6 +100,8 @@ export const RichArticleBlockEditor: React.FC<RichArticleBlockEditorProps> = ({
     }
   };
 
+  const aiContextStr = `Title: ${translation.title}\nSummary: ${translation.dek}`;
+
   return (
     <div className="space-y-6">
       {/* Editor Header Info */}
@@ -156,7 +158,8 @@ export const RichArticleBlockEditor: React.FC<RichArticleBlockEditorProps> = ({
                     onOpenPicker(
                       (selectedUrl) => onChange({ ...translation, coverImage: selectedUrl }),
                       `CHỌN ẢNH BÌA BÀI VIẾT: ${translation.title}`,
-                      translation.coverImage || ''
+                      translation.coverImage || '',
+                      aiContextStr
                     );
                   }
                 }}
@@ -265,7 +268,22 @@ export const RichArticleBlockEditor: React.FC<RichArticleBlockEditorProps> = ({
                     </button>
                     <button
                       type="button"
-                      onClick={() => setShowPhotoPicker(idx)}
+                      onClick={() => {
+                        if (onOpenPicker) {
+                          const currentUrl = /src="(.*?)"/.exec(block.c)?.[1] || '';
+                          onOpenPicker(
+                            (url) => {
+                              const newC = `<img src="${url}" alt="Article Image" class="w-full rounded-2xl shadow-md my-4" />`;
+                              handleUpdateBlock(idx, { ...block, c: newC });
+                            },
+                            'CHỌN HÌNH ẢNH CHO BÀI VIẾT',
+                            currentUrl,
+                            aiContextStr
+                          );
+                        } else {
+                          setShowPhotoPicker(idx);
+                        }
+                      }}
                       className="p-1.5 rounded-lg bg-orange-50 text-orange-600 hover:bg-orange-100 text-xs font-bold cursor-pointer"
                       title="Chèn Ảnh Từ Album Studio"
                     >

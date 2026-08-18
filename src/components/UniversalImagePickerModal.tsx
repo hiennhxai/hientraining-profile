@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { PhotoAlbumItem } from '../types';
 import { compressAndOptimizeImage } from '../utils/imageOptimizer';
+import { generateImagePromptWithAI } from '../lib/gemini';
 import { 
   X, Upload, Image as ImageIcon, Link as LinkIcon, Check, Sparkles, 
   Camera, Crop, ZoomIn, ZoomOut, Move, RotateCcw, Sliders, Layers 
@@ -14,6 +15,7 @@ interface UniversalImagePickerModalProps {
   photos: PhotoAlbumItem[];
   onUpdatePhotos: (photos: PhotoAlbumItem[]) => void;
   title?: string;
+  aiContext?: string;
 }
 
 type AspectRatioOption = '16:9' | '4:3' | '1:1' | '3:4' | 'free';
@@ -25,12 +27,18 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
   currentUrl = '',
   photos,
   onUpdatePhotos,
-  title = 'CHỌN HOẶC TẢI HÌNH ẢNH MỚI'
+  title = 'CHỌN HOẶC TẢI HÌNH ẢNH MỚI',
+  aiContext
 }) => {
-  const [activeTab, setActiveTab] = useState<'album' | 'upload' | 'url' | 'crop'>('album');
+  const [activeTab, setActiveTab] = useState<'album' | 'upload' | 'url' | 'crop' | 'ai'>('album');
   const [inputUrl, setInputUrl] = useState<string>(currentUrl);
   const [uploading, setUploading] = useState<boolean>(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // ─── AI IMAGE GENERATION STATE ───
+  const [aiPrompt, setAiPrompt] = useState<string>('');
+  const [isGeneratingPrompt, setIsGeneratingPrompt] = useState(false);
+  const [generatedAiImageUrl, setGeneratedAiImageUrl] = useState<string | null>(null);
 
   // ─── CROPPING & INTERACTIVE PAN/ZOOM STATE ───
   const [cropImageUrl, setCropImageUrl] = useState<string>(currentUrl);
@@ -455,6 +463,105 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                   <span>Căn Khung & Zoom URL Này</span>
                 </button>
               </div>
+            </div>
+          )}
+
+          {/* TAB 5: AI IMAGE GENERATION */}
+          {activeTab === 'ai' && (
+            <div className="space-y-4 p-4 bg-purple-50 rounded-2xl border border-purple-200">
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="block text-xs font-extrabold text-purple-900 flex items-center gap-1.5">
+                    <Sparkles className="w-4 h-4 text-purple-600" />
+                    Viết Lệnh (Prompt) Cho AI Bằng Tiếng Anh
+                  </label>
+                  {aiContext && (
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        setIsGeneratingPrompt(true);
+                        try {
+                          const prompt = await generateImagePromptWithAI(aiContext);
+                          setAiPrompt(prompt);
+                        } catch (err) {
+                          console.error(err);
+                          alert("Lỗi khi viết prompt AI.");
+                        } finally {
+                          setIsGeneratingPrompt(false);
+                        }
+                      }}
+                      disabled={isGeneratingPrompt}
+                      className="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white text-[10px] font-bold shadow-md flex items-center gap-1.5 transition-all cursor-pointer"
+                    >
+                      {isGeneratingPrompt ? <Sparkles className="w-3 h-3 animate-spin" /> : <Sparkles className="w-3 h-3" />}
+                      Phân Tích Bài Viết & Viết Prompt
+                    </button>
+                  )}
+                </div>
+                <textarea
+                  rows={4}
+                  placeholder="A cinematic professional studio photography of a microphone..."
+                  value={aiPrompt}
+                  onChange={(e) => setAiPrompt(e.target.value)}
+                  className="w-full px-3 py-2.5 rounded-xl border border-purple-300 font-mono text-xs text-slate-800 bg-white custom-scrollbar focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500"
+                />
+              </div>
+
+              <button
+                type="button"
+                disabled={!aiPrompt.trim()}
+                onClick={() => {
+                  const encodedPrompt = encodeURIComponent(aiPrompt.trim());
+                  const seed = Math.floor(Math.random() * 1000000);
+                  const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=1200&height=630&nologo=true&seed=${seed}`;
+                  setGeneratedAiImageUrl(imageUrl);
+                }}
+                className="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <Sparkles className="w-4 h-4" />
+                Tạo Ảnh Ngay Lập Tức
+              </button>
+
+              {generatedAiImageUrl && (
+                <div className="p-4 bg-white rounded-xl border border-purple-200 text-center space-y-3 mt-4">
+                  <span className="text-[11px] font-bold text-purple-700">Kết quả tạo ảnh từ AI:</span>
+                  <div className="max-h-64 aspect-video mx-auto overflow-hidden rounded-lg bg-slate-100 flex items-center justify-center border border-slate-200 shadow-inner relative">
+                    <img 
+                      src={generatedAiImageUrl} 
+                      alt="AI Generated" 
+                      className="w-full h-full object-cover"
+                      onLoad={(e) => {
+                        (e.target as HTMLImageElement).classList.remove('opacity-0');
+                      }}
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = 'https://placehold.co/1200x630/f8fafc/94a3b8?text=Error+Loading+Image';
+                      }}
+                    />
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-3 pt-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        onSelectUrl(generatedAiImageUrl);
+                        onClose();
+                      }}
+                      className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                    >
+                      <Check className="w-4 h-4" />
+                      Dùng Ảnh Này
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => startCroppingUrl(generatedAiImageUrl)}
+                      className="w-full py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs shadow-md transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                    >
+                      <Crop className="w-4 h-4" />
+                      Căn Khung Lại
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
