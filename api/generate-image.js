@@ -1,3 +1,5 @@
+import https from 'https';
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -22,9 +24,6 @@ export default async function handler(req, res) {
 
     console.log("Generating image for prompt:", prompt);
 
-    // Call Hugging Face API using https module to avoid Vercel Node 18 fetch() ENOTFOUND/fetch failed bugs
-    const https = require('https');
-    
     const postData = JSON.stringify({ inputs: prompt });
 
     const options = {
