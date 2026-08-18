@@ -28,6 +28,18 @@ const SUPPORTED_MODELS = {
   'realvis': {
     id: 'SG161222/RealVisXL_V4.0',
     steps: 25,
+  },
+  'juggernaut': {
+    id: 'stablediffusionapi/juggernaut-xl-v9',
+    steps: 30,
+  },
+  'dreamshaper': {
+    id: 'Lykon/dreamshaper-xl-1-0',
+    steps: 30,
+  },
+  'openjourney': {
+    id: 'prompthero/openjourney',
+    steps: 30,
   }
 };
 

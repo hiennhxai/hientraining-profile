@@ -9,12 +9,15 @@ import {
 } from 'lucide-react';
 
 // ─── AI MODEL OPTIONS ───
-type AiModelKey = 'flux-schnell' | 'flux-dev' | 'sdxl' | 'sd-3.5' | 'pollinations' | 'cloudflare' | 'segmind' | 'modal-h100' | 'modal-t4' | 'animagine' | 'realvis';
+type AiModelKey = 'flux-schnell' | 'flux-dev' | 'sdxl' | 'sd-3.5' | 'pollinations' | 'cloudflare' | 'segmind' | 'modal-h100' | 'modal-t4' | 'animagine' | 'realvis' | 'juggernaut' | 'dreamshaper' | 'openjourney';
 
 const AI_MODELS: { key: AiModelKey; name: string; badge: string; desc: string; speed: string; color: string; usageNote: string }[] = [
+  { key: 'juggernaut',   name: 'Juggernaut XL',   badge: '🔥 Tuyệt Đỉnh', desc: 'Con AI mạnh nhất thế giới về nhiếp ảnh hiện thực.', speed: '~15-20s', color: 'emerald', usageNote: 'Chuyên trị ảnh người thật. Chân thực đến từng sợi tóc, vượt mặt cả Midjourney.' },
+  { key: 'dreamshaper',  name: 'DreamShaper XL',  badge: '🎨 Nghệ Thuật', desc: 'AI vĩ đại nhất về Digital Art và điện ảnh 3D.', speed: '~15-20s', color: 'blue', usageNote: 'Cân mọi thể loại từ đời thực đến 3D, với phong cách nghệ thuật siêu đẹp.' },
+  { key: 'openjourney',  name: 'OpenJourney',     badge: '🚀 Midjourney', desc: 'Được huấn luyện trực tiếp từ kho ảnh của Midjourney v4.', speed: '~10-15s', color: 'purple', usageNote: 'Chất ảnh ra đậm chất Midjourney. Thích hợp cho sáng tạo vô cực.' },
+  { key: 'realvis',      name: 'RealVis XL',      badge: '📸 Nhiếp Ảnh', desc: 'Chuyên gia số 1 về ảnh người thật, chân dung nhiếp ảnh.', speed: '~15-20s', color: 'emerald', usageNote: 'Dành riêng tạo người thật. Ảnh nét đến từng lỗ chân lông.' },
   { key: 'flux-dev',     name: 'FLUX.1 Dev',      badge: '💎 Đỉnh Cao', desc: 'Mô hình đa dụng mạnh nhất, cực kỳ thông minh.', speed: '~15-30s', color: 'blue', usageNote: 'Hiểu mọi yêu cầu phức tạp. Đẹp nhất hiện tại.' },
   { key: 'animagine',    name: 'Animagine XL',    badge: '🌸 Chuyên Anime', desc: 'Chuyên gia số 1 về vẽ Anime, Hoạt Hình 2D.', speed: '~15-20s', color: 'purple', usageNote: 'Dành riêng để vẽ Anime. Nên tả tóc, mắt, trang phục.' },
-  { key: 'realvis',      name: 'RealVis XL',      badge: '📸 Chuyên Ảnh Chụp', desc: 'Chuyên gia số 1 về ảnh người thật, chân dung nhiếp ảnh.', speed: '~15-20s', color: 'emerald', usageNote: 'Dành riêng tạo người thật. Ảnh nét đến từng lỗ chân lông.' },
   { key: 'sdxl',         name: 'Stable Diffusion XL', badge: '🖼️ Đa năng', desc: 'Linh hoạt, hệ sinh thái rộng lớn',     speed: '~15-25s', color: 'emerald', usageNote: 'Dùng qua Hugging Face. Ổn định cho nhiều phong cách.' },
   { key: 'sd-3.5',       name: 'SD 3.5 Large',    badge: '✨ Mới nhất',   desc: 'Thế hệ mới nhất, prompt hiểu tốt hơn',   speed: '~20-35s', color: 'amber', usageNote: 'Dùng qua Hugging Face. Model mạnh mẽ nhất của Stability AI.' },
   { key: 'pollinations', name: 'Pollinations AI', badge: '🎁 Miễn Phí', desc: 'Sử dụng mô hình FLUX siêu đẹp.', speed: '~10s', color: 'emerald', usageNote: 'Hoàn toàn miễn phí 100%. Không giới hạn lượt tạo ảnh / ngày.' },
