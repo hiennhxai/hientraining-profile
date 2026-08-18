@@ -206,5 +206,64 @@ export const coursesData: CourseItem[] = [
         points: ['Xây dựng kịch bản MC chuyên nghiệp', 'Xử lý sự cố sân khấu linh hoạt', 'Kiến thức về tổ chức sự kiện']
       }
     ]
+  },
+  {
+    id: 'xay-dung-website-bang-ai',
+    code: 'CRS.05',
+    title: 'Xây Dựng Website Cá Nhân Bằng AI',
+    subtitle: 'Tự tay thiết kế website chuyên nghiệp mà không cần viết code!',
+    formatOffline: 'Offline 1-1 tại Studio Giảng Viên',
+    formatOnline: 'Online 1:1 qua Google Meet/Zoom',
+    feeNotice: 'Liên hệ tư vấn & báo phí qua SĐT: 0813.13.13.85',
+    duration: 'Linh hoạt theo tốc độ tiếp thu (Dự kiến 16-20 tiếng)',
+    badge: 'Ứng dụng AI & No-Code',
+    bgImage: '/images/covers/thumb_course_5.png',
+    bannerImage: '/images/covers/course_banner_5.png',
+    thumbnailUrl: '/images/covers/thumb_course_5.png',
+    lessons: [
+      {
+        lessonTitle: 'Định Vị Chiến Lược & Xây Dựng Cấu Trúc (Sitemap) Bằng AI',
+        points: [
+          'Hiểu rõ về bản chất Website (Tên miền, Hosting, Hệ quản trị nội dung)',
+          'Định vị rõ ràng mục tiêu: Website cá nhân vs Website doanh nghiệp/bán hàng',
+          'Sử dụng AI (ChatGPT/Claude) để định hướng cấu trúc website (Sitemap), lên sườn nội dung và hệ thống luồng trải nghiệm người dùng (UX)',
+          'Phác thảo toàn bộ tài nguyên cần thiết: Bảng màu, định dạng hình ảnh, văn phong (tone of voice) cho website'
+        ]
+      },
+      {
+        lessonTitle: 'Khởi Tạo Giao Diện & Làm Việc Trực Tiếp Với AI',
+        points: [
+          'Hướng dẫn chọn nền tảng làm web (Kéo-thả hoàn toàn, không cần code) và thiết lập môi trường làm việc',
+          'Dùng AI để tạo lập các đoạn nội dung cơ bản (tiêu đề, tagline, giới thiệu)',
+          'Sử dụng prompt AI để lên ý tưởng bố cục (layout) và hình ảnh minh họa cho trang chủ'
+        ]
+      },
+      {
+        lessonTitle: 'Triển Khai & Tinh Chỉnh Giao Diện Chuyên Sâu',
+        points: [
+          'Hướng dẫn thao tác kéo - thả, tinh chỉnh giao diện chi tiết từng thành phần (Hero Banner, Khóa học, Dịch vụ)',
+          'Cách chỉnh sửa, thay thế nội dung, màu sắc, font chữ để khớp với bộ nhận diện thương hiệu',
+          'Đưa các hình ảnh, video thực tế của cá nhân/doanh nghiệp vào thay thế cho các hình ảnh nháp'
+        ]
+      },
+      {
+        lessonTitle: 'Tối Ưu Cấu Trúc & Các Trang Phụ trợ',
+        points: [
+          'Triển khai thiết kế các trang phụ quan trọng: Trang Giới Thiệu (About), Liên Hệ (Contact), Blog/Tin tức',
+          'Tối ưu hiển thị để website đẹp mắt trên mọi thiết bị (Đặc biệt là Mobile)',
+          'Kết nối các luồng tương tác thực tế: Form đăng ký, nút Zalo, Messenger, liên kết mạng xã hội'
+        ]
+      },
+      {
+        lessonTitle: 'Tối Ưu SEO Bằng AI, Quản Trị & "Go Live"',
+        points: [
+          'Rà soát toàn diện: Kiểm tra lỗi, tối ưu tốc độ tải trang',
+          'Dùng AI để tối ưu hóa công cụ tìm kiếm (SEO) cơ bản: tự động viết Meta Title, Meta Description',
+          'Đăng ký và kết nối Tên Miền (Domain) chính thức cho website',
+          'Hướng dẫn học viên tự quản trị, tự thay đổi nội dung, đăng bài viết mới hoàn toàn chủ động sau khóa học',
+          'Nghiệm thu & Đưa website chính thức hoạt động trên Internet'
+        ]
+      }
+    ]
   }
 ];
