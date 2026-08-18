@@ -31,6 +31,17 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
+    if (lightboxIndex !== null) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [lightboxIndex]);
+
+  useEffect(() => {
     if (trainingImages.length === 0) return;
     const timer = setInterval(() => {
       setCurrentSlideIndex((prev) => (prev + 1) % trainingImages.length);
