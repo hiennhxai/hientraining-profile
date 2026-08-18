@@ -687,7 +687,12 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                           setAiPrompt(prompt);
                         } catch (err: any) {
                           console.error("Gemini Error:", err);
-                          alert("Lỗi khi viết prompt AI: " + (err.message || 'Lỗi không xác định'));
+                          const errMsg = err.message || '';
+                          if (errMsg.includes('429') || errMsg.includes('RESOURCE_EXHAUSTED') || errMsg.includes('quota')) {
+                            alert("⏳ Trợ lý AI đang bị quá tải (vượt quá số lượt miễn phí trong 1 phút). Vui lòng đợi khoảng 10-15 giây rồi bấm thử lại nhé!");
+                          } else {
+                            alert("Lỗi khi viết prompt AI: " + errMsg);
+                          }
                         } finally {
                           setIsGeneratingPrompt(false);
                         }
