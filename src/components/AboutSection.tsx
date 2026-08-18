@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Language } from '../types';
 import { translations } from '../data/translations';
 import { getAdminData } from '../data/adminStore';
@@ -407,10 +408,11 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
       </div>
 
       {/* Fullscreen Lightbox for Training Album */}
-      {lightboxIndex !== null && (
+      {lightboxIndex !== null && createPortal(
         <div 
-          className="fixed inset-0 z-[9999] bg-slate-950/90 backdrop-blur-md flex items-center justify-center animate-fadeIn p-4 sm:p-8"
+          className="fixed inset-0 z-[99999] bg-slate-950/90 backdrop-blur-md flex items-center justify-center animate-fadeIn p-4 sm:p-8"
           onClick={() => setLightboxIndex(null)}
+          style={{ width: '100vw', height: '100vh', top: 0, left: 0 }}
         >
           {/* Header Controls */}
           <div className="absolute top-4 sm:top-6 left-4 sm:left-6 right-4 sm:right-6 flex justify-between items-center z-50 pointer-events-none">
@@ -427,21 +429,21 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
 
           {/* Nav Buttons */}
           <button
-            onClick={prevSlide}
-            className="absolute left-2 sm:left-8 p-2 sm:p-3 bg-white/10 hover:bg-white/25 text-white rounded-full backdrop-blur-md border border-white/20 transition-all z-50 hover:scale-110 shadow-lg cursor-pointer"
+            onClick={(e) => { e.stopPropagation(); prevSlide(); }}
+            className="absolute left-2 sm:left-8 p-2 sm:p-3 bg-white/10 hover:bg-white/25 text-white rounded-full backdrop-blur-md border border-white/20 transition-all z-50 hover:scale-110 shadow-lg cursor-pointer pointer-events-auto"
           >
             <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
           </button>
           <button
-            onClick={nextSlide}
-            className="absolute right-2 sm:right-8 p-2 sm:p-3 bg-white/10 hover:bg-white/25 text-white rounded-full backdrop-blur-md border border-white/20 transition-all z-50 hover:scale-110 shadow-lg cursor-pointer"
+            onClick={(e) => { e.stopPropagation(); nextSlide(); }}
+            className="absolute right-2 sm:right-8 p-2 sm:p-3 bg-white/10 hover:bg-white/25 text-white rounded-full backdrop-blur-md border border-white/20 transition-all z-50 hover:scale-110 shadow-lg cursor-pointer pointer-events-auto"
           >
             <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
           </button>
 
           {/* Main Image Container */}
           <div 
-            className="relative max-w-5xl w-full flex items-center justify-center" 
+            className="relative max-w-5xl w-full h-full flex items-center justify-center" 
             onClick={(e) => e.stopPropagation()}
           >
             <img
@@ -450,7 +452,8 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
               className="max-w-full max-h-[75vh] sm:max-h-[85vh] object-contain rounded-2xl shadow-2xl ring-1 ring-white/10 select-none"
             />
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </section>
   );
