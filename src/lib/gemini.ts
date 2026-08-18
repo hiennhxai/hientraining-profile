@@ -217,8 +217,9 @@ ${content}
  */
 export async function generateImagePromptWithAI(context: string): Promise<string> {
   const prompt = `
-You are an expert AI image prompt engineer. Based on the following article context, write a highly detailed, descriptive, and visually stunning image generation prompt in ENGLISH.
+You are an expert AI image prompt engineer (like for Midjourney or Flux). Based on the following article context, write a highly detailed, descriptive, and visually stunning image generation prompt in ENGLISH.
 The prompt should describe a professional, cinematic, and high-quality image suitable for a blog post thumbnail or hero image.
+CRITICAL INSTRUCTION: You MUST append these exact keywords at the end of your prompt to ensure maximum quality: ", 8k resolution, masterpiece, highly detailed, cinematic lighting, vivid colors, photorealistic, octane render, unreal engine 5, professional studio photography".
 Do NOT include any explanations, just the prompt string itself.
 
 Article Context:
