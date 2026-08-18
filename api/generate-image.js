@@ -21,6 +21,14 @@ const SUPPORTED_MODELS = {
     id: 'stabilityai/stable-diffusion-3.5-large',
     steps: 28,
   },
+  'animagine': {
+    id: 'cagliostrolab/animagine-xl-3.1',
+    steps: 25,
+  },
+  'realvis': {
+    id: 'SG161222/RealVisXL_V4.0',
+    steps: 25,
+  }
 };
 
 export default async function handler(req, res) {

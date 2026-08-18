@@ -9,10 +9,12 @@ import {
 } from 'lucide-react';
 
 // ─── AI MODEL OPTIONS ───
-type AiModelKey = 'flux-schnell' | 'flux-dev' | 'sdxl' | 'sd-3.5' | 'pollinations' | 'cloudflare' | 'segmind' | 'modal-h100' | 'modal-t4';
+type AiModelKey = 'flux-schnell' | 'flux-dev' | 'sdxl' | 'sd-3.5' | 'pollinations' | 'cloudflare' | 'segmind' | 'modal-h100' | 'modal-t4' | 'animagine' | 'realvis';
 
 const AI_MODELS: { key: AiModelKey; name: string; badge: string; desc: string; speed: string; color: string; usageNote: string }[] = [
-  { key: 'flux-dev',     name: 'FLUX.1 Dev',      badge: '💎 Cao Cấp', desc: 'Chất lượng siêu thực, chi tiết sắc nét tuyệt đối.', speed: '~15-30s', color: 'blue', usageNote: 'Model nặng và đẹp nhất hiện tại của hệ sinh thái mã nguồn mở. Chất lượng tương đương Midjourney.' },
+  { key: 'flux-dev',     name: 'FLUX.1 Dev',      badge: '💎 Đỉnh Cao', desc: 'Mô hình đa dụng mạnh nhất, cực kỳ thông minh.', speed: '~15-30s', color: 'blue', usageNote: 'Hiểu mọi yêu cầu phức tạp. Đẹp nhất hiện tại.' },
+  { key: 'animagine',    name: 'Animagine XL',    badge: '🌸 Chuyên Anime', desc: 'Chuyên gia số 1 về vẽ Anime, Hoạt Hình 2D.', speed: '~15-20s', color: 'purple', usageNote: 'Dành riêng để vẽ Anime. Nên tả tóc, mắt, trang phục.' },
+  { key: 'realvis',      name: 'RealVis XL',      badge: '📸 Chuyên Ảnh Chụp', desc: 'Chuyên gia số 1 về ảnh người thật, chân dung nhiếp ảnh.', speed: '~15-20s', color: 'emerald', usageNote: 'Dành riêng tạo người thật. Ảnh nét đến từng lỗ chân lông.' },
   { key: 'sdxl',         name: 'Stable Diffusion XL', badge: '🖼️ Đa năng', desc: 'Linh hoạt, hệ sinh thái rộng lớn',     speed: '~15-25s', color: 'emerald', usageNote: 'Dùng qua Hugging Face. Ổn định cho nhiều phong cách.' },
   { key: 'sd-3.5',       name: 'SD 3.5 Large',    badge: '✨ Mới nhất',   desc: 'Thế hệ mới nhất, prompt hiểu tốt hơn',   speed: '~20-35s', color: 'amber', usageNote: 'Dùng qua Hugging Face. Model mạnh mẽ nhất của Stability AI.' },
   { key: 'pollinations', name: 'Pollinations AI', badge: '🎁 Miễn Phí', desc: 'Sử dụng mô hình FLUX siêu đẹp.', speed: '~10s', color: 'emerald', usageNote: 'Hoàn toàn miễn phí 100%. Không giới hạn lượt tạo ảnh / ngày.' },
