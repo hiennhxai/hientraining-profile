@@ -221,8 +221,16 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
       finalPrompt += ", ultra-realistic photography, 8k resolution, highly detailed, photorealistic, sharp focus, cinematic lighting";
     } else if (selectedStyle === 'cartoon') {
       finalPrompt += ", 3d pixar animation style, disney style, cute, vibrant colors, stylized character design";
+    } else if (selectedStyle === 'anime2d') {
+      finalPrompt += ", 2d anime style, studio ghibli style, flat colors, cel shading, detailed 2d animation, beautifully drawn";
     } else if (selectedStyle === 'simple') {
       finalPrompt += ", simple minimalist design, clean background, minimal details, flat colors";
+    } else if (selectedStyle === 'flatdesign') {
+      finalPrompt += ", flat design style, corporate memphis style, simple geometric shapes, clean minimal background, pastel colors";
+    } else if (selectedStyle === 'lineart') {
+      finalPrompt += ", minimalist line art, simple continuous line, black and white sketch, minimal details, elegant";
+    } else if (selectedStyle === 'watercolor') {
+      finalPrompt += ", watercolor painting style, soft washed colors, beautiful artistic watercolor, gentle brush strokes, aesthetic";
     } else if (selectedStyle === 'vector') {
       finalPrompt += ", flat vector illustration, adobe illustrator style, clean sharp lines, 2d vector art, scalable graphic";
     } else if (selectedStyle === 'illustration') {
@@ -653,8 +661,12 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                 >
                   <option value="none">✨ Mặc định (Tự do nhập lệnh)</option>
                   <option value="photorealistic">📸 Chân thực (Người thật, sắc nét 8k)</option>
-                  <option value="cartoon">🐰 Hoạt hình (3D Pixar, Disney)</option>
+                  <option value="cartoon">🐰 Hoạt hình 3D (Pixar, Disney)</option>
+                  <option value="anime2d">🌸 Hoạt hình 2D (Anime, Studio Ghibli)</option>
                   <option value="simple">⚪ Đơn giản (Tối giản, ít chi tiết)</option>
+                  <option value="flatdesign">📐 Thiết kế phẳng (Flat Design, phong cách app)</option>
+                  <option value="lineart">✏️ Vẽ nét đứt (Line art, phác thảo)</option>
+                  <option value="watercolor">🎨 Màu nước (Mềm mại, nghệ thuật)</option>
                   <option value="vector">✒️ Vector (Hình vẽ phẳng, thiết kế logo/icon)</option>
                   <option value="illustration">🎨 Hoạt họa minh họa (Vẽ tranh kỹ thuật số)</option>
                 </select>
