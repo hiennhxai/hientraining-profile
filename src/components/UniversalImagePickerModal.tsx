@@ -524,7 +524,7 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                 onClick={() => {
                   const encodedPrompt = encodeURIComponent(aiPrompt.trim());
                   const seed = Math.floor(Math.random() * 1000000);
-                  const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=1200&height=630&nologo=true&seed=${seed}`;
+                  const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=1200&height=630&nologo=true&model=flux&seed=${seed}`;
                   setGeneratedAiImageUrl(imageUrl);
                 }}
                 className="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
