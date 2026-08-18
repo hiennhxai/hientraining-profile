@@ -37,15 +37,10 @@ export function FloatingActionButtons({ lang, onToggleLang }: FloatingActionButt
   const [currentFlag, setCurrentFlag] = useState<Language>('vi');
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Initialize flag based on Google Translate cookie
+  // Initialize flag to default Vietnamese
+  // Since we force clear the cookie in index.html, it will always be 'vi' on F5
   useEffect(() => {
-    const checkLang = () => {
-      const isEnglish = document.cookie.includes('googtrans=/vi/en') || document.cookie.includes('googtrans=/auto/en');
-      setCurrentFlag(isEnglish ? 'en' : 'vi');
-    };
-    checkLang();
-    // Re-check after a short delay in case Google Translate auto-initializes and sets the cookie
-    setTimeout(checkLang, 1000);
+    setCurrentFlag('vi');
   }, []);
 
   // Close when clicking outside

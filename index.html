@@ -27,6 +27,11 @@
   <body>
     <!-- Google Translate Widget -->
     <div id="google_translate_element" class="hidden"></div>
+    <script>
+      // Force reset language to Vietnamese on every page reload
+      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=" + window.location.hostname + "; path=/;";
+    </script>
     <script type="text/javascript">
       function googleTranslateElementInit() {
         new google.translate.TranslateElement({
