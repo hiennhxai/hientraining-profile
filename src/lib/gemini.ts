@@ -17,7 +17,7 @@ const getAI = () => {
   return aiInstance;
 };
 
-const DEFAULT_MODEL = 'gemini-3.6-flash';
+const DEFAULT_MODEL = 'gemini-1.5-flash';
 
 /**
  * Helper to generate content with a specific JSON schema

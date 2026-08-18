@@ -22,28 +22,50 @@ export default async function handler(req, res) {
 
     console.log("Generating image for prompt:", prompt);
 
-    // Call Hugging Face API
-    const hfResponse = await fetch('https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell', {
+    // Call Hugging Face API using https module to avoid Vercel Node 18 fetch() ENOTFOUND/fetch failed bugs
+    const https = require('https');
+    
+    const postData = JSON.stringify({ inputs: prompt });
+
+    const options = {
+      hostname: 'api-inference.huggingface.co',
+      port: 443,
+      path: '/models/black-forest-labs/FLUX.1-schnell',
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${hfToken}`,
         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ inputs: prompt }),
+        'Content-Length': Buffer.byteLength(postData)
+      }
+    };
+
+    const hfResponse = await new Promise((resolve, reject) => {
+      const hfReq = https.request(options, (hfRes) => {
+        const chunks = [];
+        hfRes.on('data', (chunk) => chunks.push(chunk));
+        hfRes.on('end', () => {
+          resolve({
+            ok: hfRes.statusCode >= 200 && hfRes.statusCode < 300,
+            status: hfRes.statusCode,
+            headers: hfRes.headers,
+            buffer: Buffer.concat(chunks)
+          });
+        });
+      });
+      
+      hfReq.on('error', (e) => reject(e));
+      hfReq.write(postData);
+      hfReq.end();
     });
 
     if (!hfResponse.ok) {
-      const errorText = await hfResponse.text();
+      const errorText = hfResponse.buffer.toString('utf8');
       console.error("HF Error:", hfResponse.status, errorText);
       return res.status(hfResponse.status).json({ error: 'Hugging Face API error', details: errorText });
     }
 
-    // Get the image buffer
-    const arrayBuffer = await hfResponse.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-
-    // Get the content type from the HF response (usually image/jpeg or image/png)
-    const contentType = hfResponse.headers.get('content-type') || 'image/jpeg';
+    const buffer = hfResponse.buffer;
+    const contentType = hfResponse.headers['content-type'] || 'image/jpeg';
 
     // Return the binary image directly to the client
     res.setHeader('Content-Type', contentType);
