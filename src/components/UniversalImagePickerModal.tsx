@@ -9,9 +9,10 @@ import {
 } from 'lucide-react';
 
 // ─── AI MODEL OPTIONS ───
-type AiModelKey = 'flux-dev' | 'pollinations' | 'cloudflare' | 'animagine' | 'realvis' | 'juggernaut' | 'dreamshaper' | 'openjourney';
+type AiModelKey = 'flux-dev' | 'pollinations' | 'cloudflare' | 'animagine' | 'realvis' | 'juggernaut' | 'dreamshaper' | 'openjourney' | 'modal-h100';
 
 const AI_MODELS: { key: AiModelKey; name: string; badge: string; desc: string; speed: string; color: string; usageNote: string }[] = [
+  { key: 'modal-h100',   name: 'Modal H100 (Cá nhân)', badge: '🚀 Siêu Tốc', desc: 'Máy chủ độc quyền của bạn trên Modal chạy FLUX.1 Dev.', speed: '~20s', color: 'blue', usageNote: 'Tính phí theo Modal. Dành cho nhu cầu sử dụng chuyên sâu.' },
   { key: 'juggernaut',   name: 'Juggernaut XL',   badge: '🔥 Tuyệt Đỉnh', desc: 'Con AI mạnh nhất thế giới về nhiếp ảnh hiện thực.', speed: '~15-20s', color: 'emerald', usageNote: 'Chuyên trị ảnh người thật. Chân thực đến từng sợi tóc, vượt mặt cả Midjourney.' },
   { key: 'dreamshaper',  name: 'DreamShaper XL',  badge: '🎨 Nghệ Thuật', desc: 'AI vĩ đại nhất về Digital Art và điện ảnh 3D.', speed: '~15-20s', color: 'blue', usageNote: 'Cân mọi thể loại từ đời thực đến 3D, với phong cách nghệ thuật siêu đẹp.' },
   { key: 'openjourney',  name: 'OpenJourney',     badge: '🚀 Midjourney', desc: 'Được huấn luyện trực tiếp từ kho ảnh của Midjourney v4.', speed: '~10-15s', color: 'purple', usageNote: 'Chất ảnh ra đậm chất Midjourney. Thích hợp cho sáng tạo vô cực.' },

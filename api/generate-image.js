@@ -92,6 +92,34 @@ export default async function handler(req, res) {
     }
     // ----------------------------------------
 
+    // --- MODAL AI INTEGRATION ---
+    if (modelKey === 'modal-h100') {
+      // Gọi trực tiếp đến Function Serverless trên Modal của bạn
+      // Đã được cấu hình tự động trỏ đến endpoint của bạn
+      const url = `https://hiennhxai--flux-schnell-api-fluxmodelh100-generate.modal.run`;
+      
+      const modalRes = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ prompt: prompt })
+      });
+      
+      if (!modalRes.ok) {
+         const errText = await modalRes.text();
+         throw new Error(`Modal API error: ${modalRes.status} ${errText}`);
+      }
+      
+      const arrayBuffer = await modalRes.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+      
+      res.setHeader('Content-Type', 'image/jpeg');
+      res.setHeader('Cache-Control', 'public, max-age=31536000');
+      return res.status(200).send(buffer);
+    }
+    // ----------------------------------------
+
     // --- SEGMIND PRO MODELS ROUTING (To avoid HF rate limits) ---
     // User requested to use robust, non-rate-limited models
     const segmindModelsMap = {
