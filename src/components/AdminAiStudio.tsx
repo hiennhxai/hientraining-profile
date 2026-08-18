@@ -36,7 +36,7 @@ export const AdminAiStudio: React.FC<AdminAiStudioProps> = ({ onSaveToAlbum }) =
       const response = await fetch('/api/generate-image', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt: genPrompt, model: 'gemini' })
+        body: JSON.stringify({ prompt: genPrompt, model: 'flux-dev' })
       });
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
@@ -191,7 +191,7 @@ export const AdminAiStudio: React.FC<AdminAiStudioProps> = ({ onSaveToAlbum }) =
         </div>
         
         <div className="mt-auto pt-4 text-[10px] text-slate-400 font-medium text-center">
-          Powered by Gemini & Modal
+          Powered by FLUX.1 Dev (Hugging Face)
         </div>
       </div>
 
@@ -201,7 +201,7 @@ export const AdminAiStudio: React.FC<AdminAiStudioProps> = ({ onSaveToAlbum }) =
         {activeTool === 'generate' && (
           <div className="p-5 border-b border-slate-100 bg-slate-50">
             <h3 className="text-sm font-bold text-slate-800 mb-3 flex items-center gap-2">
-              <Cpu className="w-4 h-4 text-indigo-500" /> Tạo Ảnh bằng AI (Google Imagen 3)
+              <Cpu className="w-4 h-4 text-indigo-500" /> Tạo Ảnh AI Siêu Thực (FLUX.1 Dev)
             </h3>
             <textarea
               rows={3}
