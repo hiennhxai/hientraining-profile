@@ -18,10 +18,11 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '', service: 'Khóa học Setup Livestream', note: '' });
-  const [gen, setGen] = useState(getAdminData().general);
+  const [adminData, setAdminData] = useState(getAdminData());
+  const gen = adminData.general;
 
   useEffect(() => {
-    const handleUpdate = () => setGen(getAdminData().general);
+    const handleUpdate = () => setAdminData(getAdminData());
     window.addEventListener('admin_data_updated', handleUpdate);
     window.addEventListener('supabase_realtime_update', handleUpdate);
     return () => {
@@ -238,20 +239,24 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
                     onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white font-medium transition-all"
                   >
-                    <option value="Khóa học Setup Livestream">
-                      {isVi ? 'Khóa 1: Setup Livestream 1-1' : 'Course 1: 1-1 Livestream Studio Setup'}
-                    </option>
-                    <option value="Khóa học Bán hàng Livestream">
-                      {isVi ? 'Khóa 2: Kỹ năng Bán hàng Livestream' : 'Course 2: Livestream Sales & Host Coaching'}
-                    </option>
-                    <option value="Khóa học Lồng tiếng Voice talent">
-                      {isVi ? 'Khóa 3: Lồng tiếng Voice Talent' : 'Course 3: Commercial Voice Talent'}
-                    </option>
-                    <option value="Khóa học MC & Quản trị sự tự tin">
-                      {isVi ? 'Khóa 4: MC & Quản trị sự tự tin' : 'Course 4: TV MC & Stage Confidence'}
-                    </option>
-                    <option value="Tư vấn Setup Studio Doanh Nghiệp">
-                      {isVi ? 'Tư vấn Setup Studio Doanh Nghiệp' : 'Enterprise Studio Consulting & Production'}
+                    <optgroup label={isVi ? "Các Khóa Học" : "Courses"}>
+                      {adminData.courses?.map((course, idx) => (
+                        <option key={`course-${course.id}`} value={course.title}>
+                          {isVi ? `Khóa ${idx + 1}: ${course.title}` : `Course ${idx + 1}: ${course.title}`}
+                        </option>
+                      ))}
+                    </optgroup>
+                    
+                    <optgroup label={isVi ? "Các Dịch Vụ Tư Vấn" : "Consulting Services"}>
+                      {adminData.services?.map((service, idx) => (
+                        <option key={`service-${service.id}`} value={service.title}>
+                          {isVi ? `Dịch vụ: ${service.title}` : `Service: ${service.title}`}
+                        </option>
+                      ))}
+                    </optgroup>
+                    
+                    <option value="Khác">
+                      {isVi ? 'Tư vấn nhu cầu khác (Vui lòng ghi chú)' : 'Other Custom Inquiry'}
                     </option>
                   </select>
                 </div>
