@@ -4,7 +4,11 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { prompt } = req.body;
+    let body = req.body;
+    if (typeof body === 'string') {
+      try { body = JSON.parse(body); } catch (e) {}
+    }
+    const prompt = body?.prompt;
     
     if (!prompt) {
       return res.status(400).json({ error: 'Prompt is required' });
@@ -48,6 +52,6 @@ export default async function handler(req, res) {
     
   } catch (error) {
     console.error("Serverless Function Error:", error);
-    return res.status(500).json({ error: 'Internal server error', details: error.message });
+    return res.status(500).json({ error: 'Server error: ' + error.message, details: error.stack });
   }
 }

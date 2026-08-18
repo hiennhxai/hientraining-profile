@@ -495,9 +495,9 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                         try {
                           const prompt = await generateImagePromptWithAI(aiContext);
                           setAiPrompt(prompt);
-                        } catch (err) {
-                          console.error(err);
-                          alert("Lỗi khi viết prompt AI.");
+                        } catch (err: any) {
+                          console.error("Gemini Error:", err);
+                          alert("Lỗi khi viết prompt AI: " + (err.message || 'Lỗi không xác định'));
                         } finally {
                           setIsGeneratingPrompt(false);
                         }
