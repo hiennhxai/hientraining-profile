@@ -16,6 +16,7 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
   const t = translations[lang];
   const isVi = lang === 'vi';
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '', service: 'Khóa học Setup Livestream', note: '' });
   const [gen, setGen] = useState(getAdminData().general);
 
@@ -33,13 +34,35 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
     if (onEditField) onEditField(key, label, currentVal);
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
+    setIsSubmitting(true);
+    
+    try {
+      const formBody = Object.keys(formData)
+        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent((formData as any)[key]))
+        .join('&');
+
+      await fetch('https://script.google.com/macros/s/AKfycbz6L0gVATSHZP-3ocYhbp2Pavki4P_HoSaAz7RZFn4yYL9vIJejFk51mI4yG3gMK1R1/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formBody,
+      });
+
+      setSubmitted(true);
       setFormData({ name: '', phone: '', service: 'Khóa học Setup Livestream', note: '' });
-    }, 4000);
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+    } catch (error) {
+      console.error('Submit error:', error);
+      alert(isVi ? 'Có lỗi xảy ra khi gửi đăng ký. Xin vui lòng liên hệ hotline.' : 'Error submitting form. Please call our hotline.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -248,10 +271,17 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
 
                 <button
                   type="submit"
-                  className="w-full py-3.5 px-4 rounded-xl font-bold text-sm uppercase tracking-wider text-white bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full py-3.5 px-6 rounded-xl bg-orange-600 hover:bg-orange-700 disabled:bg-slate-400 disabled:cursor-not-allowed text-white font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg active:scale-[0.98]"
                 >
-                  <Send className="w-4 h-4" />
-                  <span>{isVi ? 'Gửi Thông Tin Đăng Ký' : 'Submit Registration'}</span>
+                  {isSubmitting ? (
+                    isVi ? 'Đang gửi...' : 'Sending...'
+                  ) : (
+                    <>
+                      {isVi ? 'GỬI ĐĂNG KÝ NGAY' : 'SEND INQUIRY'}
+                      <Send className="w-4 h-4" />
+                    </>
+                  )}
                 </button>
               </form>
             )}
