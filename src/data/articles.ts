@@ -2536,5 +2536,83 @@ export const articles: Record<string, Article> = {
         }
       ]
     }
+  },
+  "tam-quan-trong-cua-viec-hoc-giong-noi": {
+    "slug": "tam-quan-trong-cua-viec-hoc-giong-noi",
+    "cat": "mc",
+    "date": "2026.08.18",
+    "author": "Xuân Hiển",
+    "initials": "XH",
+    "tags": ["#GiongNoi", "#KynaNgGiaoTiep", "#MC"],
+    "vi": {
+      "title": "Quyền Năng Của Giọng Nói - Tại Sao Giọng Thông Thường Lại Kéo Tụt Sự Nghiệp Của Bạn?",
+      "dek": "Khám phá lý do tại sao một giọng nói được huấn luyện bài bản lại có sức mạnh chốt sale và tạo thiện cảm gấp nhiều lần so với giọng nói thông thường.",
+      "role": "Specialist Trainer & Livestream Producer",
+      "readTime": "Đọc 3 phút",
+      "coverImage": "https://images.unsplash.com/photo-1588680373412-255018683e95?q=80&w=1200&auto=format&fit=crop",
+      "body": [
+        {
+          "t": "p",
+          "c": "Trong giao tiếp, livestream hay thuyết trình, nội dung bạn nói chiếm 7%, ngôn ngữ cơ thể chiếm 55%, nhưng giọng nói chiếm tới 38% khả năng thuyết phục. Nhiều người lầm tưởng rằng 'giọng cha sinh mẹ đẻ sao thì dùng vậy', dẫn đến việc đánh mất vô số cơ hội chỉ vì một chất giọng yếu ớt, đều đều hoặc chói tai."
+        },
+        {
+          "t": "h",
+          "sn": "01",
+          "c": "Giọng thông thường: Rào cản vô hình của sự chuyên nghiệp"
+        },
+        {
+          "t": "p",
+          "c": "Khi bạn sử dụng bản năng để nói, bạn rất dễ rơi vào 3 lỗi chí mạng. Thứ nhất là giọng mũi (Nasal voice) tạo cảm giác the thé và mệt mỏi. Thứ hai là giọng thiếu hơi, yếu ớt truyền tải sự thiếu tự tin. Thứ ba là giọng đều đều (Monotone) biến bài chia sẻ của bạn thành một khúc hát ru gây buồn ngủ."
+        },
+        {
+          "t": "h",
+          "sn": "02",
+          "c": "Sức mạnh của một giọng nói được 'huấn luyện'"
+        },
+        {
+          "t": "p",
+          "c": "Học giọng nói không phải là làm mất đi bản sắc cá nhân, mà là rèn luyện để khai phá tiềm năng tốt nhất của chất giọng bạn đang sở hữu. Học cách thở bụng và cộng hưởng từ lồng ngực giúp giọng bạn vang, ấm và đầy nội lực (Chest Voice). Bạn sẽ biết cách nhấn nhá, ngắt nghỉ đúng lúc để tạo cao trào (Vocal Variety)."
+        },
+        {
+          "t": "quote",
+          "c": "Một giọng nói truyền cảm là chiếc chìa khóa vạn năng mở ra mọi cánh cửa. Đừng để một chất giọng bản năng kìm hãm tài năng thực sự của bạn!"
+        }
+      ]
+    },
+    "en": {
+      "title": "The Power of Voice - Why an Untrained Voice is Holding Your Career Back",
+      "dek": "Discover why a professionally trained voice holds vastly more power in sales and building rapport compared to your everyday speaking voice.",
+      "role": "Specialist Trainer & Livestream Producer",
+      "readTime": "3 min read",
+      "coverImage": "https://images.unsplash.com/photo-1588680373412-255018683e95?q=80&w=1200&auto=format&fit=crop",
+      "body": [
+        {
+          "t": "p",
+          "c": "In communication, livestreaming, or presenting, your words account for 7%, body language 55%, but your voice commands a massive 38% of your persuasive power. Many mistakenly believe they are stuck with the voice they were born with, losing countless opportunities due to a weak, monotone, or shrill voice."
+        },
+        {
+          "t": "h",
+          "sn": "01",
+          "c": "The Everyday Voice: An Invisible Barrier to Professionalism"
+        },
+        {
+          "t": "p",
+          "c": "Relying on your instinctual voice often leads to fatal errors. A nasal voice sounds shrill and exhausts the listener. A breathless, weak voice broadcasts insecurity and strips your words of authority. A monotone voice flattens your message into a sleep-inducing lullaby."
+        },
+        {
+          "t": "h",
+          "sn": "02",
+          "c": "The Power of a 'Trained' Voice"
+        },
+        {
+          "t": "p",
+          "c": "Voice training isn't about losing your identity; it's about unlocking your vocal potential. Learning diaphragmatic breathing and chest resonance creates a warm, powerful chest voice. Mastering vocal variety—knowing exactly when to pause and inflect—allows you to orchestrate the audience's emotions."
+        },
+        {
+          "t": "quote",
+          "c": "An inspiring voice is a master key that opens all doors. Do not let an untrained voice suppress your true potential!"
+        }
+      ]
+    }
   }
 };
