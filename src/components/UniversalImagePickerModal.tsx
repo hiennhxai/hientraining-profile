@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 
 // ─── AI MODEL OPTIONS ───
-type AiModelKey = 'flux-schnell' | 'flux-dev' | 'sdxl' | 'sd-3.5' | 'pollinations' | 'cloudflare' | 'segmind' | 'modal-h100' | 'animagine' | 'realvis' | 'juggernaut' | 'dreamshaper' | 'openjourney';
+type AiModelKey = 'flux-dev' | 'pollinations' | 'cloudflare' | 'animagine' | 'realvis' | 'juggernaut' | 'dreamshaper' | 'openjourney';
 
 const AI_MODELS: { key: AiModelKey; name: string; badge: string; desc: string; speed: string; color: string; usageNote: string }[] = [
   { key: 'juggernaut',   name: 'Juggernaut XL',   badge: '🔥 Tuyệt Đỉnh', desc: 'Con AI mạnh nhất thế giới về nhiếp ảnh hiện thực.', speed: '~15-20s', color: 'emerald', usageNote: 'Chuyên trị ảnh người thật. Chân thực đến từng sợi tóc, vượt mặt cả Midjourney.' },
@@ -18,12 +18,8 @@ const AI_MODELS: { key: AiModelKey; name: string; badge: string; desc: string; s
   { key: 'realvis',      name: 'RealVis XL',      badge: '📸 Nhiếp Ảnh', desc: 'Chuyên gia số 1 về ảnh người thật, chân dung nhiếp ảnh.', speed: '~15-20s', color: 'emerald', usageNote: 'Dành riêng tạo người thật. Ảnh nét đến từng lỗ chân lông.' },
   { key: 'flux-dev',     name: 'FLUX.1 Dev',      badge: '💎 Đỉnh Cao', desc: 'Mô hình đa dụng mạnh nhất, cực kỳ thông minh.', speed: '~15-30s', color: 'blue', usageNote: 'Hiểu mọi yêu cầu phức tạp. Đẹp nhất hiện tại.' },
   { key: 'animagine',    name: 'Animagine XL',    badge: '🌸 Chuyên Anime', desc: 'Chuyên gia số 1 về vẽ Anime, Hoạt Hình 2D.', speed: '~15-20s', color: 'purple', usageNote: 'Dành riêng để vẽ Anime. Nên tả tóc, mắt, trang phục.' },
-  { key: 'sdxl',         name: 'Stable Diffusion XL', badge: '🖼️ Đa năng', desc: 'Linh hoạt, hệ sinh thái rộng lớn',     speed: '~15-25s', color: 'emerald', usageNote: 'Dùng qua Hugging Face. Ổn định cho nhiều phong cách.' },
-  { key: 'sd-3.5',       name: 'SD 3.5 Large',    badge: '✨ Mới nhất',   desc: 'Thế hệ mới nhất, prompt hiểu tốt hơn',   speed: '~20-35s', color: 'amber', usageNote: 'Dùng qua Hugging Face. Model mạnh mẽ nhất của Stability AI.' },
   { key: 'pollinations', name: 'Pollinations AI', badge: '🎁 Miễn Phí', desc: 'Sử dụng mô hình FLUX siêu đẹp.', speed: '~10s', color: 'emerald', usageNote: 'Hoàn toàn miễn phí 100%. Không giới hạn lượt tạo ảnh / ngày.' },
   { key: 'cloudflare',   name: 'Cloudflare AI', badge: '☁️ Tốc Độ', desc: 'Tạo ảnh bằng SDXL trên mạng lưới Cloudflare Edge.', speed: '~15s', color: 'amber', usageNote: 'Miễn phí siêu khủng (hàng ngàn lượt/ngày). Đã cấu hình Token thành công.' },
-  { key: 'segmind',      name: 'Segmind AI', badge: '🧠 Chuyên Gia', desc: 'Model Fast FLUX Schnell tốc độ cao.', speed: '~5s', color: 'purple', usageNote: 'Đã cấu hình API Key thành công. Tặng miễn phí 100 lượt tạo ảnh/ngày.' },
-  { key: 'modal-h100',   name: 'Modal Serverless (H100)', badge: '🚀 Siêu Tốc', desc: 'Máy chủ FLUX Schnell riêng chạy trên H100 (80GB).', speed: '~6s', color: 'blue', usageNote: 'Máy chủ độc quyền của bạn trên Modal. Tốc độ cực nhanh nhưng chi phí cao.' },
 ];
 
 interface UniversalImagePickerModalProps {
