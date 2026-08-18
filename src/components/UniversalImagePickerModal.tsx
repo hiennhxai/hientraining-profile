@@ -41,6 +41,7 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
   const [processingCrop, setProcessingCrop] = useState<boolean>(false);
   const dragStartRef = useRef<{ startX: number; startY: number; initialX: number; initialY: number } | null>(null);
   const previewBoxRef = useRef<HTMLDivElement>(null);
+  const [nativeSize, setNativeSize] = useState<{ w: number; h: number }>({ w: 0, h: 0 });
 
   useEffect(() => {
     if (currentUrl) {
@@ -572,8 +573,17 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                     <img
                       src={cropImageUrl}
                       alt="Crop Viewport"
+                      onLoad={(e) => setNativeSize({ w: e.currentTarget.naturalWidth, h: e.currentTarget.naturalHeight })}
                       style={{
-                        transform: `translate(calc(-50% + ${pan.x}px), calc(-50% + ${pan.y}px)) scale(${zoom})`,
+                        transform: (() => {
+                          let previewScale = 1;
+                          if (nativeSize.w > 0 && nativeSize.h > 0 && previewBoxRef.current) {
+                            const pw = previewBoxRef.current.clientWidth;
+                            const ph = previewBoxRef.current.clientHeight;
+                            previewScale = Math.max(pw / nativeSize.w, ph / nativeSize.h);
+                          }
+                          return `translate(calc(-50% + ${pan.x}px), calc(-50% + ${pan.y}px)) scale(${previewScale * zoom})`;
+                        })(),
                       }}
                       className="absolute top-1/2 left-1/2 max-w-none max-h-none pointer-events-none transition-transform duration-75"
                     />
