@@ -10,8 +10,9 @@ import {
   X, Save, RotateCcw, RotateCw, Download, Upload, Plus, Trash2, Check, Settings, 
   BookOpen, Layers, Video, FileText, User, Image as ImageIcon, Sparkles, 
   ShieldCheck, Headphones, Tv, Mic, Award, Monitor, ExternalLink, ChevronDown, ChevronUp, Share2, FolderGit2,
-  Eye, EyeOff, Smartphone, FolderDown
+  Eye, EyeOff, Smartphone, FolderDown, Wand2, Loader2, ArrowUp, ArrowDown
 } from 'lucide-react';
+import { generateCourseWithAI, generateServiceWithAI, generateArticleWithAI } from '../lib/gemini';
 
 interface AdminPortalModalProps {
   isOpen: boolean;
@@ -23,6 +24,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
   const [data, setData] = useState<FullAdminData>(getAdminData());
   const [activeTab, setActiveTab] = useState<'general' | 'story' | 'courses' | 'resources' | 'services' | 'projects' | 'articles' | 'album' | 'brands'>('general');
   const [toastMsg, setToastMsg] = useState<string | null>(null);
+  const [isAiLoading, setIsAiLoading] = useState(false);
 
   // Article Pop-up Preview State
   const [previewArticle, setPreviewArticle] = useState<Article | null>(null);
@@ -111,6 +113,56 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
           alert("Lỗi đọc file JSON!");
         }
       };
+    }
+  };
+
+  // --- AI GENERATION HANDLERS ---
+  const handleAiCreateCourse = async (prompt: string) => {
+    if (!prompt) return;
+    setIsAiLoading(true);
+    try {
+      const newCourse = await generateCourseWithAI(prompt);
+      setData(prev => ({ ...prev, courses: [...prev.courses, newCourse] }));
+      showNotification("Đã tạo khóa học bằng AI thành công!");
+    } catch (err) {
+      alert("Lỗi AI: " + (err as Error).message);
+    } finally {
+      setIsAiLoading(false);
+    }
+  };
+
+  const handleAiCreateService = async (prompt: string) => {
+    if (!prompt) return;
+    setIsAiLoading(true);
+    try {
+      const newService = await generateServiceWithAI(prompt);
+      setData(prev => ({ ...prev, services: [...prev.services, newService] }));
+      showNotification("Đã tạo dịch vụ bằng AI thành công!");
+    } catch (err) {
+      alert("Lỗi AI: " + (err as Error).message);
+    } finally {
+      setIsAiLoading(false);
+    }
+  };
+
+  const handleAiCreateArticle = async (prompt: string) => {
+    if (!prompt) return;
+    setIsAiLoading(true);
+    try {
+      const newArticle = await generateArticleWithAI(prompt);
+      setData(prev => ({
+        ...prev,
+        articles: {
+          ...prev.articles,
+          [newArticle.slug]: newArticle
+        }
+      }));
+      setEditingArticleSlug(newArticle.slug);
+      showNotification("Đã viết bài bằng AI thành công!");
+    } catch (err) {
+      alert("Lỗi AI: " + (err as Error).message);
+    } finally {
+      setIsAiLoading(false);
     }
   };
 
@@ -1443,14 +1495,38 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                   </h3>
                   <p className="text-xs text-slate-500 font-medium">Bố cục 2 cột song song gọn gàng, ô nhập chữ rộng rãi dễ soạn thảo nội dung</p>
                 </div>
-                <button
-                  type="button"
-                  onClick={handleAddCourse}
-                  className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md cursor-pointer transition-all"
-                >
-                  <Plus className="w-4 h-4" />
-                  <span>+ Thêm Khóa Học Mới</span>
-                </button>
+                <div className="flex gap-2 items-center bg-white p-1.5 rounded-xl shadow-sm border border-slate-200">
+                  <div className="flex items-center gap-2 px-2 border-r border-slate-200">
+                    <Sparkles className="w-4 h-4 text-orange-500" />
+                    <input 
+                      type="text"
+                      placeholder="VD: Khóa học MC 10 buổi..."
+                      id="courseAiPrompt"
+                      className="text-xs w-48 focus:outline-none placeholder:text-slate-400"
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') handleAiCreateCourse((e.target as HTMLInputElement).value);
+                      }}
+                    />
+                    <button
+                      onClick={() => {
+                        const input = document.getElementById('courseAiPrompt') as HTMLInputElement;
+                        handleAiCreateCourse(input.value);
+                      }}
+                      disabled={isAiLoading}
+                      className="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-[10px] uppercase font-bold rounded-lg cursor-pointer flex items-center gap-1 transition-colors disabled:opacity-50"
+                    >
+                      {isAiLoading ? <Loader2 className="w-3 h-3 animate-spin" /> : <span>Tạo AI</span>}
+                    </button>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleAddCourse}
+                    className="px-3 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center gap-1 cursor-pointer transition-colors"
+                  >
+                    <Plus className="w-3 h-3" />
+                    <span>Thêm Mới (Thủ công)</span>
+                  </button>
+                </div>
               </div>
 
               {/* 2-Column Grid for Course Cards */}
@@ -1736,14 +1812,38 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                   </h3>
                   <p className="text-xs text-slate-500 font-medium">Bố cục 2 cột song song gọn gàng, đổi biểu tượng icon, mô tả chi tiết & thẻ từ khóa</p>
                 </div>
-                <button
-                  type="button"
-                  onClick={handleAddService}
-                  className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md cursor-pointer transition-all"
-                >
-                  <Plus className="w-4 h-4" />
-                  <span>+ Thêm Dịch Vụ Mới</span>
-                </button>
+                <div className="flex gap-2 items-center bg-white p-1.5 rounded-xl shadow-sm border border-slate-200">
+                  <div className="flex items-center gap-2 px-2 border-r border-slate-200">
+                    <Sparkles className="w-4 h-4 text-orange-500" />
+                    <input 
+                      type="text"
+                      placeholder="VD: Dịch vụ Livestream TikTok..."
+                      id="serviceAiPrompt"
+                      className="text-xs w-48 focus:outline-none placeholder:text-slate-400"
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') handleAiCreateService((e.target as HTMLInputElement).value);
+                      }}
+                    />
+                    <button
+                      onClick={() => {
+                        const input = document.getElementById('serviceAiPrompt') as HTMLInputElement;
+                        handleAiCreateService(input.value);
+                      }}
+                      disabled={isAiLoading}
+                      className="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-[10px] uppercase font-bold rounded-lg cursor-pointer flex items-center gap-1 transition-colors disabled:opacity-50"
+                    >
+                      {isAiLoading ? <Loader2 className="w-3 h-3 animate-spin" /> : <span>Tạo AI</span>}
+                    </button>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleAddService}
+                    className="px-3 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center gap-1 cursor-pointer transition-colors"
+                  >
+                    <Plus className="w-3 h-3" />
+                    <span>Thêm Mới (Thủ công)</span>
+                  </button>
+                </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -2202,14 +2302,38 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                       </h3>
                       <p className="text-xs text-slate-500 font-medium">Bấm vào bất kỳ bài viết nào để mở Trình Soạn Thảo Block Chuyên Nghiệp</p>
                     </div>
-                    <button
-                      type="button"
-                      onClick={handleAddArticle}
-                      className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md cursor-pointer transition-all"
-                    >
-                      <Plus className="w-4 h-4" />
-                      <span>+ Viết Bài Viết Mới</span>
-                    </button>
+                    <div className="flex gap-2 items-center bg-white p-1.5 rounded-xl shadow-sm border border-slate-200">
+                      <div className="flex items-center gap-2 px-2 border-r border-slate-200">
+                        <Sparkles className="w-4 h-4 text-orange-500" />
+                        <input 
+                          type="text"
+                          placeholder="VD: Kinh nghiệm livestream..."
+                          id="articleAiPrompt"
+                          className="text-xs w-48 focus:outline-none placeholder:text-slate-400"
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') handleAiCreateArticle((e.target as HTMLInputElement).value);
+                          }}
+                        />
+                        <button
+                          onClick={() => {
+                            const input = document.getElementById('articleAiPrompt') as HTMLInputElement;
+                            handleAiCreateArticle(input.value);
+                          }}
+                          disabled={isAiLoading}
+                          className="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-[10px] uppercase font-bold rounded-lg cursor-pointer flex items-center gap-1 transition-colors disabled:opacity-50"
+                        >
+                          {isAiLoading ? <Loader2 className="w-3 h-3 animate-spin" /> : <span>Viết bằng AI</span>}
+                        </button>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={handleAddArticle}
+                        className="px-3 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center gap-1 cursor-pointer transition-colors"
+                      >
+                        <Plus className="w-3 h-3" />
+                        <span>Viết Thủ Công</span>
+                      </button>
+                    </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

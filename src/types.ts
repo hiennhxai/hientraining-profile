@@ -40,7 +40,7 @@ export interface Article {
   readTime?: string;
   category?: string;
   blocks?: any[];
-  en: ArticleTranslation;
+  en?: ArticleTranslation;
   vi: ArticleTranslation;
   isPinned?: boolean;
   order?: number;
