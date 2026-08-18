@@ -1,6 +1,13 @@
-import https from 'https';
-
 export default async function handler(req, res) {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -19,60 +26,37 @@ export default async function handler(req, res) {
     const hfToken = process.env.VITE_HF_TOKEN || process.env.HF_TOKEN;
     
     if (!hfToken) {
-      return res.status(500).json({ error: 'Hugging Face API token is not configured on the server' });
+      return res.status(500).json({ error: 'HF token not configured' });
     }
 
     console.log("Generating image for prompt:", prompt);
 
-    const postData = JSON.stringify({ inputs: prompt });
-
-    const options = {
-      hostname: 'api-inference.huggingface.co',
-      port: 443,
-      path: '/models/black-forest-labs/FLUX.1-schnell',
+    // Use global fetch (available in Vercel Node 18+)
+    const hfResponse = await fetch('https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${hfToken}`,
         'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(postData)
-      }
-    };
-
-    const hfResponse = await new Promise((resolve, reject) => {
-      const hfReq = https.request(options, (hfRes) => {
-        const chunks = [];
-        hfRes.on('data', (chunk) => chunks.push(chunk));
-        hfRes.on('end', () => {
-          resolve({
-            ok: hfRes.statusCode >= 200 && hfRes.statusCode < 300,
-            status: hfRes.statusCode,
-            headers: hfRes.headers,
-            buffer: Buffer.concat(chunks)
-          });
-        });
-      });
-      
-      hfReq.on('error', (e) => reject(e));
-      hfReq.write(postData);
-      hfReq.end();
+      },
+      body: JSON.stringify({ inputs: prompt }),
     });
 
     if (!hfResponse.ok) {
-      const errorText = hfResponse.buffer.toString('utf8');
+      const errorText = await hfResponse.text();
       console.error("HF Error:", hfResponse.status, errorText);
-      return res.status(hfResponse.status).json({ error: 'Hugging Face API error', details: errorText });
+      return res.status(hfResponse.status).json({ error: 'HF API error: ' + hfResponse.status, details: errorText });
     }
 
-    const buffer = hfResponse.buffer;
-    const contentType = hfResponse.headers['content-type'] || 'image/jpeg';
+    const arrayBuffer = await hfResponse.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+    const contentType = hfResponse.headers.get('content-type') || 'image/jpeg';
 
-    // Return the binary image directly to the client
     res.setHeader('Content-Type', contentType);
     res.setHeader('Cache-Control', 'public, max-age=31536000');
     return res.status(200).send(buffer);
     
   } catch (error) {
-    console.error("Serverless Function Error:", error);
-    return res.status(500).json({ error: 'Server error: ' + error.message, details: error.stack });
+    console.error("Serverless error:", error);
+    return res.status(500).json({ error: 'Server error: ' + error.message });
   }
 }
