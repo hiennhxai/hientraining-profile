@@ -1035,6 +1035,86 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                 </div>
               </div>
 
+              {/* About Training Album Manager */}
+              <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+                  <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+                    <Video className="w-4 h-4 text-orange-600" />
+                    <span>Album Hình Đào Tạo (Về Tôi)</span>
+                  </h3>
+                  <button
+                    type="button"
+                    onClick={() => openPicker(
+                      (url) => {
+                        const newImages = [...(data.general.aboutTrainingImages || []), url];
+                        setData({ ...data, general: { ...data.general, aboutTrainingImages: newImages } });
+                      },
+                      'CHỌN ẢNH VÀO ALBUM ĐÀO TẠO'
+                    )}
+                    className="px-3 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-md transition-all"
+                  >
+                    <Plus className="w-3.5 h-3.5" />
+                    <span>Thêm Ảnh</span>
+                  </button>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  {(data.general.aboutTrainingImages || []).map((imgUrl, imgIdx) => (
+                    <div key={imgIdx} className="relative aspect-video rounded-lg overflow-hidden group border border-slate-200 shadow-sm">
+                      <img src={imgUrl} alt={`Training ${imgIdx}`} className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const newImages = [...(data.general.aboutTrainingImages || [])];
+                            if (imgIdx > 0) {
+                              [newImages[imgIdx - 1], newImages[imgIdx]] = [newImages[imgIdx], newImages[imgIdx - 1]];
+                              setData({ ...data, general: { ...data.general, aboutTrainingImages: newImages } });
+                            }
+                          }}
+                          className="p-1.5 rounded-full bg-white/20 hover:bg-white/40 text-white backdrop-blur-sm"
+                          title="Lên"
+                        >
+                          <ArrowUp className="w-4 h-4" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const newImages = [...(data.general.aboutTrainingImages || [])];
+                            if (imgIdx < newImages.length - 1) {
+                              [newImages[imgIdx + 1], newImages[imgIdx]] = [newImages[imgIdx], newImages[imgIdx + 1]];
+                              setData({ ...data, general: { ...data.general, aboutTrainingImages: newImages } });
+                            }
+                          }}
+                          className="p-1.5 rounded-full bg-white/20 hover:bg-white/40 text-white backdrop-blur-sm"
+                          title="Xuống"
+                        >
+                          <ArrowDown className="w-4 h-4" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (window.confirm('Xóa ảnh này khỏi album?')) {
+                              const newImages = [...(data.general.aboutTrainingImages || [])];
+                              newImages.splice(imgIdx, 1);
+                              setData({ ...data, general: { ...data.general, aboutTrainingImages: newImages } });
+                            }
+                          }}
+                          className="p-1.5 rounded-full bg-red-500/80 hover:bg-red-600 text-white backdrop-blur-sm"
+                          title="Xóa"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                  {(data.general.aboutTrainingImages || []).length === 0 && (
+                    <div className="col-span-full py-6 text-center text-slate-400 text-xs font-medium bg-slate-50 rounded-xl border border-dashed border-slate-300">
+                      Chưa có hình ảnh nào trong Album Đào Tạo.
+                    </div>
+                  )}
+                </div>
+              </div>
+
               {/* Stats Bar */}
               <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
                 <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-2">
@@ -1402,14 +1482,56 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                             className="text-sm sm:text-base font-extrabold text-slate-900 bg-transparent border-b border-slate-300 px-2 py-0.5 flex-1 min-w-0"
                           />
                         </div>
-                        <button
-                          type="button"
-                          onClick={() => handleDeleteCourse(course.id)}
-                          className="p-1.5 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 transition-colors cursor-pointer shrink-0"
-                          title="Xóa khóa học này"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
+                        <div className="flex items-center gap-1 shrink-0">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const newCourses = [...data.courses];
+                              newCourses[idx].isPinned = !newCourses[idx].isPinned;
+                              setData({ ...data, courses: newCourses });
+                            }}
+                            className={`p-1.5 rounded-xl transition-colors cursor-pointer ${course.isPinned ? 'bg-orange-100 text-orange-600' : 'bg-slate-50 hover:bg-slate-100 text-slate-400'}`}
+                            title="Ghim lên đầu"
+                          >
+                            <Sparkles className="w-4 h-4" />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const newCourses = [...data.courses];
+                              if (idx > 0) {
+                                [newCourses[idx - 1], newCourses[idx]] = [newCourses[idx], newCourses[idx - 1]];
+                                setData({ ...data, courses: newCourses });
+                              }
+                            }}
+                            className="p-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 transition-colors cursor-pointer"
+                            title="Di chuyển lên"
+                          >
+                            <ChevronUp className="w-4 h-4" />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const newCourses = [...data.courses];
+                              if (idx < newCourses.length - 1) {
+                                [newCourses[idx + 1], newCourses[idx]] = [newCourses[idx], newCourses[idx + 1]];
+                                setData({ ...data, courses: newCourses });
+                              }
+                            }}
+                            className="p-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 transition-colors cursor-pointer"
+                            title="Di chuyển xuống"
+                          >
+                            <ChevronDown className="w-4 h-4" />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleDeleteCourse(course.id)}
+                            className="p-1.5 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 transition-colors cursor-pointer"
+                            title="Xóa khóa học này"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
@@ -1659,14 +1781,56 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                             className="text-sm font-extrabold text-slate-900 bg-transparent border-b border-slate-300 px-2 py-0.5 flex-1 min-w-0"
                           />
                         </div>
-                        <button
-                          type="button"
-                          onClick={() => handleDeleteService(sv.id)}
-                          className="p-1.5 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 transition-colors cursor-pointer shrink-0"
-                          title="Xóa dịch vụ này"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
+                        <div className="flex items-center gap-1 shrink-0">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const newSv = [...data.services];
+                              newSv[sIdx].isPinned = !newSv[sIdx].isPinned;
+                              setData({ ...data, services: newSv });
+                            }}
+                            className={`p-1.5 rounded-xl transition-colors cursor-pointer ${sv.isPinned ? 'bg-orange-100 text-orange-600' : 'bg-slate-50 hover:bg-slate-100 text-slate-400'}`}
+                            title="Ghim lên đầu"
+                          >
+                            <Sparkles className="w-4 h-4" />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const newSv = [...data.services];
+                              if (sIdx > 0) {
+                                [newSv[sIdx - 1], newSv[sIdx]] = [newSv[sIdx], newSv[sIdx - 1]];
+                                setData({ ...data, services: newSv });
+                              }
+                            }}
+                            className="p-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 transition-colors cursor-pointer"
+                            title="Di chuyển lên"
+                          >
+                            <ChevronUp className="w-4 h-4" />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const newSv = [...data.services];
+                              if (sIdx < newSv.length - 1) {
+                                [newSv[sIdx + 1], newSv[sIdx]] = [newSv[sIdx], newSv[sIdx + 1]];
+                                setData({ ...data, services: newSv });
+                              }
+                            }}
+                            className="p-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 transition-colors cursor-pointer"
+                            title="Di chuyển xuống"
+                          >
+                            <ChevronDown className="w-4 h-4" />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleDeleteService(sv.id)}
+                            className="p-1.5 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 transition-colors cursor-pointer"
+                            title="Xóa dịch vụ này"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
                       </div>
 
                       <div>
@@ -2049,7 +2213,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {(Object.entries(data.articles) as [string, Article][]).map(([slug, art]) => (
+                    {(Object.entries(data.articles) as [string, Article][]).map(([slug, art], artIdx) => (
                       <div 
                         key={slug} 
                         className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs hover:border-orange-400 transition-all flex flex-col justify-between space-y-3"
@@ -2090,14 +2254,56 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                               <span>Live Pop-up</span>
                             </button>
                           </div>
-                          <button
-                            type="button"
-                            onClick={() => handleDeleteArticle(slug)}
-                            className="text-slate-400 hover:text-red-600 p-1 cursor-pointer"
-                            title="Xóa bài viết"
-                          >
-                            <Trash2 className="w-4 h-4" />
-                          </button>
+                          <div className="flex items-center gap-1 shrink-0">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const newArticles = { ...data.articles };
+                                newArticles[slug] = { ...art, isPinned: !art.isPinned };
+                                setData({ ...data, articles: newArticles });
+                              }}
+                              className={`p-1.5 rounded-xl transition-colors cursor-pointer ${art.isPinned ? 'bg-orange-100 text-orange-600' : 'bg-slate-50 hover:bg-slate-100 text-slate-400'}`}
+                              title="Ghim lên đầu"
+                            >
+                              <Sparkles className="w-4 h-4" />
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const entries = Object.entries(data.articles);
+                                if (artIdx > 0) {
+                                  [entries[artIdx - 1], entries[artIdx]] = [entries[artIdx], entries[artIdx - 1]];
+                                  setData({ ...data, articles: Object.fromEntries(entries) });
+                                }
+                              }}
+                              className="p-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 transition-colors cursor-pointer"
+                              title="Di chuyển lên"
+                            >
+                              <ChevronUp className="w-4 h-4" />
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const entries = Object.entries(data.articles);
+                                if (artIdx < entries.length - 1) {
+                                  [entries[artIdx + 1], entries[artIdx]] = [entries[artIdx], entries[artIdx + 1]];
+                                  setData({ ...data, articles: Object.fromEntries(entries) });
+                                }
+                              }}
+                              className="p-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 transition-colors cursor-pointer"
+                              title="Di chuyển xuống"
+                            >
+                              <ChevronDown className="w-4 h-4" />
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => handleDeleteArticle(slug)}
+                              className="p-1.5 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 transition-colors cursor-pointer"
+                              title="Xóa bài viết"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -2345,14 +2551,56 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                       <span className="text-xs font-mono font-extrabold text-orange-600 bg-orange-50 px-2.5 py-1 rounded-lg border border-orange-200">
                         MỤC THỨ #{idx + 1} · ID: {res.id}
                       </span>
-                      <button
-                        type="button"
-                        onClick={() => handleDeleteResource(res.id)}
-                        className="text-xs font-bold text-red-600 hover:text-red-700 flex items-center gap-1 cursor-pointer bg-red-50 px-3 py-1 rounded-lg border border-red-200 shadow-2xs"
-                      >
-                        <Trash2 className="w-3.5 h-3.5" />
-                        <span>Xóa Tài Liệu</span>
-                      </button>
+                      <div className="flex items-center gap-1 shrink-0">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const list = [...(data.resources || [])];
+                            list[idx].isPinned = !list[idx].isPinned;
+                            setData({ ...data, resources: list });
+                          }}
+                          className={`p-1.5 rounded-xl transition-colors cursor-pointer ${res.isPinned ? 'bg-orange-100 text-orange-600' : 'bg-slate-50 hover:bg-slate-100 text-slate-400'}`}
+                          title="Ghim lên đầu"
+                        >
+                          <Sparkles className="w-4 h-4" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const list = [...(data.resources || [])];
+                            if (idx > 0) {
+                              [list[idx - 1], list[idx]] = [list[idx], list[idx - 1]];
+                              setData({ ...data, resources: list });
+                            }
+                          }}
+                          className="p-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 transition-colors cursor-pointer"
+                          title="Di chuyển lên"
+                        >
+                          <ChevronUp className="w-4 h-4" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const list = [...(data.resources || [])];
+                            if (idx < list.length - 1) {
+                              [list[idx + 1], list[idx]] = [list[idx], list[idx + 1]];
+                              setData({ ...data, resources: list });
+                            }
+                          }}
+                          className="p-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 transition-colors cursor-pointer"
+                          title="Di chuyển xuống"
+                        >
+                          <ChevronDown className="w-4 h-4" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleDeleteResource(res.id)}
+                          className="p-1.5 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 transition-colors cursor-pointer"
+                          title="Xóa tài liệu"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

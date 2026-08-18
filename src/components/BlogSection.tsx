@@ -88,6 +88,9 @@ export function BlogSection({ lang, onOpenArticle, isEditActive = false, onEditF
 
     // Sort by Date (Newest vs Oldest)
     result.sort((a, b) => {
+      if (a.isPinned && !b.isPinned) return -1;
+      if (!a.isPinned && b.isPinned) return 1;
+
       const dateA = a.date || '2026.01.01';
       const dateB = b.date || '2026.01.01';
       if (sortOrder === 'newest') {

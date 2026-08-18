@@ -42,6 +42,8 @@ export interface Article {
   blocks?: any[];
   en: ArticleTranslation;
   vi: ArticleTranslation;
+  isPinned?: boolean;
+  order?: number;
 }
 
 export interface CourseLesson {
@@ -64,6 +66,8 @@ export interface CourseItem {
   bgImage?: string;
   bannerImage?: string;
   thumbnailUrl?: string;
+  isPinned?: boolean;
+  order?: number;
 }
 
 export interface ProjectCategoryItem {
@@ -98,6 +102,8 @@ export interface ServiceItem {
   tags: string;
   thumbnailUrl?: string;
   galleryPhotos?: string[];
+  isPinned?: boolean;
+  order?: number;
 }
 
 export interface PhotoAlbumItem {
@@ -137,4 +143,6 @@ export interface ResourceItem {
   fileSize?: string;
   tags?: string[];
   accessNote?: string;
+  isPinned?: boolean;
+  order?: number;
 }

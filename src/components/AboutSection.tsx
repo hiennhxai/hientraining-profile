@@ -3,7 +3,7 @@ import { Language } from '../types';
 import { translations } from '../data/translations';
 import { getAdminData } from '../data/adminStore';
 import { EditableWrapper } from './EditableWrapper';
-import { Heart, Users, Mic, Sparkles, Award, History, Tv, Video } from 'lucide-react';
+import { Heart, Users, Mic, Sparkles, Award, History, Tv, Video, ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 interface AboutSectionProps {
   lang: Language;
@@ -25,6 +25,32 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
       window.removeEventListener('supabase_realtime_update', handleUpdate);
     };
   }, []);
+
+  const trainingImages = gen.aboutTrainingImages || [];
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (trainingImages.length === 0) return;
+    const timer = setInterval(() => {
+      setCurrentSlideIndex((prev) => (prev + 1) % trainingImages.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [trainingImages.length]);
+
+  const nextSlide = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    if (lightboxIndex !== null) {
+      setLightboxIndex((prev) => (prev! + 1) % trainingImages.length);
+    }
+  };
+
+  const prevSlide = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    if (lightboxIndex !== null) {
+      setLightboxIndex((prev) => (prev! - 1 + trainingImages.length) % trainingImages.length);
+    }
+  };
 
   const triggerEdit = (key: string, label: string, currentVal: string) => {
     if (onEditField) onEditField(key, label, currentVal);
@@ -130,8 +156,44 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
 
           </div>
 
-          {/* Right Column: TV Host Milestones & Achievements Panel (Right 5 cols) */}
-          <div className="lg:col-span-5 rounded-2xl bg-white border border-slate-200 p-6 sm:p-8 space-y-5 shadow-sm flex flex-col justify-between">
+          {/* Right Column: Training Album (Top) & Achievements Panel (Bottom) */}
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            
+            {/* 16:9 Auto-playing Carousel */}
+            {trainingImages.length > 0 && (
+              <div 
+                className="w-full aspect-video rounded-2xl overflow-hidden bg-black relative group shadow-sm border border-slate-200 cursor-pointer"
+                onClick={() => setLightboxIndex(currentSlideIndex)}
+              >
+                {trainingImages.map((imgUrl, idx) => (
+                  <img
+                    key={idx}
+                    src={imgUrl}
+                    alt={`Training ${idx}`}
+                    className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${idx === currentSlideIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                  />
+                ))}
+                
+                {/* Dots indicator */}
+                <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5 z-20">
+                  {trainingImages.map((_, idx) => (
+                    <div 
+                      key={idx} 
+                      className={`h-1.5 rounded-full transition-all ${idx === currentSlideIndex ? 'w-4 bg-white' : 'w-1.5 bg-white/50'}`}
+                    />
+                  ))}
+                </div>
+
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity z-20 flex items-center justify-center">
+                  <span className="bg-black/60 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                    Xem Album
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {/* TV Host Milestones & Achievements Panel */}
+            <div className="flex-1 rounded-2xl bg-white border border-slate-200 p-6 sm:p-8 space-y-5 shadow-sm flex flex-col justify-between">
             <div>
               <EditableWrapper
                 isEditActive={isEditActive}
@@ -181,6 +243,7 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
                 </p>
               </div>
             </EditableWrapper>
+          </div>
           </div>
         </div>
 
@@ -331,6 +394,45 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
         </div>
 
       </div>
+
+      {/* Fullscreen Lightbox for Training Album */}
+      {lightboxIndex !== null && (
+        <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center animate-fadeIn">
+          {/* Header Controls */}
+          <div className="absolute top-0 left-0 right-0 p-4 flex justify-between items-center z-50 bg-gradient-to-b from-black/80 to-transparent">
+            <span className="text-white font-mono text-xs font-bold bg-white/20 px-3 py-1.5 rounded-full">
+              {lightboxIndex + 1} / {trainingImages.length}
+            </span>
+            <button
+              onClick={() => setLightboxIndex(null)}
+              className="p-2 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-sm transition-all"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Nav Buttons */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-4 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-sm transition-all z-50 hover:scale-110"
+          >
+            <ChevronLeft className="w-8 h-8" />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-sm transition-all z-50 hover:scale-110"
+          >
+            <ChevronRight className="w-8 h-8" />
+          </button>
+
+          {/* Main Image */}
+          <img
+            src={trainingImages[lightboxIndex]}
+            alt="Full screen"
+            className="w-full h-full object-contain"
+          />
+        </div>
+      )}
     </section>
   );
 }

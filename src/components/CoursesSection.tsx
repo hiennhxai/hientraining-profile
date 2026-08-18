@@ -73,7 +73,7 @@ export function CoursesSection({ lang, onOpenCourse, isEditActive = false, onEdi
 
         {/* Dynamic Centered 3-Column Grid */}
         <div className="flex flex-wrap items-stretch justify-center -mx-3">
-          {courses.map((course, idx) => {
+          {[...courses.filter(c => c.isPinned), ...courses.filter(c => !c.isPinned)].map((course, idx) => {
             const thumbUrl = course.thumbnailUrl || defaultThumbnails[idx % defaultThumbnails.length];
 
             return (

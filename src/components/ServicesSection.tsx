@@ -67,7 +67,7 @@ export function ServicesSection({ lang, onOpenService, isEditActive = false, onE
 
         {/* Services Showcase Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-          {services.map((s, idx) => {
+          {[...services.filter(s => s.isPinned), ...services.filter(s => !s.isPinned)].map((s, idx) => {
             const Icon = iconMap[s.iconName] || Headphones;
             const defaultServiceImgs = [
               "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",

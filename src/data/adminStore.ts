@@ -54,6 +54,7 @@ export interface SiteGeneralConfig {
   marqueeDuration?: number;
   messengerLink?: string;
   zaloLink?: string;
+  aboutTrainingImages?: string[];
 }
 
 export const defaultServices: ServiceItem[] = [
@@ -818,6 +819,10 @@ export const defaultAdminData: FullAdminData = {
     fontMono: "IBM Plex Mono",
     fontSizeScale: 100,
     marqueeDuration: 55,
+    aboutTrainingImages: [
+      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1200&auto=format&fit=crop"
+    ],
   },
   courses: coursesData,
   services: defaultServices,
