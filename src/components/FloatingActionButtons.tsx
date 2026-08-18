@@ -61,28 +61,54 @@ export function FloatingActionButtons({ lang, onToggleLang }: FloatingActionButt
     const targetLang = currentFlag === 'en' ? 'vi' : 'en';
     setCurrentFlag(targetLang);
 
-    // Force clear cookies if switching back to Vietnamese
-    if (targetLang === 'vi') {
-      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=${window.location.hostname}; path=/;`;
-    } else {
-      document.cookie = "googtrans=/vi/en; path=/;";
-      document.cookie = `googtrans=/vi/en; domain=${window.location.hostname}; path=/;`;
-    }
+    // Bulletproof Cookie Setter for all possible domain variations
+    const setTranslationCookie = (lang: string) => {
+      const val = lang === 'vi' ? '' : `/vi/${lang}`;
+      const expires = lang === 'vi' ? "Thu, 01 Jan 1970 00:00:00 UTC" : "Thu, 31 Dec 2099 23:59:59 UTC";
+      const hostname = window.location.hostname;
+      const domains = [
+        '', // default
+        `.${hostname}`, // wildcard subdomain
+        hostname // exact hostname
+      ];
+      
+      // Also get root domain (e.g. from xuanhien.vercel.app -> vercel.app, from xuanhien.com -> .xuanhien.com)
+      const parts = hostname.split('.');
+      if (parts.length > 1) {
+        domains.push(`.${parts[parts.length - 2]}.${parts[parts.length - 1]}`);
+      }
+
+      domains.forEach(d => {
+        const domainStr = d ? `; domain=${d}` : '';
+        document.cookie = `googtrans=${val}; expires=${expires}; path=/${domainStr}`;
+      });
+    };
+
+    setTranslationCookie(targetLang);
     
-    // Trigger translate instantly
+    // First attempt: trigger DOM event via legacy HTMLEvents (which Google Translate often expects)
     const selectField = document.querySelector('.goog-te-combo') as HTMLSelectElement;
     if (selectField) {
       selectField.value = targetLang === 'en' ? 'en' : '';
-      let event;
-      if (typeof Event === 'function') {
-        event = new Event('change', { bubbles: true, cancelable: true });
-      } else {
-        event = document.createEvent('HTMLEvents');
+      try {
+        const event = document.createEvent('HTMLEvents');
         event.initEvent('change', true, true);
+        selectField.dispatchEvent(event);
+      } catch (e) {
+        // Fallback to modern event
+        selectField.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
       }
-      selectField.dispatchEvent(event);
     }
+
+    // Second attempt (100% Bulletproof Fallback): if translation did not apply after 600ms, reload the page.
+    // The proper cookies have now been set across all domain variations.
+    setTimeout(() => {
+      const isTranslated = document.documentElement.classList.contains('translated-ltr') || document.documentElement.classList.contains('translated-rtl');
+      if ((targetLang === 'en' && !isTranslated) || (targetLang === 'vi' && isTranslated)) {
+        sessionStorage.setItem('xuanhien_keep_lang', 'true');
+        window.location.reload();
+      }
+    }, 600);
   };
 
   return (

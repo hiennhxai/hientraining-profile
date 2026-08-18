@@ -30,8 +30,16 @@
     <script>
       // Force reset language to Vietnamese on every page reload, UNLESS programmatic
       if (!sessionStorage.getItem('xuanhien_keep_lang')) {
-        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=" + window.location.hostname + "; path=/;";
+        var hostname = window.location.hostname;
+        var domains = ['', '.' + hostname, hostname];
+        var parts = hostname.split('.');
+        if (parts.length > 1) {
+          domains.push('.' + parts[parts.length - 2] + '.' + parts[parts.length - 1]);
+        }
+        domains.forEach(function(d) {
+          var domainStr = d ? '; domain=' + d : '';
+          document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/' + domainStr;
+        });
       }
       // Reset the flag so next manual F5 will clear it
       sessionStorage.removeItem('xuanhien_keep_lang');
