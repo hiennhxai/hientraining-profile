@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 
 // ─── AI MODEL OPTIONS ───
-type AiModelKey = 'flux-schnell' | 'flux-dev' | 'sdxl' | 'sd-3.5' | 'pollinations' | 'cloudflare' | 'segmind' | 'modal-h100' | 'modal-t4' | 'animagine' | 'realvis' | 'juggernaut' | 'dreamshaper' | 'openjourney';
+type AiModelKey = 'flux-schnell' | 'flux-dev' | 'sdxl' | 'sd-3.5' | 'pollinations' | 'cloudflare' | 'segmind' | 'modal-h100' | 'animagine' | 'realvis' | 'juggernaut' | 'dreamshaper' | 'openjourney';
 
 const AI_MODELS: { key: AiModelKey; name: string; badge: string; desc: string; speed: string; color: string; usageNote: string }[] = [
   { key: 'juggernaut',   name: 'Juggernaut XL',   badge: '🔥 Tuyệt Đỉnh', desc: 'Con AI mạnh nhất thế giới về nhiếp ảnh hiện thực.', speed: '~15-20s', color: 'emerald', usageNote: 'Chuyên trị ảnh người thật. Chân thực đến từng sợi tóc, vượt mặt cả Midjourney.' },
@@ -24,7 +24,6 @@ const AI_MODELS: { key: AiModelKey; name: string; badge: string; desc: string; s
   { key: 'cloudflare',   name: 'Cloudflare AI', badge: '☁️ Tốc Độ', desc: 'Tạo ảnh bằng SDXL trên mạng lưới Cloudflare Edge.', speed: '~15s', color: 'amber', usageNote: 'Miễn phí siêu khủng (hàng ngàn lượt/ngày). Đã cấu hình Token thành công.' },
   { key: 'segmind',      name: 'Segmind AI', badge: '🧠 Chuyên Gia', desc: 'Model Fast FLUX Schnell tốc độ cao.', speed: '~5s', color: 'purple', usageNote: 'Đã cấu hình API Key thành công. Tặng miễn phí 100 lượt tạo ảnh/ngày.' },
   { key: 'modal-h100',   name: 'Modal Serverless (H100)', badge: '🚀 Siêu Tốc', desc: 'Máy chủ FLUX Schnell riêng chạy trên H100 (80GB).', speed: '~6s', color: 'blue', usageNote: 'Máy chủ độc quyền của bạn trên Modal. Tốc độ cực nhanh nhưng chi phí cao.' },
-  { key: 'modal-t4',     name: 'Modal Serverless (T4)', badge: '⚙️ Tiêu Chuẩn', desc: 'Máy chủ FLUX Schnell riêng chạy trên T4/A10G.', speed: '~15s', color: 'slate', usageNote: 'Lựa chọn tiết kiệm chi phí hơn nhưng thời gian chờ lâu hơn một chút.' },
 ];
 
 interface UniversalImagePickerModalProps {
