@@ -39,9 +39,13 @@ export function FloatingActionButtons({ lang, onToggleLang }: FloatingActionButt
 
   // Initialize flag based on Google Translate cookie
   useEffect(() => {
-    if (document.cookie.includes('googtrans=/vi/en')) {
-      setCurrentFlag('en');
-    }
+    const checkLang = () => {
+      const isEnglish = document.cookie.includes('googtrans=/vi/en') || document.cookie.includes('googtrans=/auto/en');
+      setCurrentFlag(isEnglish ? 'en' : 'vi');
+    };
+    checkLang();
+    // Re-check after a short delay in case Google Translate auto-initializes and sets the cookie
+    setTimeout(checkLang, 1000);
   }, []);
 
   // Close when clicking outside
@@ -57,21 +61,21 @@ export function FloatingActionButtons({ lang, onToggleLang }: FloatingActionButt
 
   const handleLanguageSwitch = () => {
     const targetLang = currentFlag === 'en' ? 'vi' : 'en';
-    
-    // Toggle internal flag state
     setCurrentFlag(targetLang);
     
-    // Do NOT call onToggleLang() anymore! We want React to ALWAYS stay in Vietnamese!
-    // This stops React from destroying the DOM and lets Google Translate handle 100% of the translations.
-    
     // Trigger Google Translate dropdown in place without reloading!
-    setTimeout(() => {
-      const selectField = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-      if (selectField) {
-        selectField.value = targetLang;
-        selectField.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
-      }
-    }, 50);
+    const selectField = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+    if (selectField) {
+      // In Google Translate, the original language (Vietnamese) is accessed by setting the value to an empty string
+      selectField.value = targetLang === 'en' ? 'en' : '';
+      selectField.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
+    }
+
+    // Force clear cookies if switching back to Vietnamese to ensure it sticks on reload
+    if (targetLang === 'vi') {
+      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=${window.location.hostname}; path=/;`;
+    }
   };
 
   return (
