@@ -19,6 +19,8 @@ export function Navbar({ lang, onToggleLang, isDetecting, activePage, onSelectPa
   const t = translations[lang];
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [gen, setGen] = useState(getAdminData().general);
+  const [scrollY, setScrollY] = useState(0);
+  const [isTranslated, setIsTranslated] = useState(false);
 
   useEffect(() => {
     const handleUpdate = () => setGen(getAdminData().general);
@@ -29,6 +31,25 @@ export function Navbar({ lang, onToggleLang, isDetecting, activePage, onSelectPa
       window.removeEventListener('supabase_realtime_update', handleUpdate);
     };
   }, []);
+
+  // Track scroll position and translation state for dynamic Navbar offset
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Check translation state periodically (since it can change dynamically)
+    const interval = setInterval(() => {
+      const translated = document.documentElement.classList.contains('translated-ltr') || document.documentElement.classList.contains('translated-rtl');
+      if (translated !== isTranslated) {
+        setIsTranslated(translated);
+      }
+    }, 1000);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearInterval(interval);
+    };
+  }, [isTranslated]);
 
   // Prevent scroll when mobile menu is open
   useEffect(() => {
@@ -59,9 +80,15 @@ export function Navbar({ lang, onToggleLang, isDetecting, activePage, onSelectPa
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Calculate dynamic top offset (Google Translate banner is ~40px high)
+  const navbarTop = isTranslated ? Math.max(0, 40 - scrollY) : 0;
+
   return (
     <>
-      <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/95 border-b border-slate-200/80 px-4 md:px-8 py-2.5 shadow-sm">
+      <nav 
+        className="fixed left-0 right-0 z-50 backdrop-blur-md bg-white/95 border-b border-slate-200/80 px-4 md:px-8 py-2.5 shadow-sm transition-all"
+        style={{ top: `${navbarTop}px` }}
+      >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo with clean branding */}
           <button 
