@@ -12,6 +12,26 @@ interface AboutSectionProps {
   onEditField?: (fieldKey: string, fieldLabel: string, currentValue: string) => void;
 }
 
+function getEmbedUrl(url: string) {
+  if (!url) return '';
+  try {
+    if (url.includes('youtube.com/watch')) {
+      const v = new URL(url).searchParams.get('v');
+      return `https://www.youtube.com/embed/${v}`;
+    }
+    if (url.includes('youtu.be/')) {
+      const v = url.split('youtu.be/')[1].split('?')[0];
+      return `https://www.youtube.com/embed/${v}`;
+    }
+    if (url.includes('drive.google.com/file/d/')) {
+      const id = url.split('/file/d/')[1].split('/')[0];
+      return `https://drive.google.com/file/d/${id}/preview`;
+    }
+  } catch (e) {
+    return url;
+  }
+  return url;
+}
 export function AboutSection({ lang, isEditActive = false, onEditField }: AboutSectionProps) {
   const t = translations[lang];
   const isVi = lang === 'vi';
