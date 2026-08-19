@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100">
-    <rect x="10" y="10" width="80" height="80" fill="#005AA9" />
-    <text x="50" y="65" font-family="Arial, sans-serif" font-size="45" font-weight="bold" fill="#FFFFFF" text-anchor="middle">TH</text>
-    <text x="105" y="60" font-family="Arial, sans-serif" font-size="30" fill="#005AA9" text-anchor="start">true</text>
-    <text x="105" y="90" font-family="Arial, sans-serif" font-size="30" font-weight="bold" fill="#005AA9" text-anchor="start">MILK</text>
-  </svg>

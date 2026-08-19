@@ -146,7 +146,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-baoviet',
     name: 'Logo Đối Tác — Tập Đoàn Bảo Việt',
-    url: '/logos/baoviet.svg',
+    url: '/logos/baoviet.png',
     originalSize: 36969,
     compressedSize: 24646,
     width: 200,
@@ -157,7 +157,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-coca-cola',
     name: 'Logo Đối Tác — Coca-Cola Vietnam',
-    url: '/logos/coca-cola.svg',
+    url: '/logos/coca-cola.png',
     originalSize: 8001,
     compressedSize: 5334,
     width: 120,
@@ -168,7 +168,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-dam-ca-mau',
     name: 'Logo Đối Tác — Đạm Cà Mau',
-    url: '/logos/dam-ca-mau.svg',
+    url: '/logos/dam-ca-mau.png',
     originalSize: 17445,
     compressedSize: 11630,
     width: 180,
@@ -201,7 +201,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-dell',
     name: 'Logo Đối Tác — Dell Technology',
-    url: '/logos/dell.svg',
+    url: '/logos/dell.png',
     originalSize: 4895,
     compressedSize: 3263,
     width: 100,
@@ -212,7 +212,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-samsung',
     name: 'Logo Đối Tác — Samsung Group',
-    url: '/logos/samsung.svg',
+    url: '/logos/samsung.png',
     originalSize: 32139,
     compressedSize: 21426,
     width: 200,
@@ -223,7 +223,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-th-true-milk',
     name: 'Logo Đối Tác — TH True Milk',
-    url: '/logos/th-true-milk.svg',
+    url: '/logos/th-true-milk.png',
     originalSize: 29630,
     compressedSize: 19753,
     width: 140,
@@ -234,7 +234,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-scg-trading',
     name: 'Logo Đối Tác — SCG Trading',
-    url: '/logos/scg-trading.svg',
+    url: '/logos/scg-trading.png',
     originalSize: 5330,
     compressedSize: 3553,
     width: 155,
@@ -245,7 +245,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-bitis',
     name: 'Logo Đối Tác — Biti\'s Vietnam',
-    url: '/logos/bitis.svg',
+    url: '/logos/bitis.png',
     originalSize: 26175,
     compressedSize: 17450,
     width: 150,
@@ -256,7 +256,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-unilever',
     name: 'Logo Đối Tác — Unilever Vietnam',
-    url: '/logos/unilever.svg',
+    url: '/logos/unilever.png',
     originalSize: 36221,
     compressedSize: 24147,
     width: 145,
@@ -267,7 +267,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-phong-phu',
     name: 'Logo Đối Tác — Phong Phú Corp',
-    url: '/logos/phong-phu.svg',
+    url: '/logos/phong-phu.png',
     originalSize: 22307,
     compressedSize: 14871,
     width: 140,
@@ -278,7 +278,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-omo',
     name: 'Logo Đối Tác — OMO Vietnam',
-    url: '/logos/omo.svg',
+    url: '/logos/omo.png',
     originalSize: 30582,
     compressedSize: 20388,
     width: 135,
@@ -289,7 +289,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-generali',
     name: 'Logo Đối Tác — Generali Vietnam',
-    url: '/logos/generali.svg',
+    url: '/logos/generali.png',
     originalSize: 24195,
     compressedSize: 16130,
     width: 180,
@@ -377,7 +377,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-fpt',
     name: 'Logo Đối Tác — FPT Corporation',
-    url: '/logos/fpt.svg',
+    url: '/logos/fpt.png',
     originalSize: 14217,
     compressedSize: 9478,
     width: 120,
@@ -388,7 +388,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-htv7',
     name: 'Logo Đối Tác — HTV7 Truyền Hình TP.HCM',
-    url: '/logos/htv7.svg',
+    url: '/logos/htv7.png',
     originalSize: 11960,
     compressedSize: 7973,
     width: 200,
@@ -399,7 +399,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-vtv3',
     name: 'Logo Đối Tác — VTV3 Đài Truyền Hình Việt Nam',
-    url: '/logos/vtv3.svg',
+    url: '/logos/vtv3.png',
     originalSize: 10565,
     compressedSize: 7043,
     width: 165,
@@ -432,7 +432,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-htv9',
     name: 'Logo Đối Tác — HTV9 Truyền Hình TP.HCM',
-    url: '/logos/htv9.svg',
+    url: '/logos/htv9.png',
     originalSize: 11066,
     compressedSize: 7377,
     width: 200,
@@ -454,7 +454,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-toan-canh-24h',
     name: 'Logo Đối Tác — Toàn Cảnh 24h VTV9',
-    url: '/logos/toan-canh-24h.svg',
+    url: '/logos/toan-canh-24h.png',
     originalSize: 49250,
     compressedSize: 32833,
     width: 190,
@@ -465,7 +465,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-thoi-su-drt1',
     name: 'Logo Đối Tác — Thời Sự DRT1 Đà Nẵng',
-    url: '/logos/thoi-su-drt1.svg',
+    url: '/logos/thoi-su-drt1.png',
     originalSize: 108180,
     compressedSize: 72120,
     width: 235,
@@ -476,7 +476,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-tuoi-tre-online',
     name: 'Logo Đối Tác — Báo Tuổi Trẻ Online',
-    url: '/logos/tuoi-tre-online.svg',
+    url: '/logos/tuoi-tre-online.png',
     originalSize: 21570,
     compressedSize: 14380,
     width: 315,
@@ -487,7 +487,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-tieng-cuoi-sinh-vien',
     name: 'Logo Đối Tác — Tiếng Cười Sinh Viên HTV7',
-    url: '/logos/tieng-cuoi-sinh-vien.svg',
+    url: '/logos/tieng-cuoi-sinh-vien.png',
     originalSize: 76583,
     compressedSize: 51055,
     width: 190,
@@ -498,7 +498,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-tin-nhanh-18h',
     name: 'Logo Đối Tác — Tin Nhanh 18h Kiên Giang',
-    url: '/logos/tin-nhanh-18h.svg',
+    url: '/logos/tin-nhanh-18h.png',
     originalSize: 119291,
     compressedSize: 79527,
     width: 240,
@@ -542,7 +542,7 @@ export const defaultPhotoAlbum: PhotoAlbumItem[] = [
   {
     id: 'album-chuyen-trua-12g',
     name: 'Logo Đối Tác — Chuyện Trưa 12h HTV7/HTV9',
-    url: '/logos/chuyen-trua-12g.svg',
+    url: '/logos/chuyen-trua-12g.png',
     originalSize: 75831,
     compressedSize: 50554,
     width: 195,
