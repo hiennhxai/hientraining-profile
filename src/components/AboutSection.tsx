@@ -4,7 +4,7 @@ import { Language } from '../types';
 import { translations } from '../data/translations';
 import { getAdminData } from '../data/adminStore';
 import { EditableWrapper } from './EditableWrapper';
-import { Heart, Users, Mic, Sparkles, Award, History, Tv, Video, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { Heart, Users, Mic, Sparkles, Award, History, Tv, Video, ChevronLeft, ChevronRight, X, Play } from 'lucide-react';
 
 interface AboutSectionProps {
   lang: Language;
@@ -28,6 +28,9 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
   }, []);
 
   const trainingImages = gen.aboutTrainingImages || [];
+  const trainingVideos = gen.aboutTrainingVideos || [];
+  const [currentVideoSlideIndex, setCurrentVideoSlideIndex] = useState(0);
+  const [videoLightboxIndex, setVideoLightboxIndex] = useState<number | null>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
@@ -49,6 +52,14 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
     }, 3000);
     return () => clearInterval(timer);
   }, [trainingImages.length]);
+
+  useEffect(() => {
+    if (trainingVideos.length === 0) return;
+    const timer = setInterval(() => {
+      setCurrentVideoSlideIndex((prev) => (prev + 1) % trainingVideos.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [trainingVideos.length]);
 
   const nextSlide = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
@@ -204,6 +215,48 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
               </div>
             )}
 
+
+            {/* 16:9 Auto-playing Video Carousel */}
+            {trainingVideos.length > 0 && (
+              <div 
+                className="w-full aspect-video rounded-2xl overflow-hidden bg-black relative group shadow-sm border border-slate-200 cursor-pointer"
+                onClick={() => setVideoLightboxIndex(currentVideoSlideIndex)}
+              >
+                {trainingVideos.map((videoUrl, idx) => (
+                  <div
+                    key={idx}
+                    className={`absolute inset-0 w-full h-full transition-opacity duration-500 ${idx === currentVideoSlideIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                  >
+                    {/* Render iframe with pointer-events-none so it doesn't intercept clicks in carousel mode */}
+                    <iframe
+                      src={getEmbedUrl(videoUrl)}
+                      className="w-full h-full pointer-events-none"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                ))}
+                
+                {/* Dots indicator */}
+                <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5 z-20">
+                  {trainingVideos.map((_, idx) => (
+                    <div 
+                      key={idx} 
+                      className={`h-1.5 rounded-full transition-all ${idx === currentVideoSlideIndex ? 'w-4 bg-orange-500' : 'w-1.5 bg-white/70'}`}
+                    />
+                  ))}
+                </div>
+
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity z-20 flex items-center justify-center">
+                  <span className="bg-black/60 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+                    <Play className="w-3 h-3" />
+                    Xem Video
+                  </span>
+                </div>
+              </div>
+            )}
+
             {/* TV Host Milestones & Achievements Panel */}
             <div className="rounded-2xl bg-white border border-slate-200 p-5 sm:p-6 space-y-4 shadow-sm flex flex-col">
             <div>
@@ -220,26 +273,40 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
                 </h3>
               </EditableWrapper>
 
-              <div className="space-y-3 text-xs sm:text-sm font-sans text-slate-700">
-                <div className="flex justify-between items-start border-b border-slate-50 pb-2">
-                  <span className="text-orange-600 font-bold shrink-0">2012</span>
-                  <span className="text-right text-slate-800 font-medium ml-4">{t.a_m1_desc}</span>
-                </div>
-                <div className="flex justify-between items-start border-b border-slate-50 pb-2">
-                  <span className="text-orange-600 font-bold shrink-0">2014</span>
-                  <span className="text-right text-slate-800 font-medium ml-4">{t.a_m2_desc}</span>
-                </div>
-                <div className="flex justify-between items-start border-b border-slate-50 pb-2">
-                  <span className="text-amber-600 font-extrabold shrink-0">2017</span>
-                  <span className="text-right text-orange-700 font-extrabold ml-4">{t.a_m3_desc}</span>
-                </div>
-                <div className="flex justify-between items-start border-b border-slate-50 pb-2">
-                  <span className="text-orange-600 font-bold shrink-0">2017</span>
-                  <span className="text-right text-slate-800 font-medium ml-4">{t.a_m4_desc}</span>
-                </div>
-                <div className="flex justify-between items-start border-b border-slate-50 pb-2">
-                  <span className="text-red-600 font-bold shrink-0">2016 – 2026</span>
-                  <span className="text-right text-slate-800 font-medium ml-4">{t.a_m5_desc}</span>
+              <div className="relative overflow-hidden w-full group/achievements py-2 bg-slate-50/50 rounded-xl border border-slate-100">
+                <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-12 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+                <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+                
+                <div className="animate-marquee inline-flex items-center gap-8 group-hover/achievements:[animation-play-state:paused] pr-8 text-xs sm:text-sm font-sans text-slate-700 whitespace-nowrap">
+                  {[...Array(2)].map((_, i) => (
+                    <React.Fragment key={i}>
+                      <div className="inline-flex items-center gap-2">
+                        <span className="text-orange-600 font-bold px-2 py-0.5 bg-orange-100 rounded-md">2012</span>
+                        <span className="text-slate-800 font-medium">{t.a_m1_desc}</span>
+                      </div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-slate-200" />
+                      <div className="inline-flex items-center gap-2">
+                        <span className="text-orange-600 font-bold px-2 py-0.5 bg-orange-100 rounded-md">2014</span>
+                        <span className="text-slate-800 font-medium">{t.a_m2_desc}</span>
+                      </div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-slate-200" />
+                      <div className="inline-flex items-center gap-2">
+                        <span className="text-amber-600 font-extrabold px-2 py-0.5 bg-amber-100 rounded-md">2017</span>
+                        <span className="text-orange-700 font-extrabold">{t.a_m3_desc}</span>
+                      </div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-slate-200" />
+                      <div className="inline-flex items-center gap-2">
+                        <span className="text-orange-600 font-bold px-2 py-0.5 bg-orange-100 rounded-md">2017</span>
+                        <span className="text-slate-800 font-medium">{t.a_m4_desc}</span>
+                      </div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-slate-200" />
+                      <div className="inline-flex items-center gap-2">
+                        <span className="text-red-600 font-bold px-2 py-0.5 bg-red-100 rounded-md">2016 – 2026</span>
+                        <span className="text-slate-800 font-medium">{t.a_m5_desc}</span>
+                      </div>
+                      {i === 0 && <div className="w-1.5 h-1.5 rounded-full bg-slate-200" />}
+                    </React.Fragment>
+                  ))}
                 </div>
               </div>
             </div>
@@ -451,6 +518,57 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
               alt="Training Gallery"
               className="max-w-full max-h-[75vh] sm:max-h-[85vh] object-contain rounded-2xl shadow-2xl ring-1 ring-white/10 select-none"
             />
+          </div>
+        </div>,
+        document.body
+      )}
+
+      {/* Fullscreen Lightbox for Training Videos */}
+      {videoLightboxIndex !== null && createPortal(
+        <div 
+          className="fixed inset-0 z-[99999] bg-slate-950/95 backdrop-blur-xl flex items-center justify-center animate-fadeIn p-4 sm:p-8"
+          onClick={() => setVideoLightboxIndex(null)}
+          style={{ width: '100vw', height: '100vh', top: 0, left: 0 }}
+        >
+          {/* Header Controls */}
+          <div className="absolute top-4 sm:top-6 left-4 sm:left-6 right-4 sm:right-6 flex justify-between items-center z-50 pointer-events-none">
+            <span className="text-white font-mono text-xs font-bold bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full shadow-lg pointer-events-auto">
+              Video {videoLightboxIndex + 1} / {trainingVideos.length}
+            </span>
+            <button
+              onClick={(e) => { e.stopPropagation(); setVideoLightboxIndex(null); }}
+              className="p-2.5 bg-white/10 hover:bg-white/25 text-white rounded-full backdrop-blur-md border border-white/20 transition-all shadow-lg pointer-events-auto hover:scale-105 cursor-pointer"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Nav Buttons */}
+          <button
+            onClick={(e) => { e.stopPropagation(); prevVideoSlide(); }}
+            className="absolute left-2 sm:left-8 p-2 sm:p-3 bg-white/10 hover:bg-white/25 text-white rounded-full backdrop-blur-md border border-white/20 transition-all z-50 hover:scale-110 shadow-lg cursor-pointer pointer-events-auto"
+          >
+            <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
+          </button>
+          <button
+            onClick={(e) => { e.stopPropagation(); nextVideoSlide(); }}
+            className="absolute right-2 sm:right-8 p-2 sm:p-3 bg-white/10 hover:bg-white/25 text-white rounded-full backdrop-blur-md border border-white/20 transition-all z-50 hover:scale-110 shadow-lg cursor-pointer pointer-events-auto"
+          >
+            <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
+          </button>
+
+          {/* Main Video Container */}
+          <div 
+            className="relative w-full max-w-6xl aspect-video flex items-center justify-center rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10" 
+            onClick={(e) => e.stopPropagation()}
+          >
+            <iframe
+              src={getEmbedUrl(trainingVideos[videoLightboxIndex])}
+              className="w-full h-full"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
           </div>
         </div>,
         document.body

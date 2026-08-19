@@ -1192,6 +1192,86 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                 </div>
               </div>
 
+              {/* About Training Videos Manager */}
+              <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
+                <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+                  <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+                    <Video className="w-4 h-4 text-orange-600" />
+                    <span>Album Video Đào Tạo</span>
+                  </h3>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const url = window.prompt('Nhập link video (YouTube hoặc Google Drive):');
+                      if (url) {
+                        const newVideos = [...(data.general.aboutTrainingVideos || []), url];
+                        setData({ ...data, general: { ...data.general, aboutTrainingVideos: newVideos } });
+                      }
+                    }}
+                    className="px-3 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-md transition-all"
+                  >
+                    <Plus className="w-3.5 h-3.5" />
+                    <span>Thêm Video</span>
+                  </button>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  {(data.general.aboutTrainingVideos || []).map((videoUrl, vIdx) => (
+                    <div key={vIdx} className="relative aspect-video rounded-lg overflow-hidden group border border-slate-200 shadow-sm bg-slate-100 flex items-center justify-center p-2 text-center text-xs break-all">
+                      <span className="text-slate-500 line-clamp-2">{videoUrl}</span>
+                      <div className="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const newVideos = [...(data.general.aboutTrainingVideos || [])];
+                            if (vIdx > 0) {
+                              [newVideos[vIdx - 1], newVideos[vIdx]] = [newVideos[vIdx], newVideos[vIdx - 1]];
+                              setData({ ...data, general: { ...data.general, aboutTrainingVideos: newVideos } });
+                            }
+                          }}
+                          className="p-1.5 rounded-full bg-white/20 hover:bg-white/40 text-white backdrop-blur-sm"
+                          title="Lên"
+                        >
+                          <ArrowUp className="w-4 h-4" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const newVideos = [...(data.general.aboutTrainingVideos || [])];
+                            if (vIdx < newVideos.length - 1) {
+                              [newVideos[vIdx + 1], newVideos[vIdx]] = [newVideos[vIdx], newVideos[vIdx + 1]];
+                              setData({ ...data, general: { ...data.general, aboutTrainingVideos: newVideos } });
+                            }
+                          }}
+                          className="p-1.5 rounded-full bg-white/20 hover:bg-white/40 text-white backdrop-blur-sm"
+                          title="Xuống"
+                        >
+                          <ArrowDown className="w-4 h-4" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (window.confirm('Xóa video này khỏi album?')) {
+                              const newVideos = [...(data.general.aboutTrainingVideos || [])];
+                              newVideos.splice(vIdx, 1);
+                              setData({ ...data, general: { ...data.general, aboutTrainingVideos: newVideos } });
+                            }
+                          }}
+                          className="p-1.5 rounded-full bg-red-500/80 hover:bg-red-600 text-white backdrop-blur-sm"
+                          title="Xóa"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                  {(data.general.aboutTrainingVideos || []).length === 0 && (
+                    <div className="col-span-full py-6 text-center text-slate-400 text-xs font-medium bg-slate-50 rounded-xl border border-dashed border-slate-300">
+                      Chưa có video nào trong Album Đào Tạo.
+                    </div>
+                  )}
+                </div>
+              </div>
+
               {/* Stats Bar */}
               <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
                 <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-2">

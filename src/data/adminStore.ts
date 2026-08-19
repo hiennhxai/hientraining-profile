@@ -55,6 +55,7 @@ export interface SiteGeneralConfig {
   messengerLink?: string;
   zaloLink?: string;
   aboutTrainingImages?: string[];
+  aboutTrainingVideos?: string[];
 }
 
 export const defaultServices: ServiceItem[] = [
@@ -64,7 +65,15 @@ export const defaultServices: ServiceItem[] = [
     title: 'Tư Vấn & Setup Studio Livestream',
     description: 'Tư vấn cấu hình máy tính, góc máy camera 4K, sơ đồ 3 đèn studio và hệ thống âm thanh chống nhiễu.',
     tags: 'Góc Máy 4K · Setup Ánh Sáng 3 Điểm · Soundcard Soundcraft · Cấu Hình PC',
-    thumbnailUrl: '/images/covers/thumb_service_1.png'
+    thumbnailUrl: '/images/covers/thumb_service_1.png',
+    aboutTrainingImages: [
+      "/images/covers/thumb_service_1.png",
+      "/images/covers/thumb_service_2.png",
+      "/images/covers/thumb_service_3.png",
+      "/images/covers/thumb_service_4.png",
+      "/images/covers/thumb_course_4.png"
+    ],
+    aboutTrainingVideos: []
   },
   {
     id: 'sv-2',

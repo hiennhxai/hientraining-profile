@@ -235,6 +235,15 @@ nav {
   animation-play-state: paused;
 }
 
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeRightToLeft 28s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
 .reveal-init {
   opacity: 0;
   transform: translateY(28px) scale(0.985);
