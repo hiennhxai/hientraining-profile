@@ -88,6 +88,23 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
     filter: 'normal'
   });
 
+  // Drag-to-select refs
+  const isDragSelectingRef = useRef(false);
+  const selectionModeRef = useRef<'select' | 'deselect'>('select');
+  const hasDraggedRef = useRef(false);
+  const dragStartPosRef = useRef({ x: 0, y: 0 });
+
+  React.useEffect(() => {
+    const handleMouseUp = () => {
+      isDragSelectingRef.current = false;
+      setTimeout(() => {
+        hasDraggedRef.current = false;
+      }, 50);
+    };
+    window.addEventListener('mouseup', handleMouseUp);
+    return () => window.removeEventListener('mouseup', handleMouseUp);
+  }, []);
+
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const formatBytes = (bytes: number) => {
@@ -223,10 +240,38 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
   };
 
   // Multi-select handlers
-  const toggleSelectPhoto = (id: string) => {
-    setSelectedPhotoIds(prev => 
-      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
-    );
+  const toggleSelectPhoto = (id: string, forceMode?: 'select' | 'deselect', isShiftKey?: boolean, filteredPhotos?: PhotoAlbumItem[]) => {
+    setSelectedPhotoIds(prev => {
+      let isSelected = prev.includes(id);
+      let newSelection = [...prev];
+
+      if (isShiftKey && lastSelectedId && filteredPhotos) {
+        const currentIndex = filteredPhotos.findIndex(p => p.id === id);
+        const lastIndex = filteredPhotos.findIndex(p => p.id === lastSelectedId);
+        
+        if (currentIndex !== -1 && lastIndex !== -1) {
+          const start = Math.min(currentIndex, lastIndex);
+          const end = Math.max(currentIndex, lastIndex);
+          const rangeIds = filteredPhotos.slice(start, end + 1).map(p => p.id);
+          
+          if (!isSelected) {
+            // Add all in range
+            const uniqueToAdd = rangeIds.filter(rangeId => !prev.includes(rangeId));
+            newSelection = [...prev, ...uniqueToAdd];
+          } else {
+            // Remove all in range
+            newSelection = prev.filter(item => !rangeIds.includes(item));
+          }
+        }
+      } else {
+        if (forceMode === 'select' && !isSelected) newSelection = [...prev, id];
+        else if (forceMode === 'deselect' && isSelected) newSelection = prev.filter(item => item !== id);
+        else if (!forceMode) newSelection = isSelected ? prev.filter(item => item !== id) : [...prev, id];
+      }
+
+      setLastSelectedId(id);
+      return newSelection;
+    });
   };
 
   const toggleSelectAll = (filteredPhotos: PhotoAlbumItem[]) => {
@@ -419,7 +464,11 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
         >
           <div className="flex items-center gap-2 text-xs font-bold text-slate-700">
             <Upload className="w-4 h-4 text-orange-600" />
-            <span>Kéo thả nhiều file ảnh vào đây hoặc nhấp để chọn ảnh từ máy tính</span>
+            <span>
+              {activeFolder !== 'Tất cả' 
+                ? `Kéo thả ảnh vào thư mục "${activeFolder}" hoặc nhấp chọn ảnh` 
+                : 'Kéo thả ảnh vào đây hoặc nhấp để chọn ảnh từ máy tính'}
+            </span>
           </div>
           <span className="text-[11px] text-slate-400 font-medium">Hỗ trợ PNG, JPG, WEBP (Tự động nén chuẩn Studio 85% tiết kiệm dung lượng)</span>
         </div>
@@ -612,17 +661,65 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
                 }`}
               >
                 {/* Image Aspect Box */}
-                <div className="relative aspect-video bg-slate-900 overflow-hidden cursor-pointer">
+                <div 
+                  className="relative aspect-video bg-slate-900 overflow-hidden cursor-pointer select-none"
+                  onMouseDown={(e) => {
+                    if (e.button !== 0) return;
+                    e.preventDefault(); 
+                    isDragSelectingRef.current = true;
+                    hasDraggedRef.current = false;
+                    dragStartPosRef.current = { x: e.clientX, y: e.clientY };
+                  }}
+                  onMouseMove={(e) => {
+                    if (isDragSelectingRef.current && !hasDraggedRef.current) {
+                      const dx = Math.abs(e.clientX - dragStartPosRef.current.x);
+                      const dy = Math.abs(e.clientY - dragStartPosRef.current.y);
+                      if (dx > 5 || dy > 5) {
+                        hasDraggedRef.current = true;
+                        selectionModeRef.current = isSelected ? 'deselect' : 'select';
+                        toggleSelectPhoto(photo.id, selectionModeRef.current, false);
+                      }
+                    }
+                  }}
+                  onMouseEnter={() => {
+                    if (isDragSelectingRef.current) {
+                      hasDraggedRef.current = true;
+                      toggleSelectPhoto(photo.id, selectionModeRef.current, false);
+                    }
+                  }}
+                >
                   <img
                     src={photo.url}
                     alt={photo.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    onClick={() => setLightboxPhoto(photo)}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none select-none"
+                    onDragStart={(e) => e.preventDefault()}
+                  />
+                  
+                  {/* Click Overlay (solves mouseenter issues on images) */}
+                  <div 
+                    className="absolute inset-0 z-0"
+                    onClick={(e) => {
+                      if (hasDraggedRef.current) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return;
+                      }
+                      setLightboxPhoto(photo);
+                    }}
                   />
 
                   {/* Multi-Select Checkbox Overlay */}
                   <div 
-                    onClick={(e) => { e.stopPropagation(); toggleSelectPhoto(photo.id); }}
+                    onMouseDown={(e) => {
+                      if (e.button !== 0) return;
+                      e.stopPropagation();
+                      e.preventDefault();
+                      isDragSelectingRef.current = true;
+                      hasDraggedRef.current = false;
+                      selectionModeRef.current = isSelected ? 'deselect' : 'select';
+                      toggleSelectPhoto(photo.id, selectionModeRef.current, e.shiftKey, filteredPhotos);
+                    }}
+                    onClick={(e) => { e.stopPropagation(); }}
                     className="absolute top-2 left-2 z-10 p-1 rounded-lg bg-slate-900/60 backdrop-blur-xs cursor-pointer hover:bg-orange-600 transition-colors"
                   >
                     {isSelected ? (

@@ -69,7 +69,20 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
   const [activeTab, setActiveTab] = useState<'album' | 'upload' | 'url' | 'crop' | 'ai'>(defaultTab || 'album');
   const [inputUrl, setInputUrl] = useState<string>(currentUrl);
   const [uploading, setUploading] = useState<boolean>(false);
+  const [uploadFolder, setUploadFolder] = useState<string>('Kho Chung');
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Compute unique folders from photos
+  const FOLDER_OPTIONS = Array.from(new Set([
+    'Kho Chung', 
+    'Thương Hiệu & Logo', 
+    'Khóa Học 1-1', 
+    'Studio & Showroom', 
+    'Chân Dung MC', 
+    'Dịch Vụ & Sự Kiện', 
+    'Ảnh AI (Tạo Tự Động)', 
+    ...photos.map(p => p.folder || 'Kho Chung')
+  ])).filter(f => f !== 'Tất cả');
 
   // ─── AI IMAGE GENERATION STATE ───
   const [aiPrompt, setAiPrompt] = useState<string>('');
@@ -131,7 +144,7 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
           height: result.height,
           createdAt: new Date().toISOString().slice(0, 10),
           caption: file.name.replace(/\.[^/.]+$/, ""),
-          folder: 'Kho Chung'
+          folder: uploadFolder
         };
 
         newPhotos.unshift(photoItem);
@@ -508,6 +521,7 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
             <div className="p-8 border-2 border-dashed border-orange-300 rounded-2xl bg-orange-50/50 text-center space-y-4">
               <input
                 type="file"
+                multiple
                 ref={fileInputRef}
                 accept="image/*"
                 onChange={handleFileUpload}
@@ -524,6 +538,20 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                 <p className="text-xs text-slate-600 max-w-md mx-auto mt-1 leading-relaxed">
                   Sau khi tải lên, hệ thống sẽ mở công cụ <strong>Căn Khung & Zoom/Kéo Vị Trí</strong> giúp bạn tinh chỉnh khung hình đại diện hoàn hảo nhất.
                 </p>
+              </div>
+
+              {/* Folder Selector */}
+              <div className="max-w-xs mx-auto text-left">
+                <label className="block text-xs font-bold text-slate-700 mb-1">Chọn Thư Mục Đích:</label>
+                <select
+                  value={uploadFolder}
+                  onChange={(e) => setUploadFolder(e.target.value)}
+                  className="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-orange-500 cursor-pointer"
+                >
+                  {FOLDER_OPTIONS.map(folder => (
+                    <option key={folder} value={folder}>{folder}</option>
+                  ))}
+                </select>
               </div>
 
               <div className="flex flex-wrap items-center justify-center gap-3">
