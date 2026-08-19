@@ -115,41 +115,58 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Bạn có biết rằng ánh sáng quyết định tới 60-70% chất lượng hình ảnh livestream? Dù bạn đầu tư hệ thống camera hàng chục triệu, nhưng nếu tư duy đánh sáng sai lệch, mặt bạn vẫn sẽ bị tối bệt, xỉn màu, đổ bóng dơ và thiếu sức sống. May mắn thay, setup ánh sáng không phải là ma thuật, nó là toán học nghệ thuật. Chỉ cần nắm vững công thức nền tảng, bạn hoàn toàn có thể tạo ra hình ảnh chuẩn studio."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "Giải Phẫu Công Thức 3 Điểm Sáng Kinh Điển"
-        },
-        {
-          "t": "p",
-          "c": "1. Đèn Chính (Key Light): Đây là nguồn sáng linh hồn, quyết định tone màu tổng thể. Sử dụng đèn LED 100W-150W (như Godox hoặc Amaran) kết hợp ngàm Softbox tản sáng Cầu (Lantern) để ánh sáng tỏa đều. Tuyệt đối không đánh thẳng mặt; hãy đặt đèn chếch một góc 45 độ so với trục nhìn của bạn. Góc độ này tạo ra vùng highlight và core shadow tinh tế, định hình khối V-line sắc nét cho khuôn mặt."
-        },
-        {
-          "t": "p",
-          "c": "2. Đèn Phụ (Fill Light): Nếu chỉ dùng Key Light, nửa khuôn mặt bên kia sẽ chìm trong vùng tối gắt (hard shadow), khiến bạn trông hốc hác. Đặt Fill Light ở hướng đối diện, thiết lập công suất chỉ bằng 40-50% so với đèn chính. Nhiệm vụ của nó là làm mềm bóng đổ, bù sáng cho các góc khuất mà vẫn giữ nguyên độ nổi khối 3D chân thực."
-        },
-        {
-          "t": "p",
-          "c": "3. Đèn Ven (Hair Light / Backlight): Đây là 'vũ khí bí mật' phân biệt dân nghiệp dư và dân chuyên nghiệp. Đặt đèn này ở phía sau Host, trên cao chiếu chếch xuống phần vai và tóc. Đèn ven vạch ra một đường viền sáng sắc nét (rim light), bóc tách hoàn toàn chủ thể khỏi phông nền. Nó mang lại chiều sâu không gian (depth of field) chuẩn điện ảnh cho khung hình."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Lưu ý sống còn về Nhiệt Độ Màu (Kelvin)"
-        },
-        {
-          "t": "p",
-          "c": "Một sai lầm phổ biến là mix lẫn lộn các loại đèn có nhiệt độ màu khác nhau. Hãy đồng bộ thiết lập nhiệt độ màu (Kelvin) của toàn bộ hệ thống đèn chiếu sáng mặt ở mức 5600K (chuẩn ánh sáng ban ngày tự nhiên). Thiết lập này đảm bảo làn da bạn hiển thị trắng hồng tự nhiên, quần áo và sản phẩm lên chuẩn màu 100%, tránh hiện tượng ám vàng ố lốm đốm rất mất thẩm mỹ."
-        },
-        {
-          "t": "quote",
-          "c": "Ánh sáng đánh đúng cách không chỉ làm tôn vinh nhan sắc của Host, mà nó còn là thứ trực tiếp nâng tầm định vị và giá trị thương hiệu cho sản phẩm bạn đang bán!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Ánh sáng quyết định đến 70% chất lượng hình ảnh livestream của bạn, chứ không phải một chiếc máy ảnh đắt tiền. Một setup ánh sáng tồi tệ có thể biến chiếc camera 50 triệu của bạn thành một chiếc webcam rẻ tiền mờ căm. Ngược lại, một hệ thống ánh sáng được bố trí bài bản có thể hô biến không gian chật hẹp thành một studio chuyên nghiệp."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Nguyên tắc 3 điểm kinh điển (Three-Point Lighting)"
+  },
+  {
+    "t": "p",
+    "c": "Đây là nguyên tắc bất di bất dịch trong điện ảnh và nhiếp ảnh thương mại. <strong>Đừng bao giờ bật đèn huỳnh quang trên trần nhà và nghĩ thế là đủ!</strong> Ánh sáng trần nhà sẽ tạo ra những vùng bóng đổ (shadows) rất xấu dưới hốc mắt và mũi, khiến bạn trông già đi chục tuổi. Bạn cần thiết lập 3 nguồn sáng chiến lược sau:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Key Light (Sáng chính):</strong> Là nguồn sáng mạnh nhất. Đặt ở góc 45 độ so với khuôn mặt, cao hơn tầm mắt một chút và chúi xuống. Đèn này có nhiệm vụ tạo khối (khuôn mặt không bị bẹt) và cung cấp 70% độ sáng tổng thể.",
+      "<strong>Fill Light (Sáng phụ):</strong> Đặt đối diện Key Light ở góc 45 độ còn lại. Cường độ chỉ bằng 30% - 50% so với Key Light. Nhiệm vụ của nó là làm mềm đi những bóng gắt do Key Light tạo ra trên nửa khuôn mặt còn lại.",
+      "<strong>Backlight (Sáng ven/Sáng nền):</strong> Đánh từ phía sau lưng, chiếu vào tóc và vai. Đèn này cực kỳ quan trọng vì nó bóc tách bạn ra khỏi background, tạo cảm giác 3D sâu thẳm (Cinematic Depth) chứ không bị chìm nghỉm vào phông nền."
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Quy trình Setup chi tiết trong 30 phút"
+  },
+  {
+    "t": "p",
+    "c": "<strong>Bước 1: Thiết lập Key Light (10 phút)</strong>. Hãy tắt hết toàn bộ đèn phòng. Bật duy nhất Key Light lên. Gắn Softbox lồng đèn (Lantern) hoặc Bát giác (Octagon) có đường kính tối thiểu 60-90cm. Softbox càng lớn, ánh sáng càng mềm và da bạn trông càng mịn màng. <strong>Sai lầm lớn nhất là chĩa thẳng đèn LED trần vào mặt mà không qua tản sáng.</strong>"
+  },
+  {
+    "t": "p",
+    "c": "<strong>Bước 2: Bổ sung Fill Light (10 phút)</strong>. Nếu không có ngân sách mua đèn Fill Light, hãy sử dụng một tấm hắt sáng (Reflector) màu trắng hoặc bạc, đặt phía bên tối của khuôn mặt để hắt lại ánh sáng từ Key Light. Nó rẻ bèo nhưng hiệu quả bất ngờ."
+  },
+  {
+    "t": "p",
+    "c": "<strong>Bước 3: Đánh Backlight và Ambient Light (10 phút)</strong>. Đặt một đèn hắt ngược lên tóc (có thể dùng đèn LED ống tube). Ở background, hãy sử dụng đèn LED RGB (đổi màu) đánh hắt lên tường. <strong>Mẹo chuyên gia:</strong> Nếu Key Light của bạn có màu vàng ấm (3200K - 4000K), hãy dùng đèn RGB màu Xanh ngọc (Teal/Blue) ở background. Sự tương phản Cam - Xanh (Teal & Orange) là chuẩn mực màu sắc của Hollywood, mang lại cảm giác cực kỳ sang trọng."
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Case Study Thực Tế"
+  },
+  {
+    "t": "p",
+    "c": "Khách hàng A bán mỹ phẩm cao cấp nhưng tỷ lệ chốt đơn rất lẹt đẹt vì da cô ấy trên live lúc nào cũng bị xỉn màu và bóng dầu (do ánh sáng gắt). Tôi yêu cầu cô ấy tắt đèn trần, mua 1 đèn Godox SL60W kèm Softbox lồng đèn 65cm đặt góc 45 độ, và 1 đèn hắt sáng nhỏ phía sau. <strong>Kết quả:</strong> Da cô ấy mướt như dùng filter làm đẹp, sản phẩm lên màu chuẩn xác, và doanh thu tăng gấp 4 lần trong tuần tiếp theo vì khách hàng tin tưởng vào hình ảnh chuyên nghiệp đó."
+  },
+  {
+    "t": "quote",
+    "c": "Đừng mua camera xịn nếu bạn chưa biết cách setup ánh sáng. Ánh sáng chính là lớp trang điểm quyền lực nhất của mọi khung hình."
+  }
+]
     },
     "en": {
       "title": "Master Livestream Lighting Setup in Just 30 Minutes!",
@@ -213,41 +230,63 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Về mặt thị giác, hình ảnh có thể mờ hạt hoặc thiếu sáng một chút, khán giả vẫn có thể nán lại xem vì sự tò mò. Tuy nhiên, về mặt thính giác, nếu âm thanh bị xèo xèo, nhiễu sóng, vang vọng hoặc chói tai, 99% khán giả sẽ lướt qua (swipe) ngay lập tức trong giây đầu tiên! Trong ngành công nghiệp Livestream, chất lượng âm thanh không chỉ là kỹ thuật, nó là yếu tố tâm lý học sống còn quyết định Tỷ lệ giữ chân (Retention Rate) và trải nghiệm mua sắm."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "Top 3 Micro Không Dây Định Hình Phân Khúc"
-        },
-        {
-          "t": "p",
-          "c": "1. Saramonic Blink 500 B2+ / B4 (Vua kết nối đa dụng): Đây là một ứng cử viên hạng nặng cho các Studio bán chuyên. Hệ thống cho phép bạn vừa xuất tín hiệu số trực tiếp vào điện thoại, vừa có cổng line-out cho máy ảnh cực kỳ linh hoạt. Điểm sáng lớn nhất là công nghệ khử ồn chủ động (ANC) bằng thuật toán AI, lọc sạch tiếng quạt gió hay tiếng đường phố. Kết hợp với thời lượng pin thực tế lên đến 20 tiếng, nó là 'quái vật' cho những phiên live marathon bùng nổ doanh số."
-        },
-        {
-          "t": "p",
-          "c": "2. Hollyland Lark M2 (Nhỏ gọn tinh tế): Khắc phục nhược điểm kéo trễ cổ áo của các dòng micro truyền thống, Lark M2 mang thiết kế hình nút áo siêu nhẹ (chỉ 9 gram) tích hợp nam châm. Việc cài lên áo lụa hay váy mỏng trở nên tinh tế và chuyên nghiệp vô cùng. Bất chấp kích thước tí hon, capsule thu âm bên trong cực nhạy, tái tạo được chất giọng trầm ấm, dải mid rõ ràng, giúp phát âm tròn vành rõ chữ."
-        },
-        {
-          "t": "p",
-          "c": "3. Boya BY-V20 (Ngon bổ rẻ cho người mới): Nếu ngân sách khởi nghiệp cực kỳ eo hẹp (dưới 1.5 triệu đồng), đây là sự lựa chọn an toàn nhất. Thiết kế Plug-and-Play chân thực: Cắm thẳng đầu Receiver chuẩn Type-C hoặc Lightning vào điện thoại là thiết bị tự động nhận diện. Không cần cài App rườm rà, không lo kết nối Bluetooth chập chờn."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Tuyệt Kỹ Setup Âm Thanh Cốt Lõi"
-        },
-        {
-          "t": "p",
-          "c": "Nguyên tắc bất di bất dịch của kỹ thuật âm thanh: Đừng bao giờ kéo tối đa dải âm lượng (Gain) trên cục thu (Receiver) hoặc trên phần mềm OBS. Hãy luôn thiết lập và khóa Gain ở ngưỡng an toàn (thường là 70-80%) để bảo toàn headroom. Nếu bạn để gain quá lớn, khi bạn phấn khích nói to, tín hiệu sẽ bị vượt ngưỡng (Clipping/Peak đỏ). Âm thanh clipping sẽ bị vỡ, rè và cực kỳ nhức tai, phá hủy toàn bộ trải nghiệm chuyên nghiệp."
-        },
-        {
-          "t": "quote",
-          "c": "Âm thanh trong trẻo, trầm ấm không chỉ là phương tiện truyền đạt thông tin, nó là chất xúc tác cảm xúc mạnh mẽ nhất để thôi miên và thuyết phục khách hàng ra quyết định chốt đơn!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Khán giả có thể bao dung với một khung hình hơi mờ, nhưng họ <strong>tuyệt đối không bao giờ tha thứ</strong> cho một luồng âm thanh bị rè, nhiễu, hoặc ngắt quãng. Âm thanh kém chất lượng là nguyên nhân số 1 khiến khách hàng Swipe-away (lướt qua) ngay trong 5 giây đầu tiên. Nếu bạn muốn trở thành chuyên gia, bạn phải nói với chất giọng của một chuyên gia."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Tại sao không nên dùng Mic tích hợp sẵn trên điện thoại/camera?"
+  },
+  {
+    "t": "p",
+    "c": "Mic tích hợp (Built-in mic) trên điện thoại thu sóng theo mọi hướng (Omnidirectional). Nó sẽ hút toàn bộ tiếng còi xe, tiếng quạt máy, tiếng nói chuyện của người nhà vào luồng live của bạn. Khi âm thanh bị bẩn, não bộ của người nghe sẽ phải làm việc quá sức để bóc tách lời nói của bạn, dẫn đến việc họ cảm thấy mệt mỏi và nhanh chóng thoát live."
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "3 Tiêu chí sống còn khi chọn Micro dưới 3 triệu"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Công nghệ chống ồn chủ động (ANC - Active Noise Cancelling):</strong> Đây là tiêu chí bắt buộc. Micro phải có thuật toán tự động triệt tiêu dải âm thanh môi trường thấp và làm nổi bật dải âm trung (giọng người).",
+      "<strong>Độ trễ thấp (Low Latency):</strong> Đã bao giờ bạn xem live mà hình đi trước, tiếng lóp ngóp theo sau chưa? Trải nghiệm đó vô cùng nghiệp dư. Micro xịn phải dùng sóng 2.4GHz để truyền âm thanh tức thời không độ trễ.",
+      "<strong>Thời lượng pin trâu bò:</strong> Một phiên live cường độ cao thường kéo dài 4-6 tiếng. Micro của bạn phải trụ được ít nhất 7 tiếng và hộp sạc đi kèm phải sạc đầy lại nhanh chóng."
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Phân loại Micro: Bạn nên chọn dòng nào?"
+  },
+  {
+    "t": "p",
+    "c": "<strong>1. Micro cài áo không dây (Wireless Lavalier):</strong> (Ví dụ: DJI Mic, Rode Wireless GO đời cũ, Saramonic Blink500, Boya, GoChek). Đây là 'chân ái' cho các KOC/KOL bán hàng, người hay di chuyển liên tục, thay quần áo, hoặc đứng xa máy quay. Sự tiện lợi là tuyệt đối."
+  },
+  {
+    "t": "p",
+    "c": "<strong>2. Micro tụ điện để bàn (Condenser Mic):</strong> (Ví dụ: Audio-Technica AT2020, Rode NT-USB). Phù hợp cho những ai làm Podcast, hoặc ngồi cố định tư vấn sản phẩm (Ví dụ: Bác sĩ da liễu, chuyên gia chốt sale). Nhược điểm là bắt âm rất nhạy, yêu cầu phòng live phải cách âm tốt (phải dán mút tiêu âm). Bù lại, chất âm nó mang lại vô cùng ấm áp, dày dặn và cực kỳ 'đã tai'."
+  },
+  {
+    "t": "p",
+    "c": "<strong>3. Micro định hướng (Shotgun Mic):</strong> Gắn trực tiếp lên đỉnh máy ảnh, chỉ thu âm thanh ở hướng thẳng phía trước và triệt tiêu âm thanh hai bên. Rất hợp cho việc quay Vlog hoặc ngồi live cách máy ảnh 1 mét."
+  },
+  {
+    "t": "h",
+    "sn": "04",
+    "c": "Cách setup để giọng vang và ấm hơn"
+  },
+  {
+    "t": "p",
+    "c": "Đừng bao giờ kẹp micro sát ngay dưới cằm hoặc miệng, hơi thở của bạn sẽ đập vào mic tạo tiếng 'bụp bụp' (Plosive sounds) rất chói tai. Khoảng cách vàng là <strong>1 gang tay (khoảng 15-20cm)</strong> tính từ miệng đến micro. Nếu dùng Mic để bàn, hãy luôn gắn thêm một màng lọc âm (Pop-filter)."
+  },
+  {
+    "t": "quote",
+    "c": "Giọng nói truyền cảm, không tạp âm là thứ vũ khí bạo chúa len lỏi vào tiềm thức người nghe và thôi miên họ nhấn nút chốt đơn."
+  }
+]
     },
     "en": {
       "title": "Best Under-$130 Wireless Mics for Smartphone Livestreams!",
@@ -311,41 +350,55 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Khi con số mắt xem trên màn hình đột ngột nhảy vọt từ 100 lên 10.000, nhịp tim bạn tăng tốc, não bộ gần như 'đóng băng' và kịch bản chuẩn bị kỹ lưỡng bỗng bay sạch khỏi đầu? Xin chúc mừng, bạn hoàn toàn bình thường! Nỗi sợ đứng trước ống kính và đám đông là một trong những bản năng nguyên thủy nhất của con người. Tuy nhiên, sự thật phũ phàng trong ngành này là: Sự tự tin không phải là món quà bẩm sinh, nó là một chuỗi các kỹ năng có thể lập trình và rèn luyện được."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "3 Kỹ Thuật Hack Tâm Lý Trước Giờ G"
-        },
-        {
-          "t": "p",
-          "c": "1. Dịch chuyển điểm nhìn (The Paradigm Shift): Nguyên nhân gốc rễ của nỗi sợ là vì bạn đang hướng sự chú ý quá mức vào BẢN THÂN (Trông mặt mình có béo không? Mình nói có bị vấp không?). Cách duy nhất để triệt tiêu nỗi sợ là lập tức hướng sự chú ý sang KHÁN GIẢ. Hãy tự hỏi: Bạn đang giải quyết nỗi đau nào cho họ ngày hôm nay? Khi khao khát trao đi giá trị lớn hơn cái tôi cá nhân, nỗi sợ sẽ tự động bốc hơi."
-        },
-        {
-          "t": "p",
-          "c": "2. Kỹ thuật thở cơ hoành (Chiến thuật 4-7-8 của đặc nhiệm): Đúng 5 phút trước khi bấm nút 'Go Live', hãy hít sâu bằng cơ hoành (phình bụng) trong 4 giây, nín thở 7 giây, và từ từ thở ra qua miệng trong 8 giây. Lặp lại chu kỳ này 3-5 lần. Nhịp thở này kích hoạt hệ thần kinh phó giao cảm, ép nhịp tim chậm lại, hạ huyết áp và đưa sóng não về trạng thái điềm tĩnh, sắc bén tuyệt đối."
-        },
-        {
-          "t": "p",
-          "c": "3. Hình tượng hóa thấu kính (Lens Personification): Đừng bao giờ mường tượng rằng bạn đang thuyết trình cho 10.000 người lạ mặt với ánh mắt soi mói. Hãy tưởng tượng cái thấu kính camera bé xíu kia chính là một người bạn thân thiết nhất của bạn. Khi nói chuyện với bạn thân, ngôn ngữ cơ thể của bạn sẽ giãn ra, giọng điệu trở nên chân thành, ấm áp và có sức thuyết phục hơn gấp vạn lần."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Vũ Khí Chống 'Đơ Lưỡi'"
-        },
-        {
-          "t": "p",
-          "c": "Sai lầm chết người của Newbie là cố gắng học thuộc lòng kịch bản từng chữ một. Khi quên 1 chữ, hệ thống não bộ sẽ sụp đổ. Hãy áp dụng phương pháp 'Keyword Anchoring': Chỉ viết đúng 5 từ khóa cốt lõi (Keywords) của phiên live lên một tờ giấy note (Post-it) màu vàng và dán ngay viền màn hình, sát tầm mắt. Chúng sẽ là chiếc mỏ neo cứu sinh, giúp bạn luôn đi đúng hướng mà không bao giờ rơi vào trạng thái 'chết hình'."
-        },
-        {
-          "t": "quote",
-          "c": "Sự tự tin tỏa sáng nhất không đến từ một phiên live hoàn hảo không tì vết. Nó đến từ việc bạn dũng cảm phơi bày sự chân thật để giải quyết vấn đề cho khách hàng!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Sự tự tin không phải là món quà bẩm sinh mà Thượng đế chỉ ban phát cho một số ít người. Nó là một loại cơ bắp, và bạn hoàn toàn có thể rèn luyện nó. Khi đèn đỏ của camera bật sáng, 90% người mới sẽ bị 'cứng họng', quên sạch kịch bản và ánh mắt láo liên. Tại sao? Bí mật nằm ở việc giải mã nỗi sợ hãi từ trong tiềm thức."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Bản chất của Nỗi Sợ Ống Kính (Camera Phobia)"
+  },
+  {
+    "t": "p",
+    "c": "Não bộ con người được lập trình từ thời tiền sử để sợ hãi 'hàng trăm ánh mắt đang đổ dồn vào mình', vì điều đó đồng nghĩa với nguy hiểm. Khi nhìn vào cái lỗ đen ngòm của ống kính, tiềm thức của bạn tưởng tượng ra hàng ngàn người đang soi xét từng khuyết điểm trên khuôn mặt, từng câu nói vấp của bạn. <strong>Bản chất của nỗi sợ khi livestream chính là nỗi sợ bị phán xét.</strong>"
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Chiến thuật Đánh lừa Não Bộ (Mind-Hacking)"
+  },
+  {
+    "t": "p",
+    "c": "Để triệt tiêu nỗi sợ này, bạn phải thay thế hình ảnh 'đám đông phán xét' bằng một hình ảnh an toàn. <strong>Cách làm:</strong> Hãy in một bức ảnh chụp khuôn mặt tươi cười của người bạn thân nhất, hoặc người luôn ủng hộ bạn, dán ngay cạnh ống kính camera. Đừng nói chuyện với cái máy ảnh vô tri, hãy nói chuyện với người bạn đó. Giọng điệu của bạn sẽ tự động trở nên chân thật, ấm áp và vô cùng tự nhiên."
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Quy tắc 3 Giây Hít Thở Sinh Lý"
+  },
+  {
+    "t": "p",
+    "c": "Khi bạn hồi hộp, nhịp tim tăng cao, hơi thở gấp gáp, giọng bạn sẽ bị the thé và run rẩy. Trước khi bấm nút 'Go Live', hãy thực hiện quy tắc: <strong>Hít sâu bằng bụng trong 3 giây - Giữ lại 3 giây - Thở ra từ từ bằng miệng trong 3 giây</strong>. Kỹ thuật này kích hoạt hệ thần kinh phó giao cảm (Parasympathetic nervous system), gửi tín hiệu báo cho não bộ biết: 'Bạn đang hoàn toàn an toàn'. Nhịp tim sẽ hạ xuống và giọng bạn sẽ tự động trầm ấm lại."
+  },
+  {
+    "t": "h",
+    "sn": "04",
+    "c": "Chấp nhận sự Không Hoàn Hảo (Embrace Imperfection)"
+  },
+  {
+    "t": "p",
+    "c": "Khán giả không lên mạng để tìm kiếm sự hoàn hảo vô thực (như trên tivi). Họ lên mạng để tìm <strong>sự chân thật (Authenticity)</strong>. Nếu bạn có nói vấp, rớt đồ, hay nói sai một từ, hãy cứ tự nhiên bật cười và thú nhận: 'Ây da, hôm nay em lên live run quá nói vấp mất rồi, các bác thông cảm cho em nhé!'. Chính sự chân thật và đáng yêu đó mới là thứ thu phục nhân tâm."
+  },
+  {
+    "t": "p",
+    "c": "<strong>Bài tập thực hành:</strong> Mỗi ngày hãy mở camera điện thoại, tự quay video bản thân nói liên tục trong 3 phút về bất cứ chủ đề gì (không cần đăng tải). Làm liên tục trong 21 ngày, bạn sẽ thấy ống kính trở thành người bạn thân thiết nhất của mình."
+  },
+  {
+    "t": "quote",
+    "c": "Sự tự tin mạnh mẽ nhất không đến từ việc bạn chưa bao giờ mắc lỗi, mà đến từ việc bạn nhận ra rằng mắc lỗi cũng chẳng sao cả!"
+  }
+]
     },
     "en": {
       "title": "Mastering Confidence Before the Camera & Audience",
@@ -409,41 +462,59 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Hãy quan sát kỹ một phiên live tiền tỷ của các Mega Creator hay các nhãn hàng thời trang cao cấp. Bạn sẽ không bao giờ thấy một khung hình tĩnh tẻ nhạt. Họ liên tục chuyển đổi mượt mà giữa góc toàn (Wide angle - để Host tương tác body language) và góc cận (Close-up - để phô diễn chi tiết sợi vải, chất kem). Việc nâng cấp lên hệ thống Multi-cam chính là ranh giới định vị sắc bén nhất giữa một livestream bán hàng cá nhân bẹp bệch và một Studio thương mại điện tử chuyên nghiệp."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "Kiến Trúc Phần Cứng (Hardware Flow) Chuẩn Hóa"
-        },
-        {
-          "t": "p",
-          "c": "1. Capture Card - Trái tim hệ thống: Để đưa luồng video 4K siêu nét từ máy ảnh mirrorless vào PC mà không bị nén, bạn bắt buộc phải dùng Capture Card (Tiêu biểu: Elgato CamLink 4K). Sơ đồ truyền dẫn: Máy ảnh -> Cáp Micro HDMI sang HDMI -> CamLink -> Cổng USB 3.0 của máy tính. Lưu ý cốt tử: Phải cắm CamLink vào cổng USB 3.0 (thường có màu xanh/đỏ) trực tiếp trên Mainboard, tuyệt đối không cắm qua Hub USB để tránh nghẽn băng thông gây giật lag."
-        },
-        {
-          "t": "p",
-          "c": "2. Chiến lược Tiêu Cự Lens: Multi-cam vô nghĩa nếu các góc máy giống hệt nhau. Với Góc Toàn (Cam 1), hãy dùng Lens tiêu cự rộng 16mm-24mm để thu trọn bối cảnh không gian và decor. Với Góc Cận (Cam 2), hãy trang bị Lens 50mm-85mm (khẩu độ lớn f/1.4 hoặc f/1.8). Ở tiêu cự này, phông nền sẽ bị xóa mù mịt (Hiệu ứng Bokeh), giúp sản phẩm khi đưa lên ống kính nổi bật 3D như một thỏi vàng."
-        },
-        {
-          "t": "p",
-          "c": "3. Đồng bộ Ánh Sáng Multi-cam: Thử thách lớn nhất của 2 góc máy là lệch màu da. Phải đảm bảo đèn Key Light chính đánh phủ góc tỏa đủ rộng cho cả vị trí Host đứng và bục đặt sản phẩm quay cận. Setup nhiệt độ màu (White Balance) trên cả 2 máy ảnh phải cố định bằng tay (Manual, vd: 5500K), cấm để Auto White Balance (AWB)."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Đạo Diễn Chuyển Cảnh Trên OBS Studio"
-        },
-        {
-          "t": "p",
-          "c": "Trong OBS Studio, hãy cấu trúc thành 3 Scene độc lập: Scene 1 (Góc Toàn), Scene 2 (Góc Cận), và Scene 3 (Picture-in-Picture: Góc cận phóng to fullscreen để show sản phẩm, hình Host thu nhỏ đặt ở góc dưới cùng). Trình độ Pro: Vào File -> Settings -> Hotkeys, gán phím tắt số 1, 2, 3 trên bàn phím số (Numpad) cho 3 Scene này. Giờ đây, chỉ với một cú gõ ngón tay, bạn đã cut cảnh mượt mà như đạo diễn truyền hình VTV."
-        },
-        {
-          "t": "quote",
-          "c": "Đầu tư vào hệ thống Multi-cam không chỉ là sự phô trương thiết bị, đó là sự tôn trọng tuyệt đối dành cho trải nghiệm thị giác và túi tiền của khách hàng!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Bạn có bao giờ tự hỏi tại sao các phiên livestream kỷ lục hàng triệu đô của các Mega-KOL lại có cảm giác cực kỳ lôi cuốn, giống như đang xem một show truyền hình thực tế chuyên nghiệp? Bí mật không nằm ở sản phẩm, mà nằm ở <strong>Nghệ thuật chuyển cảnh Multi-Cam (Nhiều góc máy)</strong>. Nếu bạn chỉ live một góc máy duy nhất suốt 4 tiếng đồng hồ, khán giả sẽ bị mỏi mắt và chán nản."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Sức mạnh thao túng tâm lý của Multi-Cam"
+  },
+  {
+    "t": "p",
+    "c": "Việc chuyển đổi liên tục giữa các góc máy tạo ra <strong>nhịp điệu hình ảnh (Visual Pacing)</strong>. Nó liên tục 'reset' lại sự chú ý của não bộ, khiến người xem không thể rời mắt. Cấu trúc Multi-Cam tiêu chuẩn cho một phiên chốt sale bùng nổ bao gồm:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Góc Wide (Toàn cảnh):</strong> Cần một ống kính góc rộng (ví dụ 16mm - 24mm). Dùng để lấy toàn bộ không gian studio hoành tráng, thấy rõ các đống hàng hóa (tạo hiệu ứng chim mồi, khan hiếm), và thể hiện body language (ngôn ngữ cơ thể) tràn đầy năng lượng của người host.",
+      "<strong>Góc Close-up (Cận cảnh):</strong> Dùng ống kính tiêu cự hẹp (50mm - 85mm). Chỉ chĩa thẳng vào sản phẩm. Khi bạn thoa kem lên tay, hoặc cho xem cận cảnh từng đường kim mũi chỉ của chiếc túi, góc máy này phóng to mọi chi tiết, triệt tiêu mọi sự hoài nghi của người mua.",
+      "<strong>Góc Top-down (Từ trên xuống):</strong> Rất cần thiết nếu bạn live lắp ráp đồ chơi, vẽ, hoặc review mỹ phẩm chi tiết trên mặt bàn."
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Cần những thiết bị gì để thiết lập hệ thống này?"
+  },
+  {
+    "t": "p",
+    "c": "Nhiều người nghĩ làm Multi-Cam phải tốn tiền tỷ thuê đạo diễn hình ảnh. Không hề. Với công nghệ năm 2026, bạn chỉ cần:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Máy tính (PC/Laptop):</strong> Cấu hình khá trở lên (Card đồ họa rời như RTX 3060/4060) để gánh phần mềm xử lý.",
+      "<strong>OBS Studio:</strong> Phần mềm luồng phát mã nguồn mở, hoàn toàn miễn phí nhưng mạnh mẽ như một đài truyền hình thu nhỏ.",
+      "<strong>Capture Card (Thiết bị bắt hình):</strong> Bạn cần 2-3 chiếc Capture Card (như Elgato Cam Link 4K) để biến 2-3 chiếc máy ảnh thành 2-3 chiếc webcam đưa tín hiệu vào máy tính.",
+      "<strong>Bàn phím Stream Deck:</strong> (Elgato Stream Deck). Đây là vũ khí tối thượng. Bạn lập trình các nút bấm vật lý để chuyển đổi góc quay, bật nhạc hiệu, bật vỗ tay chỉ bằng một ngón tay, không cần đụng đến chuột."
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Thực chiến: Chuyển cảnh theo kịch bản"
+  },
+  {
+    "t": "p",
+    "c": "<strong>Cách làm chuyên gia:</strong> Đang ở góc Wide (Toàn), bạn nói: 'Các anh chị nhìn kỹ chất da bò này nhé!'. Ngay lập tức, bạn bấm nút trên Stream Deck, màn hình chuyển cái 'rụp' sang góc Close-up (Cận) cực nét. Khán giả nhìn thấy độ sần của da thật. Sau đó bạn bấm nút chuyển về góc Wide, mỉm cười và tung giá Sale sốc. Sự thay đổi thị giác đột ngột này đẩy cảm xúc FOMO lên đỉnh điểm, chốt đơn là điều không thể tránh khỏi."
+  },
+  {
+    "t": "quote",
+    "c": "Đừng bao giờ để sự đơn điệu giết chết cảm xúc của người mua. Multi-Cam là đòn bẩy thị giác rẻ nhất để nhân x10 doanh thu của bạn."
+  }
+]
     },
     "en": {
       "title": "Professional Multi-Cam Setup with OBS Studio & CamLink 4K",
@@ -507,41 +578,62 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Một phiên Mega Live mang về doanh thu hàng tỷ đồng không bao giờ, tuyệt đối không bao giờ, diễn ra ngẫu nhiên hay phụ thuộc vào cái gọi là 'duyên bán hàng' thiên bẩm. Đằng sau những con số bùng nổ đó là một kịch bản được dàn dựng nhịp nhàng, mang tính thao túng tâm lý cao và được tính toán chính xác tới từng phút. Không có kịch bản định hướng, bạn sẽ rơi vào cái bẫy nói lan man, tụt năng lượng giữa chừng, mất kiểm soát luồng traffic và 'chảy máu' người xem không phanh."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "Công thức Nhịp điệu Tâm lý 60 Phút"
-        },
-        {
-          "t": "p",
-          "c": "1. Khởi động (0-5 Phút) - Câu Traffic & Hack Thuật Toán: Giai đoạn này tuyệt đối CẤM bán hàng! Mục tiêu duy nhất là kéo mắt xem và tương tác. Hãy tung ngay một Minigame hoặc Deal lỗ 1k. Khẩu lệnh liên tục: 'Mọi người nhấp tay vào màn hình thả tim chạm mốc 10.000 tim để Hiển tung quà nhé!'. Động tác này đánh lừa thuật toán TikTok hiểu rằng phòng live của bạn có tính giải trí cực cao, hệ thống sẽ tự động phân phối luồng traffic khổng lồ (FYP) vào phòng của bạn."
-        },
-        {
-          "t": "p",
-          "c": "2. Phá băng (5-15 Phút) - Tung Hero Deal Mồi: Lúc này traffic đang ở đỉnh, hãy đưa ra một sản phẩm mồi (Hero Product) với mức giá sốc không tưởng. Mục đích của deal này không phải để lấy biên độ lợi nhuận, mà là để 'bẻ gãy' rào cản phòng vệ mua sắm, huấn luyện hành vi khách hàng bấm vào giỏ hàng và nhập địa chỉ thanh toán lần đầu tiên. Khi họ đã mua 1 đơn, đơn thứ 2 sẽ cực kỳ dễ dàng."
-        },
-        {
-          "t": "p",
-          "c": "3. Biểu diễn (15-40 Phút) - Demo & Giải Quyết Nỗi Đau: Đây là sàn diễn chuyên môn của bạn. Hãy demo sản phẩm một cách trực quan và bạo liệt nhất (test độ bền, thoa kem test nước...). Đừng đọc thông số, hãy xoáy sâu vào nỗi đau sâu kín nhất của khách hàng và chứng minh tại sao sản phẩm này là 'vị cứu tinh' duy nhất họ cần ngay lúc này."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Nghệ thuật Push Chốt Đơn Đỉnh Cao (FOMO)"
-        },
-        {
-          "t": "p",
-          "c": "Vào 20 phút cuối (40-60 phút), bạn phải đẩy nhịp độ lên mức cao trào nhất bằng cách tạo ra sự khan hiếm tột độ (Fear Of Missing Out - FOMO). 'Chỉ còn đúng 5 suất cuối cùng dành cho ai nhanh tay nhất! Trợ lý chuẩn bị đếm ngược 10 giây đóng hoàn toàn Flash Sale! 10... 9... 8...'. Khách hàng có thể thích sản phẩm bằng lý trí, nhưng họ luôn ra quyết định thanh toán ngay lập tức nhờ cảm xúc và sự sợ hãi bị bỏ lỡ."
-        },
-        {
-          "t": "quote",
-          "c": "Sai lầm lớn nhất là bán tính năng của sản phẩm. Một Master sẽ bán một viễn cảnh tương lai tốt đẹp hơn, nâng cấp hơn cho chính người dùng!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Bạn đã bao giờ live suốt 4 tiếng, cổ họng đau rát, mồ hôi nhễ nhại nhưng chỉ lẹt đẹt vài đơn hàng? Nếu bạn đang live theo bản năng - lên nghĩ gì nói nấy - thì bạn đang ném tiền của mình qua cửa sổ. Mọi phiên live bùng nổ nghìn đơn đều được vận hành dựa trên một <strong>Kịch bản chốt đơn được thiết kế với độ sát thương cao</strong>."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Cấu trúc Kịch bản 4 bước Vàng (AIDA Matrix)"
+  },
+  {
+    "t": "p",
+    "c": "Hành trình khách hàng đi từ lúc lướt qua video đến lúc thanh toán giỏ hàng là một chuỗi phản ứng tâm lý. Bạn phải dắt tay họ đi qua đúng 4 cánh cửa:"
+  },
+  {
+    "t": "p",
+    "c": "<strong>1. Attention (Thu hút sự chú ý - Hook):</strong> 3 giây đầu tiên. Đừng chào hỏi 'Em chào chị Nguyễn A'. Lỗi thời rồi. Hãy dùng Hook (Lưỡi câu) cực mạnh. Ví dụ: Đập một trái dừa (tạo âm thanh lớn), giơ bảng Flash Sale 1K, hoặc nói một câu sốc óc: 'Ai da ngăm đen dùng đủ loại không trắng thì ở lại ngay luồng live này!'."
+  },
+  {
+    "t": "p",
+    "c": "<strong>2. Interest (Tạo sự thích thú - Xoáy nỗi đau):</strong> Khách đã dừng lại, giờ phải làm họ quan tâm. Đừng vội khoe sản phẩm. Hãy nói về nỗi đau của họ. 'Có phải chị em đang tốn cả chục triệu đi tắm trắng nhưng 1 tuần sau lại đen hoàn đen?'. Chứng minh bạn hiểu họ hơn chính họ."
+  },
+  {
+    "t": "p",
+    "c": "<strong>3. Desire (Kích thích khao khát - Đưa giải pháp):</strong> Lúc này mới đưa sản phẩm ra. Demo trực tiếp. Bôi kem lên 1 nửa cánh tay để họ thấy sự khác biệt tức thì (Visual Proof). Kể Case Study: 'Khách nhà em dùng đúng 1 liệu trình, giờ chồng cưng như trứng'. Khách hàng bắt đầu khao khát có được cảm giác đó."
+  },
+  {
+    "t": "p",
+    "c": "<strong>4. Action (Kêu gọi hành động - Thao túng khan hiếm):</strong> <strong>Đây là đòn quyết định.</strong> Đừng nói nhẹ nhàng: 'Mọi người mua ủng hộ em'. Hãy ép họ phải quyết định ngay lập tức bằng sự khan hiếm (Scarcity). 'Em chỉ xin phép công ty đúng 10 mã giảm giá 50% này. Hết 10 mã giá sẽ quay về 500k. Góc trái màn hình, nhấp vào giỏ hàng ngay. Còn đúng 3 mã cuối cùng!'."
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Nghệ thuật Gim/Ghim Sản Phẩm (Pinning)"
+  },
+  {
+    "t": "p",
+    "c": "Khi bạn nói đến bước Action, trợ lý (hoặc chính bạn) phải ngay lập tức Gim sản phẩm đó lên góc trái màn hình. Bạn phải lấy ngón tay <strong>chỉ thẳng vào vị trí giỏ hàng trên màn hình</strong>. Bạn phải hướng dẫn thao tác chi tiết: 'Bấm vào chữ MUA màu đỏ, chọn phân loại MÀU TRẮNG, và đừng quên bấm vào mục TIKTOK VOUCHER để lấy mã freeship nhé mọi người ơi!'."
+  },
+  {
+    "t": "p",
+    "c": "<strong>Sai lầm trí mạng:</strong> Khách khao khát mua rồi nhưng không biết cách áp mã freeship, họ chán và bỏ giỏ hàng."
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Kịch bản sản phẩm chim mồi (Loss Leader)"
+  },
+  {
+    "t": "p",
+    "c": "Để giữ nhịp độ suốt 4 tiếng, bạn phải xen kẽ các <strong>Deal Chim Mồi</strong> (Deal giá cực sốc 1k-9k để kéo Traffic, chịu lỗ) và các <strong>Deal Lợi Nhuận</strong> (Sản phẩm chủ lực mang lại biên độ lãi cao). Cấu trúc 1 phiên live hoàn hảo: Tung Deal 1K đầu giờ -> Bán 2 Deal Lợi Nhuận -> Tung Mini-game giữ tương tác -> Bán 2 Deal Lợi Nhuận -> Tung mã freeship cuối giờ."
+  },
+  {
+    "t": "quote",
+    "c": "Bạn không thể bán hàng bằng cảm tính. Kinh doanh livestream là một bộ môn khoa học về tâm lý học hành vi và điều phối cảm xúc đám đông."
+  }
+]
     },
     "en": {
       "title": "High-Converting TikTok Shop Livestream Script Blueprint",
@@ -605,45 +697,57 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Bạn có bao giờ cay đắng tự hỏi tại sao phòng live của đối thủ nhảy lên hàng ngàn mắt xem, trong khi phòng của bạn chỉ lẹt đẹt 5 người quen (bao gồm cả nick phụ của bạn)? Sự thật là: Thuật toán TikTok Shop 2026 không có 'tình cảm' và không phân phối traffic dựa trên sự may mắn. Nó là một cỗ máy AI học sâu (Deep Learning) vận hành như một sàn đấu giá thời gian thực (Real-time Bidding). Máy chủ chỉ bơm lưu lượng (Traffic) cho những phòng live chứng minh được khả năng giữ chân và móc hầu bao người dùng."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "4 Chỉ Số 'Tử Huyệt' Quyết Định Traffic (Traffic Pillars)"
-        },
-        {
-          "t": "p",
-          "c": "1. Tỷ lệ giữ chân (Retention Rate > 30s): Nếu 100 người lướt qua (Swipe), có bao nhiêu người nán lại xem bạn trên 30 giây? Nếu chỉ số này rớt thảm hại, AI sẽ đánh dấu luồng live của bạn là 'Rác' (Low-quality content) và lập tức siết van đề xuất. Giải pháp: Bạn phải có một cái 'Hook' (Mồi câu) cực sốc về mặt thị giác hoặc thính giác ngay 5 giây đầu tiên."
-        },
-        {
-          "t": "p",
-          "c": "2. CTR Giỏ Hàng (Click-Through Rate): Bao nhiêu phần trăm người xem chịu nhấc ngón tay bấm vào biểu tượng giỏ hàng? TikTok đo lường mức độ tò mò thương mại qua chỉ số này. Việc bạn ghim Flash Sale liên tục, đếm ngược thời gian và hô to Call-to-Action (CTA) sẽ hack trực tiếp vào chỉ số này."
-        },
-        {
-          "t": "p",
-          "c": "3. CVR Chuyển Đổi (Conversion Rate): Trong số những người đã mở giỏ, bao nhiêu người thực sự thanh toán? Đây là chỉ số 'Vua' của năm 2026. Nền tảng muốn thu phí hoa hồng, do đó AI sẽ dồn toàn lực (Push FYP) cho những phòng live có khả năng chốt đơn thật sự chứ không phải chỉ mua vui."
-        },
-        {
-          "t": "p",
-          "c": "4. Chỉ số Tương Tác Chủ Động (Active Engagement): Lượng comment theo cú pháp, lượt share, và số lượt nhấp thả tim (Taps) liên tục tạo ra hàng ngàn xung tín hiệu 'phòng live đang bùng nổ' gửi về hệ thống máy chủ trung tâm."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Chiến Lược Hack AI 'Mini-Peak'"
-        },
-        {
-          "t": "p",
-          "c": "Đừng để đồ thị tương tác chạy ngang. Hãy tạo ra các 'Đỉnh sóng nhân tạo' (Mini-peak) mỗi 15 phút. Tung ra một mã giảm giá 90% cực hiếm và yêu cầu mọi người comment đúng 1 cú pháp (VD: 'SĂN DEAL'). AI sẽ lập tức ghi nhận xung lực tương tác tăng vọt 500% và phản hồi bằng cách xả một luồng traffic mới tinh vào phòng của bạn."
-        },
-        {
-          "t": "quote",
-          "c": "Đừng lãng phí thời gian than vãn về việc bóp tương tác. Hãy thấu hiểu và thao túng các bộ chỉ số mà Thuật Toán tôn thờ để cưỡi lên những đợt sóng traffic khổng lồ!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Nếu bạn nghĩ rằng chỉ cần lên live hát hò, nhảy múa thật sung là sẽ có triệu view trên TikTok Shop năm 2026, thì bạn đã lầm to. Thuật toán của nền tảng này đã tiến hóa từ một 'cỗ máy giải trí' sang một 'cỗ máy thương mại điện tử tàn bạo'. Nó không quan tâm bạn đẹp hay xấu, nó chỉ quan tâm một thứ duy nhất: <strong>GMV (Tổng giá trị giao dịch) trên mỗi phút live của bạn là bao nhiêu?</strong>"
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Hai chỉ số vàng định đoạt sinh tử: RPM và GPM"
+  },
+  {
+    "t": "p",
+    "c": "Thuật toán phân phối lưu lượng truy cập (Traffic) không dựa vào may mắn. Nó dựa vào 2 chỉ số cốt lõi:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>RPM (Revenue Per Mille):</strong> Doanh thu kiếm được trên mỗi 1000 lượt hiển thị. Nếu nền tảng bơm cho bạn 1000 người xem, bạn chốt được 10 triệu đồng, RPM của bạn cao, TikTok sẽ tiếp tục bơm thêm 10.000 người nữa. Nếu bạn mải mê kể chuyện cười mà quên chốt đơn, RPM thấp, luồng live của bạn sẽ bị 'bóp tương tác' ngay lập tức.",
+      "<strong>GPM (GMV Per Minute):</strong> Tốc độ chốt đơn tính theo phút. Đây là lý do tại sao các phiên live Mega thường có nhịp độ dồn dập. '5, 4, 3, 2, 1 hết mã!'. Việc tạo ra áp lực thời gian khiến GPM tăng đột biến, và thuật toán sẽ thưởng cho bạn bằng cách đẩy video/livestream của bạn lên xu hướng (For You Page)."
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Luật chơi mới 2026: Trải nghiệm mua sắm trên hết"
+  },
+  {
+    "t": "p",
+    "c": "TikTok Shop không còn dung túng cho những hành vi 'treo đầu dê bán thịt chó'. Nếu bạn dùng chiêu trò 'Sale 1k' nhưng bắt khách mua kèm hàng 500k, thuật toán sẽ nhận diện được tỷ lệ <strong>Hoàn hàng (Refund Rate)</strong> và <strong>Đánh giá tiêu cực (Negative Reviews)</strong>. Chỉ cần cửa hàng của bạn bị đánh giá dưới 4.0 sao, toàn bộ traffic tự nhiên sẽ bị cắt đứt hoàn toàn, bất kể bạn bỏ ra bao nhiêu tiền chạy quảng cáo."
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Chiến thuật 'Bẻ khóa' Thuật toán hợp lệ"
+  },
+  {
+    "t": "p",
+    "c": "Thay vì cố gắng hack hệ thống, hãy chơi theo đúng luật của nó:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Kéo dài Retention Rate (Tỷ lệ giữ chân):</strong> Đừng để khán giả thoát ra sau 10 giây. Hãy hứa hẹn một món quà bí mật ở phút thứ 15. 'Ai ở lại đến cuối live em sẽ tặng 10 máy rửa mặt hoàn toàn miễn phí'.",
+      "<strong>Tăng tỷ lệ tương tác hai chiều (Engagement Rate):</strong> Yêu cầu khán giả thả tim (tăng điểm số phòng live) hoặc bình luận 'Tôi muốn' để kích hoạt hành vi khao khát.",
+      "<strong>Đẩy mạnh Affiliate (Tiếp thị liên kết):</strong> Đừng tự bán một mình. Hãy mở tỷ lệ hoa hồng cao (15-20%) để thu hút đội ngũ KOC/KOL bán hàng cho bạn. Khi có hàng trăm luồng video cùng gắn link sản phẩm của bạn, thuật toán sẽ tự động đánh giá đây là 'Sản phẩm Hot' và liên tục đề xuất."
+    ]
+  },
+  {
+    "t": "quote",
+    "c": "Đừng chống lại thuật toán, hãy khiêu vũ cùng nó. Hãy cho TikTok thấy bạn là cỗ máy in tiền của họ, họ sẽ biến bạn thành ngôi sao."
+  }
+]
     },
     "en": {
       "title": "Demystifying TikTok Shop Livestream Algorithm 2026",
@@ -711,41 +815,54 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Key Light (Đèn Chính) chính là 'trái tim' bơm máu cho toàn bộ hệ thống hình ảnh studio của bạn. Nó định hình khối mặt, kết cấu da và màu sắc sản phẩm. Nếu bạn chọn sai Key Light, thì dù bạn có trang điểm tinh xảo đến đâu, hay xài máy ảnh 100 triệu, lên sóng da mặt bạn vẫn sẽ bị tái nhợt, xỉn màu bệch rạc, và mọi khuyết điểm (mụn, rỗ) sẽ bị bóc trần không thương tiếc."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "3 Tiêu Chuẩn Kỹ Thuật 'Sống Còn' Của Đèn Pro"
-        },
-        {
-          "t": "p",
-          "c": "1. Chỉ số Phục hồi Màu sắc (CRI & TLCI >= 95): Đây là thông số tối thượng thường bị Newbie bỏ qua. Đèn LED giá rẻ mua trên mạng có CRI thấp (<80) sẽ làm sai lệch quang phổ màu nghiêm trọng. Hậu quả? Son đỏ Ruby của bạn lên hình sẽ biến thành màu đỏ mận hoặc nâu bẩn. Tuyệt đối chỉ mua đèn ghi rõ chứng chỉ CRI và TLCI > 95 để đảm bảo màu da và sản phẩm chân thực 100%."
-        },
-        {
-          "t": "p",
-          "c": "2. Chiến lược Công suất (Wattage): Công suất đèn càng lớn, bạn càng không phải 'ép' thông số ISO của camera (ISO cao gây nhiễu hạt/noise nát bét hình). Với phòng live hẹp (<15m2), đèn 100W-150W (như Amaran 100d, Godox SL150III) là vừa đủ. Nhưng với studio rộng, đánh nguyên người, bạn bắt buộc phải lên 200W hoặc 300W để ánh sáng đủ lực đi xa."
-        },
-        {
-          "t": "p",
-          "c": "3. Softbox (Tản Sáng) - Áo giáp thuần hóa ánh sáng: Đánh đèn trần (Bare bulb) sẽ tạo ra thứ ánh sáng gắt (Hard light), chói mắt và tạo bóng đổ đen ngòm trên mặt. Bắt buộc phải gắn Softbox. Muốn ánh sáng tỏa đều mượt mà như sương mờ sương, dùng Softbox lồng đèn (Lantern). Muốn ánh sáng có định hướng, đánh khối mặt sắc sảo (với Grip Grid), dùng Softbox Bát giác (Octabox)."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Nghệ Thuật Setup Theo Khối Mặt"
-        },
-        {
-          "t": "p",
-          "c": "Ánh sáng có khả năng 'phẫu thuật thẩm mỹ'. Với khuôn mặt nữ tròn trịa, đừng đánh đèn thẳng mặt (Flat lighting). Hãy nâng Key Light cao hơn đỉnh đầu 30cm, đánh chếch xuống 45 độ từ bên trái hoặc phải. Kỹ thuật này tạo ra hiệu ứng 'Rembrandt Lighting' kinh điển, đổ bóng tam giác nhỏ giấu bớt phần cằm và má, giúp khuôn mặt lập tức thon gọn (V-line) và có chiều sâu điện ảnh."
-        },
-        {
-          "t": "quote",
-          "c": "Đừng bao giờ keo kiệt với ngân sách Ánh Sáng. Đó là loại mỹ phẩm rẻ nhất, vĩnh cửu nhất, mang lại hiệu ứng thị giác đắt tiền và sang trọng nhất cho thương hiệu của bạn!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Trong hệ thống ánh sáng 3 điểm, Key Light (Đèn chính) giống như giọng ca chính (Main Vocal) trong một ban nhạc. Nó quyết định toàn bộ sắc thái, tâm trạng và độ chuyên nghiệp của khung hình. Một chiếc Key Light hoàn hảo có thể làm mờ nếp nhăn, giấu đi quầng thâm và tạo ra <strong>bắt sáng (catchlight)</strong> long lanh trong đôi mắt người livestream."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Thông số kỹ thuật không biết nói dối"
+  },
+  {
+    "t": "p",
+    "c": "Đừng bao giờ bước ra cửa hàng và nói: 'Bán cho tôi cái đèn sáng nhất'. Bạn phải hiểu 3 thông số tử huyệt sau:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>CRI (Color Rendering Index):</strong> Chỉ số hoàn màu. Bắt buộc phải <strong>>95</strong>. Nếu CRI thấp (như đèn tuýp ở nhà), màu da của bạn sẽ tái nhợt như cương thi, và thỏi son màu Đỏ Cam sẽ hiển thị thành màu Hồng Cánh Sen trên màn hình khách hàng. Đừng hỏi tại sao khách bom hàng vì 'màu không giống trên mạng'!",
+      "<strong>Công suất (Watt):</strong> Cho phòng live tiêu chuẩn (10-15m2), hãy chọn đèn từ <strong>60W đến 100W</strong> (Ví dụ Godox SL60W, Amaran 60x). Đèn 200W-300W chỉ dành cho studio khổng lồ hoặc chiếu sáng cả một đội hình 5 người.",
+      "<strong>Nhiệt độ màu (Color Temperature):</strong> Đo bằng độ Kelvin (K). Ánh sáng trắng (5600K) cho cảm giác hiện đại, sạch sẽ (hợp bán đồ công nghệ, trang sức). Ánh sáng vàng ấm (3200K - 4500K) tạo cảm giác thân mật, ấm cúng và tôn da nhất (hợp bán mỹ phẩm, quần áo thời trang, podcast tâm sự)."
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Nghệ thuật Tản Sáng (Diffusion)"
+  },
+  {
+    "t": "p",
+    "c": "Đèn xịn đến mấy mà đánh trực tiếp (Hard light) thì khuôn mặt bạn sẽ trông như bị tra khảo. Bóng dưới mũi sẽ đen kịt, lỗ chân lông to ra gấp đôi. Bạn bắt buộc phải gắn <strong>Softbox (Hộp tản sáng)</strong>."
+  },
+  {
+    "t": "p",
+    "c": "<strong>Hình dáng Softbox quyết định Catchlight trong mắt:</strong> Softbox hình bát giác (Octagon) tạo ra đốm sáng tròn xoe trong mắt rất tự nhiên. Softbox lồng đèn (Lantern) tỏa sáng đều khắp phòng. Softbox chữ nhật phù hợp đánh ven từ hai bên. Lời khuyên: Hãy bắt đầu với một Softbox Bát giác 90cm kèm lưới tổ ong (Grid) để kiểm soát ánh sáng không bị tràn ra background."
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Set-up theo phong cách Rembrandt"
+  },
+  {
+    "t": "p",
+    "c": "Đây là kỹ thuật đánh sáng kinh điển của các họa sĩ thời Phục Hưng. Đặt Key Light cao hơn đầu, chếch 45 độ. Nó sẽ tạo ra một mảng sáng hình tam giác nhỏ trên má bên tối của bạn (Tam giác Rembrandt). Cách đánh sáng này tạo ra chiều sâu không gian (3D), làm khuôn mặt thon gọn đi (V-line) và mang lại vẻ đẹp đậm chất điện ảnh (Cinematic)."
+  },
+  {
+    "t": "quote",
+    "c": "Sự khác biệt giữa một kẻ nghiệp dư và một chuyên gia livestream đôi khi chỉ nằm ở một chiếc Softbox 500 cành."
+  }
+]
     },
     "en": {
       "title": "How to Choose the Perfect Key Light for Any Face Shape",
@@ -809,45 +926,57 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1517404215738-15263e9f9178?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Khách hàng có thể bao dung với một khung hình hơi nhiễu hạt, nhưng họ sẽ vạch ranh giới đỏ với âm thanh tồi tệ. Một phiên live setup hình ảnh 4K sang trọng nhưng âm thanh lại rè rẹt chói tai, vang vọng như trong hang động, hoặc tiếng đi sau hình sẽ ngay lập tức hủy hoại uy tín của bạn. Âm thanh kém phát ra tín hiệu của sự nghiệp dư và rẻ tiền. Dưới đây là 4 'căn bệnh' âm thanh kinh điển và phác đồ điều trị dứt điểm trong 30 giây."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "Chẩn Đoán Bệnh & Phác Đồ Điều Trị Nhanh"
-        },
-        {
-          "t": "p",
-          "c": "1. Tiếng Vỡ Chói Tai (Audio Clipping): Xảy ra khi bạn cười lớn hoặc hét lên, cường độ âm thanh vượt quá ngưỡng chịu đựng kỹ thuật, gây xé tiếng. Phác đồ: Vặn núm Gain (độ nhạy) trên Soundcard hoặc Mic USB xuống mức 60-70%. Nhìn vào thanh Audio Mixer trên phần mềm OBS: Đảm bảo dải sóng chỉ dao động ở vùng Xanh lá hoặc Vàng (an toàn nhất là từ -12dB đến -6dB), tuyệt đối cấm kỵ để sóng vọt lên vùng Đỏ."
-        },
-        {
-          "t": "p",
-          "c": "2. Lỗi Hát Nhép (Latency / Sync Delay): Tình trạng hình ảnh miệng mấp máy xong nửa giây sau tiếng mới phát ra, gây ức chế tột độ. Phác đồ: Trong OBS, click chuột phải vào thanh Audio, chọn 'Advanced Audio Properties'. Tại cột 'Sync Offset', hãy nhập thông số bù trừ (thường dao động từ 150ms đến 250ms). Quay thử 1 đoạn video vỗ tay để căn chỉnh cho đến khi tiếng 'bốp' khớp hoàn hảo với hình ảnh tay chạm nhau."
-        },
-        {
-          "t": "p",
-          "c": "3. Tiếng Vọng Hang Động (Hollow Echo): Thường xảy ra do mic thu ngược lại tiếng từ loa ngoài của máy tính, hoặc do phòng live quá trống trải khiến sóng âm đập vào tường cứng dội lại. Phác đồ: Nguyên tắc tối thượng: Chơi live là phải đeo tai nghe kiểm âm (In-ear Monitor) và MUTE toàn bộ loa ngoài. Trang bị rèm vải dày, thảm trải sàn hoặc dán mút xốp tiêu âm lên tường để triệt tiêu sóng phản xạ."
-        },
-        {
-          "t": "p",
-          "c": "4. Tiếng Ồn Môi Trường (Noise & Hiss): Tiếng ù ù của quạt gió, điều hòa hay xe cộ ngoài đường lọt vào mic. Phác đồ: Kích hoạt bộ lọc thần thánh 'Noise Suppression' (Khử ồn) trong mục Filter âm thanh của OBS. Nhớ chọn thuật toán 'RNNoise' (AI xử lý mượt mà, không làm méo tiếng người). Không gian sẽ tĩnh lặng như phòng thu chuyên nghiệp."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Kỷ Luật Của Pro Livestreamer"
-        },
-        {
-          "t": "p",
-          "c": "Không bao giờ bấm 'Go Live' nếu chưa quay thử cục bộ. Hãy ghi âm và quay test một đoạn video 1 phút, cắm tai nghe kiểm tra lại kỹ lưỡng. Sự kỷ luật này cứu bạn khỏi những thảm họa mất khách vì lỗi kỹ thuật ngớ ngẩn."
-        },
-        {
-          "t": "quote",
-          "c": "Âm thanh chất lượng cao không phải là nói to hay nhỏ, mà là tạo ra một dòng chảy âm thanh tròn trịa, ấm áp và dọn đường mượt mà đi thẳng vào tâm trí khách hàng!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Thị giác có thể bị đánh lừa bởi filter, nhưng thính giác thì không. Bộ não con người vô cùng nhạy cảm với những âm thanh khó chịu. Một luồng âm thanh chói tai, vang vọng hay ngắt quãng không chỉ giết chết cảm xúc mua hàng mà còn gây ra sự ức chế vật lý, khiến người xem ngay lập tức vạch ranh giới từ chối bạn."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "3 Sát thủ vô hình giết chết luồng âm thanh"
+  },
+  {
+    "t": "p",
+    "c": "<strong>1. Hiệu ứng Hang Động (Room Reverb):</strong> Lỗi kinh điển của những người mới dọn vào phòng trống để live. Âm thanh đập vào tường trơn và dội lại liên tục tạo ra tiếng vang ồm ồm (echo). Khán giả có cảm giác bạn đang ngồi trong nhà vệ sinh để bán hàng."
+  },
+  {
+    "t": "p",
+    "c": "<strong>Khắc phục:</strong> Dán mút tiêu âm (Acoustic foam) hình hột gà lên 4 bức tường. Nếu không có ngân sách, hãy lấp đầy phòng bằng rèm vải dày, thảm lông trải sàn, kệ sách, tủ quần áo hở. Bất cứ bề mặt gồ ghề hoặc xốp mềm nào cũng có khả năng triệt tiêu tiếng vang."
+  },
+  {
+    "t": "p",
+    "c": "<strong>2. Tiếng nổ âm 'P', 'B' (Plosives):</strong> Khi bạn phát âm các phụ âm bật hơi như 'P', 'B', luồng hơi mạnh từ miệng đập thẳng vào màng micro tạo ra tiếng 'Bụp! Bụp!' cực kỳ chói tai. Nó giống như ai đó đang đấm vào lỗ tai người xem."
+  },
+  {
+    "t": "p",
+    "c": "<strong>Khắc phục:</strong> Tuyệt đối không để micro ngay trước đường đi của luồng hơi thở. Đặt mic chếch sang 1 bên mép hoặc thấp dưới cằm. Nếu dùng mic để bàn, <strong>bắt buộc phải có tấm màng chắn (Pop Filter)</strong>."
+  },
+  {
+    "t": "p",
+    "c": "<strong>3. Tạp âm rỉ rả (White Noise/Background Noise):</strong> Tiếng rè rè của quạt máy, tiếng lạo xạo của áo cọ vào mic cài áo (Lavalier), hay tiếng còi xe ngoài đường. Dù rất nhỏ, nhưng nghe liên tục 2 tiếng đồng hồ sẽ khiến não bộ bị mệt mỏi (Audio Fatigue)."
+  },
+  {
+    "t": "p",
+    "c": "<strong>Khắc phục:</strong> Sử dụng phần mềm triệt tiêu tiếng ồn AI (như Nvidia Broadcast nếu dùng PC) hoặc các dòng micro tích hợp nút ANC (Active Noise Cancelling) phần cứng. Dán một miếng băng keo nhỏ cố định dây mic cài áo để nó không cọ vào lớp áo thứ 2."
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Quản trị năng lượng giọng nói (Voice Pacing)"
+  },
+  {
+    "t": "p",
+    "c": "Âm thanh tốt không chỉ là thiết bị tốt, mà còn là <strong>cách bạn sử dụng giọng nói</strong>. Lỗi nặng nhất là 'gào thét liên tục'. Nó thể hiện sự tuyệt vọng trong việc bán hàng và khiến khán giả bị điếc tai."
+  },
+  {
+    "t": "p",
+    "c": "Thay vào đó, hãy sử dụng kỹ thuật <strong>'Thì thầm quyền lực' (The Power Whisper)</strong>. Khi muốn chốt một mã giảm giá sốc, thay vì hét lên, hãy hạ giọng xuống, ghé sát vào mic và nói trầm ấm: <em>'Mã này em giấu sếp, chỉ đưa lên đúng 5 combo thôi, các chị nhanh tay nhé'</em>. Sự thay đổi đột ngột về cường độ âm thanh (Dynamics) sẽ tạo ra sự tập trung tuyệt đối."
+  },
+  {
+    "t": "quote",
+    "c": "Âm thanh dở tệ giống như bạn mời khách ăn sơn hào hải vị nhưng lại đựng trong một chiếc bát dơ bẩn."
+  }
+]
     },
     "en": {
       "title": "5 Common Livestream Audio Glitches & Fast Fixes",
@@ -915,41 +1044,62 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1494178270175-e96de2971df9?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Trong kỷ nguyên số, nơi mọi tính năng sản phẩm đều có thể bị copy trong vòng 24 giờ, Thương hiệu cá nhân (Personal Brand) là 'tài sản vô hình' đắt giá và duy nhất không thể sao chép. Nếu không có thương hiệu, bạn buộc phải nhảy vào cuộc chiến sinh tử: Cạnh tranh bằng cách đạp giá rớt biên độ. Ngược lại, khi có thương hiệu, khách hàng sẵn sàng trả tiền gấp 3 lần thị trường, không phải vì sản phẩm tốt hơn, mà đơn giản vì ĐÓ LÀ BẠN."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "Công Thức 3P Định Hình Nhân Hiệu Tối Thượng"
-        },
-        {
-          "t": "p",
-          "c": "1. Position (Định Vị Ngách Siêu Hẹp): Đừng hoang tưởng làm chuyên gia của mọi lĩnh vực. Não bộ khách hàng không có dung lượng để nhớ đâu! Hãy chọn một 'ngách' thật hẹp nhưng bạn phải vươn lên làm Vua ở đó. Thay vì xưng danh chung chung 'Chuyên gia mỹ phẩm', hãy định vị sắc lẹm: 'Chuyên gia phục hồi da mụn nội tiết cho mẹ bỉm sữa'."
-        },
-        {
-          "t": "p",
-          "c": "2. Personality (Tính Cách Độc Bản): Mạng xã hội dị ứng với sự hoàn hảo giả tạo, nhưng lại tôn sùng sự chân thật. Hãy chắt lọc đúng 3 tính từ cốt lõi miêu tả con người thật của bạn (VD: Hài hước, Thẳng thắn thô bạo, Kỷ luật thép) và khuyếch đại nó 1000% trên video. Đừng gồng mình 'diễn' một hình mẫu xa lạ, vỏ bọc đó sẽ vỡ nát chỉ sau vài tháng."
-        },
-        {
-          "t": "p",
-          "c": "3. Proof (Bằng Chứng Thép): Không một ai tin những lời bạn tự huyễn hoặc khen mình. Bạn phải đập tan sự hoài nghi bằng Kết Quả thực tế. Hãy phơi bày các Case Study thành công, hình ảnh Before/After đẫm máu của khách hàng, và show ra quá trình nỗ lực điên cuồng đằng sau cánh gà của chính bạn."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Lộ Trình 30 Ngày Khởi Động Tàn Khốc"
-        },
-        {
-          "t": "p",
-          "c": "Tuần 1 & 2: Áp dụng chiến thuật 'Trải thảm ném bom'. Sản xuất liên tục 15 video ngắn (Shorts) đánh thẳng vào các câu hỏi, nỗi đau cơ bản nhất của khách hàng. Tuần 3 & 4: Tổ chức Livestream trực tiếp để phô diễn năng lực thực chiến, tương tác sâu và chuyển hóa lượng follower vãng lai thành 'Fan cuồng nhiệt'."
-        },
-        {
-          "t": "quote",
-          "c": "Thương hiệu cá nhân không nằm ở việc bạn khoác lên mình bộ vest ngàn đô. Nó là cái cách người ta rỉ tai nhau về bạn khi bạn vừa bước ra khỏi phòng!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Thương hiệu cá nhân (Personal Branding) không phải là việc bạn mặc đồ hiệu, chụp ảnh bên xe sang hay phông bạt những triết lý sáo rỗng. Trong kỷ nguyên thương mại điện tử 2026, Thương hiệu cá nhân là: <strong>Khi nhắc đến tên bạn, người ta ngay lập tức nghĩ đến việc bạn có thể giải quyết được Vấn Đề Gì cho họ.</strong> Nếu bạn không định hình được 'nhãn mác' này, bạn sẽ mãi lặn ngụp trong biển người vô danh."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Mô hình IKIGAI trong Xây dựng Thương hiệu"
+  },
+  {
+    "t": "p",
+    "c": "Đừng bắt chước người khác, hãy tìm ra 'điểm chạm' giữa 3 yếu tố cốt lõi của chính bạn:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Thứ bạn giỏi nhất (Expertise):</strong> Bạn có kiến thức sâu sắc về Skincare? Bạn có tài phối đồ (Mix & Match) cho người ngoại cỡ? Hay bạn chỉ đơn giản là người nói chuyện cực kỳ duyên dáng?",
+      "<strong>Thứ thế giới cần (Market Demand):</strong> Hiện tại thị trường đang khát khao điều gì? Họ sợ béo, sợ già, sợ tụt hậu công nghệ? Nỗi đau càng lớn, thị trường càng tiềm năng.",
+      "<strong>Thứ tạo ra tiền (Monetization):</strong> Giao điểm của hai yếu tố trên phải gắn liền với một mô hình kinh doanh cụ thể. Bạn chia sẻ về Skincare để bán Dược mỹ phẩm (Affiliate/Brand Own)."
+    ]
+  },
+  {
+    "t": "p",
+    "c": "Khi tìm được giao điểm này, bạn đã có một <strong>Định vị độc bản (Unique Selling Proposition - USP)</strong>. Ví dụ: Không phải là 'Beauty Blogger' chung chung, mà là 'Chuyên gia trị mụn không dùng kháng sinh cho mẹ bầu'."
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Chiến lược 3 giai đoạn: Từ Không Ai Biết đến Người Được Săn Đón"
+  },
+  {
+    "t": "p",
+    "c": "<strong>Giai đoạn 1: Trao giá trị điên cuồng (Giver Stage - 1 đến 3 tháng)</strong>. Đừng cố bán bất cứ thứ gì trong giai đoạn này. Nhiệm vụ duy nhất của bạn là giải quyết vấn đề của thị trường miễn phí. Làm 100 video hướng dẫn chi tiết, viết 50 bài phân tích chuyên sâu. Cho đi cho đến khi khán giả cảm thấy 'nợ' bạn một ân tình."
+  },
+  {
+    "t": "p",
+    "c": "<strong>Giai đoạn 2: Trở thành Chuyên gia uy tín (Authority Stage - 3 đến 6 tháng)</strong>. Lúc này, bạn bắt đầu đưa ra các Case Study thành công, chia sẻ góc nhìn trái chiều (Controversial opinions) để tạo sự khác biệt. Ví dụ: 'Tại sao dùng Retinol nồng độ cao là tự sát da mặt'. Bạn thể hiện kiến thức vượt trội so với đám đông."
+  },
+  {
+    "t": "p",
+    "c": "<strong>Giai đoạn 3: Thu hoạch (Monetization Stage)</strong>. Bây giờ, khi bạn đưa lên một sản phẩm trong livestream, khán giả không hỏi 'Sản phẩm này có tốt không?'. Họ chỉ hỏi: 'Anh/Chị đã dùng thử chưa? Nếu anh/chị bảo tốt, em sẽ mua'. Niềm tin đã thay thế hoàn toàn nhu cầu tìm hiểu sản phẩm."
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Tính Nhất Quán (Consistency) - Chìa khóa sinh tử"
+  },
+  {
+    "t": "p",
+    "c": "Thương hiệu bị phá vỡ nhanh nhất khi bạn đánh mất sự nhất quán. Nếu bạn định vị là một Chuyên gia tri thức, đừng lên mạng văng tục hay tham gia drama rẻ tiền. Tính nhất quán phải thể hiện qua: Cấu trúc video, màu sắc thumbnail, cách xưng hô, và quan trọng nhất là <strong>chất lượng sản phẩm bạn đại diện</strong>."
+  },
+  {
+    "t": "quote",
+    "c": "Thương hiệu cá nhân là tài sản duy nhất không thể bị lạm phát, không bị copy và không bao giờ mất giá nếu bạn biết cách chăm sóc nó."
+  }
+]
     },
     "en": {
       "title": "Building a Personal Brand on TikTok from Scratch",
@@ -1013,41 +1163,67 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1499540633125-484965b60031?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Bạn đốt hàng chục triệu chạy Ads để mua mâm cỗ traffic, nhưng thực khách chỉ ngó qua 3 giây rồi bỏ đi sạch? Đây là thực tế máu me: Nếu bạn không thể trói chân người xem trong 5 phút đầu tiên, mọi nỗ lực chốt đơn, kịch bản thuyết phục phía sau đều là vô nghĩa. Dưới đây là tuyệt kỹ 'Giữ chân vô hình' bẻ gãy hành vi lướt (Swipe) của các Mega-Idol."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "Chiến Thuật Móc Câu 'Shock & Awe'"
-        },
-        {
-          "t": "p",
-          "c": "1. Khai tử thói quen chào hỏi rườm rà: 'Em chào chị A, em thấy anh B'. Xin lỗi, khán giả mới (Cold Traffic) không quan tâm bạn là ai! Ngay giây đầu tiên, hãy ném vào mặt họ một Hook bùng nổ lợi ích: 'Ai đang bị hói đầu rụng tóc sau sinh, ở lại ngay đây 2 phút, Hiển sẽ chỉ cách mọc tóc lỉa chỉa chỉ với 50k, sai đền 10 triệu!'"
-        },
-        {
-          "t": "p",
-          "c": "2. Thao túng tâm lý bằng ánh mắt (Lethal Eye Contact): Đừng thảm hại nhìn vào màn hình điện thoại để tự ngắm nhan sắc của mình. Hãy trừng mắt nhìn thẳng xuyên thấu vào chấm Camera đen ngòm. Động tác này tạo ra ảo giác tâm lý cực mạnh khiến khán giả tưởng bạn đang nhìn xoáy sâu vào linh hồn họ, làm họ khựng lại không nỡ vuốt qua."
-        },
-        {
-          "t": "p",
-          "c": "3. Nghệ thuật Đòn bẩy Minigame: Đừng bao giờ làm từ thiện phát quà vô điều kiện. Hãy thiết lập luật chơi: 'Hiển đang cầm trên tay thỏi son Mac 800k. Nó sẽ thuộc về ai gõ phím số 1 nhiều nhất và Share phiên live này trong đúng 3 phút tới'. Khán giả sẽ lập tức đua nhau spam phím, đẩy chỉ số Active Engagement lên đỉnh điểm."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Quy Tắc Áp Đảo Năng Lượng"
-        },
-        {
-          "t": "p",
-          "c": "Định luật bảo toàn livestream: Năng lượng của bạn bắt buộc phải cao hơn khán giả gấp 3 lần. Đừng ủ rũ ngồi chờ mắt xem lên 100 rồi mới chịu há miệng. Hãy truyền lửa như thể đang có 10.000 người chen chúc dưới sân khấu, ngay cả khi góc màn hình hiển thị chỉ có đúng 1 người đang xem (và đó có thể là mẹ bạn)."
-        },
-        {
-          "t": "quote",
-          "c": "Khách hàng khựng lại vì tò mò, quyết định ở lại vì giá trị, nhưng họ sẵn sàng xuống tiền vì nguồn năng lượng bùng nổ bạn truyền cho họ trong những phút đầu tiên!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Luật chơi của Livestream vô cùng nghiệt ngã: Thuật toán quyết định có phân phối luồng live của bạn cho hàng chục ngàn người khác hay không <strong>hoàn toàn dựa vào dữ liệu của 5 phút đầu tiên</strong>. Nếu khán giả lướt vào và rời đi trong vòng 30 giây (High Bounce Rate), TikTok/Facebook sẽ đánh giá live của bạn là rác (Low Quality Content) và lập tức 'đóng băng' traffic. 5 phút đầu tiên không phải để bán hàng, mà là cuộc chiến sinh tồn để thao túng thuật toán."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Vũ khí số 1: 'Cái Móc' Khởi Đầu (The Opening Hook)"
+  },
+  {
+    "t": "p",
+    "c": "Đừng bao giờ bắt đầu bằng: 'Em chào mọi người, mọi người vào đông đông đi rồi em bắt đầu nhé'. Khán giả sẽ không đợi. Bạn phải <strong>bật chế độ năng lượng 200% ngay từ giây số 0</strong>."
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Hook bằng Mâu thuẫn/Sốc:</strong> 'Đừng ai mua chai serum này nếu chưa xem hết cái live này, em thề các chị đang bôi tiền qua cửa sổ!'",
+      "<strong>Hook bằng Lợi ích Khủng (Bait):</strong> 'Trong góc trái màn hình đang có đúng 10 mã sạc dự phòng giá 1K, ai không lấy mã bây giờ tí hết ráng chịu nha!'.",
+      "<strong>Hook bằng Visual (Thị giác):</strong> Cầm một sản phẩm kỳ lạ đập vào camera, tung hoa giấy, hoặc mặc một bộ trang phục cực kỳ bắt mắt."
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Quy tắc 30 Giây: Tương tác bắt buộc (Forced Engagement)"
+  },
+  {
+    "t": "p",
+    "c": "Thuật toán đếm số lượt comment và share trong 3 phút đầu. Bạn phải tạo ra lý do để họ bắt buộc phải gõ phím."
+  },
+  {
+    "t": "p",
+    "c": "<strong>Kịch bản:</strong> 'Anh chị nào đang nghe rõ tiếng em nói, comment số 1. Ai thấy hình bị mờ comment số 2 để em chỉnh mạng lại ngay nhé!'. Hoặc: 'Hôm nay em có 2 phần quà trị giá 500k, ai muốn nhận quà comment TÔI MUỐN ngay lập tức để em ghim tên!'. Hành động comment nhỏ này tạo ra 'vi-cam-kết' (Micro-commitment), khiến họ khó rời bỏ phiên live hơn."
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Kỹ thuật 'Mở Vòng Lặp' (Open Loops)"
+  },
+  {
+    "t": "p",
+    "c": "Đây là kỹ thuật viết kịch bản của các bộ phim bom tấn Hollywood. Bạn hé lộ một bí mật vô cùng hấp dẫn nhưng cố tình <strong>chưa giải quyết ngay</strong>, buộc khán giả phải ở lại xem tiếp."
+  },
+  {
+    "t": "p",
+    "c": "<strong>Ví dụ thực chiến:</strong> 'Lát nữa ở phút thứ 15, em sẽ chỉ cho các chị một mẹo dùng Retinol mà các spa đang giấu nhẹm để chém đẹp các chị 5 triệu/liệu trình. Nhưng trước khi nói cái đó, em phải xả nốt 5 cái túi xách này đã...'. Não bộ con người rất ghét sự dang dở (Hiệu ứng Zeigarnik), họ sẽ nán lại chỉ để nghe cái bí mật đó."
+  },
+  {
+    "t": "h",
+    "sn": "04",
+    "c": "Tốc độ và Nhịp độ (Pacing)"
+  },
+  {
+    "t": "p",
+    "c": "Nói nhanh hơn bình thường 1.25 lần. Không để khoảng không im lặng chết (Dead air) quá 3 giây. Kết hợp hiệu ứng âm thanh lồng tiếng (Soundboard: Tiếng vỗ tay, tiếng cười, tiếng đinh đoong) để liên tục kích thích thính giác người xem, giữ họ trong trạng thái hưng phấn nhẹ."
+  },
+  {
+    "t": "quote",
+    "c": "Nếu bạn không thể giữ chân người xem trong 5 phút đầu, bạn sẽ không bao giờ có cơ hội bán bất cứ thứ gì trong 3 tiếng còn lại."
+  }
+]
     },
     "en": {
       "title": "How to Hold Thousands of Viewers in the First 5 Minutes",
@@ -1111,41 +1287,67 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1496096265110-f83ad7f96608?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Hãy gạt bỏ ngay ý nghĩ livestream chuyên nghiệp bằng những ứng dụng điện thoại chập chờn, mờ mịt. OBS Studio (Open Broadcaster Software) chính là 'vũ khí hạt nhân' của ngành công nghiệp này, cho phép bạn chèn logo thương hiệu, phát video chạy nền, thiết lập chuyển cảnh Multi-cam và đẩy luồng 4K cực mượt. Điều điên rồ nhất? Nó mã nguồn mở và MIỄN PHÍ 100%. Dưới đây là ma trận thông số cài đặt 'chuẩn đét' không giấu nghề."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "Giải Mã Thông Số Video & Băng Thông (Output)"
-        },
-        {
-          "t": "p",
-          "c": "1. Độ Phân Giải (Resolution): Truy cập Settings > Video. Hãy thiết lập Base Canvas và Output Scaled là 1080x1920 (khung dọc chuẩn TikTok) hoặc 1920x1080 (khung ngang YouTube/Facebook). Quan trọng: Khóa FPS ở mức 60. Điều này đảm bảo mọi chuyển động tay khi demo sản phẩm của bạn mượt mà như bôi mỡ, hoàn toàn không bị bóng mờ (ghosting)."
-        },
-        {
-          "t": "p",
-          "c": "2. Bộ Mã Hóa (Hardware Encoding): Đây là động cơ V8 của OBS. Tại mục Output > Streaming, phần Encoder, BẮT BUỘC phải chọn 'NVIDIA NVENC H.264' (nếu máy có card rời NVIDIA). Tuyệt đối tránh xa x264, nó sẽ bắt CPU của bạn gánh toàn bộ tải trọng xử lý, dẫn đến CPU chạm mốc 100% và sập nguồn (Crash) ngay giữa phiên live."
-        },
-        {
-          "t": "p",
-          "c": "3. Bitrate (Đường Ống Băng Thông): Chỉ số Bitrate quyết định độ sắc nét của điểm ảnh. Nếu đường truyền cáp quang mạnh (Upload > 30Mbps), hãy mạnh dạn đẩy CBR Bitrate lên 6000 - 8000 Kbps. Khách hàng sẽ soi rõ từng lỗ chân lông trên da bạn. Nếu mạng thiếu ổn định, hãy hạ cánh an toàn ở mức 4000 Kbps để tránh giật lag (Dropped Frames)."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Làm Sạch Đường Truyền Âm Thanh (Audio)"
-        },
-        {
-          "t": "p",
-          "c": "Vào Settings > Audio. Nâng cấp Sample Rate lên chuẩn studio 48kHz (thay vì 44.1kHz). Ở mục Global Audio Devices, gán 'Mic/Auxiliary Audio' khớp đúng với Soundcard hoặc Micro xịn của bạn. Lệnh cấm kỵ: Disable (Tắt) hoàn toàn 'Desktop Audio' để đảm bảo tiếng thông báo ting ting của Zalo/Facebook không lọt vào tai hàng ngàn khách hàng."
-        },
-        {
-          "t": "quote",
-          "c": "Chinh phục được hệ thống OBS Studio đồng nghĩa với việc bạn đã đè bẹp 90% đối thủ ngoài kia về đẳng cấp hình ảnh và sự uy tín của thương hiệu!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Hầu hết những người mới livestream đều cảm thấy khiếp sợ khi lần đầu mở OBS Studio lên. Giao diện đen ngòm, chi chít nút bấm và các thuật ngữ kỹ thuật như Bitrate, Encoder, Keyframe khiến nó trông giống bảng điều khiển của một trạm không gian hơn là một phần mềm phát sóng. Nhưng sự thật là: <strong>Bạn chỉ cần nắm vững đúng 20% tính năng của OBS để tạo ra 80% sức mạnh của một đài truyền hình chuyên nghiệp.</strong>"
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Bản chất của OBS Studio"
+  },
+  {
+    "t": "p",
+    "c": "OBS (Open Broadcaster Software) là một 'nhà bếp'. Bạn mang nguyên liệu (Video từ camera, Âm thanh từ mic, Hình ảnh logo, Chữ chạy) vào nhà bếp này. OBS sẽ 'xào nấu' (Mã hóa - Encoding) tất cả lại thành một món ăn duy nhất (Luồng phát - Stream) và giao nó đến bàn ăn của khách hàng (Facebook/TikTok/Shopee)."
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Cấu trúc 3 tầng: Scenes - Sources - Audio"
+  },
+  {
+    "t": "p",
+    "c": "Hãy quên hết các thông số phức tạp đi và tập trung vào 3 khu vực sống còn này:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Scenes (Cảnh):</strong> Hãy tưởng tượng Scenes như những 'Trang giấy'. Trang 1 là 'Màn hình chờ', Trang 2 là 'Camera cận mặt', Trang 3 là 'Màn hình chốt deal'. Khi live, bạn chỉ việc bấm lật trang để thay đổi toàn bộ nội dung hiển thị.",
+      "<strong>Sources (Nguồn):</strong> Đây là những thứ bạn vẽ lên trang giấy đó. Bạn có thể thêm <em>Video Capture Device</em> (Camera của bạn), <em>Image</em> (Khung viền - Overlay), <em>Text</em> (Chữ chạy báo giá). OBS cho phép bạn xếp chồng chúng lên nhau y hệt như các layer trong Photoshop.",
+      "<strong>Audio Mixer (Bộ trộn âm):</strong> Nơi bạn kiểm soát âm thanh. Quy tắc vàng: <strong>Luôn tắt hết các nguồn âm thanh không cần thiết (như tiếng Desktop, tiếng mic của webcam cùi bắp)</strong> và chỉ để lại thanh âm thanh của chiếc Micro xịn mà bạn đã kết nối."
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Cấu hình tối ưu (Settings) để không bị giật lag"
+  },
+  {
+    "t": "p",
+    "c": "Nhiều bạn máy rất xịn, mạng rất mạnh nhưng stream vẫn bị giật tung chảo, hình ảnh mờ căm (pixelated). Lỗi 100% nằm ở phần Settings. Hãy copy y chang công thức sau vào mục <strong>Settings -> Output</strong>:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Video Bitrate:</strong> Đặt ở mức 4000 - 6000 Kbps (Cho độ phân giải 1080p). Nếu đặt quá thấp, hình sẽ bị vỡ nét (răng cưa) khi bạn di chuyển nhanh. Nếu đặt quá cao (VD: 15000 Kbps), mạng của người xem không tải nổi sẽ bị hiện tượng xoay vòng (Buffering).",
+      "<strong>Encoder (Bộ mã hóa):</strong> TUYỆT ĐỐI không dùng x264 (Dùng CPU để xử lý) nếu bạn có Card màn hình rời. Hãy chọn <strong>NVIDIA NVENC H.264</strong> (hoặc AMD HW H.264). Card màn hình sinh ra để làm việc này, nó sẽ giúp CPU của bạn được nghỉ ngơi, máy sẽ mát rượi và không bao giờ bị drop FPS.",
+      "<strong>Keyframe Interval:</strong> Đặt là <strong>2</strong>. Đây là thông số bắt buộc của Facebook và Twitch để đồng bộ luồng phát."
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "04",
+    "c": "Tính năng Filter (Bộ lọc) - Vũ khí bí mật"
+  },
+  {
+    "t": "p",
+    "c": "Bạn có biết bạn có thể làm mịn da, chỉnh màu nghệ thuật ngay trên OBS mà không cần app bên thứ ba không? Chuột phải vào Source Camera của bạn, chọn <em>Filters -> Color Correction</em>. Tăng nhẹ Contrast (Độ tương phản) và Saturation (Độ bão hòa màu), khung hình của bạn sẽ lập tức rực rỡ và có chiều sâu như phim điện ảnh."
+  },
+  {
+    "t": "quote",
+    "c": "Đừng sợ OBS. Nó là công cụ miễn phí duy nhất có thể đưa đẳng cấp livestream của bạn từ 'người bán hàng rong' lên 'đài truyền hình quốc gia'."
+  }
+]
     },
     "en": {
       "title": "OBS Studio Beginner Guide: Optimal Settings & Setup",
@@ -1209,41 +1411,50 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Đây là bài toán tâm lý học thị giác: Khách hàng chỉ mất đúng 2 giây để quét phông nền (background) phía sau và định giá thương hiệu của bạn. Một căn phòng bừa bộn với chăn mùng xếp xó sẽ ngay lập tức biến sản phẩm 2 triệu của bạn thành rác xả lỗ 50k. Setup một studio livestream chuyên nghiệp không đòi hỏi hàng trăm triệu, nó đòi hỏi tư duy vật lý và nghệ thuật sắp đặt không gian."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "3 Quy Tắc Vàng Thao Túng Thị Giác"
-        },
-        {
-          "t": "p",
-          "c": "1. Nguyên Lý Tách Lớp (Distance Rule): Lỗi sơ đẳng nhất là kê bàn sát rạt vào tường. Hãy kéo bàn làm việc của bạn ra xa tường ít nhất 1.5 đến 2 mét! Khoảng không này kết hợp với Lens máy ảnh khẩu độ lớn (F1.4 hoặc F1.8) sẽ tạo ra hiệu ứng Xóa phông (Bokeh) mượt mà, biến background thành một lớp màn nhung mờ ảo cực kỳ đắt tiền."
-        },
-        {
-          "t": "p",
-          "c": "2. Chiến Thuật Đèn RGB Tương Phản: Phông nền tuyệt đối không được sáng rực rỡ lấn át nhân vật chính (Host). Quy trình đúng: Đánh sập đèn phòng, dùng 1-2 thanh LED RGB (chỉnh màu Xanh Đậm hoặc Tím Neon) đánh ngược hắt lên tường. Sự tương phản giữa ánh sáng Lạnh (phía sau) và ánh sáng Ấm (đánh vào mặt bạn) sẽ tạo ra khối nổi 3D Cinematic đậm chất điện ảnh."
-        },
-        {
-          "t": "p",
-          "c": "3. Tối Giản Quyền Lực (Minimalism): Đừng hành hạ thị giác người xem bằng cách nhét 50 món đồ lỉnh kỉnh lên kệ. Đẳng cấp đến từ 'Khoảng trống' (Negative Space). Chỉ cần đặt 2 cuốn tạp chí thời trang, 1 chậu cây xanh nhỏ nhắn, hoặc 1 chiếc cúp vinh danh. Ít nhưng phải là đồ hiệu."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Mật Mã Ánh Sáng Practical Light"
-        },
-        {
-          "t": "p",
-          "c": "Bí kíp của các Studio triệu đô: Đặt một nguồn sáng phụ (Practical Light) – ví dụ như một chiếc đèn bàn Edison ánh sáng Vàng 3200K – tít tận góc xa khung hình. Điểm sáng vàng ấm áp lọt thỏm giữa đại dương xanh RGB sẽ đánh mạnh vào tiềm thức, tạo cảm giác an toàn, ấm cúng khiến người xem không muốn thoát ra."
-        },
-        {
-          "t": "quote",
-          "c": "Background livestream không phải là một bức tường vô tri. Nó là chiếc bao bì đắt giá nhất bao bọc lấy sự uy tín và sản phẩm bạn đang bán!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Người xem quyết định họ có thích bạn hay không trong 3 giây đầu tiên, và <strong>Background (Phông nền) chiếm đến 60% diện tích khung hình của bạn</strong>. Một background bừa bộn với móc phơi quần áo và giường ngủ xộc xệch sẽ phát ra thông điệp: 'Tôi là kẻ nghiệp dư'. Ngược lại, một background được thiết kế có chủ đích sẽ đóng vai trò như một người 'nhân viên sale thầm lặng', liên tục khẳng định uy tín của bạn."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Nguyên tắc Tương Phản (Contrast Principle)"
+  },
+  {
+    "t": "p",
+    "c": "Lỗi phổ biến nhất là để nhân vật chính bị chìm nghỉm (blend) vào background. Nếu bạn mặc áo đen, đừng đứng trước phông nền đen. Nếu bạn bán váy màu trắng, background phải là màu tối (Xám đậm, Xanh Navy, Đỏ mận). Sự tương phản này tạo ra <strong>chiều sâu thị giác (Depth of Field)</strong>, giúp sản phẩm và khuôn mặt của bạn nổi bần bật lên phía trước."
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "3 Phong cách Background 'Ăn tiền' nhất hiện nay"
+  },
+  {
+    "t": "p",
+    "c": "<strong>1. Background Kệ Trưng Bày (The Authority Bookshelf)</strong>. Phù hợp cho Chuyên gia, người đào tạo, review sách, mỹ phẩm cao cấp. Một chiếc kệ gỗ với những cuốn sách kinh điển, một chậu cây xanh nhỏ, và vài món đồ trang trí tinh tế. Nó hét lên sự thông thái và đáng tin cậy. <em>Mẹo: Đừng xếp sách lộn xộn, hãy xếp chúng theo mảng màu.</em>"
+  },
+  {
+    "t": "p",
+    "c": "<strong>2. Background Ánh sáng RGB (The Cyber-Gamer)</strong>. Phù hợp cho Streamer game, review đồ công nghệ, hoặc bán phụ kiện. Sử dụng không gian tối, kết hợp với các dải đèn LED Neon uốn chữ, đèn hắt tường RGB màu Xanh - Tím (Cyberpunk aesthetic). Nó tạo ra nguồn năng lượng trẻ trung, bùng nổ và giữ chân gen Z cực kỳ hiệu quả."
+  },
+  {
+    "t": "p",
+    "c": "<strong>3. Background Kho Hàng (The Warehouse - Chim Mồi)</strong>. Phù hợp cho shop bán lẻ, tổng kho sỉ, quần áo giá rẻ. Để background là hàng chục thùng hàng xếp chồng chất lên tới trần nhà, nhân viên đóng gói qua lại phía sau. Khung cảnh này đánh mạnh vào tâm lý FOMO: 'Shop này bán rẻ lắm, hàng đi sầm sập kìa, không mua nhanh là hết'. Đây là sự luộm thuộm <em>có chủ đích</em>."
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Ánh sáng Background (Ambient Lighting)"
+  },
+  {
+    "t": "p",
+    "c": "Đừng bao giờ để background tối thui (trừ khi bạn đánh phông đen hoàn toàn). Hãy sử dụng một chiếc đèn nhỏ (Practical light) như đèn ngủ để bàn màu vàng ấm, chiếu sáng một vùng nhỏ phía sau. Hoặc dùng đèn hắt (Uplight) đánh từ dưới sàn nhà hắt lên tường. Nó bóc tách bạn ra khỏi bức tường, tạo cảm giác không gian 3D sâu thẳm."
+  },
+  {
+    "t": "quote",
+    "c": "Background của bạn không chỉ là bức tường phía sau. Nó là chiếc bao bì sang trọng nhất để bọc lấy sản phẩm và thương hiệu cá nhân của chính bạn."
+  }
+]
     },
     "en": {
       "title": "Budget-Friendly Studio Background Decor Ideas",
@@ -1307,37 +1518,61 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1543269664-7eef42226a21?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Livestream là sân khấu truyền hình trực tiếp khắc nghiệt nhất, nơi không bao giờ có nút 'Quay lại' (Undo). Chuyện gì sẽ xảy ra nếu một tài khoản ném đá chửi bới sản phẩm của bạn là hàng giả mạo ngay trước mặt 5000 người đang xem? Bạn hoảng loạn xóa bình luận, hay nổi điên cãi tay đôi? Kỹ năng Xử lý Khủng hoảng (Crisis Management) ngay trên sóng trực tiếp chính là ranh giới sống còn giữa một tay mơ và một Mega-Idol."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "Nghệ Thuật Trấn Áp Antifan (Trolls)"
-        },
-        {
-          "t": "p",
-          "c": "1. Thiết Quân Luật Về Cảm Xúc (Zero-Argument Rule): Khi bị công kích độc hại, CẤM TUYỆT ĐỐI việc chửi thề, văng tục hay thanh minh yếu ớt. Việc đó chỉ ném giá trị thương hiệu của bạn xuống bùn. Hãy mỉm cười sắc lạnh và nói: 'Cảm ơn góp ý của bạn. Trợ lý của mình đã chụp lại màn hình và sẽ inbox ngay lập tức để đền bù gấp 10 lần nếu có bất kỳ lỗi lầm nào. Còn bây giờ, Hiển xin phép quay lại với hàng ngàn anh chị đang văn minh ủng hộ mình'."
-        },
-        {
-          "t": "p",
-          "c": "2. Aikido Tâm Lý (Mượn Lực Đả Lực): Nếu khách hàng chê đắt, đừng bao giờ chống chế kiểu 'Tiền nào của nấy'. Hãy mượn sức mạnh đám đông: 'Dạ vâng, nếu chỉ nhìn thoáng qua cái giá thì đúng là nhỉnh hơn thị trường thật! Nhưng tiện đây em xin phép nhờ 100 anh chị khách quen đang xem live, mọi người đã dùng thử rồi cho em xin một lời nhận xét thật lòng trên khung chat được không ạ?'. Hãy để cộng đồng fan cuồng tự đứng ra bảo vệ bạn."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Thoát Hiểm Khi Sập Hệ Thống"
-        },
-        {
-          "t": "p",
-          "c": "Rớt mạng? Sập nguồn máy tính? Đứt cáp? Khi hệ thống hoạt động trở lại, sai lầm lớn nhất là bộ dạng luống cuống xin lỗi. Hãy biến sự cố thành một chiêu PR đỉnh cao: 'Trời ơi sập live luôn các bác ạ! Nãy em tung cái Deal sốc quá hệ thống TikTok đỡ không nổi cháy cả server! Để chuộc lỗi, em quyết định bung thêm 5 suất nữa, ai nhanh tay thì được nhé!'"
-        },
-        {
-          "t": "quote",
-          "c": "Giữa tâm bão khủng hoảng, khán giả không soi xét vấn đề, họ đang soi xét bản lĩnh và thần thái đế vương của bạn!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Livestream là sân khấu không có 'Take 2' (Làm lại). Đèn sập, mạng rớt, micro tịt ngòi, hay những bình luận chửi bới tàn độc (Haters)... Tất cả những sự cố này chắc chắn sẽ xảy ra, vấn đề chỉ là khi nào. Khác biệt giữa một tay mơ và một chuyên gia nằm ở <strong>khả năng giữ thái độ điềm tĩnh (Bình chân như vại)</strong> khi mọi thứ xung quanh đang bốc cháy."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Xử lý sự cố Kỹ thuật (Technical Failures)"
+  },
+  {
+    "t": "p",
+    "c": "<strong>Tình huống:</strong> Đang live chốt đơn cao trào thì mạng bị rớt, vòng quay buffering xoay liên tục."
+  },
+  {
+    "t": "p",
+    "c": "<strong>Cách xử lý:</strong> Tuyệt đối không được hoảng loạn, cau mày hay chửi thề (khán giả có thể nghe thấy đoạn âm thanh cuối cùng trước khi rớt mạng). Hãy luôn chuẩn bị sẵn 1 kết nối 4G/5G dự phòng (Failover). Khi mạng có lại, đừng lải nhải xin lỗi quá 5 giây. Hãy dùng sự hài hước: <em>'Wow, các bác chốt đơn kinh quá làm đứt luôn cáp quang nhà em rồi! Giờ mạng lên lại rồi, em tung thêm 5 mã nữa đền bù cho các bác nhé!'</em>. Biến sự cố thành một lợi thế FOMO."
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Xử lý Khủng hoảng Bình luận (Haters & Trolls)"
+  },
+  {
+    "t": "p",
+    "c": "<strong>Tình huống:</strong> Có người comment liên tục: 'Hàng giả đấy, lừa đảo', 'Giá đắt gấp đôi shop X'."
+  },
+  {
+    "t": "p",
+    "c": "<strong>Cách xử lý:</strong> Người nghiệp dư sẽ nổi điên, tranh cãi tay đôi với Hater trên sóng, làm hỏng năng lượng của cả phòng live và khiến những khách hàng khác e ngại. Chuyên gia sẽ áp dụng <strong>Nguyên tắc Tảng Băng Trôi</strong>:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Bỏ qua (Ignore) và Chặn (Ban):</strong> Có một trợ lý âm thầm ngồi sau màn hình (Mod) chuyên chặn những từ khóa nhạy cảm và kick thẳng tay những thành phần phá rối. Bạn trên sóng vẫn cứ cười nói như không có chuyện gì xảy ra.",
+      "<strong>Đối mặt mượn sức (Aikido technique):</strong> Nếu bình luận đó quá nhiều người thấy, hãy đọc nó lên với thái độ bình thản, thậm chí mỉm cười: <em>'Bạn A nói hàng nhà em đắt gấp đôi. Đúng rồi bạn, vì nhà em là hàng chính hãng nhập khẩu có thẻ bảo hành 12 tháng, không phải hàng xưởng gia công trôi nổi. Anh chị nào thích rẻ mua dùng 3 ngày vứt thì mua shop khác, ai thích xài bền 3 năm thì ở lại đây với em'</em>. Bạn vừa nâng tầm sản phẩm, vừa tát thẳng mặt Hater bằng sự tự tin chuyên nghiệp."
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Xử lý tình huống 'Chết tương tác' (Dead Air)"
+  },
+  {
+    "t": "p",
+    "c": "<strong>Tình huống:</strong> Đang live thì mắt xem tụt không phanh, hỏi không ai trả lời."
+  },
+  {
+    "t": "p",
+    "c": "<strong>Cách xử lý:</strong> Đừng bao giờ than vãn: 'Sao không ai nói gì vậy', 'Mọi người chấm tương tác cho em đi'. Đó là sự ăn mày tình thương rất phản cảm. Hãy lập tức <strong>thay đổi nhịp điệu (State Break)</strong>. Tổ chức ngay một Mini-game tặng thẻ cào 50k, đổi góc máy quay, hoặc mang một sản phẩm cực độc lạ ra 'chửi' (Review bóc phốt chính sản phẩm nhà mình). Sự kịch tính sẽ lập tức kéo mắt xem quay trở lại."
+  },
+  {
+    "t": "quote",
+    "c": "Sự cố không làm bạn mất uy tín. Cách bạn hoảng loạn xử lý sự cố mới là thứ phá hủy hình ảnh chuyên nghiệp của bạn trong mắt khách hàng."
+  }
+]
     },
     "en": {
       "title": "Crisis Management: Handling Trolls and Glitches on Stream",
@@ -1397,41 +1632,65 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Soundcard là 'bộ não' trung tâm xử lý mọi tín hiệu âm thanh trước khi truyền lên sóng. Nếu Micro thu âm là cái miệng, thì Soundcard là thanh quản. Chọn sai Soundcard, âm thanh sẽ bị móp méo, trễ nhịp và dính đầy tạp âm điện từ. Dưới đây là review thực chiến các dòng phổ biến nhất."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "Top 3 Soundcard Đáng Mua Nhất"
-        },
-        {
-          "t": "p",
-          "c": "1. Yamaha AG03 / AG06 Mk2 (Vua Livestream): Đây là huyền thoại trong làng live. Ưu điểm tuyệt đối của nó là bộ Pre-amp (tiền khuếch đại) cực kỳ ấm áp và sạch sẽ. Hơn nữa, tính năng Loopback vật lý cho phép bạn phát nhạc nền từ máy tính thẳng lên sóng live cực kỳ dễ dàng."
-        },
-        {
-          "t": "p",
-          "c": "2. Focusrite Scarlett Solo / 2i2 Gen 4 (Chuẩn Studio): Phù hợp cho những ai đòi hỏi chất lượng âm thanh 'chuẩn Hifi'. Bộ chuyển đổi ADC của Focusrite bóc tách giọng nói sắc nét đến từng hơi thở. Phù hợp live ASMR, hát Acoustic hoặc đọc TVC."
-        },
-        {
-          "t": "p",
-          "c": "3. Maonocaster E2 (Giải trí thực dụng): Mẫu soundcard này có sẵn các phím cứng (pads) để bấm phát tiếng cười, tiếng vỗ tay, nhạc nền... Cực kỳ phù hợp cho những phiên live bán hàng mang tính chất tấu hài, giữ nhịp năng lượng cao."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Lưu ý sống còn khi setup"
-        },
-        {
-          "t": "p",
-          "c": "Tuyệt đối không dùng dây cáp rẻ tiền mua ngoài chợ (dây line 50k). Hãy đầu tư dây cáp chống nhiễu chuyên dụng. Dây rẻ tiền sẽ liên tục tạo ra tiếng xèo xèo (ground loop noise) phá nát hoàn toàn phiên live của bạn."
-        },
-        {
-          "t": "quote",
-          "c": "Đầu tư vào Soundcard xịn là bạn đang mua một tấm vé bảo hiểm trọn đời cho màng nhĩ của khách hàng!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Nếu Micro là 'cuống họng' thu nhận âm thanh, thì Soundcard (Audio Interface) chính là 'não bộ' xử lý âm thanh đó. Cắm trực tiếp một chiếc micro xịn vào lỗ 3.5mm của máy tính giống như việc đổ xăng E5 vào siêu xe Ferrari. Một chiếc Soundcard tốt sẽ cung cấp nguồn điện sạch (Phantom 48V) cho mic, khuếch đại tín hiệu (Pre-amp) không bị rè, và cung cấp các hiệu ứng (Effects) giúp giọng nói của bạn trở nên quyền lực, vang dội như một diễn viên lồng tiếng."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Phân khúc Entry-Level (Người mới bắt đầu) - Dưới 1 triệu đồng"
+  },
+  {
+    "t": "p",
+    "c": "<strong>Đại diện: Focusrite Scarlett Solo (Hàng cũ), K300, V8, V10</strong>"
+  },
+  {
+    "t": "p",
+    "c": "<strong>Phân tích:</strong> Các dòng K300, V8 (hàng Trung Quốc) có ưu điểm là rất rẻ, tích hợp sẵn pin sạc và hàng đống nút bấm tạo tiếng vỗ tay, tiếng cười. Tuy nhiên, <strong>chất lượng Pre-amp (Bộ khuếch đại) rất kém</strong>, dễ bị sôi nền (White noise) khi tăng âm lượng. Chỉ phù hợp cho các bạn học sinh sinh viên live vui vẻ trên điện thoại, hát hò giải trí."
+  },
+  {
+    "t": "p",
+    "c": "<strong>Lời khuyên chuyên gia:</strong> Cố gắng tìm mua một chiếc Focusrite Scarlett Solo Gen 3 cũ. Nó chỉ có 2 núm vặn cơ bản nhưng mang lại chất âm sạch sẽ, tinh khiết chuẩn phòng thu. Không có tiếng vỗ tay giả tạo, nhưng giọng nói của bạn sẽ cực kỳ 'sạch'."
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Phân khúc Mid-Range (Chuyên nghiệp Bán thời gian) - Từ 2 đến 5 triệu đồng"
+  },
+  {
+    "t": "p",
+    "c": "<strong>Đại diện: Audient iD4 MKII, Focusrite Scarlett 2i2 Gen 4, Yamaha AG03</strong>"
+  },
+  {
+    "t": "p",
+    "c": "<strong>Phân tích:</strong> Đây là 'Điểm ngọt' (Sweet spot) về P/P (Hiệu năng / Giá thành). <strong>Audient iD4 MKII</strong> sở hữu Pre-amp Class-A (mang từ những bàn mixer tỷ đồng xuống), cho chất âm ấm, mộc và độ chi tiết cực cao, hoàn hảo cho thu âm Podcast hoặc Live tư vấn chuyên sâu. Trong khi đó, <strong>Yamaha AG03</strong> lại là 'Vua tiện dụng' với thiết kế như một bàn Mixer thu nhỏ, có sẵn thanh trượt âm lượng (Fader) và nút bật hiệu ứng Reverb/Echo phần cứng, cực kỳ phù hợp cho anh em Live ca hát hoặc chơi nhạc cụ."
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Phân khúc High-End (Đài truyền hình cá nhân) - Từ 10 triệu trở lên"
+  },
+  {
+    "t": "p",
+    "c": "<strong>Đại diện: Universal Audio Apollo Solo, RØDECaster Pro II, GoXLR</strong>"
+  },
+  {
+    "t": "p",
+    "c": "<strong>Phân tích:</strong> Đây là cỗ máy kiếm tiền thực thụ."
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>RØDECaster Pro II:</strong> Không chỉ là Soundcard, nó là một trung tâm sản xuất âm thanh (Audio Production Studio). Bạn cắm 4 micro cùng lúc, kết nối Bluetooth với điện thoại để nhận cuộc gọi của khách hàng đưa thẳng lên live, gán các hiệu ứng âm thanh (Soundpads) xịn sò. Thích hợp cho các phiên live dạng Talkshow nhiều host.",
+      "<strong>GoXLR:</strong> 'Chân ái' của các Streamer Game. Cung cấp khả năng phân luồng âm thanh cực mạnh (Đường tiếng game riêng, đường tiếng mic riêng, đường tiếng Discord riêng) và bộ chỉnh sửa giọng nói (Voice FX) theo thời gian thực (như biến thành giọng Robot, giọng nữ)."
+    ]
+  },
+  {
+    "t": "quote",
+    "c": "Soundcard không tạo ra giọng nói hay cho bạn, nhưng nó đảm bảo 100% cảm xúc và nội lực trong giọng nói của bạn được truyền nguyên vẹn đến lỗ tai của khán giả."
+  }
+]
     },
     "en": {
       "title": "Comprehensive Review of Top Livestream Soundcards",
@@ -1495,41 +1754,50 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Sự thật tàn nhẫn: Khách hàng không hề quan tâm sản phẩm của bạn có công nghệ nano lõi kép hay thành phần hóa học phức tạp ra sao. Họ chỉ có đúng một câu hỏi trong đầu: 'Nó sẽ thay đổi cuộc đời tôi và giải quyết nỗi đau của tôi như thế nào?'. Kể chuyện (Storytelling) chính là thứ vũ khí bẻ gãy bộ lọc phòng vệ lý trí, luồn sâu vào tiềm thức và ép khách hàng phải ra quyết định bằng cảm xúc."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "Cấu Trúc Storytelling Chốt Đơn Sinh Tử"
-        },
-        {
-          "t": "p",
-          "c": "1. Xây Dựng Hình Mẫu Đồng Điệu (Mirroring): Mở đầu bằng một nhân vật (hoặc chính bạn) đang giãy giụa trong đúng nỗi đau mà tệp khách hàng đang gánh chịu. 'Chỉ mới 6 tháng trước, Hiển từng là một đứa rụt rè, nói vấp liên tục, lên live chỉ có đúng 2 mắt xem là mẹ và em gái...'. Ngay lập tức, 90% người xem sẽ thấy hình bóng thất bại của chính họ trong câu chuyện của bạn."
-        },
-        {
-          "t": "p",
-          "c": "2. Xoáy Sâu Nỗi Đau Đến Cùng Cực (Agitation): Đừng chỉ kể khổ, hãy khắc họa hậu quả tàn khốc nếu họ tiếp tục trì hoãn. 'Vì không dám ló mặt lên video, doanh số tháng đó chạm đáy, Hiển gần như phá sản và phải vay mượn để trả tiền nhà'. Cảm giác sợ hãi (FOMO) sẽ khiến khách hàng không thể lướt qua."
-        },
-        {
-          "t": "p",
-          "c": "3. Ánh Sáng Cứu Rỗi (The Epiphany): Hé lộ sản phẩm/giải pháp như một chiếc phao cứu sinh thần thánh. 'Và rồi mọi thứ đảo lộn khi Hiển áp dụng đúng bộ kịch bản 3 bước này...'. Đây chính là điểm vàng để bạn chèn các Tính năng (Features) và chuyển hóa chúng thành Lợi ích (Benefits) không thể chối từ."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Thao Túng Bằng Giác Quan"
-        },
-        {
-          "t": "p",
-          "c": "Tuyệt đối không dùng tính từ sáo rỗng. Đừng nói 'Nước hoa này thơm lắm'. Hãy thôi miên họ bằng ngôn từ thị giác: 'Mùi hương của nó quyến rũ đến mức, mỗi khi bạn đi lướt qua, người ta phải khựng lại 3 giây và ngoái nhìn vì tưởng bạn là một doanh nhân thành đạt'."
-        },
-        {
-          "t": "quote",
-          "c": "Lý trí dùng để tranh luận, nhưng chỉ có cảm xúc mới đủ sức móc sạch tiền trong ví của khách hàng!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Con người có thể quên số liệu, quên giá cả, quên luôn cả công dụng của sản phẩm, nhưng họ <strong>không bao giờ quên một câu chuyện chạm đến cảm xúc</strong>. Kể từ thời nguyên thủy ngồi quanh đống lửa, não bộ chúng ta đã được lập trình để hấp thụ thông tin thông qua các câu chuyện (Storytelling). Bán hàng bằng thông số là bán hàng cho lý trí (Rất khó chốt đơn). Bán hàng bằng câu chuyện là bán hàng cho cảm xúc (Ví sẽ tự động mở)."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Cấu trúc Câu chuyện Bán hàng Vô địch (The Hero's Journey)"
+  },
+  {
+    "t": "p",
+    "c": "Một câu chuyện chốt đơn không phải là kể lể dông dài. Nó phải tuân theo cấu trúc Tâm lý học hành vi gồm 3 hồi kinh điển:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Hồi 1: Nỗi đau chạm đáy (The Status Quo & The Pain).</strong> Đừng tả sản phẩm. Hãy tả nỗi đau của khách hàng một cách chân thực nhất. <em>'3 năm trước, mặt em chi chít mụn viêm. Em sợ hãi việc phải ra đường, sợ ánh mắt soi mói của đồng nghiệp. Em đã khóc sưng mắt khi crush từ chối chỉ vì câu nói 'da mặt em ghê quá'...'</em>. Hãy làm cho người xem thấy chính bản thân họ trong câu chuyện của bạn.",
+      "<strong>Hồi 2: Sự khai sáng (The Epiphany Bridge).</strong> Khoảnh khắc bạn tìm ra giải pháp. <em>'Tuyệt vọng, em tốn hàng chục triệu đi spa nhưng không đỡ. Cho đến một ngày, em gặp một bác sĩ da liễu già, ông ấy ném cho em tuýp kem bé xíu này và nói: Vấn đề của cháu không phải là trị mụn, mà là phục hồi hàng rào bảo vệ da...'</em>. Đây là lúc sản phẩm xuất hiện như một 'Thần khí' (Magic Weapon) cứu rỗi nhân vật chính.",
+      "<strong>Hồi 3: Cuộc sống mới (The Transformation).</strong> Cho họ thấy kết quả (Bức tranh tương lai). <em>'Sau đúng 3 tuần, mụn xẹp lép. Và giờ đây, như các chị thấy đấy, da em mộc 100% dưới camera thường. Em tự tin đứng đây chia sẻ bí quyết này cho các chị...'</em>"
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Kỹ thuật 'Show, Don't Tell' (Đừng nói, Hãy diễn tả)"
+  },
+  {
+    "t": "p",
+    "c": "Sai lầm lớn nhất là kể chuyện bằng những tính từ khô khan. Đừng nói: <em>'Chiếc áo này rất bền'</em>. Hãy kể: <em>'Em đã mặc chiếc áo này chui qua hàng rào thép gai khi đi phượt Hà Giang, gai quẹt xước cả tay nhưng vải áo không đứt một sợi chỉ nào'</em>. Đừng nói: <em>'Nước hoa này thơm lâu'</em>. Hãy kể: <em>'Hôm qua em xịt chai này đi ăn lẩu nướng 3 tiếng đồng hồ, về đến nhà chồng em vẫn hỏi em tắm bằng hoa hồng à?'</em>."
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Câu chuyện 'Người kể chuyện dễ bị tổn thương' (Vulnerability)"
+  },
+  {
+    "t": "p",
+    "c": "Người xem không thích những kẻ hoàn hảo, họ thích những con người thật có khiếm khuyết. Hãy dũng cảm kể về những thất bại của bản thân trước khi thành công. Sự yếu đuối (Vulnerability) là loại keo dính mạnh nhất để kết nối sự đồng cảm. Khi bạn dám chia sẻ sự thất bại, khách hàng sẽ tin tưởng 100% vào sự chân thật của giải pháp bạn mang lại."
+  },
+  {
+    "t": "quote",
+    "c": "Đừng bán viên thuốc giảm đau. Hãy kể câu chuyện về cảm giác sung sướng khi thức dậy mà không còn cơn đau nhức nào hành hạ."
+  }
+]
     },
     "en": {
       "title": "The Art of Storytelling in High-Ticket Sales Streams",
@@ -1593,41 +1861,53 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "",
       "body": [
-        {
-          "t": "p",
-          "c": "Bạn đang leo rank cảm xúc chốt đơn thì đột nhiên mạng rớt (Disconnected)? Luồng live 4K sắc nét bỗng vỡ vụn thành những khối pixel vuông vức như game Mario 8-bit? Đó là án tử hình cho doanh số ngày hôm đó. Hãy thức tỉnh: Tốc độ Tải xuống (Download) 1000Mbps của nhà mạng không có một chút giá trị nào. Yếu tố sống còn quyết định sinh mệnh phiên live của bạn chính là tốc độ Tải lên (Upload Speed)."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "3 Kỷ Luật Thép Về Hệ Thống Mạng"
-        },
-        {
-          "t": "p",
-          "c": "1. Trảm Ngay Kết Nối Wifi: Wifi là trò đùa của dân chuyên nghiệp. Sóng Wifi cực kỳ thiếu ổn định và dễ bị nhiễu bởi lò vi sóng, Bluetooth, hay tín hiệu điện thoại. Lệnh bắt buộc: Mua ngay một sợi cáp LAN Cat6 bọc chống nhiễu, cắm trực tiếp từ Router vào thẳng máy tính hoặc điện thoại (thông qua Hub Type-C/Lightning)."
-        },
-        {
-          "t": "p",
-          "c": "2. Nâng Cấp Gói Băng Thông Quốc Tế (Business Tier): Mạng gia đình thường bị các nhà mạng bóp nghẹt băng thông quốc tế (Throttle) vào giờ cao điểm buổi tối. Đừng tiếc tiền, hãy gọi thẳng tổng đài yêu cầu gói Doanh Nghiệp có 'Cam kết băng thông quốc tế tối thiểu 10-20Mbps'. Chi phí thêm vài trăm ngàn nhưng nó bảo vệ cho doanh thu hàng trăm triệu của bạn."
-        },
-        {
-          "t": "p",
-          "c": "3. Triệt Tiêu Ký Sinh Băng Thông (Bandwidth Vampires): Google Drive, OneDrive, hay các tiến trình Windows Update chạy ngầm là những con đỉa hút cạn lưu lượng Upload của bạn. Trước khi lên sóng, hãy mở Task Manager và thẳng tay 'End Task' toàn bộ các tiến trình ăn hại này."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Quy Trình Pre-Flight Checklist"
-        },
-        {
-          "t": "p",
-          "c": "Trước khi bấm nút 'Phát Trực Tiếp', bắt buộc vào Speedtest.net kiểm tra chỉ số Upload. Nếu nó lẹt đẹt dưới 15Mbps, hãy lập tức vào phần mềm OBS, hạ thông số Video Bitrate xuống mức an toàn (khoảng 3500 - 4000 Kbps). Chấp nhận hình ảnh bớt nét đi một chút còn hơn là để stream bị sập (Dropped Frames) khiến khách hàng bỏ đi sạch."
-        },
-        {
-          "t": "quote",
-          "c": "Sở hữu dàn máy ảnh trăm triệu cũng hoàn toàn vô dụng, nếu đường truyền mạng biến bạn thành một đống pixel mờ ảo trong mắt khách hàng!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Mạng Internet mượt mà là dòng máu duy trì sự sống cho phiên livestream của bạn. Một setup thiết bị 100 triệu sẽ trở thành vô nghĩa nếu đường truyền mạng của bạn chập chờn. Khi màn hình của khách hàng xuất hiện vòng quay tử thần (Buffering), 80% trong số họ sẽ thoát ra ngay lập tức. Thuật toán của nền tảng cũng sẽ đánh giá luồng live của bạn là 'chất lượng thấp' và lập tức bóp tương tác."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Quy tắc Sinh tử: Tuyệt đối KHÔNG dùng Wifi"
+  },
+  {
+    "t": "p",
+    "c": "Đây là sai lầm chết người nhất của người mới. Sóng Wifi (kể cả Wifi 6) cực kỳ dễ bị nhiễu bởi các thiết bị ngoại vi (lò vi sóng, loa bluetooth, điện thoại khác). <strong>Livestream chuyên nghiệp bắt buộc phải cắm dây cáp mạng LAN (Ethernet) trực tiếp từ Modem vào máy tính/điện thoại.</strong>"
+  },
+  {
+    "t": "p",
+    "c": "<strong>Cách cắm LAN cho điện thoại:</strong> Mua một chiếc Hub chuyển đổi (Cổng Lightning/Type-C sang cổng LAN RJ45). Nó chỉ tốn khoảng 300k nhưng sẽ đảm bảo tín hiệu của bạn ổn định 100% trong suốt 4 tiếng live."
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Đừng nhìn Tốc độ Download, Hãy nhìn Tốc độ Upload"
+  },
+  {
+    "t": "p",
+    "c": "Khi bạn đăng ký gói mạng 1000Mbps, nhà mạng thường chỉ quảng cáo tốc độ Tải xuống (Download). Nhưng khi bạn phát luồng (Stream), máy của bạn đang Đẩy dữ liệu lên máy chủ (Upload). Hãy dùng trang <em>Speedtest.net</em> để kiểm tra. <strong>Tốc độ Upload tối thiểu để live mượt mà ở độ phân giải 1080p phải đạt từ 30 Mbps trở lên.</strong> Nếu Upload dưới 10 Mbps, luồng live của bạn chắc chắn sẽ bị rớt gói tin (Dropped Frames)."
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Cách xử lý sự cố đứt cáp hoặc rớt mạng đột ngột"
+  },
+  {
+    "t": "p",
+    "c": "Các Mega-KOL không bao giờ phụ thuộc vào một đường truyền duy nhất. Họ luôn có hệ thống <strong>Mạng Dự Phòng (Failover)</strong>:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Sử dụng thiết bị Load Balancing (Cân bằng tải):</strong> Thiết bị này gộp 2 đường truyền (Ví dụ: 1 line VNPT, 1 line Viettel) thành 1 đường duy nhất. Nếu mạng VNPT đứt cáp, mạng Viettel lập tức gánh luồng ngay trong 0.1 giây mà luồng live không hề bị gián đoạn.",
+      "<strong>Dự phòng bằng 4G/5G:</strong> Luôn cắm sẵn một chiếc Dcom 4G hoặc phát Hotspot từ một điện thoại phụ bằng cáp USB vào máy tính. Trong trường hợp mất điện lưới (mất mạng cáp quang), bạn chỉ cần dùng nguồn điện dự phòng (UPS) và mạng 4G để tiếp tục phiên live."
+    ]
+  },
+  {
+    "t": "quote",
+    "c": "Đừng tiếc vài trăm nghìn tiền mạng mỗi tháng để rồi đánh rơi hàng trăm triệu doanh thu chỉ vì một phút rớt mạng."
+  }
+]
     },
     "en": {
       "title": "Network & Bandwidth Optimization for Lag-Free Streams",
@@ -1691,41 +1971,54 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Bạn gào thét khản cổ suốt 2 tiếng nhưng chỉ loanh quanh 20 mắt xem? Hãy chấp nhận thực tế: Ở kỷ nguyên này, Thuật toán tự nhiên (Organic Traffic) là không bao giờ đủ nếu bạn muốn scale (nhân bản) doanh thu lên tiền tỷ. Đây là lúc vũ khí tối thượng mang tên TikTok Live Ads (Chạy quảng cáo luồng live) phát huy sức mạnh, bơm hàng ngàn traffic chất lượng cao thẳng vào phễu chốt đơn của bạn."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "Chiến Thuật Đốt Tiền Thông Minh (Smart Bidding)"
-        },
-        {
-          "t": "p",
-          "c": "1. Chọn Đúng Mục Tiêu Sát Thủ: Sai lầm ngớ ngẩn nhất của Newbie là chọn mục tiêu 'Tăng lượt xem'. Hệ thống sẽ lùa cả ngàn 'Zombie xem chùa' vào, kéo tỷ lệ thoát trang cực cao và giết chết Retention Rate. Lệnh tối thượng: Luôn chọn mục tiêu 'Lượt nhấp vào sản phẩm' (Product Clicks) hoặc 'Mua Hàng' (Purchases). Giá thầu (Bid) có thể đắt gấp 3, nhưng 100% ra đơn thực tế."
-        },
-        {
-          "t": "p",
-          "c": "2. Điểm Rơi 'Cắn Tiền' Tử Huyệt: Đừng bật Ads ngây ngô ngay phút đầu tiên khi bạn đang chào hỏi nhạt nhẽo. Hãy giam ngân sách. Chỉ kích hoạt Ads vào đúng giây phút bạn tung ra 'Hero Deal' (Sản phẩm phễu giảm giá sốc nhất). Tệp khách hàng mới ùa vào, thấy deal hời, họ sẽ rơi vào trạng thái FOMO và chốt đơn điên cuồng, đẩy CVR (Tỷ lệ chuyển đổi) lên mốc kỷ lục."
-        },
-        {
-          "t": "p",
-          "c": "3. Nhắm Mục Tiêu Bắn Tỉa (Micro-Targeting): Không thả rông đối tượng (Broad). Khách hàng sinh viên 18 tuổi làm gì có tiền mua thực phẩm chức năng 2 triệu? Hãy vẽ chân dung thật sắc nét: Nữ, 25-35 tuổi, thu nhập khá, quan tâm đặc biệt đến làm đẹp và chăm sóc sức khỏe. Thu hẹp tệp để từng đồng tiền quảng cáo đều sinh lời."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Định Luật 3 Giây Mồi Câu"
-        },
-        {
-          "t": "p",
-          "c": "Khách hàng từ Ads đổ vào là tệp 'Traffic Lạnh'. Họ cực kỳ thiếu kiên nhẫn. Nếu trong 3 giây đầu tiên họ vào phòng live mà bạn không gào lên một Hook bám sát nỗi đau của họ, họ sẽ vuốt qua (Swipe) không thương tiếc, và bạn vừa tự tay đốt tiền quảng cáo xuống biển."
-        },
-        {
-          "t": "quote",
-          "c": "Quảng cáo chỉ có nhiệm vụ mua chìa khóa mở cửa nhà. Còn khách có chịu bước vào rút ví hay không, 100% phụ thuộc vào bản lĩnh và kịch bản chốt đơn của Host!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Nếu bạn nghĩ rằng chỉ cần lên live và đợi thuật toán tự nhiên (Organic Traffic) mang khách đến, bạn sẽ nhanh chóng bị nghiền nát bởi các đối thủ. Chạy quảng cáo Livestream (Live Ads / TikTok Ads) là một đòn bẩy tài chính (Leverage) bắt buộc phải sử dụng để khuếch đại doanh thu từ mức 10 triệu lên 100 triệu."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Lầm tưởng nguy hiểm về Live Ads"
+  },
+  {
+    "t": "p",
+    "c": "Sai lầm lớn nhất là: <strong>Phiên live đang vắng người, đập 5 triệu tiền Ads vào để kéo mắt xem.</strong> Đây là cách ném tiền qua cửa sổ nhanh nhất. Quảng cáo không thể cứu vớt một nội dung tồi tệ. Nếu kịch bản của bạn nhàm chán, Ads sẽ kéo vào 1000 người, và 1000 người đó sẽ thoát ra sau 5 giây. Hậu quả là tỷ lệ giữ chân (Retention) tụt thê thảm, và thuật toán sẽ vùi dập phiên live của bạn xuống đáy."
+  },
+  {
+    "t": "p",
+    "c": "<strong>Nguyên tắc vàng:</strong> Chỉ chạy quảng cáo khi bạn ĐÃ giữ chân được tệp Organic. Ads giống như xăng, nội dung của bạn phải là ngọn lửa. Lửa đang cháy lớn thì đổ xăng vào mới bùng nổ."
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Chiến thuật Đẩy Ads theo 'Điểm Rơi Cảm Xúc'"
+  },
+  {
+    "t": "p",
+    "c": "Đừng chạy ngân sách dàn trải suốt 4 tiếng. Hãy dùng chiến thuật <strong>Đánh du kích (Pulse Bidding)</strong>:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Bước 1: Chuẩn bị tung Deal mồi.</strong> Bạn (Host) thông báo: <em>'Đúng 5 phút nữa em tung 50 mã sạc dự phòng giá 9K, anh chị chuẩn bị nhé!'</em>.",
+      "<strong>Bước 2: Bấm nút kích Ads.</strong> Trợ lý kỹ thuật ngay lập tức nhồi ngân sách lớn (Vít Ads) để bơm một lượng Traffic cực mạnh vào phòng live đúng thời điểm này.",
+      "<strong>Bước 3: Gặt hái (Harvesting).</strong> Số mắt xem tăng đột biến. Khán giả mới vào thấy không khí hừng hực tranh cướp Deal 9K, họ sẽ bị cuốn vào vòng xoáy FOMO. Ngay sau khi xả xong Deal mồi, bạn lập tức đưa ra Sản phẩm Chủ Lực (Lợi nhuận cao). Đây là lúc những khách hàng mới bị thôi miên và xuống tiền chốt đơn."
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Chạy Ads để Retargeting (Bám đuổi)"
+  },
+  {
+    "t": "p",
+    "c": "Tuyệt đỉnh của chạy Ads là không cần tìm khách mới. Hãy tạo tệp Tùy chỉnh (Custom Audience) gồm những người: <strong>Đã xem video TikTok của bạn trên 75%</strong> hoặc <strong>Đã từng thêm hàng vào giỏ nhưng chưa thanh toán</strong>. Chạy quảng cáo Livestream nhắm thẳng vào tệp này. Tỷ lệ chuyển đổi (CVR) của tệp Retargeting thường cao gấp 3 lần tệp khách lạnh (Cold Traffic)."
+  },
+  {
+    "t": "quote",
+    "c": "Quảng cáo là cỗ máy nhân bản cảm xúc. Đảm bảo cảm xúc trong phòng live của bạn phải đủ mạnh trước khi cắm điện cho cỗ máy đó chạy."
+  }
+]
     },
     "en": {
       "title": "Profitable TikTok Live Shopping Ads Campaign Setup",
@@ -1789,41 +2082,63 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Đang chốt hàng trăm đơn bỗng nhiên màn hình văng ra ngoài báo 'Phiên live bị đình chỉ'? Đây là ác mộng kinh hoàng nhất, có thể quét sạch toàn bộ doanh thu và công sức xây kênh của bạn. Hệ thống AI của TikTok là một cỗ máy quét kiểm duyệt tàn nhẫn không có ngoại lệ. Chỉ cần một phát ngôn hớ hênh hoặc một sai lầm nhỏ trong khung hình, kênh của bạn có thể nhận 'án tử' (khóa vĩnh viễn) ngay lập tức."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "3 Tử Huyệt Cấm Kỵ Tuyệt Đối Phải Tránh"
-        },
-        {
-          "t": "p",
-          "c": "1. Vi Phạm Từ Khóa Cường Điệu (Over-claiming): Tránh xa các từ ngữ mang tính cam kết tuyệt đối: 'Chữa trị dứt điểm 100%', 'Rẻ nhất Việt Nam', 'Top 1 thế giới', 'Đảm bảo khỏi bệnh'. AI sẽ bóc băng (transcribe) giọng nói của bạn theo thời gian thực (Real-time). Lời khuyên: Hãy sử dụng ngôn từ an toàn như 'Hỗ trợ cải thiện', 'Giúp làm mờ', 'Mức giá cực kỳ ưu đãi'."
-        },
-        {
-          "t": "p",
-          "c": "2. Điều Hướng Giao Dịch Ngoại Tuyến (Traffic Hijacking): Nhắc đến Facebook, Zalo, Shopee hay để lộ số điện thoại, mã QR tài khoản ngân hàng cá nhân là hành vi bị trừng phạt nặng nhất. TikTok cấm tuyệt đối việc bạn 'hớt tay trên' và kéo người dùng của họ ra khỏi nền tảng để giao dịch riêng."
-        },
-        {
-          "t": "p",
-          "c": "3. Trẻ Vị Thành Niên Lên Sóng Đơn Độc: Chính sách bảo vệ trẻ em của TikTok không có chỗ cho sự thỏa hiệp. Trẻ em (dưới 18 tuổi) tuyệt đối không được phép xuất hiện một mình trong khung hình Livestream. Nếu có trẻ em, bắt buộc phải có người lớn (bố mẹ/người giám hộ) ngồi cạnh và tương tác cùng."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Cạm Bẫy Trang Phục Và Bối Cảnh"
-        },
-        {
-          "t": "p",
-          "c": "Mặc trang phục hở hang, khoét ngực sâu, đồ lót, hoặc đồ bơi (trừ khi live ở hồ bơi/biển) sẽ lập tức bị AI gán mác khiêu dâm và bóp nghẹt tương tác. Ngoài ra, nếu background phía sau dính logo của các thương hiệu lớn (Nike, Adidas, Apple) mà bạn không trình được giấy phép ủy quyền, kênh sẽ ăn gậy bản quyền (Copyright Strike) ngay trong buổi live."
-        },
-        {
-          "t": "quote",
-          "c": "Bạn có thể mất 3 năm để xây dựng một kênh triệu view, nhưng chỉ cần đúng 3 giây ngu ngốc để mất trắng nó. Đừng bao giờ thách thức AI của nền tảng!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "TikTok Shop không phải là cái chợ truyền thống. Nó là một nền tảng có các thuật toán kiểm duyệt nội dung (Moderation AI) khắt khe bậc nhất thế giới. Chỉ một giây sẩy miệng hoặc một hành động vô tình, luồng live của bạn có thể bị 'Bóp tương tác', 'Cắt live' hoặc tồi tệ hơn là <strong>Khóa vĩnh viễn giỏ hàng (Ban Shop)</strong>."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Bẫy Ngôn Từ: Những từ cấm kỵ tuyệt đối"
+  },
+  {
+    "t": "p",
+    "c": "AI của TikTok phân tích giọng nói của bạn theo thời gian thực (Speech-to-Text). Đừng bao giờ nói ra những từ sau:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Từ ngữ điều hướng nền tảng khác:</strong> Zalo, Facebook, Shopee, Chuyển khoản, Số điện thoại. (TikTok muốn giữ khách hàng ở lại nền tảng của họ).",
+      "<strong>Từ ngữ thổi phồng công dụng (Y tế):</strong> Trị dứt điểm 100%, Thuốc tiên, Chữa bách bệnh, Đảm bảo khỏi bệnh, Giảm 10kg trong 3 ngày. (Vi phạm luật quảng cáo y tế).",
+      "<strong>Từ ngữ cam kết tuyệt đối:</strong> Số 1 thế giới, Tốt nhất, Vô địch, Rẻ nhất thị trường. (Vi phạm luật cạnh tranh không lành mạnh)."
+    ]
+  },
+  {
+    "t": "p",
+    "c": "<strong>Cách lách luật (Nói lái):</strong> Dùng 'Dép lào' thay vì Zalo, dùng 'Phở bò' thay vì Facebook, dùng 'Hỗ trợ mờ thâm' thay vì 'Đặc trị'."
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Bẫy Hình Ảnh: Những thứ không được lọt vào khung hình"
+  },
+  {
+    "t": "p",
+    "c": "Không chỉ giọng nói, AI còn quét toàn bộ khung hình (Computer Vision) của bạn:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Mã QR và Mã vạch cá nhân:</strong> Tuyệt đối không giơ mã QR chuyển khoản ngân hàng lên màn hình.",
+      "<strong>Trẻ em dưới 18 tuổi xuất hiện một mình:</strong> Nếu có em bé lọt vào camera, bắt buộc phải có người lớn đứng cạnh ôm hoặc bế. Nếu không, AI sẽ đánh gậy bóc lột sức lao động trẻ em.",
+      "<strong>Hàng giả, Hàng nhái (Fake/Replica):</strong> Đừng giơ một chiếc túi có logo Chanel nhưng giá 500k. AI quét logo rất chuẩn.",
+      "<strong>Để luồng live tĩnh (Treo live):</strong> Bạn đi vệ sinh hoặc ra ngoài lấy nước quá 5 phút mà không có ai trong khung hình, AI sẽ đánh lỗi 'Phát lại/Luồng live không tương tác' và bóp traffic."
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Cái giá của sự vi phạm"
+  },
+  {
+    "t": "p",
+    "c": "Khi bị đánh gậy (Vi phạm tiêu chuẩn cộng đồng), điểm uy tín (Health Score) của Shop bạn sẽ tụt. Khi điểm này tụt, tỷ lệ phần trăm Traffic tự nhiên mà thuật toán phân bổ cho bạn sẽ giảm theo cấp số nhân. Nặng nhất là giam tiền thanh toán trong 90 ngày. Đừng bao giờ đùa với bộ luật của nền tảng."
+  },
+  {
+    "t": "quote",
+    "c": "Trước khi muốn kiếm tiền từ một nền tảng, bạn phải thuộc lòng luật pháp của nền tảng đó. Ngu dốt không phải là lý do để được giảm án."
+  }
+]
     },
     "en": {
       "title": "TikTok Shop Livestream Policy Violations to Avoid",
@@ -1887,41 +2202,65 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Mô hình kinh doanh 'Thạch Sanh': Mở một cửa hàng mặt phố sầm uất, treo tấm biển đỏ chót, khai trương rình rang rồi ung dung ngồi bấm điện thoại đợi khách vãng lai bước vào... đã chính thức bị chôn vùi. Trong kỷ nguyên thương mại điện tử khốc liệt 2026, mặt tiền đắt giá nhất không còn là đường Nguyễn Trãi hay phố Hai Bà Trưng. Mặt tiền sinh tử duy nhất chính là 'Màn hình điện thoại 6 inch' của người tiêu dùng."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "Sự Đảo Chiều Quyền Lực Thương Mại"
-        },
-        {
-          "t": "p",
-          "c": "1. Nội Dung (Content) Chính Là Cửa Hàng: Khách hàng hiện đại lười biếng. Họ không đội nắng mưa đến tận nơi để sờ sản phẩm nữa. Họ ra quyết định mua hàng thông qua Video Ngắn (Shorts/Reels) và Livestream. Nếu doanh nghiệp của bạn không có khả năng sản xuất nội dung video, cửa hàng của bạn coi như đang treo biển 'Đóng cửa vĩnh viễn' trên bản đồ Internet."
-        },
-        {
-          "t": "p",
-          "c": "2. Chuyên Gia Thay Thế Sales Truyền Thống: Người tiêu dùng đã phát ngán với những nhân viên chèo kéo, học thuộc lòng thông số. Khách hàng giờ đây trao niềm tin tuyệt đối cho các 'Chuyên gia KOC' (Key Opinion Consumers). Họ cần những người dùng thật, chia sẻ trải nghiệm thật, review tàn nhẫn những khuyết điểm và tư vấn bằng kiến thức chuyên sâu thực chiến."
-        },
-        {
-          "t": "p",
-          "c": "3. Tốc Độ Đè Bẹp Quy Mô (Speed over Scale): Một cá nhân livestream chốt đơn ngay tại phòng ngủ có thể dễ dàng tạo ra doanh thu 1-2 tỷ/tháng. Họ linh hoạt, chi phí vận hành bằng 0, và đánh bại hoàn toàn một chuỗi bán lẻ 5 chi nhánh đang oằn mình gánh chi phí mặt bằng và quỹ lương khổng lồ."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Chìa Khóa Hành Động Ngay Hôm Nay"
-        },
-        {
-          "t": "p",
-          "c": "Hãy gạt bỏ ngay sĩ diện và sự ngại ngùng ngớ ngẩn. Cầm điện thoại lên, bật Ringlight, bấm quay và bắt đầu chia sẻ giá trị. Hãy chấp nhận sự thật tàn khốc: 20 video đầu tiên của bạn sẽ vô cùng rác rưởi và thảm họa. Nhưng sự hoàn hảo chính là kẻ thù số một của hành động. Làm liên tục, tối ưu từng ngày là con đường sinh tồn duy nhất."
-        },
-        {
-          "t": "quote",
-          "c": "Đừng tốn tiền chạy quảng cáo để nài nỉ người lạ mua hàng. Hãy sáng tạo ra những nội dung xuất chúng để người lạ phải xếp hàng khao khát được trả tiền cho bạn!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Bạn có thể là một 'cỗ máy chốt đơn' xuất sắc trên livestream, nhưng nếu bạn không có <strong>Tư duy Kinh doanh cốt lõi (Business Mindset)</strong>, bạn sẽ rơi vào cái bẫy 'làm quần quật cả tháng, doanh thu hàng tỷ nhưng cuối cùng không thấy tiền lãi đâu'. Kinh doanh trên nền tảng số không phải là bán hàng bằng mọi giá, mà là quản trị dòng tiền và tối ưu biên độ lợi nhuận."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Bi kịch của Cuộc đua Xuống Đáy (Race to the Bottom)"
+  },
+  {
+    "t": "p",
+    "c": "Rất nhiều Chủ shop bước lên TikTok/Shopee với tư duy: <em>'Cứ bán rẻ hơn đối thủ là sẽ thắng'</em>. Đây là con đường ngắn nhất dẫn đến phá sản. Khi bạn giảm giá để tranh khách, đối thủ sẽ giảm sâu hơn. Cuối cùng, biên độ lợi nhuận gộp (Gross Margin) của bạn bị bóp nghẹt. Trừ đi phí sàn (8-12%), phí đóng gói, phí vận hành, tiền Ads, tiền Hoàn hàng (Return)... bạn đang <strong>lỗ ngược</strong>."
+  },
+  {
+    "t": "p",
+    "c": "<strong>Giải pháp: Cạnh tranh bằng Giá trị gia tăng.</strong> Đừng bán rẻ hơn, hãy bán đắt hơn nhưng tặng kèm dịch vụ xuất sắc. Bán một cái áo 300k, thay vì giảm xuống 200k, hãy bán 300k nhưng tặng kèm Freeship, gói trong hộp quà nước hoa thơm phức, và thẻ bảo hành 1 đổi 1 trong 30 ngày. Khách hàng sẵn sàng trả tiền cho sự an tâm."
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Quản trị Chỉ số sinh tử: CLV vs CAC"
+  },
+  {
+    "t": "p",
+    "c": "Kinh doanh hiện đại chỉ xoay quanh 2 chỉ số này:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>CAC (Customer Acquisition Cost - Chi phí thu mua khách hàng):</strong> Bạn bỏ ra bao nhiêu tiền Ads/Voucher để chốt được 1 đơn hàng mới? Nếu bán sản phẩm lãi 50k, mà tốn 60k tiền Ads để ra 1 đơn, bạn đang Đốt tiền.",
+      "<strong>CLV (Customer Lifetime Value - Vòng đời giá trị khách hàng):</strong> Nếu CAC là 60k, nhưng vị khách đó cực kỳ thích sản phẩm của bạn, tháng sau họ quay lại mua thêm 10 lần nữa (mà bạn không tốn đồng tiền Ads nào), thì vòng đời của họ mang lại 500k tiền lãi. Lúc này, CAC 60k là một khoản đầu tư quá hời."
+    ]
+  },
+  {
+    "t": "p",
+    "c": "<strong>Bài học:</strong> Tập trung bán sản phẩm có tính quay vòng cao (Mỹ phẩm, đồ ăn, thực phẩm chức năng, quần áo trend). Nếu bạn bán Tủ lạnh (khách mua 10 năm sau mới mua lại), bạn sẽ chết chìm trong chi phí chạy Ads tìm khách mới mỗi ngày."
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Quy luật 80/20 trong cơ cấu sản phẩm"
+  },
+  {
+    "t": "p",
+    "c": "Bạn không thể đẩy tất cả sản phẩm giống nhau. Bạn phải chia Phễu Sản Phẩm (Product Funnel):"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Sản phẩm Chim Mồi (Loss Leader - 20% danh mục):</strong> Chịu bán hòa vốn hoặc lỗ nhẹ để kéo lượng Traffic khổng lồ và lấy Data khách hàng.",
+      "<strong>Sản phẩm Chủ lực (Core Product - 60% danh mục):</strong> Sản phẩm chất lượng cao nhất, tỷ lệ hoàn trả thấp nhất, mang lại lợi nhuận đều đặn để nuôi bộ máy.",
+      "<strong>Sản phẩm Biên độ cao (High-ticket - 20% danh mục):</strong> Bán giá cực cao, dành cho tệp VIP, tạo ra dòng tiền lãi đột biến."
+    ]
+  },
+  {
+    "t": "quote",
+    "c": "Livestream chỉ là ngọn giáo để đâm thủng thị trường. Đứng sau ngọn giáo đó phải là một bộ óc chiến lược về biên độ lợi nhuận và quản trị dòng tiền."
+  }
+]
     },
     "en": {
       "title": "Digital Business Mindset Shift for Modern Brands",
@@ -1985,41 +2324,58 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Trong ngành công nghiệp Livestream, thiết bị quay phim luôn là hố đen 'đốt tiền' đau đớn nhất. Nếu xuống tiền sai cách, bạn không chỉ lãng phí hàng chục triệu đồng mà còn nhận lại một luồng live nhòe nhoẹt, giật lag, hủy hoại hoàn toàn trải nghiệm khách hàng. Bài viết này sẽ phân loại minh bạch 3 cấp độ đầu tư Camera chiến lược, thiết kế chuẩn xác cho từng giai đoạn vòng đời kinh doanh của bạn."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "Ma Trận Đầu Tư Thiết Bị Ghi Hình"
-        },
-        {
-          "t": "p",
-          "c": "1. Cấp Độ Khởi Nghiệp (Ngân sách 0đ): Đừng vội mua máy ảnh. Nếu bạn mới bắt đầu, chiếc iPhone 12 Pro Max hoặc Samsung S22 Ultra đang nằm trong túi bạn là vũ khí quá đủ. Chip xử lý AI của smartphone đời mới có khả năng cân bằng trắng (White Balance) và cà mịn da (Skin Tone) xuất sắc. Yếu điểm duy nhất là chiều sâu trường ảnh (Xóa phông) bằng thuật toán đôi khi bị lẹm viền."
-        },
-        {
-          "t": "p",
-          "c": "2. Cấp Độ Bán Chuyên (Ngân sách 2 - 5 Triệu): Nâng cấp hoàn hảo nhất là Webcam chuẩn 4K thông minh. Các dòng như Logitech Brio 4K hay Insta360 Link là chân ái. Ưu điểm tuyệt đối: Cắm trực tiếp vào máy tính qua cổng USB (Plug & Play), bỏ qua hoàn toàn chi phí mua Capture Card đắt đỏ. Hệ thống lấy nét tự động (AI Autofocus) bám sát khuôn mặt bạn với tốc độ kinh hồn khi chốt đơn cường độ cao."
-        },
-        {
-          "t": "p",
-          "c": "3. Cấp Độ Studio Pro (Ngân sách > 20 Triệu): Sân chơi của các 'Cá Mập'. Combo huyền thoại định chuẩn ngành hiện nay là máy ảnh Sony ZV-E10 hoặc A6700, kết hợp ống kính Sigma 16mm F1.4. Bộ trang bị này tạo ra chất lượng hình ảnh 'Cinematic' (chuẩn điện ảnh), hậu cảnh xóa phông mờ mịt (Creamy Bokeh), đẩy sự sang trọng của sản phẩm lên mức tối đa."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Lỗi Chết Người Của Dân Nghiệp Dư"
-        },
-        {
-          "t": "p",
-          "c": "Tội ác lớn nhất là mua lại các dòng máy ảnh DSLR đời tống (như Canon 70D, 5D Mark II) để cố ép chúng làm máy Livestream. Chúng không hỗ trợ xuất luồng Clean HDMI (màn hình sẽ dính đầy vạch thông số ISO, Khẩu độ). Tệ hơn, cảm biến cũ sẽ bị quá nhiệt (Overheating) và tự động sập nguồn cúp màn hình đen thui chỉ sau 30 phút hoạt động, giết chết phiên live của bạn."
-        },
-        {
-          "t": "quote",
-          "c": "Đừng bao giờ vung tiền mua một chiếc máy ảnh 50 triệu nếu bạn chưa biết cách setup một cây đèn 500 ngàn. Trong quay phim, Ánh Sáng mới là vị Vua định đoạt mọi thứ!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Rất nhiều người mới đầu tư ngay 50 triệu mua một chiếc máy ảnh Full-Frame đắt đỏ rồi vỡ mộng khi thấy chất lượng livestream thua xa một chiếc iPhone 14 Pro Max. Mua camera livestream không giống như mua camera đi chụp ảnh nghệ thuật. Bạn cần một cỗ máy <strong>hoạt động bền bỉ, lấy nét tự động (Autofocus) siêu tốc và không bị quá nhiệt (Overheating) khi chạy liên tục 5 tiếng</strong>."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Điện thoại hay Máy ảnh chuyên dụng (Mirrorless)?"
+  },
+  {
+    "t": "p",
+    "c": "<strong>Dùng điện thoại (iPhone/Samsung Flagship):</strong> Là lựa chọn hoàn hảo cho người mới. Thuật toán xử lý hình ảnh (Computational Photography) của điện thoại vô cùng thông minh, tự động bù sáng và lấy nét. Tuy nhiên, nhược điểm là <strong>cảm biến nhỏ</strong>, dẫn đến việc thiếu chiều sâu (không xóa phông mù mịt được) và bị bệt màu nếu môi trường thiếu sáng."
+  },
+  {
+    "t": "p",
+    "c": "<strong>Dùng máy ảnh Mirrorless:</strong> Đây là đẳng cấp (Tier) của các Studio triệu đô. Máy ảnh có cảm biến lớn (APS-C hoặc Full-Frame) thu nhận ánh sáng gấp 10 lần điện thoại. Kết hợp với ống kính xịn, nó bóc tách hoàn toàn bạn khỏi background, da dẻ mịn màng, hình ảnh trong vắt như một bộ phim điện ảnh (Cinematic look)."
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Tiêu chí chí mạng khi chọn mua Máy ảnh Livestream"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>1. Khả năng tản nhiệt (Clean HDMI & No Overheating):</strong> Máy ảnh chụp ảnh sinh ra để chụp từng tấm. Bắt nó quay liên tục 5 tiếng, nó sẽ báo lỗi quá nhiệt và tự tắt (Ví dụ dòng Sony A6300 cũ). Hãy chọn các máy có thiết kế tản nhiệt tốt, chuyên dùng để quay phim.",
+      "<strong>2. Tự động lấy nét theo mắt (Eye-AF):</strong> Khi bạn giơ sản phẩm lên rồi hạ xuống, máy phải lập tức bắt nét lại vào mắt bạn trong 0.1 giây (Không được có hiện tượng lấy nét thụt thò - Hunting). Về khoản này, thuật toán AF của <strong>Sony</strong> đang là vị vua tuyệt đối.",
+      "<strong>3. Nguồn điện giả (Dummy Battery):</strong> Đừng dùng pin zin, nó sẽ hết sau 1 tiếng. Bạn phải mua một cục Pin Giả (Dummy Battery) cắm thẳng vào ổ điện 220V để máy chạy 24/7 không lo sập nguồn."
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Gợi ý thiết bị theo phân khúc"
+  },
+  {
+    "t": "p",
+    "c": "<strong>1. Phân khúc Cơ bản (15 - 20 Triệu): Sony ZV-E10 + Ống kính Sigma 16mm f/1.4</strong>. Đây là 'Quốc thoại' của giới livestream. ZV-E10 có nút bấm 'Showcase' thần thánh, tự động lấy nét vào sản phẩm ngay khi bạn giơ lên trước ống kính. Sigma 16mm tạo góc rộng, bắt sáng cực tốt, background xóa phông mượt mà."
+  },
+  {
+    "t": "p",
+    "c": "<strong>2. Phân khúc Chuyên nghiệp (30 - 45 Triệu): Sony A6700 hoặc FX30 + Ống kính Sigma 30mm f/1.4</strong>. Hệ thống chống rung quang học xuất sắc, màu ảnh 10-bit S-Cinetone cực kỳ tôn da. Máy hoạt động mát rượi suốt 10 tiếng đồng hồ không sập nguồn."
+  },
+  {
+    "t": "p",
+    "c": "<strong>3. Phân khúc Thượng lưu (70 - 100 Triệu): Sony FX3 / A7S III + Lens G Master</strong>. Dành cho các Mega-KOL hoặc livestream bán Trang sức/Kim cương cần độ nét và dải nhạy sáng (Dynamic Range) vô đối."
+  },
+  {
+    "t": "quote",
+    "c": "Thiết bị xịn không giúp bạn nói hay hơn, nhưng nó chứng minh cho khách hàng thấy sự nghiêm túc và tôn trọng của bạn đối với cái nghề mà bạn đang theo đuổi."
+  }
+]
     },
     "en": {
       "title": "The Ultimate Guide to Buying Livestream Cameras (2026)",
@@ -2083,41 +2439,58 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Nhiều chủ doanh nghiệp vẫn ngoan cố ôm giữ tư duy tàn dư: 'Cứ lấy cái điện thoại ra quay đại đi, rẻ tiền, có người xem là được'. Tư duy này có thể sống sót ở thời kỳ hoang sơ 2019, nhưng ở năm 2026, nó là một bản án tử hình. Khách hàng đã bị 'chiều hư' bởi các nội dung chất lượng cao. Họ cực kỳ khó tính và sẽ ngay lập tức lướt qua (Swipe away) những luồng live mờ ảo, âm thanh rè rẹt và bối cảnh xập xệ."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "Studio Là Mặt Tiền Số Thế Kỷ 21"
-        },
-        {
-          "t": "p",
-          "c": "1. Định Vị Thương Hiệu Phủ Đầu (Brand Positioning): Khi khách hàng lướt vào một phòng live có ánh sáng RGB điện ảnh, âm thanh mic condenser trầm ấm, hình ảnh 4K sắc nét với hậu cảnh xóa phông (Bokeh), não bộ họ bị thao túng ngay trong 3 giây đầu: 'Đây là một thương hiệu triệu đô, sản phẩm chắc chắn cao cấp'. Giao diện sang trọng chính là chiếc khiên bảo vệ giá bán của bạn."
-        },
-        {
-          "t": "p",
-          "c": "2. Bơm Thổi Tỷ Lệ Chốt Đơn (CVR): Hình ảnh sắc nét đến từng pixel giúp khách hàng soi rõ từng đường kim mũi chỉ của chiếc túi xách, hay độ mướt mịn của một lớp kem nền. Sự chân thực ở tiêu chuẩn điện ảnh (High-fidelity) sẽ đập nát mọi rào cản hoài nghi, khiến họ rút ví mà không cần đắn đo suy nghĩ."
-        },
-        {
-          "t": "p",
-          "c": "3. Mồi Nhử Nhân Tài (Talent Acquisition): Không một KOC/KOL xuất chúng hay một Mega-Host nào chấp nhận livestream trong một cái kho chứa đồ nóng nực, lộn xộn. Sở hữu một Studio chuẩn quốc tế là thỏi nam châm quyền lực nhất để hút dòng máu nhân sự Sales tinh hoa về đầu quân cho hệ sinh thái của bạn."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Bài Toán Lợi Nhuận Sinh Tử (ROI)"
-        },
-        {
-          "t": "p",
-          "c": "Bạn hoảng sợ khi phải bỏ ra 50 triệu để setup Studio? Sự thật là, số tiền đó chỉ bằng tiền thuê mặt bằng 1 tháng của một cửa hàng nhỏ giọt khách trên phố. Nhưng 50 triệu đó đầu tư vào Studio sẽ cung cấp một cỗ máy in tiền, cho phép bạn tiếp cận hàng triệu khách hàng toàn cầu liên tục 24/7 trong suốt 3 năm tiếp theo mà không tốn thêm 1 xu chi phí mặt bằng nào."
-        },
-        {
-          "t": "quote",
-          "c": "Đầu tư Studio Livestream không phải là chi phí tiêu sản. Nó là hạ tầng vũ khí rẻ nhất mang lại đòn bẩy tài chính tàn bạo nhất trong kỷ nguyên số!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Nhiều người nghĩ rằng chỉ cần mua cái điện thoại xịn, mua cái vòng đèn LED 300k ngoài chợ rồi ngồi đại ở góc phòng ngủ là có thể kiếm tiền tỷ từ Livestream. Đây là ảo tưởng ngọt ngào nhưng chết người. Trong kỷ nguyên thương mại điện tử 2026, khi khán giả đã bị 'bội thực' bởi hàng triệu luồng live mỗi ngày, một Studio được setup bài bản không còn là 'đồ trang sức', mà là <strong>Vũ khí cạnh tranh sinh tử (Competitive Advantage)</strong>."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Hiệu ứng Halo (Vầng hào quang) trong tâm lý khách hàng"
+  },
+  {
+    "t": "p",
+    "c": "Hiệu ứng Halo là một thiên kiến nhận thức: Khi người ta thấy bạn xuất hiện trong một khung hình đẹp, âm thanh trong vắt, ánh sáng đánh khối chuyên nghiệp, não bộ họ sẽ tự động suy ra rằng: <em>'Sản phẩm của người này bán chắc chắn cũng xịn như cái cách họ setup phòng live'</em>."
+  },
+  {
+    "t": "p",
+    "c": "Nếu bạn bán một lọ kem dưỡng da 1 triệu đồng nhưng ngồi trong một căn phòng bừa bộn, tường bong tróc, ánh sáng nhờ nhờ, khách hàng sẽ lập tức mặc định đó là kem trộn. Ngược lại, nếu bạn ngồi trong một không gian sang trọng, ánh sáng Cinematic, bạn có bán tuýp kem 3 triệu, họ vẫn tin tưởng xuống tiền. <strong>Studio setup định hình Giá trị Cảm nhận (Perceived Value) của sản phẩm.</strong>"
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Tối ưu hóa Năng lượng Của chính bạn (Host)"
+  },
+  {
+    "t": "p",
+    "c": "Đừng quên rằng người livestream là linh hồn của buổi diễn. Nếu bạn phải ngồi gò bó trong một góc chật hẹp, nóng nực vì đèn không có tản nhiệt, lo sợ mạng rớt, stress vì tiếng chó sủa nhà hàng xóm... năng lượng của bạn sẽ tụt thê thảm chỉ sau 30 phút."
+  },
+  {
+    "t": "p",
+    "c": "Một Studio tiêu chuẩn phải giải quyết được 3 vấn đề sinh lý cho Host:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Nhiệt độ (Điều hòa):</strong> Các đèn chiếu sáng công suất cao (tổng 300W-500W) tỏa nhiệt cực khủng. Studio bắt buộc phải có điều hòa chạy êm để Host không bị đổ mồ hôi làm trôi lớp makeup.",
+      "<strong>Cách âm (Acoustic Treatment):</strong> Triệt tiêu tiếng ồn từ bên ngoài để Host tập trung 100% tâm trí vào việc tương tác với khách hàng, không bị phân tâm.",
+      "<strong>Công thái học (Ergonomics):</strong> Bàn ghế phải đúng tầm mắt, màn hình livestream (Monitor) phải đặt ngay dưới ống kính camera để khi bạn đọc comment, mắt bạn vẫn có vẻ như đang nhìn thẳng vào khách hàng."
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Đầu tư Studio là Đầu tư Tài sản (CAPEX)"
+  },
+  {
+    "t": "p",
+    "c": "Thay vì đốt 100 triệu tiền chạy Ads để vớt vát lại những khách hàng bỏ đi vì hình ảnh live quá tệ, hãy trích 50 triệu để xây dựng một hệ thống Studio hoàn chỉnh (Camera Mirrorless, Đèn Godox, Mic thu âm xịn). Đây là khoản đầu tư 1 lần nhưng mang lại <strong>Tỷ lệ chuyển đổi (CVR) tăng vĩnh viễn</strong> cho hàng ngàn phiên live tiếp theo."
+  },
+  {
+    "t": "quote",
+    "c": "Khách hàng mua bằng mắt trước khi mua bằng não. Nếu bạn không tôn trọng thị giác của họ, họ sẽ không tôn trọng ví tiền của bạn."
+  }
+]
     },
     "en": {
       "title": "Why Your Business Needs a Professional Livestream Studio NOW",
@@ -2181,41 +2554,50 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Ngày Live đầu tiên (Debut) luôn là một cơn ác mộng kinh hoàng. Tim đập loạn nhịp, não bộ đóng băng quên sạch kịch bản, và nỗi ám ảnh tột độ khi nhìn con số '0 người xem' có thể đánh gục ý chí của bất kỳ ai. Đừng hoảng loạn. Kịch bản sinh tồn 90 phút dưới đây chính là chiếc phao cứu sinh được thiết kế riêng để giúp bạn vượt qua 'Lần đầu tiên' một cách an toàn và chuyên nghiệp."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "Lộ Trình Sinh Tồn 90 Phút Thần Thánh"
-        },
-        {
-          "t": "p",
-          "c": "1. 30 Phút Khởi Động (Làm quen ống kính): Hãy xem đây chỉ là một buổi diễn tập riêng tư có mở public. Tuyệt đối không cố bán hàng. Chủ đề: 'Chào hỏi, chia sẻ câu chuyện tại sao tôi lại ngồi đây và xây dựng kênh này'. Mục tiêu sống còn: Giữ nhịp thở đều, mắt nhìn thẳng xoáy sâu vào ống kính camera thay vì màn hình, và để cơ mặt được giãn ra."
-        },
-        {
-          "t": "p",
-          "c": "2. 30 Phút Phá Băng (Tương Tác Cơ Bản): Bắt đầu tổ chức một Minigame cực kỳ ngu ngốc và dễ trúng. Ví dụ: 'Comment 2 số cuối năm sinh, ai trùng nhau nhận ngay thẻ cào 50k'. Việc có người lạ nhảy vào comment sẽ kích hoạt đà hưng phấn (Momentum). Khi bạn bắt đầu đọc tên và giao lưu với họ, cảm giác 'Đang có người thật nghe mình' sẽ triệt tiêu 100% sự run rẩy."
-        },
-        {
-          "t": "p",
-          "c": "3. 30 Phút Nhá Hàng (Soft Pitching): Bắt đầu đưa 1-2 sản phẩm tốt nhất, tự hào nhất lên màn hình. Không chốt đơn ép buộc (Hard-sell). Hãy dùng đòn tâm lý: 'Hôm nay ngày đầu lên sóng, em chỉ muốn khoe với mọi người chất lượng hàng nhà em xịn thế nào. Mọi người xem cho vui, không mua không sao cả!'. Sự chân thật vô hại này sẽ tháo gỡ lớp phòng bị của khách, tạo ra thiện cảm khổng lồ."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Vũ Khí Bí Mật (Seeding)"
-        },
-        {
-          "t": "p",
-          "c": "Hãy gạt bỏ sĩ diện, nhờ 3-5 người bạn thân hoặc nhân viên vào đóng vai 'Chim Mồi' (Seeder). Giao nhiệm vụ cho họ đặt những câu hỏi mồi được chuẩn bị sẵn: 'Da nhạy cảm dùng cái này có bị kích ứng không shop?'. Bạn sẽ có cái cớ hoàn hảo để trả lời lưu loát, phô diễn kiến thức, thay vì ngồi im như một pho tượng chết chóc."
-        },
-        {
-          "t": "quote",
-          "c": "Không một ai hoàn hảo trong lần đầu tiên tỏa sáng. Chấp nhận sự vụng về của bản thân chính là bước đệm đẫm máu để trở thành một Master Livestreamer!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Phiên livestream đầu tiên (Debut Stream) giống như buổi ra mắt của một Idol. Khán giả chưa biết bạn là ai, chưa có lòng tin, và quan trọng nhất: Thuật toán đang theo dõi bạn. Nếu phiên đầu tiên thất bại thảm hại (vài người xem, không ai comment), hệ thống sẽ gán cho kênh của bạn một 'điểm mù' rất khó để gỡ lại. Ngược lại, một phiên khai trương bùng nổ sẽ tạo đà (Momentum) khổng lồ cho cả sự nghiệp."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Sai lầm chí tử: Bán hàng ngay lập tức"
+  },
+  {
+    "t": "p",
+    "c": "Hãy tưởng tượng bạn bước vào một quán cafe mới mở, chưa kịp ngồi xuống đã bị chủ quán ép mua gói cafe mang về. Bạn sẽ bỏ chạy. <strong>Tuyệt đối không chốt sale lợi nhuận trong phiên live đầu tiên.</strong> Mục tiêu tối thượng của phiên khai trương là: <strong>Kéo Traffic, Giữ chân (Retention) và Xây dựng tệp Khách hàng (Followers/Lead Gen).</strong>"
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Cấu trúc Kịch bản Khai trương 120 Phút"
+  },
+  {
+    "t": "p",
+    "c": "<strong>30 Phút Đầu: Quà Tặng Đỉnh Cao (The Crazy Giveaway).</strong> Đừng tặng những thứ rẻ tiền (như móc khóa 5k). Hãy tặng một món quà cực kỳ giá trị (Ví dụ: 3 chiếc Máy rửa mặt trị giá 1 triệu/chiếc). <em>'Trong buổi ra mắt hôm nay, em không bán hàng, em lên đây để làm quen! Đúng 15 phút nữa em sẽ quay số tặng MIỄN PHÍ chiếc máy này. Anh chị ở lại thả tim và chia sẻ giúp em nhé!'</em>. Điều này tạo ra một lượng Engagement khổng lồ để thuật toán đẩy luồng live lên xu hướng."
+  },
+  {
+    "t": "p",
+    "c": "<strong>60 Phút Giữa: Kể Câu Chuyện Nguồn Gốc (Origin Story).</strong> Lúc này mắt xem đang cao, hãy bắt đầu kể chuyện. Tại sao bạn lại quyết định bán ngành hàng này? Bạn đã gặp khó khăn gì? Sản phẩm của bạn giải quyết được nỗi đau gì cho chính bạn? <em>'Trước khi bán mỹ phẩm, em từng tự ti đến mức không dám ra đường...'</em>. Đây là lúc biến những người xem vì 'ham quà' thành những người đồng cảm với con người thật của bạn."
+  },
+  {
+    "t": "p",
+    "c": "<strong>30 Phút Cuối: Tung Deal Chim Mồi (Loss-Leader Offer).</strong> Khi niềm tin đã có, hãy tung ra một vài sản phẩm với giá cực sốc (chịu lỗ 10-20%) giới hạn số lượng. <em>'Để cảm ơn 500 anh chị đã ngồi nghe em tâm sự nãy giờ, em xin phép công ty xả đúng 20 tuýp sữa rửa mặt này với giá 9K. Em chịu lỗ tiền ship luôn!'</em>. Mục đích là để tập cho khách hàng thói quen <strong>Bấm vào giỏ hàng và Thanh toán</strong> trên kênh của bạn."
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Sức mạnh của 'Seeding' khéo léo"
+  },
+  {
+    "t": "p",
+    "c": "Đừng chiến đấu một mình. Hãy nhờ bạn bè, người thân, đồng nghiệp vào xem và comment mồi. Không phải comment kiểu 'Sản phẩm tốt quá', mà là những comment tạo tương tác như: <em>'Em ơi da mụn viêm xài cái này được không?'</em>, <em>'Chị mới vào, làm sao để nhận quà vậy em?'</em>. Nhờ đó, luồng live sẽ không bao giờ bị Dead Air (khoảng lặng chết)."
+  },
+  {
+    "t": "quote",
+    "c": "Phiên live đầu tiên không dùng để kiếm tiền. Nó dùng để kiếm sự chú ý, lòng tin và dữ liệu thuật toán."
+  }
+]
     },
     "en": {
       "title": "The 'Grand Opening' Script for Your Very First Livestream",
@@ -2279,41 +2661,58 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Bạn có bao giờ thắc mắc tại sao các bộ phim bom tấn Hollywood luôn có một dải màu cực kỳ nịnh mắt và cuốn hút đến ám ảnh? Đó không phải là ngẫu nhiên, đó là nghệ thuật tối cao của Color Grading (Phối màu). Trong không gian Livestream, bạn hoàn toàn có thể sử dụng hệ thống đèn LED RGB để 'nhuộm' toàn bộ không gian, biến một phòng ngủ tẻ nhạt thành một Studio điện ảnh đắt giá."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "3 Quy Tắc Phối Màu Kinh Điển Định Chuẩn Ngành"
-        },
-        {
-          "t": "p",
-          "c": "1. Tương Phản Sinh Tử (Teal & Orange): Đây là công thức huyền thoại được 90% phim rạp sử dụng. Màu da người luôn nằm ở dải màu Cam/Vàng ấm (Orange). Nhìn vào bánh xe màu sắc, màu đối lập gay gắt nhất với nó là Xanh Mòng Két (Teal). Khi bạn đánh nền phía sau màu Xanh Teal, chủ thể (màu Cam) sẽ lập tức bị đẩy bật ra khỏi background, tạo nên hiệu ứng 3D thị giác cực mạnh."
-        },
-        {
-          "t": "p",
-          "c": "2. Tương Đồng Tuyệt Đối (Analogous Harmony): Sử dụng các màu nằm sát cạnh nhau trên bánh xe. Ví dụ: Đánh background Tím mộng mơ, điểm xuyết đèn viền (rim light) màu Hồng phấn và Xanh Lam nhạt. Cách phối này tạo ra một không gian cực kỳ bay bổng, nữ tính và huyền ảo. Nó là vũ khí chí mạng cho các phiên live bán Mỹ phẩm high-end, Nước hoa, hay Thời trang thiết kế."
-        },
-        {
-          "t": "p",
-          "c": "3. Đơn Sắc Quyền Lực (Monochromatic): Chỉ sử dụng đúng một tông màu duy nhất nhưng chia thành nhiều sắc độ sáng tối khác nhau (Sáng chói - Trung Tính - Đổ bóng sâu). Setup này toát lên vẻ tối giản (Minimalism) nhưng cực kỳ sang trọng, sắc lạnh, hoàn hảo cho các buổi Talkshow chuyên gia hoặc bán đồ Công nghệ đắt tiền."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Tội Ác Thẩm Mỹ Trẻ Trâu"
-        },
-        {
-          "t": "p",
-          "c": "Đừng bao giờ bật đèn RGB sang chế độ nhấp nháy 7 sắc cầu vồng loạn xạ. Nó khiến phòng live của bạn trông rẻ tiền hệt như một quán net cỏ hoặc một quán bar lỗi thời, đồng thời gây nhức mắt, đuổi sạch khách hàng đi. Hãy chọn một bố cục màu cố định, tĩnh lặng và giữ nguyên sự sang trọng đó suốt buổi."
-        },
-        {
-          "t": "quote",
-          "c": "Ánh sáng mang theo màu sắc. Kẻ nào thao túng được luật chơi của màu sắc, kẻ đó nắm giữ chìa khóa điều khiển toàn bộ cảm xúc của người mua!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Trong điện ảnh, màu sắc không chỉ để làm đẹp, màu sắc là <strong>Ngôn ngữ Cảm xúc (Emotional Language)</strong>. Khi bạn livestream, màu sắc của ánh sáng trong phòng sẽ trực tiếp chi phối tâm trạng của người xem và quyết định hành vi mua hàng của họ. Một căn phòng đánh đèn loạn cào cào xanh đỏ tím vàng sẽ khiến người xem bị đau đầu và bỏ đi. Việc phối màu ánh sáng cần phải tuân thủ nghiêm ngặt Bánh xe màu sắc (Color Wheel)."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Nguyên tắc Tương phản Cổ điển: Teal & Orange"
+  },
+  {
+    "t": "p",
+    "c": "Đây là 'công thức ma thuật' được sử dụng trong 90% các bộ phim bom tấn Hollywood (như Transformers, Avengers) và hiện đang thống trị các phòng live chuyên nghiệp nhất."
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Orange (Màu Cam/Vàng ấm - 3200K đến 4500K):</strong> Dùng cho Key Light chiếu thẳng vào khuôn mặt bạn. Màu ấm sẽ tôn lên sắc tố da người (Skintone), che bớt khuyết điểm, mang lại cảm giác ấm áp, gần gũi và đáng tin cậy.",
+      "<strong>Teal (Màu Xanh Ngọc/Cyan):</strong> Dùng cho đèn RGB chiếu vào Background (Phông nền).",
+      "<strong>Tại sao lại hiệu quả?</strong> Cam và Xanh Ngọc là hai màu nằm đối diện nhau trên Bánh xe màu sắc (Complementary colors). Khi đứng cạnh nhau, chúng tạo ra độ tương phản quang học cực mạnh. Khuôn mặt ấm áp của bạn sẽ nổi bật hoàn toàn lên trên nền phông lạnh lẽo, tạo ra chiều không gian 3D sâu thẳm."
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Phối màu Ánh sáng theo Ngành Hàng"
+  },
+  {
+    "t": "p",
+    "c": "Đừng dùng một màu đèn cho mọi mặt hàng. Tâm lý học màu sắc ảnh hưởng trực tiếp đến tỷ lệ chuyển đổi:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Ngành Mỹ Phẩm / Skincare:</strong> Tránh xa đèn RGB lòe loẹt. Dùng Key Light màu trắng sáng (5600K) để thể hiện sự sạch sẽ, tinh khiết và y tế. Background nên là màu pastel nhẹ nhàng (Hồng nhạt, Xanh dương nhạt) để tạo cảm giác dịu nhẹ cho làn da.",
+      "<strong>Ngành Công Nghệ / Gaming:</strong> Sử dụng màu Monochromatic (Đồng màu) hoặc Analogous (Màu liền kề). Ví dụ: Đỏ - Tím - Xanh Dương đậm. Những dải đèn LED Neon chạy dọc tường sẽ kích thích sự hưng phấn, nam tính và cảm giác hiện đại.",
+      "<strong>Ngành Đồ Ăn (F&B):</strong> Tuyệt đối không dùng ánh sáng xanh (Blue light) chiếu vào đồ ăn (Nó làm thức ăn trông giống như bị ôi thiu mốc meo). Bắt buộc phải dùng ánh sáng Vàng Ẩm (Warm White 3000K-4000K) để làm thịt trông mọng nước, bánh mì trông giòn rụm."
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Lỗi 'Ô nhiễm màu' (Color Spill)"
+  },
+  {
+    "t": "p",
+    "c": "Lỗi phổ biến nhất là đánh đèn RGB màu quá mạnh ở background khiến ánh sáng đó hắt ngược lại và ám màu lên gò má hoặc tóc của bạn. Khán giả nhìn thấy mặt bạn bị 'tím lịm' hoặc 'xanh lè'. Để khắc phục, khoảng cách từ lưng bạn đến tường phải xa ít nhất 1.5 mét, hoặc phải đánh Backlight màu trắng/vàng để chặn lại (Hair light) ngăn không cho màu RGB từ nền dính vào người."
+  },
+  {
+    "t": "quote",
+    "c": "Người nghiệp dư bật tất cả các loại đèn họ có. Chuyên gia chỉ dùng 2 màu sắc để vẽ lên một bức tranh cảm xúc."
+  }
+]
     },
     "en": {
       "title": "Color Grading Principles for Cinematic Studio Lighting",
@@ -2377,41 +2776,61 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Có bao giờ bạn vừa live được 30 phút thì cổ họng đã đau buốt, giọng khàn đặc như vịt đực và hụt hơi liên tục? Đó là hậu quả tàn khốc của việc dùng 'hơi ngực' và vắt kiệt 'dây thanh quản' vô tội vạ. Giọng nói là thứ vũ khí tâm lý vô hình có sức sát thương khủng khiếp nhất để chốt đơn. Một chất giọng trầm ấm, sắc lạnh và vang dội sẽ thiết lập quyền uy tối thượng, khiến khách hàng răm rắp nghe theo mọi hiệu lệnh của bạn."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "Quy Trình Luyện Hơi Bụng (Cơ Hoành)"
-        },
-        {
-          "t": "p",
-          "c": "1. Khai Mở Hơi Bụng: Đặt tay phải lên rốn. Hít sâu vào bằng mũi, ép không khí xuống đáy phổi làm sao cho bụng phồng căng lên (đẩy tay bạn ra xa). Thở ra từ từ bằng miệng, bụng xẹp lép xuống. Khi bạn thành thạo hơi bụng, luồng khí khổng lồ này sẽ làm một lớp đệm hoàn hảo nâng đỡ dây thanh quản, cho phép bạn gào thét chốt đơn 4 tiếng liên tục mà không rụng một giọt mồ hôi."
-        },
-        {
-          "t": "p",
-          "c": "2. Cắn Đũa Mở Khẩu Hình (Tròn Vành Rõ Chữ): Đa số Host bị chê là nói lí nhí, nuốt chữ vì khớp hàm quá lười biếng. Bài tập tàn bạo nhất: Cắn chặt 1 chiếc đũa ngang miệng, sau đó gào to một đoạn văn. Khớp hàm và cơ môi của bạn sẽ bị ép phải hoạt động hết công suất. Tập điên cuồng 10 phút mỗi ngày, sau 1 tuần, diction (đài từ) của bạn sẽ sắc bén như dao cạo, cắt ngang mọi tạp âm."
-        },
-        {
-          "t": "p",
-          "c": "3. Nghệ Thuật Hạ Tông Cuối Câu: Để tạo ra phong thái của một 'Kẻ Bề Trên' (Authority), tuyệt đối cấm kỵ việc lên giọng ở cuối câu (nó khiến bạn nghe như đang nài nỉ cầu xin). Nguyên tắc thép: Luôn dập trầm tông giọng đi xuống khi kết thúc. Ví dụ: 'Sản phẩm này cực kỳ ĐẲNG CẤP' (ép dọng trầm chữ Cấp xuống tận đáy lồng ngực)."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Bảo Dưỡng Thanh Quản"
-        },
-        {
-          "t": "p",
-          "c": "Kẻ nghiệp dư uống nước đá lạnh và bò húc trước khi lên sóng, tự tay hủy hoại cần câu cơm của mình. Kẻ chuyên nghiệp luôn thủ sẵn một bình giữ nhiệt chứa nước ấm pha mật ong và vài giọt chanh đào. Nhấp từng ngụm cực nhỏ liên tục trong phiên live để bôi trơn hệ thống thanh quản, giữ cho chất giọng mướt mịn đến tận phút cuối cùng."
-        },
-        {
-          "t": "quote",
-          "c": "Giọng nói của bạn là bản hợp đồng không văn bản. Hãy dùng nó để bóp nghẹt sự do dự và thao túng tâm trí khách hàng!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Tại sao có những người chỉ nói vài câu, đám đông đã im lặng lắng nghe? Lại có những người gào thét khản cổ nhưng chẳng ai quan tâm? Sự khác biệt không nằm ở thiết bị micro, mà nằm ở <strong>Nội lực và Tần số của giọng nói (Vocal Authority)</strong>. Trong một luồng live, giọng nói của bạn là thứ vũ khí tàng hình trực tiếp đâm thẳng vào tiềm thức khách hàng, quyết định xem họ coi bạn là một kẻ bán dạo hay một vị 'vua' trong lĩnh vực của mình."
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Giọng ngực (Chest Voice) vs Giọng mũi (Nasal Voice)"
+  },
+  {
+    "t": "p",
+    "c": "Đây là điểm phân thủy lĩnh giữa nghiệp dư và chuyên nghiệp."
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Giọng mũi (Nasal Voice):</strong> Xảy ra khi bạn hồi hộp, cố nói to, hơi thở nông (chỉ lấy hơi đến ngực). Âm thanh bị ép qua mũi, the thé, chói tai. Nghe trong 5 phút đầu có vẻ năng lượng, nhưng nghe 30 phút, người xem sẽ bị nhức đầu và thoát kênh.",
+      "<strong>Giọng ngực (Chest Voice):</strong> Là giọng phát ra khi bạn lấy hơi sâu xuống bụng (Thở bụng - Diaphragmatic breathing) và cộng hưởng âm thanh ở lồng ngực. Âm thanh nghe trầm, ấm, dày dặn và có độ rền (Resonance). <strong>Nghiên cứu khoa học chứng minh: Con người (cả nam và nữ) có xu hướng tin tưởng và phục tùng những người có âm vực trầm hơn.</strong>"
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Kỹ thuật 'Ngắt Nghỉ' Thao Túng Tâm Lý (The Power Pause)"
+  },
+  {
+    "t": "p",
+    "c": "Người mới thường mắc bệnh 'sợ khoảng trống' (Fear of silence), họ nói thao bất tuyệt như một cái máy khâu. Điều này khiến bộ não người nghe bị quá tải thông tin và trôi tuột đi mọi thứ."
+  },
+  {
+    "t": "p",
+    "c": "<strong>Cách chuyên gia làm: Dùng khoảng lặng (Pause) để tạo sự chú ý.</strong>"
+  },
+  {
+    "t": "p",
+    "c": "Thay vì nói: <em>'Cái túi này rất đẹp, giá hôm nay là 500k các chị mua ngay đi'</em>. Hãy nói: <em>'Trong tất cả các mẫu túi em từng bán... (Dừng lại 2 giây, nhìn thẳng vào ống kính)... Đây là cực phẩm! Giá của nó không phải là 1 triệu... (Dừng 1 giây)... Mà chỉ có 500 cành cho 5 chị nhanh tay nhất'</em>."
+  },
+  {
+    "t": "p",
+    "c": "Khoảng lặng 2 giây đó làm não bộ khán giả bị hẫng, họ bắt buộc phải tập trung 100% để chờ xem bạn định nói gì tiếp theo. Đó là <strong>Quyền lực của sự im lặng</strong>."
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Cường độ và Nhịp độ (Dynamics & Pacing)"
+  },
+  {
+    "t": "p",
+    "c": "Giọng nói quyền lực không có nghĩa là lúc nào cũng ầm ầm. Nó giống như một bản nhạc giao hưởng, phải có lúc trầm lúc bổng (Dynamics). Khi bạn kể chuyện, hãy nói chậm lại, giọng trầm xuống để tạo sự tâm tình (Intimacy). Khi chuẩn bị tung mã giảm giá (Flash sale), hãy đẩy tốc độ nói lên nhanh (Up-tempo), cường độ lớn để kích hoạt hormone Adrenaline (Hưng phấn, Gấp gáp, FOMO) trong cơ thể khách hàng."
+  },
+  {
+    "t": "quote",
+    "c": "Người bán hàng dùng lời nói để thuyết phục. Chuyên gia dùng sức mạnh của tần số âm thanh để thôi miên."
+  }
+]
     },
     "en": {
       "title": "Voice Mastery: Developing a Rich, Resonant Live Voice",
@@ -2475,37 +2894,52 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "https://images.unsplash.com/photo-1598550880863-4e8aa3d0edb4?q=80&w=1200&auto=format&fit=crop",
       "body": [
-        {
-          "t": "p",
-          "c": "Hàng chục ngàn người mỗi ngày ngây thơ bật điện thoại lên, ảo tưởng rằng chỉ cần 'nói thật to' là sẽ có người mua. Kết quả? 99% tắt live trong sự nhục nhã với 0 đơn hàng. Livestream ở năm 2026 không phải là chỗ cho sự bản năng hay may mắn. Đó là một chiến trường tàn khốc, và nếu bạn ra trận mà không được huấn luyện bài bản, bạn chỉ là bia đỡ đạn cho đối thủ."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "Lời Nguyền Của Sự Bản Năng (Instinctive Failure)"
-        },
-        {
-          "t": "p",
-          "c": "Khi bạn ngồi trước ống kính với một cái đầu rỗng không kịch bản, bạn sẽ lảm nhảm vô nghĩa. Khách hàng thời nay cực kỳ tàn nhẫn; họ sẽ vuốt qua màn hình chỉ trong 3 giây nếu không thấy một cái Hook (móc câu) đẫm máu nào níu giữ. Ánh mắt láo liên, ngôn ngữ cơ thể rụt rè, và năng lượng tụt đáy của bạn sẽ bị camera phóng đại lên gấp 10 lần, khiến người xem cảm thấy cực kỳ khó chịu."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Quyền Năng Của Việc Huấn Luyện Bài Bản"
-        },
-        {
-          "t": "p",
-          "c": "Học Livestream chuyên nghiệp không phải là học cách ăn vạ chốt đơn. Đó là học cách trở thành một 'Đạo diễn tâm lý'. Một khóa huấn luyện chuẩn mực sẽ nhét vào đầu bạn các module cốt lõi: Thiết kế Flow kịch bản miên man không điểm dừng, Nghệ thuật điều khiển nhịp độ (Pacing) để dồn ép cảm xúc khách hàng lên đỉnh điểm, và Kỹ năng xử lý khủng hoảng truyền thông ngay trên sóng trực tiếp."
-        },
-        {
-          "t": "p",
-          "c": "Chỉ khi được trang bị hệ thống kiến thức hệ thống (Framework), bạn mới có khả năng bóc tách insight khách hàng, tung ra các offer chí mạng đúng giây phút họ mất cảnh giác nhất, biến một luồng live vài chục mắt xem thành cỗ máy xả kho hàng trăm đơn."
-        },
-        {
-          "t": "quote",
-          "c": "Lên live bằng bản năng là tự sát. Lên live bằng chiến lược là tàn sát đối thủ!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Chúng ta đang sống trong một giai đoạn chuyển giao quyền lực lớn nhất của lịch sử thương mại điện tử. Hàng ngàn chủ doanh nghiệp truyền thống, những người từng tự hào với chuỗi 10 cửa hàng mặt phố, đang phải vật vã gánh lỗ và đóng cửa. Cùng lúc đó, một cô sinh viên 22 tuổi với một chiếc điện thoại và một chiếc đèn vòng lại có thể chốt hàng ngàn đơn mỗi đêm. <strong>Livestream không còn là một 'kỹ năng mềm', nó là kỹ năng sinh tồn bắt buộc của thập kỷ này.</strong>"
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Chi phí cơ hội của sự Chậm trễ"
+  },
+  {
+    "t": "p",
+    "c": "Rất nhiều người ngụy biện: <em>'Tôi không ăn ảnh', 'Tôi nói không hay', 'Để khi nào chuẩn bị kỹ rồi tôi mới làm'</em>. Sự thật tàn khốc là: Trong khi bạn đang chần chừ, đối thủ của bạn (dù họ nói vấp váp, hình ảnh xấu tệ) đang đều đặn cướp đi khách hàng của bạn mỗi ngày. Mỗi ngày bạn không bật camera lên, bạn đang mất đi cơ hội tiếp cận với hàng triệu người mua hàng ngoài kia với chi phí Marketing tiệm cận 0 đồng."
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "Livestream là Bộ môn Khoa học Tổng hợp"
+  },
+  {
+    "t": "p",
+    "c": "Đừng nghĩ livestream chỉ là đưa cái mặt lên mạng và nói. Nó đòi hỏi sự thành thạo của ít nhất 5 kỹ năng chuyên môn cốt lõi:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Kỹ năng nói trước công chúng (Public Speaking):</strong> Khả năng giữ luồng năng lượng, giao tiếp bằng mắt (Eye-contact) với ống kính, kể chuyện (Storytelling) hấp dẫn.",
+      "<strong>Tâm lý học hành vi (Behavioral Psychology):</strong> Hiểu cách điều hướng cảm xúc đám đông, ứng dụng khan hiếm (Scarcity), tạo FOMO.",
+      "<strong>Tư duy Setup Kỹ thuật:</strong> Hiểu về ánh sáng (Lighting), Âm thanh (Audio Interfaces), Góc máy (Framing).",
+      "<strong>Đọc hiểu Thuật toán (Algorithm Analytics):</strong> Biết cách phân tích các chỉ số RPM, GPM, Retention Rate để điều chỉnh kịch bản theo thời gian thực.",
+      "<strong>Quản trị Khủng hoảng:</strong> Khả năng giữ cái đầu lạnh khi gặp Haters, sập mạng, hoặc sai sót giá cả (Pricing Errors)."
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Lợi nhuận Kép (Compound Interest) của việc Học"
+  },
+  {
+    "t": "p",
+    "c": "Bạn có thể tự mò mẫm (Trial and Error). Nhưng cái giá phải trả là sự bế tắc, cạn kiệt năng lượng, và đốt hàng chục triệu tiền Ads mù quáng. Đi học livestream bài bản là cách mua lại kinh nghiệm đau thương của người khác bằng tiền lẻ. Khi bạn nắm được bộ quy trình chuẩn (SOP), tỷ lệ chuyển đổi của bạn tăng từ 1% lên 3%. Doanh thu của bạn không tăng 3 lần, mà nó <strong>tạo ra thặng dư lợi nhuận khổng lồ</strong>, vì chi phí cố định (Mặt bằng, thiết bị) không thay đổi."
+  },
+  {
+    "t": "quote",
+    "c": "Bạn không thể từ chối sự tiến hóa của thương mại. Hoặc bạn học cách đứng trước ống kính, hoặc bạn sẽ bị thị trường đào thải không thương tiếc."
+  }
+]
     },
     "en": {
       "title": "Don't Be a 'Talking Machine' - The Importance of Professional Livestream Training",
@@ -2565,37 +2999,62 @@ export const articles: Record<string, Article> = {
       "readTime": "Đọc 3 phút",
       "coverImage": "/images/blog/voice_training_cover.jpg",
       "body": [
-        {
-          "t": "p",
-          "c": "Trong mọi cuộc chơi tâm lý, từ đàm phán, thuyết trình đến livestream chốt đơn: Nội dung bạn nói chỉ đóng góp 7%, ngôn ngữ cơ thể chiếm 55%, nhưng Quyền năng của Giọng nói (Vocal Power) chiếm tới 38% khả năng thao túng người đối diện. Hàng triệu người đang tự bóp chết sự nghiệp của mình vì một niềm tin ngu xuẩn: 'Giọng cha sinh mẹ đẻ sao thì cam chịu vậy'."
-        },
-        {
-          "t": "h",
-          "sn": "01",
-          "c": "Giọng Bản Năng: Lưỡi Dao Hủy Hoại Sự Chuyên Nghiệp"
-        },
-        {
-          "t": "p",
-          "c": "Khi bạn phó mặc cho bản năng, bạn đang ném tiền qua cửa sổ. Một giọng mũi (Nasal) eo éo sẽ tra tấn lỗ tai khách hàng, khiến họ tắt live vì nhức đầu. Một giọng yếu ớt, đứt quãng tố cáo bạn là kẻ hèn nhát, thiếu kiến thức. Và tồi tệ nhất, một giọng đều đều (Monotone) không cảm xúc sẽ tiêm thuốc mê, giết chết hoàn toàn sự hưng phấn mua hàng của đám đông."
-        },
-        {
-          "t": "h",
-          "sn": "02",
-          "c": "Khai Mở Sức Mạnh Giọng Nói Định Hình Kẻ Thống Trị"
-        },
-        {
-          "t": "p",
-          "c": "Học luyện giọng không phải là bắt chước giọng của người khác, mà là đánh thức 'Con Quái Vật' đang ngủ quên trong thanh quản của bạn. Khi bạn làm chủ được kỹ thuật cộng hưởng lồng ngực (Chest Voice), mỗi lời bạn thốt ra sẽ có độ vang vọng, độ đầm và tính sát thương cực cao. Nó tạo ra một vầng hào quang của sự đáng tin cậy tuyệt đối."
-        },
-        {
-          "t": "p",
-          "c": "Đỉnh cao của huấn luyện giọng nói là làm chủ 'Vocal Variety' (Sự đa dạng âm sắc). Biết lúc nào cần gầm gừ uy lực để đẩy cao trào chốt sale, biết lúc nào cần thì thầm rủ rỉ để vuốt ve nỗi đau của khách hàng. Giọng nói được rèn luyện chính là thứ ma thuật tối thượng điều khiển hành vi con người."
-        },
-        {
-          "t": "quote",
-          "c": "Giọng nói yếu ớt biến bạn thành kẻ ăn xin sự chú ý. Giọng nói quyền lực biến bạn thành kẻ ra luật chơi!"
-        }
-      ]
+  {
+    "t": "p",
+    "c": "Có bao giờ bạn xem lại video mình vừa quay và cảm thấy rùng mình ngượng ngùng: <em>'Trời ơi, giọng mình đây sao? Sao nó chua, chóe và thiếu tự tin đến thế?'</em>. Đừng lo, 99% mọi người đều trải qua cảm giác đó (Hiện tượng Voice Confrontation). Sự khác biệt là: Những người thành công sẽ tìm cách rèn luyện nó, còn người thất bại thì trốn tránh. <strong>Giọng nói chính là 'Giao diện' (UI/UX) của tâm hồn và trí tuệ bạn.</strong>"
+  },
+  {
+    "t": "h",
+    "sn": "01",
+    "c": "Tại sao Giọng nói Quyết định Tỷ lệ Chốt đơn?"
+  },
+  {
+    "t": "p",
+    "c": "Khi bạn nói, bạn không chỉ truyền đạt thông tin (Words), bạn truyền đạt <strong>Tần số năng lượng (Vibrational Frequency)</strong>. Theo nghiên cứu của Albert Mehrabian, trong giao tiếp cảm xúc, từ ngữ chỉ chiếm 7% sức mạnh thuyết phục, trong khi <strong>Giọng điệu (Tone of Voice) chiếm tới 38%</strong> (55% còn lại là ngôn ngữ cơ thể). Nếu bạn có một kịch bản bán hàng xuất sắc (7%) nhưng giọng bạn run rẩy, hụt hơi (mất đi 38%), khách hàng sẽ cảm nhận được sự bất an và từ chối rút ví."
+  },
+  {
+    "t": "h",
+    "sn": "02",
+    "c": "3 Vấn đề Sinh lý phá hủy giọng nói của bạn"
+  },
+  {
+    "t": "p",
+    "c": "Nếu không học cách sử dụng giọng nói khoa học, sự nghiệp livestream của bạn sẽ kết thúc ở phòng khám tai mũi họng:"
+  },
+  {
+    "t": "list",
+    "items": [
+      "<strong>Thở nông (Chest Breathing):</strong> Hầu hết chúng ta đang lấy hơi vào lồng ngực. Hơi rất ngắn. Khi lên live bị hồi hộp, bạn sẽ nói rất nhanh, dẫn đến thiếu oxy, tụt huyết áp và mệt lả chỉ sau 30 phút.",
+      "<strong>Nói bằng dây thanh quản (Throat talking):</strong> Ép cổ họng để tạo âm thanh to (gào thét). Điều này sẽ cọ xát và làm rách màng thanh quản, gây hạt xơ dây thanh. Bạn sẽ bị mất giọng hoàn toàn sau vài phiên live căng thẳng.",
+      "<strong>Nuốt chữ, phát âm ngọng:</strong> Sai khẩu hình miệng, không mở khẩu hình to khiến chữ phát ra bị bí, lí nhí. Khán giả không nghe rõ sẽ cảm thấy ức chế và thoát live."
+    ]
+  },
+  {
+    "t": "h",
+    "sn": "03",
+    "c": "Hành trình Trị liệu và Huấn luyện Giọng nói"
+  },
+  {
+    "t": "p",
+    "c": "Việc học giọng nói không phải là để biến bạn thành một MC truyền hình sáo rỗng. Nó là quá trình tìm lại <strong>âm sắc nguyên bản (Authentic Voice)</strong> mạnh mẽ nhất của bạn. Bạn phải học 3 kỹ thuật cốt lõi:"
+  },
+  {
+    "t": "p",
+    "c": "<strong>1. Thở cơ hoành (Belly Breathing):</strong> Hít vào bụng phình ra, thở ra bụng xẹp lại. Biến khoang bụng thành một bình chứa không khí khổng lồ, giúp bạn nói liên tục 4 tiếng mà không hề đuối sức."
+  },
+  {
+    "t": "p",
+    "c": "<strong>2. Mở khẩu hình (Articulator Workout):</strong> Tập luyện các cơ hàm, môi, lưỡi. Phát âm chuẩn các nguyên âm A, E, I, O, U một cách tròn vành rõ chữ. Lời nói rõ ràng thể hiện tư duy rành mạch."
+  },
+  {
+    "t": "p",
+    "c": "<strong>3. Cộng hưởng lồng ngực (Chest Resonance):</strong> Đưa âm thanh từ cổ họng dội vào lồng ngực trước khi phát ra ngoài. Tạo ra một chất giọng trầm, ấm áp, vang dội như một tiếng chuông, mang lại cảm giác cực kỳ uy quyền và đáng tin cậy."
+  },
+  {
+    "t": "quote",
+    "c": "Sản phẩm có thể bị copy. Kịch bản có thể bị sao chép. Nhưng chất giọng quyền lực tỏa ra từ sâu thẳm nội lực của bạn là độc bản. Hãy mài dũa nó."
+  }
+]
     },
     "en": {
       "title": "The Power of Voice - Why an Untrained Voice is Holding Your Career Back",
