@@ -21,7 +21,7 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Khi phiên live bắt đầu, bạn chỉ có 3 giây vàng ngọc để giữ chân khán giả trước khi ngón tay cái của họ lướt qua. Câu hỏi đặt ra là: Trong 3 giây đó, bạn là ai trong mắt họ? Nếu bạn chỉ là một 'chiếc máy đọc giá', họ sẽ rời đi ngay lập tức."
+          "c": "Khi phiên live bắt đầu, bạn chỉ có đúng 3 giây vàng ngọc để thiết lập ấn tượng đầu tiên trước khi ngón tay cái của khán giả lướt qua. Trong môi trường thương mại điện tử khốc liệt hiện nay, câu hỏi cốt lõi không phải là 'bạn bán gì', mà là: Trong 3 giây đó, bạn là ai trong mắt họ? Nếu bạn xuất hiện chỉ như một 'chiếc máy đọc giá' vô hồn, họ sẽ rời đi ngay lập tức. Khách hàng ngày nay mua hàng bằng cảm xúc và niềm tin, không chỉ vì sản phẩm."
         },
         {
           "t": "h",
@@ -30,28 +30,32 @@ export const articles: Record<string, Article> = {
         },
         {
           "t": "p",
-          "c": "1. Người Bán Hàng Thuần Túy (The Seller): Đây là kiểu phổ biến nhất và cũng dễ thất bại nhất. Khán giả hiện đại rất nhạy cảm với việc bị 'ép mua'. Nếu ngay từ những phút đầu tiên, bạn chỉ liên tục gào thét về giá cả, voucher, ưu đãi, khán giả sẽ sinh ra cơ chế phòng vệ tâm lý và đề phòng bạn."
+          "c": "1. Người Bán Hàng Thuần Túy (The Seller): Đây là kiểu phổ biến nhất, nhưng cũng là sai lầm dễ mắc phải nhất. Khán giả hiện đại rất nhạy cảm và thường có cơ chế phòng vệ tự nhiên với việc bị 'ép mua'. Nếu ngay từ những phút đầu, bạn liên tục gào thét về giá cả, voucher, ưu đãi, khán giả sẽ lập tức đề phòng. Họ cảm thấy bạn chỉ quan tâm đến ví tiền của họ chứ không thực sự quan tâm đến nhu cầu của họ."
         },
         {
           "t": "p",
-          "c": "2. Người Trình Diễn Năng Lượng (The Entertainer): Khán giả lên mạng xã hội trước hết là để giải trí. Nếu bạn mang lại tiếng cười, một câu chuyện thú vị, hay một màn review hài hước, họ sẽ ở lại. Năng lượng và sự duyên dáng của bạn quyết định thời gian giữ chân (retention rate)."
+          "c": "2. Người Trình Diễn Năng Lượng (The Entertainer): Đừng quên rằng, khán giả lên mạng xã hội trước hết là để giải trí. Một phiên live khô khan sẽ giết chết mọi tỷ lệ chuyển đổi. Nếu bạn mang lại tiếng cười, một câu chuyện thú vị, hay một màn review chân thực và hài hước, họ sẽ nán lại. Năng lượng, sự duyên dáng và tính chân thực của bạn quyết định trực tiếp đến thời gian giữ chân khán giả (Retention Rate) - một trong những chỉ số sống còn của thuật toán phân phối."
         },
         {
           "t": "p",
-          "c": "3. Chuyên Gia Giải Quyết Nỗi Đau (The Expert): Đây là vị thế chốt đơn đỉnh cao nhất. Người xem không mua mỹ phẩm, họ mua 'giải pháp trị mụn'. Khi bạn phân tích chuyên sâu về lý do tại sao da họ bị mụn và cách giải quyết, bạn không còn là người bán hàng nữa, bạn trở thành bác sĩ của họ."
+          "c": "3. Chuyên Gia Giải Quyết Nỗi Đau (The Expert): Đây là vị thế chốt đơn ở tầng cao nhất. Người xem không mua mỹ phẩm; họ mua 'sự tự tin' và 'giải pháp trị mụn'. Khi bạn phân tích chuyên sâu về cơ chế hình thành mụn, thành phần hoạt tính và phác đồ điều trị, bạn không còn là một người bán hàng nữa. Bạn trở thành 'bác sĩ', một cố vấn đáng tin cậy. Ở vị thế này, quyền lực chốt đơn hoàn toàn thuộc về bạn."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Lời khuyên thực chiến"
+          "c": "Chiến lược thực chiến: Nguyên tắc 15 phút đầu"
         },
         {
           "t": "p",
-          "c": "Đừng bán hàng ở 15 phút đầu tiên của phiên live. Hãy trao đi giá trị, kể chuyện, giải trí và chia sẻ kiến thức. Khi niềm tin được thiết lập một cách vững chắc, việc khách hàng bấm vào giỏ hàng và chốt đơn chỉ là bước thủ tục cuối cùng."
+          "c": "Kinh nghiệm xương máu từ hàng nghìn phiên live thực chiến: Đừng bán hàng ngay ở 15 phút đầu tiên. Hãy dùng khoảng thời gian này để 'phá băng', trao đi giá trị, kể chuyện, giải trí và chia sẻ kiến thức chuyên môn. Bạn cần làm cho họ thích bạn, tin bạn trước khi họ rút hầu bao."
+        },
+        {
+          "t": "p",
+          "c": "Khi niềm tin được thiết lập vững chắc thông qua những giá trị thực tế, việc khách hàng tự giác bấm vào giỏ hàng và thanh toán chỉ là bước thủ tục tất yếu."
         },
         {
           "t": "quote",
-          "c": "Khán giả không mua sản phẩm của bạn. Họ mua niềm tin và cảm xúc mà bạn mang lại cho họ trong phòng live!"
+          "c": "Khán giả không mua sản phẩm của bạn. Họ mua niềm tin, giải pháp và cảm xúc mà bạn mang lại cho họ trong phòng live!"
         }
       ]
     },
@@ -64,37 +68,41 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "When your livestream begins, you only have 3 golden seconds to hook the audience before their thumb swipes away. The core question is: In those 3 seconds, who are you in their eyes? If you act like a walking price tag, they will leave immediately."
+          "c": "When your livestream begins, you possess exactly 3 golden seconds to establish a commanding first impression before the viewer's thumb swipes away. In today's hyper-competitive e-commerce landscape, the core question isn't 'what are you selling', but rather: In those 3 seconds, who are you in their eyes? If you appear merely as a lifeless 'price-tag reader', they will bounce immediately. Modern consumers buy based on emotion and trust, not just the product itself."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Three Viewer Archetypes"
+          "c": "Three Core Viewer Archetypes"
         },
         {
           "t": "p",
-          "c": "1. The Pure Seller: This is the most common and least effective approach. Modern consumers are allergic to being 'forced' to buy. If you start screaming about discounts, vouchers, and prices right away, they will build a psychological defense wall."
+          "c": "1. The Pure Seller: This is the most ubiquitous yet least effective archetype. Modern audiences possess a high sensitivity and a natural psychological defense mechanism against being 'hard-sold'. If your opening minutes consist of nothing but screaming about discounts, flash sales, and vouchers, viewers will instantly build a defense wall. They will sense that you care only about their wallets, not their needs."
         },
         {
           "t": "p",
-          "c": "2. The Energetic Entertainer: People use social media primarily for entertainment. If you bring laughter, interesting stories, or dramatic reviews, they will stay. Your authentic energy completely dictates your viewer retention rate."
+          "c": "2. The Energetic Entertainer: Never forget the primary reason people open social media apps: entertainment. A dry, monotone livestream is the quickest way to kill conversion rates. If you can provide laughter, an engaging story, or a dramatic yet authentic product review, they will stay. Your raw energy, charisma, and authenticity directly dictate your retention rate—a vital metric for platform algorithms."
         },
         {
           "t": "p",
-          "c": "3. The Problem-Solving Expert: This is the ultimate tier for high-converting sales. Viewers don't buy cosmetics; they buy 'acne solutions'. When you deeply analyze their pain points and offer real solutions, you stop being a salesperson and become their trusted advisor."
+          "c": "3. The Problem-Solving Expert: This represents the pinnacle of livestream selling. Viewers do not buy cosmetics; they buy 'confidence' and 'acne solutions'. When you deeply analyze the root causes of their skin issues, dissect active ingredients, and offer a tailored regimen, you transcend the role of a salesperson. You become their trusted advisor. In this position, the power to close the sale belongs entirely to you."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Practical Advice"
+          "c": "Practical Strategy: The 15-Minute Rule"
         },
         {
           "t": "p",
-          "c": "Do not sell aggressively in the first 15 minutes. Provide value, entertain, and share expertise first. Once absolute trust is established, clicking the checkout button is just a natural consequence."
+          "c": "A hard-earned lesson from thousands of hours of live broadcasts: Do not aggressively push products in the first 15 minutes. Utilize this critical window to 'break the ice', deliver value, tell compelling stories, and showcase your expertise. You must make them like and trust you before asking them to open their wallets."
+        },
+        {
+          "t": "p",
+          "c": "Once absolute trust is firmly established through genuine value, the act of clicking the checkout button becomes an inevitable, natural consequence."
         },
         {
           "t": "quote",
-          "c": "Viewers do not buy your products. They buy the trust and the emotion you deliver in the live room!"
+          "c": "Viewers do not buy your products. They buy the trust, the solutions, and the emotion you deliver in the live room!"
         }
       ]
     }
@@ -119,37 +127,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Bạn có biết rằng ánh sáng chiếm tới 60% chất lượng hình ảnh livestream? Dù bạn dùng máy ảnh chục triệu, nhưng nếu đánh sáng sai cách, mặt bạn vẫn sẽ bị tối bệt, xỉn màu và thiếu sức sống. Việc setup ánh sáng không khó nếu bạn nắm vững công thức nền tảng."
+          "c": "Bạn có biết rằng ánh sáng quyết định tới 60-70% chất lượng hình ảnh livestream? Dù bạn đầu tư hệ thống camera hàng chục triệu, nhưng nếu tư duy đánh sáng sai lệch, mặt bạn vẫn sẽ bị tối bệt, xỉn màu, đổ bóng dơ và thiếu sức sống. May mắn thay, setup ánh sáng không phải là ma thuật, nó là toán học nghệ thuật. Chỉ cần nắm vững công thức nền tảng, bạn hoàn toàn có thể tạo ra hình ảnh chuẩn studio."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Công Thức 3 Điểm Sáng Kinh Điển"
+          "c": "Giải Phẫu Công Thức 3 Điểm Sáng Kinh Điển"
         },
         {
           "t": "p",
-          "c": "1. Đèn Chính (Key Light): Đây là nguồn sáng linh hồn. Sử dụng đèn 100W-150W kết hợp ngàm Softbox tản sáng Cầu. Đặt đèn chếch một góc 45 độ so với trục nhìn của bạn. Góc độ này giúp tạo ra phần khối (highlight và shadow) nhẹ nhàng, làm khuôn mặt trở nên góc cạnh V-line thay vì bị phẳng lì."
+          "c": "1. Đèn Chính (Key Light): Đây là nguồn sáng linh hồn, quyết định tone màu tổng thể. Sử dụng đèn LED 100W-150W (như Godox hoặc Amaran) kết hợp ngàm Softbox tản sáng Cầu (Lantern) để ánh sáng tỏa đều. Tuyệt đối không đánh thẳng mặt; hãy đặt đèn chếch một góc 45 độ so với trục nhìn của bạn. Góc độ này tạo ra vùng highlight và core shadow tinh tế, định hình khối V-line sắc nét cho khuôn mặt."
         },
         {
           "t": "p",
-          "c": "2. Đèn Phụ (Fill Light): Nếu chỉ dùng Key Light, nửa khuôn mặt còn lại sẽ chìm trong bóng tối. Đặt Fill Light ở hướng đối diện, set công suất chỉ bằng 40-50% so với đèn chính. Điều này giúp làm mềm các vùng tối mà vẫn giữ được độ nổi khối 3D."
+          "c": "2. Đèn Phụ (Fill Light): Nếu chỉ dùng Key Light, nửa khuôn mặt bên kia sẽ chìm trong vùng tối gắt (hard shadow), khiến bạn trông hốc hác. Đặt Fill Light ở hướng đối diện, thiết lập công suất chỉ bằng 40-50% so với đèn chính. Nhiệm vụ của nó là làm mềm bóng đổ, bù sáng cho các góc khuất mà vẫn giữ nguyên độ nổi khối 3D chân thực."
         },
         {
           "t": "p",
-          "c": "3. Đèn Ven (Hair Light / Backlight): Đặt phía sau Host, chiếu chếch xuống phần vai và tóc. Bước này cực kỳ quan trọng vì nó tạo ra một đường viền sáng sắc nét (rim light), tách biệt chủ thể ra khỏi phông nền, mang lại chiều sâu điện ảnh cho khung hình."
+          "c": "3. Đèn Ven (Hair Light / Backlight): Đây là 'vũ khí bí mật' phân biệt dân nghiệp dư và dân chuyên nghiệp. Đặt đèn này ở phía sau Host, trên cao chiếu chếch xuống phần vai và tóc. Đèn ven vạch ra một đường viền sáng sắc nét (rim light), bóc tách hoàn toàn chủ thể khỏi phông nền. Nó mang lại chiều sâu không gian (depth of field) chuẩn điện ảnh cho khung hình."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Lưu ý sống còn"
+          "c": "Lưu ý sống còn về Nhiệt Độ Màu (Kelvin)"
         },
         {
           "t": "p",
-          "c": "Luôn thiết lập nhiệt độ màu (Kelvin) của các đèn ở mức 5600K (chuẩn ánh sáng ban ngày). Việc này giúp màu da hiển thị trắng hồng tự nhiên trên mọi ống kính, tránh hiện tượng bị ám vàng gây cảm giác rẻ tiền cho sản phẩm."
+          "c": "Một sai lầm phổ biến là mix lẫn lộn các loại đèn có nhiệt độ màu khác nhau. Hãy đồng bộ thiết lập nhiệt độ màu (Kelvin) của toàn bộ hệ thống đèn chiếu sáng mặt ở mức 5600K (chuẩn ánh sáng ban ngày tự nhiên). Thiết lập này đảm bảo làn da bạn hiển thị trắng hồng tự nhiên, quần áo và sản phẩm lên chuẩn màu 100%, tránh hiện tượng ám vàng ố lốm đốm rất mất thẩm mỹ."
         },
         {
           "t": "quote",
-          "c": "Ánh sáng đúng cách không chỉ làm tôn lên vẻ đẹp khuôn mặt, mà còn trực tiếp nâng tầm giá trị thương hiệu bạn đang bán!"
+          "c": "Ánh sáng đánh đúng cách không chỉ làm tôn vinh nhan sắc của Host, mà nó còn là thứ trực tiếp nâng tầm định vị và giá trị thương hiệu cho sản phẩm bạn đang bán!"
         }
       ]
     },
@@ -162,37 +170,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Did you know that lighting dictates 60% of your livestream's video quality? Even with an expensive camera, poor lighting makes your face look dull, flat, and unprofessional. Setting it up is surprisingly easy if you follow the core formula."
+          "c": "Did you know that lighting dictates up to 70% of your livestream's overall video quality? Even if you deploy a $5,000 camera rig, poor lighting geometry will leave your face looking dull, flat, aggressively shadowed, and unprofessional. Fortunately, great lighting isn't magic; it's calculated geometry. By mastering the foundational formulas, you can consistently reproduce studio-tier visuals."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "The Classic 3-Point Lighting Formula"
+          "c": "Deconstructing the Classic 3-Point Lighting System"
         },
         {
           "t": "p",
-          "c": "1. The Key Light: This is your primary light source. Use a 100W-150W fixture with a Lantern softbox. Position it at a 45-degree angle from your face. This creates gentle highlights and shadows, sculpting your face to look dynamic and contoured rather than flat."
+          "c": "1. The Key Light: This is your primary illuminator and dictates the overall exposure. Utilize a robust 100W-150W LED fixture paired with a Lantern softbox for omnidirectional diffusion. Never point it dead center; position it at a 45-degree angle to your visual axis. This precise angle sculpts your facial features by creating subtle highlights and a defining core shadow, transforming a flat image into a contoured, dynamic presence."
         },
         {
           "t": "p",
-          "c": "2. The Fill Light: Relying solely on a Key Light leaves half your face in harsh shadows. Place the Fill Light on the opposite side at 40-50% intensity. This softens the darkness while perfectly maintaining the 3D depth of your facial features."
+          "c": "2. The Fill Light: Operating exclusively with a Key Light leaves the opposite side of your face plunged into harsh, unflattering shadows. Counteract this by placing the Fill Light on the opposite flank, strictly dialed down to 40-50% of your Key Light's intensity. Its sole purpose is to gently lift the darkest shadows without erasing the vital 3D volume created by the Key Light."
         },
         {
           "t": "p",
-          "c": "3. The Backlight (Hair Light): Positioned behind you and pointed at your shoulders and hair. This crucial step creates a bright rim light, completely separating you from the background and injecting a cinematic depth into the frame."
+          "c": "3. The Backlight (Hair/Rim Light): This is the secret weapon separating amateurs from professionals. Mounted behind you and angled down toward your shoulders and crown, it traces a crisp rim of light around your silhouette. This powerful backlight physically separates you from the background canvas, injecting authentic cinematic depth of field into your frame."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Crucial Advice"
+          "c": "The Critical Rule of Color Temperature"
         },
         {
           "t": "p",
-          "c": "Always set your light temperature (Kelvin) to 5600K (Daylight standard). This ensures your skin tones appear natural, vibrant, and healthy on camera, avoiding any cheap-looking yellow casts on your products."
+          "c": "A fatal error is mixing vastly different color temperatures across your face. You must strictly synchronize the Kelvin setting of all your facial lighting fixtures to 5600K (standard daylight). This rigid consistency ensures your skin tones render naturally vibrant and healthy, while completely eliminating any cheap, muddy yellow color casts that degrade the perceived quality of your showcased products."
         },
         {
           "t": "quote",
-          "c": "Proper lighting doesn't just flatter your face; it directly elevates the perceived value of the brand you are selling!"
+          "c": "Masterful lighting does much more than flatter your face; it subliminally and directly elevates the premium positioning of the brand you represent."
         }
       ]
     }
@@ -217,37 +225,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Hình ảnh mờ, khán giả có thể cố nán lại xem. Nhưng âm thanh xèo xèo, nhiễu sóng hoặc chói tai? Họ sẽ vuốt qua (swipe) ngay trong 1 giây! Chất lượng âm thanh là yếu tố sống còn để duy trì tỷ lệ giữ chân (Retention Rate) trên mọi nền tảng."
+          "c": "Về mặt thị giác, hình ảnh có thể mờ hạt hoặc thiếu sáng một chút, khán giả vẫn có thể nán lại xem vì sự tò mò. Tuy nhiên, về mặt thính giác, nếu âm thanh bị xèo xèo, nhiễu sóng, vang vọng hoặc chói tai, 99% khán giả sẽ lướt qua (swipe) ngay lập tức trong giây đầu tiên! Trong ngành công nghiệp Livestream, chất lượng âm thanh không chỉ là kỹ thuật, nó là yếu tố tâm lý học sống còn quyết định Tỷ lệ giữ chân (Retention Rate) và trải nghiệm mua sắm."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Top 3 Micro Không Dây Bán Chạy Nhất"
+          "c": "Top 3 Micro Không Dây Định Hình Phân Khúc"
         },
         {
           "t": "p",
-          "c": "1. Saramonic Blink 500 B2+ / B4: Vua kết nối đa dụng. Ứng cử viên nặng ký này cho phép bạn vừa cắm vào điện thoại, vừa xuất âm thanh ra máy ảnh cùng lúc. Công nghệ khử ồn chủ động (ANC) cực kỳ phù hợp cho môi trường ồn ào. Pin trâu lên tới 20 tiếng giúp bạn thoải mái live marathon."
+          "c": "1. Saramonic Blink 500 B2+ / B4 (Vua kết nối đa dụng): Đây là một ứng cử viên hạng nặng cho các Studio bán chuyên. Hệ thống cho phép bạn vừa xuất tín hiệu số trực tiếp vào điện thoại, vừa có cổng line-out cho máy ảnh cực kỳ linh hoạt. Điểm sáng lớn nhất là công nghệ khử ồn chủ động (ANC) bằng thuật toán AI, lọc sạch tiếng quạt gió hay tiếng đường phố. Kết hợp với thời lượng pin thực tế lên đến 20 tiếng, nó là 'quái vật' cho những phiên live marathon bùng nổ doanh số."
         },
         {
           "t": "p",
-          "c": "2. Hollyland Lark M2: Nhỏ gọn tinh tế. Điểm ăn tiền lớn nhất là thiết kế như một chiếc cúc áo siêu nhẹ (chỉ 9 gram). Gắn lên áo phông hay váy lụa mỏng đều không bị kéo xệch cổ áo. Bắt âm cực nhạy và cho ra chất giọng trầm ấm, phát âm tròn vành rõ chữ."
+          "c": "2. Hollyland Lark M2 (Nhỏ gọn tinh tế): Khắc phục nhược điểm kéo trễ cổ áo của các dòng micro truyền thống, Lark M2 mang thiết kế hình nút áo siêu nhẹ (chỉ 9 gram) tích hợp nam châm. Việc cài lên áo lụa hay váy mỏng trở nên tinh tế và chuyên nghiệp vô cùng. Bất chấp kích thước tí hon, capsule thu âm bên trong cực nhạy, tái tạo được chất giọng trầm ấm, dải mid rõ ràng, giúp phát âm tròn vành rõ chữ."
         },
         {
           "t": "p",
-          "c": "3. Boya BY-V20: Ngon bổ rẻ cho người mới. Nếu ngân sách eo hẹp dưới 1.5 triệu, đây là chân ái. Cắm trực tiếp chân Type-C/Lightning vào điện thoại là live luôn, không cần ứng dụng cài đặt rườm rà."
+          "c": "3. Boya BY-V20 (Ngon bổ rẻ cho người mới): Nếu ngân sách khởi nghiệp cực kỳ eo hẹp (dưới 1.5 triệu đồng), đây là sự lựa chọn an toàn nhất. Thiết kế Plug-and-Play chân thực: Cắm thẳng đầu Receiver chuẩn Type-C hoặc Lightning vào điện thoại là thiết bị tự động nhận diện. Không cần cài App rườm rà, không lo kết nối Bluetooth chập chờn."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Tuyệt Kỹ Setup Âm Thanh"
+          "c": "Tuyệt Kỹ Setup Âm Thanh Cốt Lõi"
         },
         {
           "t": "p",
-          "c": "Đừng bao giờ kéo max âm lượng (Gain) trên cục thu (Receiver). Hãy luôn khóa ở mức 70% để tránh hiện tượng vỡ tiếng (Clipping). Khi vỡ tiếng tín hiệu đỏ, micro đắt tiền đến mấy nghe cũng rất nhức tai."
+          "c": "Nguyên tắc bất di bất dịch của kỹ thuật âm thanh: Đừng bao giờ kéo tối đa dải âm lượng (Gain) trên cục thu (Receiver) hoặc trên phần mềm OBS. Hãy luôn thiết lập và khóa Gain ở ngưỡng an toàn (thường là 70-80%) để bảo toàn headroom. Nếu bạn để gain quá lớn, khi bạn phấn khích nói to, tín hiệu sẽ bị vượt ngưỡng (Clipping/Peak đỏ). Âm thanh clipping sẽ bị vỡ, rè và cực kỳ nhức tai, phá hủy toàn bộ trải nghiệm chuyên nghiệp."
         },
         {
           "t": "quote",
-          "c": "Âm thanh trong trẻo và trầm ấm là chất xúc tác hoàn hảo nhất để thôi miên và thuyết phục khách hàng chốt đơn!"
+          "c": "Âm thanh trong trẻo, trầm ấm không chỉ là phương tiện truyền đạt thông tin, nó là chất xúc tác cảm xúc mạnh mẽ nhất để thôi miên và thuyết phục khách hàng ra quyết định chốt đơn!"
         }
       ]
     },
@@ -260,37 +268,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Viewers might tolerate slightly blurry video, but terrible, staticky audio? They will swipe away in a heartbeat! Pristine audio quality is the single most critical factor for maintaining high viewer retention rates on any platform."
+          "c": "Visually, viewers might endure slightly grainy or under-lit video out of curiosity. Auditorily, however, if your audio is staticky, echoing, or piercing, 99% of audiences will swipe away within the very first second! In the livestreaming industry, audio quality transcends technicality; it is a critical psychological anchor that directly dictates Viewer Retention Rates and the overall purchasing experience."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Top 3 Wireless Microphones"
+          "c": "Top 3 Wireless Microphones Shaping the Market"
         },
         {
           "t": "p",
-          "c": "1. Saramonic Blink 500 B2+: The connectivity king. This heavy-hitter allows simultaneous output to both smartphone and camera. Its Active Noise Cancellation (ANC) is perfect for loud environments, and the 20-hour battery life easily survives marathon streams."
+          "c": "1. Saramonic Blink 500 B2+ / B4 (The Connectivity Titan): A heavyweight contender for prosumer studios. This ecosystem offers unparalleled flexibility, allowing direct digital output to your smartphone while simultaneously sending a line-out signal to a mirrorless camera. Its standout feature is the AI-driven Active Noise Cancellation (ANC), which surgically removes fan hums and street noise. Paired with a massive 20-hour battery life, it’s a monster for high-revenue marathon streams."
         },
         {
           "t": "p",
-          "c": "2. Hollyland Lark M2: Ultra-compact elegance. Weighing just 9 grams, it clips onto thin shirts or silk dresses without dragging the collar down. Despite its size, it captures incredibly warm, crisp, and articulate vocals."
+          "c": "2. Hollyland Lark M2 (Ultra-Compact Elegance): Solving the age-old problem of sagging collars, the Lark M2 features a revolutionary magnetic button-sized design weighing a mere 9 grams. Attaching it to delicate silk blouses or thin tees looks remarkably discreet and professional. Despite its microscopic footprint, the internal capsule is hyper-sensitive, capturing warm vocal tones and clear mid-frequencies for articulate speech."
         },
         {
           "t": "p",
-          "c": "3. Boya BY-V20: The budget champion. If you have a tight budget, this is the holy grail. Simply plug the Type-C or Lightning receiver directly into your phone and start streaming instantly without messy apps."
+          "c": "3. Boya BY-V20 (The Budget Champion): For startups operating on a shoestring budget (under $60), this is the safest harbor. It embodies true Plug-and-Play philosophy: thrust the Type-C or Lightning receiver directly into your phone, and the system initializes instantly. No clunky companion apps to install, and zero reliance on unstable Bluetooth pairing."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Pro Audio Setup Tips"
+          "c": "The Core Pro-Audio Commandment"
         },
         {
           "t": "p",
-          "c": "Never max out the gain volume on your receiver. Always cap it around 70% to prevent audio clipping. Once your audio signal hits the red clipping zone, even a $1000 microphone will sound distorted and painful to listen to."
+          "c": "The golden, unbreakable rule of audio engineering: Never max out the gain on your receiver or broadcast software (like OBS). Always establish and lock your gain at a conservative threshold (typically 70-80%) to preserve dynamic headroom. If your gain is pushed too high, an exciting, loud sales pitch will cause the signal to breach the limit (Red Peak/Clipping). Digital clipping results in harsh, crackling, and painful distortion that instantly destroys any illusion of professionalism."
         },
         {
           "t": "quote",
-          "c": "Warm and crystal-clear audio is the perfect catalyst for hypnotizing viewers and driving conversions!"
+          "c": "Crystal-clear, warm audio is not merely an information delivery mechanism; it is the most potent emotional catalyst to hypnotize viewers and drive decisive conversions!"
         }
       ]
     }
@@ -315,37 +323,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Khi nhìn thấy số mắt xem nhảy vọt lên 1000, tim bạn đập loạn nhịp, não bộ 'đóng băng' và kịch bản bay sạch khỏi đầu? Đó là phản ứng sinh lý hoàn toàn bình thường. Sự thật là: Tự tin không phải bẩm sinh, nó là một kỹ năng có thể lập trình được."
+          "c": "Khi con số mắt xem trên màn hình đột ngột nhảy vọt từ 100 lên 10.000, nhịp tim bạn tăng tốc, não bộ gần như 'đóng băng' và kịch bản chuẩn bị kỹ lưỡng bỗng bay sạch khỏi đầu? Xin chúc mừng, bạn hoàn toàn bình thường! Nỗi sợ đứng trước ống kính và đám đông là một trong những bản năng nguyên thủy nhất của con người. Tuy nhiên, sự thật phũ phàng trong ngành này là: Sự tự tin không phải là món quà bẩm sinh, nó là một chuỗi các kỹ năng có thể lập trình và rèn luyện được."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "3 Phương Pháp Huấn Luyện Tâm Lý"
+          "c": "3 Kỹ Thuật Hack Tâm Lý Trước Giờ G"
         },
         {
           "t": "p",
-          "c": "1. Dịch chuyển điểm nhìn (Shift of Focus): Nỗi sợ hãi sinh ra khi bạn quá bận tâm vào BẢN THÂN (Trông mình có béo không? Mình nói có vấp không?). Hãy lập tức hướng sự chú ý sang KHÁN GIẢ: Bạn đang giải quyết nỗi đau nào cho họ? Khi khát khao trao đi giá trị lớn hơn cái tôi, nỗi sợ sẽ biến mất."
+          "c": "1. Dịch chuyển điểm nhìn (The Paradigm Shift): Nguyên nhân gốc rễ của nỗi sợ là vì bạn đang hướng sự chú ý quá mức vào BẢN THÂN (Trông mặt mình có béo không? Mình nói có bị vấp không?). Cách duy nhất để triệt tiêu nỗi sợ là lập tức hướng sự chú ý sang KHÁN GIẢ. Hãy tự hỏi: Bạn đang giải quyết nỗi đau nào cho họ ngày hôm nay? Khi khao khát trao đi giá trị lớn hơn cái tôi cá nhân, nỗi sợ sẽ tự động bốc hơi."
         },
         {
           "t": "p",
-          "c": "2. Kỹ thuật thở cơ hoành (4-7-8): Trước khi bấm 'Go Live', hãy hít sâu bằng bụng trong 4 giây, nín thở 7 giây, và từ từ thở ra trong 8 giây. Lặp lại 3 lần. Nhịp thở này ép nhịp tim chậm lại, đưa sóng não về trạng thái điềm tĩnh tuyệt đối."
+          "c": "2. Kỹ thuật thở cơ hoành (Chiến thuật 4-7-8 của đặc nhiệm): Đúng 5 phút trước khi bấm nút 'Go Live', hãy hít sâu bằng cơ hoành (phình bụng) trong 4 giây, nín thở 7 giây, và từ từ thở ra qua miệng trong 8 giây. Lặp lại chu kỳ này 3-5 lần. Nhịp thở này kích hoạt hệ thần kinh phó giao cảm, ép nhịp tim chậm lại, hạ huyết áp và đưa sóng não về trạng thái điềm tĩnh, sắc bén tuyệt đối."
         },
         {
           "t": "p",
-          "c": "3. Hình tượng hóa thấu kính: Đừng mường tượng rằng bạn đang thuyết trình cho 10.000 người lạ mặt. Hãy tưởng tượng thấu kính camera bé xíu kia chính là một người bạn thân. Giọng điệu của bạn sẽ lập tức trở nên chân thành, ấm áp và tự nhiên hơn gấp vạn lần."
+          "c": "3. Hình tượng hóa thấu kính (Lens Personification): Đừng bao giờ mường tượng rằng bạn đang thuyết trình cho 10.000 người lạ mặt với ánh mắt soi mói. Hãy tưởng tượng cái thấu kính camera bé xíu kia chính là một người bạn thân thiết nhất của bạn. Khi nói chuyện với bạn thân, ngôn ngữ cơ thể của bạn sẽ giãn ra, giọng điệu trở nên chân thành, ấm áp và có sức thuyết phục hơn gấp vạn lần."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Mẹo nhỏ thực chiến"
+          "c": "Vũ Khí Chống 'Đơ Lưỡi'"
         },
         {
           "t": "p",
-          "c": "Đừng cố học thuộc lòng từng chữ. Hãy viết 5 từ khóa cốt lõi (Keywords) ra giấy note và dán ngay viền màn hình. Chúng sẽ là kim chỉ nam giúp bạn không bao giờ rơi vào trạng thái 'đơ lưỡi' vì quên bài."
+          "c": "Sai lầm chết người của Newbie là cố gắng học thuộc lòng kịch bản từng chữ một. Khi quên 1 chữ, hệ thống não bộ sẽ sụp đổ. Hãy áp dụng phương pháp 'Keyword Anchoring': Chỉ viết đúng 5 từ khóa cốt lõi (Keywords) của phiên live lên một tờ giấy note (Post-it) màu vàng và dán ngay viền màn hình, sát tầm mắt. Chúng sẽ là chiếc mỏ neo cứu sinh, giúp bạn luôn đi đúng hướng mà không bao giờ rơi vào trạng thái 'chết hình'."
         },
         {
           "t": "quote",
-          "c": "Tự tin không đến từ sự hoàn hảo. Nó đến từ việc bạn dũng cảm chấp nhận khuyết điểm để mang lại giá trị thật cho người khác!"
+          "c": "Sự tự tin tỏa sáng nhất không đến từ một phiên live hoàn hảo không tì vết. Nó đến từ việc bạn dũng cảm phơi bày sự chân thật để giải quyết vấn đề cho khách hàng!"
         }
       ]
     },
@@ -358,37 +366,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "When viewer counts spike to 1000, does your heart race, your brain freeze, and your script vanish? That's a normal physiological response. The truth is: Confidence isn't a genetic trait; it's a programmable skill."
+          "c": "When the concurrent viewer count on your screen violently spikes from 100 to 10,000, your heart rate skyrockets, your brain essentially 'freezes', and your meticulously crafted script vanishes into thin air. Congratulations, you are completely normal! The fear of the camera and public scrutiny is a deeply wired primal instinct. However, the hard truth of the broadcasting industry is this: Supreme confidence is not a genetic gift; it is a highly programmable set of technical skills."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "3 Psychological Training Methods"
+          "c": "3 Psychological Hacks Before Going Live"
         },
         {
           "t": "p",
-          "c": "1. Shift of Focus: Camera anxiety stems from obsessing over YOURSELF (Do I look fat? Will I stutter?). Immediately shift focus to the AUDIENCE: What pain point are you solving for them? When the desire to deliver value exceeds your ego, fear evaporates."
+          "c": "1. The Paradigm Shift: The root cause of camera anxiety is hyper-focusing on YOURSELF (Do I look nervous? Will I stutter?). The ultimate antidote is instantly redirecting your focus entirely to the AUDIENCE. Ask yourself: What specific pain point am I solving for them today? When your burning desire to deliver value eclipses your personal ego, fear naturally evaporates."
         },
         {
           "t": "p",
-          "c": "2. Diaphragmatic Breathing (4-7-8): Before hitting 'Go Live', breathe into your belly for 4 seconds, hold for 7 seconds, and exhale slowly for 8 seconds. Repeat 3 times. This drastically slows your heart rate, forcing your brain into a state of calm."
+          "c": "2. Tactical Box Breathing (The 4-7-8 Method): Exactly 5 minutes before hitting the 'Go Live' button, execute this Navy SEAL technique: Inhale deeply into your diaphragm for 4 seconds, hold that breath for 7 seconds, and exhale slowly through your mouth for 8 seconds. Repeat 3-5 times. This forces your parasympathetic nervous system into gear, manually slowing your heart rate and dropping your brainwaves into a state of absolute, lethal calmness."
         },
         {
           "t": "p",
-          "c": "3. Lens Personification: Stop imagining a stadium of 10,000 strangers judging you. Imagine the tiny camera lens is your absolute best friend. Your tone will instantly become conversational, warm, and infinitely more authentic."
+          "c": "3. Lens Personification: Never visualize yourself lecturing to a stadium of 10,000 hyper-critical strangers. Instead, visually hallucinate that the tiny, cold camera lens is your absolute best friend. When you converse with a best friend, your body language relaxes, your tone drops into a warm register, and your authenticity skyrockets."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Practical Cheat Code"
+          "c": "The Anti-Blanking Cheat Code"
         },
         {
           "t": "p",
-          "c": "Never memorize your script word-for-word. Write down 5 core bullet points (Keywords) on a sticky note and place it right next to the lens. It acts as an anchor to prevent you from ever blanking out."
+          "c": "The most fatal mistake rookies make is attempting to memorize a script verbatim. Drop one word, and your entire mental house of cards collapses. Employ 'Keyword Anchoring': Write down only 5 critical anchor words on a neon sticky note and mount it right next to the camera lens. This visual safety net guarantees you will never suffer a dead-air panic attack."
         },
         {
           "t": "quote",
-          "c": "Confidence doesn't come from being flawless. It comes from embracing imperfection to deliver true value to others!"
+          "c": "Radiant confidence doesn't stem from delivering a flawless performance. It is born from the courage to be vulnerably authentic while solving real problems!"
         }
       ]
     }
@@ -413,37 +421,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Một phiên live tiền tỷ của nhãn hàng lớn luôn có sự chuyển đổi nhịp nhàng giữa góc toàn (giao lưu Host) và góc cận (test chất liệu sản phẩm). Việc ứng dụng Multi-cam chính là ranh giới giữa một livestream cá nhân bệp bệch và một Studio chuyên nghiệp."
+          "c": "Hãy quan sát kỹ một phiên live tiền tỷ của các Mega Creator hay các nhãn hàng thời trang cao cấp. Bạn sẽ không bao giờ thấy một khung hình tĩnh tẻ nhạt. Họ liên tục chuyển đổi mượt mà giữa góc toàn (Wide angle - để Host tương tác body language) và góc cận (Close-up - để phô diễn chi tiết sợi vải, chất kem). Việc nâng cấp lên hệ thống Multi-cam chính là ranh giới định vị sắc bén nhất giữa một livestream bán hàng cá nhân bẹp bệch và một Studio thương mại điện tử chuyên nghiệp."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Kiến trúc Phần Cứng (Hardware Flow)"
+          "c": "Kiến Trúc Phần Cứng (Hardware Flow) Chuẩn Hóa"
         },
         {
           "t": "p",
-          "c": "1. Sử dụng Capture Card: Để đưa hình ảnh siêu nét từ máy ảnh vào PC, bạn cần Capture Card (VD: Elgato CamLink 4K). Tín hiệu đi từ: Máy ảnh -> cáp Micro HDMI to HDMI -> CamLink -> Cổng USB 3.0 máy tính. (Phải cắm đúng cổng USB 3.0 màu xanh để tránh giật lag)."
+          "c": "1. Capture Card - Trái tim hệ thống: Để đưa luồng video 4K siêu nét từ máy ảnh mirrorless vào PC mà không bị nén, bạn bắt buộc phải dùng Capture Card (Tiêu biểu: Elgato CamLink 4K). Sơ đồ truyền dẫn: Máy ảnh -> Cáp Micro HDMI sang HDMI -> CamLink -> Cổng USB 3.0 của máy tính. Lưu ý cốt tử: Phải cắm CamLink vào cổng USB 3.0 (thường có màu xanh/đỏ) trực tiếp trên Mainboard, tuyệt đối không cắm qua Hub USB để tránh nghẽn băng thông gây giật lag."
         },
         {
           "t": "p",
-          "c": "2. Thiết lập Tiêu Cự Lens: Góc toàn (Wide Angle) dùng để bao quát bối cảnh không gian, hãy dùng Lens tiêu cự 16mm-24mm. Góc cận (Close-up) dùng để zoom sát vân vải, mỹ phẩm, hãy dùng Lens 50mm-85mm để xóa phông mù mịt, nổi bật sản phẩm."
+          "c": "2. Chiến lược Tiêu Cự Lens: Multi-cam vô nghĩa nếu các góc máy giống hệt nhau. Với Góc Toàn (Cam 1), hãy dùng Lens tiêu cự rộng 16mm-24mm để thu trọn bối cảnh không gian và decor. Với Góc Cận (Cam 2), hãy trang bị Lens 50mm-85mm (khẩu độ lớn f/1.4 hoặc f/1.8). Ở tiêu cự này, phông nền sẽ bị xóa mù mịt (Hiệu ứng Bokeh), giúp sản phẩm khi đưa lên ống kính nổi bật 3D như một thỏi vàng."
         },
         {
           "t": "p",
-          "c": "3. Tối ưu Ánh Sáng Multi-cam: Đảm bảo đèn Key Light đánh đều cho cả góc mặt Host và khu vực đặt sản phẩm góc cận để màu sắc đồng nhất."
+          "c": "3. Đồng bộ Ánh Sáng Multi-cam: Thử thách lớn nhất của 2 góc máy là lệch màu da. Phải đảm bảo đèn Key Light chính đánh phủ góc tỏa đủ rộng cho cả vị trí Host đứng và bục đặt sản phẩm quay cận. Setup nhiệt độ màu (White Balance) trên cả 2 máy ảnh phải cố định bằng tay (Manual, vd: 5500K), cấm để Auto White Balance (AWB)."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Vận hành phần mềm OBS"
+          "c": "Đạo Diễn Chuyển Cảnh Trên OBS Studio"
         },
         {
           "t": "p",
-          "c": "Trong OBS, thiết lập 3 Scene chính: Góc Toàn, Góc Cận, và Picture-in-Picture (Góc cận phóng to, hình Host thu nhỏ ở góc). Gán Hotkey phím tắt 1, 2, 3 để bấm chuyển cảnh tức thời (cut) y hệt đạo diễn nhà đài."
+          "c": "Trong OBS Studio, hãy cấu trúc thành 3 Scene độc lập: Scene 1 (Góc Toàn), Scene 2 (Góc Cận), và Scene 3 (Picture-in-Picture: Góc cận phóng to fullscreen để show sản phẩm, hình Host thu nhỏ đặt ở góc dưới cùng). Trình độ Pro: Vào File -> Settings -> Hotkeys, gán phím tắt số 1, 2, 3 trên bàn phím số (Numpad) cho 3 Scene này. Giờ đây, chỉ với một cú gõ ngón tay, bạn đã cut cảnh mượt mà như đạo diễn truyền hình VTV."
         },
         {
           "t": "quote",
-          "c": "Đầu tư vào hệ thống Multi-cam không chỉ là khoe thiết bị, đó là sự tôn trọng tuyệt đối dành cho trải nghiệm thị giác của khách hàng!"
+          "c": "Đầu tư vào hệ thống Multi-cam không chỉ là sự phô trương thiết bị, đó là sự tôn trọng tuyệt đối dành cho trải nghiệm thị giác và túi tiền của khách hàng!"
         }
       ]
     },
@@ -456,37 +464,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "High-revenue brand streams always feature smooth transitions between wide angles (host interaction) and close-ups (product detailing). Implementing a multi-cam setup is the dividing line between an amateur stream and a premium broadcast studio."
+          "c": "Examine any six-figure livestream hosted by Mega Creators or premium fashion brands. You will never see a static, boring single-camera frame. They execute seamless cuts between a wide angle (for the Host’s body language and set) and a macro close-up (to showcase fabric textures or cosmetic consistencies). Implementing a true Multi-cam architecture is the definitive boundary separating a cheap amateur broadcast from a premium e-commerce studio."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Hardware Architecture Flow"
+          "c": "Standardized Hardware Architecture Flow"
         },
         {
           "t": "p",
-          "c": "1. Capture Card Routing: To inject clean camera feeds into your PC, use a Capture Card (e.g., Elgato CamLink 4K). The routing is: Camera -> Micro HDMI to HDMI cable -> CamLink -> PC USB 3.0 port. Always use the blue USB 3.0 port to prevent bandwidth bottlenecks."
+          "c": "1. The Capture Card (The System's Heart): To ingest uncompressed, cinematic 4K video feeds from mirrorless cameras into your PC, a premium Capture Card (like the Elgato CamLink 4K) is non-negotiable. The signal flow: Camera -> Micro HDMI to HDMI cable -> CamLink -> PC USB 3.0 port. Crucial Warning: Always plug the CamLink directly into the motherboard's high-speed USB 3.0 port (usually blue/red). Never route it through cheap USB hubs, or you will suffer catastrophic bandwidth bottlenecks and frame drops."
         },
         {
           "t": "p",
-          "c": "2. Strategic Lens Selection: For the wide angle covering the host and set, use a 16mm-24mm focal length. For the close-up showing fabric textures or cosmetics, use a 50mm-85mm lens for buttery background blur (bokeh) that isolates the product."
+          "c": "2. Strategic Focal Lengths: Multi-cam is pointless if both angles look identical. For the Wide Angle (Cam 1), utilize a 16mm-24mm lens to capture the spatial grandeur of your set. For the Close-Up (Cam 2), deploy a 50mm-85mm portrait lens with a fast aperture (f/1.4 or f/1.8). This specific focal range obliterates the background into creamy bokeh, isolating your product and making it pop off the screen like a 3D asset."
         },
         {
           "t": "p",
-          "c": "3. Multi-Cam Lighting Harmony: Ensure your Key Light evenly exposes both the host's face and the close-up product area so color grading remains perfectly consistent."
+          "c": "3. Multi-Cam Lighting & Color Sync: The biggest rookie mistake is mismatched skin tones across cameras. Ensure your Key Light beam angle is broad enough to evenly expose both the host's standing position and the close-up product pedestal. Most importantly, lock the White Balance (Kelvin) manually on BOTH cameras (e.g., 5500K). Never use Auto White Balance (AWB) in a multi-cam setup."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Software Operation via OBS"
+          "c": "Directing the Switch in OBS Studio"
         },
         {
           "t": "p",
-          "c": "In OBS Studio, create 3 main Scenes: Wide Angle, Close-Up, and Picture-in-Picture (Close-up maximized, host minimized in the corner). Bind hotkeys 1, 2, 3 to seamlessly switch inputs like a live television director."
+          "c": "Inside OBS Studio, engineer 3 distinct Scenes: Scene 1 (Wide Angle), Scene 2 (Macro Close-Up), and Scene 3 (Picture-in-Picture: Product maximized, Host miniaturized in the corner). The Pro Move: Navigate to File -> Settings -> Hotkeys, and bind the Numpad keys 1, 2, and 3 to these scenes. Now, with a simple finger tap, you are executing hard cuts with the precision of a live television director."
         },
         {
           "t": "quote",
-          "c": "Investing in a multi-cam setup isn't just showing off gear; it is the ultimate respect paid to your customer's visual experience!"
+          "c": "Investing in a multi-cam ecosystem isn't just about flexing expensive gear; it is the ultimate demonstration of respect for your customer's visual experience and their wallet!"
         }
       ]
     }
@@ -511,37 +519,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Một phiên live có doanh thu hàng trăm triệu không bao giờ diễn ra ngẫu nhiên hay phụ thuộc vào 'duyên bán hàng'. Nó là kết quả của một kịch bản được dàn dựng nhịp nhàng, tính toán chính xác tới từng phút. Không có kịch bản, bạn sẽ nói lan man, tụt năng lượng và mất sạch người xem."
+          "c": "Một phiên Mega Live mang về doanh thu hàng tỷ đồng không bao giờ, tuyệt đối không bao giờ, diễn ra ngẫu nhiên hay phụ thuộc vào cái gọi là 'duyên bán hàng' thiên bẩm. Đằng sau những con số bùng nổ đó là một kịch bản được dàn dựng nhịp nhàng, mang tính thao túng tâm lý cao và được tính toán chính xác tới từng phút. Không có kịch bản định hướng, bạn sẽ rơi vào cái bẫy nói lan man, tụt năng lượng giữa chừng, mất kiểm soát luồng traffic và 'chảy máu' người xem không phanh."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Công thức Nhịp điệu 60 Phút"
+          "c": "Công thức Nhịp điệu Tâm lý 60 Phút"
         },
         {
           "t": "p",
-          "c": "1. 0-5 Phút Đầu (Mở Màn Câu Traffic): Tuyệt đối không bán hàng! Hãy tung ngay một Minigame hoặc Deal 1k. Liên tục kêu gọi 'Mọi người thả tim chạm mốc 10.000 tim để Hiển tung quà nhé'. Điều này lừa thuật toán TikTok hiểu rằng phòng live của bạn cực kỳ sôi động, từ đó nó sẽ đẩy thêm hàng ngàn luồng traffic mới vào."
+          "c": "1. Khởi động (0-5 Phút) - Câu Traffic & Hack Thuật Toán: Giai đoạn này tuyệt đối CẤM bán hàng! Mục tiêu duy nhất là kéo mắt xem và tương tác. Hãy tung ngay một Minigame hoặc Deal lỗ 1k. Khẩu lệnh liên tục: 'Mọi người nhấp tay vào màn hình thả tim chạm mốc 10.000 tim để Hiển tung quà nhé!'. Động tác này đánh lừa thuật toán TikTok hiểu rằng phòng live của bạn có tính giải trí cực cao, hệ thống sẽ tự động phân phối luồng traffic khổng lồ (FYP) vào phòng của bạn."
         },
         {
           "t": "p",
-          "c": "2. 5-15 Phút (Tung Hero Deal Mồi): Đưa ra một sản phẩm chủ lực (Hero Product) với mức giá không tưởng. Mục đích không phải để lấy lãi, mà là 'bẻ gãy' rào cản phòng vệ của khách hàng, kích thích họ bấm vào giỏ hàng lần đầu tiên."
+          "c": "2. Phá băng (5-15 Phút) - Tung Hero Deal Mồi: Lúc này traffic đang ở đỉnh, hãy đưa ra một sản phẩm mồi (Hero Product) với mức giá sốc không tưởng. Mục đích của deal này không phải để lấy biên độ lợi nhuận, mà là để 'bẻ gãy' rào cản phòng vệ mua sắm, huấn luyện hành vi khách hàng bấm vào giỏ hàng và nhập địa chỉ thanh toán lần đầu tiên. Khi họ đã mua 1 đơn, đơn thứ 2 sẽ cực kỳ dễ dàng."
         },
         {
           "t": "p",
-          "c": "3. 15-40 Phút (Trình Diễn & Giải Quyết Nỗi Đau): Đây là lúc bạn chứng minh chuyên môn. Demo sản phẩm trực tiếp, test độ bền, bôi thử chất kem. Xoáy sâu vào nỗi đau của khách hàng và giải thích tại sao sản phẩm này là vị cứu tinh duy nhất của họ."
+          "c": "3. Biểu diễn (15-40 Phút) - Demo & Giải Quyết Nỗi Đau: Đây là sàn diễn chuyên môn của bạn. Hãy demo sản phẩm một cách trực quan và bạo liệt nhất (test độ bền, thoa kem test nước...). Đừng đọc thông số, hãy xoáy sâu vào nỗi đau sâu kín nhất của khách hàng và chứng minh tại sao sản phẩm này là 'vị cứu tinh' duy nhất họ cần ngay lúc này."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Nghệ thuật Push Chốt Đơn"
+          "c": "Nghệ thuật Push Chốt Đơn Đỉnh Cao (FOMO)"
         },
         {
           "t": "p",
-          "c": "Ở 20 phút cuối (40-60 phút), hãy tạo ra sự khan hiếm tột độ (FOMO). 'Chỉ còn đúng 5 suất cuối cùng cho ai nhanh tay nhất! Trợ lý đếm ngược 10 giây đóng Flash Sale!'. Khách hàng mua hàng bằng cảm xúc và ra quyết định nhờ sự khan hiếm."
+          "c": "Vào 20 phút cuối (40-60 phút), bạn phải đẩy nhịp độ lên mức cao trào nhất bằng cách tạo ra sự khan hiếm tột độ (Fear Of Missing Out - FOMO). 'Chỉ còn đúng 5 suất cuối cùng dành cho ai nhanh tay nhất! Trợ lý chuẩn bị đếm ngược 10 giây đóng hoàn toàn Flash Sale! 10... 9... 8...'. Khách hàng có thể thích sản phẩm bằng lý trí, nhưng họ luôn ra quyết định thanh toán ngay lập tức nhờ cảm xúc và sự sợ hãi bị bỏ lỡ."
         },
         {
           "t": "quote",
-          "c": "Đừng bán tính năng sản phẩm, hãy bán một viễn cảnh tương lai tốt đẹp hơn cho người dùng!"
+          "c": "Sai lầm lớn nhất là bán tính năng của sản phẩm. Một Master sẽ bán một viễn cảnh tương lai tốt đẹp hơn, nâng cấp hơn cho chính người dùng!"
         }
       ]
     },
@@ -554,37 +562,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "A six-figure revenue livestream never happens by accident or relies on 'natural selling charm'. It is the meticulous result of a perfectly orchestrated script, calculated down to the minute. Without a script, you will ramble, lose energy, and bleed viewers."
+          "c": "A Mega Livestream generating six-figure revenues never, absolutely never, occurs by chance or relies on some innate 'natural selling charm'. Behind those explosive conversion numbers lies a meticulously orchestrated, psychologically driven script calculated down to the precise minute. Entering a live room without a structural blueprint is a death sentence; you will inevitably ramble, suffer massive energy drops, lose control of the traffic flow, and aggressively bleed viewers."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "The 60-Minute Rhythm Formula"
+          "c": "The 60-Minute Psychological Rhythm Formula"
         },
         {
           "t": "p",
-          "c": "1. Minutes 0-5 (Traffic Hooking): Absolutely no selling! Launch a giveaway or a $0.99 deal. Aggressively encourage viewers to tap the screen: 'Hit 10k likes and I release the gift!' This tricks the TikTok algorithm into thinking your room is viral, injecting massive new traffic feeds."
+          "c": "1. The Hook (Minutes 0-5) - Traffic & Algorithm Hacking: Absolutely NO selling during this phase! Your singular objective is viewer accumulation and intense engagement. Launch an immediate giveaway or a heavy-loss $0.99 deal. Use aggressive calls-to-action: 'Everyone tap the screen, hit 10k likes and I release the secret gift!' This high-velocity engagement tricks the TikTok algorithm into classifying your room as hyper-viral, forcing it to inject massive new traffic feeds (FYP) into your stream."
         },
         {
           "t": "p",
-          "c": "2. Minutes 5-15 (The Hero Deal): Introduce your core product at a ridiculous discount. The goal isn't profit; it's to break the buyer's psychological defense and train them to open your shopping cart for the first time."
+          "c": "2. The Icebreaker (Minutes 5-15) - The Hero Deal: With traffic peaking, introduce a Hero Product at a ridiculously unprofitable discount. The objective here is not profit margins; it is to aggressively break down the buyer's psychological defense mechanisms. You are physically training their behavior to open the shopping cart, enter their address, and complete a transaction. Once they buy the first cheap item, the second expensive purchase becomes exponentially easier."
         },
         {
           "t": "p",
-          "c": "3. Minutes 15-40 (Demo & Pain Relief): Time to prove your expertise. Do extreme product demos—smash it, wear it, test it. Agitate the customer's pain points and present your product as their absolute savior."
+          "c": "3. The Show (Minutes 15-40) - Demo & Pain Relief: This is your arena of expertise. Perform visceral, highly visual product demos (stress-test it, waterproof test it). Do not read boring spec sheets; instead, agitate the customer's deepest pain points and definitively prove why this specific product is the ultimate savior they have been searching for."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "The Art of the Push"
+          "c": "The Ultimate Push: Engineering FOMO"
         },
         {
           "t": "p",
-          "c": "In the final 20 minutes (40-60), create extreme scarcity (FOMO). 'Only 5 slots left for the fastest buyers! Assistant, count down 10 seconds before we close the Flash Sale!' People buy on emotion and execute on scarcity."
+          "c": "In the final stretch (Minutes 40-60), you must elevate the pacing to a fever pitch by engineering extreme scarcity (Fear Of Missing Out). 'Only 5 allocations left for the fastest action-takers! Assistant, initiate the 10-second countdown before we permanently close this Flash Sale! 10... 9... 8...'. Customers may desire a product based on logic, but they execute the payment immediately out of pure emotion and the fear of missing out."
         },
         {
           "t": "quote",
-          "c": "Stop selling product features; start selling a better version of the customer's future!"
+          "c": "The greatest rookie mistake is selling a product's features. A Master sells a drastically improved, upgraded future version of the customer themselves!"
         }
       ]
     }
@@ -609,41 +617,41 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Bạn có bao giờ thắc mắc tại sao phòng live của người khác lên tới ngàn mắt xem, trong khi phòng của bạn chỉ lẹt đẹt 5 người quen? Thuật toán TikTok không phân phối ngẫu nhiên hay vì may mắn. Nó hoạt động như một hệ thống đấu giá (bidding) thời gian thực hoàn toàn dựa trên hành vi người dùng."
+          "c": "Bạn có bao giờ cay đắng tự hỏi tại sao phòng live của đối thủ nhảy lên hàng ngàn mắt xem, trong khi phòng của bạn chỉ lẹt đẹt 5 người quen (bao gồm cả nick phụ của bạn)? Sự thật là: Thuật toán TikTok Shop 2026 không có 'tình cảm' và không phân phối traffic dựa trên sự may mắn. Nó là một cỗ máy AI học sâu (Deep Learning) vận hành như một sàn đấu giá thời gian thực (Real-time Bidding). Máy chủ chỉ bơm lưu lượng (Traffic) cho những phòng live chứng minh được khả năng giữ chân và móc hầu bao người dùng."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "4 Chỉ Số Sống Còn Quyết Định Traffic"
+          "c": "4 Chỉ Số 'Tử Huyệt' Quyết Định Traffic (Traffic Pillars)"
         },
         {
           "t": "p",
-          "c": "1. Tỷ lệ giữ chân (Retention Rate): Nếu 100 người lướt qua, có bao nhiêu người nán lại xem bạn trên 30 giây? Nếu tỷ lệ này thấp, AI của TikTok sẽ kết luận nội dung của bạn nhàm chán và ngừng đề xuất. Hãy dùng Hook mạnh ở 5 giây đầu!"
+          "c": "1. Tỷ lệ giữ chân (Retention Rate > 30s): Nếu 100 người lướt qua (Swipe), có bao nhiêu người nán lại xem bạn trên 30 giây? Nếu chỉ số này rớt thảm hại, AI sẽ đánh dấu luồng live của bạn là 'Rác' (Low-quality content) và lập tức siết van đề xuất. Giải pháp: Bạn phải có một cái 'Hook' (Mồi câu) cực sốc về mặt thị giác hoặc thính giác ngay 5 giây đầu tiên."
         },
         {
           "t": "p",
-          "c": "2. CTR Giỏ Hàng (Click-Through Rate): Bao nhiêu phần trăm người xem thực sự tò mò và bấm vào biểu tượng giỏ hàng? Việc bạn liên tục ghim sản phẩm và kêu gọi hành động (Call to Action) sẽ đẩy chỉ số này lên cao."
+          "c": "2. CTR Giỏ Hàng (Click-Through Rate): Bao nhiêu phần trăm người xem chịu nhấc ngón tay bấm vào biểu tượng giỏ hàng? TikTok đo lường mức độ tò mò thương mại qua chỉ số này. Việc bạn ghim Flash Sale liên tục, đếm ngược thời gian và hô to Call-to-Action (CTA) sẽ hack trực tiếp vào chỉ số này."
         },
         {
           "t": "p",
-          "c": "3. CVR Chuyển Đổi (Conversion Rate): Trong số những người đã bấm vào giỏ, bao nhiêu người tiến hành thanh toán thành công? Đây là chỉ số quan trọng nhất 2026. TikTok muốn kiếm tiền hoa hồng, nên họ sẽ ưu tiên luồng live cho những ai có khả năng chốt đơn thật sự."
+          "c": "3. CVR Chuyển Đổi (Conversion Rate): Trong số những người đã mở giỏ, bao nhiêu người thực sự thanh toán? Đây là chỉ số 'Vua' của năm 2026. Nền tảng muốn thu phí hoa hồng, do đó AI sẽ dồn toàn lực (Push FYP) cho những phòng live có khả năng chốt đơn thật sự chứ không phải chỉ mua vui."
         },
         {
           "t": "p",
-          "c": "4. Tương Tác Chủ Động (Active Engagement): Lượng comment, lượt share, và số lượt thả tim liên tục tạo ra tín hiệu 'phòng live đang bùng nổ' gửi về máy chủ."
+          "c": "4. Chỉ số Tương Tác Chủ Động (Active Engagement): Lượng comment theo cú pháp, lượt share, và số lượt nhấp thả tim (Taps) liên tục tạo ra hàng ngàn xung tín hiệu 'phòng live đang bùng nổ' gửi về hệ thống máy chủ trung tâm."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Chiến lược Hack Thuật Toán"
+          "c": "Chiến Lược Hack AI 'Mini-Peak'"
         },
         {
           "t": "p",
-          "c": "Hãy tạo ra 'Mini-peak' (Đỉnh tương tác giả). Mỗi 10 phút, tung ra một mã giảm giá hoặc Minigame yêu cầu mọi người comment 1 cú pháp giống nhau. Máy học (Machine Learning) sẽ bắt tín hiệu tương tác tăng vọt và lập tức mở rộng phễu traffic cho bạn."
+          "c": "Đừng để đồ thị tương tác chạy ngang. Hãy tạo ra các 'Đỉnh sóng nhân tạo' (Mini-peak) mỗi 15 phút. Tung ra một mã giảm giá 90% cực hiếm và yêu cầu mọi người comment đúng 1 cú pháp (VD: 'SĂN DEAL'). AI sẽ lập tức ghi nhận xung lực tương tác tăng vọt 500% và phản hồi bằng cách xả một luồng traffic mới tinh vào phòng của bạn."
         },
         {
           "t": "quote",
-          "c": "Đừng cố lừa người xem, hãy hiểu cách thuật toán đọc vị hành vi người xem để mượn lực đẩy luồng live lên đỉnh cao!"
+          "c": "Đừng lãng phí thời gian than vãn về việc bóp tương tác. Hãy thấu hiểu và thao túng các bộ chỉ số mà Thuật Toán tôn thờ để cưỡi lên những đợt sóng traffic khổng lồ!"
         }
       ]
     },
@@ -656,41 +664,41 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Ever wonder why some rooms effortlessly hit thousands of viewers while yours struggles to pass 5? TikTok’s algorithm doesn’t rely on luck. It functions as a real-time behavioral bidding engine that rewards highly engaging creators."
+          "c": "Do you ever bitterly wonder why a competitor's live room effortlessly scales to thousands of concurrent viewers, while yours is stuck with 5 people (including your own burner accounts)? Here is the brutal reality: The TikTok Shop 2026 Algorithm has no 'emotions' and does not distribute traffic based on luck. It is a ruthless Deep Learning AI engine operating as a real-time behavioral bidding floor. The central server only injects traffic into live rooms that mathematically prove their ability to retain attention and extract consumer capital."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "The 4 Pillars of Traffic Distribution"
+          "c": "The 4 Pillars of Viral Traffic Distribution"
         },
         {
           "t": "p",
-          "c": "1. Retention Rate: Out of 100 passersby, how many stay longer than 30 seconds? If this is low, the AI labels your stream as boring and cuts off suggestions. Hook them hard in the first 5 seconds!"
+          "c": "1. 30-Second Retention Rate: Out of 100 users swiping past, how many halt to watch you for more than 30 seconds? If this metric tanks, the AI classifies your stream as 'Low-quality content' and instantly throttles your reach. Solution: You must engineer a highly aggressive visual or auditory 'Hook' within the first 5 seconds."
         },
         {
           "t": "p",
-          "c": "2. Cart Click-Through Rate (CTR): What percentage of viewers actually tap the shopping cart icon? Continuously pinning products and using strong verbal Call-To-Actions (CTAs) dramatically inflates this metric."
+          "c": "2. Cart Click-Through Rate (CTR): What percentage of your audience is commercially curious enough to tap the shopping cart icon? Continuous product pinning, on-screen countdown timers, and authoritative Call-to-Actions (CTAs) are engineered to artificially inflate this specific metric."
         },
         {
           "t": "p",
-          "c": "3. Conversion Rate (CVR): Of those who opened the cart, how many actually paid? This is the ultimate metric for 2026. TikTok wants commission revenue, so they heavily favor streamers proven to close real sales."
+          "c": "3. Conversion Rate (CVR): Of those who opened the cart, how many executed a successful payment? This is the absolute 'King' metric of 2026. The platform's ultimate goal is commission revenue, so the AI heavily prioritizes (For You Page push) streamers who possess lethal closing abilities, not just entertainers."
         },
         {
           "t": "p",
-          "c": "4. Active Engagement: The frequency of comments, shares, and screen taps sends rapid 'vitality signals' to the central server."
+          "c": "4. Active Engagement Velocity: Coordinated comment floods, shares, and rapid screen tapping send thousands of positive vitality signals to the algorithm, simulating a highly viral environment."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Algorithm Hacking Strategy"
+          "c": "The 'Mini-Peak' Algorithm Hack"
         },
         {
           "t": "p",
-          "c": "Create 'Mini-peaks' of engagement. Every 10 minutes, launch a flash voucher requiring everyone to type a specific keyword in the chat. The Machine Learning engine detects this sudden spike and widens your traffic funnel instantly."
+          "c": "Never allow your engagement graph to flatline. Force artificial 'Mini-peaks' every 15 minutes. Deploy an ultra-rare 90% flash discount and instruct the audience to spam a specific keyword in the chat. The Machine Learning engine will detect this 500% spike in engagement velocity and respond by opening the floodgates, dumping fresh traffic into your room."
         },
         {
           "t": "quote",
-          "c": "Don't manipulate the audience; manipulate the metrics that the algorithm respects to ride the wave of viral traffic!"
+          "c": "Stop complaining about shadow-bans. Deeply understand and manipulate the exact metrics the Algorithm worships to ride massive waves of viral traffic!"
         }
       ]
     }
@@ -715,37 +723,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Key Light (Đèn chính) là trái tim của mọi bức ảnh và video. Nếu bạn chọn sai Key Light, dù bạn trang điểm kỹ đến đâu, lên sóng da mặt vẫn xỉn màu, tái nhợt và các khuyết điểm mụn, rỗ sẽ lộ ra mồn một."
+          "c": "Key Light (Đèn Chính) chính là 'trái tim' bơm máu cho toàn bộ hệ thống hình ảnh studio của bạn. Nó định hình khối mặt, kết cấu da và màu sắc sản phẩm. Nếu bạn chọn sai Key Light, thì dù bạn có trang điểm tinh xảo đến đâu, hay xài máy ảnh 100 triệu, lên sóng da mặt bạn vẫn sẽ bị tái nhợt, xỉn màu bệch rạc, và mọi khuyết điểm (mụn, rỗ) sẽ bị bóc trần không thương tiếc."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "3 Tiêu Chuẩn Kỹ Thuật Bắt Buộc"
+          "c": "3 Tiêu Chuẩn Kỹ Thuật 'Sống Còn' Của Đèn Pro"
         },
         {
           "t": "p",
-          "c": "1. Chỉ số tái tạo màu (CRI & TLCI >= 95): Đây là thông số quan trọng nhất nhưng hay bị bỏ qua. Đèn giá rẻ có CRI thấp (<80) sẽ làm sai lệch hoàn toàn màu sắc. Ví dụ: Bạn bán son đỏ tươi, lên hình thành đỏ bầm. Hãy chắc chắn thông số đèn ghi rõ CRI > 95."
+          "c": "1. Chỉ số Phục hồi Màu sắc (CRI & TLCI >= 95): Đây là thông số tối thượng thường bị Newbie bỏ qua. Đèn LED giá rẻ mua trên mạng có CRI thấp (<80) sẽ làm sai lệch quang phổ màu nghiêm trọng. Hậu quả? Son đỏ Ruby của bạn lên hình sẽ biến thành màu đỏ mận hoặc nâu bẩn. Tuyệt đối chỉ mua đèn ghi rõ chứng chỉ CRI và TLCI > 95 để đảm bảo màu da và sản phẩm chân thực 100%."
         },
         {
           "t": "p",
-          "c": "2. Chọn đúng công suất (Wattage): Công suất càng lớn, bạn càng không phải gồng ISO trên camera (tránh nhiễu hạt). Với phòng nhỏ dưới 15m2, đèn 100W đến 150W (như Godox SL150III hay Amaran 100d) là hoàn hảo. Phòng rộng hơn, bạn cần 200W - 300W."
+          "c": "2. Chiến lược Công suất (Wattage): Công suất đèn càng lớn, bạn càng không phải 'ép' thông số ISO của camera (ISO cao gây nhiễu hạt/noise nát bét hình). Với phòng live hẹp (<15m2), đèn 100W-150W (như Amaran 100d, Godox SL150III) là vừa đủ. Nhưng với studio rộng, đánh nguyên người, bạn bắt buộc phải lên 200W hoặc 300W để ánh sáng đủ lực đi xa."
         },
         {
           "t": "p",
-          "c": "3. Tản sáng (Softbox) - Áo giáp của đèn: Đèn trần (Bare bulb) sẽ tạo ra bóng gắt (hard light) làm nổi bật nếp nhăn. Hãy bọc nó bằng một Softbox Cầu (Lantern) để ánh sáng tỏa đều, mịn màng như sương, hoặc Softbox Bát giác (Octa) nếu muốn hội tụ ánh sáng tạo khối."
+          "c": "3. Softbox (Tản Sáng) - Áo giáp thuần hóa ánh sáng: Đánh đèn trần (Bare bulb) sẽ tạo ra thứ ánh sáng gắt (Hard light), chói mắt và tạo bóng đổ đen ngòm trên mặt. Bắt buộc phải gắn Softbox. Muốn ánh sáng tỏa đều mượt mà như sương mờ sương, dùng Softbox lồng đèn (Lantern). Muốn ánh sáng có định hướng, đánh khối mặt sắc sảo (với Grip Grid), dùng Softbox Bát giác (Octabox)."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Mẹo nhỏ cho từng khuôn mặt"
+          "c": "Nghệ Thuật Setup Theo Khối Mặt"
         },
         {
           "t": "p",
-          "c": "Với khuôn mặt nữ tròn trịa, hãy đặt Key Light cao hơn đỉnh đầu một chút và đánh chếch 45 độ xuống. Nó sẽ tạo ra bóng tam giác nhỏ dưới mắt (Rembrandt lighting), giúp khuôn mặt thon gọn sắc sảo đến bất ngờ."
+          "c": "Ánh sáng có khả năng 'phẫu thuật thẩm mỹ'. Với khuôn mặt nữ tròn trịa, đừng đánh đèn thẳng mặt (Flat lighting). Hãy nâng Key Light cao hơn đỉnh đầu 30cm, đánh chếch xuống 45 độ từ bên trái hoặc phải. Kỹ thuật này tạo ra hiệu ứng 'Rembrandt Lighting' kinh điển, đổ bóng tam giác nhỏ giấu bớt phần cằm và má, giúp khuôn mặt lập tức thon gọn (V-line) và có chiều sâu điện ảnh."
         },
         {
           "t": "quote",
-          "c": "Đừng tiếc tiền đầu tư ánh sáng. Ánh sáng là mỹ phẩm rẻ nhất nhưng mang lại hiệu ứng thị giác đắt tiền nhất!"
+          "c": "Đừng bao giờ keo kiệt với ngân sách Ánh Sáng. Đó là loại mỹ phẩm rẻ nhất, vĩnh cửu nhất, mang lại hiệu ứng thị giác đắt tiền và sang trọng nhất cho thương hiệu của bạn!"
         }
       ]
     },
@@ -758,37 +766,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "The Key Light is the beating heart of any studio. Choose the wrong one, and regardless of your makeup, your skin will look pale, sickly, and every pore or blemish will be brutally highlighted on camera."
+          "c": "The Key Light is the absolute beating heart of your entire studio's visual ecosystem. It dictates facial sculpting, skin texture rendering, and product color accuracy. If you deploy the wrong Key Light, it doesn't matter if you have flawless makeup or a $5,000 cinema camera—your broadcast skin will look pale, sickly, and every microscopic pore or blemish will be brutally magnified on screen."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "3 Non-Negotiable Technical Specs"
+          "c": "3 Non-Negotiable Technical Specs for Pro Lighting"
         },
         {
           "t": "p",
-          "c": "1. Color Rendering Index (CRI >= 95): This is often ignored but crucial. Cheap lights with low CRI (<80) completely distort colors. A vibrant red lipstick will look muddy brown on screen. Always verify the spec sheet says CRI > 95."
+          "c": "1. Color Rendering Index (CRI & TLCI >= 95): This is the ultimate spec that rookies completely ignore. Cheap generic LEDs have dismal CRI (<80), meaning they emit a broken color spectrum. The catastrophic result? Your premium ruby red lipstick looks muddy brown on camera. Strictly purchase fixtures boasting certified CRI/TLCI > 95 to guarantee 100% true-to-life skin tones and product colors."
         },
         {
           "t": "p",
-          "c": "2. Proper Wattage: Higher wattage means you can keep your camera's ISO low, eliminating grainy noise. For a small room (<150 sq ft), a 100W-150W fixture (like Amaran 100d) is perfect. Larger studios require 200W-300W."
+          "c": "2. Wattage Strategy: Higher light output means you do not have to artificially boost your camera's ISO (which introduces destructive digital noise/grain). For a compact room (<150 sq ft), a 100W-150W fixture (e.g., Amaran 100d, Godox SL150III) is sufficient. However, for full-body setups in larger studios, you must scale up to 200W-300W fixtures to maintain light intensity over distance."
         },
         {
           "t": "p",
-          "c": "3. The Diffuser (Softbox): A bare bulb creates harsh shadows that exaggerate wrinkles. Armor your light with a Lantern softbox for milky, Omni-directional softness, or an Octabox for focused, sculpting contrast."
+          "c": "3. The Softbox (Light Tamers): Using a bare LED bulb blasts you with harsh, blinding light that creates aggressive black shadows under your eyes and chin. You must diffuse it. For omnidirectional, milky-soft light that wraps around the room, use a Lantern Softbox. For directional, dramatic light that aggressively sculpts the face (paired with a honeycomb grid), deploy an Octabox."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Face-Sculpting Tricks"
+          "c": "The Art of Facial Sculpting"
         },
         {
           "t": "p",
-          "c": "For rounder female faces, elevate the Key Light slightly above eye level and angle it 45 degrees downward. This creates the classic Rembrandt triangle shadow on the cheek, instantly slimming and contouring the jawline."
+          "c": "Lighting is digital plastic surgery. For rounder faces, avoid flat front-lighting. Elevate your Key Light roughly 1 foot above eye level and angle it 45 degrees downward from the side. This executes the classic 'Rembrandt Lighting' technique, creating a triangle shadow on the opposite cheek, instantly contouring the jawline, slimming the face, and adding profound cinematic depth."
         },
         {
           "t": "quote",
-          "c": "Never cheap out on lighting. Light is the least expensive cosmetic that delivers the most premium visual impact!"
+          "c": "Never cheap out on your lighting budget. High-quality light is the least expensive, most permanent cosmetic that delivers the most premium, luxurious visual impact to your brand!"
         }
       ]
     }
@@ -813,41 +821,41 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Một phiên live có hình ảnh 4K nhưng âm thanh lại rè rẹt hay vang vọng như trong hang động sẽ đuổi sạch khách hàng đi. Âm thanh kém mang lại cảm giác cực kỳ nghiệp dư. Dưới đây là 5 'căn bệnh' kinh điển và cách xử lý trong 30 giây."
+          "c": "Khách hàng có thể bao dung với một khung hình hơi nhiễu hạt, nhưng họ sẽ vạch ranh giới đỏ với âm thanh tồi tệ. Một phiên live setup hình ảnh 4K sang trọng nhưng âm thanh lại rè rẹt chói tai, vang vọng như trong hang động, hoặc tiếng đi sau hình sẽ ngay lập tức hủy hoại uy tín của bạn. Âm thanh kém phát ra tín hiệu của sự nghiệp dư và rẻ tiền. Dưới đây là 4 'căn bệnh' âm thanh kinh điển và phác đồ điều trị dứt điểm trong 30 giây."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Bắt Bệnh & Xử Lý Sự Cố"
+          "c": "Chẩn Đoán Bệnh & Phác Đồ Điều Trị Nhanh"
         },
         {
           "t": "p",
-          "c": "1. Tiếng Vỡ (Clipping Rè Đỏ): Là khi bạn cười lớn và tiếng ré lên chói tai. Cách xử lý: Vặn núm Gain trên Soundcard xuống mức 60-70%. Nhìn vào thanh âm thanh trên OBS, đảm bảo mức sóng chỉ dao động ở vùng Xanh lá hoặc Vàng (-12dB đến -6dB), tuyệt đối không chạm đỏ."
+          "c": "1. Tiếng Vỡ Chói Tai (Audio Clipping): Xảy ra khi bạn cười lớn hoặc hét lên, cường độ âm thanh vượt quá ngưỡng chịu đựng kỹ thuật, gây xé tiếng. Phác đồ: Vặn núm Gain (độ nhạy) trên Soundcard hoặc Mic USB xuống mức 60-70%. Nhìn vào thanh Audio Mixer trên phần mềm OBS: Đảm bảo dải sóng chỉ dao động ở vùng Xanh lá hoặc Vàng (an toàn nhất là từ -12dB đến -6dB), tuyệt đối cấm kỵ để sóng vọt lên vùng Đỏ."
         },
         {
           "t": "p",
-          "c": "2. Tiếng Đi Sau Hình (Latency Delay): Hình mấp máy môi xong tiếng mới phát ra. Cách xử lý: Vào OBS, click phải vào thanh Audio, chọn Advanced Audio Properties. Ở mục Sync Offset, nhập thử khoảng 150ms đến 250ms cho đến khi hình và tiếng khớp hoàn toàn."
+          "c": "2. Lỗi Hát Nhép (Latency / Sync Delay): Tình trạng hình ảnh miệng mấp máy xong nửa giây sau tiếng mới phát ra, gây ức chế tột độ. Phác đồ: Trong OBS, click chuột phải vào thanh Audio, chọn 'Advanced Audio Properties'. Tại cột 'Sync Offset', hãy nhập thông số bù trừ (thường dao động từ 150ms đến 250ms). Quay thử 1 đoạn video vỗ tay để căn chỉnh cho đến khi tiếng 'bốp' khớp hoàn hảo với hình ảnh tay chạm nhau."
         },
         {
           "t": "p",
-          "c": "3. Tiếng Vọng Echo Khó Chịu: Thường do mic thu lại tiếng từ loa máy tính, hoặc phòng quá trống. Cách xử lý: Tuyệt đối dùng tai nghe kiểm âm (In-ear Monitor), tắt hẳn loa ngoài. Treo thêm rèm vải hoặc xốp tiêu âm trong phòng."
+          "c": "3. Tiếng Vọng Hang Động (Hollow Echo): Thường xảy ra do mic thu ngược lại tiếng từ loa ngoài của máy tính, hoặc do phòng live quá trống trải khiến sóng âm đập vào tường cứng dội lại. Phác đồ: Nguyên tắc tối thượng: Chơi live là phải đeo tai nghe kiểm âm (In-ear Monitor) và MUTE toàn bộ loa ngoài. Trang bị rèm vải dày, thảm trải sàn hoặc dán mút xốp tiêu âm lên tường để triệt tiêu sóng phản xạ."
         },
         {
           "t": "p",
-          "c": "4. Dính Tạp Âm (Quạt, Điều Hòa): Cách xử lý: Bật bộ lọc Noise Suppression (chọn chuẩn RNNoise) trong filter âm thanh của OBS. Khử ồn sẽ sạch bách ngay lập tức."
+          "c": "4. Tiếng Ồn Môi Trường (Noise & Hiss): Tiếng ù ù của quạt gió, điều hòa hay xe cộ ngoài đường lọt vào mic. Phác đồ: Kích hoạt bộ lọc thần thánh 'Noise Suppression' (Khử ồn) trong mục Filter âm thanh của OBS. Nhớ chọn thuật toán 'RNNoise' (AI xử lý mượt mà, không làm méo tiếng người). Không gian sẽ tĩnh lặng như phòng thu chuyên nghiệp."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Kinh nghiệm thực chiến"
+          "c": "Kỷ Luật Của Pro Livestreamer"
         },
         {
           "t": "p",
-          "c": "Luôn ghi âm test một đoạn video ngắn khoảng 1 phút trước khi phát sóng thật. Việc chuẩn bị kỹ lưỡng âm thanh giúp bạn tránh được thảm họa mất khách vì những lỗi kỹ thuật ngớ ngẩn."
+          "c": "Không bao giờ bấm 'Go Live' nếu chưa quay thử cục bộ. Hãy ghi âm và quay test một đoạn video 1 phút, cắm tai nghe kiểm tra lại kỹ lưỡng. Sự kỷ luật này cứu bạn khỏi những thảm họa mất khách vì lỗi kỹ thuật ngớ ngẩn."
         },
         {
           "t": "quote",
-          "c": "Âm thanh chất lượng không phải là việc bạn nói to hay nhỏ, mà là sự tròn trịa, trong trẻo trượt mượt mà vào màng nhĩ người nghe!"
+          "c": "Âm thanh chất lượng cao không phải là nói to hay nhỏ, mà là tạo ra một dòng chảy âm thanh tròn trịa, ấm áp và dọn đường mượt mà đi thẳng vào tâm trí khách hàng!"
         }
       ]
     },
@@ -860,41 +868,41 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "A 4K visual stream paired with distorted, cavernous audio will drive customers away instantly. Poor audio screams amateurism. Here are 5 classic audio diseases and how to cure them in 30 seconds."
+          "c": "Audiences can forgive a slightly grainy visual feed, but they draw a hard line at terrible audio. A livestream broadcasting a luxurious 4K visual setup but paired with distorted, screeching audio, cavernous echoes, or out-of-sync lip movements will instantaneously destroy your credibility. Bad audio subconsciously screams 'amateur' and 'cheap'. Below are the 4 classic audio diseases and their exact 30-second technical cures."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Diagnosis & Rapid Solutions"
+          "c": "Diagnosis & Rapid Treatment Protocols"
         },
         {
           "t": "p",
-          "c": "1. Clipping (Red-zone Distortion): Happens when you laugh loudly and the sound shrieks. Fix: Turn down your Soundcard's Gain knob to 60-70%. Monitor the OBS audio meter; it should bounce in the Green or Yellow zones (-12dB to -6dB) and never hit Red."
+          "c": "1. Audio Clipping (The Red-Zone Distortion): This occurs when you shout or laugh loudly, exceeding the digital threshold and causing a harsh, tearing sound. Cure: Dial back the Gain knob on your audio interface or USB Mic to 60-70%. Intently monitor the OBS Audio Mixer: Ensure your audio waveform bounces safely in the Green or Yellow zones (optimally between -12dB and -6dB). Under no circumstances should it ever hit the Red zone."
         },
         {
           "t": "p",
-          "c": "2. Lip-Sync Latency (Delay): Video moves, but audio lags behind. Fix: In OBS, right-click the Audio Mixer -> Advanced Audio Properties. Adjust the Sync Offset (usually between 150ms to 250ms) until lips perfectly match the voice."
+          "c": "2. Lip-Sync Latency (Delay): The highly irritating phenomenon where your mouth stops moving, and a half-second later, the voice plays. Cure: In OBS, right-click your audio source and select 'Advanced Audio Properties'. In the 'Sync Offset' column, input a compensation value (usually ranging from 150ms to 250ms). Record a test video of yourself clapping; adjust the millisecond offset until the 'smack' sound perfectly aligns with your hands impacting."
         },
         {
           "t": "p",
-          "c": "3. The Hollow Echo: Caused by your mic picking up PC speakers or bouncing off bare walls. Fix: Strictly use In-ear Monitors (IEMs), mute all external speakers, and hang thick curtains or acoustic foam to absorb reflections."
+          "c": "3. The Hollow Cave Echo: Usually caused by the microphone aggressively picking up playback from external PC speakers, or soundwaves bouncing off bare, hard walls in an untreated room. Cure: The Golden Rule: Always wear In-Ear Monitors (IEMs) during a broadcast and completely MUTE external speakers. Secondly, install heavy fabric curtains, floor rugs, or acoustic foam panels to absorb and kill off nasty sound reflections."
         },
         {
           "t": "p",
-          "c": "4. Background AC/Fan Noise: Fix: Add a Noise Suppression filter in OBS (select the RNNoise AI algorithm). It eliminates environmental drone instantly."
+          "c": "4. Environmental Noise (Hiss/Hum): The constant, annoying drone of AC units, PC fans, or street traffic bleeding into your mic. Cure: Deploy the magical 'Noise Suppression' filter in OBS. Specifically, select the 'RNNoise' AI algorithm (which eliminates background noise without roboticizing your voice). Your audio will instantly sound like a treated studio booth."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Pro Field Advice"
+          "c": "The Discipline of a Pro Broadcaster"
         },
         {
           "t": "p",
-          "c": "Always record a 1-minute test video before going live. Meticulous audio preparation prevents the catastrophe of losing thousands of viewers to silly technical blunders."
+          "c": "Never hit 'Go Live' blindly. Always record a local 1-minute test clip and review it with headphones. This non-negotiable discipline saves you from the catastrophe of hemorrhaging viewers due to easily preventable technical blunders."
         },
         {
           "t": "quote",
-          "c": "Quality audio isn't about being loud; it's about delivering a rich, pristine sound that glides smoothly into the listener's ear!"
+          "c": "Premium audio isn't about mere volume; it's about engineering a rich, pristine, and warm sonic frequency that glides effortlessly into the listener's subconscious!"
         }
       ]
     }
@@ -919,37 +927,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Trong kỷ nguyên số, thương hiệu cá nhân (Personal Brand) không còn là đặc quyền của ngôi sao giải trí. Nó là 'tài sản vô hình' đắt giá nhất của bất kỳ ai đang kinh doanh. Không có thương hiệu, bạn phải cạnh tranh bằng giá (đạp giá rớt biên độ). Có thương hiệu, khách hàng sẵn sàng trả tiền gấp đôi chỉ vì ĐÓ LÀ BẠN."
+          "c": "Trong kỷ nguyên số, nơi mọi tính năng sản phẩm đều có thể bị copy trong vòng 24 giờ, Thương hiệu cá nhân (Personal Brand) là 'tài sản vô hình' đắt giá và duy nhất không thể sao chép. Nếu không có thương hiệu, bạn buộc phải nhảy vào cuộc chiến sinh tử: Cạnh tranh bằng cách đạp giá rớt biên độ. Ngược lại, khi có thương hiệu, khách hàng sẵn sàng trả tiền gấp 3 lần thị trường, không phải vì sản phẩm tốt hơn, mà đơn giản vì ĐÓ LÀ BẠN."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Công Thức 3P Định Hình Nhân Hiệu"
+          "c": "Công Thức 3P Định Hình Nhân Hiệu Tối Thượng"
         },
         {
           "t": "p",
-          "c": "1. Position (Định Vị Ngách): Đừng cố làm chuyên gia của mọi lĩnh vực. Khách hàng không nhớ nổi đâu! Hãy chọn một 'ngách' thật hẹp nhưng bạn là số 1. Ví dụ: Thay vì làm 'Chuyên gia mỹ phẩm', hãy làm 'Chuyên gia phục hồi da mụn cho mẹ bỉm sữa'."
+          "c": "1. Position (Định Vị Ngách Siêu Hẹp): Đừng hoang tưởng làm chuyên gia của mọi lĩnh vực. Não bộ khách hàng không có dung lượng để nhớ đâu! Hãy chọn một 'ngách' thật hẹp nhưng bạn phải vươn lên làm Vua ở đó. Thay vì xưng danh chung chung 'Chuyên gia mỹ phẩm', hãy định vị sắc lẹm: 'Chuyên gia phục hồi da mụn nội tiết cho mẹ bỉm sữa'."
         },
         {
           "t": "p",
-          "c": "2. Personality (Tính Cách Độc Bản): Mạng xã hội chuộng sự chân thật. Hãy liệt kê 3 tính từ miêu tả con người thật của bạn (VD: Hài hước, Thẳng thắn, Kỷ luật) và mang nó 100% lên video. Đừng 'diễn' một vai diễn xa lạ, bạn sẽ rất mau kiệt sức."
+          "c": "2. Personality (Tính Cách Độc Bản): Mạng xã hội dị ứng với sự hoàn hảo giả tạo, nhưng lại tôn sùng sự chân thật. Hãy chắt lọc đúng 3 tính từ cốt lõi miêu tả con người thật của bạn (VD: Hài hước, Thẳng thắn thô bạo, Kỷ luật thép) và khuyếch đại nó 1000% trên video. Đừng gồng mình 'diễn' một hình mẫu xa lạ, vỏ bọc đó sẽ vỡ nát chỉ sau vài tháng."
         },
         {
           "t": "p",
-          "c": "3. Proof (Bằng Chứng Thuyết Phục): Không ai tin lời bạn tự khen mình. Hãy chứng minh bằng kết quả. Đăng tải các Case Study thành công, hình ảnh Before/After của khách hàng, hoặc quá trình nỗ lực đằng sau cánh gà của chính bạn."
+          "c": "3. Proof (Bằng Chứng Thép): Không một ai tin những lời bạn tự huyễn hoặc khen mình. Bạn phải đập tan sự hoài nghi bằng Kết Quả thực tế. Hãy phơi bày các Case Study thành công, hình ảnh Before/After đẫm máu của khách hàng, và show ra quá trình nỗ lực điên cuồng đằng sau cánh gà của chính bạn."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Lộ Trình 30 Ngày Khởi Động"
+          "c": "Lộ Trình 30 Ngày Khởi Động Tàn Khốc"
         },
         {
           "t": "p",
-          "c": "Tuần 1 & 2: Sản xuất liên tục 15 video ngắn (Shorts) trả lời các câu hỏi, thắc mắc cơ bản nhất của khách hàng trong ngách của bạn. Tuần 3 & 4: Tổ chức Livestream chia sẻ trực tiếp để tương tác và chuyển hóa lượng follower thành 'Fan trung thành'."
+          "c": "Tuần 1 & 2: Áp dụng chiến thuật 'Trải thảm ném bom'. Sản xuất liên tục 15 video ngắn (Shorts) đánh thẳng vào các câu hỏi, nỗi đau cơ bản nhất của khách hàng. Tuần 3 & 4: Tổ chức Livestream trực tiếp để phô diễn năng lực thực chiến, tương tác sâu và chuyển hóa lượng follower vãng lai thành 'Fan cuồng nhiệt'."
         },
         {
           "t": "quote",
-          "c": "Thương hiệu cá nhân không phải là việc bạn mặc đồ hiệu đắt tiền. Đó là cái cách người ta nhắc về bạn khi bạn không có mặt ở đó!"
+          "c": "Thương hiệu cá nhân không nằm ở việc bạn khoác lên mình bộ vest ngàn đô. Nó là cái cách người ta rỉ tai nhau về bạn khi bạn vừa bước ra khỏi phòng!"
         }
       ]
     },
@@ -962,37 +970,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "In the digital era, a Personal Brand isn't just for celebrities. It is the most valuable intangible asset for anyone doing business. Without a brand, you compete in a bloody price war. With a brand, customers gladly pay a premium simply because IT'S YOU."
+          "c": "In the digital era, where product features are ruthlessly cloned within 24 hours, your Personal Brand is the only invaluable, uncopiable 'intangible asset'. Without a brand, you are condemned to the gladiator arena of price wars, slashing margins to survive. Conversely, with a powerful brand, customers will aggressively pay triple the market rate—not because the product is technically superior, but simply because IT IS YOU."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "The 3P Branding Formula"
+          "c": "The 3P Branding Blueprint for Market Dominance"
         },
         {
           "t": "p",
-          "c": "1. Position (Niche Targeting): Don't try to be an expert in everything; people won't remember you. Pick an ultra-narrow niche where you can be #1. Instead of a general 'Cosmetics Expert,' be the 'Acne Recovery Specialist for New Moms.'"
+          "c": "1. Position (Micro-Niche Targeting): Stop the delusion of being a master-of-all-trades. Consumer brains lack the bandwidth to remember generalists! Select an ultra-narrow 'micro-niche' and crown yourself King. Don't be a generic 'Skincare Expert'; aggressively position yourself as the 'Hormonal Acne Recovery Specialist for New Mothers'."
         },
         {
           "t": "p",
-          "c": "2. Personality (Authentic Traits): Social media craves authenticity. Pick 3 adjectives that describe your true self (e.g., Humorous, Blunt, Disciplined) and amplify them on camera. Don't play a fake character; you will burn out trying to maintain it."
+          "c": "2. Personality (Unapologetic Authenticity): Social media despises manufactured perfection but worships raw authenticity. Extract exactly 3 core adjectives defining your true nature (e.g., Dark Humor, Brutally Blunt, Militarily Disciplined) and amplify them 1000% on camera. Do not act out a fabricated persona; that fragile shell will shatter within months under pressure."
         },
         {
           "t": "p",
-          "c": "3. Proof (Undeniable Evidence): Nobody believes self-praise. Prove your expertise through results. Showcase successful Case Studies, Before/After client transformations, and raw behind-the-scenes footage of your hard work."
+          "c": "3. Proof (Undeniable Evidence): Nobody believes your self-congratulatory marketing copy. You must obliterate skepticism through hard Results. Publicly display successful Case Studies, dramatic Before/After client transformations, and expose the grueling, raw behind-the-scenes hustle you endure."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "The 30-Day Launch Roadmap"
+          "c": "The 30-Day Brutal Launch Roadmap"
         },
         {
           "t": "p",
-          "c": "Weeks 1 & 2: Rapidly produce 15 short videos strictly answering the most common beginner questions in your niche. Weeks 3 & 4: Host interactive livestreams to bond with your new audience, converting passive scrollers into fiercely loyal fans."
+          "c": "Weeks 1 & 2: Execute a carpet-bombing strategy. Rapidly deploy 15 short-form videos specifically answering the most agonizing pain points of your niche. Weeks 3 & 4: Initiate live broadcasts to prove your real-time competence, interact deeply, and convert passive algorithmic scrollers into a cult-like loyal fanbase."
         },
         {
           "t": "quote",
-          "c": "Your personal brand isn't about wearing designer clothes. It's exactly what people say about you when you leave the room!"
+          "c": "Your personal brand isn't defined by the price tag of your designer suit. It is defined by exactly what people whisper about you the moment you leave the room!"
         }
       ]
     }
@@ -1017,37 +1025,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Bạn tốn hàng chục triệu chạy Ads để kéo traffic, nhưng người xem chỉ vào 3 giây rồi thoát sạch? Nếu không giữ chân được khách trong 5 phút đầu tiên, mọi nỗ lực chốt đơn phía sau đều đổ sông đổ biển. Dưới đây là tuyệt kỹ 'Giữ chân vô hình' của các idol nghìn đơn."
+          "c": "Bạn đốt hàng chục triệu chạy Ads để mua mâm cỗ traffic, nhưng thực khách chỉ ngó qua 3 giây rồi bỏ đi sạch? Đây là thực tế máu me: Nếu bạn không thể trói chân người xem trong 5 phút đầu tiên, mọi nỗ lực chốt đơn, kịch bản thuyết phục phía sau đều là vô nghĩa. Dưới đây là tuyệt kỹ 'Giữ chân vô hình' bẻ gãy hành vi lướt (Swipe) của các Mega-Idol."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Chiến thuật 'Vào Đề Sốc'"
+          "c": "Chiến Thuật Móc Câu 'Shock & Awe'"
         },
         {
           "t": "p",
-          "c": "1. Bỏ ngay thói quen chào hỏi rườm rà: 'Em chào chị A, chào anh B'. Khán giả mới vào họ không quan tâm bạn đang chào ai. Hãy đưa ngay một Hook lợi ích: 'Ai đang bị rụng tóc sau sinh, ở lại đây 2 phút Hiển chỉ cách mọc tóc lỉa chỉa chỉ với 50k!'"
+          "c": "1. Khai tử thói quen chào hỏi rườm rà: 'Em chào chị A, em thấy anh B'. Xin lỗi, khán giả mới (Cold Traffic) không quan tâm bạn là ai! Ngay giây đầu tiên, hãy ném vào mặt họ một Hook bùng nổ lợi ích: 'Ai đang bị hói đầu rụng tóc sau sinh, ở lại ngay đây 2 phút, Hiển sẽ chỉ cách mọc tóc lỉa chỉa chỉ với 50k, sai đền 10 triệu!'"
         },
         {
           "t": "p",
-          "c": "2. Giao tiếp bằng ánh mắt (Eye Contact): Đừng nhìn vào màn hình điện thoại để ngắm bản thân mình. Hãy nhìn thẳng chằm chằm vào chấm Camera (Thấu kính). Điều này tạo ảo giác bạn đang nhìn thẳng vào mắt từng người xem, khiến họ không nỡ lướt qua."
+          "c": "2. Thao túng tâm lý bằng ánh mắt (Lethal Eye Contact): Đừng thảm hại nhìn vào màn hình điện thoại để tự ngắm nhan sắc của mình. Hãy trừng mắt nhìn thẳng xuyên thấu vào chấm Camera đen ngòm. Động tác này tạo ra ảo giác tâm lý cực mạnh khiến khán giả tưởng bạn đang nhìn xoáy sâu vào linh hồn họ, làm họ khựng lại không nỡ vuốt qua."
         },
         {
           "t": "p",
-          "c": "3. Nghệ thuật Minigame đòn bẩy: Đừng tặng quà miễn phí vô điều kiện. Hãy nói: 'Hiển đang cầm trên tay thỏi son Mac 800k. Nó sẽ là 0 đồng cho ai gõ phím số 1 nhiều nhất trong 3 phút tới'. Khán giả sẽ lập tức đua nhau gõ phím, kéo bùng nổ điểm tương tác."
+          "c": "3. Nghệ thuật Đòn bẩy Minigame: Đừng bao giờ làm từ thiện phát quà vô điều kiện. Hãy thiết lập luật chơi: 'Hiển đang cầm trên tay thỏi son Mac 800k. Nó sẽ thuộc về ai gõ phím số 1 nhiều nhất và Share phiên live này trong đúng 3 phút tới'. Khán giả sẽ lập tức đua nhau spam phím, đẩy chỉ số Active Engagement lên đỉnh điểm."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Quy tắc Năng lượng"
+          "c": "Quy Tắc Áp Đảo Năng Lượng"
         },
         {
           "t": "p",
-          "c": "Năng lượng của bạn phải cao hơn năng lượng của người xem gấp 3 lần. Đừng ngồi ủ rũ đợi mắt xem lên mới nói. Hãy nói như thể đang có 10.000 người đứng trước mặt bạn, ngay cả khi phòng live chỉ có đúng 1 người."
+          "c": "Định luật bảo toàn livestream: Năng lượng của bạn bắt buộc phải cao hơn khán giả gấp 3 lần. Đừng ủ rũ ngồi chờ mắt xem lên 100 rồi mới chịu há miệng. Hãy truyền lửa như thể đang có 10.000 người chen chúc dưới sân khấu, ngay cả khi góc màn hình hiển thị chỉ có đúng 1 người đang xem (và đó có thể là mẹ bạn)."
         },
         {
           "t": "quote",
-          "c": "Khách hàng dừng lại vì tò mò, ở lại vì giá trị, và xuống tiền vì cảm xúc bạn mang lại trong những phút đầu tiên!"
+          "c": "Khách hàng khựng lại vì tò mò, quyết định ở lại vì giá trị, nhưng họ sẵn sàng xuống tiền vì nguồn năng lượng bùng nổ bạn truyền cho họ trong những phút đầu tiên!"
         }
       ]
     },
@@ -1060,37 +1068,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "You spend thousands on Ads for traffic, but viewers bounce within 3 seconds? If you can't hook them in the first 5 minutes, all your closing efforts are wasted. Here are the 'Invisible Hook' tactics used by top-tier streamers."
+          "c": "You are burning thousands of dollars on Ads to funnel traffic, only to watch viewers bounce within a pathetic 3 seconds? Here is the bloody reality: If you fail to physically lock a viewer's attention in the first 5 minutes, every brilliant closing script you have prepared is completely useless. Below are the 'Invisible Hook' tactics utilized by Mega-Idols to brutally break the audience's swiping habit."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "The 'Shock & Hook' Tactic"
+          "c": "The 'Shock & Awe' Hook Strategy"
         },
         {
           "t": "p",
-          "c": "1. Stop the boring greetings: 'Hello John, hi Mary.' New viewers don't care who you are greeting. Drop a Benefit Hook immediately: 'If you suffer from postpartum hair loss, give me 2 minutes. I'll show you a $2 fix that actually works!'"
+          "c": "1. Execute the Boring Greeting: 'Hello John, Hi Mary'. Stop it. Cold traffic doesn't care who you are acknowledging! In the very first second, smack them with an explosive Benefit Hook: 'If you are suffering from severe postpartum hair loss, freeze for 2 minutes! I will reveal a $2 biological hack to regrow your hair, or I pay you $500!'"
         },
         {
           "t": "p",
-          "c": "2. Piercing Eye Contact: Stop looking at the screen to admire yourself. Stare directly into the tiny camera lens. This creates a psychological illusion that you are looking directly into the viewer's eyes, making it extremely hard for them to swipe away."
+          "c": "2. Lethal Eye Contact: Stop pathetically staring at the monitor to admire your own reflection. Stare directly, intensely, into the black void of the camera lens. This optical trick engineers a powerful psychological illusion, making every single viewer feel like you are staring directly into their soul, paralyzing their thumb from swiping away."
         },
         {
           "t": "p",
-          "c": "3. Leverage Minigames: Never give away free gifts unconditionally. Say: 'I have a $50 Mac lipstick here. It's yours for $0 if you type number 1 the most in the next 3 minutes.' Viewers will spam the chat, instantly spiking your engagement metrics."
+          "c": "3. The Minigame Leverage: Never do unconditional charity. Establish ruthless rules: 'I am holding a $50 premium Mac lipstick. It goes for $0 to the one person who types the number 1 the most times in the next 3 minutes.' The audience will immediately initiate a spam-war, violently spiking your Active Engagement metrics to the algorithm."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "The Energy Principle"
+          "c": "The Law of Overwhelming Energy"
         },
         {
           "t": "p",
-          "c": "Your energy must be 3x higher than your viewers. Don't wait for the viewer count to go up before you start performing. Speak as if you are addressing a stadium of 10,000 people, even if there is only 1 person in the room."
+          "c": "The physics of broadcasting: Your internal energy must operate at 3x the frequency of your viewers. Do not sit slumped in your chair waiting for the viewer count to hit 100 before performing. You must project energy as if you are commanding a stadium of 10,000 screaming fans, even if the counter says exactly 1 viewer is present."
         },
         {
           "t": "quote",
-          "c": "Customers stop scrolling out of curiosity, stay for the value, and buy because of the emotion you inject in those first few minutes!"
+          "c": "Customers pause out of curiosity, choose to stay for the value, but they impulsively hand over their money because of the explosive emotion you inject into them in those critical first minutes!"
         }
       ]
     }
@@ -1115,37 +1123,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Bỏ qua các ứng dụng live bằng điện thoại chập chờn, OBS Studio là 'vũ khí hạt nhân' giúp bạn chèn logo, video, chuyển cảnh và live 4K cực mượt. Đặc biệt, nó hoàn toàn MIỄN PHÍ. Dưới đây là công thức cài đặt 'chuẩn đét' cho mọi loại cấu hình máy tính."
+          "c": "Hãy gạt bỏ ngay ý nghĩ livestream chuyên nghiệp bằng những ứng dụng điện thoại chập chờn, mờ mịt. OBS Studio (Open Broadcaster Software) chính là 'vũ khí hạt nhân' của ngành công nghiệp này, cho phép bạn chèn logo thương hiệu, phát video chạy nền, thiết lập chuyển cảnh Multi-cam và đẩy luồng 4K cực mượt. Điều điên rồ nhất? Nó mã nguồn mở và MIỄN PHÍ 100%. Dưới đây là ma trận thông số cài đặt 'chuẩn đét' không giấu nghề."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Thông Số Video & Đầu Ra (Output)"
+          "c": "Giải Mã Thông Số Video & Băng Thông (Output)"
         },
         {
           "t": "p",
-          "c": "1. Độ Phân Giải (Resolution): Vào Settings > Video. Đặt Base Canvas và Output Scaled là 1080x1920 (nếu bạn live dọc trên TikTok) hoặc 1920x1080 (live ngang Facebook, YouTube). FPS: Luôn đặt 60 để hình ảnh mượt mà, không bị bóng mờ khi cử động tay."
+          "c": "1. Độ Phân Giải (Resolution): Truy cập Settings > Video. Hãy thiết lập Base Canvas và Output Scaled là 1080x1920 (khung dọc chuẩn TikTok) hoặc 1920x1080 (khung ngang YouTube/Facebook). Quan trọng: Khóa FPS ở mức 60. Điều này đảm bảo mọi chuyển động tay khi demo sản phẩm của bạn mượt mà như bôi mỡ, hoàn toàn không bị bóng mờ (ghosting)."
         },
         {
           "t": "p",
-          "c": "2. Encoding (Bộ Mã Hóa): Đây là trái tim của OBS. Vào Output > Streaming. Phần Encoder, bắt buộc chọn 'NVIDIA NVENC H.264' (nếu dùng card màn hình NVIDIA). Tuyệt đối không chọn x264 vì nó sẽ ép CPU máy tính chạy 100% gây giật lag sập nguồn."
+          "c": "2. Bộ Mã Hóa (Hardware Encoding): Đây là động cơ V8 của OBS. Tại mục Output > Streaming, phần Encoder, BẮT BUỘC phải chọn 'NVIDIA NVENC H.264' (nếu máy có card rời NVIDIA). Tuyệt đối tránh xa x264, nó sẽ bắt CPU của bạn gánh toàn bộ tải trọng xử lý, dẫn đến CPU chạm mốc 100% và sập nguồn (Crash) ngay giữa phiên live."
         },
         {
           "t": "p",
-          "c": "3. Bitrate (Băng Thông): Tốc độ bit quyết định độ nét. Nếu mạng nhà bạn tốt (Upload > 30Mbps), hãy đặt CBR Bitrate ở mức 6000 Kbps. Hình ảnh sẽ nét căng đến từng lỗ chân lông. Nếu mạng yếu, hạ xuống 4000 Kbps."
+          "c": "3. Bitrate (Đường Ống Băng Thông): Chỉ số Bitrate quyết định độ sắc nét của điểm ảnh. Nếu đường truyền cáp quang mạnh (Upload > 30Mbps), hãy mạnh dạn đẩy CBR Bitrate lên 6000 - 8000 Kbps. Khách hàng sẽ soi rõ từng lỗ chân lông trên da bạn. Nếu mạng thiếu ổn định, hãy hạ cánh an toàn ở mức 4000 Kbps để tránh giật lag (Dropped Frames)."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Thiết Lập Âm Thanh (Audio)"
+          "c": "Làm Sạch Đường Truyền Âm Thanh (Audio)"
         },
         {
           "t": "p",
-          "c": "Vào Settings > Audio. Chọn Sample Rate là 48kHz thay vì 44.1kHz. Sau đó gán 'Mic/Auxiliary Audio' với Soundcard hoặc Micro bạn đang cắm vào máy tính. Nhớ tắt 'Desktop Audio' nếu bạn không muốn tiếng thông báo Zalo bị lọt vào phiên live."
+          "c": "Vào Settings > Audio. Nâng cấp Sample Rate lên chuẩn studio 48kHz (thay vì 44.1kHz). Ở mục Global Audio Devices, gán 'Mic/Auxiliary Audio' khớp đúng với Soundcard hoặc Micro xịn của bạn. Lệnh cấm kỵ: Disable (Tắt) hoàn toàn 'Desktop Audio' để đảm bảo tiếng thông báo ting ting của Zalo/Facebook không lọt vào tai hàng ngàn khách hàng."
         },
         {
           "t": "quote",
-          "c": "Làm chủ OBS Studio là bạn đã bỏ xa 90% đối thủ ngoài kia về độ chuyên nghiệp của hình ảnh và âm thanh!"
+          "c": "Chinh phục được hệ thống OBS Studio đồng nghĩa với việc bạn đã đè bẹp 90% đối thủ ngoài kia về đẳng cấp hình ảnh và sự uy tín của thương hiệu!"
         }
       ]
     },
@@ -1158,37 +1166,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Forget unstable smartphone streaming apps. OBS Studio is the 'nuclear weapon' that lets you add logos, videos, and multi-cam transitions in crisp 4K. Best of all, it's 100% FREE. Here is the bulletproof setup guide for any PC rig."
+          "c": "Eradicate the thought of building a professional broadcasting career using unstable, pixelated smartphone apps. OBS Studio (Open Broadcaster Software) is the 'nuclear weapon' of the streaming industry, empowering you to overlay corporate logos, roll B-roll videos, execute Multi-cam transitions, and push buttery 4K feeds. The craziest part? It is open-source and 100% FREE. Below is the un-gatekept, bulletproof setup matrix for any PC."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Video & Output Specifications"
+          "c": "Decoding Video Specs & Bandwidth (Output)"
         },
         {
           "t": "p",
-          "c": "1. Resolution: Go to Settings > Video. Set both Base Canvas and Output Scaled to 1080x1920 (for vertical TikTok streams) or 1920x1080 (for horizontal YouTube/FB). Set FPS to 60 to ensure buttery smooth motion without motion blur."
+          "c": "1. Resolution Precision: Navigate to Settings > Video. Force both the Base Canvas and Output Scaled to 1080x1920 (for vertical TikTok dominance) or 1920x1080 (for horizontal YouTube/FB). Critical Step: Lock your FPS at 60. This guarantees that your rapid product demo hand movements are buttery smooth and completely free of motion blur (ghosting)."
         },
         {
           "t": "p",
-          "c": "2. Hardware Encoding: This is the beating heart of OBS. In Output > Streaming, set the Encoder strictly to 'NVIDIA NVENC H.264' (if you have an NVIDIA GPU). Never use x264, as it will spike your CPU usage to 100% and crash the stream."
+          "c": "2. Hardware Encoding (The V8 Engine): This dictates system stability. In Output > Streaming, aggressively set the Encoder to 'NVIDIA NVENC H.264' (assuming an NVIDIA GPU). Avoid x264 like the plague; it forces your CPU to bear the entire encoding payload, instantly spiking usage to 100% and inevitably crashing your stream mid-sentence."
         },
         {
           "t": "p",
-          "c": "3. Bitrate: Bitrate dictates image sharpness. If you have stable internet (Upload > 30Mbps), set the CBR Bitrate to 6000 Kbps for razor-sharp pores. If your internet is weak, dial it down to 4000 Kbps."
+          "c": "3. Bitrate Pipeline: Bitrate determines pixel sharpness. If your fiber-optic connection is robust (Upload > 30Mbps), confidently push the CBR Bitrate to 6000 - 8000 Kbps. Viewers will literally see the pores on your skin. If the network is fluctuating, play defense and dial it down to a stable 4000 Kbps to eliminate dropped frames."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Audio Configuration"
+          "c": "Sanitizing the Audio Pipeline"
         },
         {
           "t": "p",
-          "c": "Go to Settings > Audio. Set the Sample Rate to 48kHz instead of 44.1kHz. Then, assign your 'Mic/Auxiliary Audio' to the specific Soundcard you plugged in. Disable 'Desktop Audio' to prevent embarrassing chat notifications from leaking into the broadcast."
+          "c": "Enter Settings > Audio. Upgrade your Sample Rate to the studio standard 48kHz (rejecting the default 44.1kHz). Under Global Audio Devices, lock 'Mic/Auxiliary Audio' strictly to your premium Soundcard interface. The Golden Rule: Completely Disable 'Desktop Audio' to ensure embarrassing Discord or email notifications never leak into your live broadcast."
         },
         {
           "t": "quote",
-          "c": "Mastering OBS Studio instantly places you miles ahead of 90% of your competitors in broadcasting professionalism!"
+          "c": "Mastering the mechanics of OBS Studio instantly elevates you above 90% of your competitors, projecting an undeniable aura of corporate professionalism!"
         }
       ]
     }
@@ -1213,37 +1221,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Khách hàng sẽ đánh giá độ uy tín của doanh nghiệp bạn chỉ trong 2 giây khi nhìn vào background (phông nền) phía sau. Một background bừa bộn với chăn mùng, tủ quần áo lộn xộn sẽ biến sản phẩm 2 triệu của bạn thành hàng xả lỗ 50k. Decor background không cần quá nhiều tiền, chỉ cần đúng phương pháp."
+          "c": "Đây là bài toán tâm lý học thị giác: Khách hàng chỉ mất đúng 2 giây để quét phông nền (background) phía sau và định giá thương hiệu của bạn. Một căn phòng bừa bộn với chăn mùng xếp xó sẽ ngay lập tức biến sản phẩm 2 triệu của bạn thành rác xả lỗ 50k. Setup một studio livestream chuyên nghiệp không đòi hỏi hàng trăm triệu, nó đòi hỏi tư duy vật lý và nghệ thuật sắp đặt không gian."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "3 Quy Tắc Vàng Trong Decor Studio"
+          "c": "3 Quy Tắc Vàng Thao Túng Thị Giác"
         },
         {
           "t": "p",
-          "c": "1. Quy Tắc Khoảng Cách: Đừng bao giờ ngồi dựa lưng sát vào tường! Hãy kéo bàn làm việc ra xa tường ít nhất 1.5 đến 2 mét. Khoảng không gian này giúp camera tạo ra chiều sâu vật lý, kết hợp với Lens khẩu lớn (F1.4) sẽ xóa phông mờ mịt cực kỳ sang trọng."
+          "c": "1. Nguyên Lý Tách Lớp (Distance Rule): Lỗi sơ đẳng nhất là kê bàn sát rạt vào tường. Hãy kéo bàn làm việc của bạn ra xa tường ít nhất 1.5 đến 2 mét! Khoảng không này kết hợp với Lens máy ảnh khẩu độ lớn (F1.4 hoặc F1.8) sẽ tạo ra hiệu ứng Xóa phông (Bokeh) mượt mà, biến background thành một lớp màn nhung mờ ảo cực kỳ đắt tiền."
         },
         {
           "t": "p",
-          "c": "2. Nguyên Lý Đèn RGB Tương Phản: Phông nền không nên sáng rực rỡ lấn át Host. Hãy làm dịu background, sau đó dùng 1-2 cây đèn ống LED RGB (Màu Xanh dương, hoặc Tím) chiếu ngược lên tường. Ánh sáng màu này sẽ tạo độ sâu 'Cinematic' và tôn vinh làn da của bạn cực mạnh."
+          "c": "2. Chiến Thuật Đèn RGB Tương Phản: Phông nền tuyệt đối không được sáng rực rỡ lấn át nhân vật chính (Host). Quy trình đúng: Đánh sập đèn phòng, dùng 1-2 thanh LED RGB (chỉnh màu Xanh Đậm hoặc Tím Neon) đánh ngược hắt lên tường. Sự tương phản giữa ánh sáng Lạnh (phía sau) và ánh sáng Ấm (đánh vào mặt bạn) sẽ tạo ra khối nổi 3D Cinematic đậm chất điện ảnh."
         },
         {
           "t": "p",
-          "c": "3. Tối Giản Trực Quan (Minimalism): Đừng nhét hàng tá đồ vật lên kệ. Chỉ cần đặt vài cuốn sách decor, 1 chậu cây xanh phong thủy nhỏ, hoặc nút bạc YouTube. Khoảng trống (Negative Space) mới là thứ tạo nên đẳng cấp thực sự."
+          "c": "3. Tối Giản Quyền Lực (Minimalism): Đừng hành hạ thị giác người xem bằng cách nhét 50 món đồ lỉnh kỉnh lên kệ. Đẳng cấp đến từ 'Khoảng trống' (Negative Space). Chỉ cần đặt 2 cuốn tạp chí thời trang, 1 chậu cây xanh nhỏ nhắn, hoặc 1 chiếc cúp vinh danh. Ít nhưng phải là đồ hiệu."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Mẹo phong thủy ánh sáng"
+          "c": "Mật Mã Ánh Sáng Practical Light"
         },
         {
           "t": "p",
-          "c": "Sử dụng thêm một chiếc đèn Practical Light (như đèn ngủ để bàn ánh sáng Vàng 3200K) đặt ở góc xa khung hình. Điểm sáng vàng lọt thỏm giữa nền xanh RGB sẽ tạo ra sự ấm áp, giữ chân khán giả lâu hơn."
+          "c": "Bí kíp của các Studio triệu đô: Đặt một nguồn sáng phụ (Practical Light) – ví dụ như một chiếc đèn bàn Edison ánh sáng Vàng 3200K – tít tận góc xa khung hình. Điểm sáng vàng ấm áp lọt thỏm giữa đại dương xanh RGB sẽ đánh mạnh vào tiềm thức, tạo cảm giác an toàn, ấm cúng khiến người xem không muốn thoát ra."
         },
         {
           "t": "quote",
-          "c": "Background của bạn chính là chiếc bao bì đắt giá nhất bao bọc lấy sản phẩm mà bạn đang bán!"
+          "c": "Background livestream không phải là một bức tường vô tri. Nó là chiếc bao bì đắt giá nhất bao bọc lấy sự uy tín và sản phẩm bạn đang bán!"
         }
       ]
     },
@@ -1256,37 +1264,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Viewers judge the credibility of your business in 2 seconds based solely on your background. A cluttered, messy bedroom turns a $100 premium product into a $2 garage sale item. Decorating an epic background doesn't require a fortune; it just requires physics."
+          "c": "Welcome to visual psychology: A viewer takes exactly 2 seconds to scan your background and subconsciously price your entire brand. A messy room with unmade beds instantly degrades a $100 premium product into a $2 garage sale bin item. Constructing a professional livestream studio doesn't require a Hollywood budget; it requires an understanding of physics and spatial design."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "3 Golden Rules of Studio Decor"
+          "c": "The 3 Golden Rules of Visual Manipulation"
         },
         {
           "t": "p",
-          "c": "1. The Distance Rule: Never sit flush against the wall! Pull your desk at least 1.5 to 2 meters away from the backdrop. This physical space allows your camera's large aperture (F1.4) to create creamy, luxurious background blur (bokeh)."
+          "c": "1. The Distance Separation Rule: The most amateur mistake is shoving your desk flush against the wall. Pull your setup at least 1.5 to 2 meters away! This physical depth, combined with a fast camera lens (F1.4 or F1.8), generates a creamy, luxurious background blur (Bokeh) that screams high-budget production."
         },
         {
           "t": "p",
-          "c": "2. RGB Contrast Lighting: The background should never overpower the host. Dim the room lights, then use 1-2 RGB tube lights (set to deep blue or purple) to wash the walls. This creates intense cinematic contrast that makes your skin tones pop."
+          "c": "2. RGB Contrast Tactics: Your background must never outshine the Host. The correct protocol: Kill the overhead room lights, and deploy 1-2 RGB tube lights (set to deep Cyberpunk Blue or Neon Purple) to wash the back wall. The contrast between the Cool background and the Warm key light on your face creates an intense 3D cinematic pop."
         },
         {
           "t": "p",
-          "c": "3. Visual Minimalism: Do not cram 50 items onto a shelf. You only need a few tasteful decor books, a small plant, or a YouTube play button. Negative space is what actually screams high-class luxury."
+          "c": "3. Authoritative Minimalism: Do not visually assault your viewers by cramming 50 random trinkets on a shelf. True luxury is defined by 'Negative Space'. Display only 2 premium aesthetic books, a single minimalist plant, or an industry award. Less is drastically more."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "The Practical Light Trick"
+          "c": "The Practical Light Code"
         },
         {
           "t": "p",
-          "c": "Place a small 'Practical Light' (like a warm 3200K desk lamp) far in the background. A tiny warm glowing orb in a sea of cool RGB blue creates a psychologically welcoming vibe that makes viewers stay longer."
+          "c": "The secret of million-dollar studios: Place a 'Practical Light'—like a vintage Edison desk lamp radiating warm 3200K light—deep in the background corner. That tiny orb of warmth amidst a sea of cool RGB blue hacks the human subconscious, creating a cozy, welcoming anchor that severely boosts viewer retention."
         },
         {
           "t": "quote",
-          "c": "Your background is the most expensive packaging wrapped around the product you are selling!"
+          "c": "Your livestream background is not just a dead wall. It is the most expensive psychological packaging wrapping the product you are selling!"
         }
       ]
     }
@@ -1311,33 +1319,33 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Livestream là truyền hình trực tiếp, không có nút 'Quay lại'. Nếu có một khách hàng comment chửi bới sản phẩm của bạn là hàng giả giữa lúc đang có 1000 người xem, bạn sẽ làm gì? Im lặng xóa comment hay cãi tay đôi? Kỹ năng xử lý khủng hoảng quyết định đẳng cấp của một Streamer."
+          "c": "Livestream là sân khấu truyền hình trực tiếp khắc nghiệt nhất, nơi không bao giờ có nút 'Quay lại' (Undo). Chuyện gì sẽ xảy ra nếu một tài khoản ném đá chửi bới sản phẩm của bạn là hàng giả mạo ngay trước mặt 5000 người đang xem? Bạn hoảng loạn xóa bình luận, hay nổi điên cãi tay đôi? Kỹ năng Xử lý Khủng hoảng (Crisis Management) ngay trên sóng trực tiếp chính là ranh giới sống còn giữa một tay mơ và một Mega-Idol."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Đối phó với Antifan (Bóc phốt)"
+          "c": "Nghệ Thuật Trấn Áp Antifan (Trolls)"
         },
         {
           "t": "p",
-          "c": "1. Nguyên tắc Không Tranh Cãi: Khi có comment độc hại, tuyệt đối không chửi thề hay cãi tay đôi. Việc đó chỉ hạ thấp giá trị của bạn. Hãy mỉm cười và nói: 'Cảm ơn góp ý của bạn, trợ lý của mình đã chụp lại màn hình và sẽ inbox để đền bù gấp 10 lần nếu có lỗi. Còn bây giờ, Hiển xin phép tiếp tục với các anh chị đang ủng hộ mình'."
+          "c": "1. Thiết Quân Luật Về Cảm Xúc (Zero-Argument Rule): Khi bị công kích độc hại, CẤM TUYỆT ĐỐI việc chửi thề, văng tục hay thanh minh yếu ớt. Việc đó chỉ ném giá trị thương hiệu của bạn xuống bùn. Hãy mỉm cười sắc lạnh và nói: 'Cảm ơn góp ý của bạn. Trợ lý của mình đã chụp lại màn hình và sẽ inbox ngay lập tức để đền bù gấp 10 lần nếu có bất kỳ lỗi lầm nào. Còn bây giờ, Hiển xin phép quay lại với hàng ngàn anh chị đang văn minh ủng hộ mình'."
         },
         {
           "t": "p",
-          "c": "2. Chuyển Thù Thành Bạn (Aikido tâm lý): Nếu khách chê đắt, đừng nói 'Tiền nào của nấy'. Hãy mượn lực: 'Dạ vâng, nhìn giá thì công nhận là nhỉnh hơn thị trường thật. Nhưng chị thử hỏi 100 chị em đang xem ở đây đã từng mua hàng nhà em xem họ phản hồi thế nào nhé!' (Kêu gọi cộng đồng bảo vệ mình)."
+          "c": "2. Aikido Tâm Lý (Mượn Lực Đả Lực): Nếu khách hàng chê đắt, đừng bao giờ chống chế kiểu 'Tiền nào của nấy'. Hãy mượn sức mạnh đám đông: 'Dạ vâng, nếu chỉ nhìn thoáng qua cái giá thì đúng là nhỉnh hơn thị trường thật! Nhưng tiện đây em xin phép nhờ 100 anh chị khách quen đang xem live, mọi người đã dùng thử rồi cho em xin một lời nhận xét thật lòng trên khung chat được không ạ?'. Hãy để cộng đồng fan cuồng tự đứng ra bảo vệ bạn."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Xử lý sự cố kỹ thuật"
+          "c": "Thoát Hiểm Khi Sập Hệ Thống"
         },
         {
           "t": "p",
-          "c": "Nếu rớt mạng hoặc sập nguồn, khi mở lại tuyệt đối không xin lỗi lúng túng. Hãy biến nó thành một trò đùa duyên dáng: 'Sập live luôn vì phòng mình nãy tặng deal sốc quá hệ thống quá tải các bác ạ! Để bù đắp, em lên thêm 5 suất nữa nhé!'."
+          "c": "Rớt mạng? Sập nguồn máy tính? Đứt cáp? Khi hệ thống hoạt động trở lại, sai lầm lớn nhất là bộ dạng luống cuống xin lỗi. Hãy biến sự cố thành một chiêu PR đỉnh cao: 'Trời ơi sập live luôn các bác ạ! Nãy em tung cái Deal sốc quá hệ thống TikTok đỡ không nổi cháy cả server! Để chuộc lỗi, em quyết định bung thêm 5 suất nữa, ai nhanh tay thì được nhé!'"
         },
         {
           "t": "quote",
-          "c": "Trong khủng hoảng, khán giả không nhìn vào vấn đề, họ nhìn vào thái độ và bản lĩnh của bạn!"
+          "c": "Giữa tâm bão khủng hoảng, khán giả không soi xét vấn đề, họ đang soi xét bản lĩnh và thần thái đế vương của bạn!"
         }
       ]
     },
@@ -1350,33 +1358,33 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Livestreaming is raw broadcast TV; there is no 'Undo' button. If a viewer accuses you of selling fake products in front of 1,000 people, what do you do? Delete the comment or argue? Crisis management is what separates amateurs from elite streamers."
+          "c": "Livestreaming is the most brutal form of live broadcast television; there is absolutely no 'Undo' button. What happens when a troll actively accuses you of scamming in front of 5,000 live viewers? Do you panic and delete the comment, or do you lose your temper and argue? Real-time Crisis Management is the ultimate dividing line between an amateur casualty and a Mega-Idol."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Neutralizing Antifans"
+          "c": "The Art of Neutralizing Trolls"
         },
         {
           "t": "p",
-          "c": "1. The No-Argument Rule: Never argue or swear at a toxic comment. It instantly devalues your brand. Smile and say: 'Thank you for the feedback. My assistant just screenshotted this and will DM you to refund 10x if there is an error. Now, let's get back to our amazing supporters.' Then move on."
+          "c": "1. Emotional Martial Law (The Zero-Argument Rule): When subjected to toxic attacks, it is STRICTLY FORBIDDEN to swear, argue defensively, or lose your cool. Doing so drags your brand equity through the mud. Instead, flash a cold, confident smile and state: 'Thank you for your feedback. My team has screenshotted this and will DM you instantly to offer a 10x refund if we are at fault. Now, I will return my attention to the thousands of civilized supporters here.' Then ruthlessly move on."
         },
         {
           "t": "p",
-          "c": "2. Psychological Aikido: If someone says your product is a rip-off, don't defensively justify it. Borrow their momentum: 'Yes, looking at the price tag alone, it does seem premium! But let's ask the 100 returning customers in the chat right now—is it worth it?' (Let your loyal community defend you)."
+          "c": "2. Psychological Aikido (Using Their Momentum): If a viewer complains about high prices, never use the weak 'you get what you pay for' defense. Weaponize your community: 'Yes, glancing at the price tag, it definitely looks premium! But let me ask the 100 returning VIP customers in the chat right now—you've used it, drop a brutally honest review below. Is it worth the money?'. Let your loyal cult defend your honor."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Handling Tech Glitches"
+          "c": "Surviving System Collapses"
         },
         {
           "t": "p",
-          "c": "If your stream crashes or internet drops, never apologize awkwardly when you return. Turn it into a charismatic joke: 'Wow, we broke the internet because that last Flash Sale was too intense! To apologize, I'm unlocking 5 more slots right now!'"
+          "c": "Internet outage? PC crash? Power failure? When you finally get back online, the biggest mistake is apologizing like a frightened deer. Flip the script into elite PR: 'Oh my god, we literally broke the internet! That last Flash Sale was so insane the servers couldn't handle the traffic and crashed! To make up for it, I am forcefully unlocking 5 more slots right now—fastest fingers win!'"
         },
         {
           "t": "quote",
-          "c": "In a crisis, the audience isn't judging the problem; they are judging your attitude and resilience!"
+          "c": "In the epicenter of a crisis, the audience isn't analyzing the technical problem; they are heavily analyzing your resilience and alpha composure!"
         }
       ]
     }
@@ -1444,37 +1452,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "The Soundcard is the central 'brain' processing all audio signals before they broadcast. If the microphone is the mouth, the Soundcard is the vocal cords. Choose the wrong one, and your audio will suffer from latency, distortion, and electromagnetic buzz. Here’s a field-tested review."
+          "c": "In the livestream equipment ecosystem, the Soundcard is the central 'Brain', ruthlessly processing and sculpting every audio signal before it hits the broadcast servers. If your microphone is the mouth, the Soundcard is your vocal cords. Invest in the wrong one, and you will suffer agonizing latency, distorted vocals, and severe electromagnetic interference. Here is a brutal, field-tested autopsy of the market's top audio engines."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Top 3 Must-Buy Soundcards"
+          "c": "The Top 3 Alpha Soundcards to Buy"
         },
         {
           "t": "p",
-          "c": "1. Yamaha AG03 / AG06 Mk2 (The Streamer's King): An absolute legend. Its ultimate advantage lies in the pristine, warm pre-amps. Furthermore, the physical Loopback feature allows you to seamlessly route background music from your PC directly into the stream."
+          "c": "1. Yamaha AG03 / AG06 Mk2 (The Streamer's Emperor): An immortal legend in the broadcasting world. Its supreme advantage is the studio-grade D-PRE pre-amps, delivering an incredibly warm, thick, and hyper-clean vocal tone. Furthermore, the physical Loopback switch allows zero-latency routing of PC background music directly into your stream."
         },
         {
           "t": "p",
-          "c": "2. Focusrite Scarlett Solo / 2i2 Gen 4 (Studio Standard): Built for those demanding 'Hi-Fi' quality. Focusrite's ADC converters strip vocals down to the sharpest breath. Perfect for ASMR, acoustic singing, or professional voiceovers."
+          "c": "2. Focusrite Scarlett Solo / 2i2 Gen 4 (The Hi-Fi Studio Standard): Engineered for audiophiles with extremist standards. Focusrite's elite ADC converters dissect your voice with razor-sharp precision down to the faintest breath. This is the ultimate weapon for ASMR, professional acoustic performances, or high-end commercial voiceovers requiring goosebump-inducing detail."
         },
         {
           "t": "p",
-          "c": "3. Maonocaster E2 (Entertainment Utility): This interface features built-in tactile pads for instant sound effects—laughter, applause, cheers. It's a lifesaver for high-energy sales streams where comedic timing keeps viewers glued."
+          "c": "3. Maonocaster E2 (The Entertainment Juggernaut): Purpose-built for high-ticket closers. It features an integrated soundboard (tactile pads) to instantly trigger sound effects: roaring laughter, stadium applause, suspenseful drums. It is an exceptional emotional manipulation tool to maintain high-octane energy without needing a dedicated audio technician."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Critical Setup Advice"
+          "c": "The Fatal Setup Warning"
         },
         {
           "t": "p",
-          "c": "Never use cheap, off-brand cables. Invest in shielded, high-fidelity audio lines. Cheap cables introduce massive ground loop noise (that buzzing static sound) that will completely ruin your broadcast's professionalism."
+          "c": "You can buy a $500 Soundcard, but if you connect it with a cheap $2 off-brand cable, your entire investment is garbage. Cheap cables lack electromagnetic shielding; they will physically absorb Wi-Fi and cellular signals, injecting a horrifying static buzz (Ground Loop Noise) that tortures your viewers' eardrums and instantly kills the stream."
         },
         {
           "t": "quote",
-          "c": "Investing in a premium Soundcard is essentially buying a lifetime insurance policy for your viewers' eardrums!"
+          "c": "Dropping money on a premium Soundcard is not an expense; it is purchasing a lifetime insurance policy for your viewers' eardrums!"
         }
       ]
     }
@@ -1499,37 +1507,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Một sự thật phũ phàng: Khách hàng không quan tâm sản phẩm của bạn có công nghệ lõi gì hay thành phần hóa học ra sao. Họ chỉ quan tâm: 'Sản phẩm này thay đổi cuộc đời tôi như thế nào?'. Kể chuyện (Storytelling) là vũ khí tối thượng lách qua bộ não lý trí để đánh thẳng vào trái tim cảm xúc của người mua."
+          "c": "Sự thật tàn nhẫn: Khách hàng không hề quan tâm sản phẩm của bạn có công nghệ nano lõi kép hay thành phần hóa học phức tạp ra sao. Họ chỉ có đúng một câu hỏi trong đầu: 'Nó sẽ thay đổi cuộc đời tôi và giải quyết nỗi đau của tôi như thế nào?'. Kể chuyện (Storytelling) chính là thứ vũ khí bẻ gãy bộ lọc phòng vệ lý trí, luồn sâu vào tiềm thức và ép khách hàng phải ra quyết định bằng cảm xúc."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Cấu Trúc Câu Chuyện Chốt Đơn Đỉnh Cao"
+          "c": "Cấu Trúc Storytelling Chốt Đơn Sinh Tử"
         },
         {
           "t": "p",
-          "c": "1. Xây Dựng Nhân Vật Tương Đồng: Bắt đầu bằng một nhân vật (hoặc chính bạn) có nỗi đau y hệt khách hàng. 'Trước đây da Hiển mụn viêm bọc toàn mặt, tự ti đến mức không dám đi họp lớp...'. Khán giả sẽ lập tức thấy bóng dáng của họ trong đó."
+          "c": "1. Xây Dựng Hình Mẫu Đồng Điệu (Mirroring): Mở đầu bằng một nhân vật (hoặc chính bạn) đang giãy giụa trong đúng nỗi đau mà tệp khách hàng đang gánh chịu. 'Chỉ mới 6 tháng trước, Hiển từng là một đứa rụt rè, nói vấp liên tục, lên live chỉ có đúng 2 mắt xem là mẹ và em gái...'. Ngay lập tức, 90% người xem sẽ thấy hình bóng thất bại của chính họ trong câu chuyện của bạn."
         },
         {
           "t": "p",
-          "c": "2. Đẩy Nỗi Đau Lên Đỉnh Điểm (Agitation): Khắc họa hậu quả tàn khốc nếu không giải quyết vấn đề. 'Vì mặt đầy mụn, Hiển đã đánh mất cơ hội ký hợp đồng lớn vì đối tác thấy mình quá luộm thuộm'."
+          "c": "2. Xoáy Sâu Nỗi Đau Đến Cùng Cực (Agitation): Đừng chỉ kể khổ, hãy khắc họa hậu quả tàn khốc nếu họ tiếp tục trì hoãn. 'Vì không dám ló mặt lên video, doanh số tháng đó chạm đáy, Hiển gần như phá sản và phải vay mượn để trả tiền nhà'. Cảm giác sợ hãi (FOMO) sẽ khiến khách hàng không thể lướt qua."
         },
         {
           "t": "p",
-          "c": "3. Sự Cứu Rỗi Tuyệt Vời: Hé lộ sản phẩm như một 'vị thánh cứu rỗi'. 'Và rồi Hiển tìm thấy tuýp kem này. Chỉ sau 2 tuần, mọi thứ thay đổi...'. Đây là lúc lồng ghép tính năng vào lợi ích."
+          "c": "3. Ánh Sáng Cứu Rỗi (The Epiphany): Hé lộ sản phẩm/giải pháp như một chiếc phao cứu sinh thần thánh. 'Và rồi mọi thứ đảo lộn khi Hiển áp dụng đúng bộ kịch bản 3 bước này...'. Đây chính là điểm vàng để bạn chèn các Tính năng (Features) và chuyển hóa chúng thành Lợi ích (Benefits) không thể chối từ."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Tuyệt Kỹ Cảm Xúc"
+          "c": "Thao Túng Bằng Giác Quan"
         },
         {
           "t": "p",
-          "c": "Hãy sử dụng các động từ mạnh và chi tiết giác quan (thị giác, khứu giác, xúc giác) khi kể. Đừng nói 'Kem này thơm', hãy nói 'Mùi hương của nó giống như bạn đang đứng giữa một vườn hoa hồng Đà Lạt buổi sáng sớm'."
+          "c": "Tuyệt đối không dùng tính từ sáo rỗng. Đừng nói 'Nước hoa này thơm lắm'. Hãy thôi miên họ bằng ngôn từ thị giác: 'Mùi hương của nó quyến rũ đến mức, mỗi khi bạn đi lướt qua, người ta phải khựng lại 3 giây và ngoái nhìn vì tưởng bạn là một doanh nhân thành đạt'."
         },
         {
           "t": "quote",
-          "c": "Logic giúp con người hiểu vấn đề, nhưng chỉ có cảm xúc mới ép họ móc ví ra mua hàng!"
+          "c": "Lý trí dùng để tranh luận, nhưng chỉ có cảm xúc mới đủ sức móc sạch tiền trong ví của khách hàng!"
         }
       ]
     },
@@ -1542,37 +1550,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Harsh truth: Customers do not care about your patented tech or chemical ingredients. They only care about one thing: 'How will this product transform my life?' Storytelling is the ultimate weapon that bypasses logical defense mechanisms and strikes directly at the emotional heart of the buyer."
+          "c": "The brutal reality: Customers couldn't care less about your patented dual-core technology or complex chemical formulas. They only have one selfish question in their minds: 'How is this going to fix my life and end my suffering?' Storytelling is the psychological weapon that bypasses the logical defense mechanism, infiltrates the subconscious, and forces buying decisions driven purely by raw emotion."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "The High-Converting Story Structure"
+          "c": "The High-Ticket Storytelling Architecture"
         },
         {
           "t": "p",
-          "c": "1. The Relatable Protagonist: Start with a character (or yourself) who shares the exact pain point as the viewer. 'A year ago, my face was covered in cystic acne; I was so ashamed I skipped my college reunion...' The audience instantly sees themselves in you."
+          "c": "1. Mirroring the Protagonist: Open with a character (or yourself) who is drowning in the exact same misery as your target audience. 'Just 6 months ago, I was terrified of the camera, stuttering uncontrollably, broadcasting to exactly 2 viewers: my mom and my sister...' Instantly, 90% of the audience sees their own failures reflected in you."
         },
         {
           "t": "p",
-          "c": "2. The Pain Agitation: Amplify the horrific consequences of not solving the problem. 'Because of my skin, I actually lost a massive contract because the client thought I lacked personal hygiene and discipline.'"
+          "c": "2. Ruthless Agitation: Do not just state the problem; vividly paint the horrific consequences of inaction. 'Because of my crippling fear of going live, my monthly revenue flatlined. I was literally weeks away from bankruptcy and eviction.' Injecting this fear of loss (FOMO) paralyzes their ability to scroll away."
         },
         {
           "t": "p",
-          "c": "3. The Glorious Salvation: Introduce the product as the ultimate savior. 'And then I discovered this serum. Within 14 days, everything changed...' This is where you seamlessly weave product features into life-changing benefits."
+          "c": "3. The Glorious Epiphany: Introduce your product/service as the ultimate holy grail salvation. 'And then my entire reality shifted when I deployed this exact 3-step script...' This is the critical juncture where you weaponize Features, ruthlessly converting them into undeniable Life Benefits."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Emotional Activation Tactics"
+          "c": "Sensory Manipulation Tactics"
         },
         {
           "t": "p",
-          "c": "Use strong verbs and sensory details (sight, smell, touch). Instead of saying 'This cream smells good,' say 'The scent wraps around you like standing in a field of morning dew-kissed roses.'"
+          "c": "Eradicate cliché adjectives from your vocabulary. Never say 'This perfume smells amazing.' Hypnotize them with sensory imagery: 'This scent is so intoxicatingly dominant that when you walk past, people physically freeze for 3 seconds, assuming you are a high-net-worth CEO.'"
         },
         {
           "t": "quote",
-          "c": "Logic makes people think and ponder, but only raw emotion forces them to pull out their credit cards!"
+          "c": "Logic is built for debating, but only raw, visceral emotion has the power to empty a customer's wallet!"
         }
       ]
     }
@@ -1597,37 +1605,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Đang chốt đơn cao trào thì mạng bị rớt (Disconnected)? Hình ảnh bị bể hạt pixel vuông vức? Đó là thảm họa lớn nhất của người làm nghề. Sự thật là: Tốc độ Download 1000Mbps không có ý nghĩa gì cả, thứ quyết định sinh tử của Livestream là tốc độ Upload (Tải lên)."
+          "c": "Bạn đang leo rank cảm xúc chốt đơn thì đột nhiên mạng rớt (Disconnected)? Luồng live 4K sắc nét bỗng vỡ vụn thành những khối pixel vuông vức như game Mario 8-bit? Đó là án tử hình cho doanh số ngày hôm đó. Hãy thức tỉnh: Tốc độ Tải xuống (Download) 1000Mbps của nhà mạng không có một chút giá trị nào. Yếu tố sống còn quyết định sinh mệnh phiên live của bạn chính là tốc độ Tải lên (Upload Speed)."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "3 Nguyên Tắc Xương Sống Về Mạng"
+          "c": "3 Kỷ Luật Thép Về Hệ Thống Mạng"
         },
         {
           "t": "p",
-          "c": "1. Tuyệt đối KHÔNG dùng Wifi: Sóng Wifi bị nhiễu bởi hàng trăm thiết bị xung quanh (lò vi sóng, Bluetooth, điện thoại). Hãy mua ngay một sợi cáp LAN Cat6 và cắm trực tiếp từ Modem mạng vào thẳng máy tính hoặc điện thoại (qua hub Type-C)."
+          "c": "1. Trảm Ngay Kết Nối Wifi: Wifi là trò đùa của dân chuyên nghiệp. Sóng Wifi cực kỳ thiếu ổn định và dễ bị nhiễu bởi lò vi sóng, Bluetooth, hay tín hiệu điện thoại. Lệnh bắt buộc: Mua ngay một sợi cáp LAN Cat6 bọc chống nhiễu, cắm trực tiếp từ Router vào thẳng máy tính hoặc điện thoại (thông qua Hub Type-C/Lightning)."
         },
         {
           "t": "p",
-          "c": "2. Yêu cầu gói mạng doanh nghiệp: Mạng gia đình thường bị bóp băng thông quốc tế vào buổi tối. Hãy gọi tổng đài nâng cấp lên gói có Cam kết băng thông quốc tế (Tối thiểu 10Mbps Upload ra quốc tế). Nó đắt hơn một chút nhưng cứu được hàng chục đơn hàng."
+          "c": "2. Nâng Cấp Gói Băng Thông Quốc Tế (Business Tier): Mạng gia đình thường bị các nhà mạng bóp nghẹt băng thông quốc tế (Throttle) vào giờ cao điểm buổi tối. Đừng tiếc tiền, hãy gọi thẳng tổng đài yêu cầu gói Doanh Nghiệp có 'Cam kết băng thông quốc tế tối thiểu 10-20Mbps'. Chi phí thêm vài trăm ngàn nhưng nó bảo vệ cho doanh thu hàng trăm triệu của bạn."
         },
         {
           "t": "p",
-          "c": "3. Tắt các tiến trình chạy ngầm: Đồng bộ Google Drive, OneDrive, hoặc Windows Update là những kẻ thù giấu mặt nuốt trọn băng thông Upload. Hãy tắt hoàn toàn chúng trong Task Manager trước khi bấm 'Phát Trực Tiếp'."
+          "c": "3. Triệt Tiêu Ký Sinh Băng Thông (Bandwidth Vampires): Google Drive, OneDrive, hay các tiến trình Windows Update chạy ngầm là những con đỉa hút cạn lưu lượng Upload của bạn. Trước khi lên sóng, hãy mở Task Manager và thẳng tay 'End Task' toàn bộ các tiến trình ăn hại này."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Kiểm tra trước khi lên sóng"
+          "c": "Quy Trình Pre-Flight Checklist"
         },
         {
           "t": "p",
-          "c": "Luôn truy cập Speedtest.net để kiểm tra dòng 'Upload'. Nếu con số này dưới 20Mbps, hãy hạ Bitrate trong phần mềm OBS xuống dưới 4000 Kbps để đảm bảo luồng hình ảnh không bị đứt đoạn giữa chừng."
+          "c": "Trước khi bấm nút 'Phát Trực Tiếp', bắt buộc vào Speedtest.net kiểm tra chỉ số Upload. Nếu nó lẹt đẹt dưới 15Mbps, hãy lập tức vào phần mềm OBS, hạ thông số Video Bitrate xuống mức an toàn (khoảng 3500 - 4000 Kbps). Chấp nhận hình ảnh bớt nét đi một chút còn hơn là để stream bị sập (Dropped Frames) khiến khách hàng bỏ đi sạch."
         },
         {
           "t": "quote",
-          "c": "Một phiên live 4K siêu nét không có ý nghĩa gì nếu băng thông mạng biến nó thành một đống pixel mờ ảo!"
+          "c": "Sở hữu dàn máy ảnh trăm triệu cũng hoàn toàn vô dụng, nếu đường truyền mạng biến bạn thành một đống pixel mờ ảo trong mắt khách hàng!"
         }
       ]
     },
@@ -1640,37 +1648,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Right in the middle of a massive sales pitch, the stream disconnects, or the video degrades into a blocky, pixelated mess? This is a streamer's worst nightmare. The brutal truth: A 1000Mbps Download speed is useless. Streaming survival relies 100% on your Upload Speed."
+          "c": "You are peaking an emotional sales pitch, driving massive FOMO, and suddenly... Disconnected? Your crisp 4K stream disintegrates into blocky 8-bit Mario pixels? That is a death sentence for your daily revenue. Wake up to reality: A 1000Mbps Download speed from your ISP is completely worthless. The sole, life-or-death metric that dictates your livestream survival is your Upload Speed."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "3 Backbone Networking Rules"
+          "c": "The 3 Iron-Clad Networking Disciplines"
         },
         {
           "t": "p",
-          "c": "1. NEVER rely on Wi-Fi: Wireless signals suffer packet loss from ambient interference (microwaves, Bluetooth). Always run a physical Cat6 Ethernet cable directly from your modem into your PC or smartphone (via a Type-C adapter)."
+          "c": "1. Terminate All Wi-Fi Connections: Wi-Fi is a joke in professional broadcasting. Wireless signals are inherently unstable, severely disrupted by microwaves, Bluetooth devices, and neighbor networks. Mandatory Directive: Hardwire a shielded Cat6 Ethernet cable directly from your Router into your PC or smartphone (via a Type-C/Lightning dock)."
         },
         {
           "t": "p",
-          "c": "2. Upgrade to a Business Tier: Residential networks heavily throttle international bandwidth during prime time evening hours. Call your ISP and upgrade to a plan with Guaranteed International Upload Bandwidth (at least 10Mbps). It pays for itself in saved sales."
+          "c": "2. Upgrade to a Business-Tier SLA: Residential internet plans are aggressively throttled (bandwidth choked) by ISPs during prime-time evening hours. Stop being cheap. Call your ISP immediately and demand a Business plan with a 'Guaranteed International Upload Bandwidth of at least 10-20Mbps'. It costs an extra $50 but protects $50,000 in revenue."
         },
         {
           "t": "p",
-          "c": "3. Kill Background Syncs: Google Drive, OneDrive, and silent Windows Updates are bandwidth vampires. Open Task Manager and ruthlessly terminate these background processes before hitting 'Go Live'."
+          "c": "3. Execute Bandwidth Vampires: Background sync tools like Google Drive, OneDrive, or silent Windows Updates are parasitic leeches draining your Upload capacity. Before going live, ruthlessly open Task Manager and 'End Task' every single non-essential background process."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Pre-Flight Checklist"
+          "c": "The Pre-Flight Diagnostics"
         },
         {
           "t": "p",
-          "c": "Always run Speedtest.net and stare at the 'Upload' metric. If it dips below 20Mbps, immediately lower your OBS Bitrate to 4000 Kbps or lower to prevent the stream from dropping frames."
+          "c": "Always execute a Speedtest.net run focusing strictly on the 'Upload' metric before hitting 'Go Live'. If it struggles below 15Mbps, immediately pull up OBS Studio and aggressively throttle down your Video Bitrate to a safe 3500 - 4000 Kbps. Accept a slightly softer image over catastrophic dropped frames that cause viewers to instantly leave."
         },
         {
           "t": "quote",
-          "c": "A flawless 4K camera setup means nothing if your network chokes it into a blurry, unwatchable mess!"
+          "c": "A $10,000 cinema camera rig is fundamentally useless if a garbage network connection downgrades you into a blurry, pixelated mess!"
         }
       ]
     }
@@ -1695,37 +1703,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Bạn live mãi nhưng chỉ loanh quanh 20 mắt xem? Thuật toán tự nhiên (Organic Traffic) là chưa đủ nếu bạn muốn scale doanh thu lên tiền tỷ. Đây là lúc TikTok Live Ads (Chạy quảng cáo luồng live) phát huy sức mạnh nhân bản traffic cực độ."
+          "c": "Bạn gào thét khản cổ suốt 2 tiếng nhưng chỉ loanh quanh 20 mắt xem? Hãy chấp nhận thực tế: Ở kỷ nguyên này, Thuật toán tự nhiên (Organic Traffic) là không bao giờ đủ nếu bạn muốn scale (nhân bản) doanh thu lên tiền tỷ. Đây là lúc vũ khí tối thượng mang tên TikTok Live Ads (Chạy quảng cáo luồng live) phát huy sức mạnh, bơm hàng ngàn traffic chất lượng cao thẳng vào phễu chốt đơn của bạn."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Chiến thuật Đốt Tiền Thông Minh"
+          "c": "Chiến Thuật Đốt Tiền Thông Minh (Smart Bidding)"
         },
         {
           "t": "p",
-          "c": "1. Mục tiêu chiến dịch (Objective): Sai lầm chí mạng là chọn mục tiêu 'Tăng lượt xem'. TikTok sẽ đẩy vào toàn người thích xem chùa, tỷ lệ thoát trang cực cao. Hãy chọn mục tiêu 'Lượt nhấp vào sản phẩm' hoặc 'Mua Hàng'. Giá thầu (Bid) cao hơn nhưng ra đơn thật."
+          "c": "1. Chọn Đúng Mục Tiêu Sát Thủ: Sai lầm ngớ ngẩn nhất của Newbie là chọn mục tiêu 'Tăng lượt xem'. Hệ thống sẽ lùa cả ngàn 'Zombie xem chùa' vào, kéo tỷ lệ thoát trang cực cao và giết chết Retention Rate. Lệnh tối thượng: Luôn chọn mục tiêu 'Lượt nhấp vào sản phẩm' (Product Clicks) hoặc 'Mua Hàng' (Purchases). Giá thầu (Bid) có thể đắt gấp 3, nhưng 100% ra đơn thực tế."
         },
         {
           "t": "p",
-          "c": "2. Thời điểm 'Cắn Tiền' Vàng: Đừng bật Ads ngay từ phút đầu tiên khi phòng live còn nguội. Hãy bật Ads vào đúng thời điểm bạn tung 'Hero Deal' (Deal giảm giá sốc nhất). Tệp khách hàng mới ùa vào thấy giá hời sẽ chốt đơn ngay lập tức, đẩy CVR lên đỉnh."
+          "c": "2. Điểm Rơi 'Cắn Tiền' Tử Huyệt: Đừng bật Ads ngây ngô ngay phút đầu tiên khi bạn đang chào hỏi nhạt nhẽo. Hãy giam ngân sách. Chỉ kích hoạt Ads vào đúng giây phút bạn tung ra 'Hero Deal' (Sản phẩm phễu giảm giá sốc nhất). Tệp khách hàng mới ùa vào, thấy deal hời, họ sẽ rơi vào trạng thái FOMO và chốt đơn điên cuồng, đẩy CVR (Tỷ lệ chuyển đổi) lên mốc kỷ lục."
         },
         {
           "t": "p",
-          "c": "3. Target Audience (Nhắm mục tiêu): Không thả rông đối tượng. Khách hàng 18 tuổi không có tiền mua túi xách 2 triệu. Hãy nhắm chuẩn độ tuổi, giới tính và sở thích cốt lõi (VD: Nữ, 25-34 tuổi, thích làm đẹp)."
+          "c": "3. Nhắm Mục Tiêu Bắn Tỉa (Micro-Targeting): Không thả rông đối tượng (Broad). Khách hàng sinh viên 18 tuổi làm gì có tiền mua thực phẩm chức năng 2 triệu? Hãy vẽ chân dung thật sắc nét: Nữ, 25-35 tuổi, thu nhập khá, quan tâm đặc biệt đến làm đẹp và chăm sóc sức khỏe. Thu hẹp tệp để từng đồng tiền quảng cáo đều sinh lời."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Quy tắc mồi câu"
+          "c": "Định Luật 3 Giây Mồi Câu"
         },
         {
           "t": "p",
-          "c": "Luôn chuẩn bị sẵn một kịch bản giữ chân (Hook) liên tục. Khách từ quảng cáo vào rất lạnh nhạt, nếu 3 giây đầu bạn không nói đúng nỗi đau của họ, họ sẽ đốt tiền Ads của bạn bằng một cú lướt qua."
+          "c": "Khách hàng từ Ads đổ vào là tệp 'Traffic Lạnh'. Họ cực kỳ thiếu kiên nhẫn. Nếu trong 3 giây đầu tiên họ vào phòng live mà bạn không gào lên một Hook bám sát nỗi đau của họ, họ sẽ vuốt qua (Swipe) không thương tiếc, và bạn vừa tự tay đốt tiền quảng cáo xuống biển."
         },
         {
           "t": "quote",
-          "c": "Ads chỉ là cánh cửa dẫn khách vào nhà. Khách có rút ví mua hàng hay không, phụ thuộc vào cái duyên và giá trị của người Host!"
+          "c": "Quảng cáo chỉ có nhiệm vụ mua chìa khóa mở cửa nhà. Còn khách có chịu bước vào rút ví hay không, 100% phụ thuộc vào bản lĩnh và kịch bản chốt đơn của Host!"
         }
       ]
     },
@@ -1738,37 +1746,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Stuck at 20 concurrent viewers forever? Organic traffic is simply not enough if you want to scale to 6-figure revenues. This is where TikTok Live Ads become your ultimate traffic-cloning weapon."
+          "c": "Screaming yourself hoarse for 2 hours just to entertain 20 concurrent viewers? Accept this brutal reality: In today's saturated market, Organic Traffic is fundamentally insufficient to scale your revenue to 7-figures. Enter the ultimate scaling weapon: TikTok Live Ads. This system forcefully injects thousands of high-intent, credit-card-ready buyers directly into your sales funnel."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Smart Ad Spend Tactics"
+          "c": "Aggressive Smart Bidding Tactics"
         },
         {
           "t": "p",
-          "c": "1. Campaign Objective: The fatal rookie mistake is choosing 'Viewer Count' as the objective. TikTok will flood your room with 'window shoppers' who never buy. Always select 'Product Clicks' or 'Purchases'. It costs more per click, but guarantees real ROI."
+          "c": "1. Selecting the Lethal Objective: The most pathetic rookie mistake is optimizing for 'Viewer Count'. The algorithm will flood your room with 'window-shopping zombies', destroying your Retention Rate. The Alpha Directive: Strictly select 'Product Clicks' or 'Purchases' as your objective. The Cost Per Click (CPC) will be 3x higher, but it guarantees actual ROI and real sales."
         },
         {
           "t": "p",
-          "c": "2. The Golden Injection Timing: Never turn on Ads in minute one when the room is cold. Trigger your Ad budget the exact second you announce your massive 'Hero Deal'. Incoming traffic sees the insane discount and impulse-buys immediately, skyrocketing your Conversion Rate."
+          "c": "2. The Golden Injection Timing: Do not naively turn on Ads during your boring warm-up intro. Hold your budget hostage. Trigger the Ad spend at the exact microsecond you unveil your 'Hero Deal' (an insane, time-limited flash sale). The massive wave of new cold traffic hits the room, sees the undeniable value, falls into a state of intense FOMO, and spikes your Conversion Rate (CVR) to historic highs."
         },
         {
           "t": "p",
-          "c": "3. Precision Targeting: Don't spray and pray. 18-year-olds won't buy your $200 designer bags. Narrow down the age, gender, and core interests (e.g., Female, 25-34, Beauty Enthusiasts) to ensure every penny counts."
+          "c": "3. Micro-Targeting Sniping: Never use broad targeting. A broke 18-year-old student will not buy your $100 luxury supplements. Sculpt a hyper-accurate demographic profile: Female, ages 25-35, high disposable income, obsessive interest in premium skincare. Constrict your audience to ensure zero ad spend is wasted."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "The Continuous Hook Rule"
+          "c": "The 3-Second Hook Protocol"
         },
         {
           "t": "p",
-          "c": "Always have a continuous verbal hook ready. Paid traffic comes in 'cold'. If you aren't actively addressing their pain points within the first 3 seconds they arrive, they will swipe away, burning your Ad budget."
+          "c": "Traffic driven by Ads is extremely 'Cold' and notoriously impatient. If you do not verbally assault them with a highly relevant Hook targeting their exact pain point within the first 3 seconds of them entering the room, they will ruthlessly swipe away, literally burning your ad budget in real-time."
         },
         {
           "t": "quote",
-          "c": "Ads only open the door to let traffic in. Whether they open their wallets depends entirely on the Host's charm and value!"
+          "c": "Live Ads only buy you the right to open the door. Whether the traffic actually pulls out their credit cards depends 100% on the alpha closing skills of the Host!"
         }
       ]
     }
@@ -1793,37 +1801,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Đang chốt hàng trăm đơn bỗng nhiên màn hình văng ra ngoài báo 'Phiên live bị đình chỉ'? Đây là ác mộng kinh hoàng nhất. TikTok có một bộ máy quét AI cực kỳ nghiêm ngặt. Chỉ cần một phát ngôn hớ hênh, kênh của bạn có thể bị khóa vĩnh viễn (bay kênh)."
+          "c": "Đang chốt hàng trăm đơn bỗng nhiên màn hình văng ra ngoài báo 'Phiên live bị đình chỉ'? Đây là ác mộng kinh hoàng nhất, có thể quét sạch toàn bộ doanh thu và công sức xây kênh của bạn. Hệ thống AI của TikTok là một cỗ máy quét kiểm duyệt tàn nhẫn không có ngoại lệ. Chỉ cần một phát ngôn hớ hênh hoặc một sai lầm nhỏ trong khung hình, kênh của bạn có thể nhận 'án tử' (khóa vĩnh viễn) ngay lập tức."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "3 Tử Huyệt Cấm Kỵ Tuyệt Đối"
+          "c": "3 Tử Huyệt Cấm Kỵ Tuyệt Đối Phải Tránh"
         },
         {
           "t": "p",
-          "c": "1. Vi phạm từ khóa cường điệu (Over-claim): Cấm tuyệt đối các từ: 'Chữa trị dứt điểm', 'Cam kết 100% hết bệnh', 'Rẻ nhất Việt Nam', 'Top 1 thế giới'. AI quét từ khóa giọng nói theo thời gian thực (Real-time). Hãy dùng từ nói giảm nói tránh: 'Hỗ trợ cải thiện', 'Mức giá ưu đãi'."
+          "c": "1. Vi Phạm Từ Khóa Cường Điệu (Over-claiming): Tránh xa các từ ngữ mang tính cam kết tuyệt đối: 'Chữa trị dứt điểm 100%', 'Rẻ nhất Việt Nam', 'Top 1 thế giới', 'Đảm bảo khỏi bệnh'. AI sẽ bóc băng (transcribe) giọng nói của bạn theo thời gian thực (Real-time). Lời khuyên: Hãy sử dụng ngôn từ an toàn như 'Hỗ trợ cải thiện', 'Giúp làm mờ', 'Mức giá cực kỳ ưu đãi'."
         },
         {
           "t": "p",
-          "c": "2. Điều hướng giao dịch ngoài nền tảng (Traffic Hijacking): Nhắc đến Facebook, Zalo, Shopee hay để lộ số điện thoại, mã QR tài khoản ngân hàng cá nhân là 'án tử' lập tức. TikTok không cho phép bạn cướp khách của họ ra ngoài."
+          "c": "2. Điều Hướng Giao Dịch Ngoại Tuyến (Traffic Hijacking): Nhắc đến Facebook, Zalo, Shopee hay để lộ số điện thoại, mã QR tài khoản ngân hàng cá nhân là hành vi bị trừng phạt nặng nhất. TikTok cấm tuyệt đối việc bạn 'hớt tay trên' và kéo người dùng của họ ra khỏi nền tảng để giao dịch riêng."
         },
         {
           "t": "p",
-          "c": "3. Trẻ em xuất hiện đơn độc: Chính sách bảo vệ trẻ vị thành niên rất gắt. Trẻ em dưới 18 tuổi không được phép lên sóng một mình. Phải luôn có người lớn (bố mẹ) xuất hiện cùng trong khung hình."
+          "c": "3. Trẻ Vị Thành Niên Lên Sóng Đơn Độc: Chính sách bảo vệ trẻ em của TikTok không có chỗ cho sự thỏa hiệp. Trẻ em (dưới 18 tuổi) tuyệt đối không được phép xuất hiện một mình trong khung hình Livestream. Nếu có trẻ em, bắt buộc phải có người lớn (bố mẹ/người giám hộ) ngồi cạnh và tương tác cùng."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Lỗi ăn mặc và bối cảnh"
+          "c": "Cạm Bẫy Trang Phục Và Bối Cảnh"
         },
         {
           "t": "p",
-          "c": "Trang phục khoét sâu hở bạo, hở rãnh ngực hoặc mặc đồ lót lên sóng sẽ bị AI quét là khiêu dâm. Phía sau background nếu có logo của các thương hiệu lớn (Nike, Adidas) mà không có giấy phép bán hàng cũng sẽ bị gậy bản quyền (Copyright Strike)."
+          "c": "Mặc trang phục hở hang, khoét ngực sâu, đồ lót, hoặc đồ bơi (trừ khi live ở hồ bơi/biển) sẽ lập tức bị AI gán mác khiêu dâm và bóp nghẹt tương tác. Ngoài ra, nếu background phía sau dính logo của các thương hiệu lớn (Nike, Adidas, Apple) mà bạn không trình được giấy phép ủy quyền, kênh sẽ ăn gậy bản quyền (Copyright Strike) ngay trong buổi live."
         },
         {
           "t": "quote",
-          "c": "Xây kênh mất 3 năm, mất kênh chỉ trong 3 giây. Đừng bao giờ thách thức AI của nền tảng!"
+          "c": "Bạn có thể mất 3 năm để xây dựng một kênh triệu view, nhưng chỉ cần đúng 3 giây ngu ngốc để mất trắng nó. Đừng bao giờ thách thức AI của nền tảng!"
         }
       ]
     },
@@ -1836,24 +1844,24 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Imagine closing hundreds of orders when suddenly your screen goes black with a 'Broadcast Suspended' notification. This is a streamer's worst nightmare. TikTok utilizes aggressive, real-time AI scanning. One careless mistake can permanently ban your account."
+          "c": "Imagine peaking in viewers, closing hundreds of orders, when suddenly your screen goes black with a stark 'Broadcast Suspended' notification. This is the ultimate creator nightmare. TikTok's AI enforcement engine is a ruthless, unyielding machine. A single verbal slip-up or framing error can result in an instant, permanent ban, erasing years of hard work."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "The 3 Deadly Sins of Streaming"
+          "c": "The 3 Fatal Streaming Sins"
         },
         {
           "t": "p",
-          "c": "1. Over-Claiming Keywords: Absolute bans apply to words like: '100% Cure', 'Guaranteed recovery', or 'Number 1 in the world'. The AI listens and transcribes your voice in real-time. Use softer terminology like: 'Supports improvement' or 'Exclusive pricing'."
+          "c": "1. Over-Claiming & Exaggerated Guarantees: Absolute bans apply to aggressively definitive terms like: '100% Cure', 'Guaranteed recovery', 'Number 1 globally', or 'Cheapest ever'. The AI actively transcribes your live audio in real-time. Survival Tactic: Pivot to compliant terminology such as 'Supports improvement', 'Aids in recovery', or 'Exclusive promotional pricing'."
         },
         {
           "t": "p",
-          "c": "2. Off-Platform Traffic Hijacking: Mentioning Facebook, Instagram, direct phone numbers, or displaying personal bank QR codes is an instant death sentence. TikTok strictly prohibits diverting their users off the app."
+          "c": "2. Off-Platform Traffic Hijacking: Verbally mentioning competitor platforms (Instagram, Amazon), displaying personal phone numbers, or showing bank QR codes is an immediate death sentence. TikTok fiercely protects its ecosystem and will instantly terminate accounts attempting to siphon users off-app for private transactions."
         },
         {
           "t": "p",
-          "c": "3. Unaccompanied Minors: Minor protection policies are brutally strict. Anyone under 18 cannot appear on screen alone. A legal adult or parent must be visibly present in the frame at all times."
+          "c": "3. Unaccompanied Minors on Screen: Minor protection policies are brutally enforced with zero margin for error. Anyone under 18 cannot be the sole focus of a livestream. A legal adult or guardian must be visibly present and actively participating in the frame at all times."
         },
         {
           "t": "h",
@@ -1862,11 +1870,11 @@ export const articles: Record<string, Article> = {
         },
         {
           "t": "p",
-          "c": "Deep plunging necklines or wearing lingerie on camera triggers the AI's NSFW filters. Furthermore, if your background displays unauthorized logos of mega-brands (like Nike or Apple), you will instantly receive a fatal Copyright Strike."
+          "c": "Deep plunging necklines, sheer clothing, or broadcasting in lingerie/swimwear (unless contextually at a beach) aggressively triggers NSFW AI filters, throttling your reach to zero. Furthermore, if your background passively displays unauthorized logos of mega-brands (Nike, Louis Vuitton), expect a swift and automated Copyright Strike."
         },
         {
           "t": "quote",
-          "c": "It takes 3 years to build a channel and 3 seconds to lose it. Never play games with the platform's AI!"
+          "c": "It takes 3 grueling years of consistency to build a massive channel, and exactly 3 seconds of ignorance to lose it forever. Never play games with the platform's AI!"
         }
       ]
     }
@@ -1891,37 +1899,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Mô hình mở cửa hàng mặt phố, treo biển đỏ chót và ngồi đợi khách vãng lai đã chính thức chết yểu. Trong kỷ nguyên thương mại điện tử 2026, mặt tiền đắt giá nhất không phải là đường Nguyễn Trãi hay Phố Huế, mà là 'Màn hình điện thoại' của người dùng."
+          "c": "Mô hình kinh doanh 'Thạch Sanh': Mở một cửa hàng mặt phố sầm uất, treo tấm biển đỏ chót, khai trương rình rang rồi ung dung ngồi bấm điện thoại đợi khách vãng lai bước vào... đã chính thức bị chôn vùi. Trong kỷ nguyên thương mại điện tử khốc liệt 2026, mặt tiền đắt giá nhất không còn là đường Nguyễn Trãi hay phố Hai Bà Trưng. Mặt tiền sinh tử duy nhất chính là 'Màn hình điện thoại 6 inch' của người tiêu dùng."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Sự Dịch Chuyển Quyền Lực"
+          "c": "Sự Đảo Chiều Quyền Lực Thương Mại"
         },
         {
           "t": "p",
-          "c": "1. Nội dung là Cửa Hàng: Khách hàng không đến tận nơi để sờ sản phẩm. Họ mua hàng thông qua Video Ngắn (Shorts) và Livestream. Nếu bạn không biết quay video, cửa hàng của bạn coi như đang đóng cửa vô thời hạn trên Internet."
+          "c": "1. Nội Dung (Content) Chính Là Cửa Hàng: Khách hàng hiện đại lười biếng. Họ không đội nắng mưa đến tận nơi để sờ sản phẩm nữa. Họ ra quyết định mua hàng thông qua Video Ngắn (Shorts/Reels) và Livestream. Nếu doanh nghiệp của bạn không có khả năng sản xuất nội dung video, cửa hàng của bạn coi như đang treo biển 'Đóng cửa vĩnh viễn' trên bản đồ Internet."
         },
         {
           "t": "p",
-          "c": "2. Chuyên gia thay thế Sales: Người tiêu dùng đã quá mệt mỏi với các nhân viên chèo kéo. Họ chỉ mua từ những 'Chuyên gia KOC' (Key Opinion Consumers) - những người dùng thật, review thật và tư vấn bằng kiến thức chuyên sâu, không phải đọc vẹt thông số."
+          "c": "2. Chuyên Gia Thay Thế Sales Truyền Thống: Người tiêu dùng đã phát ngán với những nhân viên chèo kéo, học thuộc lòng thông số. Khách hàng giờ đây trao niềm tin tuyệt đối cho các 'Chuyên gia KOC' (Key Opinion Consumers). Họ cần những người dùng thật, chia sẻ trải nghiệm thật, review tàn nhẫn những khuyết điểm và tư vấn bằng kiến thức chuyên sâu thực chiến."
         },
         {
           "t": "p",
-          "c": "3. Tốc độ thay thế Quy mô: Một cá nhân livestream tại phòng ngủ có thể tạo ra doanh thu 1 tỷ/tháng, đánh bại hoàn toàn một chuỗi siêu thị 5 chi nhánh phải gánh chi phí mặt bằng và nhân sự khổng lồ."
+          "c": "3. Tốc Độ Đè Bẹp Quy Mô (Speed over Scale): Một cá nhân livestream chốt đơn ngay tại phòng ngủ có thể dễ dàng tạo ra doanh thu 1-2 tỷ/tháng. Họ linh hoạt, chi phí vận hành bằng 0, và đánh bại hoàn toàn một chuỗi bán lẻ 5 chi nhánh đang oằn mình gánh chi phí mặt bằng và quỹ lương khổng lồ."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Hành động ngay hôm nay"
+          "c": "Chìa Khóa Hành Động Ngay Hôm Nay"
         },
         {
           "t": "p",
-          "c": "Hãy gạt bỏ sự ngại ngùng. Cầm điện thoại lên, bật Ringlight và quay video chia sẻ giá trị. Hãy chấp nhận việc 10 video đầu tiên sẽ rất dở tệ. Sự hoàn hảo là kẻ thù của hành động. Làm đều đặn, tối ưu từng ngày là con đường duy nhất."
+          "c": "Hãy gạt bỏ ngay sĩ diện và sự ngại ngùng ngớ ngẩn. Cầm điện thoại lên, bật Ringlight, bấm quay và bắt đầu chia sẻ giá trị. Hãy chấp nhận sự thật tàn khốc: 20 video đầu tiên của bạn sẽ vô cùng rác rưởi và thảm họa. Nhưng sự hoàn hảo chính là kẻ thù số một của hành động. Làm liên tục, tối ưu từng ngày là con đường sinh tồn duy nhất."
         },
         {
           "t": "quote",
-          "c": "Đừng cố tìm cách bán hàng cho người lạ. Hãy sáng tạo nội dung để người lạ tự xếp hàng khao khát mua đồ của bạn!"
+          "c": "Đừng tốn tiền chạy quảng cáo để nài nỉ người lạ mua hàng. Hãy sáng tạo ra những nội dung xuất chúng để người lạ phải xếp hàng khao khát được trả tiền cho bạn!"
         }
       ]
     },
@@ -1934,37 +1942,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "The era of renting expensive storefronts, hanging neon signs, and waiting for foot traffic is officially dead. In the 2026 e-commerce landscape, the most expensive real estate is no longer Fifth Avenue—it is the 6-inch screen of a smartphone."
+          "c": "The legacy retail model—renting an expensive prime storefront, hanging a glaring neon sign, and passively waiting for foot traffic to wander in—has been officially eradicated. In the hyper-competitive 2026 e-commerce landscape, the most expensive and valuable real estate on earth is no longer Fifth Avenue or Oxford Street. It is the 6-inch vertical screen of a smartphone."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "The Shift in Commercial Power"
+          "c": "The Massive Shift in Commercial Power"
         },
         {
           "t": "p",
-          "c": "1. Content IS the Storefront: Customers no longer drive miles to touch physical products. They buy through Short-form Videos and Livestreams. If you aren't producing video content, your digital storefront is effectively permanently closed."
+          "c": "1. Content IS the Digital Storefront: Modern consumers are fiercely convenience-driven. They no longer drive across town to physically touch products. Buying decisions are now entirely dictated by Short-form Videos and Livestreams. If your brand cannot consistently produce high-converting video content, your digital storefront is effectively boarded up and bankrupt."
         },
         {
           "t": "p",
-          "c": "2. Experts Replace Salesmen: Consumers are exhausted by pushy salespeople. They now buy exclusively from KOCs (Key Opinion Consumers)—real users who provide brutal, authentic reviews and deep domain knowledge, rather than reciting boring spec sheets."
+          "c": "2. Domain Experts Replace Pushy Salesmen: Consumers have developed absolute immunity to pushy salespeople reciting scripted tech specs. Trust has shifted entirely to KOCs (Key Opinion Consumers). Buyers demand authentic users providing brutal, unfiltered reviews and consulting them based on deep, battle-tested domain expertise."
         },
         {
           "t": "p",
-          "c": "3. Speed Defeats Scale: A single solo-entrepreneur livestreaming from a bedroom can generate six-figure monthly revenues, completely obliterating a 5-chain retail corporation drowning in massive overhead and payroll costs."
+          "c": "3. Speed Ruthlessly Defeats Scale: A solo creator livestreaming from a tiny bedroom setup can easily generate six-figure monthly revenues. With near-zero operational friction, they can rapidly outmaneuver and financially crush a traditional 5-location retail chain suffocating under massive overhead, rent, and payroll burdens."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Take Action Today"
+          "c": "The Ultimate Imperative for Action"
         },
         {
           "t": "p",
-          "c": "Drop your insecurities. Pick up your phone, turn on a Ringlight, and start recording value-driven content. Accept that your first 10 videos will be garbage. Perfectionism is the enemy of execution. Consistency and daily optimization is the only path."
+          "c": "Drop your ego and shatter your insecurities today. Mount your phone, blast the Ringlight, hit record, and start broadcasting sheer value. You must accept a brutal truth: your first 20 videos will be absolute, unwatchable garbage. Perfectionism is the ultimate enemy of execution. Relentless consistency and daily micro-optimizations are the only paths to digital survival."
         },
         {
           "t": "quote",
-          "c": "Stop trying to aggressively sell to strangers. Create incredible content so strangers line up begging to buy from you!"
+          "c": "Stop burning cash trying to aggressively force strangers to buy. Engineer phenomenal content so that strangers literally line up, begging to hand you their money!"
         }
       ]
     }
@@ -1989,37 +1997,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Thiết bị quay phim luôn là khoản đầu tư đau đầu nhất. Nếu mua sai, bạn vừa mất hàng chục triệu, vừa nhận lại hình ảnh nhòe nhoẹt. Bài viết này sẽ phân loại rõ 3 cấp độ đầu tư Camera phù hợp với từng giai đoạn khởi nghiệp của bạn."
+          "c": "Trong ngành công nghiệp Livestream, thiết bị quay phim luôn là hố đen 'đốt tiền' đau đớn nhất. Nếu xuống tiền sai cách, bạn không chỉ lãng phí hàng chục triệu đồng mà còn nhận lại một luồng live nhòe nhoẹt, giật lag, hủy hoại hoàn toàn trải nghiệm khách hàng. Bài viết này sẽ phân loại minh bạch 3 cấp độ đầu tư Camera chiến lược, thiết kế chuẩn xác cho từng giai đoạn vòng đời kinh doanh của bạn."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "3 Cấp Độ Đầu Tư Camera"
+          "c": "Ma Trận Đầu Tư Thiết Bị Ghi Hình"
         },
         {
           "t": "p",
-          "c": "1. Cấp độ 1: Dùng điện thoại (Ngân sách 0đ). Nếu bạn mới bắt đầu, chiếc iPhone 11 trở lên hoặc Samsung S22 đã quá đủ. Camera của smartphone đời mới có khả năng cân bằng trắng và xử lý da (skin tone) cực tốt bằng AI. Nhược điểm duy nhất là không thể xóa phông (bokeh) đẹp như máy ảnh."
+          "c": "1. Cấp Độ Khởi Nghiệp (Ngân sách 0đ): Đừng vội mua máy ảnh. Nếu bạn mới bắt đầu, chiếc iPhone 12 Pro Max hoặc Samsung S22 Ultra đang nằm trong túi bạn là vũ khí quá đủ. Chip xử lý AI của smartphone đời mới có khả năng cân bằng trắng (White Balance) và cà mịn da (Skin Tone) xuất sắc. Yếu điểm duy nhất là chiều sâu trường ảnh (Xóa phông) bằng thuật toán đôi khi bị lẹm viền."
         },
         {
           "t": "p",
-          "c": "2. Cấp độ 2: Webcam chuyên nghiệp (Ngân sách 2-5 Triệu). Logitech Brio 4K hoặc Insta360 Link là lựa chọn hoàn hảo. Nó cắm thẳng vào máy tính qua cổng USB (Plug & Play), không cần Capture Card đắt tiền. Chế độ lấy nét tự động (Autofocus) siêu nhanh, bám sát khuôn mặt khi bạn di chuyển."
+          "c": "2. Cấp Độ Bán Chuyên (Ngân sách 2 - 5 Triệu): Nâng cấp hoàn hảo nhất là Webcam chuẩn 4K thông minh. Các dòng như Logitech Brio 4K hay Insta360 Link là chân ái. Ưu điểm tuyệt đối: Cắm trực tiếp vào máy tính qua cổng USB (Plug & Play), bỏ qua hoàn toàn chi phí mua Capture Card đắt đỏ. Hệ thống lấy nét tự động (AI Autofocus) bám sát khuôn mặt bạn với tốc độ kinh hồn khi chốt đơn cường độ cao."
         },
         {
           "t": "p",
-          "c": "3. Cấp độ 3: Máy ảnh Mirrorless (Ngân sách > 15 Triệu). Dành cho các Studio chuyên nghiệp. Combo huyền thoại hiện nay là Sony ZV-E10 hoặc A6700 kết hợp Lens Sigma 16mm F1.4. Bộ đôi này sẽ cho ra chất lượng 'Cinematic' với hậu cảnh xóa phông mờ mịt, tôn lên sự sang trọng tối đa cho sản phẩm."
+          "c": "3. Cấp Độ Studio Pro (Ngân sách > 20 Triệu): Sân chơi của các 'Cá Mập'. Combo huyền thoại định chuẩn ngành hiện nay là máy ảnh Sony ZV-E10 hoặc A6700, kết hợp ống kính Sigma 16mm F1.4. Bộ trang bị này tạo ra chất lượng hình ảnh 'Cinematic' (chuẩn điện ảnh), hậu cảnh xóa phông mờ mịt (Creamy Bokeh), đẩy sự sang trọng của sản phẩm lên mức tối đa."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Sai lầm chí mạng"
+          "c": "Lỗi Chết Người Của Dân Nghiệp Dư"
         },
         {
           "t": "p",
-          "c": "Tuyệt đối không mua máy ảnh DSLR đời cũ (như Canon 700D, 5D Mark II) để livestream. Chúng không hỗ trợ Clean HDMI (có viền thông số trên màn hình) và cảm biến sẽ bị nóng (Overheat), tự sập nguồn chỉ sau 30 phút quay."
+          "c": "Tội ác lớn nhất là mua lại các dòng máy ảnh DSLR đời tống (như Canon 70D, 5D Mark II) để cố ép chúng làm máy Livestream. Chúng không hỗ trợ xuất luồng Clean HDMI (màn hình sẽ dính đầy vạch thông số ISO, Khẩu độ). Tệ hơn, cảm biến cũ sẽ bị quá nhiệt (Overheating) và tự động sập nguồn cúp màn hình đen thui chỉ sau 30 phút hoạt động, giết chết phiên live của bạn."
         },
         {
           "t": "quote",
-          "c": "Đừng mua máy ảnh đắt tiền nếu bạn chưa làm chủ được kỹ năng chiếu sáng. Ánh sáng mới là vua!"
+          "c": "Đừng bao giờ vung tiền mua một chiếc máy ảnh 50 triệu nếu bạn chưa biết cách setup một cây đèn 500 ngàn. Trong quay phim, Ánh Sáng mới là vị Vua định đoạt mọi thứ!"
         }
       ]
     },
@@ -2032,37 +2040,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Camera gear is always the most stressful investment. Buy the wrong one, and you waste thousands of dollars for blurry results. This guide breaks down the 3 investment tiers tailored to your exact stage of business growth."
+          "c": "In the live commerce industry, camera gear is notoriously the most brutal money pit. Invest blindly, and you will not only burn thousands of dollars but also end up with a blurry, lag-infested broadcast that utterly destroys customer trust. This masterclass strictly categorizes the 3 strategic tiers of camera investment, precisely engineered to match your current phase of business scaling."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "The 3 Tiers of Camera Investments"
+          "c": "The Strategic Camera Investment Matrix"
         },
         {
           "t": "p",
-          "c": "1. Tier 1: The Smartphone ($0 Budget). If you are just starting, an iPhone 11+ or Samsung S22+ is more than enough. Modern smartphone AI processes skin tones and white balance exceptionally well. The only downside is the lack of optical background blur (bokeh)."
+          "c": "1. The Bootstrapper Tier ($0 Budget): Do not buy a camera yet. If you are just launching, the iPhone 12 Pro Max or Samsung S22 Ultra currently in your pocket is a devastatingly effective weapon. Modern smartphone computational AI handles White Balance and Skin Tone optimization flawlessly out of the box. The only minor flaw is algorithmic background blur (Portrait Mode) occasionally clipping edges."
         },
         {
           "t": "p",
-          "c": "2. Tier 2: Pro Webcams ($100 - $300 Budget). Logitech Brio 4K or Insta360 Link are perfect mid-tier upgrades. They plug directly into your PC via USB (Plug & Play) without needing an expensive Capture Card. Their AI Autofocus aggressively tracks your face as you move."
+          "c": "2. The Prosumer Tier ($100 - $300 Budget): The smartest mid-level upgrade is a smart 4K Webcam. Devices like the Logitech Brio 4K or Insta360 Link are absolute game-changers. The killer advantage: Pure Plug-and-Play via USB, completely bypassing the need to buy an expensive, clunky HDMI Capture Card. Their AI-driven Autofocus aggressively tracks your face with lethal speed during high-energy sales pitches."
         },
         {
           "t": "p",
-          "c": "3. Tier 3: Mirrorless Cameras (>$1,000 Budget). Strictly for professional studios. The legendary combo is the Sony ZV-E10 paired with a Sigma 16mm F1.4 lens. This delivers that creamy, cinematic background blur that makes your products look luxuriously expensive."
+          "c": "3. The Studio Masterclass Tier (>$1,500 Budget): Welcome to the big leagues. The undeniable industry standard combo is a Mirrorless Sony ZV-E10 or A6700, hard-mounted with a Sigma 16mm F1.4 lens. This rig unleashes true 'Cinematic' quality. It delivers a creamy, optical background blur (Bokeh) that isolates the host and elevates product premiumness to maximum psychological impact."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "The Fatal Rookie Mistake"
+          "c": "The Catastrophic Amateur Mistake"
         },
         {
           "t": "p",
-          "c": "Never buy old-generation DSLR cameras (like the Canon 700D) for streaming. They lack 'Clean HDMI' (meaning camera settings UI will appear on your stream) and their sensors suffer from severe overheating, causing them to shut down after 30 minutes."
+          "c": "The ultimate cardinal sin is buying antiquated DSLR cameras (like the Canon 70D or 5D Mark II) and forcing them into a livestream workflow. They critically lack 'Clean HDMI' output (your stream will be littered with ugly ISO and Shutter Speed UI overlays). Worse, their old sensors suffer from rapid Overheating, causing the camera to abruptly shut down and kill your stream 30 minutes into a live session."
         },
         {
           "t": "quote",
-          "c": "Do not buy an expensive camera until you have mastered lighting. Light is the absolute king!"
+          "c": "Never blow $2,000 on a high-end camera body if you haven't mastered a $30 key light. In the visual world, Lighting is the supreme, undisputed King!"
         }
       ]
     }
@@ -2087,37 +2095,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Nhiều chủ doanh nghiệp vẫn giữ tư duy: 'Cứ lấy cái điện thoại ra quay đại đi, có người mua là được'. Tư duy này có thể đúng ở năm 2019, nhưng ở năm 2026, nó là công thức tự sát. Khách hàng ngày càng khó tính, họ từ chối xem những luồng live mờ ảo, tạp âm ồn ào."
+          "c": "Nhiều chủ doanh nghiệp vẫn ngoan cố ôm giữ tư duy tàn dư: 'Cứ lấy cái điện thoại ra quay đại đi, rẻ tiền, có người xem là được'. Tư duy này có thể sống sót ở thời kỳ hoang sơ 2019, nhưng ở năm 2026, nó là một bản án tử hình. Khách hàng đã bị 'chiều hư' bởi các nội dung chất lượng cao. Họ cực kỳ khó tính và sẽ ngay lập tức lướt qua (Swipe away) những luồng live mờ ảo, âm thanh rè rẹt và bối cảnh xập xệ."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Studio Là Mặt Tiền Thế Kỷ 21"
+          "c": "Studio Là Mặt Tiền Số Thế Kỷ 21"
         },
         {
           "t": "p",
-          "c": "1. Định vị thương hiệu (Brand Positioning): Khi khách hàng lướt qua một phòng live có đánh đèn RGB sang trọng, âm thanh ấm áp, hình ảnh 4K xóa phông, não bộ họ tự động kích hoạt nhận thức: 'Đây là một thương hiệu uy tín, sản phẩm chắc chắn chất lượng'."
+          "c": "1. Định Vị Thương Hiệu Phủ Đầu (Brand Positioning): Khi khách hàng lướt vào một phòng live có ánh sáng RGB điện ảnh, âm thanh mic condenser trầm ấm, hình ảnh 4K sắc nét với hậu cảnh xóa phông (Bokeh), não bộ họ bị thao túng ngay trong 3 giây đầu: 'Đây là một thương hiệu triệu đô, sản phẩm chắc chắn cao cấp'. Giao diện sang trọng chính là chiếc khiên bảo vệ giá bán của bạn."
         },
         {
           "t": "p",
-          "c": "2. Tăng tỷ lệ chuyển đổi (CVR): Hình ảnh sắc nét giúp khách hàng nhìn rõ từng đường kim mũi chỉ của chiếc áo, hay chất kem mướt mịn của hộp mỹ phẩm. Sự chân thực ở tiêu chuẩn cao (High-fidelity) sẽ phá vỡ mọi rào cản nghi ngờ khi mua hàng online."
+          "c": "2. Bơm Thổi Tỷ Lệ Chốt Đơn (CVR): Hình ảnh sắc nét đến từng pixel giúp khách hàng soi rõ từng đường kim mũi chỉ của chiếc túi xách, hay độ mướt mịn của một lớp kem nền. Sự chân thực ở tiêu chuẩn điện ảnh (High-fidelity) sẽ đập nát mọi rào cản hoài nghi, khiến họ rút ví mà không cần đắn đo suy nghĩ."
         },
         {
           "t": "p",
-          "c": "3. Tuyển dụng Host dễ dàng: Không một KOC/KOL tài năng nào muốn livestream trong một cái kho xập xệ, nóng nực. Sở hữu một Studio xịn xò là thỏi nam châm thu hút nhân sự sales chất lượng cao về đầu quân cho bạn."
+          "c": "3. Mồi Nhử Nhân Tài (Talent Acquisition): Không một KOC/KOL xuất chúng hay một Mega-Host nào chấp nhận livestream trong một cái kho chứa đồ nóng nực, lộn xộn. Sở hữu một Studio chuẩn quốc tế là thỏi nam châm quyền lực nhất để hút dòng máu nhân sự Sales tinh hoa về đầu quân cho hệ sinh thái của bạn."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Bài toán ROI (Tỷ suất lợi nhuận)"
+          "c": "Bài Toán Lợi Nhuận Sinh Tử (ROI)"
         },
         {
           "t": "p",
-          "c": "Bạn bỏ ra 50 triệu để setup Studio. Số tiền này chỉ bằng tiền thuê mặt bằng 1 tháng của cửa hàng vật lý. Nhưng Studio đó giúp bạn tiếp cận hàng chục triệu người trên Internet trong suốt 3 năm tiếp theo không tốn thêm 1 xu chi phí mặt bằng."
+          "c": "Bạn hoảng sợ khi phải bỏ ra 50 triệu để setup Studio? Sự thật là, số tiền đó chỉ bằng tiền thuê mặt bằng 1 tháng của một cửa hàng nhỏ giọt khách trên phố. Nhưng 50 triệu đó đầu tư vào Studio sẽ cung cấp một cỗ máy in tiền, cho phép bạn tiếp cận hàng triệu khách hàng toàn cầu liên tục 24/7 trong suốt 3 năm tiếp theo mà không tốn thêm 1 xu chi phí mặt bằng nào."
         },
         {
           "t": "quote",
-          "c": "Setup Studio Livestream là khoản đầu tư hạ tầng rẻ nhất nhưng mang lại đòn bẩy tài chính lớn nhất!"
+          "c": "Đầu tư Studio Livestream không phải là chi phí tiêu sản. Nó là hạ tầng vũ khí rẻ nhất mang lại đòn bẩy tài chính tàn bạo nhất trong kỷ nguyên số!"
         }
       ]
     },
@@ -2130,37 +2138,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Many business owners still think: 'Just use a phone and hit record, someone will buy.' That mindset worked in 2019, but in 2026, it’s a recipe for bankruptcy. Customers have evolved; they aggressively refuse to watch blurry, noisy, low-effort broadcasts."
+          "c": "Many business owners stubbornly cling to a dinosaur mindset: 'Just prop up a cheap phone and hit record, people will buy anyway.' That logic barely survived the wild west of 2019; in 2026, it is corporate suicide. Modern consumers have been severely spoiled by high-production value. They are ruthlessly impatient and will instantly swipe away from any broadcast infected with blurry pixels, blown-out audio, and a trashy background."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "The 21st Century Storefront"
+          "c": "The 21st Century Digital Storefront"
         },
         {
           "t": "p",
-          "c": "1. Brand Positioning: When viewers scroll into a stream with cinematic RGB lighting, rich audio, and 4K depth-of-field, their brain subconsciously registers: 'This is a premium, trustworthy brand; their products must be top-tier.'"
+          "c": "1. Psychological Brand Positioning: When a viewer scrolls into a stream bathed in cinematic RGB lighting, resonant condenser mic audio, and a 4K depth-of-field background (Bokeh), their subconscious is instantly manipulated: 'This is a million-dollar brand; their products must be flawless.' Premium aesthetics act as an impenetrable shield defending your high pricing."
         },
         {
           "t": "p",
-          "c": "2. Skyrocketing Conversion Rates (CVR): Razor-sharp resolution allows customers to see the exact stitching on a jacket or the flawless texture of a skin cream. High-fidelity visual evidence shatters the inherent skepticism of online shopping."
+          "c": "2. Violent CVR Acceleration (Conversion Rate): Razor-sharp, pixel-perfect resolution allows the buyer to inspect the flawless stitching on a leather bag or the buttery texture of a premium foundation. High-fidelity visual evidence annihilates the inherent skepticism of online shopping, forcing impulse buys."
         },
         {
           "t": "p",
-          "c": "3. Talent Acquisition: No highly-skilled KOC or Sales Host wants to broadcast from a sweaty, cluttered warehouse. A professional studio acts as a massive magnet to attract top-tier sales talent to your company."
+          "c": "3. Apex Talent Acquisition: Zero high-performing KOCs, KOLs, or Mega-Hosts will tolerate broadcasting from a sweaty, chaotic warehouse. Owning a state-of-the-art studio is the ultimate flex—a magnetic force that effortlessly lures elite, high-closing sales talent into your ecosystem."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "The ROI Equation"
+          "c": "The Undeniable ROI Equation"
         },
         {
           "t": "p",
-          "c": "Spending $2,000 to build a studio equals just one month's rent for a physical retail store. However, that studio gives you the power to reach millions of internet users daily for the next 3 years with zero additional real estate costs."
+          "c": "Terrified of spending $2,000 to build a studio? Face reality: that exact amount covers barely one month's rent for a struggling physical store with zero foot traffic. That same $2,000 invested in a Studio constructs a money-printing machine, granting you global access to millions of daily viewers for the next 3 years—with zero recurring real estate costs."
         },
         {
           "t": "quote",
-          "c": "A Livestream Studio is the cheapest infrastructure investment that provides the most violent financial leverage!"
+          "c": "A Professional Studio is not a depreciating expense. It is the cheapest infrastructure investment capable of generating the most violent financial leverage in the digital age!"
         }
       ]
     }
@@ -2185,37 +2193,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Ngày live đầu tiên luôn là ngày ám ảnh nhất. Tim đập chân run, không biết nói gì, và nỗi sợ không có ai xem có thể đánh gục ý chí của bạn. Đừng lo lắng, kịch bản 90 phút dưới đây sẽ là chiếc phao cứu sinh giúp bạn vượt qua 'Lần đầu tiên'."
+          "c": "Ngày Live đầu tiên (Debut) luôn là một cơn ác mộng kinh hoàng. Tim đập loạn nhịp, não bộ đóng băng quên sạch kịch bản, và nỗi ám ảnh tột độ khi nhìn con số '0 người xem' có thể đánh gục ý chí của bất kỳ ai. Đừng hoảng loạn. Kịch bản sinh tồn 90 phút dưới đây chính là chiếc phao cứu sinh được thiết kế riêng để giúp bạn vượt qua 'Lần đầu tiên' một cách an toàn và chuyên nghiệp."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Lộ Trình Sinh Tồn 90 Phút"
+          "c": "Lộ Trình Sinh Tồn 90 Phút Thần Thánh"
         },
         {
           "t": "p",
-          "c": "1. 30 Phút Khởi Động (Làm quen ống kính): Hãy xem đây là buổi diễn tập có khán giả. Không bán hàng. Chủ đề: 'Chào hỏi, kể lý do tại sao mình bắt đầu kênh TikTok này'. Mục tiêu duy nhất là nói trơn tru, mắt nhìn thẳng vào camera và tập thở."
+          "c": "1. 30 Phút Khởi Động (Làm quen ống kính): Hãy xem đây chỉ là một buổi diễn tập riêng tư có mở public. Tuyệt đối không cố bán hàng. Chủ đề: 'Chào hỏi, chia sẻ câu chuyện tại sao tôi lại ngồi đây và xây dựng kênh này'. Mục tiêu sống còn: Giữ nhịp thở đều, mắt nhìn thẳng xoáy sâu vào ống kính camera thay vì màn hình, và để cơ mặt được giãn ra."
         },
         {
           "t": "p",
-          "c": "2. 30 Phút Tương Tác (Phá Băng): Tổ chức một Minigame cực dễ. Ví dụ: 'Đoán 2 số cuối tờ tiền để nhận thẻ cào 50k'. Việc có người comment sẽ giúp bạn có đà (momentum) để đọc tên và giao lưu. Cảm giác 'Có người đang nghe mình' sẽ triệt tiêu hoàn toàn sự run rẩy."
+          "c": "2. 30 Phút Phá Băng (Tương Tác Cơ Bản): Bắt đầu tổ chức một Minigame cực kỳ ngu ngốc và dễ trúng. Ví dụ: 'Comment 2 số cuối năm sinh, ai trùng nhau nhận ngay thẻ cào 50k'. Việc có người lạ nhảy vào comment sẽ kích hoạt đà hưng phấn (Momentum). Khi bạn bắt đầu đọc tên và giao lưu với họ, cảm giác 'Đang có người thật nghe mình' sẽ triệt tiêu 100% sự run rẩy."
         },
         {
           "t": "p",
-          "c": "3. 30 Phút Giới Thiệu (Nhá Hàng): Bắt đầu đưa 1-2 sản phẩm tốt nhất lên màn hình. Đừng ép khách mua. Hãy nói: 'Hôm nay ngày đầu tiên lên sóng, em chỉ giới thiệu cho mọi người biết nhà em có hàng ngon. Không mua không sao ạ!'. Sự chân thật này sẽ khiến tệp khách hàng đầu tiên rất có thiện cảm."
+          "c": "3. 30 Phút Nhá Hàng (Soft Pitching): Bắt đầu đưa 1-2 sản phẩm tốt nhất, tự hào nhất lên màn hình. Không chốt đơn ép buộc (Hard-sell). Hãy dùng đòn tâm lý: 'Hôm nay ngày đầu lên sóng, em chỉ muốn khoe với mọi người chất lượng hàng nhà em xịn thế nào. Mọi người xem cho vui, không mua không sao cả!'. Sự chân thật vô hại này sẽ tháo gỡ lớp phòng bị của khách, tạo ra thiện cảm khổng lồ."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Vũ khí bí mật"
+          "c": "Vũ Khí Bí Mật (Seeding)"
         },
         {
           "t": "p",
-          "c": "Hãy nhờ 3-5 người bạn thân hoặc nhân viên cầm điện thoại xem live (Chim mồi). Nhờ họ đặt những câu hỏi mồi như: 'Sản phẩm này da dầu dùng được không?'. Bạn sẽ có cớ để trả lời lưu loát thay vì ngồi im như tượng."
+          "c": "Hãy gạt bỏ sĩ diện, nhờ 3-5 người bạn thân hoặc nhân viên vào đóng vai 'Chim Mồi' (Seeder). Giao nhiệm vụ cho họ đặt những câu hỏi mồi được chuẩn bị sẵn: 'Da nhạy cảm dùng cái này có bị kích ứng không shop?'. Bạn sẽ có cái cớ hoàn hảo để trả lời lưu loát, phô diễn kiến thức, thay vì ngồi im như một pho tượng chết chóc."
         },
         {
           "t": "quote",
-          "c": "Không ai hoàn hảo trong lần đầu tiên. Chấp nhận sự vụng về chính là bước đầu tiên để trở thành một Master Livestream!"
+          "c": "Không một ai hoàn hảo trong lần đầu tiên tỏa sáng. Chấp nhận sự vụng về của bản thân chính là bước đệm đẫm máu để trở thành một Master Livestreamer!"
         }
       ]
     },
@@ -2228,7 +2236,7 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Day one of streaming is terrifying. Heart palpitations, forgetting your words, and the dreaded fear of having zero viewers can crush your spirit. Don't panic. This 90-minute survival script is the lifejacket you need for your 'First Time'."
+          "c": "Your debut livestream is universally terrifying. Palpitations spike, your brain freezes wiping all scripts, and the soul-crushing sight of '0 Viewers' can completely paralyze you. Do not panic. This meticulously engineered 90-minute survival script is your lifejacket, designed to get you through your 'First Time' without crashing and burning."
         },
         {
           "t": "h",
@@ -2237,28 +2245,28 @@ export const articles: Record<string, Article> = {
         },
         {
           "t": "p",
-          "c": "1. Minutes 0-30 (Warm-up & Calibration): Treat this as a public dress rehearsal. No selling. Topic: 'Who I am and why I started this channel.' Your only goal is to speak clearly, look directly into the lens, and remember to breathe."
+          "c": "1. Minutes 0-30 (Calibration & Warm-up): Treat this phase strictly as a public dress rehearsal. Zero selling allowed. Topic: 'Who I am, and the authentic story behind why I started this channel.' Your only critical objectives: Control your breathing, lock your eyes directly into the camera lens (not the monitor), and force your facial muscles to relax."
         },
         {
           "t": "p",
-          "c": "2. Minutes 30-60 (Breaking the Ice): Run an incredibly easy Minigame. E.g., 'Guess a number from 1-50 for a $5 gift card.' The incoming comments give you momentum to read names and interact. The feeling of 'being heard' will instantly cure your stage fright."
+          "c": "2. Minutes 30-60 (Aggressive Ice-Breaking): Deploy an insanely simple Minigame. E.g., 'Comment the last two digits of your birth year; matching numbers win a $10 gift card.' Forcing engagement creates immediate momentum. The psychological validation of reading real names and interacting proves 'people are actually listening,' instantly curing your stage fright."
         },
         {
           "t": "p",
-          "c": "3. Minutes 60-90 (Soft Pitching): Softly introduce 1 or 2 of your best products. Do not hard-sell. Say: 'Since it's my first day, I just want to show you guys the quality we offer. No pressure to buy at all!' This vulnerability builds massive early goodwill."
+          "c": "3. Minutes 60-90 (Soft Pitching & Teasing): Gently introduce 1 or 2 of your flagship products. Absolutely no hard-selling. Use this psychological angle: 'Since it’s my debut, I just want to proudly show off the insane quality of what we build. Just enjoy the show, zero pressure to buy!' This vulnerable, non-threatening approach completely disarms viewers and builds massive early goodwill."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "The Secret Weapon"
+          "c": "The Secret Weapon (Seeding)"
         },
         {
           "t": "p",
-          "c": "Recruit 3-5 close friends or employees to act as 'Seed Viewers'. Have them plant questions in the chat like, 'Is this suitable for oily skin?'. This gives you a scripted excuse to answer fluidly instead of sitting in awkward silence."
+          "c": "Swallow your pride. Recruit 3-5 close friends or employees to act as undercover 'Seed Viewers'. Arm them with pre-written questions to drop in the chat, like: 'Is this formula safe for hyper-sensitive skin?' This gives you a scripted, flawless excuse to demonstrate your expertise fluidly, instead of sitting in agonizing, dead silence."
         },
         {
           "t": "quote",
-          "c": "Nobody is flawless on day one. Embracing your initial awkwardness is the absolute prerequisite to becoming a Livestream Master!"
+          "c": "No one is flawless on day one. Embracing your initial, painful awkwardness is the absolute prerequisite to evolving into a Livestream Master!"
         }
       ]
     }
@@ -2283,37 +2291,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Bạn có nhận ra các bộ phim Hollywood luôn có một tông màu cực kỳ nịnh mắt? Đó không phải là ngẫu nhiên, đó là nghệ thuật Color Grading (Phối màu). Trong không gian Livestream, bạn hoàn toàn có thể dùng đèn LED RGB để 'nhuộm' màu không gian, biến phòng ngủ thành Studio điện ảnh."
+          "c": "Bạn có bao giờ thắc mắc tại sao các bộ phim bom tấn Hollywood luôn có một dải màu cực kỳ nịnh mắt và cuốn hút đến ám ảnh? Đó không phải là ngẫu nhiên, đó là nghệ thuật tối cao của Color Grading (Phối màu). Trong không gian Livestream, bạn hoàn toàn có thể sử dụng hệ thống đèn LED RGB để 'nhuộm' toàn bộ không gian, biến một phòng ngủ tẻ nhạt thành một Studio điện ảnh đắt giá."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "3 Quy Tắc Phối Màu Kinh Điển"
+          "c": "3 Quy Tắc Phối Màu Kinh Điển Định Chuẩn Ngành"
         },
         {
           "t": "p",
-          "c": "1. Phối Màu Tương Phản (Teal & Orange): Đây là công thức huyền thoại. Màu da người luôn nằm ở dải màu Cam/Vàng (Orange). Vậy màu tương phản mạnh nhất với nó trên bánh xe màu sắc là Xanh Mòng Két (Teal). Hãy đánh nền phía sau màu Xanh Teal, da mặt bạn (màu Cam) sẽ lập tức nổi bật bật lên không gian 3D."
+          "c": "1. Tương Phản Sinh Tử (Teal & Orange): Đây là công thức huyền thoại được 90% phim rạp sử dụng. Màu da người luôn nằm ở dải màu Cam/Vàng ấm (Orange). Nhìn vào bánh xe màu sắc, màu đối lập gay gắt nhất với nó là Xanh Mòng Két (Teal). Khi bạn đánh nền phía sau màu Xanh Teal, chủ thể (màu Cam) sẽ lập tức bị đẩy bật ra khỏi background, tạo nên hiệu ứng 3D thị giác cực mạnh."
         },
         {
           "t": "p",
-          "c": "2. Phối Màu Tương Đồng (Analogous): Dùng các màu đứng cạnh nhau. Ví dụ: Tường màu Tím, đánh thêm đèn viền màu Hồng và Xanh Lam. Cách phối này tạo ra sự mộng mơ, cực kỳ phù hợp cho các luồng live bán Mỹ phẩm, Nước hoa, hay Thời trang nữ."
+          "c": "2. Tương Đồng Tuyệt Đối (Analogous Harmony): Sử dụng các màu nằm sát cạnh nhau trên bánh xe. Ví dụ: Đánh background Tím mộng mơ, điểm xuyết đèn viền (rim light) màu Hồng phấn và Xanh Lam nhạt. Cách phối này tạo ra một không gian cực kỳ bay bổng, nữ tính và huyền ảo. Nó là vũ khí chí mạng cho các phiên live bán Mỹ phẩm high-end, Nước hoa, hay Thời trang thiết kế."
         },
         {
           "t": "p",
-          "c": "3. Phối Màu Đơn Sắc (Monochromatic): Dùng 1 màu duy nhất nhưng khác nhau về độ sáng (Sáng - Trung Tính - Tối). Kiểu setup này toát lên vẻ cực kỳ tối giản, sang trọng, phù hợp cho các buổi Talkshow kiến thức hoặc bán đồ Công nghệ."
+          "c": "3. Đơn Sắc Quyền Lực (Monochromatic): Chỉ sử dụng đúng một tông màu duy nhất nhưng chia thành nhiều sắc độ sáng tối khác nhau (Sáng chói - Trung Tính - Đổ bóng sâu). Setup này toát lên vẻ tối giản (Minimalism) nhưng cực kỳ sang trọng, sắc lạnh, hoàn hảo cho các buổi Talkshow chuyên gia hoặc bán đồ Công nghệ đắt tiền."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Lưu ý chống 'Quê mùa'"
+          "c": "Tội Ác Thẩm Mỹ Trẻ Trâu"
         },
         {
           "t": "p",
-          "c": "Đừng bao giờ bật đèn RGB nhấp nháy 7 sắc cầu vồng liên tục. Trông nó giống hệt một quán bar rẻ tiền và gây nhức mắt cực độ cho người xem. Hãy chọn một bố cục màu cố định và giữ nó tĩnh lặng suốt phiên live."
+          "c": "Đừng bao giờ bật đèn RGB sang chế độ nhấp nháy 7 sắc cầu vồng loạn xạ. Nó khiến phòng live của bạn trông rẻ tiền hệt như một quán net cỏ hoặc một quán bar lỗi thời, đồng thời gây nhức mắt, đuổi sạch khách hàng đi. Hãy chọn một bố cục màu cố định, tĩnh lặng và giữ nguyên sự sang trọng đó suốt buổi."
         },
         {
           "t": "quote",
-          "c": "Ánh sáng có màu sắc. Nắm được quy luật của màu sắc là bạn đã nắm được chìa khóa điều khiển cảm xúc của người mua!"
+          "c": "Ánh sáng mang theo màu sắc. Kẻ nào thao túng được luật chơi của màu sắc, kẻ đó nắm giữ chìa khóa điều khiển toàn bộ cảm xúc của người mua!"
         }
       ]
     },
@@ -2326,37 +2334,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Notice how Hollywood movies always have visually stunning, addictive aesthetics? That's not an accident; it's the art of Color Grading. In a Livestream, you can use RGB LEDs to 'paint' your room, instantly upgrading a boring bedroom into a cinematic studio."
+          "c": "Have you ever wondered why Hollywood blockbusters possess a visually addictive, stunning aesthetic? It’s not an accident; it is the absolute mastery of Color Grading. In the Livestream arena, you can weaponize RGB LED lighting to visually 'paint' your room, instantly upgrading a mundane bedroom into an ultra-premium, cinematic studio setup."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "3 Classic Color Schemes"
+          "c": "The 3 Classic Cinematic Color Schemes"
         },
         {
           "t": "p",
-          "c": "1. Complementary Contrast (Teal & Orange): The legendary formula. Human skin tones naturally sit in the Orange spectrum. Its exact opposite on the color wheel is Teal (Blue-Green). By flooding your background with Teal light, your skin (Orange) violently pops out in 3D."
+          "c": "1. The Teal & Orange Contrast (The Blockbuster Formula): Used in 90% of cinema. Human skin tones naturally reside in the warm Orange spectrum. Look at the color wheel: its direct, violent opposite is Teal (Blue-Green). By flooding your background with deep Teal light, your skin (Orange) physically pops out, creating a massive 3D depth-of-field illusion."
         },
         {
           "t": "p",
-          "c": "2. Analogous Harmony: Using colors adjacent to each other. For example: A purple background mixed with pink and deep blue accent lights. This creates a dreamy, ethereal vibe—absolutely perfect for selling Cosmetics, Perfumes, or Women's Fashion."
+          "c": "2. Analogous Harmony (The Dreamscape): Utilizing adjacent colors on the wheel. Example: A rich Purple background paired with soft Pink and deep Blue rim lights. This combination crafts an incredibly ethereal, dreamy, and feminine atmosphere. It is the ultimate visual weapon for selling high-end Cosmetics, Perfumes, or Designer Fashion."
         },
         {
           "t": "p",
-          "c": "3. Monochromatic Minimalism: Using a single color in varying levels of brightness (Light, Mid, Dark). This setup screams minimalism, luxury, and high-tech sophistication. Ideal for educational Talkshows or selling Premium Gadgets."
+          "c": "3. Monochromatic Dominance: Utilizing a single color palette but manipulating it through varying intensities (Highlights, Midtones, Deep Shadows). This setup screams extreme minimalism, luxury, and high-tech sophistication. It is perfect for authoritative Expert Talkshows or pitching Premium Gadgets."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Anti-Amateur Advice"
+          "c": "The Amateur Aesthetic Crime"
         },
         {
           "t": "p",
-          "c": "Never set your RGB lights to 'rainbow strobe' mode. It looks like a cheap nightclub and causes severe visual fatigue for the viewers. Lock into a specific, static color palette and maintain that aesthetic consistency."
+          "c": "Never, under any circumstances, set your RGB lights to a 'flashing rainbow strobe' mode. It instantly degrades your brand to look like a cheap internet cafe or a trashy nightclub, inducing severe visual fatigue and driving viewers away. Lock into a specific, static color palette and enforce that premium aesthetic consistency."
         },
         {
           "t": "quote",
-          "c": "Light carries color, and color carries emotion. Mastering the color wheel means mastering your customer's mood!"
+          "c": "Light carries color, and color carries emotion. The one who manipulates the color wheel completely controls the psychological state of the buyer!"
         }
       ]
     }
@@ -2381,7 +2389,7 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Có bao giờ bạn live được 30 phút thì cổ họng rát buốt, giọng khàn đặc và mất hơi? Đó là vì bạn đang dùng 'hơi ngực' và 'ép dây thanh quản' quá mức. Giọng nói là thứ vũ khí vô hình có sức sát thương mạnh nhất để chốt đơn. Một giọng nói trầm ấm, rõ chữ sẽ tạo sự tin tưởng tuyệt đối."
+          "c": "Có bao giờ bạn vừa live được 30 phút thì cổ họng đã đau buốt, giọng khàn đặc như vịt đực và hụt hơi liên tục? Đó là hậu quả tàn khốc của việc dùng 'hơi ngực' và vắt kiệt 'dây thanh quản' vô tội vạ. Giọng nói là thứ vũ khí tâm lý vô hình có sức sát thương khủng khiếp nhất để chốt đơn. Một chất giọng trầm ấm, sắc lạnh và vang dội sẽ thiết lập quyền uy tối thượng, khiến khách hàng răm rắp nghe theo mọi hiệu lệnh của bạn."
         },
         {
           "t": "h",
@@ -2390,28 +2398,28 @@ export const articles: Record<string, Article> = {
         },
         {
           "t": "p",
-          "c": "1. Nhận Biết Hơi Bụng: Đặt tay phải lên rốn. Hít sâu vào bằng mũi, làm sao cho bụng phồng lên (đẩy tay bạn ra xa). Thở ra từ từ bằng miệng, bụng xẹp xuống. Khi bạn dùng hơi bụng, luồng khí dồi dào sẽ nâng đỡ dây thanh quản, giúp bạn nói 4 tiếng liên tục không hề mệt."
+          "c": "1. Khai Mở Hơi Bụng: Đặt tay phải lên rốn. Hít sâu vào bằng mũi, ép không khí xuống đáy phổi làm sao cho bụng phồng căng lên (đẩy tay bạn ra xa). Thở ra từ từ bằng miệng, bụng xẹp lép xuống. Khi bạn thành thạo hơi bụng, luồng khí khổng lồ này sẽ làm một lớp đệm hoàn hảo nâng đỡ dây thanh quản, cho phép bạn gào thét chốt đơn 4 tiếng liên tục mà không rụng một giọt mồ hôi."
         },
         {
           "t": "p",
-          "c": "2. Mở Khẩu Hình Miệng (Tròn Vành Rõ Chữ): Đa số chúng ta bị nói lí nhí là do lười mở hàm. Hãy cắn nhẹ 1 chiếc đũa ngang miệng, sau đó đọc to một đoạn văn. Khớp hàm của bạn sẽ buộc phải mở rộng. Tập 10 phút mỗi ngày, sau 1 tuần giọng bạn sẽ vang dội như xé nát không gian."
+          "c": "2. Cắn Đũa Mở Khẩu Hình (Tròn Vành Rõ Chữ): Đa số Host bị chê là nói lí nhí, nuốt chữ vì khớp hàm quá lười biếng. Bài tập tàn bạo nhất: Cắn chặt 1 chiếc đũa ngang miệng, sau đó gào to một đoạn văn. Khớp hàm và cơ môi của bạn sẽ bị ép phải hoạt động hết công suất. Tập điên cuồng 10 phút mỗi ngày, sau 1 tuần, diction (đài từ) của bạn sẽ sắc bén như dao cạo, cắt ngang mọi tạp âm."
         },
         {
           "t": "p",
-          "c": "3. Hạ Tông Giọng Cuối Câu: Để tạo sự quyền lực và chắc chắn, tuyệt đối không lên giọng ở cuối câu (nghe như đang cầu xin). Hãy hạ thấp tông giọng đi xuống. Ví dụ: 'Sản phẩm này rất TỐT' (kéo trầm chữ Tốt xuống)."
+          "c": "3. Nghệ Thuật Hạ Tông Cuối Câu: Để tạo ra phong thái của một 'Kẻ Bề Trên' (Authority), tuyệt đối cấm kỵ việc lên giọng ở cuối câu (nó khiến bạn nghe như đang nài nỉ cầu xin). Nguyên tắc thép: Luôn dập trầm tông giọng đi xuống khi kết thúc. Ví dụ: 'Sản phẩm này cực kỳ ĐẲNG CẤP' (ép dọng trầm chữ Cấp xuống tận đáy lồng ngực)."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Thực đơn bảo vệ thanh quản"
+          "c": "Bảo Dưỡng Thanh Quản"
         },
         {
           "t": "p",
-          "c": "Tuyệt đối không uống nước đá lạnh hoặc nước ngọt có gas trước khi lên sóng. Hãy chuẩn bị 1 ly nước ấm pha chút mật ong và chanh. Uống từng ngụm nhỏ liên tục trong phiên live để bôi trơn dây thanh quản."
+          "c": "Kẻ nghiệp dư uống nước đá lạnh và bò húc trước khi lên sóng, tự tay hủy hoại cần câu cơm của mình. Kẻ chuyên nghiệp luôn thủ sẵn một bình giữ nhiệt chứa nước ấm pha mật ong và vài giọt chanh đào. Nhấp từng ngụm cực nhỏ liên tục trong phiên live để bôi trơn hệ thống thanh quản, giữ cho chất giọng mướt mịn đến tận phút cuối cùng."
         },
         {
           "t": "quote",
-          "c": "Giọng nói của bạn chính là bộ mặt thứ hai. Hãy dùng nó để vuốt ve và thuyết phục tâm trí khách hàng!"
+          "c": "Giọng nói của bạn là bản hợp đồng không văn bản. Hãy dùng nó để bóp nghẹt sự do dự và thao túng tâm trí khách hàng!"
         }
       ]
     },
@@ -2424,37 +2432,37 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Do you ever lose your voice or get a sore throat after 30 minutes of streaming? That’s because you are chest-breathing and straining your vocal cords. Your voice is an invisible weapon. A deep, resonant, and clear voice instantly commands absolute trust and authority."
+          "c": "Do you find yourself gasping for air with a raw, shredded throat after barely 30 minutes of streaming? That is the brutal consequence of chest-breathing and violently abusing your vocal cords. Your voice is a psychological weapon of mass conversion. A deep, resonant, and razor-sharp voice instantly establishes supreme authority, compelling the audience to obey your every command."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Diaphragmatic Breathing Protocol"
+          "c": "The Diaphragmatic Arsenal"
         },
         {
           "t": "p",
-          "c": "1. The Belly Breath: Place your right hand on your navel. Inhale deeply through your nose, expanding your belly (pushing your hand outward). Exhale slowly, letting the belly deflate. This massive reserve of air supports your vocal cords, letting you speak for 4 hours without fatigue."
+          "c": "1. Unleashing the Belly Breath: Place your right hand on your navel. Inhale aggressively through your nose, forcing the air deep into your lungs so your belly expands (pushing your hand out). Exhale slowly through your mouth, pulling the belly in. Mastering this creates a massive pneumatic cushion for your vocal cords, allowing you to scream pitches for 4 hours straight without breaking a sweat."
         },
         {
           "t": "p",
-          "c": "2. Jaw Articulation: Mumbling occurs because we are lazy with our jaws. Bite horizontally on a chopstick and read a paragraph out loud. It forces your facial muscles to over-articulate. Do this 10 minutes a day, and your diction will become razor-sharp."
+          "c": "2. The Chopstick Torture (Flawless Diction): Amateurs mumble because their jaw muscles are lazy. The ultimate fix: Bite horizontally on a chopstick and force yourself to read a script out loud. This forces extreme hyper-articulation. Grind through this for 10 minutes a day. In one week, your diction will be sharp enough to cut through any background noise."
         },
         {
           "t": "p",
-          "c": "3. The Downward Inflection: To project authority, never raise your pitch at the end of a sentence (which sounds like begging or uncertainty). Always drop your pitch downwards. e.g., 'This product is AMAZING' (with a deep, grounded finish)."
+          "c": "3. The Downward Authority Inflection: To exude the aura of an apex predator in sales, never raise your pitch at the end of a sentence—it makes you sound desperate and unsure. The iron rule: Always drive your pitch aggressively downward to close. E.g., 'This product is UNBEATABLE' (drop the final word deep into your chest)."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Vocal Cord Maintenance"
+          "c": "Vocal Armor Maintenance"
         },
         {
           "t": "p",
-          "c": "Never drink ice-cold water or carbonated sodas before broadcasting. Prepare a thermos of warm water with a drop of honey. Take small sips continuously during your stream to keep the vocal folds perfectly lubricated."
+          "c": "Amateurs chug ice water and energy drinks before going live, actively destroying their primary moneymaker. Professionals arm themselves with a thermos of warm water infused with raw honey and lemon. Take micro-sips relentlessly during the broadcast to keep the vocal folds heavily lubricated, ensuring a buttery-smooth delivery until the stream ends."
         },
         {
           "t": "quote",
-          "c": "Your voice is your second face. Use its warmth and resonance to gently persuade the minds of your audience!"
+          "c": "Your voice is an unwritten contract of trust. Weaponize it to suffocate hesitation and dominate the buyer's psychology!"
         }
       ]
     }
@@ -2479,29 +2487,33 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Livestream không chỉ đơn thuần là việc bật điện thoại lên và nói. Hàng ngàn người lên livestream mỗi ngày theo cảm tính, nhưng chỉ một số ít thực sự giữ chân được khán giả và tạo ra chuyển đổi. Sự khác biệt nằm ở chỗ: Họ có chiến lược và kỹ năng bài bản."
+          "c": "Hàng chục ngàn người mỗi ngày ngây thơ bật điện thoại lên, ảo tưởng rằng chỉ cần 'nói thật to' là sẽ có người mua. Kết quả? 99% tắt live trong sự nhục nhã với 0 đơn hàng. Livestream ở năm 2026 không phải là chỗ cho sự bản năng hay may mắn. Đó là một chiến trường tàn khốc, và nếu bạn ra trận mà không được huấn luyện bài bản, bạn chỉ là bia đỡ đạn cho đối thủ."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Livestream cảm tính: Lời nguyền của sự nhàm chán"
+          "c": "Lời Nguyền Của Sự Bản Năng (Instinctive Failure)"
         },
         {
           "t": "p",
-          "c": "Khi bạn ngồi trước ống kính mà không có kịch bản hay định hướng rõ ràng, bạn sẽ dễ mắc phải những sai lầm chết người. Khán giả sẽ rời đi chỉ sau 3 giây đầu tiên nếu bạn không có 'hook' (điểm chạm) đủ mạnh. Sự tự ti và năng lượng thấp sẽ truyền trực tiếp qua màn hình, làm tụt cảm xúc của người xem."
+          "c": "Khi bạn ngồi trước ống kính với một cái đầu rỗng không kịch bản, bạn sẽ lảm nhảm vô nghĩa. Khách hàng thời nay cực kỳ tàn nhẫn; họ sẽ vuốt qua màn hình chỉ trong 3 giây nếu không thấy một cái Hook (móc câu) đẫm máu nào níu giữ. Ánh mắt láo liên, ngôn ngữ cơ thể rụt rè, và năng lượng tụt đáy của bạn sẽ bị camera phóng đại lên gấp 10 lần, khiến người xem cảm thấy cực kỳ khó chịu."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Tại sao việc học Livestream bài bản là bắt buộc?"
+          "c": "Quyền Năng Của Việc Huấn Luyện Bài Bản"
         },
         {
           "t": "p",
-          "c": "Một khóa học livestream hay sự đồng hành của một Mentor sẽ cung cấp cho bạn cấu trúc phiên Live. Bạn sẽ biết chính xác mở đầu thế nào, khi nào tương tác, khi nào chốt sale. Việc làm chủ ngôn ngữ cơ thể, ánh mắt và giọng nói chính là vũ khí giữ chân người xem."
+          "c": "Học Livestream chuyên nghiệp không phải là học cách ăn vạ chốt đơn. Đó là học cách trở thành một 'Đạo diễn tâm lý'. Một khóa huấn luyện chuẩn mực sẽ nhét vào đầu bạn các module cốt lõi: Thiết kế Flow kịch bản miên man không điểm dừng, Nghệ thuật điều khiển nhịp độ (Pacing) để dồn ép cảm xúc khách hàng lên đỉnh điểm, và Kỹ năng xử lý khủng hoảng truyền thông ngay trên sóng trực tiếp."
+        },
+        {
+          "t": "p",
+          "c": "Chỉ khi được trang bị hệ thống kiến thức hệ thống (Framework), bạn mới có khả năng bóc tách insight khách hàng, tung ra các offer chí mạng đúng giây phút họ mất cảnh giác nhất, biến một luồng live vài chục mắt xem thành cỗ máy xả kho hàng trăm đơn."
         },
         {
           "t": "quote",
-          "c": "Đừng lên livestream với cái đầu rỗng. Hãy chuẩn bị cho mình một tư duy sắc bén, một kỹ năng điêu luyện và một kịch bản hoàn hảo!"
+          "c": "Lên live bằng bản năng là tự sát. Lên live bằng chiến lược là tàn sát đối thủ!"
         }
       ]
     },
@@ -2514,29 +2526,33 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Livestreaming is not just about turning on your phone and talking. Thousands go live purely on instinct every day, but only a few retain their audience and drive conversions. The difference? Strategy and structured skills."
+          "c": "Tens of thousands of amateurs turn on their cameras daily, delusionally thinking that 'just talking loud' equals sales. The reality? 99% end the stream in humiliating defeat with zero orders. Livestreaming in 2026 is no longer a playground for luck or instinct. It is a ruthless battlefield, and if you deploy without rigorous training, you are merely cannon fodder for your competitors."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "The Curse of Instinctive Streaming"
+          "c": "The Curse of Instinctive Failure"
         },
         {
           "t": "p",
-          "c": "Without a clear script or direction, you will easily commit fatal mistakes. Viewers will leave within the first 3 seconds if you lack a strong hook. Low energy and insecurity translate directly through the screen, killing audience engagement."
+          "c": "When you face the lens with an empty head and zero scripting, you default to incoherent rambling. Modern consumers are merciless; they will swipe away in under 3 seconds if they aren't caught by a bloodthirsty Hook. The camera multiplies your flaws by ten—your shifting eyes, timid body language, and pathetic energy levels will instantly repulse the audience."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Why Professional Training is Mandatory"
+          "c": "The Dominance of Formal Training"
         },
         {
           "t": "p",
-          "c": "Professional livestream training provides you with structural blueprints. You will know exactly how to open, when to engage, and when to close the sale. Mastering body language, eye contact, and vocal variety is your ultimate weapon for viewer retention."
+          "c": "Professional Livestream training is not about learning cheap sales tricks. It is about becoming a 'Psychological Director'. Rigorous coaching forcefully installs core operational modules into your brain: Engineering a hypnotic, non-stop broadcast flow, mastering pacing to aggressively escalate the audience's emotional state, and executing live crisis management on the fly."
+        },
+        {
+          "t": "p",
+          "c": "Only when equipped with a structured Framework can you dissect consumer insights in real-time, launching lethal offers at the exact moment their rational defenses drop, transforming a small stream of 50 viewers into a ruthless, inventory-clearing machine."
         },
         {
           "t": "quote",
-          "c": "Don't go live with an empty mind. Equip yourself with sharp strategies, polished skills, and a flawless script!"
+          "c": "Streaming on instinct is suicide. Streaming with strategy is a massacre of the competition!"
         }
       ]
     }
@@ -2561,29 +2577,33 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "Trong giao tiếp, livestream hay thuyết trình, nội dung bạn nói chiếm 7%, ngôn ngữ cơ thể chiếm 55%, nhưng giọng nói chiếm tới 38% khả năng thuyết phục. Nhiều người lầm tưởng rằng 'giọng cha sinh mẹ đẻ sao thì dùng vậy', dẫn đến việc đánh mất vô số cơ hội chỉ vì một chất giọng yếu ớt, đều đều hoặc chói tai."
+          "c": "Trong mọi cuộc chơi tâm lý, từ đàm phán, thuyết trình đến livestream chốt đơn: Nội dung bạn nói chỉ đóng góp 7%, ngôn ngữ cơ thể chiếm 55%, nhưng Quyền năng của Giọng nói (Vocal Power) chiếm tới 38% khả năng thao túng người đối diện. Hàng triệu người đang tự bóp chết sự nghiệp của mình vì một niềm tin ngu xuẩn: 'Giọng cha sinh mẹ đẻ sao thì cam chịu vậy'."
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "Giọng thông thường: Rào cản vô hình của sự chuyên nghiệp"
+          "c": "Giọng Bản Năng: Lưỡi Dao Hủy Hoại Sự Chuyên Nghiệp"
         },
         {
           "t": "p",
-          "c": "Khi bạn sử dụng bản năng để nói, bạn rất dễ rơi vào 3 lỗi chí mạng. Thứ nhất là giọng mũi (Nasal voice) tạo cảm giác the thé và mệt mỏi. Thứ hai là giọng thiếu hơi, yếu ớt truyền tải sự thiếu tự tin. Thứ ba là giọng đều đều (Monotone) biến bài chia sẻ của bạn thành một khúc hát ru gây buồn ngủ."
+          "c": "Khi bạn phó mặc cho bản năng, bạn đang ném tiền qua cửa sổ. Một giọng mũi (Nasal) eo éo sẽ tra tấn lỗ tai khách hàng, khiến họ tắt live vì nhức đầu. Một giọng yếu ớt, đứt quãng tố cáo bạn là kẻ hèn nhát, thiếu kiến thức. Và tồi tệ nhất, một giọng đều đều (Monotone) không cảm xúc sẽ tiêm thuốc mê, giết chết hoàn toàn sự hưng phấn mua hàng của đám đông."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "Sức mạnh của một giọng nói được 'huấn luyện'"
+          "c": "Khai Mở Sức Mạnh Giọng Nói Định Hình Kẻ Thống Trị"
         },
         {
           "t": "p",
-          "c": "Học giọng nói không phải là làm mất đi bản sắc cá nhân, mà là rèn luyện để khai phá tiềm năng tốt nhất của chất giọng bạn đang sở hữu. Học cách thở bụng và cộng hưởng từ lồng ngực giúp giọng bạn vang, ấm và đầy nội lực (Chest Voice). Bạn sẽ biết cách nhấn nhá, ngắt nghỉ đúng lúc để tạo cao trào (Vocal Variety)."
+          "c": "Học luyện giọng không phải là bắt chước giọng của người khác, mà là đánh thức 'Con Quái Vật' đang ngủ quên trong thanh quản của bạn. Khi bạn làm chủ được kỹ thuật cộng hưởng lồng ngực (Chest Voice), mỗi lời bạn thốt ra sẽ có độ vang vọng, độ đầm và tính sát thương cực cao. Nó tạo ra một vầng hào quang của sự đáng tin cậy tuyệt đối."
+        },
+        {
+          "t": "p",
+          "c": "Đỉnh cao của huấn luyện giọng nói là làm chủ 'Vocal Variety' (Sự đa dạng âm sắc). Biết lúc nào cần gầm gừ uy lực để đẩy cao trào chốt sale, biết lúc nào cần thì thầm rủ rỉ để vuốt ve nỗi đau của khách hàng. Giọng nói được rèn luyện chính là thứ ma thuật tối thượng điều khiển hành vi con người."
         },
         {
           "t": "quote",
-          "c": "Một giọng nói truyền cảm là chiếc chìa khóa vạn năng mở ra mọi cánh cửa. Đừng để một chất giọng bản năng kìm hãm tài năng thực sự của bạn!"
+          "c": "Giọng nói yếu ớt biến bạn thành kẻ ăn xin sự chú ý. Giọng nói quyền lực biến bạn thành kẻ ra luật chơi!"
         }
       ]
     },
@@ -2596,29 +2616,33 @@ export const articles: Record<string, Article> = {
       "body": [
         {
           "t": "p",
-          "c": "In communication, livestreaming, or presenting, your words account for 7%, body language 55%, but your voice commands a massive 38% of your persuasive power. Many mistakenly believe they are stuck with the voice they were born with, losing countless opportunities due to a weak, monotone, or shrill voice."
+          "c": "In any high-stakes psychological arena—negotiations, presentations, or livestream sales—your words account for a mere 7% of impact, body language 55%, but the raw power of your Voice commands a staggering 38% of your manipulative capability. Millions are actively sabotaging their own careers because of one idiotic belief: 'I'm stuck with the voice I was born with.'"
         },
         {
           "t": "h",
           "sn": "01",
-          "c": "The Everyday Voice: An Invisible Barrier to Professionalism"
+          "c": "The Instinctive Voice: A Professional Assassin"
         },
         {
           "t": "p",
-          "c": "Relying on your instinctual voice often leads to fatal errors. A nasal voice sounds shrill and exhausts the listener. A breathless, weak voice broadcasts insecurity and strips your words of authority. A monotone voice flattens your message into a sleep-inducing lullaby."
+          "c": "Relying on your default vocal habits is literally setting cash on fire. A nasal, whiny pitch physically tortures the listener's eardrums, forcing them to exit. A breathless, wavering voice instantly exposes you as an insecure, unknowledgeable fraud. Worst of all, a flat, monotone delivery acts as a tranquilizer, completely assassinating any buying excitement in your audience."
         },
         {
           "t": "h",
           "sn": "02",
-          "c": "The Power of a 'Trained' Voice"
+          "c": "Unleashing the Apex Predator's Voice"
         },
         {
           "t": "p",
-          "c": "Voice training isn't about losing your identity; it's about unlocking your vocal potential. Learning diaphragmatic breathing and chest resonance creates a warm, powerful chest voice. Mastering vocal variety—knowing exactly when to pause and inflect—allows you to orchestrate the audience's emotions."
+          "c": "Voice training is not about faking an accent; it is about awakening the dormant monster within your vocal cords. When you master chest resonance (Chest Voice), every word you utter carries massive weight, vibration, and lethal conviction. It projects an aura of absolute, unshakable credibility."
+        },
+        {
+          "t": "p",
+          "c": "The absolute pinnacle of vocal training is mastering 'Vocal Variety'. It’s knowing precisely when to aggressively roar to drive the hard close, and when to drop to an intimate whisper to massage the customer's pain points. A weaponized voice is the ultimate dark magic for controlling human behavior."
         },
         {
           "t": "quote",
-          "c": "An inspiring voice is a master key that opens all doors. Do not let an untrained voice suppress your true potential!"
+          "c": "A weak voice makes you a beggar for attention. A dominant voice makes you the architect of the rules!"
         }
       ]
     }

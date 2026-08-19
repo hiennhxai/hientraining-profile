@@ -152,10 +152,10 @@ export function FloatingActionButtons({ lang, onToggleLang, isEditActive, onEdit
           <EditableWrapper
             isEditActive={isEditActive}
             label="Sửa Link Zalo"
-            onEdit={() => triggerEdit('zaloLink', 'Đường dẫn Zalo (https://zalo.me/...)', gen.zaloLink || "https://zalo.me/0813131385")}
+            onEdit={() => triggerEdit('zaloLink', 'Đường dẫn Zalo (https://zalo.me/...)', gen.zaloLink || "https://zalo.me/84813131385")}
           >
             <a
-              href={gen.zaloLink || "https://zalo.me/0813131385"}
+              href={gen.zaloLink || "https://zalo.me/84813131385"}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2.5 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition-colors whitespace-nowrap"
