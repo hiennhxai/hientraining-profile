@@ -217,11 +217,17 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
 
 
             {/* 16:9 Auto-playing Video Carousel */}
-            {trainingVideos.length > 0 && (
+            {true && (
               <div 
                 className="w-full aspect-video rounded-2xl overflow-hidden bg-black relative group shadow-sm border border-slate-200 cursor-pointer"
                 onClick={() => setVideoLightboxIndex(currentVideoSlideIndex)}
               >
+                                {trainingVideos.length === 0 && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-500 bg-slate-100">
+                    <Video className="w-8 h-8 mb-2 opacity-50" />
+                    <span className="text-xs font-medium uppercase tracking-wider">Chưa có Video</span>
+                  </div>
+                )}
                 {trainingVideos.map((videoUrl, idx) => (
                   <div
                     key={idx}
@@ -256,6 +262,23 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
                 </div>
               </div>
             )}
+
+
+
+            <EditableWrapper
+              isEditActive={isEditActive}
+              label="Sửa Trích Dẫn Đồng Hành"
+              onEdit={() => triggerEdit('mentorQuote', 'Trích Dẫn Mentor Đồng Hành', gen.mentorQuote || t.a_mentor_quote)}
+            >
+              <div className="pt-3 border-t border-slate-200 bg-orange-50/70 p-4 rounded-xl">
+                <p className="text-xs text-orange-900 font-medium leading-relaxed">
+                  {gen.mentorQuote || t.a_mentor_quote}
+                </p>
+              </div>
+            </EditableWrapper>
+          </div>
+          </div>
+        </div>
 
             {/* TV Host Milestones & Achievements Panel */}
             <div className="rounded-2xl bg-white border border-slate-200 p-5 sm:p-6 space-y-4 shadow-sm flex flex-col">
@@ -310,21 +333,6 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
                 </div>
               </div>
             </div>
-
-            <EditableWrapper
-              isEditActive={isEditActive}
-              label="Sửa Trích Dẫn Đồng Hành"
-              onEdit={() => triggerEdit('mentorQuote', 'Trích Dẫn Mentor Đồng Hành', gen.mentorQuote || t.a_mentor_quote)}
-            >
-              <div className="pt-3 border-t border-slate-200 bg-orange-50/70 p-4 rounded-xl">
-                <p className="text-xs text-orange-900 font-medium leading-relaxed">
-                  {gen.mentorQuote || t.a_mentor_quote}
-                </p>
-              </div>
-            </EditableWrapper>
-          </div>
-          </div>
-        </div>
 
         {/* Middle Section: Dàn trải đều 3 giá trị cốt lõi / triết lý (Full Width Grid) */}
         <div className="pt-2">
