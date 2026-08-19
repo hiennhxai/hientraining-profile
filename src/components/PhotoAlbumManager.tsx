@@ -61,6 +61,7 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
 
   // Multi-Select State
   const [selectedPhotoIds, setSelectedPhotoIds] = useState<string[]>([]);
+  const [lastSelectedId, setLastSelectedId] = useState<string | null>(null);
   const [isMoveFolderModalOpen, setIsMoveFolderModalOpen] = useState(false);
   const [targetMoveFolder, setTargetMoveFolder] = useState<string>('Khác');
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
