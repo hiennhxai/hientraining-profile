@@ -72,10 +72,10 @@ function BrandCard({ brand }: { brand: BrandLogoItem }) {
       {/* Logo Image Area — fixed height 48px, always centered */}
       <div className="h-12 w-full flex items-center justify-center p-1 overflow-hidden shrink-0">
         {brand.logoUrl ? (
-          <img
+            <img
             src={brand.logoUrl}
             alt={brand.name}
-            className="max-h-full max-w-full object-contain object-center group-hover/card:scale-105 transition-transform duration-300 mx-auto my-auto block"
+            className="max-h-full max-w-full object-contain object-center group-hover/card:scale-105 transition-transform duration-300 mx-auto my-auto block mix-blend-multiply p-0.5"
             loading="lazy"
           />
         ) : (
