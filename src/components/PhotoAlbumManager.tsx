@@ -54,7 +54,18 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
 
   // Folder & Search State
   const [activeFolder, setActiveFolder] = useState<string>('Tất cả');
-  const [customFolders, setCustomFolders] = useState<string[]>(DEFAULT_FOLDERS);
+  const activeFolderRef = useRef(activeFolder);
+  activeFolderRef.current = activeFolder;
+  
+  // Tính danh sách thư mục TỰ ĐỘNG từ dữ liệu ảnh thực tế (không bao giờ mất khi reload)
+  const allFolders = useMemo(() => {
+    const folderSet = new Set(DEFAULT_FOLDERS);
+    photos.forEach(p => {
+      if (p.folder && p.folder !== 'Tất cả') folderSet.add(p.folder);
+    });
+    return Array.from(folderSet);
+  }, [photos]);
+  
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isNewFolderModalOpen, setIsNewFolderModalOpen] = useState(false);
   const [newFolderNameInput, setNewFolderNameInput] = useState('');
@@ -169,7 +180,7 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
             height: result.height,
             createdAt: new Date().toISOString().slice(0, 10),
             caption: file.name.replace(/\.[^/.]+$/, ''),
-            folder: activeFolder !== 'Tất cả' ? activeFolder : 'Kho Chung'
+            folder: activeFolderRef.current !== 'Tất cả' ? activeFolderRef.current : 'Kho Chung'
           };
           newPhotos.push(photoItem);
 
@@ -184,10 +195,16 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
       }));
     }
 
-    onUpdatePhotos([...newPhotos, ...photos]);
+    // Khi đã có ảnh thật trong folder, xóa placeholder của folder đó
+    const uploadedFolder = activeFolderRef.current !== 'Tất cả' ? activeFolderRef.current : 'Kho Chung';
+    const cleanedPhotos = photos.filter(p => {
+      if (p.id.startsWith('folder-placeholder-') && p.folder === uploadedFolder) return false;
+      return true;
+    });
+    onUpdatePhotos([...newPhotos, ...cleanedPhotos]);
     setIsBatchRunning(false);
     if (fileInputRef.current) fileInputRef.current.value = '';
-  }, [photos, onUpdatePhotos, activeFolder]);
+  }, [photos, onUpdatePhotos]);
 
   const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
@@ -232,9 +249,21 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
   const handleCreateNewFolder = () => {
     const trimmed = newFolderNameInput.trim();
     if (!trimmed) return;
-    if (!customFolders.includes(trimmed)) {
-      setCustomFolders([...customFolders, trimmed]);
-    }
+    // Tạo 1 ảnh placeholder ẩn để folder tồn tại trong dữ liệu
+    // (vì folder được tính từ ảnh, nên cần ít nhất 1 ảnh có folder này)
+    const placeholderPhoto: PhotoAlbumItem = {
+      id: `folder-placeholder-${Date.now()}`,
+      name: `_folder_${trimmed}`,
+      url: '',
+      originalSize: 0,
+      compressedSize: 0,
+      width: 0,
+      height: 0,
+      createdAt: new Date().toISOString().slice(0, 10),
+      caption: `Thư mục: ${trimmed}`,
+      folder: trimmed
+    };
+    onUpdatePhotos([placeholderPhoto, ...photos]);
     setActiveFolder(trimmed);
     setNewFolderNameInput('');
     setIsNewFolderModalOpen(false);
@@ -373,9 +402,10 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
     }
   };
 
-  // Filtered photos list
+  // Filtered photos list (ẩn placeholder photos không có URL)
   const filteredPhotos = useMemo(() => {
     return photos.filter(p => {
+      if (!p.url) return false; // Ẩn placeholder dùng để giữ thư mục
       const matchFolder = activeFolder === 'Tất cả' || (p.folder || 'Kho Chung') === activeFolder;
       const matchSearch = !searchQuery || (
         p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -385,10 +415,11 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
     });
   }, [photos, activeFolder, searchQuery]);
 
-  // Compute stats per folder
+  // Compute stats per folder (không đếm placeholder)
   const folderCounts = useMemo(() => {
-    const counts: Record<string, number> = { 'Tất cả': photos.length };
-    photos.forEach(p => {
+    const realPhotos = photos.filter(p => !!p.url);
+    const counts: Record<string, number> = { 'Tất cả': realPhotos.length };
+    realPhotos.forEach(p => {
       const f = p.folder || 'Kho Chung';
       counts[f] = (counts[f] || 0) + 1;
     });
@@ -509,7 +540,7 @@ export const PhotoAlbumManager: React.FC<PhotoAlbumManagerProps> = ({
           <span className="text-xs font-bold text-slate-400 shrink-0 flex items-center gap-1">
             <Folder className="w-3.5 h-3.5" /> Thư Mục:
           </span>
-          {customFolders.map((folderName) => {
+          {allFolders.map((folderName) => {
             const count = folderCounts[folderName] || 0;
             const isActive = activeFolder === folderName;
             return (
