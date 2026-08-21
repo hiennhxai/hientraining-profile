@@ -574,6 +574,7 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
                       );
                   })}
                 </div>
+                </>
               )}
             </div>
           )}
