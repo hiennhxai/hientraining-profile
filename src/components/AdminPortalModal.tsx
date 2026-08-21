@@ -70,13 +70,15 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
   // Universal Image Picker State
   const [pickerOpen, setPickerOpen] = useState(false);
   const [pickerCallback, setPickerCallback] = useState<((url: string) => void) | null>(null);
+  const [pickerMultiCallback, setPickerMultiCallback] = useState<((urls: string[]) => void) | null>(null);
   const [pickerTitle, setPickerTitle] = useState('CHỌN HOẶC TẢI HÌNH ẢNH MỚI');
   const [pickerCurrentUrl, setPickerCurrentUrl] = useState('');
   const [pickerAiContext, setPickerAiContext] = useState<string | undefined>(undefined);
   const [isSaving, setIsSaving] = useState(false);
 
-  const openPicker = (callback: (url: string) => void, title: string, currentUrl: string = '', aiContext?: string) => {
+  const openPicker = (callback: (url: string) => void, title: string, currentUrl: string = '', aiContext?: string, multiCallback?: (urls: string[]) => void) => {
     setPickerCallback(() => callback);
+    setPickerMultiCallback(() => multiCallback);
     setPickerTitle(title);
     setPickerCurrentUrl(currentUrl);
     setPickerAiContext(aiContext);
@@ -2157,7 +2159,15 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                                 newSv[sIdx].galleryPhotos = [...currentPhotos, selectedUrl];
                                 setData({ ...data, services: newSv });
                               },
-                              `THÊM ẢNH VÀO ALBUM: ${sv.title}`
+                              `THÊM ẢNH VÀO ALBUM: ${sv.title}`,
+                              undefined,
+                              undefined,
+                              (selectedUrls) => {
+                                const newSv = [...data.services];
+                                const currentPhotos = [...(newSv[sIdx].galleryPhotos || [])];
+                                newSv[sIdx].galleryPhotos = [...currentPhotos, ...selectedUrls];
+                                setData({ ...data, services: newSv });
+                              }
                             )}
                             className="text-xs font-bold text-orange-600 hover:text-orange-700 cursor-pointer flex items-center gap-1"
                           >
@@ -2377,7 +2387,14 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                                     setData({ ...data, projects: newProjects });
                                   },
                                   `THÊM ẢNH VÀO ALBUM: ${item.title}`,
-                                  ''
+                                  undefined,
+                                  undefined,
+                                  (selectedUrls) => {
+                                    const newProjects = [...(data.projects || [])];
+                                    const currentGallery = [...(newProjects[catIdx].items[itemIdx].galleryPhotos || [])];
+                                    newProjects[catIdx].items[itemIdx].galleryPhotos = [...currentGallery, ...selectedUrls];
+                                    setData({ ...data, projects: newProjects });
+                                  }
                                 )}
                                 className="text-[10px] font-extrabold text-orange-600 hover:text-orange-700 cursor-pointer flex items-center gap-1"
                               >
@@ -3097,6 +3114,10 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
           onSelectUrl={(selectedUrl) => {
             if (pickerCallback) pickerCallback(selectedUrl);
           }}
+          onSelectUrls={(selectedUrls) => {
+            if (pickerMultiCallback) pickerMultiCallback(selectedUrls);
+          }}
+          isMultiSelect={!!pickerMultiCallback}
           aiContext={pickerAiContext}
         />
 

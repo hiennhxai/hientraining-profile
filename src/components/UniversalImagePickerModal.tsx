@@ -21,6 +21,8 @@ interface UniversalImagePickerModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSelectUrl: (url: string) => void;
+  onSelectUrls?: (urls: string[]) => void;
+  isMultiSelect?: boolean;
   currentUrl?: string;
   photos: PhotoAlbumItem[];
   onUpdatePhotos: (photos: PhotoAlbumItem[]) => void;
@@ -56,17 +58,35 @@ async function uploadToSupabaseStorageIfPossible(dataUrl: string, prefix: string
 }
 
 export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps> = ({
-  isOpen,
-  onClose,
-  onSelectUrl,
-  currentUrl = '',
-  photos,
-  onUpdatePhotos,
-  title = 'CHỌN HOẶC TẢI HÌNH ẢNH MỚI',
-  aiContext,
-  defaultTab
+  isOpen, onClose, onSelectUrl, onSelectUrls, isMultiSelect = false,
+  currentUrl = '', photos, onUpdatePhotos, title = 'CHỌN HOẶC TẢI HÌNH ẢNH MỚI', aiContext, defaultTab
 }) => {
   const [activeTab, setActiveTab] = useState<'album' | 'upload' | 'url' | 'crop' | 'ai'>(defaultTab || 'album');
+  
+  // Folder & Search State
+  const [activeFolder, setActiveFolder] = useState<string>('Tất cả');
+  const allFolders = React.useMemo(() => {
+    const folderSet = new Set(['Tất cả', 'Thương Hiệu & Logo', 'Khóa Học 1-1', 'Studio & Showroom', 'Chân Dung MC', 'Dịch Vụ & Sự Kiện', 'Ảnh AI (Tạo Tự Động)']);
+    photos.forEach(p => {
+      if (p.folder && p.folder !== 'Tất cả') folderSet.add(p.folder);
+    });
+    return Array.from(folderSet);
+  }, [photos]);
+  
+  // Filtered Photos for Album Tab
+  const filteredPhotos = React.useMemo(() => {
+    return photos.filter(p => {
+      if (!p.url) return false;
+      return activeFolder === 'Tất cả' || (p.folder || 'Kho Chung') === activeFolder;
+    });
+  }, [photos, activeFolder]);
+
+  // Multi-select state
+  const [selectedUrls, setSelectedUrls] = useState<string[]>([]);
+  useEffect(() => {
+    if (isOpen) setSelectedUrls([]);
+  }, [isOpen]);
+
   const [inputUrl, setInputUrl] = useState<string>(currentUrl);
   const [uploading, setUploading] = useState<boolean>(false);
   const [uploadFolder, setUploadFolder] = useState<string>('Kho Chung');
@@ -126,6 +146,7 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
 
     setUploading(true);
     const newPhotos: PhotoAlbumItem[] = [...photos];
+    const newUrls: string[] = [];
 
     try {
       for (let i = 0; i < files.length; i++) {
@@ -148,14 +169,21 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
         };
 
         newPhotos.unshift(photoItem);
+        newUrls.push(finalUrl);
         if (i === 0) {
           setCropImageUrl(finalUrl);
         }
       }
 
       onUpdatePhotos(newPhotos);
-      // Switch to Crop tab so user can fine-tune position immediately if desired
-      setActiveTab('crop');
+      if (isMultiSelect) {
+        setSelectedUrls(prev => [...prev, ...newUrls]);
+        setActiveTab('album');
+        setActiveFolder(uploadFolder);
+      } else {
+        // Switch to Crop tab so user can fine-tune position immediately if desired
+        setActiveTab('crop');
+      }
     } catch (err) {
       alert("Lỗi khi nén ảnh: " + (err as Error).message);
     } finally {
@@ -451,65 +479,99 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
           {/* TAB 1: ALBUM SELECTOR */}
           {activeTab === 'album' && (
             <div className="space-y-4">
-              <div className="p-3 bg-orange-50 border border-orange-200 rounded-xl text-xs text-orange-900 font-medium flex items-center justify-between">
-                <span>✦ Bấm <strong>"Chọn Ngay"</strong> hoặc <strong>"Căn Vị Trí & Zoom"</strong> để tinh chỉnh hình ảnh trước khi lưu.</span>
-              </div>
-
-              {photos.length === 0 ? (
+              {photos.filter(p => !!p.url).length === 0 ? (
                 <div className="py-10 text-center text-slate-400 text-xs">
                   Kho Album chưa có ảnh. Vui lòng chuyển sang tab <strong>"Tải Ảnh Mới"</strong> để tải ảnh lên.
                 </div>
               ) : (
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  {photos.map((photo) => {
-                    const isSelected = currentUrl === photo.url;
-                    return (
-                      <div 
-                        key={photo.id}
-                        className={`group relative bg-slate-900 rounded-xl overflow-hidden border-2 transition-all ${
-                          isSelected ? 'border-orange-500 ring-2 ring-orange-500/50 scale-[1.02]' : 'border-slate-200 hover:border-orange-400'
-                        }`}
-                      >
-                        <div className="aspect-video relative overflow-hidden">
-                          <img src={photo.url} alt={photo.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
-                          <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-slate-900/80 text-[10px] font-mono text-white">
-                            {(photo.compressedSize / 1024).toFixed(0)} KB
-                          </div>
-                          {isSelected && (
-                            <div className="absolute inset-0 bg-orange-600/40 flex items-center justify-center">
-                              <span className="px-3 py-1 rounded-full bg-orange-600 text-white font-bold text-xs flex items-center gap-1">
-                                <Check className="w-3.5 h-3.5" /> Đang Dùng
-                              </span>
-                            </div>
-                          )}
-                        </div>
+                <>
+                  {/* Row 1: Folder Filter Badges */}
+                  <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none border-b border-slate-100 mb-2">
+                    <span className="text-xs font-bold text-slate-400 shrink-0 flex items-center gap-1">
+                      <FolderPlus className="w-3.5 h-3.5" /> Thư Mục:
+                    </span>
+                    {allFolders.map((folderName) => {
+                      const isActive = activeFolder === folderName;
+                      return (
+                        <button
+                          key={folderName}
+                          type="button"
+                          onClick={() => setActiveFolder(folderName)}
+                          className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shrink-0 cursor-pointer ${
+                            isActive 
+                              ? 'bg-orange-600 text-white shadow-md' 
+                              : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200'
+                          }`}
+                        >
+                          {folderName}
+                        </button>
+                      );
+                    })}
+                  </div>
 
-                        <div className="p-2 bg-white space-y-1.5">
-                          <span className="text-[11px] font-bold text-slate-800 line-clamp-1 block">{photo.caption || photo.name}</span>
-                          <div className="grid grid-cols-2 gap-1 pt-1 border-t border-slate-100">
-                            <button
-                              type="button"
-                              onClick={() => {
-                                onSelectUrl(photo.url);
-                                onClose();
-                              }}
-                              className="px-2 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-[10px] font-bold transition-all cursor-pointer text-center"
-                            >
-                              Chọn Ngay
-                            </button>
-                            <button
-                              type="button"
-                              onClick={() => startCroppingUrl(photo.url)}
-                              className="px-2 py-1 bg-orange-600 hover:bg-orange-500 text-white rounded-lg text-[10px] font-bold transition-all cursor-pointer text-center flex items-center justify-center gap-0.5"
-                              title="Căn khung, Kéo di chuyển vị trí & Zoom ảnh"
-                            >
-                              <Crop className="w-3 h-3" />
-                              <span>Căn Khung</span>
-                            </button>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 max-h-[500px] overflow-y-auto pr-1">
+                    {filteredPhotos.map((photo) => {
+                      const isSingleSelected = !isMultiSelect && currentUrl === photo.url;
+                      const isMultiSelected = isMultiSelect && selectedUrls.includes(photo.url);
+                      const isSelected = isSingleSelected || isMultiSelected;
+
+                      return (
+                        <div 
+                          key={photo.id}
+                          className={`group relative bg-slate-900 rounded-xl overflow-hidden border-2 transition-all ${
+                            isSelected ? 'border-orange-500 ring-2 ring-orange-500/50 scale-[1.02]' : 'border-slate-200 hover:border-orange-400'
+                          }`}
+                        >
+                          <div className="aspect-video relative overflow-hidden" 
+                            onClick={() => {
+                              if (isMultiSelect) {
+                                setSelectedUrls(prev => 
+                                  prev.includes(photo.url) 
+                                    ? prev.filter(u => u !== photo.url) 
+                                    : [...prev, photo.url]
+                                );
+                              }
+                            }}
+                          >
+                            <img src={photo.url} alt={photo.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform cursor-pointer" />
+                            <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-slate-900/80 text-[10px] font-mono text-white">
+                              {(photo.compressedSize / 1024).toFixed(0)} KB
+                            </div>
+                            {isSelected && (
+                              <div className="absolute inset-0 bg-orange-600/40 flex items-center justify-center">
+                                <span className="px-3 py-1 rounded-full bg-orange-600 text-white font-bold text-xs flex items-center gap-1">
+                                  <Check className="w-3.5 h-3.5" /> {isMultiSelect ? 'Đã Chọn' : 'Đang Dùng'}
+                                </span>
+                              </div>
+                            )}
+                          </div>
+
+                          <div className="p-2 bg-white space-y-1.5">
+                            <span className="text-[11px] font-bold text-slate-800 line-clamp-1 block">{photo.caption || photo.name}</span>
+                            {!isMultiSelect && (
+                              <div className="grid grid-cols-2 gap-1 pt-1 border-t border-slate-100">
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    onSelectUrl(photo.url);
+                                    onClose();
+                                  }}
+                                  className="px-2 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-[10px] font-bold transition-all cursor-pointer text-center"
+                                >
+                                  Chọn Ngay
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => startCroppingUrl(photo.url)}
+                                  className="px-2 py-1 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-[10px] font-bold transition-all cursor-pointer text-center"
+                                >
+                                  Căn Lại
+                                </button>
+                              </div>
+                            )}
                           </div>
                         </div>
-                      </div>
-                    );
+                      );
                   })}
                 </div>
               )}
