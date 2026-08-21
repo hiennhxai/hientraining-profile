@@ -796,18 +796,19 @@ export async function loadAdminDataAsync(): Promise<FullAdminData> {
       }
     } else if (data && data.data) {
       const parsed = data.data as Partial<FullAdminData>;
+      // LUẬT SẮT: Supabase là nguồn sự thật duy nhất. KHÔNG BAO GIỜ ghi đè dữ liệu Supabase bằng defaultAdminData.
       currentAdminData = {
         general: { ...defaultAdminData.general, ...(parsed.general || {}) },
         courses: Array.isArray(parsed.courses) ? parsed.courses : defaultAdminData.courses,
         services: Array.isArray(parsed.services) ? parsed.services : defaultAdminData.services,
-        projects: Array.isArray(parsed.projects) ? parsed.projects : defaultAdminData.projects,
+        projects: parsed.projects || defaultAdminData.projects,
         tiktokChannels: Array.isArray(parsed.tiktokChannels) ? parsed.tiktokChannels : defaultAdminData.tiktokChannels,
         brandVideos: Array.isArray(parsed.brandVideos) ? parsed.brandVideos : defaultAdminData.brandVideos,
-        articles: Object.keys(parsed.articles || {}).length < 20 ? defaultAdminData.articles : parsed.articles,
+        articles: (parsed.articles && Object.keys(parsed.articles).length > 0) ? parsed.articles : defaultAdminData.articles,
         photoAlbum: Array.isArray(parsed.photoAlbum) ? parsed.photoAlbum : defaultAdminData.photoAlbum,
         brandLogos: Array.isArray(parsed.brandLogos) ? parsed.brandLogos : defaultAdminData.brandLogos,
         socialLinks: Array.isArray(parsed.socialLinks) ? parsed.socialLinks : defaultAdminData.socialLinks,
-        resources: (Array.isArray(parsed.resources) && parsed.resources.length > 0) ? parsed.resources : defaultAdminData.resources,
+        resources: Array.isArray(parsed.resources) ? parsed.resources : (defaultAdminData.resources || []),
       };
       // Lưu lại vào localStorage để F5 sau này nạp tức thì
       try {
@@ -834,13 +835,14 @@ export async function loadAdminDataAsync(): Promise<FullAdminData> {
               general: { ...defaultAdminData.general, ...(parsed.general || {}) },
               courses: Array.isArray(parsed.courses) ? parsed.courses : defaultAdminData.courses,
               services: Array.isArray(parsed.services) ? parsed.services : defaultAdminData.services,
-              projects: Array.isArray(parsed.projects) ? parsed.projects : defaultAdminData.projects,
+              projects: parsed.projects || defaultAdminData.projects,
               tiktokChannels: Array.isArray(parsed.tiktokChannels) ? parsed.tiktokChannels : defaultAdminData.tiktokChannels,
               brandVideos: Array.isArray(parsed.brandVideos) ? parsed.brandVideos : defaultAdminData.brandVideos,
               articles: parsed.articles ? parsed.articles : defaultAdminData.articles,
               photoAlbum: Array.isArray(parsed.photoAlbum) ? parsed.photoAlbum : defaultAdminData.photoAlbum,
               brandLogos: Array.isArray(parsed.brandLogos) ? parsed.brandLogos : defaultAdminData.brandLogos,
               socialLinks: Array.isArray(parsed.socialLinks) ? parsed.socialLinks : defaultAdminData.socialLinks,
+              resources: Array.isArray(parsed.resources) ? parsed.resources : (defaultAdminData.resources || []),
             };
             window.dispatchEvent(new Event('admin_data_updated'));
             window.dispatchEvent(new Event('supabase_realtime_update')); // Dùng để App.tsx re-render

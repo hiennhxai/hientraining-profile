@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Article, CourseItem, ServiceItem, PhotoAlbumItem, BrandLogoItem, ArticleCategory, ResourceItem, ResourceCategory, ResourceFileType } from '../types';
 import { getAdminData, saveAdminData, resetAdminData, FullAdminData } from '../data/adminStore';
 import { PhotoAlbumManager } from './PhotoAlbumManager';
@@ -11,7 +11,7 @@ import {
   X, Save, RotateCcw, RotateCw, Download, Upload, Plus, Trash2, Check, Settings, 
   BookOpen, Layers, Video, FileText, User, Image as ImageIcon, Sparkles, 
   ShieldCheck, Headphones, Tv, Mic, Award, Monitor, ExternalLink, ChevronDown, ChevronUp, Share2, FolderGit2,
-  Eye, EyeOff, Smartphone, FolderDown, Wand2, Loader2, ArrowUp, ArrowDown
+  Eye, EyeOff, Smartphone, FolderDown, Wand2, Loader2, ArrowUp, ArrowDown, CloudOff, Cloud
 } from 'lucide-react';
 import { generateCourseWithAI, generateServiceWithAI, generateArticleWithAI } from '../lib/gemini';
 
@@ -26,6 +26,40 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
   const [activeTab, setActiveTab] = useState<'general' | 'story' | 'courses' | 'resources' | 'services' | 'projects' | 'articles' | 'album' | 'brands' | 'ai_studio'>('general');
   const [toastMsg, setToastMsg] = useState<string | null>(null);
   const [isAiLoading, setIsAiLoading] = useState(false);
+
+  // Auto-save state
+  const [autoSaveStatus, setAutoSaveStatus] = useState<'saved' | 'unsaved' | 'saving'>('saved');
+  const autoSaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isFirstRenderRef = useRef(true);
+
+  // Auto-save: mỗi khi data thay đổi, tự lưu lên Supabase sau 3 giây
+  useEffect(() => {
+    if (isFirstRenderRef.current) {
+      isFirstRenderRef.current = false;
+      return;
+    }
+    
+    setAutoSaveStatus('unsaved');
+    
+    if (autoSaveTimerRef.current) {
+      clearTimeout(autoSaveTimerRef.current);
+    }
+    
+    autoSaveTimerRef.current = setTimeout(async () => {
+      setAutoSaveStatus('saving');
+      const success = await saveAdminData(data);
+      setAutoSaveStatus(success ? 'saved' : 'unsaved');
+      if (success) {
+        console.log('✅ Auto-save thành công lên Supabase');
+      } else {
+        console.error('❌ Auto-save thất bại');
+      }
+    }, 3000);
+
+    return () => {
+      if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
+    };
+  }, [data]);
 
   // Article Pop-up Preview State
   const [previewArticle, setPreviewArticle] = useState<Article | null>(null);
@@ -341,12 +375,22 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
 
           {/* Header Action Buttons */}
           <div className="flex items-center gap-2">
+            {/* Auto-save status indicator */}
+            <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-[10px] font-bold ${
+              autoSaveStatus === 'saved' ? 'bg-emerald-900/50 text-emerald-400' :
+              autoSaveStatus === 'saving' ? 'bg-amber-900/50 text-amber-400' :
+              'bg-red-900/50 text-red-400'
+            }`}>
+              {autoSaveStatus === 'saved' && <><Cloud className="w-3.5 h-3.5" /> ĐÃ LƯU</>}
+              {autoSaveStatus === 'saving' && <><Loader2 className="w-3.5 h-3.5 animate-spin" /> ĐANG LƯU...</>}
+              {autoSaveStatus === 'unsaved' && <><CloudOff className="w-3.5 h-3.5" /> CHƯA LƯU</>}
+            </div>
             <button
               onClick={() => handleSave(false)}
               className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md transition-all cursor-pointer"
             >
               <Save className="w-4 h-4" />
-              <span>Lưu Tất Cả Thay Đổi</span>
+              <span>Lưu Ngay</span>
             </button>
             <button
               onClick={onClose}
