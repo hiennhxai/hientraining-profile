@@ -486,7 +486,7 @@ export const UniversalImagePickerModal: React.FC<UniversalImagePickerModalProps>
               ) : (
                 <>
                   {/* Row 1: Folder Filter Badges */}
-                  <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none border-b border-slate-100 mb-2">
+                  <div className="flex flex-wrap items-center gap-2 pb-2 border-b border-slate-100 mb-2">
                     <span className="text-xs font-bold text-slate-400 shrink-0 flex items-center gap-1">
                       <FolderPlus className="w-3.5 h-3.5" /> Thư Mục:
                     </span>
