@@ -61,6 +61,22 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
     };
   }, [data]);
 
+  // LUÔN ĐỒNG BỘ DATA KHI CÓ SỰ THAY ĐỔI TỪ LOCALSTORAGE / SUPABASE
+  useEffect(() => {
+    const handleUpdate = () => {
+      setData(getAdminData());
+    };
+    window.addEventListener('admin_data_updated', handleUpdate);
+    
+    // Khi modal mở lên, fetch lại phát nữa cho chắc
+    if (isOpen) {
+      setData(getAdminData());
+    }
+
+    return () => window.removeEventListener('admin_data_updated', handleUpdate);
+  }, [isOpen]);
+
+
   // Article Pop-up Preview State
   const [previewArticle, setPreviewArticle] = useState<Article | null>(null);
 
