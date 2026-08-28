@@ -21,13 +21,26 @@ const TIME_WINDOW = 60 * 1000; // per 1 minute
 
 export async function POST(req: NextRequest) {
   try {
-    // SECURITY 1: CORS & Origin Check (Chống CSRF & Bị gọi lén từ web khác)
+    // SECURITY 1: CORS & Origin Check (Strict hostname validation)
     const origin = req.headers.get('origin');
     const host = req.headers.get('host');
     
-    // Nếu có Origin, nó phải khớp với Host hoặc localhost
-    if (origin && !origin.includes(host || '') && !origin.includes('localhost') && !origin.includes('hientraining.com')) {
-      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    if (origin) {
+      try {
+        const originUrl = new URL(origin);
+        const originHost = originUrl.hostname;
+        if (
+          originHost !== host && 
+          originHost !== 'localhost' && 
+          originHost !== 'hientraining.com' &&
+          !originHost.endsWith('.hientraining.com') &&
+          !originHost.endsWith('.vercel.app')
+        ) {
+          return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+        }
+      } catch (e) {
+        return NextResponse.json({ error: 'Invalid Origin' }, { status: 403 });
+      }
     }
 
     const { message, history } = await req.json();

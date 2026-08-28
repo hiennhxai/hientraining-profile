@@ -39,7 +39,7 @@ export function HeroPortraitShowcase({ lang }: HeroPortraitShowcaseProps) {
         
         {/* Soft All-Edges Faded Image (All 4 sides softly fade into background, pops up on hover) */}
         <div className="relative w-full h-full transition-all duration-500 ease-out group-hover:-translate-y-3 group-hover:scale-[1.04]">
-          <Image src={portraitUrl || "https://hientraining.com/og-image.jpg"}
+          <Image src={portraitUrl || "/og-image.jpg"}
             alt="MC Nguyễn Hồng Xuân Hiến — Personal Brand Portrait"
             fill
             priority
