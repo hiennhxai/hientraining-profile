@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { CourseItem, Language } from '../types';
 import { getAdminData } from '../data/adminStore';
 import { translations } from '../data/translations';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import { EditableWrapper } from './EditableWrapper';
-import { BookOpen, CheckCircle, ChevronRight, Phone, Sparkles } from 'lucide-react';
+import { BookOpen, CheckCircle, ChevronRight, Phone, Sparkles, ChevronLeft } from 'lucide-react';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 
 interface CoursesSectionProps {
   lang: Language;
@@ -19,7 +21,14 @@ export function CoursesSection({ lang, onOpenCourse, isEditActive = false, onEdi
   const isVi = lang === 'vi';
 
   const { ref: headerRef, isVisible: isHeaderVisible } = useIntersectionObserver();
-  const { ref: gridRef, isVisible: isGridVisible } = useIntersectionObserver();
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: 'start', skipSnaps: false },
+    [Autoplay({ delay: 3500, stopOnInteraction: true, stopOnMouseEnter: true })]
+  );
+  
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
   useEffect(() => {
     const handleUpdate = () => {
@@ -77,16 +86,18 @@ export function CoursesSection({ lang, onOpenCourse, isEditActive = false, onEdi
           </div>
         </div>
 
-        {/* Horizontal Scrolling Course List */}
-        <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 px-4 sm:px-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-          {[...courses.filter(c => c.isPinned), ...courses.filter(c => !c.isPinned)].map((course, idx) => {
-            const thumbUrl = course.thumbnailUrl || defaultThumbnails[idx % defaultThumbnails.length];
+        {/* Embla Carousel for Courses */}
+        <div className="relative max-w-7xl mx-auto">
+          <div className="overflow-hidden cursor-grab active:cursor-grabbing pb-8" ref={emblaRef}>
+            <div className="flex -ml-4 md:-ml-6">
+              {[...courses.filter(c => c.isPinned), ...courses.filter(c => !c.isPinned)].map((course, idx) => {
+                const thumbUrl = course.thumbnailUrl || defaultThumbnails[idx % defaultThumbnails.length];
 
-            return (
-              <div 
-                key={course.id}
-                className="w-[85vw] sm:w-[380px] shrink-0 snap-center flex"
-              >
+                return (
+                  <div 
+                    key={course.id}
+                    className="flex-[0_0_85vw] sm:flex-[0_0_380px] lg:flex-[0_0_380px] min-w-0 pl-4 md:pl-6 flex"
+                  >
                 <div 
                   onClick={() => onOpenCourse?.(course)}
                   className="group w-full rounded-2xl bg-white border border-slate-200 hover:border-orange-400 overflow-hidden transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-2 flex flex-col justify-between cursor-pointer"
@@ -177,6 +188,16 @@ export function CoursesSection({ lang, onOpenCourse, isEditActive = false, onEdi
               </div>
             );
           })}
+            </div>
+          </div>
+          
+          {/* Controls */}
+          <button onClick={scrollPrev} className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-4 p-3 rounded-full bg-white shadow-xl border border-slate-200 text-slate-700 hover:text-orange-600 hover:border-orange-200 transition-all z-10 hidden sm:flex">
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button onClick={scrollNext} className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-4 p-3 rounded-full bg-white shadow-xl border border-slate-200 text-slate-700 hover:text-orange-600 hover:border-orange-200 transition-all z-10 hidden sm:flex">
+            <ChevronRight className="w-6 h-6" />
+          </button>
         </div>
 
       </div>
