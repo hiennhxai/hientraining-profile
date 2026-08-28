@@ -9,6 +9,7 @@ interface FloatingActionButtonsProps {
   onToggleLang: () => void;
   isEditActive?: boolean;
   onEditField?: (fieldKey: string, fieldLabel: string, currentValue: string) => void;
+  onOpenAdmin?: () => void;
 }
 
 // ... (flags omitted for brevity, keeping them as is by targeting the right block)
@@ -38,7 +39,7 @@ const UKFlag = () => (
   </svg>
 );
 
-export function FloatingActionButtons({ lang, onToggleLang, isEditActive, onEditField }: FloatingActionButtonsProps) {
+export function FloatingActionButtons({ lang, onToggleLang, isEditActive, onEditField, onOpenAdmin }: FloatingActionButtonsProps) {
   const [isMessageOpen, setIsMessageOpen] = useState(false);
   const [currentFlag, setCurrentFlag] = useState<Language>('vi');
   const [gen, setGen] = useState(getAdminData().general);
@@ -203,6 +204,18 @@ export function FloatingActionButtons({ lang, onToggleLang, isEditActive, onEdit
         {currentFlag === 'vi' ? <UKFlag /> : <VNFlag />}
         <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-slate-200/50 to-transparent group-hover:animate-shimmer" />
       </button>
+
+      {/* Admin Button */}
+      {onOpenAdmin && (
+        <button aria-label="Admin Portal" onClick={onOpenAdmin}
+          className="relative flex items-center justify-center w-12 h-12 bg-slate-900 text-white rounded-full shadow-lg hover:bg-orange-600 hover:scale-110 transition-all duration-300 animate-float group overflow-hidden"
+          style={{ animationDelay: '0.6s' }}
+          title="Quản Trị Hệ Thống"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+          <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-shimmer" />
+        </button>
+      )}
 
     </div>
   );

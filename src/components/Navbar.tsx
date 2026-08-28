@@ -120,20 +120,8 @@ export function Navbar({ lang, onToggleLang, isDetecting, activePage, onSelectPa
             })}
           </ul>
 
-          {/* Controls: Language Toggle & Hotline & Mobile Menu Button */}
           <div className="flex items-center space-x-2 sm:space-x-3">
             {/* Language toggle removed in favor of Google Translate widget */}
-            
-            {/* Admin Portal Button */}
-            {onOpenAdmin && (
-              <button
-                aria-label="Admin Portal"
-                onClick={onOpenAdmin}
-                className="p-1.5 sm:p-2 rounded-lg text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer flex items-center justify-center"
-              >
-                <Settings className="w-4 h-4 sm:w-5 sm:h-5" />
-              </button>
-            )}
 
             <a
               href="tel:0813131385"
@@ -199,20 +187,6 @@ export function Navbar({ lang, onToggleLang, isDetecting, activePage, onSelectPa
                 <PhoneCall className="w-4 h-4" />
                 <span>Hotline/Zalo: 0813.13.13.85</span>
               </a>
-              
-              {onOpenAdmin && (
-                <button
-                  aria-label="Admin Portal"
-                  onClick={() => {
-                    handleNavClick();
-                    onOpenAdmin();
-                  }}
-                  className="w-full flex items-center justify-center gap-2 py-3 text-sm font-semibold rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors"
-                >
-                  <Settings className="w-4 h-4" />
-                  <span>Trang Quản Trị Hệ Thống</span>
-                </button>
-              )}
             </div>
           </div>
         </div>

@@ -123,6 +123,10 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
         onToggleLang={handleToggleLang} 
         isEditActive={isAdminMode && isEditActive}
         onEditField={handleOpenEditField}
+        onOpenAdmin={() => {
+          if (isAdminMode) setIsAdminOpen(true);
+          else setIsAdminLoginOpen(true);
+        }}
       />
 
       {isAdminLoginOpen && (
