@@ -123,6 +123,17 @@ export function Navbar({ lang, onToggleLang, isDetecting, activePage, onSelectPa
           <div className="flex items-center space-x-2 sm:space-x-3">
             {/* Language toggle removed in favor of Google Translate widget */}
 
+            {/* Admin Login Button */}
+            {onOpenAdmin && (
+              <button
+                onClick={onOpenAdmin}
+                className="hidden sm:inline-flex items-center justify-center w-9 h-9 text-slate-500 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors border border-transparent hover:border-orange-200"
+                title="Quản Trị Hệ Thống"
+              >
+                <Settings className="w-5 h-5" />
+              </button>
+            )}
+
             <a
               href="tel:0813131385"
               className="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-bold rounded-lg bg-orange-600 text-white hover:bg-orange-700 transition-all shadow-sm hover:shadow-md"
@@ -180,6 +191,15 @@ export function Navbar({ lang, onToggleLang, isDetecting, activePage, onSelectPa
             </div>
 
             <div className="pt-4 mt-4 border-t border-slate-100 flex flex-col gap-2">
+              {onOpenAdmin && (
+                <button
+                  onClick={onOpenAdmin}
+                  className="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors shadow-sm"
+                >
+                  <Settings className="w-4 h-4" />
+                  <span>Quản Trị Hệ Thống</span>
+                </button>
+              )}
               <a
                 href="tel:0813131385"
                 className="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-bold rounded-xl bg-orange-600 text-white hover:bg-orange-700 transition-colors shadow-md"
