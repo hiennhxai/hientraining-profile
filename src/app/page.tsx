@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { HeroSection } from "../components/HeroSection";
+import { BrandMarquee } from "../components/BrandMarquee";
 import { StatsBar } from "../components/StatsBar";
+import { CourseBannerCarousel } from "../components/CourseBannerCarousel";
 import { TestimonialCarousel } from "../components/TestimonialCarousel";
 import { ContactSection } from "../components/ContactSection";
 import { getAdminData } from "../data/adminStore";
@@ -32,10 +34,15 @@ export default function HomePage() {
         isEditActive={isAdminMode && isEditActive}
         onEditField={() => {}}
       />
+      <BrandMarquee lang={lang} />
       <StatsBar 
         lang={lang}
         isEditActive={isAdminMode && isEditActive}
         onEditField={() => {}}
+      />
+      <CourseBannerCarousel 
+        lang={lang} 
+        onSelectCourse={(c) => router.push(`/course/${c.id}`)} 
       />
       <TestimonialCarousel 
         lang={lang}

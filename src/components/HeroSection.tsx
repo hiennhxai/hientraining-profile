@@ -1,9 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Language } from '../types';
 import { translations } from '../data/translations';
-import { Logo } from './Logo';
-import { BrandMarquee } from './BrandMarquee';
-import { CourseBannerCarousel } from './CourseBannerCarousel';
 import { HeroPortraitShowcase } from './HeroPortraitShowcase';
 import { EditableWrapper } from './EditableWrapper';
 import { getAdminData } from '../data/adminStore';
@@ -249,16 +246,7 @@ export function HeroSection({ lang, onNavigatePage, onSelectCourse, isEditActive
           </div>
 
         </div>
-
-        {/* Auto-scrolling Brand Marquee Bar right under Hotline 0813 13 13 85 */}
-        <BrandMarquee lang={lang} />
-
-        {/* Auto-sliding Course Banner Carousel (4s) */}
-        <CourseBannerCarousel lang={lang} onSelectCourse={onSelectCourse} />
       </div>
     </section>
   );
 }
-
-
-
