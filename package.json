@@ -15,6 +15,7 @@
     "@huggingface/inference": "^4.13.27",
     "@supabase/supabase-js": "^2.111.0",
     "dotenv": "^17.2.3",
+    "embla-carousel-auto-scroll": "^8.6.0",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "express": "^4.21.2",

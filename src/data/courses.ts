@@ -63,8 +63,8 @@ export const coursesData: CourseItem[] = [
   {
     id: 'ban-hang-livestream',
     code: 'CRS.02',
-    title: 'Kỹ Năng - Bán Hàng Live Stream',
-    subtitle: 'Trở thành người bán hàng "Đa Nhân Cách" tự tin trước ống kính',
+    title: 'Kỹ Năng Bán Hàng Livestream',
+    subtitle: 'Trở thành <span class="bg-orange-100 text-orange-700 font-bold px-1.5 py-0.5 rounded shadow-sm">Người Bán Hàng Đa Nền Tảng</span> tự tin trước ống kính',
     formatOffline: 'Offline 1-1 tại Studio Giảng Viên',
     formatOnline: 'Online 1:1 qua Google Meet/Zoom',
     feeNotice: 'Liên hệ tư vấn & báo phí qua SĐT: 0813.13.13.85',

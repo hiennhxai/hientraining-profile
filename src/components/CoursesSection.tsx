@@ -6,7 +6,7 @@ import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import { EditableWrapper } from './EditableWrapper';
 import { BookOpen, CheckCircle, ChevronRight, Phone, Sparkles, ChevronLeft } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
+import AutoScroll from 'embla-carousel-auto-scroll';
 
 interface CoursesSectionProps {
   lang: Language;
@@ -23,8 +23,8 @@ export function CoursesSection({ lang, onOpenCourse, isEditActive = false, onEdi
   const { ref: headerRef, isVisible: isHeaderVisible } = useIntersectionObserver();
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: 'start', skipSnaps: false },
-    [Autoplay({ delay: 3500, stopOnInteraction: true, stopOnMouseEnter: true })]
+    { loop: true, align: 'start', skipSnaps: false, dragFree: true },
+    [AutoScroll({ speed: 1.5, stopOnInteraction: false, stopOnMouseEnter: true })]
   );
   
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
@@ -141,9 +141,10 @@ export function CoursesSection({ lang, onOpenCourse, isEditActive = false, onEdi
                         label={`Sửa Mô Tả Khóa ${idx + 1}`}
                         onEdit={() => triggerEdit(`course_${course.id}_subtitle`, `Mô Tả Khóa Học ${course.code}`, course.subtitle)}
                       >
-                        <p className="text-xs sm:text-sm text-slate-600 mb-4 line-clamp-2 leading-relaxed font-normal">
-                          {course.subtitle}
-                        </p>
+                        <p 
+                          className="text-xs sm:text-sm text-slate-600 mb-4 line-clamp-2 leading-relaxed font-normal"
+                          dangerouslySetInnerHTML={{ __html: course.subtitle }}
+                        />
                       </EditableWrapper>
 
                       <div className="space-y-1.5 mb-4 text-xs text-slate-700 font-medium bg-slate-50 p-3 rounded-xl border border-slate-200/80">

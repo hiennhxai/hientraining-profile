@@ -835,7 +835,7 @@ export async function loadAdminDataAsync(subscribe: boolean = false, forceReload
 
     const { data, error } = await supabase
       .from('site_config')
-      .select('data')
+      .select('*')
       .eq('id', 1)
       .single();
       
@@ -845,8 +845,8 @@ export async function loadAdminDataAsync(subscribe: boolean = false, forceReload
       if (saved) {
         currentAdminData = { ...defaultAdminData, ...JSON.parse(saved) };
       }
-    } else if (data && data.data) {
-      const parsed = data.data as Partial<FullAdminData>;
+    } else if (data) {
+      let parsed = (data as any).data_json || data.data as Partial<FullAdminData>;
       // LUẬT SẮT: Supabase là nguồn sự thật duy nhất. KHÔNG BAO GIỜ ghi đè dữ liệu Supabase bằng defaultAdminData.
       currentAdminData = {
         general: { ...defaultAdminData.general, ...(parsed.general || {}) },

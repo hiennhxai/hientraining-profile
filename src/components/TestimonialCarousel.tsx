@@ -3,7 +3,7 @@ import { TestimonialItem, Language } from '../types';
 import { translations } from '../data/translations';
 import { Quote, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
+import AutoScroll from 'embla-carousel-auto-scroll';
 
 interface TestimonialCarouselProps {
   lang: Language;
@@ -19,11 +19,12 @@ export function TestimonialCarousel({ lang, testimonials }: TestimonialCarouselP
       loop: true, 
       align: 'center', 
       skipSnaps: false,
+      dragFree: true,
       breakpoints: {
         '(min-width: 768px)': { align: 'start' }
       }
     },
-    [Autoplay({ delay: 5000, stopOnInteraction: true })]
+    [AutoScroll({ speed: 1.5, stopOnInteraction: false, stopOnMouseEnter: true })]
   );
   
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
