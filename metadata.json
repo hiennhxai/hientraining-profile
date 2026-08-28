@@ -1,0 +1,6 @@
+{
+  "name": "Xuân Hiến — Specialist Skill Trainer & Mentor",
+  "description": "Trang web chính thức của Nguyễn Hồng Xuân Hiến — Chuyên gia đào tạo kỹ năng cá nhân 1-1, MC truyền hình, Producer & Consultant Setup Studio Livestream chuyên nghiệp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,211 @@
+import { useState, useRef, useEffect } from 'react';
+import { Phone, MessageCircle, X, Share2 } from 'lucide-react';
+import { Language } from '../types';
+import { getAdminData } from '../data/adminStore';
+import { EditableWrapper } from './EditableWrapper';
+
+interface FloatingActionButtonsProps {
+  lang: Language;
+  onToggleLang: () => void;
+  isEditActive?: boolean;
+  onEditField?: (fieldKey: string, fieldLabel: string, currentValue: string) => void;
+}
+
+// ... (flags omitted for brevity, keeping them as is by targeting the right block)
+
+const VNFlag = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" className="w-7 h-7 rounded-[4px] shadow-sm object-cover overflow-hidden">
+    <rect width="900" height="600" fill="#da251d"/>
+    <polygon fill="#ffcd00" points="450,114 532,367 317,210 583,210 368,367"/>
+  </svg>
+);
+
+const UKFlag = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" className="w-7 h-7 rounded-[4px] shadow-sm object-cover overflow-hidden">
+    <clipPath id="s">
+      <path d="M0,0 v30 h60 v-30 z"/>
+    </clipPath>
+    <clipPath id="t">
+      <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/>
+    </clipPath>
+    <g clipPath="url(#s)">
+      <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/>
+      <path d="M0,0 L60,30 M60,0 L0,30" clipPath="url(#t)" stroke="#C8102E" strokeWidth="4"/>
+      <path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10"/>
+      <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6"/>
+    </g>
+  </svg>
+);
+
+export function FloatingActionButtons({ lang, onToggleLang, isEditActive, onEditField }: FloatingActionButtonsProps) {
+  const [isMessageOpen, setIsMessageOpen] = useState(false);
+  const [currentFlag, setCurrentFlag] = useState<Language>('vi');
+  const [gen, setGen] = useState(getAdminData().general);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const triggerEdit = (key: string, label: string, currentVal: string) => {
+    if (onEditField) onEditField(key, label, currentVal);
+  };
+
+  useEffect(() => {
+    const handleUpdate = () => setGen(getAdminData().general);
+    window.addEventListener('admin_data_updated', handleUpdate);
+    window.addEventListener('supabase_realtime_update', handleUpdate);
+    return () => {
+      window.removeEventListener('admin_data_updated', handleUpdate);
+      window.removeEventListener('supabase_realtime_update', handleUpdate);
+    };
+  }, []);
+
+  // Initialize flag based on cookie
+  // On a manual F5, the cookie is cleared in index.html, so it defaults to 'vi'.
+  // But if the fallback triggered a programmatic reload, the cookie is preserved,
+  // so we must read it to show the correct flag.
+  useEffect(() => {
+    const isEnglish = document.cookie.includes('googtrans=/vi/en') || document.cookie.includes('googtrans=/auto/en');
+    setCurrentFlag(isEnglish ? 'en' : 'vi');
+  }, []);
+
+  // Close when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsMessageOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleLanguageSwitch = () => {
+    const targetLang = currentFlag === 'en' ? 'vi' : 'en';
+    setCurrentFlag(targetLang);
+
+    // Bulletproof Cookie Setter for all possible domain variations
+    const setTranslationCookie = (lang: string) => {
+      const val = lang === 'vi' ? '' : `/vi/${lang}`;
+      const expires = lang === 'vi' ? "Thu, 01 Jan 1970 00:00:00 UTC" : "Thu, 31 Dec 2099 23:59:59 UTC";
+      const hostname = window.location.hostname;
+      const domains = [
+        '', // default
+        `.${hostname}`, // wildcard subdomain
+        hostname // exact hostname
+      ];
+      
+      // Also get root domain (e.g. from xuanhien.vercel.app -> vercel.app, from xuanhien.com -> .xuanhien.com)
+      const parts = hostname.split('.');
+      if (parts.length > 1) {
+        domains.push(`.${parts[parts.length - 2]}.${parts[parts.length - 1]}`);
+      }
+
+      domains.forEach(d => {
+        const domainStr = d ? `; domain=${d}` : '';
+        document.cookie = `googtrans=${val}; expires=${expires}; path=/${domainStr}`;
+      });
+    };
+
+    setTranslationCookie(targetLang);
+    
+    // First attempt: trigger DOM event via legacy HTMLEvents (which Google Translate often expects)
+    const selectField = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+    if (selectField) {
+      selectField.value = targetLang === 'en' ? 'en' : '';
+      try {
+        const event = document.createEvent('HTMLEvents');
+        event.initEvent('change', true, true);
+        selectField.dispatchEvent(event);
+      } catch (e) {
+        // Fallback to modern event
+        selectField.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
+      }
+    }
+
+    // Second attempt (100% Bulletproof Fallback): if translation did not apply after 600ms, reload the page.
+    // The proper cookies have now been set across all domain variations.
+    setTimeout(() => {
+      const isTranslated = document.documentElement.classList.contains('translated-ltr') || document.documentElement.classList.contains('translated-rtl');
+      if ((targetLang === 'en' && !isTranslated) || (targetLang === 'vi' && isTranslated)) {
+        sessionStorage.setItem('xuanhien_keep_lang', 'true');
+        window.location.reload();
+      }
+    }, 600);
+  };
+
+  return (
+    <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50 items-end" ref={containerRef}>
+      
+      {/* Phone Icon */}
+      <a 
+        href="tel:0813131385" 
+        className="relative flex items-center justify-center w-12 h-12 bg-emerald-500 text-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300 animate-float group overflow-hidden"
+      >
+        <Phone className="w-5 h-5 animate-wiggle" />
+        <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-shimmer" />
+      </a>
+
+      {/* Message Options (Messenger / Zalo) */}
+      <div className="relative flex items-center justify-end">
+        <div 
+          className={`absolute right-[56px] flex items-center gap-3 transition-all duration-300 origin-right ${isMessageOpen ? 'opacity-100 scale-100 translate-x-0' : 'opacity-0 scale-50 translate-x-4 pointer-events-none'}`}
+        >
+          <EditableWrapper
+            isEditActive={isEditActive}
+            label="Sửa Link Zalo"
+            onEdit={() => triggerEdit('zaloLink', 'Đường dẫn Zalo (https://zalo.me/...)', gen.zaloLink || "https://zalo.me/84813131385")}
+          >
+            <a
+              href={gen.zaloLink || "https://zalo.me/84813131385"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2.5 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition-colors whitespace-nowrap"
+              title="Zalo"
+            >
+              <span className="font-bold text-sm tracking-wide">Zalo</span>
+            </a>
+          </EditableWrapper>
+
+          <EditableWrapper
+            isEditActive={isEditActive}
+            label="Sửa Link Messenger"
+            onEdit={() => triggerEdit('messengerLink', 'Đường dẫn Messenger (https://m.me/...)', gen.messengerLink || "https://m.me/yourpage")}
+          >
+            <a
+              href={gen.messengerLink || "https://m.me/yourpage"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2.5 bg-[#0084FF] text-white rounded-full shadow-lg hover:bg-blue-600 transition-colors whitespace-nowrap"
+              title="Messenger"
+            >
+              <svg viewBox="0 0 36 36" className="w-5 h-5 fill-current">
+                <path d="M18 2C9.163 2 2 8.784 2 17.15c0 4.793 2.408 9.043 6.138 11.838v5.525c0 .633.722.983 1.22.6l4.63-3.486a16.634 16.634 0 004.012.493c8.837 0 16-6.784 16-15.15C34 8.784 26.837 2 18 2zm1.096 20.315l-4.143-4.42c-.443-.473-1.18-.5-1.657-.06l-5.01 4.606c-.57.525-1.396-.15-1.077-.852l5.443-11.968c.45-.992 1.83-1.127 2.457-.24l4.14 5.8c.376.527 1.134.62 1.636.196l4.908-4.153c.594-.503 1.455.158 1.122.863l-5.45 11.758c-.46.994-1.87 1.082-2.368.468z" />
+              </svg>
+              <span className="font-bold text-sm tracking-wide">Messenger</span>
+            </a>
+          </EditableWrapper>
+        </div>
+
+        <button aria-label="Action button" onClick={() => setIsMessageOpen(!isMessageOpen)}
+          className={`relative flex items-center justify-center w-12 h-12 text-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300 animate-float group overflow-hidden ${isMessageOpen ? 'bg-slate-700' : 'bg-slate-800'}`}
+          style={{ animationDelay: '0.2s' }}
+        >
+          {isMessageOpen ? <X className="w-5 h-5" /> : <Share2 className="w-5 h-5" />}
+          <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-shimmer" />
+        </button>
+      </div>
+
+      {/* Language Switch */}
+      <button aria-label="Action button" onClick={handleLanguageSwitch}
+        className="relative flex items-center justify-center w-12 h-12 bg-white text-xl rounded-full shadow-lg border border-slate-200 hover:scale-110 transition-transform duration-300 animate-float group overflow-hidden"
+        style={{ animationDelay: '0.4s' }}
+        title={currentFlag === 'vi' ? 'Switch to English' : 'Đổi sang Tiếng Việt'}
+      >
+        {currentFlag === 'vi' ? <UKFlag /> : <VNFlag />}
+        <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-slate-200/50 to-transparent group-hover:animate-shimmer" />
+      </button>
+
+    </div>
+  );
+}
+
+

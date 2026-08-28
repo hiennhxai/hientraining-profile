@@ -1,0 +1,199 @@
+import { useState, useEffect } from 'react';
+import { Language } from '../types';
+import { translations } from '../data/translations';
+import { Logo } from './Logo';
+import { PhoneCall, Menu, X, Home, User, GraduationCap, FolderDown, Wrench, Video, BookOpen, MessageSquare, Settings } from 'lucide-react';
+import Link from 'next/link';
+
+interface NavbarProps {
+  lang: Language;
+  onToggleLang: () => void;
+  isDetecting: boolean;
+  activePage: string;
+  onSelectPage: (page: string) => void;
+  onOpenAdmin?: () => void;
+}
+
+import { getAdminData } from '../data/adminStore';
+
+export function Navbar({ lang, onToggleLang, isDetecting, activePage, onSelectPage, onOpenAdmin }: NavbarProps) {
+  const t = translations[lang];
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [gen, setGen] = useState(getAdminData().general);
+  const [scrollY, setScrollY] = useState(0);
+  const [isTranslated, setIsTranslated] = useState(false);
+
+  useEffect(() => {
+    const handleUpdate = () => setGen(getAdminData().general);
+    window.addEventListener('admin_data_updated', handleUpdate);
+    window.addEventListener('supabase_realtime_update', handleUpdate);
+    return () => {
+      window.removeEventListener('admin_data_updated', handleUpdate);
+      window.removeEventListener('supabase_realtime_update', handleUpdate);
+    };
+  }, []);
+
+  // Track scroll position and translation state for dynamic Navbar offset
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Check translation state periodically (since it can change dynamically)
+    const interval = setInterval(() => {
+      const translated = document.documentElement.classList.contains('translated-ltr') || document.documentElement.classList.contains('translated-rtl');
+      if (translated !== isTranslated) {
+        setIsTranslated(translated);
+      }
+    }, 1000);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearInterval(interval);
+    };
+  }, [isTranslated]);
+
+  // Prevent scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
+  const navItems = [
+    { id: 'home', label: gen.navHome || t.nav_home || (lang === 'vi' ? 'Trang chủ' : 'Home'), icon: Home },
+    { id: 'about', label: gen.navAbout || t.nav_about || (lang === 'vi' ? 'Về tôi' : 'My Story'), icon: User },
+    { id: 'courses', label: gen.navCourses || t.nav_courses || (lang === 'vi' ? 'Khóa học' : 'Courses'), icon: GraduationCap },
+    { id: 'resources', label: lang === 'vi' ? 'Kho Tài Liệu' : 'Resources', icon: FolderDown },
+    { id: 'services', label: gen.navServices || t.nav_services || (lang === 'vi' ? 'Dịch vụ' : 'Services'), icon: Wrench },
+    { id: 'projects', label: gen.navProjects || t.nav_projects || (lang === 'vi' ? 'Dự án & Showcase' : 'Projects'), icon: Video },
+    { id: 'blog', label: gen.navBlog || t.nav_blog || (lang === 'vi' ? 'Kiến thức' : 'Knowledge'), icon: BookOpen },
+    { id: 'contact', label: gen.navContact || t.nav_contact || (lang === 'vi' ? 'Đăng ký tư vấn' : 'Contact'), icon: MessageSquare },
+  ];
+
+  const handleNavClick = () => {
+    setMobileMenuOpen(false);
+  };
+
+  // Calculate dynamic top offset (Google Translate banner is ~40px high)
+  const navbarTop = isTranslated ? Math.max(0, 40 - scrollY) : 0;
+
+  return (
+    <>
+      <nav 
+        className="fixed left-0 right-0 z-50 backdrop-blur-md bg-white/95 border-b border-slate-200/80 px-4 md:px-8 py-2.5 shadow-sm transition-all"
+        style={{ top: `${navbarTop}px` }}
+      >
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          {/* Logo with clean branding */}
+          <Link 
+            href="/"
+            onClick={() => handleNavClick()}
+            className="flex items-center gap-2 group text-left cursor-pointer transition-transform hover:scale-[1.01]"
+          >
+            <Logo className="h-9 sm:h-10" showText={true} textColor="text-slate-900" />
+          </Link>
+
+          {/* Desktop Nav Items - Clean typography without cluttered inline icons */}
+          <ul className="hidden lg:flex items-center space-x-1 text-xs font-semibold">
+            {navItems.map((item) => {
+              const isActive = activePage === item.id;
+              return (
+                <li key={item.id}>
+                  <Link
+                    href={item.id === 'home' ? '/' : `/${item.id}`}
+                    onClick={() => handleNavClick()}
+                    className={`px-3 py-2 rounded-lg transition-all whitespace-nowrap cursor-pointer font-medium ${
+                      isActive
+                        ? 'text-orange-600 font-bold'
+                        : 'text-slate-700 hover:text-orange-600 hover:bg-slate-50'
+                    }`}
+                  >
+                    <span>{item.label}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          {/* Controls: Language Toggle & Hotline & Mobile Menu Button */}
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            {/* Language toggle removed in favor of Google Translate widget */}
+
+            <a
+              href="tel:0813131385"
+              className="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-bold rounded-lg bg-orange-600 text-white hover:bg-orange-700 transition-all shadow-sm hover:shadow-md"
+            >
+              <PhoneCall className="w-3.5 h-3.5" />
+              <span>Tư Vấn Ngay</span>
+            </a>
+
+            {/* Mobile Menu Trigger Button */}
+            <button aria-label="Action button" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden p-2 rounded-lg text-slate-700 hover:text-orange-600 hover:bg-slate-100 border border-slate-200 transition-colors cursor-pointer"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6 text-orange-600" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Drawer Navigation with Dark Overlay */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-40 lg:hidden">
+          {/* Backdrop Overlay */}
+          <div 
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+
+          {/* Drawer Menu Panel */}
+          <div className="fixed inset-x-0 top-[64px] bg-white border-b border-slate-200 p-5 shadow-2xl max-h-[calc(100vh-68px)] overflow-y-auto z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+            <div className="space-y-1.5">
+              {navItems.map((item) => {
+                const isActive = activePage === item.id;
+                const Icon = item.icon;
+                return (
+                  <Link
+                    key={item.id}
+                    href={item.id === 'home' ? '/' : `/${item.id}`}
+                    onClick={() => handleNavClick()}
+                    className={`flex items-center justify-between w-full p-3 rounded-xl transition-all cursor-pointer ${
+                      isActive
+                        ? 'bg-orange-50 text-orange-600 border border-orange-200/80 font-bold'
+                        : 'text-slate-700 hover:bg-slate-50 border border-transparent'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className={`p-1.5 rounded-lg ${isActive ? 'bg-orange-100' : 'bg-slate-100 text-slate-500'}`}>
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <span className="text-sm font-semibold">{item.label}</span>
+                    </div>
+                    {isActive && <span className="text-xs font-mono text-orange-600 bg-orange-100 px-2 py-0.5 rounded-md font-bold">[Đang xem]</span>}
+                  </Link>
+                );
+              })}
+            </div>
+
+            <div className="pt-4 mt-4 border-t border-slate-100 flex flex-col gap-2">
+              <a
+                href="tel:0813131385"
+                className="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-bold rounded-xl bg-orange-600 text-white hover:bg-orange-700 transition-colors shadow-md"
+              >
+                <PhoneCall className="w-4 h-4" />
+                <span>Hotline/Zalo: 0813.13.13.85</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+

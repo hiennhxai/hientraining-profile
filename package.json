@@ -1,0 +1,41 @@
+{
+  "name": "react-example",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev -p 3010 -H 0.0.0.0",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "watch-deploy": "node auto_deploy.js"
+  },
+  "dependencies": {
+    "@google/genai": "^2.18.0",
+    "@huggingface/inference": "^4.13.27",
+    "@supabase/supabase-js": "^2.111.0",
+    "dotenv": "^17.2.3",
+    "embla-carousel-autoplay": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
+    "express": "^4.21.2",
+    "lucide-react": "^0.546.0",
+    "next": "^16.3.2",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.14.0",
+    "@types/react": "19.2.18",
+    "autoprefixer": "^10.4.21",
+    "chokidar": "^5.0.0",
+    "esbuild": "^0.25.0",
+    "eslint-config-next": "^16.3.2",
+    "postcss": "^8.5.26",
+    "sharp": "^0.35.3",
+    "tailwindcss": "^4.1.14",
+    "tsx": "^4.21.0",
+    "typescript": "~5.8.2"
+  }
+}
