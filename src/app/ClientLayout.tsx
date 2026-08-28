@@ -43,18 +43,19 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
     
     // Fetch fresh data from Supabase on initial load (fixes F5 stale data issue)
     import("../data/adminStore").then(({ loadAdminDataAsync, getAdminData }) => {
-      loadAdminDataAsync().then(() => {
-        const data = getAdminData();
-        applyTypography(
-          data.general.fontHeading || 'Space Grotesk',
-          data.general.fontBody || 'Be Vietnam Pro',
-          data.general.fontMono || 'IBM Plex Mono',
-          data.general.fontSizeScale || 100
-        );
-        setIsDataLoaded(true);
-      }).catch(err => {
-        console.error("Failed to load admin data:", err);
-        setLoadError(true);
+      // 1. Release UI immediately with local/default data
+      const data = getAdminData();
+      applyTypography(
+        data.general.fontHeading || 'Space Grotesk',
+        data.general.fontBody || 'Be Vietnam Pro',
+        data.general.fontMono || 'IBM Plex Mono',
+        data.general.fontSizeScale || 100
+      );
+      setIsDataLoaded(true);
+
+      // 2. Fetch fresh data in the background silently
+      loadAdminDataAsync().catch(err => {
+        console.error("Failed to load admin data silently:", err);
       });
     });
 
@@ -156,16 +157,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
         />
       )}
 
-      {/* Tối ưu SEO: Splash Screen đè lên màn hình trong lúc lấy dữ liệu thật */}
-      {!isDataLoaded && !loadError && (
-        <div className="fixed inset-0 z-[999999] bg-white flex flex-col items-center justify-center transition-opacity duration-1000 ease-in-out">
-          <div className="w-16 h-16 border-4 border-orange-200 border-t-orange-600 rounded-full animate-spin mb-4"></div>
-          <p className="text-slate-400 font-mono text-sm tracking-widest uppercase animate-pulse">
-            Đang tải dữ liệu...
-          </p>
-        </div>
-      )}
-
+      {/* Removed blocking splash screen to ensure 0ms TTFB and no white screen */}
       {/* Fallback khi tải dữ liệu thất bại */}
       {loadError && (
         <div className="fixed inset-0 z-[999999] bg-slate-50 flex flex-col items-center justify-center p-4">

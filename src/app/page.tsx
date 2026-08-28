@@ -19,14 +19,12 @@ export default function HomePage() {
   const isEditActive = false;
 
   useEffect(() => {
-    // Next.js hydration safety for localStorage
+    // Trigger any client-side only logic here
     setIsDataLoaded(true);
   }, []);
 
-  if (!isDataLoaded) return null; // Avoid hydration mismatch for now
-
   return (
-    <main>
+    <main suppressHydrationWarning>
       <HeroSection 
         lang={lang} 
         onNavigatePage={(page) => router.push(`/${page}`)} 

@@ -4,6 +4,8 @@ import { ClientLayout } from "./ClientLayout";
 
 import { createClient } from "@supabase/supabase-js";
 
+export const revalidate = 3600; // Force Next.js to cache this layout for 1 hour (Fast TTFB)
+
 export async function generateMetadata(): Promise<Metadata> {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
