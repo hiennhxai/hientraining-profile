@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${service.title} | Dịch Vụ Xuân Hiến`,
     description: service.subtitle || service.title,
     openGraph: {
-      images: [service.photos?.[0]?.url || 'https://xuanhien.com/og-image.jpg'],
+      images: [service.photos?.[0]?.url || 'https://hientraining.com/og-image.jpg'],
     }
   };
 }

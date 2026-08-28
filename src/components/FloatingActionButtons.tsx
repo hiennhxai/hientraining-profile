@@ -93,7 +93,7 @@ export function FloatingActionButtons({ lang, onToggleLang, isEditActive, onEdit
         hostname // exact hostname
       ];
       
-      // Also get root domain (e.g. from xuanhien.vercel.app -> vercel.app, from xuanhien.com -> .xuanhien.com)
+      // Also get root domain (e.g. from hientraining.vercel.app -> vercel.app, from hientraining.com -> .hientraining.com)
       const parts = hostname.split('.');
       if (parts.length > 1) {
         domains.push(`.${parts[parts.length - 2]}.${parts[parts.length - 1]}`);

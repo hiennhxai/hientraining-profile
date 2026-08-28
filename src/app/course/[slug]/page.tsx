@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${course.title} | Khóa Học Xuân Hiến`,
     description: course.subtitle || course.title,
     openGraph: {
-      images: [course.bannerImage || course.thumbnailUrl || 'https://xuanhien.com/og-image.jpg'],
+      images: [course.bannerImage || course.thumbnailUrl || 'https://hientraining.com/og-image.jpg'],
     }
   };
 }

@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
     const host = req.headers.get('host');
     
     // Nếu có Origin, nó phải khớp với Host hoặc localhost
-    if (origin && !origin.includes(host || '') && !origin.includes('localhost') && !origin.includes('xuanhien.com')) {
+    if (origin && !origin.includes(host || '') && !origin.includes('localhost') && !origin.includes('hientraining.com')) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 

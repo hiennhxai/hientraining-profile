@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
   let title = "MC Nguyễn Hồng Xuân Hiến — Media & Training Studio";
   let desc = "12+ năm kinh nghiệm MC truyền hình, Á quân TV Face, chuyên gia đào tạo kỹ năng 1 kèm 1 và setup studio livestream chuyên nghiệp.";
-  let ogImage = "https://xuanhien.com/og-image.jpg";
+  let ogImage = "https://hientraining.com/og-image.jpg";
 
   if (supabaseUrl && supabaseKey) {
     try {
@@ -27,12 +27,12 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title,
     description: desc,
-    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://xuanhien.com'),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://hientraining.com'),
     keywords: "MC Xuân Hiến, Đào tạo MC, Media Training Studio, Livestream chuyên nghiệp, Kỹ năng giao tiếp",
     openGraph: {
       title,
       description: desc,
-      url: "https://xuanhien.com/",
+      url: "https://hientraining.com/",
       images: [{ url: ogImage }],
       locale: "vi_VN",
       type: "website",

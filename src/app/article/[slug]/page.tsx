@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${article.title} | Blog Xuân Hiến`,
     description: article.excerpt || article.title,
     openGraph: {
-      images: [article.coverImage || 'https://xuanhien.com/og-image.jpg'],
+      images: [article.coverImage || 'https://hientraining.com/og-image.jpg'],
     }
   };
 }
