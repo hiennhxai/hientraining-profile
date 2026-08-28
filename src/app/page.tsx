@@ -3,13 +3,7 @@
 import { useState, useEffect } from "react";
 import { HeroSection } from "../components/HeroSection";
 import { StatsBar } from "../components/StatsBar";
-import { AboutSection } from "../components/AboutSection";
-import { CoursesSection } from "../components/CoursesSection";
-import { ServicesSection } from "../components/ServicesSection";
-import { ProductsSection } from "../components/ProductsSection";
-import { ResourceLibrarySection } from "../components/ResourceLibrarySection";
 import { TestimonialCarousel } from "../components/TestimonialCarousel";
-import { BlogSection } from "../components/BlogSection";
 import { ContactSection } from "../components/ContactSection";
 import { getAdminData } from "../data/adminStore";
 import { Language } from "../types";
@@ -43,37 +37,9 @@ export default function HomePage() {
         isEditActive={isAdminMode && isEditActive}
         onEditField={() => {}}
       />
-      <AboutSection 
-        lang={lang}
-        isEditActive={isAdminMode && isEditActive}
-        onEditField={() => {}}
-      />
-      <CoursesSection 
-        lang={lang}
-        onOpenCourse={(c) => router.push(`/course/${c.id}`)}
-      />
-      <ServicesSection 
-        lang={lang}
-        isEditActive={isAdminMode && isEditActive}
-        onEditField={() => {}}
-      />
-      <ProductsSection 
-        lang={lang}
-        isEditActive={isAdminMode && isEditActive}
-        onEditField={() => {}}
-      />
-      <ResourceLibrarySection 
-        lang={lang}
-        isEditActive={isAdminMode && isEditActive}
-        onEditField={() => {}}
-      />
       <TestimonialCarousel 
         lang={lang}
         testimonials={getAdminData()?.testimonials || []}
-      />
-      <BlogSection 
-        lang={lang}
-        onOpenArticle={(slug) => router.push(`/article/${slug}`)}
       />
       <ContactSection 
         lang={lang}
