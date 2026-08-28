@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import { HeroSection } from "../components/HeroSection";
 import { BrandMarquee } from "../components/BrandMarquee";
 import { StatsBar } from "../components/StatsBar";
-import { CourseBannerCarousel } from "../components/CourseBannerCarousel";
+import { CoursesSection } from "../components/CoursesSection";
 import { TestimonialCarousel } from "../components/TestimonialCarousel";
 import { ContactSection } from "../components/ContactSection";
-import { getAdminData } from "../data/adminStore";
+import { getAdminData, defaultAdminData } from "../data/adminStore";
 import { Language } from "../types";
 import { useRouter } from "next/navigation";
 
@@ -40,13 +40,13 @@ export default function HomePage() {
         isEditActive={isAdminMode && isEditActive}
         onEditField={() => {}}
       />
-      <CourseBannerCarousel 
-        lang={lang} 
-        onSelectCourse={(c) => router.push(`/course/${c.id}`)} 
+      <CoursesSection 
+        lang={lang}
+        onOpenCourse={(c) => router.push(`/course/${c.id}`)}
       />
       <TestimonialCarousel 
         lang={lang}
-        testimonials={getAdminData()?.testimonials || []}
+        testimonials={getAdminData()?.testimonials?.length ? getAdminData().testimonials : defaultAdminData.testimonials}
       />
       <ContactSection 
         lang={lang}

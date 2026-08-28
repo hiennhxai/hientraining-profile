@@ -77,15 +77,15 @@ export function CoursesSection({ lang, onOpenCourse, isEditActive = false, onEdi
           </div>
         </div>
 
-        {/* Dynamic Centered 3-Column Grid */}
-        <div className="flex flex-wrap items-stretch justify-center -mx-3">
+        {/* Horizontal Scrolling Course List */}
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 px-4 sm:px-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           {[...courses.filter(c => c.isPinned), ...courses.filter(c => !c.isPinned)].map((course, idx) => {
             const thumbUrl = course.thumbnailUrl || defaultThumbnails[idx % defaultThumbnails.length];
 
             return (
               <div 
                 key={course.id}
-                className="w-full md:w-1/2 lg:w-1/3 px-3 mb-6 flex"
+                className="w-[85vw] sm:w-[380px] shrink-0 snap-center flex"
               >
                 <div 
                   onClick={() => onOpenCourse?.(course)}
