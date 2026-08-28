@@ -13,7 +13,7 @@ export function SubPageHeader({ lang, onBackToHome }: SubPageHeaderProps) {
   const isVi = lang === 'vi';
 
   return (
-    <div className="bg-slate-100/90 border-b border-slate-200/80 pt-20 sm:pt-24 pb-2 px-4 sm:px-6 lg:px-8 relative">
+    <div className="bg-slate-100/90 border-b border-slate-200/80 pt-20 pb-4 px-4 sm:px-6 lg:px-8 relative">
       <div className="max-w-7xl mx-auto flex items-center justify-start">
         {/* Clean Return to Home Button on Left */}
         <button aria-label="Action button" onClick={onBackToHome}

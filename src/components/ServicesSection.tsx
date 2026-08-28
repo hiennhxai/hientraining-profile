@@ -8,9 +8,10 @@ import { Headphones, Video, Tv, Mic, Award, ArrowRight, ImageIcon, Sparkles } fr
 
 interface ServicesSectionProps {
   lang: Language;
-  onOpenService?: (service: ServiceItem) => void;
+  onOpenService?: (service: any) => void;
   isEditActive?: boolean;
   onEditField?: (fieldKey: string, fieldLabel: string, currentValue: string) => void;
+  isSubpage?: boolean;
 }
 
 const iconMap: Record<string, any> = {
@@ -21,7 +22,7 @@ const iconMap: Record<string, any> = {
   Award,
 };
 
-export function ServicesSection({ lang, onOpenService, isEditActive = false, onEditField }: ServicesSectionProps) {
+export function ServicesSection({ lang, onOpenService, isEditActive = false, onEditField, isSubpage = false }: ServicesSectionProps) {
   const [services, setServices] = useState<ServiceItem[]>(getAdminData().services);
   const t = translations[lang];
   const isVi = lang === 'vi';
@@ -39,7 +40,7 @@ export function ServicesSection({ lang, onOpenService, isEditActive = false, onE
   };
 
   return (
-    <section id="services" className="py-6 sm:py-8 bg-white relative border-b border-slate-200">
+    <section id="services" className={`${isSubpage ? 'py-4 sm:py-6' : 'py-12 sm:py-16'} bg-slate-50 relative overflow-hidden border-b border-slate-200`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -47,17 +48,17 @@ export function ServicesSection({ lang, onOpenService, isEditActive = false, onE
             <EditableWrapper
               isEditActive={isEditActive}
               label="Sửa Tiêu Đề Dịch Vụ"
-              onEdit={() => triggerEdit('servicesTitle', 'Tiêu Đề Các Dịch Vụ', t.sv_title)}
+              onEdit={() => triggerEdit('servicesTitle', 'Tiêu Đề Dịch Vụ', t.sv_title)}
             >
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t.sv_title}</h2>
             </EditableWrapper>
 
             <EditableWrapper
               isEditActive={isEditActive}
-              label="Sửa Thẻ Tag Dịch Vụ"
+              label="Sửa Tiêu Đề Phụ Dịch Vụ"
               onEdit={() => triggerEdit('servicesSub', 'Mô Tả Khối Dịch Vụ', t.sv_sub)}
             >
-              <p className="text-orange-600 font-semibold text-sm mt-1">{t.sv_sub}</p>
+              <p className="text-slate-600 text-sm mt-1">{t.sv_sub}</p>
             </EditableWrapper>
           </div>
           <span className="text-xs font-mono text-slate-500 font-bold bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200 shrink-0">

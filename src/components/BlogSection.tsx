@@ -7,9 +7,10 @@ import { ArrowUpRight, Filter, ArrowUpDown, Clock, Sparkles, X } from 'lucide-re
 
 interface BlogSectionProps {
   lang: Language;
-  onOpenArticle: (slug: string) => void;
+  onOpenArticle?: (slug: string) => void;
   isEditActive?: boolean;
   onEditField?: (fieldKey: string, fieldLabel: string, currentValue: string) => void;
+  isSubpage?: boolean;
 }
 
 const CATEGORY_LIST: { id: 'all' | ArticleCategory; labelVi: string; labelEn: string }[] = [
@@ -36,7 +37,7 @@ const getCategoryBadgeClass = (cat: ArticleCategory) => {
   return map[cat] || 'bg-slate-100 text-slate-700 border-slate-200';
 };
 
-export function BlogSection({ lang, onOpenArticle, isEditActive = false, onEditField }: BlogSectionProps) {
+export function BlogSection({ lang, onOpenArticle, isEditActive = false, onEditField, isSubpage = false }: BlogSectionProps) {
   const [articlesRecord, setArticlesRecord] = useState<Record<string, Article>>(getAdminData().articles);
   const [selectedCategory, setSelectedCategory] = useState<'all' | ArticleCategory>('all');
   const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
@@ -104,7 +105,7 @@ export function BlogSection({ lang, onOpenArticle, isEditActive = false, onEditF
   }, [rawArticles, selectedCategory, sortOrder]);
 
   return (
-    <section id="blog" className="py-6 sm:py-10 bg-slate-50 relative border-b border-slate-200 font-sans">
+    <section id="blog" className={`${isSubpage ? 'py-4 sm:py-6' : 'py-12 sm:py-16'} bg-slate-50 relative overflow-hidden border-b border-slate-200 font-sans`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
         
         {/* Section Header */}
@@ -115,17 +116,19 @@ export function BlogSection({ lang, onOpenArticle, isEditActive = false, onEditF
               label="Sửa Tiêu Đề Bài Viết"
               onEdit={() => triggerEdit('blogTitle', 'Tiêu Đề Bài Viết Kiến Thức', t.bl_title)}
             >
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
                 {t.bl_title}
               </h2>
             </EditableWrapper>
 
             <EditableWrapper
               isEditActive={isEditActive}
-              label="Sửa Thẻ Tag Kiến Thức"
-              onEdit={() => triggerEdit('blogSub', 'Mô Tả Khối Bài Viết', t.bl_sub2)}
+              label="Sửa Mô Tả Blog"
+              onEdit={() => triggerEdit('blogSub', 'Mô Tả Blog', t.bl_sub2)}
             >
-              <p className="text-orange-600 font-semibold text-xs sm:text-sm">{t.bl_sub2}</p>
+              <p className="text-slate-600 text-sm mt-1">
+                {t.bl_sub2}
+              </p>
             </EditableWrapper>
           </div>
 

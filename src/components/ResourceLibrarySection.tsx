@@ -13,6 +13,7 @@ interface ResourceLibrarySectionProps {
   lang: Language;
   isEditActive?: boolean;
   onEditField?: (fieldKey: string, fieldLabel: string, currentValue: string) => void;
+  isSubpage?: boolean;
 }
 
 const getFileTypeBadge = (fileTypeStr: string) => {
@@ -31,7 +32,7 @@ const getFileTypeBadge = (fileTypeStr: string) => {
   return { label: fileTypeStr || 'FILE DOWNLOAD', bg: 'bg-slate-100 text-slate-800 border-slate-300', icon: ExternalLink };
 };
 
-export function ResourceLibrarySection({ lang, isEditActive = false, onEditField }: ResourceLibrarySectionProps) {
+export function ResourceLibrarySection({ lang, isEditActive = false, onEditField, isSubpage = false }: ResourceLibrarySectionProps) {
   const [resources, setResources] = useState<ResourceItem[]>(getAdminData().resources || []);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
@@ -124,8 +125,8 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
   }, [resources, selectedCategory, searchQuery, sortOrder]);
 
   return (
-    <section id="resources" className="py-5 sm:py-8 bg-slate-50 relative border-b border-slate-200 font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
+    <section id="resources" className={`${isSubpage ? 'py-4 sm:py-6' : 'py-12 sm:py-16'} bg-slate-50 relative overflow-hidden border-b border-slate-200 font-sans`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 pb-4">
@@ -142,12 +143,12 @@ export function ResourceLibrarySection({ lang, isEditActive = false, onEditField
               label="Sửa Tiêu Đề Kho Tài Liệu"
               onEdit={() => triggerEdit('resourceTitle', 'Tiêu Đề Kho Tài Liệu', 'Tài Liệu & Biểu Mẫu Thực Chiến')}
             >
-              <h2 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
                 {isVi ? 'Tài Liệu & Biểu Mẫu Thực Chiến' : 'Practical Resources & Templates'}
               </h2>
             </EditableWrapper>
 
-            <p className="text-slate-700 text-xs sm:text-sm font-medium leading-relaxed">
+            <p className="text-slate-600 text-sm mt-1">
               {isVi 
                 ? 'Hệ thống Ebook, Kịch bản Livestream chốt đơn, Bảng tính Ánh sáng Studio & Preset OBS miễn phí dành cho học viên và thương hiệu.'
                 : 'Free Ebooks, Livestream Scripts, Studio Lighting Calculators & OBS Presets for trainees & brands.'}

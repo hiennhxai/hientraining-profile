@@ -4,20 +4,33 @@ import { getAdminData } from '../data/adminStore';
 import { translations } from '../data/translations';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import { EditableWrapper } from './EditableWrapper';
-import { BookOpen, CheckCircle, ChevronRight, Phone, Sparkles } from 'lucide-react';
+import { BookOpen, CheckCircle, ChevronRight, Phone, Sparkles, ChevronLeft } from 'lucide-react';
+import useEmblaCarousel from 'embla-carousel-react';
+import AutoScroll from 'embla-carousel-auto-scroll';
+
 interface CoursesSectionProps {
   lang: Language;
   onOpenCourse?: (course: CourseItem) => void;
   isEditActive?: boolean;
   onEditField?: (fieldKey: string, fieldLabel: string, currentValue: string) => void;
+  layout?: 'carousel' | 'grid';
+  isSubpage?: boolean;
 }
 
-export function CoursesSection({ lang, onOpenCourse, isEditActive = false, onEditField }: CoursesSectionProps) {
+export function CoursesSection({ lang, onOpenCourse, isEditActive = false, onEditField, layout = 'carousel', isSubpage = false }: CoursesSectionProps) {
   const [courses, setCourses] = useState<CourseItem[]>(getAdminData().courses);
   const t = translations[lang];
   const isVi = lang === 'vi';
 
   const { ref: headerRef, isVisible: isHeaderVisible } = useIntersectionObserver();
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: 'start', skipSnaps: false, dragFree: true },
+    [AutoScroll({ speed: 1.5, stopOnInteraction: false, stopOnMouseEnter: true })]
+  );
+  
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
   useEffect(() => {
     const handleUpdate = () => {
@@ -39,7 +52,7 @@ export function CoursesSection({ lang, onOpenCourse, isEditActive = false, onEdi
   ];
 
   return (
-    <section id="courses" className="py-12 sm:py-16 bg-slate-50 relative overflow-hidden border-b border-slate-200">
+    <section id="courses" className={`${isSubpage ? 'py-4 sm:py-6' : 'py-12 sm:py-16'} bg-slate-50 relative overflow-hidden border-b border-slate-200`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
         
         {/* Section Header */}
@@ -75,13 +88,14 @@ export function CoursesSection({ lang, onOpenCourse, isEditActive = false, onEdi
           </div>
         </div>
 
-        {/* Grid for Courses */}
+        {/* Courses Content */}
         <div className="relative max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[...courses.filter(c => c.isPinned), ...courses.filter(c => !c.isPinned)].map((course, idx) => {
-              const thumbUrl = course.thumbnailUrl || defaultThumbnails[idx % defaultThumbnails.length];
+          {layout === 'grid' ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[...courses.filter(c => c.isPinned), ...courses.filter(c => !c.isPinned)].map((course, idx) => {
+                const thumbUrl = course.thumbnailUrl || defaultThumbnails[idx % defaultThumbnails.length];
 
-              return (
+                return (
                 <div 
                   onClick={() => onOpenCourse?.(course)}
                   className="group w-full rounded-2xl bg-white border border-slate-200 hover:border-orange-400 overflow-hidden transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-2 flex flex-col justify-between cursor-pointer"
@@ -170,9 +184,124 @@ export function CoursesSection({ lang, onOpenCourse, isEditActive = false, onEdi
                   </div>
 
                 </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          ) : (
+            <>
+              <div className="overflow-hidden cursor-grab active:cursor-grabbing pb-8" ref={emblaRef}>
+                <div className="flex -ml-4 md:-ml-6">
+                  {[...courses.filter(c => c.isPinned), ...courses.filter(c => !c.isPinned)].map((course, idx) => {
+                    const thumbUrl = course.thumbnailUrl || defaultThumbnails[idx % defaultThumbnails.length];
+
+                    return (
+                      <div 
+                        key={course.id}
+                        className="flex-[0_0_85vw] sm:flex-[0_0_380px] lg:flex-[0_0_380px] min-w-0 pl-4 md:pl-6 flex"
+                      >
+                        <div 
+                          onClick={() => onOpenCourse?.(course)}
+                          className="group w-full rounded-2xl bg-white border border-slate-200 hover:border-orange-400 overflow-hidden transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-2 flex flex-col justify-between cursor-pointer"
+                          role="button"
+                          tabIndex={0}
+                        >
+                          
+                          {/* 16:9 Aspect Ratio Thumbnail Banner */}
+                          <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-900">
+                            <img loading="lazy" decoding="async" src={thumbUrl} 
+                              alt={course.title}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
+                            
+                            <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                              <span className="px-2.5 py-1 text-xs font-mono font-bold bg-orange-600 text-white shadow-md rounded-lg">
+                                {course.code}
+                              </span>
+                              <span className="text-[11px] font-mono text-white bg-slate-900/80 backdrop-blur-xs px-2.5 py-1 rounded-lg border border-white/20 font-semibold truncate max-w-[170px]">
+                                {course.badge}
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* Card Content Body */}
+                          <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
+                            <div>
+                              <EditableWrapper
+                                isEditActive={isEditActive}
+                                label={`Sửa Tên Khóa ${idx + 1}`}
+                                onEdit={() => triggerEdit(`course_${course.id}_title`, `Tên Khóa Học ${course.code}`, course.title)}
+                              >
+                                <h3 className="text-lg font-extrabold text-slate-900 group-hover:text-orange-600 transition-colors mb-2 leading-snug">
+                                  {course.title}
+                                </h3>
+                              </EditableWrapper>
+
+                              <EditableWrapper
+                                isEditActive={isEditActive}
+                                label={`Sửa Mô Tả Khóa ${idx + 1}`}
+                                onEdit={() => triggerEdit(`course_${course.id}_subtitle`, `Mô Tả Khóa Học ${course.code}`, course.subtitle)}
+                              >
+                                <p 
+                                  className="text-xs sm:text-sm text-slate-600 mb-4 line-clamp-2 leading-relaxed font-normal"
+                                  dangerouslySetInnerHTML={{ __html: course.subtitle }}
+                                />
+                              </EditableWrapper>
+
+                              <div className="space-y-1.5 mb-4 text-xs text-slate-700 font-medium bg-slate-50 p-3 rounded-xl border border-slate-200/80">
+                                <div className="flex items-center gap-2">
+                                  <span className="w-2 h-2 rounded-full bg-orange-500 shrink-0" />
+                                  <span className="truncate"><strong>{isVi ? 'Thời lượng:' : 'Duration:'}</strong> {course.duration}</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />
+                                  <span className="truncate"><strong>{isVi ? 'Hình thức:' : 'Format:'}</strong> {isVi ? 'Offline 1-1 / Online Live' : 'Offline 1-1 / Online Live'}</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-orange-700 font-semibold pt-0.5">
+                                  <Sparkles className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                                  <span className="truncate">{course.feeNotice}</span>
+                                </div>
+                              </div>
+
+                              {/* Core Syllabus Bullet Points */}
+                              <div className="space-y-1.5 text-xs text-slate-700">
+                                <div className="font-bold text-slate-500 uppercase tracking-wider text-[10px] mb-1.5">
+                                  {isVi ? 'Nội dung cốt lõi:' : 'Core Syllabus:'}
+                                </div>
+                                {course.lessons.slice(0, 3).map((l, lIdx) => (
+                                  <div key={lIdx} className="flex items-start gap-1.5">
+                                    <CheckCircle className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                                    <span className="line-clamp-1 font-medium text-slate-800 text-[11px]">{l.lessonTitle}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+
+                            <button aria-label="Action button" onClick={() => onOpenCourse?.(course)}
+                              className="w-full py-2.5 px-4 rounded-xl bg-orange-50 border border-orange-200 text-orange-600 hover:bg-orange-600 hover:text-white font-bold text-xs tracking-wide uppercase transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-2xs mt-3"
+                            >
+                              <BookOpen className="w-3.5 h-3.5" />
+                              <span>{isVi ? 'Xem chi tiết khóa học' : 'View Syllabus Details'}</span>
+                              <ChevronRight className="w-3.5 h-3.5" />
+                            </button>
+                          </div>
+
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              
+              {/* Controls */}
+              <button onClick={scrollPrev} className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-4 p-3 rounded-full bg-white shadow-xl border border-slate-200 text-slate-700 hover:text-orange-600 hover:border-orange-200 transition-all z-10 hidden sm:flex">
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <button onClick={scrollNext} className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-4 p-3 rounded-full bg-white shadow-xl border border-slate-200 text-slate-700 hover:text-orange-600 hover:border-orange-200 transition-all z-10 hidden sm:flex">
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </>
+          )}
         </div>
 
       </div>

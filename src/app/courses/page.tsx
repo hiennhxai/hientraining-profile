@@ -28,8 +28,8 @@ export default function CoursesPage() {
         isEditActive={isAdminMode && isEditActive}
         onEditField={() => {}}
         onOpenCourse={(c) => router.push(`/course/${c.id}`)}
-        
-        
+        layout="grid"
+        isSubpage={true}
       />
       <SubPageBottomCta 
         lang={lang} 

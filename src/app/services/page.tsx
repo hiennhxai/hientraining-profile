@@ -27,9 +27,8 @@ export default function ServicesPage() {
         lang={lang}
         isEditActive={isAdminMode && isEditActive}
         onEditField={() => {}}
-        
-        
         onOpenService={(s) => router.push(`/service/${s.id}`)}
+        isSubpage={true}
       />
       <SubPageBottomCta 
         lang={lang} 

@@ -27,9 +27,8 @@ export default function ProjectsPage() {
         lang={lang}
         isEditActive={isAdminMode && isEditActive}
         onEditField={() => {}}
-        
-        
-        
+        onOpenProduct={(p) => router.push(p.link || '/')}
+        isSubpage={true}
       />
       <SubPageBottomCta 
         lang={lang} 

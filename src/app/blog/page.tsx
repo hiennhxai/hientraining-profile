@@ -27,9 +27,8 @@ export default function BlogPage() {
         lang={lang}
         isEditActive={isAdminMode && isEditActive}
         onEditField={() => {}}
-        
         onOpenArticle={(slug) => router.push(`/article/${slug}`)}
-        
+        isSubpage={true}
       />
       <SubPageBottomCta 
         lang={lang} 

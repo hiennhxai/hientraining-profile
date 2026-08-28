@@ -8,11 +8,13 @@ import { ExternalLink, Sparkles, TrendingUp, ImageIcon, X, ChevronLeft, ChevronR
 
 interface ProductsSectionProps {
   lang: Language;
+  onOpenProduct?: (p: any) => void;
   isEditActive?: boolean;
   onEditField?: (fieldKey: string, fieldLabel: string, currentValue: string) => void;
+  isSubpage?: boolean;
 }
 
-export function ProductsSection({ lang, isEditActive = false, onEditField }: ProductsSectionProps) {
+export function ProductsSection({ lang, onOpenProduct, isEditActive = false, onEditField, isSubpage = false }: ProductsSectionProps) {
   const t = translations[lang];
   const isVi = lang === 'vi';
   
@@ -62,7 +64,7 @@ export function ProductsSection({ lang, isEditActive = false, onEditField }: Pro
   };
 
   return (
-    <section id="projects" className="py-8 sm:py-12 bg-slate-50 relative border-b border-slate-200">
+    <section id="projects" className={`${isSubpage ? 'py-4 sm:py-6' : 'py-12 sm:py-16'} bg-slate-50 relative overflow-hidden border-b border-slate-200`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <EditableWrapper

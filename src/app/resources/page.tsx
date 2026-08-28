@@ -27,9 +27,7 @@ export default function ResourcesPage() {
         lang={lang}
         isEditActive={isAdminMode && isEditActive}
         onEditField={() => {}}
-        
-        
-        
+        isSubpage={true}
       />
       <SubPageBottomCta 
         lang={lang} 
