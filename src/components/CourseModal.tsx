@@ -68,7 +68,7 @@ export function CourseModal({ course, onClose, lang = 'vi' }: CourseModalProps) 
         </div>
 
         {/* Scrollable Content */}
-        <div className="overflow-y-auto p-6 sm:p-10 space-y-6">
+        <div className="overflow-y-auto p-4 sm:p-6 space-y-4">
 
           {/* Optional Wide Banner */}
           {course.bannerImage && (
@@ -78,7 +78,7 @@ export function CourseModal({ course, onClose, lang = 'vi' }: CourseModalProps) 
           )}
 
           {/* Meta Tags */}
-          <div className="flex flex-wrap items-center gap-3 mb-4">
+          <div className="flex flex-wrap items-center gap-3 mb-2">
             <span className="bg-orange-50 text-orange-600 border border-orange-200 px-2.5 py-1 rounded-md font-mono text-xs font-bold">
               {course.code}
             </span>

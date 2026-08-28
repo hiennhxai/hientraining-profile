@@ -29,7 +29,7 @@ export function StatsBar({ lang, isEditActive = false, onEditField }: StatsBarPr
   };
 
   return (
-    <div className="stats border-y border-slate-200 bg-white shadow-xs py-7 relative z-10">
+    <div className="stats border-y border-slate-200 bg-white shadow-xs py-4 relative z-10">
       <div className="stats-in max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
         
         {/* Stat 1 */}

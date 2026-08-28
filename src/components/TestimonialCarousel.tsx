@@ -52,7 +52,7 @@ export function TestimonialCarousel({ lang, testimonials }: TestimonialCarouselP
   if (!testimonials || testimonials.length === 0) return null;
 
   return (
-    <section className="py-20 bg-slate-900 text-white relative overflow-hidden">
+    <section className="py-10 bg-slate-900 text-white relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-orange-600/10 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/10 blur-[100px] rounded-full pointer-events-none translate-y-1/3 -translate-x-1/3"></div>
