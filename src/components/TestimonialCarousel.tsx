@@ -58,7 +58,7 @@ export function TestimonialCarousel({ lang, testimonials }: TestimonialCarouselP
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/10 blur-[100px] rounded-full pointer-events-none translate-y-1/3 -translate-x-1/3"></div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-12 reveal-init">
+        <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-orange-400 font-mono text-xs font-bold uppercase tracking-widest mb-4">
             <Star className="w-3.5 h-3.5 fill-current" />
             <span>{isVi ? 'Đánh Giá & Lời Khuyên' : 'Testimonials'}</span>
@@ -71,7 +71,7 @@ export function TestimonialCarousel({ lang, testimonials }: TestimonialCarouselP
           </h2>
         </div>
 
-        <div className="relative max-w-6xl mx-auto reveal-init">
+        <div className="relative max-w-6xl mx-auto">
           <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
             <div className="flex -ml-4 md:-ml-6">
               {testimonials.map((item, idx) => (
