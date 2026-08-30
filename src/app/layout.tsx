@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
         const gen = data.data.general;
         if (gen.brandName) title = `${gen.brandName} ${gen.subBrandName ? `— ${gen.subBrandName}` : ''}`;
         if (gen.ctaDescription || gen.heroSub) desc = gen.ctaDescription || gen.heroSub || desc;
-        if (gen.heroPortraitUrl) ogImage = gen.heroPortraitUrl;
+        if (gen.ogImage) ogImage = gen.ogImage;
       }
     } catch (e) {}
   }

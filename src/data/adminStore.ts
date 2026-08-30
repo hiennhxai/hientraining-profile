@@ -70,6 +70,7 @@ export interface SiteGeneralConfig {
   navContact?: string;
   footerDesc?: string;
   footerCopyright?: string;
+  ogImage?: string;
 }
 
 export const defaultServices: ServiceItem[] = [
@@ -773,6 +774,7 @@ export const defaultAdminData: FullAdminData = {
     fontMono: "IBM Plex Mono",
     fontSizeScale: 100,
     marqueeDuration: 55,
+    ogImage: "",
   },
   courses: coursesData,
   services: defaultServices,

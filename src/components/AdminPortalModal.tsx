@@ -964,6 +964,30 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                       </div>
                     </div>
 
+                    <div className="mt-4">
+                      <label className="block font-bold text-slate-700 mb-1">Ảnh chia sẻ Link (Zalo/Facebook - Tỉ lệ ngang 1200x630)</label>
+                      <div className="flex flex-col sm:flex-row gap-2">
+                        <input 
+                          type="text" 
+                          placeholder="https://... URL ảnh thumbnail ngang"
+                          value={data.general.ogImage || ''} 
+                          onChange={(e) => setData({ ...data, general: { ...data.general, ogImage: e.target.value } })}
+                          className="flex-1 px-3 py-2 text-xs rounded-xl border border-slate-300 font-mono"
+                        />
+                        <button aria-label="Action button" type="button"
+                          onClick={() => openPicker(
+                            (selectedUrl) => setData({ ...data, general: { ...data.general, ogImage: selectedUrl } }),
+                            'CHỌN / TẢI ẢNH CHIA SẺ LINK (TỈ LỆ 1200x630)',
+                            data.general.ogImage || ''
+                          )}
+                          className="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-md transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+                        >
+                          <ImageIcon className="w-4 h-4" />
+                          <span>Chọn Ảnh Thumbnail</span>
+                        </button>
+                      </div>
+                    </div>
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
                       <div>
                         <div className="flex justify-between font-bold text-slate-700 mb-1">
