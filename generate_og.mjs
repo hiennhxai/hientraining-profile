@@ -50,16 +50,36 @@ async function run() {
     .resize({ height: height, fit: 'contain' })
     .toBuffer();
 
-  // Composite them
-  await sharp(blurredBg)
+  const ogBuffer = await sharp(blurredBg)
     .composite([{ input: portrait, gravity: 'center' }])
-    .toFile(path.join(__dirname, 'public', 'og-image.jpg'));
+    .jpeg({ quality: 80 })
+    .toBuffer();
 
-  console.log('Saved to public/og-image.jpg');
+  const fileName = `og-image-${Date.now()}.jpg`;
+  console.log(`Uploading to Supabase Storage as ${fileName}...`);
+  
+  const { data: uploadData, error: uploadError } = await supabase.storage
+    .from('photos')
+    .upload(fileName, ogBuffer, {
+      contentType: 'image/jpeg',
+      upsert: true
+    });
+
+  if (uploadError) {
+    console.error('Error uploading to storage:', uploadError);
+    return;
+  }
+
+  const { data: publicUrlData } = supabase.storage
+    .from('photos')
+    .getPublicUrl(fileName);
+
+  const ogImageUrl = publicUrlData.publicUrl;
+  console.log('Public URL:', ogImageUrl);
 
   // Update Supabase
   const newData = JSON.parse(JSON.stringify(data.data));
-  newData.general.ogImage = 'https://hientraining.com/og-image.jpg';
+  newData.general.ogImage = ogImageUrl;
   
   console.log('Updating Supabase with new ogImage URL...');
   const { error: updateError } = await supabase.from('site_config').update({ data: newData }).eq('id', 1);
