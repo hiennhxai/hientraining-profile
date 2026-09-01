@@ -4,6 +4,7 @@ import { translations } from '../data/translations';
 import { HeroPortraitShowcase } from './HeroPortraitShowcase';
 import { EditableWrapper } from './EditableWrapper';
 import { getAdminData } from '../data/adminStore';
+import { sanitizeHtml } from '../lib/sanitize';
 import { Phone, Mail, Award, CheckCircle2, ChevronRight, Mic, Video, Sparkles, History, Users, Tv } from 'lucide-react';
 
 interface HeroSectionProps {
@@ -185,7 +186,7 @@ export function HeroSection({ lang, onNavigatePage, onSelectCourse, isEditActive
               >
                 <p
                   className="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 font-normal"
-                  dangerouslySetInnerHTML={{ __html: gen.heroSub || t.hero_sub }}
+                  dangerouslySetInnerHTML={{ __html: sanitizeHtml(gen.heroSub || t.hero_sub) }}
                 />
               </EditableWrapper>
 

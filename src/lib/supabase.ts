@@ -1,15 +1,22 @@
 import { createClient } from '@supabase/supabase-js';
 
-const getEnv = (key: string) => {
+const getEnv = (key: string): string | undefined => {
   if (typeof process !== 'undefined' && process.env && process.env[key]) return process.env[key];
   if (typeof import.meta !== 'undefined' && import.meta.env) return (import.meta.env as any)[key];
   return undefined;
 };
 
-const supabaseUrl = getEnv('VITE_SUPABASE_URL') || 'https://jkyxajnlhlwfftgplwii.supabase.co';
-const supabaseAnonKey = getEnv('VITE_SUPABASE_ANON_KEY') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpreXhham5saGx3ZmZ0Z3Bsd2lpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU0MTQ1NjUsImV4cCI6MjEwMDk5MDU2NX0.VQ5c6rUogRDfpjHyLB275NkQy3CYK12gRD2ncLVFcTQ';
+// SECURITY FIX: Không hardcode credentials vào source code
+// Nếu thiếu env → báo lỗi rõ ràng thay vì dùng giá trị cứng
+const supabaseUrl = getEnv('NEXT_PUBLIC_SUPABASE_URL') || getEnv('VITE_SUPABASE_URL') || '';
+const supabaseAnonKey = getEnv('NEXT_PUBLIC_SUPABASE_ANON_KEY') || getEnv('VITE_SUPABASE_ANON_KEY') || '';
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.error('[Supabase] Missing environment variables: NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY');
+}
 
 export const supabase = createClient(
-  supabaseUrl,
-  supabaseAnonKey
+  supabaseUrl || 'https://placeholder.supabase.co',
+  supabaseAnonKey || 'placeholder-key'
 );
+

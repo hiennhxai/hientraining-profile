@@ -3,8 +3,8 @@ import { GoogleGenAI } from '@google/genai';
 import { createClient } from '@supabase/supabase-js';
 
 // Khởi tạo Supabase Client phía Server an toàn
-const supabaseUrl = process.env.VITE_SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
 if (!supabaseUrl || !supabaseKey) {
   console.error("Missing Supabase Environment Variables on Server");
@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
         const originHost = originUrl.hostname;
         if (
           originHost !== host && 
-          originHost !== 'localhost' && 
+          originHost !== 'localhost' &&
           originHost !== 'hientraining.com' &&
           !originHost.endsWith('.hientraining.com') &&
           !originHost.endsWith('.vercel.app')
@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    const { message, history } = await req.json();
+    const { message } = await req.json();
 
     if (!message || typeof message !== 'string') {
       return NextResponse.json({ error: 'Message is required' }, { status: 400 });
@@ -61,7 +61,6 @@ export async function POST(req: NextRequest) {
     
     if (userRate) {
       if (now > userRate.resetTime) {
-        // Reset window
         rateLimitMap.set(ip, { count: 1, resetTime: now + TIME_WINDOW });
       } else {
         if (userRate.count >= RATE_LIMIT) {
@@ -83,10 +82,11 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // Khởi tạo Gemini (Lấy key từ Server Môi trường, bảo mật tuyệt đối)
-    const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY || "";
+    // SECURITY FIX: Ưu tiên GEMINI_API_KEY (server-only, không có NEXT_PUBLIC_)
+    // Biến NEXT_PUBLIC_ bị nhúng vào JS client → bị lộ cho người dùng
+    const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY || "";
     if (!apiKey) {
-      return NextResponse.json({ error: 'Gemini API Key is not configured on the server.' }, { status: 500 });
+      return NextResponse.json({ error: 'Chat service unavailable.' }, { status: 500 });
     }
     
     const ai = new GoogleGenAI({ apiKey });
@@ -132,7 +132,8 @@ Hãy trả lời ngắn gọn (dưới 100 chữ), đi thẳng vào trọng tâm
     return NextResponse.json({ reply });
 
   } catch (error: any) {
+    // SECURITY FIX: Không trả error.message thật ra ngoài (lộ cấu trúc hệ thống)
     console.error('Chat API Error:', error);
-    return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ error: 'Dịch vụ chat tạm thời gián đoạn. Vui lòng thử lại sau!' }, { status: 500 });
   }
 }

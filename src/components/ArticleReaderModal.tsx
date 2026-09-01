@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Language, ArticleCategory, Article } from '../types';
 import { translations } from '../data/translations';
 import { getAdminData } from '../data/adminStore';
+import { sanitizeHtml } from '../lib/sanitize';
 
 interface ArticleReaderModalProps {
   slug: string | null;
@@ -111,7 +112,7 @@ export function ArticleReaderModal({ slug, lang, onClose, overrideArticle }: Art
             <div
               className="reader-context bg-orange-50/70 border border-orange-200 rounded-xl p-4 text-slate-800 font-medium text-sm mb-8"
               data-label={t.reader_context_label}
-              dangerouslySetInnerHTML={{ __html: d.context }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(d.context) }}
             />
           )}
 
@@ -154,18 +155,18 @@ export function ArticleReaderModal({ slug, lang, onClose, overrideArticle }: Art
             {/* Render Legacy/Standard body blocks if available */}
             {d.body && d.body.map((block, idx) => {
               if (block.t === 'p') {
-                return <div key={idx} className="text-slate-700 leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: block.c }} />;
+                return <div key={idx} className="text-slate-700 leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: sanitizeHtml(block.c) }} />;
               }
               if (block.t === 'h') {
                 return (
                   <h3 key={idx} className="text-xl font-extrabold text-slate-900 mt-8 mb-3">
                     {block.sn && <span className="block text-xs font-mono font-bold text-orange-600 uppercase mb-1">{block.sn}</span>}
-                    <span dangerouslySetInnerHTML={{ __html: block.c }} />
+                    <span dangerouslySetInnerHTML={{ __html: sanitizeHtml(block.c) }} />
                   </h3>
                 );
               }
               if (block.t === 'quote') {
-                return <div key={idx} className="border-l-4 border-orange-500 pl-4 py-2 my-6 text-slate-900 font-semibold italic bg-orange-50/40 rounded-r-lg" dangerouslySetInnerHTML={{ __html: block.c }} />;
+                return <div key={idx} className="border-l-4 border-orange-500 pl-4 py-2 my-6 text-slate-900 font-semibold italic bg-orange-50/40 rounded-r-lg" dangerouslySetInnerHTML={{ __html: sanitizeHtml(block.c) }} />;
               }
               if (block.t === 'stat') {
                 return (
@@ -183,7 +184,7 @@ export function ArticleReaderModal({ slug, lang, onClose, overrideArticle }: Art
                 return (
                   <ul key={idx} className="space-y-2 my-4 pl-4 list-disc text-slate-700 font-medium">
                     {block.items.map((item, lIdx) => (
-                      <li key={lIdx} dangerouslySetInnerHTML={{ __html: item }} />
+                      <li key={lIdx} dangerouslySetInnerHTML={{ __html: sanitizeHtml(item) }} />
                     ))}
                   </ul>
                 );

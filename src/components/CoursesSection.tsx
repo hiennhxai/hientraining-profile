@@ -4,6 +4,7 @@ import { getAdminData } from '../data/adminStore';
 import { translations } from '../data/translations';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import { EditableWrapper } from './EditableWrapper';
+import { sanitizeHtml } from '../lib/sanitize';
 import { BookOpen, CheckCircle, ChevronRight, Phone, Sparkles, ChevronLeft } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoScroll from 'embla-carousel-auto-scroll';
@@ -141,7 +142,7 @@ export function CoursesSection({ lang, onOpenCourse, isEditActive = false, onEdi
                       >
                         <p 
                           className="text-xs sm:text-sm text-slate-600 mb-4 line-clamp-2 leading-relaxed font-normal"
-                          dangerouslySetInnerHTML={{ __html: course.subtitle }}
+                          dangerouslySetInnerHTML={{ __html: sanitizeHtml(course.subtitle) }}
                         />
                       </EditableWrapper>
 
@@ -244,7 +245,7 @@ export function CoursesSection({ lang, onOpenCourse, isEditActive = false, onEdi
                               >
                                 <p 
                                   className="text-xs sm:text-sm text-slate-600 mb-4 line-clamp-2 leading-relaxed font-normal"
-                                  dangerouslySetInnerHTML={{ __html: course.subtitle }}
+                                  dangerouslySetInnerHTML={{ __html: sanitizeHtml(course.subtitle) }}
                                 />
                               </EditableWrapper>
 

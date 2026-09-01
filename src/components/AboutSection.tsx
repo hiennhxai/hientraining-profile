@@ -4,6 +4,7 @@ import { Language } from '../types';
 import { translations } from '../data/translations';
 import { getAdminData } from '../data/adminStore';
 import { EditableWrapper } from './EditableWrapper';
+import { sanitizeHtml } from '../lib/sanitize';
 import { Heart, Users, Mic, Sparkles, Award, History, Tv, Video, ChevronLeft, ChevronRight, X, Play } from 'lucide-react';
 
 interface AboutSectionProps {
@@ -143,7 +144,7 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
                 label="Sửa Đoạn Văn 1"
                 onEdit={() => triggerEdit('storyP1', 'Đoạn Văn Giới Thiệu 1', gen.storyP1 || t.a_p1)}
               >
-                <p className="font-medium text-slate-800" dangerouslySetInnerHTML={{ __html: gen.storyP1 || t.a_p1 }} />
+                <p className="font-medium text-slate-800" dangerouslySetInnerHTML={{ __html: sanitizeHtml(gen.storyP1 || t.a_p1) }} />
               </EditableWrapper>
             </div>
 
@@ -183,7 +184,7 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
                   label="Sửa Đoạn Văn 2"
                   onEdit={() => triggerEdit('storyP2', 'Đoạn Văn Giới Thiệu 2', gen.storyP2 || t.a_p2)}
                 >
-                  <p className="font-normal text-slate-700" dangerouslySetInnerHTML={{ __html: gen.storyP2 || t.a_p2 }} />
+                  <p className="font-normal text-slate-700" dangerouslySetInnerHTML={{ __html: sanitizeHtml(gen.storyP2 || t.a_p2) }} />
                 </EditableWrapper>
 
                 <EditableWrapper
@@ -191,7 +192,7 @@ export function AboutSection({ lang, isEditActive = false, onEditField }: AboutS
                   label="Sửa Đoạn Văn 3"
                   onEdit={() => triggerEdit('storyP3', 'Đoạn Văn Giới Thiệu 3', gen.storyP3 || t.a_p3)}
                 >
-                  <p className="font-normal text-slate-700" dangerouslySetInnerHTML={{ __html: gen.storyP3 || t.a_p3 }} />
+                  <p className="font-normal text-slate-700" dangerouslySetInnerHTML={{ __html: sanitizeHtml(gen.storyP3 || t.a_p3) }} />
                 </EditableWrapper>
               </div>
             </div>
