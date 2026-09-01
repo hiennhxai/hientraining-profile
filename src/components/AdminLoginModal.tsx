@@ -93,12 +93,12 @@ export function AdminLoginModal({ isOpen, lang, onClose, onSuccess }: AdminLogin
           <div>
             <label className="block text-xs font-bold text-slate-700 mb-1 flex items-center gap-1.5">
               <UserCheck className="w-3.5 h-3.5 text-orange-600" />
-              <span>{isVi ? 'Tên đăng nhập (ID):' : 'Admin ID:'}</span>
+              <span>{isVi ? 'Email Đăng Nhập:' : 'Admin Email:'}</span>
             </label>
             <input
               type="text"
               required
-              placeholder={isVi ? "Email Supabase hoặc admin" : "Supabase Email or admin"}
+              placeholder={isVi ? "Nhập Email tài khoản quản trị" : "Enter Admin Email"}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               disabled={isLoading}
