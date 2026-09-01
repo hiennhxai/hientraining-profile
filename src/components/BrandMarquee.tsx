@@ -66,15 +66,15 @@ export function BrandMarquee({ lang }: BrandMarqueeProps) {
 function BrandCard({ brand }: { brand: BrandLogoItem }) {
   return (
     <div
-      className="inline-flex flex-col items-center justify-between gap-2 px-3.5 py-2.5 rounded-2xl bg-white border border-slate-200 hover:border-orange-400 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group/card shrink-0 w-[155px]"
+      className="inline-flex flex-col items-center justify-between gap-2 px-3 py-3 rounded-2xl bg-white border border-slate-200 hover:border-orange-400 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group/card shrink-0 w-[170px]"
       title={`${brand.name} — ${brand.category}`}
     >
-      {/* Logo Image Area — fixed height 48px, always centered */}
-      <div className="h-12 w-full flex items-center justify-center p-1 overflow-hidden shrink-0">
+      {/* Logo Image Area — fixed height 72px, always centered */}
+      <div className="h-[72px] w-full flex items-center justify-center overflow-hidden shrink-0">
         {brand.logoUrl ? (
             <img loading="lazy" decoding="async" src={brand.logoUrl}
             alt={brand.name}
-            className="max-h-full max-w-full object-contain object-center group-hover/card:scale-105 transition-transform duration-300 mx-auto my-auto block mix-blend-multiply p-0.5"
+            className="max-h-full max-w-full object-contain object-center group-hover/card:scale-105 transition-transform duration-300 mx-auto block"
           />
         ) : (
           <div
