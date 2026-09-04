@@ -76,22 +76,22 @@ export function loadGoogleFont(fontInput: string) {
 /**
  * Applies custom font variables & global font size scale to root document with explicit CSS overrides
  */
-export function applyTypography(headingFont: string, bodyFont: string, monoFont: string, sizeScale: number = 100) {
+export function applyTypography(headingFont: string = 'Montserrat', bodyFont: string = 'Lora', monoFont: string = 'Fira Code', sizeScale: number = 100) {
   const hOpt = getFontOption(headingFont);
   const bOpt = getFontOption(bodyFont);
   const mOpt = getFontOption(monoFont);
 
-  const hFamily = hOpt ? hOpt.googleFontFamily.replace(/\+/g, ' ') : (headingFont || 'Space Grotesk');
-  const bFamily = bOpt ? bOpt.googleFontFamily.replace(/\+/g, ' ') : (bodyFont || 'Be Vietnam Pro');
-  const mFamily = mOpt ? mOpt.googleFontFamily.replace(/\+/g, ' ') : (monoFont || 'IBM Plex Mono');
+  const hFamily = hOpt ? hOpt.googleFontFamily.replace(/\+/g, ' ') : (headingFont || 'Montserrat');
+  const bFamily = bOpt ? bOpt.googleFontFamily.replace(/\+/g, ' ') : (bodyFont || 'Lora');
+  const mFamily = mOpt ? mOpt.googleFontFamily.replace(/\+/g, ' ') : (monoFont || 'Fira Code');
 
-  loadGoogleFont(headingFont || 'Space Grotesk');
-  loadGoogleFont(bodyFont || 'Be Vietnam Pro');
-  loadGoogleFont(monoFont || 'IBM Plex Mono');
+  loadGoogleFont(headingFont || 'Montserrat');
+  loadGoogleFont(bodyFont || 'Lora');
+  loadGoogleFont(monoFont || 'Fira Code');
 
   // Set CSS root variables
   document.documentElement.style.setProperty('--disp', `'${hFamily}', sans-serif`);
-  document.documentElement.style.setProperty('--body', `'${bFamily}', sans-serif`);
+  document.documentElement.style.setProperty('--body', `'${bFamily}', Georgia, serif`);
   document.documentElement.style.setProperty('--mono', `'${mFamily}', monospace`);
   
   if (sizeScale && sizeScale !== 100) {

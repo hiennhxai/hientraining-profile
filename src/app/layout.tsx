@@ -57,9 +57,9 @@ export default async function RootLayout({
 }) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
-  let fontHeading = 'Space Grotesk';
-  let fontBody = 'Be Vietnam Pro';
-  let fontMono = 'IBM Plex Mono';
+  let fontHeading = 'Montserrat';
+  let fontBody = 'Lora';
+  let fontMono = 'Fira Code';
   let fontSizeScale = 100;
 
   if (supabaseUrl && supabaseKey) {
@@ -75,7 +75,7 @@ export default async function RootLayout({
     } catch (e) {}
   }
 
-  const fontUrl = `https://fonts.googleapis.com/css2?family=${fontBody.replace(/\s+/g, '+')}:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=${fontMono.replace(/\s+/g, '+')}:wght@400;500;600&family=${fontHeading.replace(/\s+/g, '+')}:wght@400;500;600;700&display=swap`;
+  const fontUrl = `https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap`;
 
   return (
     <html lang="vi" id="html-root" suppressHydrationWarning>
@@ -83,14 +83,27 @@ export default async function RootLayout({
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preload" as="style" href={fontUrl} />
         <link href={fontUrl} rel="stylesheet" />
         <style dangerouslySetInnerHTML={{
           __html: `
             :root {
               --font-heading: '${fontHeading}', sans-serif;
-              --font-body: '${fontBody}', sans-serif;
+              --font-body: '${fontBody}', Georgia, serif;
               --font-mono: '${fontMono}', monospace;
               --font-size-scale: ${fontSizeScale}%;
+              --disp: '${fontHeading}', sans-serif;
+              --body: '${fontBody}', Georgia, serif;
+              --mono: '${fontMono}', monospace;
+            }
+            body, button, input, textarea, select {
+              font-family: '${fontBody}', Georgia, serif !important;
+            }
+            h1, h2, h3, h4, h5, h6, .font-extrabold, .font-black, .font-bold, .font-display, [class*="font-extrabold"], [class*="font-bold"] {
+              font-family: '${fontHeading}', sans-serif !important;
+            }
+            .font-mono, [class*="font-mono"] {
+              font-family: '${fontMono}', monospace !important;
             }
           `
         }} />

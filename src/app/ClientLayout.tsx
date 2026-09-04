@@ -46,9 +46,9 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
       // 1. Release UI immediately with local/default data
       const data = getAdminData();
       applyTypography(
-        data.general.fontHeading || 'Space Grotesk',
-        data.general.fontBody || 'Be Vietnam Pro',
-        data.general.fontMono || 'IBM Plex Mono',
+        data.general.fontHeading || 'Montserrat',
+        data.general.fontBody || 'Lora',
+        data.general.fontMono || 'Fira Code',
         data.general.fontSizeScale || 100
       );
       setIsDataLoaded(true);
@@ -62,9 +62,9 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
     const handleUpdate = () => {
       const data = getAdminData();
       applyTypography(
-        data.general.fontHeading || 'Space Grotesk',
-        data.general.fontBody || 'Be Vietnam Pro',
-        data.general.fontMono || 'IBM Plex Mono',
+        data.general.fontHeading || 'Montserrat',
+        data.general.fontBody || 'Lora',
+        data.general.fontMono || 'Fira Code',
         data.general.fontSizeScale || 100
       );
     };

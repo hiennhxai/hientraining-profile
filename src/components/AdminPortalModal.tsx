@@ -684,12 +684,12 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                   <div>
                     <label className="block font-bold text-slate-700 mb-1">Font Tiêu Đề (Heading)</label>
                     <select
-                      value={data.general.fontHeading || 'Space Grotesk'}
+                      value={data.general.fontHeading || 'Montserrat'}
                       onChange={(e) => {
                         const val = e.target.value;
                         const nextGen = { ...data.general, fontHeading: val };
                         setData({ ...data, general: nextGen });
-                        applyTypography(val, data.general.fontBody || 'Be Vietnam Pro', data.general.fontMono || 'IBM Plex Mono', data.general.fontSizeScale || 100);
+                        applyTypography(val, data.general.fontBody || 'Lora', data.general.fontMono || 'Fira Code', data.general.fontSizeScale || 100);
                       }}
                       className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold bg-white cursor-pointer"
                     >
@@ -697,7 +697,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                         <option key={f.id} value={f.name}>{f.name} ({f.category})</option>
                       ))}
                     </select>
-                    <p className="text-[10px] text-slate-400 mt-1" style={{ fontFamily: `'${data.general.fontHeading || 'Space Grotesk'}', sans-serif` }}>
+                    <p className="text-[10px] text-slate-400 mt-1" style={{ fontFamily: `'${data.general.fontHeading || 'Montserrat'}', sans-serif` }}>
                       Xem trước: <strong>ABCĐ abcđ 0123 — Xuân Hiến Media</strong>
                     </p>
                   </div>
@@ -706,12 +706,12 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                   <div>
                     <label className="block font-bold text-slate-700 mb-1">Font Nội Dung (Body Text)</label>
                     <select
-                      value={data.general.fontBody || 'Be Vietnam Pro'}
+                      value={data.general.fontBody || 'Lora'}
                       onChange={(e) => {
                         const val = e.target.value;
                         const nextGen = { ...data.general, fontBody: val };
                         setData({ ...data, general: nextGen });
-                        applyTypography(data.general.fontHeading || 'Space Grotesk', val, data.general.fontMono || 'IBM Plex Mono', data.general.fontSizeScale || 100);
+                        applyTypography(data.general.fontHeading || 'Montserrat', val, data.general.fontMono || 'Fira Code', data.general.fontSizeScale || 100);
                       }}
                       className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold bg-white cursor-pointer"
                     >
@@ -719,7 +719,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                         <option key={f.id} value={f.name}>{f.name} ({f.category})</option>
                       ))}
                     </select>
-                    <p className="text-[10px] text-slate-400 mt-1" style={{ fontFamily: `'${data.general.fontBody || 'Be Vietnam Pro'}', sans-serif` }}>
+                    <p className="text-[10px] text-slate-400 mt-1" style={{ fontFamily: `'${data.general.fontBody || 'Lora'}', Georgia, serif` }}>
                       Xem trước: <span>Đào tạo kỹ năng MC, Livestream chuyên nghiệp 1 kèm 1</span>
                     </p>
                   </div>
@@ -728,12 +728,12 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                   <div>
                     <label className="block font-bold text-slate-700 mb-1">Font Code / Nhãn (Mono)</label>
                     <select
-                      value={data.general.fontMono || 'IBM Plex Mono'}
+                      value={data.general.fontMono || 'Fira Code'}
                       onChange={(e) => {
                         const val = e.target.value;
                         const nextGen = { ...data.general, fontMono: val };
                         setData({ ...data, general: nextGen });
-                        applyTypography(data.general.fontHeading || 'Space Grotesk', data.general.fontBody || 'Be Vietnam Pro', val, data.general.fontSizeScale || 100);
+                        applyTypography(data.general.fontHeading || 'Montserrat', data.general.fontBody || 'Lora', val, data.general.fontSizeScale || 100);
                       }}
                       className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold bg-white cursor-pointer"
                     >
@@ -1131,7 +1131,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                   <div>
                     <label className="block font-bold text-slate-700 mb-1">Font Tiêu Đề (Headings)</label>
                     <select
-                      value={data.general.fontHeading || 'Space Grotesk'}
+                      value={data.general.fontHeading || 'Montserrat'}
                       onChange={(e) => setData({ ...data, general: { ...data.general, fontHeading: e.target.value } })}
                       className="w-full px-3 py-2 rounded-xl border border-slate-300 font-bold bg-white text-slate-800"
                     >
@@ -1144,7 +1144,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                   <div>
                     <label className="block font-bold text-slate-700 mb-1">Font Nội Dung (Body Text)</label>
                     <select
-                      value={data.general.fontBody || 'Be Vietnam Pro'}
+                      value={data.general.fontBody || 'Lora'}
                       onChange={(e) => setData({ ...data, general: { ...data.general, fontBody: e.target.value } })}
                       className="w-full px-3 py-2 rounded-xl border border-slate-300 font-bold bg-white text-slate-800"
                     >
@@ -1157,7 +1157,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                   <div>
                     <label className="block font-bold text-slate-700 mb-1">Font Mã / Thống Kê (Monospace)</label>
                     <select
-                      value={data.general.fontMono || 'IBM Plex Mono'}
+                      value={data.general.fontMono || 'Fira Code'}
                       onChange={(e) => setData({ ...data, general: { ...data.general, fontMono: e.target.value } })}
                       className="w-full px-3 py-2 rounded-xl border border-slate-300 font-bold bg-white text-slate-800"
                     >

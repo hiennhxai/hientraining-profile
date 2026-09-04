@@ -14,9 +14,9 @@
     --red: #DC2626;
     --text: #0F172A;
     --dim: #475569;
-    --mono: 'IBM Plex Mono', monospace;
-    --disp: 'Space Grotesk', 'Be Vietnam Pro', sans-serif;
-    --body: 'Be Vietnam Pro', sans-serif;
+    --mono: 'Fira Code', 'IBM Plex Mono', monospace;
+    --disp: 'Montserrat', sans-serif;
+    --body: 'Lora', Georgia, serif;
   }
 
   html {
