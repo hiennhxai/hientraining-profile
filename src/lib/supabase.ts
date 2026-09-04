@@ -1,22 +1,20 @@
 import { createClient } from '@supabase/supabase-js';
 
-const getEnv = (key: string): string | undefined => {
-  if (typeof process !== 'undefined' && process.env && process.env[key]) return process.env[key];
-  if (typeof import.meta !== 'undefined' && import.meta.env) return (import.meta.env as any)[key];
-  return undefined;
-};
+// Trong Next.js client component, các biến NEXT_PUBLIC_* bắt buộc phải được truy cập trực tiếp
+// để compiler (Webpack/Turbopack) thay thế giá trị vào client bundle lúc build.
+const supabaseUrl = 
+  process.env.NEXT_PUBLIC_SUPABASE_URL || 
+  process.env.VITE_SUPABASE_URL || 
+  'https://jkyxajnlhlwfftgplwii.supabase.co';
 
-// SECURITY FIX: Không hardcode credentials vào source code
-// Nếu thiếu env → báo lỗi rõ ràng thay vì dùng giá trị cứng
-const supabaseUrl = getEnv('NEXT_PUBLIC_SUPABASE_URL') || getEnv('VITE_SUPABASE_URL') || '';
-const supabaseAnonKey = getEnv('NEXT_PUBLIC_SUPABASE_ANON_KEY') || getEnv('VITE_SUPABASE_ANON_KEY') || '';
+const supabaseAnonKey = 
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 
+  process.env.VITE_SUPABASE_ANON_KEY || 
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpreXhham5saGx3ZmZ0Z3Bsd2lpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU0MTQ1NjUsImV4cCI6MjEwMDk5MDU2NX0.VQ5c6rUogRDfpjHyLB275NkQy3CYK12gRD2ncLVFcTQ';
 
 if (!supabaseUrl || !supabaseAnonKey) {
   console.error('[Supabase] Missing environment variables: NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY');
 }
 
-export const supabase = createClient(
-  supabaseUrl || 'https://placeholder.supabase.co',
-  supabaseAnonKey || 'placeholder-key'
-);
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
