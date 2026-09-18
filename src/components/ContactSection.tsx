@@ -5,6 +5,7 @@ import { Logo } from './Logo';
 import { EditableWrapper } from './EditableWrapper';
 import { Phone, Mail, MapPin, Send, CheckCircle2, MessageSquare } from 'lucide-react';
 import { getAdminData } from '../data/adminStore';
+import Script from 'next/script';
 
 interface ContactSectionProps {
   lang: Language;
@@ -40,18 +41,36 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
     setIsSubmitting(true);
     
     try {
-      const formBody = Object.keys(formData)
-        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent((formData as any)[key]))
-        .join('&');
+      let recaptchaToken = '';
+      const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+      
+      if (siteKey && (window as any).grecaptcha) {
+        recaptchaToken = await new Promise<string>((resolve) => {
+          (window as any).grecaptcha.ready(async () => {
+            try {
+              const token = await (window as any).grecaptcha.execute(siteKey, { action: 'contact_submit' });
+              resolve(token);
+            } catch (err) {
+              resolve('');
+            }
+          });
+        });
+      }
 
-      await fetch('https://script.google.com/macros/s/AKfycbz6L0gVATSHZP-3ocYhbp2Pavki4P_HoSaAz7RZFn4yYL9vIJejFk51mI4yG3gMK1R1/exec', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
-        body: formBody,
+        body: JSON.stringify({
+          ...formData,
+          recaptchaToken
+        }),
       });
+
+      if (!response.ok) {
+        throw new Error('Submit failed or spam detected');
+      }
 
       setSubmitted(true);
       setFormData({ name: '', phone: '', service: 'Khóa học Setup Livestream', note: '' });
@@ -60,7 +79,7 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
       }, 5000);
     } catch (error) {
       console.error('Submit error:', error);
-      alert(isVi ? 'Có lỗi xảy ra khi gửi đăng ký. Xin vui lòng liên hệ hotline.' : 'Error submitting form. Please call our hotline.');
+      alert(isVi ? 'Có lỗi xảy ra hoặc nghi ngờ Spam. Xin vui lòng liên hệ Hotline.' : 'Error submitting form or Spam detected. Please call our hotline.');
     } finally {
       setIsSubmitting(false);
     }
@@ -68,6 +87,9 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
 
   return (
     <section id="contact" className="py-6 sm:py-8 bg-slate-50 relative border-b border-slate-200">
+      {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+        <Script src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`} strategy="lazyOnload" />
+      )}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Left Column Contact Details */}
