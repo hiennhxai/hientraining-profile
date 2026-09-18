@@ -109,17 +109,17 @@ export default async function RootLayout({
         }} />
         
         {/* ==========================================
-            MARKETING TRACKING SCRIPTS (PLACEHOLDERS)
-            Thay thế G-XXXXXXXXXX và PIXEL_ID bằng ID thật của bạn
+            MARKETING TRACKING SCRIPTS
+            Google Analytics 4
         ========================================== */}
         {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWN56EC56G"></script>
         <script dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-XXXXXXXXXX', { page_path: window.location.pathname });
+            gtag('config', 'G-PWN56EC56G', { page_path: window.location.pathname });
           `
         }} />
         
