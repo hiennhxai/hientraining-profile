@@ -168,17 +168,30 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
                 label="Sửa Địa Điểm Đào Tạo & Studio"
                 onEdit={() => triggerEdit('studioLocation', 'Địa Điểm Đào Tạo & Studio', gen.studioLocation || 'TP. Hồ Chí Minh (Đào tạo Offline 1-1 & Online)')}
               >
-                <div className="flex items-center gap-4 p-4.5 rounded-2xl bg-white border border-slate-200 shadow-2xs">
-                  <div className="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700">
-                    <MapPin className="w-6 h-6 text-red-600" />
+                <div className="flex flex-col gap-4 p-4.5 rounded-2xl bg-white border border-slate-200 shadow-2xs">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 shrink-0 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700">
+                      <MapPin className="w-6 h-6 text-red-600" />
+                    </div>
+                    <div>
+                      <span className="text-xs font-bold text-slate-500 block uppercase tracking-wider">
+                        {isVi ? 'Địa điểm Đào tạo & Studio' : 'Training Location & Studio'}
+                      </span>
+                      <strong className="text-sm font-sans text-slate-900 font-bold">
+                        {gen.studioLocation || (isVi ? 'BILY STUDIO (TP.HCM)' : 'BILY STUDIO (HCMC)')}
+                      </strong>
+                    </div>
                   </div>
-                  <div>
-                    <span className="text-xs font-bold text-slate-500 block uppercase tracking-wider">
-                      {isVi ? 'Địa điểm Đào tạo & Studio' : 'Training Location & Studio'}
-                    </span>
-                    <strong className="text-sm font-sans text-slate-900 font-bold">
-                      {gen.studioLocation || (isVi ? 'TP. Hồ Chí Minh (Đào tạo Offline 1-1 & Online)' : 'Ho Chi Minh City (1-on-1 Offline & Online Live)')}
-                    </strong>
+                  <div className="w-full h-[200px] sm:h-[250px] rounded-xl overflow-hidden border border-slate-200">
+                    <iframe 
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.7260914371486!2d106.74949361074479!3d10.678356089420632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175259195733cad%3A0x1c88eb1ddfb11ac2!2sBILY%20STUDIO!5e0!3m2!1svi!2s!4v1789749959365!5m2!1svi!2s" 
+                      width="100%" 
+                      height="100%" 
+                      style={{ border: 0 }} 
+                      allowFullScreen={false} 
+                      loading="lazy" 
+                      referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
                   </div>
                 </div>
               </EditableWrapper>
@@ -209,6 +222,24 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
                   : 'Xuan Hien will contact you within 24h for a personalized roadmap.')}
               </p>
             </EditableWrapper>
+
+            <div className="mb-6 flex flex-col gap-3">
+               <a 
+                 href="https://calendly.com/hiennhx-ai/30min" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="w-full py-4 px-6 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-3 transition-all shadow-lg hover:shadow-indigo-500/30 active:scale-[0.98]"
+               >
+                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                 {isVi ? 'ĐẶT LỊCH TRỰC TIẾP QUA GOOGLE CALENDAR' : 'BOOK DIRECTLY ON GOOGLE CALENDAR'}
+               </a>
+               
+               <div className="flex items-center gap-4 py-2">
+                 <div className="h-px bg-slate-200 flex-1"></div>
+                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{isVi ? 'Hoặc để lại thông tin' : 'Or leave your details'}</span>
+                 <div className="h-px bg-slate-200 flex-1"></div>
+               </div>
+            </div>
 
             {submitted ? (
               <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-3 animate-fadeIn">
