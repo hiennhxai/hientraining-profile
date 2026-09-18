@@ -109,6 +109,44 @@ export default async function RootLayout({
         }} />
         
         {/* ==========================================
+            SEO STRUCTURED DATA (JSON-LD)
+        ========================================== */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://hientraining.com/#organization",
+                  "name": "MC Nguyễn Hồng Xuân Hiến — Media & Training Studio",
+                  "url": "https://hientraining.com/",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://hientraining.com/og-image.jpg"
+                  }
+                },
+                {
+                  "@type": "Person",
+                  "@id": "https://hientraining.com/#person",
+                  "name": "MC Xuân Hiến",
+                  "jobTitle": "MC Truyền hình & Chuyên gia đào tạo",
+                  "url": "https://hientraining.com/",
+                  "image": {
+                    "@type": "ImageObject",
+                    "url": "https://hientraining.com/og-image.jpg"
+                  },
+                  "worksFor": {
+                    "@id": "https://hientraining.com/#organization"
+                  }
+                }
+              ]
+            })
+          }}
+        />
+
+        {/* ==========================================
             MARKETING TRACKING SCRIPTS
             Google Analytics 4
         ========================================== */}

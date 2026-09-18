@@ -32,9 +32,38 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const article = await fetchArticle(slug);
   
   return (
     <div className="min-h-screen bg-slate-50 pt-20">
+      {article && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              "headline": article.title,
+              "image": article.coverImage || 'https://hientraining.com/og-image.jpg',
+              "description": article.excerpt || article.title,
+              "author": {
+                "@type": "Person",
+                "name": "MC Xuân Hiến",
+                "url": "https://hientraining.com/"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "MC Nguyễn Hồng Xuân Hiến — Media & Training Studio",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://hientraining.com/og-image.jpg"
+                }
+              },
+              "datePublished": article.createdAt || new Date().toISOString(),
+            })
+          }}
+        />
+      )}
       <ArticlePageClient slug={slug} />
     </div>
   );

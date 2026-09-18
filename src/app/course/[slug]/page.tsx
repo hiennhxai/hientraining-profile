@@ -41,6 +41,29 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
 
   return (
     <div className="min-h-screen bg-slate-50 pt-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": course.title,
+            "description": course.subtitle || course.title,
+            "provider": {
+              "@type": "Organization",
+              "name": "MC Nguyễn Hồng Xuân Hiến — Media & Training Studio",
+              "sameAs": "https://hientraining.com/"
+            },
+            "image": course.bannerImage || course.thumbnailUrl || 'https://hientraining.com/og-image.jpg',
+            "offers": {
+              "@type": "Offer",
+              "category": course.price > 0 ? "Paid" : "Free",
+              "priceCurrency": "VND",
+              "price": course.price || 0
+            }
+          })
+        }}
+      />
       <CoursePageClient course={course} />
     </div>
   );

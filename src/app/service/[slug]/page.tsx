@@ -41,6 +41,23 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
   return (
     <div className="min-h-screen bg-slate-50 pt-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": service.title,
+            "description": service.subtitle || service.title,
+            "provider": {
+              "@type": "Organization",
+              "name": "MC Nguyễn Hồng Xuân Hiến — Media & Training Studio",
+              "sameAs": "https://hientraining.com/"
+            },
+            "image": service.photos?.[0]?.url || 'https://hientraining.com/og-image.jpg'
+          })
+        }}
+      />
       <ServicePageClient service={service} />
     </div>
   );
