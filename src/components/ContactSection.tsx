@@ -261,25 +261,7 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
               </p>
             </EditableWrapper>
 
-            <div className="mb-6 flex flex-col gap-3">
-               <div className="w-full rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-white p-2">
-                 <p className="text-xs font-bold text-slate-500 mb-2 uppercase text-center">{isVi ? 'Xem lịch trống của Hiến Training' : 'Check Hien Training Availability'}</p>
-                 <iframe 
-                   src="https://calendar.google.com/calendar/embed?src=xuanhien.info%40gmail.com&ctz=Asia%2FHo_Chi_Minh&mode=AGENDA&showPrint=0&showTabs=0&showCalendars=0&showTz=0" 
-                   style={{ border: 0 }} 
-                   width="100%" 
-                   height="300" 
-                   frameBorder="0" 
-                   scrolling="no"
-                 ></iframe>
-               </div>
-               
-               <div className="flex items-center gap-4 py-2 mt-2">
-                 <div className="h-px bg-slate-200 flex-1"></div>
-                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{isVi ? 'Và để lại thông tin bên dưới' : 'And leave your details below'}</span>
-                 <div className="h-px bg-slate-200 flex-1"></div>
-               </div>
-            </div>
+
 
             {submitted ? (
               <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-3 animate-fadeIn">
@@ -309,6 +291,18 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
 
                 {showBookingForm && !bookingSuccess && (
                   <form onSubmit={handleBookingSubmit} className="pt-4 border-t border-emerald-200 mt-4 text-left space-y-4 animate-fadeIn">
+                    <div className="w-full rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-white p-2 mb-4">
+                      <p className="text-xs font-bold text-slate-500 mb-2 uppercase text-center">{isVi ? 'Xem lịch trống của Hiến Training' : 'Check Hien Training Availability'}</p>
+                      <iframe 
+                        src="https://calendar.google.com/calendar/embed?src=xuanhien.info%40gmail.com&ctz=Asia%2FHo_Chi_Minh&mode=AGENDA&showPrint=0&showTabs=0&showCalendars=0&showTz=0" 
+                        style={{ border: 0 }} 
+                        width="100%" 
+                        height="300" 
+                        frameBorder="0" 
+                        scrolling="no"
+                      ></iframe>
+                    </div>
+                    
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-bold text-slate-700 mb-1">
