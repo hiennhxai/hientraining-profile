@@ -18,7 +18,10 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
   const isVi = lang === 'vi';
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({ name: '', phone: '', email: '', service: 'Khóa học Setup Livestream', note: '' });
+  const [formData, setFormData] = useState({ 
+    name: '', phone: '', email: '', service: 'Khóa học Setup Livestream', note: '',
+    bookingDate: '', bookingTime: '', meetingType: 'Online', meetingLocation: ''
+  });
   const [adminData, setAdminData] = useState(getAdminData());
   const gen = adminData.general;
 
@@ -73,7 +76,7 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
       }
 
       setSubmitted(true);
-      setFormData({ name: '', phone: '', email: '', service: 'Khóa học Setup Livestream', note: '' });
+      setFormData({ name: '', phone: '', email: '', service: 'Khóa học Setup Livestream', note: '', bookingDate: '', bookingTime: '', meetingType: 'Online', meetingLocation: '' });
       setTimeout(() => {
         setSubmitted(false);
       }, 5000);
@@ -225,7 +228,7 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
 
             <div className="mb-6 flex flex-col gap-3">
                <div className="w-full rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-white p-2">
-                 <p className="text-xs font-bold text-slate-500 mb-2 uppercase text-center">{isVi ? 'Xem lịch trống của MC Xuân Hiến' : 'Check MC Xuan Hien Availability'}</p>
+                 <p className="text-xs font-bold text-slate-500 mb-2 uppercase text-center">{isVi ? 'Xem lịch trống của Hiến Training' : 'Check Hien Training Availability'}</p>
                  <iframe 
                    src="https://calendar.google.com/calendar/embed?src=xuanhien.info%40gmail.com&ctz=Asia%2FHo_Chi_Minh&mode=AGENDA&showPrint=0&showTabs=0&showCalendars=0&showTz=0" 
                    style={{ border: 0 }} 
@@ -298,6 +301,60 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
                     className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white font-medium transition-all"
                   />
                 </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">
+                      {isVi ? 'Ngày hẹn (tuỳ chọn)' : 'Date (Optional)'}
+                    </label>
+                    <input
+                      type="date"
+                      value={formData.bookingDate}
+                      onChange={(e) => setFormData({ ...formData, bookingDate: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white font-medium transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">
+                      {isVi ? 'Giờ hẹn' : 'Time'}
+                    </label>
+                    <input
+                      type="time"
+                      value={formData.bookingTime}
+                      onChange={(e) => setFormData({ ...formData, bookingTime: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white font-medium transition-all"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
+                    {isVi ? 'Hình thức gặp' : 'Meeting Type'}
+                  </label>
+                  <select
+                    value={formData.meetingType}
+                    onChange={(e) => setFormData({ ...formData, meetingType: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white font-medium transition-all"
+                  >
+                    <option value="Online">🌐 Online (Google Meet)</option>
+                    <option value="Offline">☕ Offline (Gặp trực tiếp)</option>
+                  </select>
+                </div>
+
+                {formData.meetingType === 'Offline' && (
+                  <div className="animate-fadeIn">
+                    <label className="block text-xs font-bold text-slate-700 mb-1">
+                      {isVi ? 'Địa điểm đề xuất' : 'Suggested Location'}
+                    </label>
+                    <input
+                      type="text"
+                      placeholder={isVi ? "Ví dụ: Quán cà phê XYZ hoặc BILY Studio..." : "e.g., XYZ Cafe or BILY Studio..."}
+                      value={formData.meetingLocation}
+                      onChange={(e) => setFormData({ ...formData, meetingLocation: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white font-medium transition-all"
+                    />
+                  </div>
+                )}
 
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1">
