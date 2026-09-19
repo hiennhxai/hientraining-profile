@@ -22,6 +22,16 @@ export async function POST(request: Request) {
       if (data.startsWith('called_')) {
         const phone = data.replace('called_', '');
         responseText = `📞 Đã gọi điện tư vấn cho SĐT: ${phone}`;
+        
+        // Cập nhật lại nút bấm: Chỉ chừa lại 2 nút "Xác nhận học" và "Từ chối"
+        newReplyMarkup = {
+          inline_keyboard: [
+            [
+              { text: '✅ Khách xác nhận học', callback_data: `accept1_${phone}` },
+              { text: '❌ Khách từ chối', callback_data: `reject1_${phone}` }
+            ]
+          ]
+        };
       } 
       else if (data.startsWith('accept1_')) {
         const phone = data.replace('accept1_', '');
