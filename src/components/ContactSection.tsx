@@ -224,19 +224,21 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
             </EditableWrapper>
 
             <div className="mb-6 flex flex-col gap-3">
-               <a 
-                 href="https://calendly.com/hiennhx-ai/30min" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 className="w-full py-4 px-6 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-3 transition-all shadow-lg hover:shadow-indigo-500/30 active:scale-[0.98]"
-               >
-                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                 {isVi ? 'ĐẶT LỊCH TRỰC TIẾP QUA GOOGLE CALENDAR' : 'BOOK DIRECTLY ON GOOGLE CALENDAR'}
-               </a>
+               <div className="w-full rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-white p-2">
+                 <p className="text-xs font-bold text-slate-500 mb-2 uppercase text-center">{isVi ? 'Xem lịch trống của MC Xuân Hiến' : 'Check MC Xuan Hien Availability'}</p>
+                 <iframe 
+                   src="https://calendar.google.com/calendar/embed?src=xuanhien.info%40gmail.com&ctz=Asia%2FHo_Chi_Minh&mode=AGENDA&showPrint=0&showTabs=0&showCalendars=0&showTz=0" 
+                   style={{ border: 0 }} 
+                   width="100%" 
+                   height="300" 
+                   frameBorder="0" 
+                   scrolling="no"
+                 ></iframe>
+               </div>
                
-               <div className="flex items-center gap-4 py-2">
+               <div className="flex items-center gap-4 py-2 mt-2">
                  <div className="h-px bg-slate-200 flex-1"></div>
-                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{isVi ? 'Hoặc để lại thông tin' : 'Or leave your details'}</span>
+                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{isVi ? 'Và để lại thông tin bên dưới' : 'And leave your details below'}</span>
                  <div className="h-px bg-slate-200 flex-1"></div>
                </div>
             </div>
