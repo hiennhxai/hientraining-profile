@@ -112,7 +112,7 @@ export async function POST(request: Request) {
           key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
           scopes: ['https://www.googleapis.com/auth/calendar'],
         });
-        const calendar = google.calendar({ version: 'v3', auth });
+        const calendar = google.calendar({ version: 'v3', auth: auth as any });
         
         // Parse the provided local date and time into an ISO string (assuming Vietnam time UTC+7)
         const startDateTime = new Date(`${bookingDate}T${bookingTime}:00+07:00`);
