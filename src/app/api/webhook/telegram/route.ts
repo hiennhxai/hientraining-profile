@@ -61,9 +61,14 @@ export async function POST(request: Request) {
             const meetingType = typeMatch ? typeMatch[1] : 'Online';
             const location = locMatch ? locMatch[1].trim() : (meetingType === 'Offline' ? 'Tại Studio' : 'Google Meet');
 
+            let privateKey = process.env.GOOGLE_PRIVATE_KEY;
+            if (privateKey) {
+              privateKey = privateKey.replace(/\\n/g, '\n').replace(/(^"|"$)/g, '');
+            }
+
             const auth = new JWT({
               email: process.env.GOOGLE_CLIENT_EMAIL,
-              key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+              key: privateKey,
               scopes: ['https://www.googleapis.com/auth/calendar'],
             });
             const calendar = google.calendar({ version: 'v3', auth: auth as any });
@@ -139,9 +144,9 @@ export async function POST(request: Request) {
               ]
             };
 
-          } catch (e) {
+          } catch (e: any) {
             console.error('Google API Error in Webhook:', e);
-            responseText = `⚠️ Lỗi khi tạo Google Calendar.`;
+            responseText = `⚠️ Lỗi khi tạo Google Calendar: ${e.message || 'Lỗi không xác định'}`;
           }
         } else {
           responseText = `✅ Đã phê duyệt tư vấn cho SĐT: ${phone}`;
