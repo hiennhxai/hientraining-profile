@@ -72,8 +72,8 @@ const nextConfig = {
               "img-src 'self' data: blob: https://*.supabase.co https://images.unsplash.com https://d8j0ntlcm91z4.cloudfront.net https://i.pravatar.cc https://www.facebook.com",
               // API connections: cho phép gọi đến Supabase, Gemini, Facebook
               "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://generativelanguage.googleapis.com https://api.gemini.google.com https://translate.googleapis.com https://www.google.com",
-              // Frames: chỉ YouTube embed, Google Drive, Google Maps, reCAPTCHA
-              "frame-src https://www.youtube.com https://drive.google.com https://www.google.com",
+              // Frames: chỉ YouTube embed, Google Drive, Google Maps, reCAPTCHA, Google Calendar
+              "frame-src https://www.youtube.com https://drive.google.com https://www.google.com https://calendar.google.com",
               // Media: supabase storage và cloudfront
               "media-src 'self' https://*.supabase.co https://d8j0ntlcm91z4.cloudfront.net blob:",
             ].join('; ')
