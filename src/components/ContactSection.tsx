@@ -74,15 +74,15 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
       });
 
       if (!response.ok) {
-        throw new Error('Submit failed or spam detected');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Submit failed or spam detected');
       }
 
       setSubmitted(true);
-      setSubmitted(true);
       // We do not clear the formData immediately so that the user can optionally book a meeting in Step 2.
-    } catch (error) {
+    } catch (error: any) {
       console.error('Submit error:', error);
-      alert(isVi ? 'Có lỗi xảy ra hoặc nghi ngờ Spam. Xin vui lòng liên hệ Hotline.' : 'Error submitting form or Spam detected. Please call our hotline.');
+      alert(isVi ? 'Lỗi: ' + error.message : 'Error: ' + error.message);
     } finally {
       setIsSubmitting(false);
     }
@@ -105,7 +105,8 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
       });
 
       if (!response.ok) {
-        throw new Error('Booking update failed');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Booking update failed');
       }
 
       setBookingSuccess(true);
@@ -115,9 +116,9 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
         setShowBookingForm(false);
         setFormData({ name: '', phone: '', email: '', service: 'Khóa học Setup Livestream', note: '', bookingDate: '', bookingTime: '', meetingType: 'Online', meetingLocation: '' });
       }, 5000);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Booking submit error:', error);
-      alert(isVi ? 'Có lỗi xảy ra khi đặt lịch. Xin vui lòng thử lại.' : 'Error submitting booking. Please try again.');
+      alert(isVi ? 'Lỗi: ' + error.message : 'Error: ' + error.message);
     } finally {
       setIsSubmitting(false);
     }
