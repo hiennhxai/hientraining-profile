@@ -18,11 +18,26 @@ export async function POST(request: Request) {
       let responseText = '';
 
       if (data.startsWith('approve_')) {
-        const id = data.replace('approve_', '');
+        const phone = data.replace('approve_', '');
+        const text = callbackQuery.message.text || '';
         
-        // If it looks like a Google Event ID (contains letters)
-        if (/[a-zA-Z]/.test(id) && process.env.GOOGLE_CLIENT_EMAIL && process.env.GOOGLE_PRIVATE_KEY) {
+        // Parse the text to find if there is a booking
+        const dateMatch = text.match(/Lịch hẹn:\s*([0-9\-]+)\s*lúc\s*([0-9:]+)/);
+        const nameMatch = text.match(/Khách hàng:\s*(.+)/);
+        const emailMatch = text.match(/Email:\s*(.+)/);
+        const typeMatch = text.match(/Hình thức:\s*(Online|Offline)/i);
+        const locMatch = text.match(/Hình thức:\s*Offline\s*\((.+)\)/i);
+
+        if (dateMatch && process.env.GOOGLE_CLIENT_EMAIL && process.env.GOOGLE_PRIVATE_KEY) {
           try {
+            const bookingDate = dateMatch[1].trim();
+            const bookingTime = dateMatch[2].trim();
+            const clientName = nameMatch ? nameMatch[1].trim() : 'Khách';
+            let clientEmail = emailMatch ? emailMatch[1].trim() : '';
+            if (clientEmail === 'N/A') clientEmail = '';
+            const meetingType = typeMatch ? typeMatch[1] : 'Online';
+            const location = locMatch ? locMatch[1].trim() : (meetingType === 'Offline' ? 'Tại Studio' : 'Google Meet');
+
             const auth = new JWT({
               email: process.env.GOOGLE_CLIENT_EMAIL,
               key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
@@ -30,26 +45,37 @@ export async function POST(request: Request) {
             });
             const calendar = google.calendar({ version: 'v3', auth: auth as any });
             
-            // Get the event
-            const eventRes = await calendar.events.get({
+            const startDateTime = new Date(`${bookingDate}T${bookingTime}:00+07:00`);
+            const endDateTime = new Date(startDateTime.getTime() + 60 * 60 * 1000);
+            
+            const eventBody: any = {
+              summary: `Tư vấn - ${clientName}`,
+              description: text,
+              start: { dateTime: startDateTime.toISOString() },
+              end: { dateTime: endDateTime.toISOString() },
+              attendees: clientEmail ? [{ email: clientEmail }] : [],
+              location: meetingType === 'Offline' ? location : undefined,
+            };
+
+            if (meetingType === 'Online') {
+              eventBody.conferenceData = {
+                createRequest: { 
+                  requestId: `${Date.now()}_${phone.replace(/\\D/g, '')}`,
+                  conferenceSolutionKey: { type: 'hangoutsMeet' } 
+                }
+              };
+            }
+
+            const res = await calendar.events.insert({
               calendarId: 'xuanhien.info@gmail.com',
-              eventId: id
-            });
-            const event = eventRes.data;
-            
-            // Update summary
-            event.summary = (event.summary || '').replace('[CHỜ XÁC NHẬN] ', '');
-            
-            await calendar.events.update({
-              calendarId: 'xuanhien.info@gmail.com',
-              eventId: id,
-              requestBody: event
+              requestBody: eventBody,
+              conferenceDataVersion: 1
             });
             
+            const event = res.data;
             const hangoutLink = event.conferenceData?.entryPoints?.find(e => e.entryPointType === 'video')?.uri;
-            const clientEmail = event.attendees?.[0]?.email;
             
-            responseText = `✅ Đã phê duyệt! Lịch đã chốt trên Google Calendar.`;
+            responseText = `✅ Đã phê duyệt! Lịch đã tạo trên Google Calendar.`;
             if (hangoutLink) responseText += `\n🔗 Meet: ${hangoutLink}`;
             
             // Send Email 2
@@ -59,7 +85,7 @@ export async function POST(request: Request) {
                 auth: { user: process.env.SMTP_EMAIL, pass: process.env.SMTP_PASSWORD },
               });
               
-              const meetHtml = hangoutLink ? `\n<p><strong>Link Google Meet:</strong> <a href="${hangoutLink}">${hangoutLink}</a></p>` : '';
+              const meetHtml = hangoutLink ? `\n<p><strong>Link Google Meet:</strong> <a href="${hangoutLink}">${hangoutLink}</a></p>` : (meetingType === 'Offline' ? `\n<p><strong>Địa điểm:</strong> ${location}</p>` : '');
               
               await transporter.sendMail({
                 from: `"Hiến Training" <${process.env.SMTP_EMAIL}>`,
@@ -79,33 +105,47 @@ export async function POST(request: Request) {
             }
           } catch (e) {
             console.error('Google API Error in Webhook:', e);
-            responseText = `⚠️ Đã duyệt trên Telegram nhưng có lỗi khi update Google Calendar.`;
+            responseText = `⚠️ Lỗi khi tạo Google Calendar.`;
           }
         } else {
-          responseText = `✅ Đã phê duyệt tư vấn cho SĐT: ${id}`;
+          responseText = `✅ Đã phê duyệt tư vấn cho SĐT: ${phone}`;
         }
       } else if (data.startsWith('reject_')) {
-        const id = data.replace('reject_', '');
-        if (/[a-zA-Z]/.test(id) && process.env.GOOGLE_CLIENT_EMAIL && process.env.GOOGLE_PRIVATE_KEY) {
+        const phone = data.replace('reject_', '');
+        const text = callbackQuery.message.text || '';
+        const emailMatch = text.match(/Email:\s*(.+)/);
+        let clientEmail = emailMatch ? emailMatch[1].trim() : '';
+        if (clientEmail === 'N/A') clientEmail = '';
+
+        responseText = `❌ Đã bỏ qua khách SĐT: ${phone}`;
+
+        // Send Email 3 (Rejection)
+        if (clientEmail && process.env.SMTP_EMAIL && process.env.SMTP_PASSWORD) {
           try {
-            const auth = new JWT({
-              email: process.env.GOOGLE_CLIENT_EMAIL,
-              key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-              scopes: ['https://www.googleapis.com/auth/calendar'],
+            const transporter = nodemailer.createTransport({
+              service: 'gmail',
+              auth: { user: process.env.SMTP_EMAIL, pass: process.env.SMTP_PASSWORD },
             });
-            const calendar = google.calendar({ version: 'v3', auth: auth as any });
             
-            await calendar.events.delete({
-              calendarId: 'xuanhien.info@gmail.com',
-              eventId: id
+            await transporter.sendMail({
+              from: `"Hiến Training" <${process.env.SMTP_EMAIL}>`,
+              to: clientEmail,
+              subject: 'Phản hồi Yêu cầu Đặt lịch - Hiến Training',
+              html: `
+                <div style="font-family: sans-serif; color: #333;">
+                  <h2 style="color: #ea580c;">Phản hồi đặt lịch</h2>
+                  <p>Cảm ơn bạn đã đặt lịch hẹn tại <strong>hientraining.com</strong>.</p>
+                  <p>Rất xin lỗi bạn, hiện tại khung giờ bạn đã chọn chúng tôi không thể xác nhận được do lịch trình bị trùng đột xuất.</p>
+                  <p>Đội ngũ Hiến Training sẽ chủ động liên hệ lại với bạn qua số điện thoại sớm nhất để trao đổi thêm thông tin và sắp xếp một lịch hẹn phù hợp khác nhé.</p>
+                  <p>Trân trọng,<br/><strong>Hiến Training</strong></p>
+                </div>
+              `,
             });
-            responseText = `❌ Đã từ chối và xóa lịch chờ.`;
+            responseText += `\n📧 Đã gửi email báo hủy cho khách.`;
           } catch (e) {
-            console.error('Delete Event Error:', e);
-            responseText = `❌ Đã bỏ qua, nhưng lỗi khi xóa Calendar.`;
+            console.error('Email Error in Webhook Reject:', e);
+            responseText += `\n⚠️ Lỗi khi gửi email báo hủy.`;
           }
-        } else {
-          responseText = `❌ Đã bỏ qua khách SĐT: ${id}`;
         }
       }
 

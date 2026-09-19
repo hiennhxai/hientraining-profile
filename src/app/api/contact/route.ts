@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import { google } from 'googleapis';
-import { JWT } from 'google-auth-library';
 
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz6L0gVATSHZP-3ocYhbp2Pavki4P_HoSaAz7RZFn4yYL9vIJejFk51mI4yG3gMK1R1/exec';
 
@@ -103,51 +101,6 @@ export async function POST(request: Request) {
         `📝 <b>Ghi chú:</b> ${note || 'N/A'}` +
         (bookingDate ? `\n\n📅 <b>Lịch hẹn:</b> ${bookingDate} lúc ${bookingTime}\n📍 <b>Hình thức:</b> ${meetingType} ${meetingType === 'Offline' ? '(' + meetingLocation + ')' : ''}` : '');
 
-    // Create Google Calendar event if date is selected
-    let eventId = '';
-    if (bookingDate && bookingTime && process.env.GOOGLE_CLIENT_EMAIL && process.env.GOOGLE_PRIVATE_KEY) {
-      try {
-        const auth = new JWT({
-          email: process.env.GOOGLE_CLIENT_EMAIL,
-          key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-          scopes: ['https://www.googleapis.com/auth/calendar'],
-        });
-        const calendar = google.calendar({ version: 'v3', auth: auth as any });
-        
-        // Parse the provided local date and time into an ISO string (assuming Vietnam time UTC+7)
-        const startDateTime = new Date(`${bookingDate}T${bookingTime}:00+07:00`);
-        const endDateTime = new Date(startDateTime.getTime() + 60 * 60 * 1000); // Default 1 hour
-        
-        const eventBody: any = {
-          summary: `[CHỜ XÁC NHẬN] Tư vấn - ${name}`,
-          description: `Khách hàng: ${name}\nSĐT: ${phone}\nEmail: ${email || 'N/A'}\nDịch vụ: ${service}\nGhi chú: ${note}\nHình thức: ${meetingType}`,
-          start: { dateTime: startDateTime.toISOString() },
-          end: { dateTime: endDateTime.toISOString() },
-          attendees: email ? [{ email }] : [],
-          location: meetingType === 'Offline' ? (meetingLocation || 'Tại Studio') : undefined,
-        };
-
-        if (meetingType === 'Online') {
-          eventBody.conferenceData = {
-            createRequest: { 
-              requestId: `${Date.now()}_${phone.replace(/\\D/g, '')}`,
-              conferenceSolutionKey: { type: 'hangoutsMeet' } 
-            }
-          };
-        }
-
-        const res = await calendar.events.insert({
-          calendarId: 'xuanhien.info@gmail.com', // Must share calendar with the service account
-          requestBody: eventBody,
-          conferenceDataVersion: 1
-        });
-        
-        eventId = res.data.id || '';
-      } catch (err) {
-        console.error('Google Calendar Error:', err);
-      }
-    }
-
       const telegramUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
       
       await fetch(telegramUrl, {
@@ -163,8 +116,8 @@ export async function POST(request: Request) {
           reply_markup: {
             inline_keyboard: [
               [
-                { text: '✅ Xác nhận tư vấn', callback_data: eventId ? `approve_${eventId}` : `approve_${phone}` },
-                { text: '❌ Bỏ qua', callback_data: eventId ? `reject_${eventId}` : `reject_${phone}` }
+                { text: '✅ Xác nhận tư vấn', callback_data: `approve_${phone}` },
+                { text: '❌ Bỏ qua', callback_data: `reject_${phone}` }
               ]
             ]
           }
