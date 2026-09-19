@@ -153,12 +153,22 @@ export async function POST(request: Request) {
             parse_mode: 'HTML',
 
             reply_markup: {
-              inline_keyboard: [
-                [
-                  { text: '✅ Xác nhận tư vấn', callback_data: `approve_${phone}` },
-                  { text: '❌ Bỏ qua', callback_data: `reject_${phone}` }
-                ]
-              ]
+              inline_keyboard: isBookingUpdate 
+                ? [
+                    [
+                      { text: '✅ Phê duyệt lịch', callback_data: `approve_${phone}` },
+                      { text: '❌ Từ chối lịch', callback_data: `reject_${phone}` }
+                    ]
+                  ]
+                : [
+                    [
+                      { text: '📞 Đã gọi điện', callback_data: `called_${phone}` }
+                    ],
+                    [
+                      { text: '✅ Khách xác nhận học', callback_data: `accept1_${phone}` },
+                      { text: '❌ Khách từ chối', callback_data: `reject1_${phone}` }
+                    ]
+                  ]
             }
           }),
         });

@@ -16,10 +16,23 @@ export async function POST(request: Request) {
       const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN;
 
       let responseText = '';
+      let newReplyMarkup: any = undefined; // Sometimes we want to add new buttons
+      const text = callbackQuery.message.text || '';
 
-      if (data.startsWith('approve_')) {
+      if (data.startsWith('called_')) {
+        const phone = data.replace('called_', '');
+        responseText = `📞 Đã gọi điện tư vấn cho SĐT: ${phone}`;
+      } 
+      else if (data.startsWith('accept1_')) {
+        const phone = data.replace('accept1_', '');
+        responseText = `✅ Khách SĐT ${phone} ĐÃ CHỐT HỌC.`;
+      }
+      else if (data.startsWith('reject1_')) {
+        const phone = data.replace('reject1_', '');
+        responseText = `❌ Khách SĐT ${phone} đã từ chối.`;
+      }
+      else if (data.startsWith('approve_')) {
         const phone = data.replace('approve_', '');
-        const text = callbackQuery.message.text || '';
         
         // Parse the text to find if there is a booking
         const dateMatch = text.match(/Lịch hẹn:\s*([0-9\-]+)\s*lúc\s*([0-9:]+)/);
@@ -103,6 +116,19 @@ export async function POST(request: Request) {
                 `,
               });
             }
+
+            // Spawn new buttons for after-meeting status
+            newReplyMarkup = {
+              inline_keyboard: [
+                [
+                  { text: '🎓 Đã gặp xong - CHỐT HỌC', callback_data: `met_accept_${phone}` }
+                ],
+                [
+                  { text: '🛑 Đã gặp xong - TỪ CHỐI', callback_data: `met_reject_${phone}` }
+                ]
+              ]
+            };
+
           } catch (e) {
             console.error('Google API Error in Webhook:', e);
             responseText = `⚠️ Lỗi khi tạo Google Calendar.`;
@@ -110,14 +136,14 @@ export async function POST(request: Request) {
         } else {
           responseText = `✅ Đã phê duyệt tư vấn cho SĐT: ${phone}`;
         }
-      } else if (data.startsWith('reject_')) {
+      } 
+      else if (data.startsWith('reject_')) {
         const phone = data.replace('reject_', '');
-        const text = callbackQuery.message.text || '';
         const emailMatch = text.match(/Email:\s*(.+)/);
         let clientEmail = emailMatch ? emailMatch[1].trim() : '';
         if (clientEmail === 'N/A') clientEmail = '';
 
-        responseText = `❌ Đã bỏ qua khách SĐT: ${phone}`;
+        responseText = `❌ Đã từ chối lịch SĐT: ${phone}`;
 
         // Send Email 3 (Rejection)
         if (clientEmail && process.env.SMTP_EMAIL && process.env.SMTP_PASSWORD) {
@@ -148,19 +174,35 @@ export async function POST(request: Request) {
           }
         }
       }
+      else if (data.startsWith('met_accept_')) {
+        const phone = data.replace('met_accept_', '');
+        // Keep the original text but append the final status
+        responseText = `🎓 Đã gặp xong và CHỐT HỌC!`;
+      }
+      else if (data.startsWith('met_reject_')) {
+        const phone = data.replace('met_reject_', '');
+        responseText = `🛑 Đã gặp xong nhưng khách từ chối.`;
+      }
 
-      // Update the message to remove the buttons and show the result
+      // Update the message text and buttons
       if (telegramBotToken && responseText) {
         const editMessageUrl = `https://api.telegram.org/bot${telegramBotToken}/editMessageText`;
+        
+        const payload: any = {
+          chat_id: chatId,
+          message_id: messageId,
+          text: text.split('\n\n<b>Trạng thái:</b>')[0] + `\n\n<b>Trạng thái:</b> ${responseText}`,
+          parse_mode: 'HTML',
+        };
+
+        if (newReplyMarkup) {
+          payload.reply_markup = newReplyMarkup;
+        } // if not provided, Telegram removes the inline keyboard, which is what we want for final states
+
         await fetch(editMessageUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            chat_id: chatId,
-            message_id: messageId,
-            text: callbackQuery.message.text + `\n\n<b>Trạng thái:</b> ${responseText}`,
-            parse_mode: 'HTML',
-          }),
+          body: JSON.stringify(payload),
         });
 
         // Answer the callback query to remove loading state
