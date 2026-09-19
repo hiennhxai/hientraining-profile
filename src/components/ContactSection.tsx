@@ -18,7 +18,7 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
   const isVi = lang === 'vi';
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({ name: '', phone: '', service: 'Khóa học Setup Livestream', note: '' });
+  const [formData, setFormData] = useState({ name: '', phone: '', email: '', service: 'Khóa học Setup Livestream', note: '' });
   const [adminData, setAdminData] = useState(getAdminData());
   const gen = adminData.general;
 
@@ -73,7 +73,7 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
       }
 
       setSubmitted(true);
-      setFormData({ name: '', phone: '', service: 'Khóa học Setup Livestream', note: '' });
+      setFormData({ name: '', phone: '', email: '', service: 'Khóa học Setup Livestream', note: '' });
       setTimeout(() => {
         setSubmitted(false);
       }, 5000);
@@ -279,6 +279,20 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
                     placeholder="0813131385"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white font-medium transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
+                    {isVi ? 'Email của bạn' : 'Your Email'}
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="email@example.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white font-medium transition-all"
                   />
                 </div>
