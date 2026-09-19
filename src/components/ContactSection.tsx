@@ -18,6 +18,8 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
   const isVi = lang === 'vi';
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showBookingForm, setShowBookingForm] = useState(false);
+  const [bookingSuccess, setBookingSuccess] = useState(false);
   const [formData, setFormData] = useState({ 
     name: '', phone: '', email: '', service: 'Khóa học Setup Livestream', note: '',
     bookingDate: '', bookingTime: '', meetingType: 'Online', meetingLocation: ''
@@ -76,13 +78,46 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
       }
 
       setSubmitted(true);
-      setFormData({ name: '', phone: '', email: '', service: 'Khóa học Setup Livestream', note: '', bookingDate: '', bookingTime: '', meetingType: 'Online', meetingLocation: '' });
-      setTimeout(() => {
-        setSubmitted(false);
-      }, 5000);
+      setSubmitted(true);
+      // We do not clear the formData immediately so that the user can optionally book a meeting in Step 2.
     } catch (error) {
       console.error('Submit error:', error);
       alert(isVi ? 'Có lỗi xảy ra hoặc nghi ngờ Spam. Xin vui lòng liên hệ Hotline.' : 'Error submitting form or Spam detected. Please call our hotline.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleBookingSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          isBookingUpdate: true
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Booking update failed');
+      }
+
+      setBookingSuccess(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setBookingSuccess(false);
+        setShowBookingForm(false);
+        setFormData({ name: '', phone: '', email: '', service: 'Khóa học Setup Livestream', note: '', bookingDate: '', bookingTime: '', meetingType: 'Online', meetingLocation: '' });
+      }, 5000);
+    } catch (error) {
+      console.error('Booking submit error:', error);
+      alert(isVi ? 'Có lỗi xảy ra khi đặt lịch. Xin vui lòng thử lại.' : 'Error submitting booking. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -257,6 +292,88 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
                     ? 'Cảm ơn bạn. Xuân Hiến sẽ liên hệ tư vấn trực tiếp qua số điện thoại của bạn sớm nhất.'
                     : 'Thank you! Xuan Hien will reach out to you via your phone number shortly.'}
                 </p>
+
+                {!showBookingForm && !bookingSuccess && (
+                  <div className="pt-4 border-t border-emerald-200 mt-4">
+                    <p className="text-sm text-slate-700 mb-3 font-semibold">
+                      {isVi ? 'Bạn cũng có thể đặt lịch để tư vấn trực tiếp ngay.' : 'You can also book a direct consultation schedule now.'}
+                    </p>
+                    <button 
+                      onClick={() => setShowBookingForm(true)}
+                      className="px-6 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-xl text-sm font-bold transition-all shadow-md"
+                    >
+                      {isVi ? 'Nhấp vào đây đặt lịch' : 'Click here to book a schedule'}
+                    </button>
+                  </div>
+                )}
+
+                {showBookingForm && !bookingSuccess && (
+                  <form onSubmit={handleBookingSubmit} className="pt-4 border-t border-emerald-200 mt-4 text-left space-y-4 animate-fadeIn">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-slate-700 mb-1">
+                          {isVi ? 'Ngày hẹn' : 'Date'}
+                        </label>
+                        <input
+                          type="date"
+                          required
+                          value={formData.bookingDate}
+                          onChange={(e) => setFormData({ ...formData, bookingDate: e.target.value })}
+                          className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-sm focus:border-orange-500"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-slate-700 mb-1">
+                          {isVi ? 'Giờ hẹn' : 'Time'}
+                        </label>
+                        <input
+                          type="time"
+                          required
+                          value={formData.bookingTime}
+                          onChange={(e) => setFormData({ ...formData, bookingTime: e.target.value })}
+                          className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-sm focus:border-orange-500"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">
+                        {isVi ? 'Hình thức gặp' : 'Meeting Type'}
+                      </label>
+                      <select
+                        value={formData.meetingType}
+                        onChange={(e) => setFormData({ ...formData, meetingType: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-sm focus:border-orange-500"
+                      >
+                        <option value="Online">🌐 Online (Google Meet)</option>
+                        <option value="Offline">☕ Offline (Gặp trực tiếp)</option>
+                      </select>
+                    </div>
+                    {formData.meetingType === 'Offline' && (
+                      <div className="animate-fadeIn">
+                        <label className="block text-xs font-bold text-slate-700 mb-1">
+                          {isVi ? 'Địa điểm đề xuất' : 'Suggested Location'}
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          placeholder={isVi ? "Ví dụ: BILY Studio..." : "e.g., BILY Studio..."}
+                          value={formData.meetingLocation}
+                          onChange={(e) => setFormData({ ...formData, meetingLocation: e.target.value })}
+                          className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-sm focus:border-orange-500"
+                        />
+                      </div>
+                    )}
+                    <button type="submit" disabled={isSubmitting} className="w-full py-3 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md transition-all">
+                      {isSubmitting ? (isVi ? 'Đang gửi...' : 'Sending...') : (isVi ? 'XÁC NHẬN LỊCH HẸN' : 'CONFIRM SCHEDULE')}
+                    </button>
+                  </form>
+                )}
+
+                {bookingSuccess && (
+                  <div className="pt-4 border-t border-emerald-200 mt-4 text-emerald-700 font-bold animate-fadeIn">
+                    {isVi ? '✅ Đã gửi yêu cầu đặt lịch hẹn!' : '✅ Schedule request sent!'}
+                  </div>
+                )}
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -302,59 +419,7 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">
-                      {isVi ? 'Ngày hẹn (tuỳ chọn)' : 'Date (Optional)'}
-                    </label>
-                    <input
-                      type="date"
-                      value={formData.bookingDate}
-                      onChange={(e) => setFormData({ ...formData, bookingDate: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white font-medium transition-all"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">
-                      {isVi ? 'Giờ hẹn' : 'Time'}
-                    </label>
-                    <input
-                      type="time"
-                      value={formData.bookingTime}
-                      onChange={(e) => setFormData({ ...formData, bookingTime: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white font-medium transition-all"
-                    />
-                  </div>
-                </div>
 
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">
-                    {isVi ? 'Hình thức gặp' : 'Meeting Type'}
-                  </label>
-                  <select
-                    value={formData.meetingType}
-                    onChange={(e) => setFormData({ ...formData, meetingType: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white font-medium transition-all"
-                  >
-                    <option value="Online">🌐 Online (Google Meet)</option>
-                    <option value="Offline">☕ Offline (Gặp trực tiếp)</option>
-                  </select>
-                </div>
-
-                {formData.meetingType === 'Offline' && (
-                  <div className="animate-fadeIn">
-                    <label className="block text-xs font-bold text-slate-700 mb-1">
-                      {isVi ? 'Địa điểm đề xuất' : 'Suggested Location'}
-                    </label>
-                    <input
-                      type="text"
-                      placeholder={isVi ? "Ví dụ: Quán cà phê XYZ hoặc BILY Studio..." : "e.g., XYZ Cafe or BILY Studio..."}
-                      value={formData.meetingLocation}
-                      onChange={(e) => setFormData({ ...formData, meetingLocation: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white font-medium transition-all"
-                    />
-                  </div>
-                )}
 
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1">

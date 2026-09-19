@@ -6,7 +6,7 @@ const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz6L0gVATSHZP
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, phone, email, service, note, recaptchaToken, bookingDate, bookingTime, meetingType, meetingLocation } = body;
+    const { name, phone, email, service, note, recaptchaToken, bookingDate, bookingTime, meetingType, meetingLocation, isBookingUpdate } = body;
 
     const secretKey = process.env.RECAPTCHA_SECRET_KEY;
 
@@ -93,13 +93,21 @@ export async function POST(request: Request) {
     const telegramChatId = process.env.TELEGRAM_CHAT_ID;
 
     if (telegramBotToken && telegramChatId) {
-      const telegramMessage = `🚨 <b>CÓ KHÁCH ĐĂNG KÝ MỚI!</b>\n\n` +
-        `👤 <b>Khách hàng:</b> ${name || 'N/A'}\n` +
-        `📱 <b>SĐT / Zalo:</b> ${phone || 'N/A'}\n` +
-        `✉️ <b>Email:</b> ${email || 'N/A'}\n` +
-        `📚 <b>Dịch vụ quan tâm:</b> ${service || 'N/A'}\n` +
-        `📝 <b>Ghi chú:</b> ${note || 'N/A'}` +
-        (bookingDate ? `\n\n📅 <b>Lịch hẹn:</b> ${bookingDate} lúc ${bookingTime}\n📍 <b>Hình thức:</b> ${meetingType} ${meetingType === 'Offline' ? '(' + meetingLocation + ')' : ''}` : '');
+      let telegramMessage = '';
+      if (isBookingUpdate) {
+        telegramMessage = `🚨 <b>KHÁCH BỔ SUNG LỊCH HẸN!</b>\n\n` +
+          `👤 <b>Khách hàng:</b> ${name || 'N/A'}\n` +
+          `📱 <b>SĐT / Zalo:</b> ${phone || 'N/A'}\n` +
+          `✉️ <b>Email:</b> ${email || 'N/A'}\n` +
+          `📅 <b>Lịch hẹn:</b> ${bookingDate} lúc ${bookingTime}\n📍 <b>Hình thức:</b> ${meetingType} ${meetingType === 'Offline' ? '(' + meetingLocation + ')' : ''}`;
+      } else {
+        telegramMessage = `🚨 <b>CÓ KHÁCH ĐĂNG KÝ MỚI!</b>\n\n` +
+          `👤 <b>Khách hàng:</b> ${name || 'N/A'}\n` +
+          `📱 <b>SĐT / Zalo:</b> ${phone || 'N/A'}\n` +
+          `✉️ <b>Email:</b> ${email || 'N/A'}\n` +
+          `📚 <b>Dịch vụ quan tâm:</b> ${service || 'N/A'}\n` +
+          `📝 <b>Ghi chú:</b> ${note || 'N/A'}`;
+      }
 
       const telegramUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
       
