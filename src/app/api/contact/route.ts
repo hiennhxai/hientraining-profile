@@ -146,38 +146,69 @@ export async function POST(request: Request) {
       }
 
       try {
-        const telegramUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
-        
-        await fetch(telegramUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            chat_id: telegramChatId,
-            text: telegramMessage,
-            parse_mode: 'HTML',
+        const replyMarkup = {
+          inline_keyboard: isBookingUpdate 
+            ? [
+                [
+                  { text: '✅ Phê duyệt lịch', callback_data: `approve_${phone}` },
+                  { text: '❌ Từ chối lịch', callback_data: `reject_${phone}` }
+                ]
+              ]
+            : [
+                [
+                  { text: '📞 Đã gọi điện', callback_data: `called_${phone}` }
+                ],
+                [
+                  { text: '✅ Khách xác nhận học', callback_data: `accept1_${phone}` },
+                  { text: '❌ Khách từ chối', callback_data: `reject1_${phone}` }
+                ]
+              ]
+        };
 
-            reply_markup: {
-              inline_keyboard: isBookingUpdate 
-                ? [
-                    [
-                      { text: '✅ Phê duyệt lịch', callback_data: `approve_${phone}` },
-                      { text: '❌ Từ chối lịch', callback_data: `reject_${phone}` }
-                    ]
-                  ]
-                : [
-                    [
-                      { text: '📞 Đã gọi điện', callback_data: `called_${phone}` }
-                    ],
-                    [
-                      { text: '✅ Khách xác nhận học', callback_data: `accept1_${phone}` },
-                      { text: '❌ Khách từ chối', callback_data: `reject1_${phone}` }
-                    ]
-                  ]
-            }
-          }),
-        });
+        if (isBookingUpdate && bookingDate && bookingTime) {
+          const startDateTime = new Date(`${bookingDate}T${bookingTime}:00+07:00`);
+          const endDateTime = new Date(startDateTime.getTime() + 60 * 60 * 1000);
+          const formatDate = (date: Date) => date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+          
+          const ics = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//HienTraining//VN
+BEGIN:VEVENT
+UID:${Date.now()}@hientraining.com
+DTSTAMP:${formatDate(new Date())}
+DTSTART:${formatDate(startDateTime)}
+DTEND:${formatDate(endDateTime)}
+SUMMARY:Tư vấn - ${name || 'Khách'}
+DESCRIPTION:SĐT: ${phone}\\nEmail: ${email || ''}\\n
+LOCATION:${meetingType === 'Offline' ? meetingLocation : 'Online'}
+END:VEVENT
+END:VCALENDAR`;
+
+          const formData = new FormData();
+          formData.append('chat_id', telegramChatId);
+          formData.append('caption', telegramMessage);
+          formData.append('parse_mode', 'HTML');
+          formData.append('reply_markup', JSON.stringify(replyMarkup));
+          formData.append('document', new Blob([ics], { type: 'text/calendar' }), 'LichHen.ics');
+
+          await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendDocument`, {
+            method: 'POST',
+            body: formData,
+          });
+        } else {
+          await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              chat_id: telegramChatId,
+              text: telegramMessage,
+              parse_mode: 'HTML',
+              reply_markup: replyMarkup
+            }),
+          });
+        }
       } catch (teleError) {
         console.error('Telegram notification failed:', teleError);
       }
