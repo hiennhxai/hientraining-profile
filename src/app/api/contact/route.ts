@@ -178,7 +178,7 @@ UID:${Date.now()}@hientraining.com
 DTSTAMP:${formatDate(new Date())}
 DTSTART:${formatDate(startDateTime)}
 DTEND:${formatDate(endDateTime)}
-SUMMARY:Tư vấn - ${name || 'Khách'}
+SUMMARY:[Hiến Training] Tư vấn - ${name || 'Khách'}
 DESCRIPTION:SĐT: ${phone}\\nEmail: ${email || ''}\\n
 LOCATION:${meetingType === 'Offline' ? meetingLocation : 'Online'}
 END:VEVENT
