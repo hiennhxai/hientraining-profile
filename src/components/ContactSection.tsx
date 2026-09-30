@@ -292,14 +292,17 @@ export function ContactSection({ lang, isEditActive = false, onEditField }: Cont
 
                 {showBookingForm && !bookingSuccess && (
                   <form onSubmit={handleBookingSubmit} className="pt-4 border-t border-emerald-200 mt-4 text-left space-y-4 animate-fadeIn">
+                    {/* Google Calendar embed - cần mở quyền public trong Google Calendar settings */}
                     <div className="w-full rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-white p-2 mb-4">
-                      <p className="text-xs font-bold text-slate-500 mb-2 uppercase text-center">{isVi ? 'Xem lịch trống của Hiến Training' : 'Check Hien Training Availability'}</p>
-                      <iframe 
-                        src="https://calendar.google.com/calendar/embed?src=xuanhien.info%40gmail.com&ctz=Asia%2FHo_Chi_Minh&mode=AGENDA&showPrint=0&showTabs=0&showCalendars=0&showTz=0" 
-                        style={{ border: 0 }} 
-                        width="100%" 
-                        height="300" 
-                        frameBorder="0" 
+                      <p className="text-xs font-bold text-slate-500 mb-2 uppercase text-center">
+                        📅 {isVi ? 'Xem lịch trống của Hiến Training' : 'Check Hien Training Availability'}
+                      </p>
+                      <iframe
+                        src="https://calendar.google.com/calendar/embed?src=xuanhien.info%40gmail.com&ctz=Asia%2FHo_Chi_Minh&mode=WEEK&showPrint=0&showTabs=0&showCalendars=0&showTz=0&showNav=1&showTitle=0"
+                        style={{ border: 0 }}
+                        width="100%"
+                        height="300"
+                        frameBorder="0"
                         scrolling="no"
                       ></iframe>
                     </div>

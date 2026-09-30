@@ -2,6 +2,12 @@ import { NextResponse } from 'next/server';
 import { google } from 'googleapis';
 import { JWT } from 'google-auth-library';
 import nodemailer from 'nodemailer';
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseAdmin = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+  process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+);
 
 export async function POST(request: Request) {
   try {
@@ -105,6 +111,13 @@ export async function POST(request: Request) {
             
             responseText = `✅ Đã phê duyệt! Lịch đã tạo trên Google Calendar.`;
             if (hangoutLink) responseText += `\n🔗 Meet: ${hangoutLink}`;
+
+            // Cập nhật status trong Supabase
+            await supabaseAdmin
+              .from('bookings')
+              .update({ status: 'approved' })
+              .eq('phone', phone)
+              .eq('status', 'pending');
             
             // Send Email 2
             if (clientEmail && process.env.SMTP_EMAIL && process.env.SMTP_PASSWORD) {
@@ -150,6 +163,13 @@ export async function POST(request: Request) {
           }
         } else {
           responseText = `✅ Đã phê duyệt tư vấn cho SĐT: ${phone}`;
+
+          // Cập nhật status trong Supabase (trường hợp không có Google Calendar)
+          await supabaseAdmin
+            .from('bookings')
+            .update({ status: 'approved' })
+            .eq('phone', phone)
+            .eq('status', 'pending');
         }
       } 
       else if (data.startsWith('reject_')) {
@@ -159,6 +179,13 @@ export async function POST(request: Request) {
         if (clientEmail === 'N/A') clientEmail = '';
 
         responseText = `❌ Đã từ chối lịch SĐT: ${phone}`;
+
+        // Cập nhật status trong Supabase
+        await supabaseAdmin
+          .from('bookings')
+          .update({ status: 'rejected' })
+          .eq('phone', phone)
+          .eq('status', 'pending');
 
         // Send Email 3 (Rejection)
         if (clientEmail && process.env.SMTP_EMAIL && process.env.SMTP_PASSWORD) {

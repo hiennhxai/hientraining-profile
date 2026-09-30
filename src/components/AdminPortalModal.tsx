@@ -24,7 +24,7 @@ interface AdminPortalModalProps {
 
 export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onClose, onSaved }) => {
   const [data, setData] = useState<FullAdminData>(getAdminData());
-  const [activeTab, setActiveTab] = useState<'general' | 'story' | 'courses' | 'resources' | 'services' | 'projects' | 'articles' | 'album' | 'brands' | 'ai_studio' | 'testimonials' | 'leads'>('general');
+  const [activeTab, setActiveTab] = useState<'general' | 'story' | 'courses' | 'resources' | 'services' | 'projects' | 'articles' | 'album' | 'brands' | 'ai_studio' | 'testimonials' | 'leads' | 'contacts' | 'bookings'>('general');
   const [toastMsg, setToastMsg] = useState<string | null>(null);
   const [isAiLoading, setIsAiLoading] = useState(false);
 
@@ -93,38 +93,78 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
   const [pickerAiContext, setPickerAiContext] = useState<string | undefined>(undefined);
   const [isSaving, setIsSaving] = useState(false);
 
-  // New state for Leads
+  // State for Leads
   const [fetchedLeads, setFetchedLeads] = useState<LeadItem[]>([]);
   const [isLoadingLeads, setIsLoadingLeads] = useState(false);
 
+  // State for Contact Submissions
+  const [fetchedContacts, setFetchedContacts] = useState<any[]>([]);
+  const [isLoadingContacts, setIsLoadingContacts] = useState(false);
+
+  // State for Bookings
+  const [fetchedBookings, setFetchedBookings] = useState<any[]>([]);
+  const [isLoadingBookings, setIsLoadingBookings] = useState(false);
+
+  // Fetch + Realtime for leads
   useEffect(() => {
-    if (activeTab === 'leads') {
-      const fetchLeads = async () => {
-        setIsLoadingLeads(true);
-        try {
-          const { data: leadsData, error } = await supabase
-            .from('leads')
-            .select('*')
-            .order('created_at', { ascending: false });
-          if (!error && leadsData) {
-            setFetchedLeads(leadsData.map(l => ({
-              id: l.id,
-              name: l.name,
-              phone: l.phone,
-              email: l.email,
-              source: l.course_interest || '',
-              createdAt: l.created_at
-            })));
-          }
-        } catch (e) {
-          console.error('Failed to fetch leads', e);
-        } finally {
-          setIsLoadingLeads(false);
-        }
-      };
-      fetchLeads();
-    }
+    if (activeTab !== 'leads') return;
+    setIsLoadingLeads(true);
+    supabase.from('leads').select('*').order('created_at', { ascending: false })
+      .then(({ data, error }) => {
+        if (!error && data) setFetchedLeads(data.map(l => ({
+          id: l.id, name: l.name, phone: l.phone, email: l.email,
+          source: l.course_interest || '', createdAt: l.created_at
+        })));
+        setIsLoadingLeads(false);
+      });
   }, [activeTab]);
+
+  // Fetch + Realtime for contacts
+  useEffect(() => {
+    if (activeTab !== 'contacts') return;
+    setIsLoadingContacts(true);
+    const fetchContacts = () =>
+      supabase.from('contact_submissions').select('*').order('created_at', { ascending: false })
+        .then(({ data, error }) => {
+          if (!error && data) setFetchedContacts(data);
+          setIsLoadingContacts(false);
+        });
+    fetchContacts();
+
+    // Realtime: tự cập nhật khi có đơn mới
+    const channel = supabase
+      .channel('realtime-contacts')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'contact_submissions' }, () => {
+        fetchContacts();
+      })
+      .subscribe();
+
+    return () => { supabase.removeChannel(channel); };
+  }, [activeTab]);
+
+  // Fetch + Realtime for bookings
+  useEffect(() => {
+    if (activeTab !== 'bookings') return;
+    setIsLoadingBookings(true);
+    const fetchBookings = () =>
+      supabase.from('bookings').select('*').order('created_at', { ascending: false })
+        .then(({ data, error }) => {
+          if (!error && data) setFetchedBookings(data);
+          setIsLoadingBookings(false);
+        });
+    fetchBookings();
+
+    // Realtime: tự cập nhật khi có lịch mới hoặc status thay đổi (approve/reject từ Telegram)
+    const channel = supabase
+      .channel('realtime-bookings')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'bookings' }, () => {
+        fetchBookings();
+      })
+      .subscribe();
+
+    return () => { supabase.removeChannel(channel); };
+  }, [activeTab]);
+
 
   const openPicker = (callback: (url: string) => void, title: string, currentUrl: string = '', aiContext?: string, multiCallback?: (urls: string[]) => void) => {
     setPickerCallback(() => callback);
@@ -507,7 +547,25 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
               }`}
             >
               <Users className="w-4 h-4 shrink-0" />
-              <span className="truncate">👥 Leads</span>
+              <span className="truncate">👥 Leads ({fetchedLeads.length})</span>
+            </button>
+
+            <button aria-label="Action button" onClick={() => { setActiveTab('contacts'); setEditingArticleSlug(null); }}
+              className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                activeTab === 'contacts' ? 'bg-emerald-600 text-white shadow-md' : 'bg-emerald-50 text-emerald-900 hover:bg-emerald-100 border border-emerald-200'
+              }`}
+            >
+              <FileText className="w-4 h-4 shrink-0" />
+              <span className="truncate">📋 Đăng Ký ({fetchedContacts.length})</span>
+            </button>
+
+            <button aria-label="Action button" onClick={() => { setActiveTab('bookings'); setEditingArticleSlug(null); }}
+              className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                activeTab === 'bookings' ? 'bg-violet-600 text-white shadow-md' : 'bg-violet-50 text-violet-900 hover:bg-violet-100 border border-violet-200'
+              }`}
+            >
+              <Video className="w-4 h-4 shrink-0" />
+              <span className="truncate">📅 Lịch Hẹn ({fetchedBookings.length})</span>
             </button>
           </div>
 
@@ -3429,7 +3487,157 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
             </div>
           )}
 
-        {/* Footer Super Admin Bar */}
+          {/* TAB: ĐĂNG KÝ TƯ VẤN */}
+          {activeTab === 'contacts' && (
+            <div className="space-y-8 animate-fade-in-up">
+              <div className="bg-white rounded-2xl shadow-sm border border-emerald-100 overflow-hidden">
+                <div className="p-4 sm:p-6 border-b border-emerald-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div>
+                    <h3 className="text-lg font-bold text-emerald-900 flex items-center gap-2">
+                      <FileText className="w-5 h-5 text-emerald-600" />
+                      Đơn Đăng Ký Tư Vấn
+                    </h3>
+                    <p className="text-xs text-emerald-700 mt-1">Danh sách khách hàng gửi form liên hệ / đăng ký tư vấn.</p>
+                  </div>
+                  <button aria-label="Export CSV" type="button"
+                    onClick={() => {
+                      if (!fetchedContacts.length) { alert('Không có dữ liệu!'); return; }
+                      const headers = ['Họ Tên', 'Số ĐT', 'Email', 'Dịch Vụ', 'Ghi Chú', 'Thời Gian'];
+                      const csv = [headers.join(','), ...fetchedContacts.map(r => [
+                        `"${(r.name||'').replace(/"/g,'""')}"`,
+                        `"${(r.phone||'').replace(/"/g,'""')}"`,
+                        `"${(r.email||'').replace(/"/g,'""')}"`,
+                        `"${(r.service||'').replace(/"/g,'""')}"`,
+                        `"${(r.note||'').replace(/"/g,'""')}"`,
+                        `"${new Date(r.created_at).toLocaleString('vi-VN')}"`
+                      ].join(','))].join('\n');
+                      const blob = new Blob(['\uFEFF'+csv], { type: 'text/csv;charset=utf-8;' });
+                      const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+                      a.download = `DangKyTuVan_${new Date().toISOString().slice(0,10)}.csv`;
+                      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                    }}
+                    className="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-semibold hover:bg-emerald-700 transition-colors shadow-sm"
+                  >
+                    <Download className="w-4 h-4" /> Xuất CSV
+                  </button>
+                </div>
+                <div className="p-4 sm:p-6">
+                  {isLoadingContacts ? (
+                    <div className="text-center py-8 text-emerald-600 font-medium">Đang tải...</div>
+                  ) : fetchedContacts.length === 0 ? (
+                    <div className="text-center py-8 text-emerald-600 font-medium bg-emerald-50 rounded-xl border border-dashed border-emerald-200">Chưa có đơn đăng ký nào.</div>
+                  ) : (
+                    <div className="overflow-x-auto rounded-xl border border-emerald-100">
+                      <table className="min-w-full divide-y divide-emerald-200">
+                        <thead className="bg-emerald-50">
+                          <tr>
+                            {['Họ Tên','Số ĐT','Email','Dịch Vụ','Ghi Chú','Thời Gian'].map(h => (
+                              <th key={h} scope="col" className="px-4 py-3 text-left text-xs font-bold text-emerald-800 uppercase tracking-wider">{h}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody className="bg-white divide-y divide-emerald-100">
+                          {fetchedContacts.map((r) => (
+                            <tr key={r.id} className="hover:bg-emerald-50/50 transition-colors">
+                              <td className="px-4 py-3 text-sm font-medium text-slate-900 whitespace-nowrap">{r.name}</td>
+                              <td className="px-4 py-3 text-sm text-slate-600 font-mono whitespace-nowrap">{r.phone}</td>
+                              <td className="px-4 py-3 text-sm text-slate-600 whitespace-nowrap">{r.email || '-'}</td>
+                              <td className="px-4 py-3 text-sm text-slate-600 max-w-[160px] truncate" title={r.service}>{r.service || '-'}</td>
+                              <td className="px-4 py-3 text-sm text-slate-500 max-w-[160px] truncate" title={r.note}>{r.note || '-'}</td>
+                              <td className="px-4 py-3 text-xs text-slate-400 whitespace-nowrap">{new Date(r.created_at).toLocaleString('vi-VN')}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* TAB: LỊCH HẸN */}
+          {activeTab === 'bookings' && (
+            <div className="space-y-8 animate-fade-in-up">
+              <div className="bg-white rounded-2xl shadow-sm border border-violet-100 overflow-hidden">
+                <div className="p-4 sm:p-6 border-b border-violet-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div>
+                    <h3 className="text-lg font-bold text-violet-900 flex items-center gap-2">
+                      <Video className="w-5 h-5 text-violet-600" />
+                      Đơn Đặt Lịch Hẹn
+                    </h3>
+                    <p className="text-xs text-violet-700 mt-1">Danh sách khách hàng đặt lịch tư vấn trực tiếp.</p>
+                  </div>
+                  <button aria-label="Export CSV" type="button"
+                    onClick={() => {
+                      if (!fetchedBookings.length) { alert('Không có dữ liệu!'); return; }
+                      const headers = ['Họ Tên','Số ĐT','Email','Ngày Hẹn','Giờ Hẹn','Hình Thức','Địa Điểm','Trạng Thái','Thời Gian'];
+                      const csv = [headers.join(','), ...fetchedBookings.map(r => [
+                        `"${(r.name||'').replace(/"/g,'""')}"`,
+                        `"${(r.phone||'').replace(/"/g,'""')}"`,
+                        `"${(r.email||'').replace(/"/g,'""')}"`,
+                        `"${(r.booking_date||'').replace(/"/g,'""')}"`,
+                        `"${(r.booking_time||'').replace(/"/g,'""')}"`,
+                        `"${(r.meeting_type||'').replace(/"/g,'""')}"`,
+                        `"${(r.meeting_location||'').replace(/"/g,'""')}"`,
+                        `"${(r.status||'').replace(/"/g,'""')}"`,
+                        `"${new Date(r.created_at).toLocaleString('vi-VN')}"`
+                      ].join(','))].join('\n');
+                      const blob = new Blob(['\uFEFF'+csv], { type: 'text/csv;charset=utf-8;' });
+                      const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+                      a.download = `LichHen_${new Date().toISOString().slice(0,10)}.csv`;
+                      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                    }}
+                    className="flex items-center gap-2 px-4 py-2 bg-violet-600 text-white rounded-lg text-sm font-semibold hover:bg-violet-700 transition-colors shadow-sm"
+                  >
+                    <Download className="w-4 h-4" /> Xuất CSV
+                  </button>
+                </div>
+                <div className="p-4 sm:p-6">
+                  {isLoadingBookings ? (
+                    <div className="text-center py-8 text-violet-600 font-medium">Đang tải...</div>
+                  ) : fetchedBookings.length === 0 ? (
+                    <div className="text-center py-8 text-violet-600 font-medium bg-violet-50 rounded-xl border border-dashed border-violet-200">Chưa có lịch hẹn nào.</div>
+                  ) : (
+                    <div className="overflow-x-auto rounded-xl border border-violet-100">
+                      <table className="min-w-full divide-y divide-violet-200">
+                        <thead className="bg-violet-50">
+                          <tr>
+                            {['Họ Tên','Số ĐT','Ngày Hẹn','Giờ','Hình Thức','Trạng Thái','Thời Gian'].map(h => (
+                              <th key={h} scope="col" className="px-4 py-3 text-left text-xs font-bold text-violet-800 uppercase tracking-wider">{h}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody className="bg-white divide-y divide-violet-100">
+                          {fetchedBookings.map((r) => (
+                            <tr key={r.id} className="hover:bg-violet-50/50 transition-colors">
+                              <td className="px-4 py-3 text-sm font-medium text-slate-900 whitespace-nowrap">{r.name}</td>
+                              <td className="px-4 py-3 text-sm text-slate-600 font-mono whitespace-nowrap">{r.phone}</td>
+                              <td className="px-4 py-3 text-sm text-slate-600 whitespace-nowrap">{r.booking_date || '-'}</td>
+                              <td className="px-4 py-3 text-sm text-slate-600 whitespace-nowrap">{r.booking_time || '-'}</td>
+                              <td className="px-4 py-3 text-sm text-slate-600 whitespace-nowrap">{r.meeting_type || '-'}</td>
+                              <td className="px-4 py-3 whitespace-nowrap">
+                                <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold ${
+                                  r.status === 'approved' ? 'bg-emerald-100 text-emerald-800' :
+                                  r.status === 'rejected' ? 'bg-red-100 text-red-800' :
+                                  'bg-amber-100 text-amber-800'
+                                }`}>
+                                  {r.status === 'approved' ? '✅ Đã duyệt' : r.status === 'rejected' ? '❌ Từ chối' : '⏳ Chờ duyệt'}
+                                </span>
+                              </td>
+                              <td className="px-4 py-3 text-xs text-slate-400 whitespace-nowrap">{new Date(r.created_at).toLocaleString('vi-VN')}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+
         <div className="px-6 py-3.5 bg-white border-t border-slate-200 flex flex-wrap items-center justify-between gap-3 shrink-0">
           <div className="flex items-center gap-2">
             <button aria-label="Action button" onClick={handleExportJSON}

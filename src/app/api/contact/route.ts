@@ -1,5 +1,11 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseAdmin = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+  process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+);
 
 // In-memory store for rate limiting (reset when server restarts, but sufficient for short-window Vercel serverless functions)
 const rateLimitMap = new Map<string, number[]>();
@@ -178,6 +184,32 @@ export async function POST(request: Request) {
     }
 
 
+    // 4. Lưu vào Supabase (silent — không block response)
+    try {
+      if (isBookingUpdate) {
+        await supabaseAdmin.from('bookings').insert([{
+          name: name || '',
+          phone: phone || '',
+          email: email || null,
+          service: service || null,
+          booking_date: bookingDate || null,
+          booking_time: bookingTime || null,
+          meeting_type: meetingType || 'Online',
+          meeting_location: meetingLocation || null,
+          status: 'pending',
+        }]);
+      } else {
+        await supabaseAdmin.from('contact_submissions').insert([{
+          name: name || '',
+          phone: phone || '',
+          email: email || null,
+          service: service || null,
+          note: note || null,
+        }]);
+      }
+    } catch (dbError) {
+      console.error('DB save failed (non-critical):', dbError);
+    }
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
