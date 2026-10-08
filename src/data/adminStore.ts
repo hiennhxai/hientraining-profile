@@ -644,27 +644,35 @@ export const defaultSocialLinks: SocialLinkItem[] = [
 export const defaultTestimonials: TestimonialItem[] = [
   {
     id: 't-1',
-    name: 'Nguyễn Văn A',
-    role: 'Học viên Khóa Giao Tiếp K12',
-    content: 'Khóa học của anh Hiến rất thực tế, giúp tôi tự tin hơn hẳn khi thuyết trình trước đám đông. Kỹ năng kiểm soát giọng nói là một bước ngoặt lớn.',
+    name: 'Lê Hoàng Nam',
+    role: 'Chủ chuỗi F&B / Học viên Khóa Setup Studio & Branding',
+    content: 'Anh Hiến tư vấn cực kỳ tận tâm. Từ việc đo đạc góc phòng, chọn đèn Softbox đến tối ưu menu và bộ nhận diện, giúp quán của mình vận hành trơn tru cả điểm bán offline lẫn kênh livestream bán hàng.',
     rating: 5,
-    avatarUrl: 'https://i.pravatar.cc/150?u=1'
+    avatarUrl: '/images/avatars/avatar_1.jpg'
   },
   {
     id: 't-2',
-    name: 'Trần Thị B',
-    role: 'KOL / TikToker',
-    content: 'Studio Setup quá chuyên nghiệp. Nhờ đội ngũ Xuân Hiến Media mà phòng livestream của tôi lên hình siêu nét, âm thanh mượt mà không bị rè.',
+    name: 'Nguyễn Thu Trang',
+    role: 'Host Livestream & Nhà Sáng Tạo Nội Dung',
+    content: 'Khóa học livestream thực chiến của anh Hiến giúp mình hoàn toàn rũ bỏ nỗi sợ trước ống kính. Kỹ thuật demo sản phẩm và xử lý âm thanh khiến phiên live của mình tăng gấp 3 lần lượng giữ chân người xem.',
     rating: 5,
-    avatarUrl: 'https://i.pravatar.cc/150?u=2'
+    avatarUrl: '/images/avatars/avatar_2.jpg'
   },
   {
     id: 't-3',
-    name: 'Công ty Cổ phần VNG',
-    role: 'Đối tác Truyền thông',
-    content: 'Làm việc với MC Xuân Hiến mang lại cảm giác an tâm tuyệt đối. Khả năng xử lý tình huống trên sân khấu và kịch bản rất chắc tay.',
+    name: 'Trần Quốc Bảo',
+    role: 'Trưởng Media Team / Học viên Khóa Sản Xuất Video',
+    content: 'Quy trình sản xuất và bản đồ vị trí nhân sự được anh Hiến đúc kết quá rõ ràng. Team mình áp dụng phương pháp batch shooting chỉ trong 1 ngày đã quay xong toàn bộ video kế hoạch cho cả tháng.',
     rating: 5,
-    avatarUrl: 'https://i.pravatar.cc/150?u=3'
+    avatarUrl: '/images/avatars/avatar_3.jpg'
+  },
+  {
+    id: 't-4',
+    name: 'Vũ Hải Yến',
+    role: 'Giám Đốc Truyền Thông / Đối Tác Sản Xuất Live',
+    content: 'Hợp tác sản xuất cùng MC Xuân Hiến mang lại sự an tâm tuyệt đối. Khả năng làm chủ sân khấu, điều phối kịch bản và xử lý sự cố trực tiếp của anh luôn đạt tiêu chuẩn truyền hình cao nhất.',
+    rating: 5,
+    avatarUrl: '/images/avatars/avatar_4.jpg'
   }
 ];
 
