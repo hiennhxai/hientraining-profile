@@ -804,6 +804,12 @@ let currentAdminData: FullAdminData = (() => {
         ...defaultAdminData,
         ...parsed,
         general: { ...defaultAdminData.general, ...(parsed.general || {}) },
+        courses: Array.isArray(parsed.courses) && parsed.courses.length > 0
+          ? [
+              ...parsed.courses,
+              ...defaultAdminData.courses.filter(dc => !parsed.courses.some((pc: any) => pc.id === dc.id))
+            ]
+          : defaultAdminData.courses,
         resources: (parsed.resources && parsed.resources.length > 0) ? parsed.resources : defaultResources,
         testimonials: Array.isArray(parsed.testimonials) ? parsed.testimonials : defaultTestimonials,
       };
@@ -852,7 +858,12 @@ export async function loadAdminDataAsync(subscribe: boolean = false, forceReload
       // LUẬT SẮT: Supabase là nguồn sự thật duy nhất. KHÔNG BAO GIỜ ghi đè dữ liệu Supabase bằng defaultAdminData.
       currentAdminData = {
         general: { ...defaultAdminData.general, ...(parsed.general || {}) },
-        courses: Array.isArray(parsed.courses) ? parsed.courses : defaultAdminData.courses,
+        courses: Array.isArray(parsed.courses) && parsed.courses.length > 0
+          ? [
+              ...parsed.courses,
+              ...defaultAdminData.courses.filter(dc => !parsed.courses.some((pc: any) => pc.id === dc.id))
+            ]
+          : defaultAdminData.courses,
         services: Array.isArray(parsed.services) ? parsed.services : defaultAdminData.services,
         projects: parsed.projects || defaultAdminData.projects,
         tiktokChannels: Array.isArray(parsed.tiktokChannels) ? parsed.tiktokChannels : defaultAdminData.tiktokChannels,
